@@ -8,20 +8,21 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: aeb53e722eae588b7d5e2963afe67f299c2c3565
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: dfbae5144ec19b795463bd44f1e84fcf2516c267
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744967"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747202"
 ---
 # <a name="create-a-cloud-service-extended-support-using-arm-templates"></a>使用 ARM 範本建立雲端服務 (延伸支援) 
+
+本教學課程說明如何使用 [ARM 範本](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)建立雲端服務 (延伸支援) 部署。 
 
 > [!IMPORTANT]
 > 雲端服務 (延伸支援) 目前處於公開預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-本教學課程說明如何使用 [ARM 範本](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)建立雲端服務 (延伸支援) 部署。 
 
 ## <a name="before-you-begin"></a>開始之前
 1. 請參閱雲端服務的 [部署必要條件](deploy-prerequisite.md) (延伸支援) 並建立相關聯的資源。 

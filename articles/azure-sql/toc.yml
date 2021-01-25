@@ -973,6 +973,8 @@
           href: managed-instance/virtual-cluster-delete.md
         - name: 設定自訂 DNS
           href: managed-instance/custom-dns-configure.md
+        - name: 同步 DNS 設定
+          href: managed-instance/synchronize-vnet-dns-servers-setting-on-virtual-cluster.md
         - name: 同步網路組態
           href: managed-instance/azure-app-sync-network-configuration.md
         - name: 尋找管理端點 IP 位址
@@ -1121,7 +1123,7 @@
                           href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
                         - name: 手動設定
                           items:
-                            - name: 必要條件
+                            - name: Prerequisites
                               href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
                             - name: 教學課程
                               href: virtual-machines/windows/availability-group-manually-configure-tutorial.md

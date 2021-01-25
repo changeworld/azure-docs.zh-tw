@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 6061980ec556fccde3de882a291bc390b88c5a24
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: f2807501b1e18d4cbffaa34d70bccf8d70565266
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611078"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747218"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure 監視器客戶管理的金鑰 
 
@@ -83,11 +83,11 @@ Azure 監視器使用受控識別將存取權授與您的 Azure Key Vault。 叢
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
-不適用
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-不適用
+N/A
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -125,11 +125,53 @@ Authorization: Bearer <token>
 
 ## <a name="create-cluster"></a>建立叢集
 
-> [!NOTE]
-> 叢集支援兩種 [受控識別類型](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)：系統指派和使用者指派，且每一種都可以根據您的案例而定。 系統指派的受控識別更簡單，而且當身分識別設定為 "SystemAssigned" 時，會在叢集建立時自動建立 `type` --此身分識別可稍後用來授與叢集對您 Key Vault 的存取權。** 如果您想要在叢集建立期間定義客戶管理的金鑰時建立叢集，您應該事先在 Key Vault 中定義金鑰和使用者指派的身分識別，然後使用這些設定來建立叢集：身分識別 `type` 為 "*UserAssigned*"， `UserAssignedIdentities` 包含身分識別的資源識別碼和 `keyVaultProperties` 金鑰詳細資料。
+叢集支援兩種 [受控識別類型](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)：系統指派和使用者指派，而您可以根據您的案例，在叢集中定義單一身分識別。 
+- 當身分識別 `type` 設定為 "*SystemAssigned*" 時，系統指派的受控識別更為簡單，而且會自動產生叢集。 稍後可以使用此身分識別，將叢集存取權授與您的 Key Vault。 
+  
+  叢集中的身分識別設定，適用于系統指派的受控識別
+  ```json
+  {
+    "identity": {
+      "type": "SystemAssigned"
+      }
+  }
+  ```
+
+- 如果您想要在建立叢集時設定客戶管理的金鑰，您應該在 Key Vault 事先取得金鑰和使用者指派的身分識別，然後使用這些設定來建立叢集：身分識別 `type` 為 "*UserAssigned*"， `UserAssignedIdentities` 並具有身分識別的資源識別碼。
+
+  使用者指派的受控識別叢集中的身分識別設定
+  ```json
+  {
+  "identity": {
+  "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft. ManagedIdentity/UserAssignedIdentities/<cluster-assigned-managed-identity>"
+      }
+  }
+  ```
 
 > [!IMPORTANT]
-> 您目前無法使用使用者指派的受控識別來定義客戶管理的金鑰，如果您的 Key Vault 位於 Private-Link (vNet) ，而且您可以在此情況下使用系統指派的受控識別。
+> 如果您的 Key Vault 位於 Private-Link (vNet) ，則無法搭配使用者指派的受控識別使用客戶管理的金鑰。 在此案例中，您可以使用系統指派的受控識別。
+
+```json
+{
+  "identity": {
+    "type": "SystemAssigned"
+}
+```
+ 
+替換為：
+
+```json
+{
+  "identity": {
+  "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft. ManagedIdentity/UserAssignedIdentities/<user-assigned-managed-identity-name>"
+      }
+}
+```
+
 
 請依照 [專用叢集文章](../log-query/logs-dedicated-clusters.md#creating-a-cluster)中所述的程式進行操作。 
 
@@ -160,7 +202,7 @@ Authorization: Bearer <token>
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
-不適用
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -243,15 +285,13 @@ Content-type: application/json
 
 ## <a name="key-revocation"></a>金鑰撤銷
 
-您可以停用金鑰，或刪除 Key Vault 中叢集的存取原則，以撤銷資料的存取權。 
-
 > [!IMPORTANT]
-> - 如果您的叢集是以使用者指派的受控識別來設定，則設定會 `UserAssignedIdentities` `None` 暫停叢集並防止存取您的資料，但您無法在不開啟支援要求的情況下還原撤銷並啟用叢集。 這項限制不適用於系統指派的受控識別。
-> - 建議的金鑰撤銷動作是在您的 Key Vault 中停用您的金鑰。
+> - 撤銷資料存取權的建議方式是停用您的金鑰，或在您的 Key Vault 中刪除存取原則。
+> - 將叢集設定 `identity` `type` 為 [無] 也會撤銷對您資料的存取權，但不建議使用此方法，因為您無法在 `identity` 不開啟支援要求的情況下，于叢集中重申時還原撤銷。
 
-叢集儲存體一律會在一小時內或更快的時間內取得金鑰許可權的變更，而且儲存體將會變成無法使用。 與您的叢集連結之工作區的任何新資料內嵌都會被捨棄且無法復原，資料會變成無法存取，而且這些工作區上的查詢會失敗。 只要您的叢集和您的工作區未刪除，先前內嵌的資料就會保留在儲存體中。 無法存取的資料是由資料保留原則所控管，並會在達到保留期時加以清除。 過去 14 天內擷取的資料也會保留在經常性快取 (支援 SSD) 中，以進行有效率的查詢引擎作業。 這會在金鑰撤銷作業中刪除，且也會變成無法存取。
+叢集儲存體一律會在一小時內或更快的時間內取得金鑰許可權的變更，而且儲存體將會變成無法使用。 與您的叢集連結之工作區的任何新資料內嵌都會被捨棄且無法復原，資料會變成無法存取，而且這些工作區上的查詢會失敗。 只要您的叢集和您的工作區未刪除，先前內嵌的資料就會保留在儲存體中。 無法存取的資料是由資料保留原則所控管，並會在達到保留期時加以清除。 過去 14 天內擷取的資料也會保留在經常性快取 (支援 SSD) 中，以進行有效率的查詢引擎作業。 這會在金鑰撤銷作業中刪除，並變成無法存取。
 
-叢集的儲存體會定期輪詢您的 Key Vault，以嘗試解除包裝加密金鑰，並在存取之後，在30分鐘內將資料內嵌和查詢繼續進行。
+叢集的儲存體會定期檢查您的 Key Vault，以嘗試解除包裝加密金鑰，並在存取之後，在30分鐘內繼續資料內嵌和查詢。
 
 ## <a name="key-rotation"></a>金鑰輪替
 
@@ -259,7 +299,7 @@ Content-type: application/json
 
 您所有的資料在金鑰輪替作業之後仍可供存取，因為資料一律會以帳戶加密金鑰 (AEK) 加密，而 AEK 現在會以 Key Vault 中的新金鑰加密金鑰 (KEK) 版本來加密。
 
-## <a name="customer-managed-key-for-queries"></a>客戶管理的查詢金鑰
+## <a name="customer-managed-key-for-saved-queries"></a>已儲存查詢的客戶管理金鑰
 
 Log Analytics 中使用的查詢語言是可表達的，且可以包含您新增至查詢或在查詢語法中的批註中的機密資訊。 某些組織要求將這類資訊保持受客戶管理的金鑰原則保護，而您需要儲存以金鑰加密的查詢。 Azure 監視器可讓您在連線到您的工作區時，將 *已儲存的搜尋* 和 *記錄警示* 查詢儲存在您自己的儲存體帳戶中，並以您的金鑰加密。 
 
@@ -283,7 +323,7 @@ Log Analytics 中使用的查詢語言是可表達的，且可以包含您新增
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
-不適用
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -327,7 +367,7 @@ Content-type: application/json
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
-不適用
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -410,7 +450,7 @@ Content-type: application/json
 
   - 如果您的叢集是以使用者指派的受控識別來設定，則設定會 `UserAssignedIdentities` `None` 暫停叢集並防止存取您的資料，但您無法在不開啟支援要求的情況下還原撤銷並啟用叢集。 這項限制不適用於系統指派的受控識別。
 
-  - 您目前無法使用使用者指派的受控識別來定義客戶管理的金鑰，如果您的 Key Vault 位於 Private-Link (vNet) ，而且您可以在此情況下使用系統指派的受控識別。
+  - 如果您的 Key Vault 位於 Private-Link (vNet) ，則無法搭配使用者指派的受控識別使用客戶管理的金鑰。 在此案例中，您可以使用系統指派的受控識別。
 
 ## <a name="troubleshooting"></a>疑難排解
 

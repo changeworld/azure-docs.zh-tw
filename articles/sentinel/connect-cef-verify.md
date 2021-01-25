@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: 557f53e39781406674b9903dcf0bb3cb536cd804
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: f9fb1c917a0719cb9d250b997329d3415b5872eb
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897479"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747469"
 ---
 # <a name="step-3-validate-connectivity"></a>步驟3：驗證連線能力
 
 當您在步驟1中部署記錄轉寄站 () 並設定您的安全性解決方案，以在步驟 2)  (傳送 CEF 訊息，請遵循下列指示來確認安全性解決方案與 Azure Sentinel 之間的連線能力。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 您必須在記錄轉寄站電腦上擁有較高的許可權 (sudo) 。
 
@@ -44,7 +44,7 @@ ms.locfileid: "97897479"
 1. 在記錄轉寄站上執行下列腳本 (套用工作區識別碼來取代預留位置) ，以檢查安全性解決方案、記錄轉寄站和 Azure Sentinel 之間的連線能力。 此腳本會檢查守護程式是否正在接聽正確的埠、是否已正確設定轉送，而且沒有任何專案會封鎖 daemon 與 Log Analytics 代理程式之間的通訊。 它也會傳送 mock 訊息 ' TestCommonEventFormat ' 來檢查端對端連線能力。 <br>
 
     ```bash
-    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]
+    sudo wget -O cef_troubleshoot.py https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]
     ```
 
    - 您可能會收到一則訊息，引導您執行命令以更正 ***電腦* 欄位對應** 的問題。 如需詳細資訊，請參閱 [驗證腳本中的說明](#mapping-command) 。

@@ -9,16 +9,16 @@ ms.workload: azure-vs
 ms.topic: tutorial
 ms.date: 10/5/2020
 ms.author: ghogen
-ms.openlocfilehash: 1c2264cb76e062f5f22c0460572ec01750086a04
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: b12f8beeee054e547a6b58750d8482d32ee14453
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744942"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747252"
 ---
 # <a name="create-and-deploy-a-azure-cloud-service-extended-support-using-visual-studio"></a>使用 Visual Studio 來建立和部署 Azure 雲端服務 (延伸支援) 
 
-從 Visual Studio 2019 16.9 版 Preview 1 開始，您可以搭配 Azure Resource Manager 使用雲端服務 (延伸支援) ，以大幅簡化及將其現代化 Azure 資源的維護和管理。 您也可以將現有的雲端服務專案轉換成延伸支援雲端服務專案。
+從 [Visual Studio 2019 16.9 版](https://visualstudio.microsoft.com/vs/preview/) (目前為預覽) ，您可以使用 AZURE RESOURCE MANAGER (ARM) 來使用雲端服務，這可大幅簡化及將其現代化 Azure 資源的維護和管理作業。 這項功能是由稱為「雲端服務」的新 Azure 服務 (延伸支援) 。 您可以將現有雲端服務發行至雲端服務 (延伸支援) 。 如需此 Azure 服務的詳細資訊，請參閱 [雲端服務 (延伸支援) 檔](overview.md)。
 
 > [!IMPORTANT]
 > 雲端服務 (延伸支援) 目前處於公開預覽狀態。

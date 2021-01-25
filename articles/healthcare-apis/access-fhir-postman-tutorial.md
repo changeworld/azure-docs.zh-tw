@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 02/07/2019
-ms.openlocfilehash: 37086a925d65a80f219c8e0a3358c834a2691701
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
-ms.translationtype: HT
+ms.openlocfilehash: b0acfbf9636c2ad1df7df3197a0a1a83ec91b5c3
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145645"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747335"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>使用 Postman 存取 Azure API for FHIR
 
@@ -32,7 +32,7 @@ ms.locfileid: "93145645"
 
 - 您的 FHIR 伺服器 URL，例如 `https://MYACCOUNT.azurehealthcareapis.com`
 - FHIR 伺服器的識別提供者 `Authority`，例如 `https://login.microsoftonline.com/{TENANT-ID}`
-- 已設定的 `audience`。 這通常是 FHIR 伺服器的 URL，例如 `https://MYACCOUNT.azurehealthcareapis.com` 或只是 `https://azurehealthcareapis.com`。
+- 已設定的 `audience`。 這通常是 FHIR 伺服器的 URL，例如 `https://<FHIR-SERVER-NAME>.azurehealthcareapis.com` 或只是 `https://azurehealthcareapis.com` 。
 - 您將用來存取 FHIR 服務的[用戶端應用程式](register-confidential-azure-ad-client-app.md) 的 `client_id` (或應用程式識別碼)。
 - 用戶端應用程式的 `client_secret` (或應用程式密碼)。
 

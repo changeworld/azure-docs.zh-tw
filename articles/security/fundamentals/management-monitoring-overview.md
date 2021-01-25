@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2019
+ms.date: 01/24/2021
 ms.author: terrylan
-ms.openlocfilehash: 038f30ee186a5b3a9d87d64054726324051c37b4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d85b1fdd433c372bb41adec6e3d33013f19363f0
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842748"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747168"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure 安全性管理和監視概觀
 本文涵蓋 Azure 提供來協助管理和監視 Azure 雲端服務和虛擬機器的安全性功能和服務概觀。
@@ -62,7 +62,7 @@ Multi-Factor Authentication 有助於保護對資料與應用程式的存取，�
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 * [什麼是 Azure AD Multi-Factor Authentication？](../../active-directory/authentication/concept-mfa-howitworks.md)
-* [Azure AD Multi-Factor Authentication 的運作方式](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Azure AD Multi-Factor Authentication 的作用](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute
 
@@ -117,15 +117,18 @@ Azure AD Identity Protection 提供可疑登入活動和潛在弱點的合併檢
 
 ## <a name="security-center"></a>資訊安全中心
 
-Azure 資訊安全中心可協助您保護、偵測威脅並採取相應的措施。 資訊安全中心可讓您完整檢視並控制 Azure 資源的安全性。 它提供您 Azure 訂用帳戶之間的整合式安全性監視和原則管理。 它有助於偵測可能會被忽視的威脅，並可搭配廣泛的安全性解決方案生態系統使用。
+Azure 資訊安全中心可協助您保護、偵測威脅並採取相應的措施。 「安全性中心」可讓您更深入瞭解及控制您的 Azure 資源及混合式雲端環境中的安全性。 
+
+資訊安全中心會對您的已連線資源執行持續的安全性評估，並將其設定和部署與 [Azure 安全性基準測試](../benchmarks/introduction.md) 進行比較，以提供針對您的環境量身打造的詳細安全性建議。
 
 資訊安全中心藉由下列方式來協助您最佳化和監視 Azure 資源安全性︰
 
-* 讓您能夠根據下列各項來定義適用於 Azure 訂用帳戶資源的原則：
-  * 公司的安全性需求。
-  * 每個訂用帳戶中應用程式的類型或資料的敏感度。
-* 監視 Azure 虛擬機器、網路和應用程式的狀態。
-* 提供排列優先順序的安全性警示清單，包括來自整合式協力廠商解決方案的警示。 它也會提供讓您用來快速調查攻擊所需資訊，以及如何補救它的建議事項。
+- 讓您能夠根據下列各項來定義適用於 Azure 訂用帳戶資源的原則：
+    - 您組織的安全性需求。
+    - 每個訂用帳戶中應用程式的類型或資料的敏感度。
+    - 任何適用于您訂用帳戶的產業或法規標準或基準測試。 
+- 監視 Azure 虛擬機器、網路和應用程式的狀態。
+- 提供排列優先順序的安全性警示清單，包括來自整合式協力廠商解決方案的警示。 它也會提供讓您用來快速調查攻擊所需資訊，以及如何補救它的建議事項。
 
 深入了解：
 

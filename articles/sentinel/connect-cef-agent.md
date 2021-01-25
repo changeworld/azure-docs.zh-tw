@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: 617599e3eb6dcca74324a7bdfd51e604904a2fa1
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 8261856598a155e97f90ea350cedcd4c10e6893c
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897496"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747301"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>步驟1：部署記錄轉寄站
 
@@ -34,13 +34,18 @@ ms.locfileid: "97897496"
     - 在 TCP 埠514上接聽來自安全性解決方案的 Syslog 訊息
     - 使用 TCP 通訊埠25226，只將它識別為 CEF 的訊息轉送到 localhost 上的 Log Analytics 代理程式
  
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 您必須在指定的 Linux 電腦上擁有較高的許可權 (sudo) 。
 
 - 您必須在 Linux 機器上安裝 **python 2.7** 或 **3** 。<br>使用 `python -version` 命令來檢查。
 
 - 在您安裝 Log Analytics 代理程式之前，必須先將 Linux 電腦連線到任何 Azure 工作區。
+
+- 您的 Linux 電腦至少必須有 **4 個 CPU 核心和 8 GB 的 RAM**。
+
+    > [!NOTE]
+    > - 使用 **rsyslog** daemon 的單一記錄轉寄站機器， **每秒最多可支援每秒8500個事件的容量， (EPS)** 收集。
 
 - 在此程式中的某個時間點，您可能需要工作區識別碼和工作區主要金鑰。 您可以在工作區資源的 [代理程式 **管理**] 下找到它們。
 
@@ -51,7 +56,7 @@ ms.locfileid: "97897496"
 1. 在 **1.2 的 Linux 機器上安裝 CEF 收集器**，複製下執行下列腳本下提供的連結， **以安裝並套用 CEF 收集器**，或從下面的文字 (套用工作區識別碼和主要金鑰來取代預留位置) ：
 
     ```bash
-    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]
+    sudo wget -O cef_installer.py https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]
     ```
 
 1. 當腳本正在執行時，請檢查以確定您沒有收到任何錯誤或警告訊息。
@@ -73,7 +78,7 @@ ms.locfileid: "97897496"
 > [!NOTE]
 > **變更 TimeGenerated 欄位的來源**
 >
-> - 根據預設，Log Analytics 代理程式會在代理程式從 Syslog 背景程式收到事件時，填入架構中的 *TimeGenerated* 欄位。 因此，在來源系統上產生事件的時間並不會記錄在 Azure Sentinel 中。
+> - 根據預設，Log Analytics 代理程式會在代理程式從 Syslog 背景程式收到事件時，填入架構中的 *TimeGenerated* 欄位。 因此，在來源系統上產生事件的時間不會記錄在 Azure Sentinel 中。
 >
 > - 但是，您可以執行下列命令，它會下載並執行 `TimeGenerated.py` 腳本。 此腳本會設定 Log Analytics 代理程式，以在其來源系統上以事件的原始時間填入 *TimeGenerated* 欄位，而不是代理程式收到的時間。
 >
@@ -94,8 +99,8 @@ ms.locfileid: "97897496"
     - 下載 Log Analytics (OMS) Linux 代理程式的安裝腳本。
 
         ```bash
-        wget -O https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
-            onboard_agent.sh
+        wget -O onboard_agent.sh https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/
+            master/installer/scripts/onboard_agent.sh
         ```
 
     - 安裝 Log Analytics 代理程式。
@@ -160,8 +165,8 @@ ms.locfileid: "97897496"
     - 下載 Log Analytics (OMS) Linux 代理程式的安裝腳本。
 
         ```bash
-        wget -O https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
-            onboard_agent.sh
+        wget -O onboard_agent.sh https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/
+            master/installer/scripts/onboard_agent.sh
         ```
 
     - 安裝 Log Analytics 代理程式。

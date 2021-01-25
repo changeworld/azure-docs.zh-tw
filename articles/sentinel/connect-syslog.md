@@ -1,6 +1,6 @@
 ---
 title: 將 Syslog 資料連線到 Azure Sentinel |Microsoft Docs
-description: 使用設備與 Sentinel 之間的 Linux 電腦上的代理程式，將支援 Syslog 的任何電腦或設備連接到 Azure Sentinel。 
+description: 使用設備與 Sentinel 之間的 Linux 電腦上的代理程式，將支援 Syslog 的任何電腦或設備連接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 7670d00a2dd25961a51d18c50c102e0f92b30975
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c3cf4c3c135b3f275542af4f531d1071e180ebe
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88566143"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747185"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>使用 Syslog 從以 Linux 為基礎的來源收集資料
 
@@ -32,7 +32,7 @@ ms.locfileid: "88566143"
 
 ## <a name="how-it-works"></a>運作方式
 
-**Syslog** 是 Linux 常用的事件記錄通訊協定。 當 **適用于 Linux 的 Log Analytics 代理程式** 安裝在您的 VM 或設備上時，安裝常式會設定本機 Syslog daemon，以將訊息轉送至 TCP 埠25224上的代理程式。 然後，代理程式會透過 HTTPS 將訊息傳送到您的 Log Analytics 工作區，在 **Azure Sentinel > 記錄**檔中，它會剖析成 Syslog 資料表中的事件記錄檔專案。
+**Syslog** 是 Linux 常用的事件記錄通訊協定。 當 **適用于 Linux 的 Log Analytics 代理程式** 安裝在您的 VM 或設備上時，安裝常式會設定本機 Syslog daemon，以將訊息轉送至 TCP 埠25224上的代理程式。 然後，代理程式會透過 HTTPS 將訊息傳送到您的 Log Analytics 工作區，在 **Azure Sentinel > 記錄** 檔中，它會剖析成 Syslog 資料表中的事件記錄檔專案。
 
 如需詳細資訊，請參閱 [Azure 監視器中的 Syslog 資料來源](../azure-monitor/platform/data-sources-syslog.md)。
 
@@ -77,11 +77,11 @@ ms.locfileid: "88566143"
 
 1. 當您已新增要監視的所有設備，並為每個設備調整任何嚴重性選項之後，請選取 [ **將下列設定套用到我的電腦**] 核取方塊。
 
-1. 選取 [儲存]****。 
+1. 選取 [儲存]。 
 
 1. 在您的 VM 或設備上，請確定您正在傳送指定的設備。
 
-1. 若要查詢 **記錄**檔中的 syslog 記錄檔資料，請 `Syslog` 在查詢視窗中輸入。
+1. 若要查詢 **記錄** 檔中的 syslog 記錄檔資料，請 `Syslog` 在查詢視窗中輸入。
 
 1. 您可以使用 [Azure 監視器記錄查詢](../azure-monitor/log-query/functions.md) 中的函數所述的查詢參數來剖析 Syslog 訊息。 然後，您可以將查詢儲存為新的 Log Analytics 函數，並將其作為新的資料類型。
 
@@ -120,15 +120,19 @@ Azure Sentinel 可以將機器學習 (ML) 套用至 syslog 資料，以識別 (S
 
 2. 允許收集 syslog 資訊的足夠時間。 然後，流覽至 **Azure Sentinel 記錄**，然後複製並貼上下列查詢：
     
-    ```console
-    Syslog |  where Facility in ("authpriv","auth")| extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)| where isnotempty(c) | count 
+    ```kusto
+    Syslog
+    | where Facility in ("authpriv","auth")
+    | extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)
+    | where isnotempty(c)
+    | count 
     ```
     
     視需要變更 **時間範圍** ，然後選取 [ **執行**]。
     
     如果產生的計數為零，請確認連接器的設定，而且受監視的電腦是否已在您為查詢指定的時段內成功登入活動。
     
-    如果產生的計數大於零，則 syslog 資料適用于異常的 SSH 登入偵測。 您可以從**分析**  >   **規則範本**啟用此偵測  >  ** (預覽) 異常的 SSH 登入偵測**。
+    如果產生的計數大於零，則 syslog 資料適用于異常的 SSH 登入偵測。 您可以從 **分析**  >   **規則範本** 啟用此偵測  >  **(預覽) 異常的 SSH 登入偵測**。
 
 ## <a name="next-steps"></a>後續步驟
 在本檔中，您已瞭解如何將 Syslog 內部部署設備連接至 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：

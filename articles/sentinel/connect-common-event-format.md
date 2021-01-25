@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 4b34477a40530a0e6f26b59dd9707c019418b2a4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6010242e7fbd14aa117c481dee0d05e92928ef1b
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655845"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747486"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>使用常見事件格式連接您的外部解決方案
 
@@ -48,7 +48,7 @@ ms.locfileid: "94655845"
 
 若要使用 Syslog 來源與 Syslog 轉寄站之間的 TLS 通訊，您必須設定 Syslog daemon (rsyslog 或 syslog-ng) 在 TLS 中進行通訊： [使用 tls Rsyslog 加密 Syslog 流量](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)、 [使用 tls 加密記錄訊息– Syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)。
  
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 請確定您用來作為記錄轉寄站的 Linux 機器正在執行下列其中一個作業系統：
 
@@ -77,6 +77,12 @@ ms.locfileid: "94655845"
   - Syslog RFC 5424
  
 請確定您的電腦也符合下列需求： 
+
+- Capacity
+  - 您的電腦至少必須有 **4 個 CPU 核心和 8 GB 的 RAM**。
+
+    > [!NOTE]
+    > - 使用 **rsyslog** daemon 的單一記錄轉寄站機器， **每秒最多可支援每秒8500個事件的容量， (EPS)** 收集。
 
 - 權限
   - 您必須在電腦上擁有較高的許可權 (sudo) 。 

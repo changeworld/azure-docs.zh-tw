@@ -93,6 +93,11 @@
           href: export-data.md
         - name: 無識別的匯出
           href: de-identified-export.md
+    - name: 轉換資料
+      expanded: false
+      items:
+        - name: $convert 資料和 FHIR 轉換器延伸模組範本
+          href: convert-data.md
     - name: 尋找識別物件識別碼
       href: find-identity-object-ids.md
     - name: 診斷記錄與計量
