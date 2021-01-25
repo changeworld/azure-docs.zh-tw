@@ -13,16 +13,16 @@ ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 9fb5e229882532fed076f2e0d800f32acfcdbf4c
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 0ded249a55e5a59bdcad7407694cbd5ed4cf2352
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013782"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756076"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：針對企業應用程式自訂 SAML 權杖中發出的宣告
 
-現今，Microsoft 身分識別平臺支援單一登入 (SSO) 與大部分的企業應用程式，包括 Azure AD 應用程式資源庫中預先整合的應用程式，以及自訂應用程式。 當使用者透過 Microsoft 身分識別平臺使用 SAML 2.0 通訊協定驗證應用程式時，Microsoft 身分識別平臺會透過 HTTP POST) ，將權杖傳送給應用程式 (。 然後，應用程式會驗證並使用權杖將使用者登入，而不會提示輸入使用者名稱和密碼。 這些 SAML 權杖包含關於使用者的資訊片段，稱為「宣告」。
+現今，Microsoft 身分識別平臺支援單一登入 (SSO) 與大部分的企業應用程式，包括在 Azure AD 應用程式資源庫中預先整合的應用程式，以及自訂應用程式。 當使用者透過 Microsoft 身分識別平臺使用 SAML 2.0 通訊協定驗證應用程式時，Microsoft 身分識別平臺會透過 HTTP POST) ，將權杖傳送給應用程式 (。 然後，應用程式會驗證並使用權杖將使用者登入，而不會提示輸入使用者名稱和密碼。 這些 SAML 權杖包含關於使用者的資訊片段，稱為「宣告」。
 
 *宣告* 是身分識別提供者核發權杖給使用者時，所提供的權杖內部使用者相關資訊。 在 [SAML 權杖](https://en.wikipedia.org/wiki/SAML_2.0)中，此資料通常包含在 SAML 屬性陳述式中。 使用者的唯一識別碼通常在 SAML Subject 中表示，也稱為「名稱識別碼」。
 
@@ -48,9 +48,9 @@ ms.locfileid: "98013782"
 
 ### <a name="nameid-format"></a>NameID 格式
 
-如果 SAML 要求包含具有特定格式的專案 NameIDPolicy，則 Microsoft 身分識別平臺會接受要求中的格式。
+如果 SAML 要求包含具有特定格式的元素 NameIDPolicy，則 Microsoft 身分識別平臺會採用要求中的格式。
 
-如果 SAML 要求未包含 NameIDPolicy 的元素，Microsoft 身分識別平臺將會使用您指定的格式來發出 NameID。 如果未指定任何格式，Microsoft 身分識別平臺將會使用與所選宣告來源相關聯的預設來源格式。
+如果 SAML 要求未包含 NameIDPolicy 的元素，則 Microsoft 身分識別平臺將會使用您指定的格式來發出 NameID。 如果未指定任何格式，Microsoft 身分識別平臺將會使用與所選取宣告來源相關聯的預設來源格式。
 
 從 [選擇名稱識別碼格式] 下拉式清單中，您可以選取下列其中一個選項。
 

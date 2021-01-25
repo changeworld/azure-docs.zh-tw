@@ -12,22 +12,22 @@ ms.date: 10/05/2018
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: 06f80f94be25e42c9e8f0270e6cb15aca086ae18
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4e9d63b8fe7fc281a87deb27ddadd794e14fa04d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994395"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755636"
 ---
-# <a name="how-microsoft-identity-platform-uses-the-saml-protocol"></a>Microsoft 身分識別平臺如何使用 SAML 通訊協定
+# <a name="how-the-microsoft-identity-platform-uses-the-saml-protocol"></a>Microsoft 身分識別平臺如何使用 SAML 通訊協定
 
-Microsoft 身分識別平臺會使用 SAML 2.0 通訊協定，讓應用程式能夠為其使用者提供單一登入體驗。 Azure AD 的[單一登入](single-sign-on-saml-protocol.md)和[單一登出](single-sign-out-saml-protocol.md) SAML 設定檔會說明如何在識別提供者服務中使用 SAML 判斷提示、通訊協定和繫結。
+Microsoft 身分識別平臺使用 SAML 2.0 通訊協定，讓應用程式能夠為其使用者提供單一登入體驗。 Azure AD 的[單一登入](single-sign-on-saml-protocol.md)和[單一登出](single-sign-out-saml-protocol.md) SAML 設定檔會說明如何在識別提供者服務中使用 SAML 判斷提示、通訊協定和繫結。
 
 SAML 通訊協定需要 (Microsoft 身分識別平臺) 的身分識別提供者，以及 (應用程式) 的服務提供者，以交換本身的相關資訊。
 
 向 Azure AD 註冊應用程式時，應用程式開發人員會向 Azure AD 註冊同盟的相關資訊。 此資訊包括應用程式的 **重新導向 URI** 和 **中繼資料 URI**。
 
-Microsoft 身分識別平臺會使用雲端服務的 **中繼資料 uri** 來取得簽署金鑰和登出 URI。 客戶可以在 [Azure AD -> 應用程式註冊] 中開啟應用程式，然後在 [設定 -> 屬性] 中更新登出 URL。 如此一來，Microsoft 身分識別平臺就可以將回應傳送至正確的 URL。 
+Microsoft 身分識別平臺使用雲端服務的 **中繼資料 uri** 來取得簽署金鑰和登出 URI。 客戶可以在 [Azure AD -> 應用程式註冊] 中開啟應用程式，然後在 [設定 -> 屬性] 中更新登出 URL。 如此一來，Microsoft 身分識別平臺就可以將回應傳送至正確的 URL。 
 
 Azure Active Directory 會公開租用戶專屬和一般 (租用戶獨立) 單一登入和單一登出端點。 這些 URL 代表可定址的位置 (它們不只是識別碼)，因此您可以前往端點來讀取中繼資料。
 

@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: 0183471db274bb7fca59ed8f24aa87b2bf997fb6
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 1d1512447b5d0474f8fabe92dbc7a36259f4618c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063734"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754974"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>適用于 JAVA 的 ADAL 至 MSAL 遷移指南
 
@@ -29,7 +29,7 @@ ms.locfileid: "98063734"
 
 MSAL 提供下列優點：
 
-- 因為它使用較新的 Microsoft 身分識別平臺端點，所以您可以透過 Azure AD 企業對取用者 (B2C) ，驗證一組更廣泛的 Microsoft 身分識別，例如 Azure AD 身分識別、Microsoft 帳戶，以及社交和本機帳戶。
+- 因為它使用較新的 Microsoft 身分識別平臺，所以您可以透過 Azure AD 企業向取用者 (B2C) ，驗證一組更廣泛的 Microsoft 身分識別，例如 Azure AD 身分識別、Microsoft 帳戶，以及社交和本機帳戶。
 - 您的使用者將獲得最佳的單一登入體驗。
 - 您的應用程式可以啟用累加式同意，而支援的條件式存取則比較容易。
 
@@ -37,13 +37,13 @@ MSAL for JAVA 是我們建議您搭配 Microsoft 身分識別平臺使用的驗�
 
 ## <a name="differences"></a>差異
 
-如果您已經使用 (v1.0) 端點 (和 ADAL4J) 開發人員的 Azure AD，您可能想要閱讀 [Microsoft 身分識別平臺 (v2.0) 端點的不同之處](../azuread-dev/azure-ad-endpoint-comparison.md)。
+如果您一直在使用開發人員 (v1.0) 端點 (和 ADAL4J) 的 Azure AD，您可能想要閱讀 Microsoft 身分 [識別平臺的不同之處](../azuread-dev/azure-ad-endpoint-comparison.md)。
 
 ## <a name="scopes-not-resources"></a>範圍，而非資源
 
 ADAL4J 會取得資源的權杖，而 MSAL for JAVA 會取得範圍的權杖。 JAVA 類別的一些 MSAL 需要範圍參數。 此參數是字串清單，可宣告所需的許可權和所要求的資源。 請參閱 [Microsoft Graph 的範圍](/graph/permissions-reference) ，以查看範例範圍。
 
-您可以將 `/.default` 範圍尾碼新增至資源，以協助將您的應用程式從 v1.0 端點 (ADAL) 遷移至 Microsoft 身分識別平臺端點 (MSAL) 。 例如，針對的資源值 `https://graph.microsoft.com` ，相等的範圍值為 `https://graph.microsoft.com/.default` 。  如果資源不是在 URL 格式中，而是表單的資源識別碼 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` ，您仍然可以使用範圍值 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` 。
+您可以將 `/.default` 範圍尾碼新增至資源，以協助將您的應用程式從 ADAL 遷移至 MSAL。 例如，針對的資源值 `https://graph.microsoft.com` ，相等的範圍值為 `https://graph.microsoft.com/.default` 。  如果資源不是在 URL 格式中，而是表單的資源識別碼 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` ，您仍然可以使用範圍值 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` 。
 
 如需不同類型的範圍的詳細資訊，請參閱 [Microsoft 身分識別平臺中的許可權和同意](./v2-permissions-and-consent.md) ，以及 [接受 V1.0 權杖的 Web API 範圍](./msal-v1-app-scopes.md) 文章。
 

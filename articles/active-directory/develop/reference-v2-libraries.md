@@ -1,6 +1,6 @@
 ---
 title: Microsoft 身分識別平臺驗證程式庫
-description: 相容的用戶端程式庫和伺服器中介軟體程式庫，以及適用于 Microsoft 身分識別平臺端點的相關連結庫、來源和範例連結。
+description: 相容的用戶端程式庫和伺服器中介軟體程式庫，以及適用于 Microsoft 身分識別平臺的相關連結庫、來源和範例連結。
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -12,16 +12,16 @@ ms.date: 07/25/2019
 ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: a7792e989444c87ba80088f8a850cacb4aa0dc3c
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 51b60d7b81d7402f69415b79cd575f51915dc38f
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064533"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756654"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Microsoft 身分識別平臺驗證程式庫
 
-[Microsoft 身分識別平臺端點](../azuread-dev/azure-ad-endpoint-comparison.md)支援業界標準 OAuth 2.0 和 OpenID Connect 1.0 通訊協定。 Microsoft 驗證程式庫 (MSAL) 是設計來與 Microsoft 身分識別平臺端點搭配使用。 您也可以使用支援 OAuth 2.0 和 OpenID Connect 1.0 的開放原始碼程式庫。
+[Microsoft 身分識別平臺](../azuread-dev/azure-ad-endpoint-comparison.md)支援業界標準 OAuth 2.0 和 OpenID Connect 1.0 通訊協定。 Microsoft 驗證程式庫 (MSAL) 是設計來與 Microsoft 身分識別平臺搭配使用。 您也可以使用支援 OAuth 2.0 和 OpenID Connect 1.0 的開放原始碼程式庫。
 
 我們建議您使用通訊協定網域專家所撰寫的程式庫，這些專家遵循安全性開發生命週期 (SDL) 方法。 這類方法包含 [Microsoft 遵循的][Microsoft-SDL]方法。 如果您為通訊協定編寫程式碼，則應遵循 Microsoft SDL 這類方法。 請密切注意每個通訊協定的標準規格中的安全性考慮。
 
@@ -30,7 +30,7 @@ ms.locfileid: "98064533"
 
 ## <a name="types-of-libraries"></a>程式庫類型
 
-Microsoft 身分識別平臺端點適用于兩種類型的程式庫：
+Microsoft 身分識別平臺適用于兩種類型的程式庫：
 
 * **用戶端程式庫**：原生用戶端和伺服器會使用用戶端程式庫來取得存取權杖，以呼叫資源（例如 Microsoft Graph）。
 * **伺服器中介軟體程式庫**：Web 應用程式會使用伺服器中介軟體程式庫進行使用者登入。 Web API 會使用伺服器中介軟體程式庫來驗證原生用戶端或其他伺服器所傳送的權杖。
@@ -40,9 +40,9 @@ Microsoft 身分識別平臺端點適用于兩種類型的程式庫：
 程式庫的支援類型有兩種︰
 
 * **Microsoft 支援**：Microsoft 可提供這些程式庫的修正程式，並已完成這些程式庫的 SDL 審查評鑑。
-* **相容**： Microsoft 已在基本案例中測試這些程式庫，並確認它們可使用 Microsoft 身分識別平臺端點。 Microsoft 不會提供這些程式庫的修正程式，也不會對這些程式庫進行評論。 問題和功能要求應導向到程式庫的開放原始碼專案。
+* **相容**： Microsoft 已在基本案例中測試這些程式庫，並確認它們可與 Microsoft 身分識別平臺搭配使用。 Microsoft 不會提供這些程式庫的修正程式，也不會對這些程式庫進行評論。 問題和功能要求應導向到程式庫的開放原始碼專案。
 
-如需使用 Microsoft 身分識別平臺端點的程式庫清單，請參閱下列各節。
+如需使用 Microsoft 身分識別平臺的程式庫清單，請參閱下列各節。
 
 ## <a name="microsoft-supported-client-libraries"></a>Microsoft 支援的用戶端程式庫
 
@@ -98,16 +98,16 @@ Microsoft 身分識別平臺端點適用于兩種類型的程式庫：
 | ![Ruby](media/sample-v2-code/logo_ruby.png) |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth：1.3。1<br />omniauth-oauth2：1.4。0 |[OmniAuth](https://github.com/omniauth/omniauth)<br />[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
 | iOS、macOS、& Android  | [React Native 應用程式驗證](https://github.com/FormidableLabs/react-native-app-auth) | [4.2.0 版](https://github.com/FormidableLabs/react-native-app-auth/releases/tag/v4.2.0) | [React Native 應用程式驗證](https://github.com/FormidableLabs/react-native-app-auth) | |
 
-針對任何符合標準的程式庫，您可以使用 Microsoft 身分識別平臺端點。 請務必瞭解支援的位置：
+針對任何符合標準的程式庫，您可以使用 Microsoft 身分識別平臺。 請務必瞭解支援的位置：
 
 * 如需程式庫程式碼中的問題和新功能要求，請連絡程式庫擁有者。
 * 如需服務端通訊協定實作中的問題和新功能要求，請連絡 Microsoft。
 * 針對您想要在通訊協定中看到的其他功能[提出功能要求](https://feedback.azure.com/forums/169401-azure-active-directory)。
-* 如果您發現 Microsoft 身分識別平臺端點不符合 OAuth 2.0 或 OpenID Connect 1.0 的問題，請[建立支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。
+* 如果您發現 Microsoft 身分識別平臺不符合 OAuth 2.0 或 OpenID Connect 1.0 規範的問題，請[建立支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。
 
 ## <a name="related-content"></a>相關內容
 
-如需 Microsoft 身分識別平臺端點的詳細資訊，請參閱 [microsoft 身分識別平臺總覽][AAD-App-Model-V2-Overview]。
+如需 Microsoft 身分識別平臺的詳細資訊，請參閱 [microsoft 身分識別平臺總覽][AAD-App-Model-V2-Overview]。
 
 <!--Image references-->
 

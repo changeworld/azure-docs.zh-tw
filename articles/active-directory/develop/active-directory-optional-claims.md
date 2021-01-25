@@ -12,12 +12,12 @@ ms.date: 1/06/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 6b5c328503a28c6eb92c2c20ca54d4d3d80c9a15
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 6855e8f550c14574795ec00f4fed36762944dca1
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232466"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756038"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>如何：為您的應用程式提供選擇性宣告
 
@@ -31,7 +31,7 @@ ms.locfileid: "98232466"
 
 如需標準宣告的清單，請參閱[存取權杖](access-tokens.md)和 [id_token](id-tokens.md) 宣告文件。
 
-雖然 v1.0 和 v2.0 格式權杖及 SAML 權杖都支援選擇性宣告，但只有在從 v1.0 移至 v2.0 時，這種宣告才最有價值。 [v2.0 Microsoft 身分識別平台端點](./v2-overview.md)的目標之一是維持較小的權杖，以確保用戶端的最佳效能。 因此，數個先前包含在存取和識別碼權杖中的宣告在 v2.0 權杖中已不再提供，而必須依據個別應用程式明確提出要求才會提供。
+雖然 v1.0 和 v2.0 格式權杖及 SAML 權杖都支援選擇性宣告，但只有在從 v1.0 移至 v2.0 時，這種宣告才最有價值。 [Microsoft 身分識別平臺](./v2-overview.md)的其中一個目標是較小的權杖大小，以確保用戶端能獲得最佳效能。 因此，數個先前包含在存取和識別碼權杖中的宣告在 v2.0 權杖中已不再提供，而必須依據個別應用程式明確提出要求才會提供。
 
 **表 1：適用性**
 
@@ -139,7 +139,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 針對您的應用程式，您可以透過 UI 或應用程式資訊清單來設定選擇性宣告。
 
 1. 移至<a href="https://portal.azure.com/" target="_blank">Azure 入口網站 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。 
-1. 搜尋並選取 [Azure Active Directory]。
+1. 搜尋並選取 [Azure Active Directory]  。
 1. 在 [管理]  底下選取 [應用程式註冊]  。
 1. 從清單中，選取您要設定選擇性宣告的應用程式。
 
@@ -248,7 +248,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 通過驗證後，請從頁面右上角選取您的 Azure AD 租用戶。
-1. 搜尋並選取 [Azure Active Directory]。
+1. 搜尋並選取 [Azure Active Directory]  。
 1. 在 [管理]  底下選取 [應用程式註冊]  。
 1. 從清單中，選取您要設定選擇性宣告的應用程式。
 1. 在 [ **管理**] 底下，選取 [ **權杖** 設定]。
@@ -261,7 +261,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 通過驗證後，請從頁面右上角選取您的 Azure AD 租用戶。
-1. 搜尋並選取 [Azure Active Directory]。
+1. 搜尋並選取 [Azure Active Directory]  。
 1. 從清單中，選取您要設定選擇性宣告的應用程式。
 1. 在 [ **管理**] 底下，選取 [ **資訊清單**]。
 1. 使用資訊清單編輯器新增下列項目：
@@ -391,7 +391,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 通過驗證後，請從頁面右上角選取您的 Azure AD 租用戶。
 
-1. 搜尋並選取 [Azure Active Directory]。
+1. 搜尋並選取 [Azure Active Directory]  。
 
 1. 在 [管理]  底下選取 [應用程式註冊]  。
 
@@ -413,7 +413,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 通過驗證後，請從頁面右上角選取您的 Azure AD 租用戶。
-1. 搜尋並選取 [Azure Active Directory]。
+1. 搜尋並選取 [Azure Active Directory]  。
 1. 從清單中，找出並選取您要設定選擇性宣告的應用程式。
 1. 在 [ **管理**] 底下，選取 [ **資訊清單** ] 以開啟內嵌資訊清單編輯器。
 1. 您可以使用此編輯器直接編輯資訊清單。 資訊清單遵循 [Application 實體](./reference-app-manifest.md)的結構描述，而且資訊清單儲存時會自動格式化。 新元素會新增至 `OptionalClaims` 屬性。

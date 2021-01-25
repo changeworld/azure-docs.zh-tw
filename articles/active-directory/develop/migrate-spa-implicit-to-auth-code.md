@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 2c03e6940d392e3e2c03bf6508de41a7a19aef3b
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: e6bbebafab45080a2076f33d66dd96296a761e4f
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063768"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754955"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>將 JavaScript 單一頁面應用程式從隱含授與遷移至授權碼流程
 
@@ -90,7 +90,7 @@ const msalInstance = new msal.PublicClientApplication(config);
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解授權碼流程，包括隱含流程和授權碼流程之間的差異，請參閱 [Microsoft 身分識別平台和 OAuth 2.0 授權碼流程](v2-oauth2-auth-code-flow.md)。
+若要深入瞭解授權碼流程（包括隱含和驗證程式代碼流程之間的差異），請參閱 [Microsoft 身分識別平臺和 OAuth 2.0 授權碼流程](v2-oauth2-auth-code-flow.md)。
 
 如果您想要深入了解如何在 Microsoft 身分識別平台上開發 JavaScript 單頁應用程式，有多個部分的[案例：單頁應用程式](scenario-spa-overview.md)系列文章可協助您開始著手。
 

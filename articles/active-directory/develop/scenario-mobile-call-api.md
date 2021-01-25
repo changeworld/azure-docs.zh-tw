@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 018b5396563ac3a4b92b371d396c38afa3d2962f
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 601eefa7957972daa2d538e6ba0d9b7a5311c79d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064261"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756468"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>從行動應用程式呼叫 Web API
 
@@ -119,7 +119,7 @@ task.resume()
 
 如果您需要呼叫相同 API 數次，或如果您需要呼叫多個 API，請在建置應用程式時思考下列主題：
 
-- **增量同意**：Microsoft 身分識別平台可讓應用程式在需要權限時才取得使用者同意，而非全都在一開始就取得。 每次應用程式準備呼叫 API 時，就只應要求所需的範圍。
+- 累加 **式同意**： Microsoft 身分識別平臺可讓應用程式在需要許可權時取得使用者同意，而不是在開始時取得。 每次應用程式準備呼叫 API 時，就只應要求所需的範圍。
 
 - **條件式存取**：當您提出數個 API 要求時，在某些情況下，您可能必須符合其他條件式存取需求。 如果第一個要求沒有條件式存取原則，而您的應用程式嘗試以無訊息模式存取需要條件存取的新 API，則需求可能會以這種方式增加。 若要處理此問題，請務必擷取無訊息要求中的錯誤，並準備好進行互動式要求。  如需詳細資訊，請參閱[條件式存取的指導方針](../azuread-dev/conditional-access-dev-guide.md)。
 

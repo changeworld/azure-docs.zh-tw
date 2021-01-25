@@ -1,5 +1,6 @@
 ---
-title: 註冊可呼叫 web Api 的 web API-Microsoft 身分識別平臺 |蔚藍
+title: 註冊呼叫 web Api 的 web API |蔚藍
+titleSuffix: Microsoft identity platform
 description: 瞭解如何建立 web API，以呼叫 (應用程式註冊) 的下游 web Api。
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 790580160ec236d1923dc28b9990d2675c253b44
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 8349b7a53eb7b03b27c695bb24c8cb9bc665a1ac
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442679"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756352"
 ---
 # <a name="a-web-api-that-calls-web-apis-app-registration"></a>呼叫 web Api 的 web API：應用程式註冊
 

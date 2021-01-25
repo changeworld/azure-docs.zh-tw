@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: fb66d8a4bf97a6f8a10534c9c4459123ad6a2654
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 7dc3241198fbc6eeddba059251f28c6dc35c8a29
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107914"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754933"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>將應用程式遷移至適用于 iOS 和 macOS 的 MSAL
 
@@ -38,14 +38,14 @@ Microsoft 身分識別平臺與 Azure Active Directory v1.0 有一些主要差�
 
 ### <a name="standards-compliance"></a>標準合規性
 
-* Microsoft 身分識別平臺端點遵循 OAuth 2.0 和 OpenId Connect 標準。
+* Microsoft 身分識別平臺遵循 OAuth 2.0 和 OpenId Connect 標準。
 
 ### <a name="incremental-and-dynamic-consent"></a>增量和動態同意
 
 * Azure Active Directory v1.0 端點需要在應用程式註冊期間預先宣告擁有權限。 這表示這些許可權是靜態的。
 * Microsoft 身分識別平臺可讓您以動態方式要求許可權。 應用程式可以視需要要求許可權，並在應用程式需要時要求更多許可權。
 
-如需 Azure Active Directory 1.0 版與 Microsoft 身分識別平臺之間差異的詳細資訊，請參閱 [為何要更新至 microsoft 身分識別平臺 (v2.0) ？](../azuread-dev/azure-ad-endpoint-comparison.md)。
+如需 Azure Active Directory 1.0 版與 Microsoft 身分識別平臺之間差異的詳細資訊，請參閱 [為何要更新至 microsoft 身分識別平臺？](../azuread-dev/azure-ad-endpoint-comparison.md)。
 
 ## <a name="adal-and-msal-library-differences"></a>ADAL 和 MSAL 程式庫差異
 

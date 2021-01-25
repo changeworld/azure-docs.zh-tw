@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 011acdf98c8430bfb7ba1b02ec24a170f829e48f
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: cefcf6b1bcd7ac5f81fa4e872b30660183a46a82
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063785"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755254"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft 身分識別平台最佳做法和建議
 
@@ -30,7 +30,7 @@ ms.locfileid: "98063785"
 > [!TIP]
 > Azure 入口網站中的 [ *整合助理* ] 可協助您套用許多這些最佳作法和建議。 在 Azure 入口網站中選取您的任何 [應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ，然後選取 [ **整合助理** ] 功能表項目以開始使用助理。
 
-## <a name="basics"></a>基礎
+## <a name="basics"></a>基本
 
 ![核取方塊 ](./media/active-directory-integration-checklist/checkbox-two.svg) ：閱讀並瞭解 [Microsoft 平臺原則](/legal/microsoft-identity-platform/terms-of-use)。 確定您的應用程式符合所述的條款，因為它們是設計來保護使用者和平臺。
 
@@ -104,7 +104,7 @@ ms.locfileid: "98063785"
 
 探索有關 v2.0 的深入資訊：
 
-* [Microsoft 身分識別平臺 (2.0 版總覽) ](v2-overview.md)
+* [Microsoft 身分識別平臺 (總覽) ](v2-overview.md)
 * [Microsoft 身分識別平臺通訊協定參考](active-directory-v2-protocols.md)
 * [存取權杖參考](access-tokens.md)
 * [識別碼權杖參考](id-tokens.md)

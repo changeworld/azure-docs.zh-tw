@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: dbddf35b0aa1494ef719803fa84cafae04f3ec50
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: e2a71313294457e09e2bb152dea98c84b7730236
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178578"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754401"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>快速入門：將 Microsoft 身分識別平台登入新增至 ASP.NET Web 應用程式
 
@@ -169,7 +169,7 @@ public void Configuration(IAppBuilder app)
 > |---------|---------|
 > | `ClientId`     | 來自註冊於 Azure 入口網站中之應用程式的應用程式識別碼 |
 > | `Authority`    | 供使用者用於驗證的 STS 端點。 通常針對公用雲端為 `https://login.microsoftonline.com/{tenant}/v2.0`，其中 {tenant} 為您租用戶的名稱、您的租用戶識別碼，或 *common* 以參考一般端點 (用於多租用戶應用程式) |
-> | `RedirectUri`  | 在使用者針對 Azure 身分識別平台端點完成驗證之後，會被送往的 URL |
+> | `RedirectUri`  | 在對 Microsoft 身分識別平臺進行驗證之後傳送使用者的 URL |
 > | `PostLogoutRedirectUri`     | 在使用者登出之後，會被送往的 URL |
 > | `Scope`     | 所要求之範圍的清單 (以空格分隔) |
 > | `ResponseType`     | 來自驗證的回應包含識別碼權杖的要求 |

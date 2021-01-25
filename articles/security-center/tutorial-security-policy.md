@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 88af554faab9479a402dd393b0a7eed0835ce59e
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 7ea871428fffe685cc9d43dd698bfefb8d8a511a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814341"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756675"
 ---
 # <a name="manage-security-policies"></a>管理安全性原則
 
@@ -33,7 +33,7 @@ Azure 資訊安全中心會根據您所選擇的原則來提出安全性建議�
 
 「安全性中心」提供下列選項來處理安全性原則：
 
-* **查看和編輯內建的預設原則** -當您啟用「安全性中心」時，名為「ASC 預設」的內建方案會自動指派給所有已註冊的「安全性中心」的訂用帳戶。 若要自訂此計畫，您可以啟用或停用其內的個別原則。 請參閱內 [建安全性原則](./policy-reference.md) 清單，以瞭解現成可用的選項。
+* **查看和編輯內建的預設原則** -當您啟用「安全性中心」時，名為「Azure 安全性效能評定」的方案會自動指派給所有已註冊的安全性中心註冊訂用帳戶。 若要自訂此計畫，您可以啟用或停用其內的個別原則。 請參閱內 [建安全性原則](./policy-reference.md) 清單，以瞭解現成可用的選項。
 
 * **新增您自己的自訂原則** -如果您想要自訂套用至訂用帳戶的安全性計畫，您可以在「安全性中心」內進行。 如果您的電腦未遵循您所建立的原則，您就會收到建議。 如需建立和指派自訂原則的指示，請參閱 [使用自訂安全性原則](custom-security-policies.md)。
 

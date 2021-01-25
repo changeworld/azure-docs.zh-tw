@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: b02329d624eda440230fb99e02e08c841c5580f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77a4e7389952b81df13dae929dc1aec664fcc0b7
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705991"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755649"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft 身分識別平臺開發人員詞彙
 
@@ -46,7 +46,7 @@ ms.locfileid: "90705991"
 
 ## <a name="application-object"></a>應用程式物件
 
-當您在 [Azure 入口網站][AZURE-portal]註冊/更新應用程式時，入口網站會為租用戶同時建立/更新應用程式物件和對應的[服務主體物件](#service-principal-object)。 應用程式物件可全域 (在其能夠存取的所有租用戶中)「定義」** 應用程式的身分識別組態，並提供範本來「衍生」** 出其對應的服務主體物件，以在執行階段於本機 (在特定租用戶) 使用。
+當您在 [Azure 入口網站][AZURE-portal]註冊/更新應用程式時，入口網站會為租用戶同時建立/更新應用程式物件和對應的[服務主體物件](#service-principal-object)。 應用程式物件可全域 (在其能夠存取的所有租用戶中)「定義」應用程式的身分識別組態，並提供範本來「衍生」出其對應的服務主體物件，以在執行階段於本機 (在特定租用戶) 使用。
 
 如需詳細資訊，請參閱[應用程式和服務主體物件][AAD-App-SP-Objects]。
 
@@ -117,7 +117,7 @@ ms.locfileid: "90705991"
 
 ## <a name="microsoft-identity-platform"></a>Microsoft 身分識別平台
 
-Microsoft 身分識別平台是 Azure Active Directory (Azure AD) 身分識別服務與開發人員平台的演化。 它可讓開發人員建置應用程式以登入所有 Microsoft 身分識別、取得權杖以呼叫 Microsoft Graph、其他 Microsoft API 或開發人員所建置的 API。 它是具有完整功能的平台，由驗證服務、程式庫、應用程式註冊與設定、完整開發人員文件、程式碼範例與其他開發人員內容所組成。 Microsoft 身分識別平台支援業界標準通訊協定，例如 OAuth 2.0 與 OpenID Connect。
+Microsoft 身分識別平臺是 Azure Active Directory (Azure AD) 身分識別服務與開發人員平臺的演進。 它可讓開發人員建置應用程式以登入所有 Microsoft 身分識別、取得權杖以呼叫 Microsoft Graph、其他 Microsoft API 或開發人員所建置的 API。 它是具有完整功能的平台，由驗證服務、程式庫、應用程式註冊與設定、完整開發人員文件、程式碼範例與其他開發人員內容所組成。 Microsoft 身分識別平台支援業界標準通訊協定，例如 OAuth 2.0 與 OpenID Connect。
 
 ## <a name="multi-tenant-application"></a>多租用戶應用程式
 
@@ -138,7 +138,7 @@ Microsoft 身分識別平台是 Azure Active Directory (Azure AD) 身分識別�
 
 權限也會在 [同意](#consent) 程序期間出現，讓系統管理員或資源擁有者有機會允許/拒絕用戶端對其租用戶中的資源進行存取。
 
-許可權要求是在[Azure 入口網站][AZURE-portal]的應用程式的 [ **API 許可權**] 頁面上設定，方法是選取所需的 [委派的許可權] 和 [應用程式許可權] (後者需要全域管理員角色) 的成員資格。 [公用用戶端](#client-application)無法安全地維護認證，因此它只能要求委派的權限，而[機密用戶端](#client-application)則能夠要求委派的權限和應用程式權限。 用戶端的[應用程式物件](#application-object)會將宣告的權限儲存在其 [requiredResourceAccess 屬性][Graph-App-Resource]中。
+許可權要求是在 [Azure 入口網站][AZURE-portal]的應用程式的 [ **API 許可權**] 頁面上設定，方法是選取所需的 [委派的許可權] 和 [應用程式許可權] (後者需要全域管理員角色) 的成員資格。 [公用用戶端](#client-application)無法安全地維護認證，因此它只能要求委派的權限，而[機密用戶端](#client-application)則能夠要求委派的權限和應用程式權限。 用戶端的[應用程式物件](#application-object)會將宣告的權限儲存在其 [requiredResourceAccess 屬性][Graph-App-Resource]中。
 
 ## <a name="refresh-token"></a>重新整理權杖
 
@@ -180,7 +180,7 @@ Microsoft 身分識別平台是 Azure Active Directory (Azure AD) 身分識別�
 
 ## <a name="service-principal-object"></a>服務主體物件
 
-當您在 [Azure 入口網站][AZURE-portal]中註冊/更新應用程式時，入口網站會為該租使用者建立/更新 [應用程式物件](#application-object) 和對應的服務主體物件。 應用程式物件可全域 (在相關聯的應用程式已獲授與存取權的所有租用戶中)「定義」** 應用程式的身分識別組態，並可做為範本來「衍生」** 出其對應的服務主體物件，以在執行階段於本機 (在特定租用戶) 使用。
+當您在 [Azure 入口網站][AZURE-portal]中註冊/更新應用程式時，入口網站會為該租使用者建立/更新 [應用程式物件](#application-object) 和對應的服務主體物件。 應用程式物件可全域 (在相關聯的應用程式已獲授與存取權的所有租用戶中)「定義」應用程式的身分識別組態，並可做為範本來「衍生」出其對應的服務主體物件，以在執行階段於本機 (在特定租用戶) 使用。
 
 如需詳細資訊，請參閱[應用程式和服務主體物件][AAD-App-SP-Objects]。
 
@@ -222,7 +222,7 @@ Azure AD 租使用者會在註冊期間建立/與 Azure 和 Microsoft 365 訂用
 
 ## <a name="next-steps"></a>後續步驟
 
-《 [Microsoft 身分識別平臺開發人員指南》][AAD-Dev-Guide] 是用於所有 Microsoft 身分識別平臺開發相關主題的登陸頁面，包括 [應用程式整合][AAD-How-To-Integrate] 的總覽，以及 Microsoft 身分 [識別平臺驗證和支援的驗證案例][AAD-Auth-Scenarios]的基本概念。 您也可以在 [GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=)上找到如何快速啟動及執行的程式碼範例 & 教學課程。
+《 [Microsoft 身分識別平臺開發人員指南》][AAD-Dev-Guide] 是用於所有 Microsoft 身分識別平臺開發相關主題的登陸頁面，包括 [應用程式整合][AAD-How-To-Integrate] 的總覽，以及 [microsoft 身分識別平臺驗證和支援的驗證案例][AAD-Auth-Scenarios]的基本概念。 您也可以在 [GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=)上找到如何快速啟動及執行的程式碼範例 & 教學課程。
 
 使用下列留言區段提供意見反應，並協助改善與設計此內容，包括要求新定義或更新現有定義！
 
@@ -235,7 +235,7 @@ Azure AD 租使用者會在註冊期間建立/與 Azure 和 Microsoft 365 訂用
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
 [Graph-Perm-Scopes]: /graph/permissions-reference
 [Graph-App-Resource]: /graph/api/resources/application
-[Graph-Sp-Resource]: /graph/api/resources/serviceprincipal?view=graph-rest-beta
+[Graph-Sp-Resource]: /graph/api/resources/serviceprincipal?view=graph-rest-beta&preserve-view=true
 [Graph-User-Resource]: /graph/api/resources/user
 [AAD-How-Subscriptions-Assoc]:../fundamentals/active-directory-how-subscriptions-associated-directory.md
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md

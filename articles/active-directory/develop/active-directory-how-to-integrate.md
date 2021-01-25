@@ -14,14 +14,14 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: deb923a52e5d6cd5384dbf94d2249572b25b1a61
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: b7ee283ff61753a060e49a3340cd0a795b04faf9
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063836"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755927"
 ---
-# <a name="integrating-with-microsoft-identity-platform"></a>與 Microsoft 身分識別平臺整合
+# <a name="integrating-with-the-microsoft-identity-platform"></a>與 Microsoft 身分識別平臺整合
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
@@ -31,9 +31,9 @@ ms.locfileid: "98063836"
 
 有幾種方式可讓您的應用程式與 Microsoft 身分識別平臺整合。 充分利用適合您應用程式使用的這些案例。
 
-### <a name="support-microsoft-identity-platform-as-a-way-to-sign-in-to-your-application"></a>支援 Microsoft 身分識別平臺，以登入您的應用程式
+### <a name="support-the-microsoft-identity-platform-as-a-way-to-sign-in-to-your-application"></a>支援 Microsoft 身分識別平臺，以登入您的應用程式
 
-**減少登入的不便，並降低支援成本。** 藉由使用 Microsoft 身分識別平臺來登入您的應用程式，您的使用者將不會有另一個名稱和密碼需要記住。 身為開發人員，您會少一個要儲存及保護的密碼。 單單無需處理忘記密碼重設就可以省下大量時間與金錢。 Microsoft 身分識別平臺可讓某些全球最受歡迎的雲端應用程式（包括 Microsoft 365 和 Microsoft Azure）登入。 從數百萬個組織中有數十萬個使用者，您的使用者可能已經登入 Microsoft 身分識別平臺。 深入瞭解如何 [新增 Microsoft 身分識別平臺登入支援](./authentication-vs-authorization.md)。
+**減少登入的不便，並降低支援成本。** 藉由使用 Microsoft 身分識別平臺來登入您的應用程式，您的使用者將不會有另一個名稱和密碼需要記住。 身為開發人員，您會少一個要儲存及保護的密碼。 單單無需處理忘記密碼重設就可以省下大量時間與金錢。 Microsoft 身分識別平臺可讓某些全球最受歡迎的雲端應用程式（包括 Microsoft 365 和 Microsoft Azure）登入。 從數百萬個組織中有數十萬個使用者，您的使用者可能已經登入 Microsoft 身分識別平臺。 深入瞭解如何 [新增 Microsoft 身分識別平臺登入的支援](./authentication-vs-authorization.md)。
 
 **簡化應用程式的註冊程序。**  註冊您的應用程式時，Microsoft 身分識別平臺可以傳送有關使用者的基本資訊，讓您可以預先填入註冊表單或完全排除。 使用者可以透過類似社交媒體和行動應用程式所使用的常見同意程序，使用其 Azure AD 帳戶來註冊應用程式。 任何使用者都可以註冊並登入與 Microsoft 身分識別平臺整合的應用程式，而不需要 IT 介入。 深入了解[註冊應用程式以進行 Azure AD 帳戶登入](../../app-service/configure-authentication-provider-aad.md)。
 
@@ -49,7 +49,7 @@ ms.locfileid: "98063836"
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>取得使用者設定檔、行事曆、電子郵件、連絡人、檔案等的存取權
 
-**Microsoft 身分識別平臺是 Microsoft 365 及其他 Microsoft 商務服務的授權伺服器。**  如果您支援 Microsoft 身分識別平臺來登入您的應用程式，或支援將目前的使用者帳戶連結至使用 OAuth 2.0 Azure AD 使用者帳戶，您可以要求使用者設定檔、行事曆、電子郵件、連絡人、檔案及其他資訊的讀取和寫入存取權。 您可以順利地將事件寫入使用者的行事曆，並讀取檔案或將檔案寫入使用者的 OneDrive。 深入瞭解 [Microsoft 365 api](/graph/overview)。
+**Microsoft 身分識別平臺是 Microsoft 365 和其他 Microsoft 商務服務的授權伺服器。**  如果您支援 Microsoft 身分識別平臺來登入您的應用程式，或支援將目前的使用者帳戶連結至使用 OAuth 2.0 Azure AD 使用者帳戶，您可以要求使用者設定檔、行事曆、電子郵件、連絡人、檔案及其他資訊的讀取和寫入存取權。 您可以順利地將事件寫入使用者的行事曆，並讀取檔案或將檔案寫入使用者的 OneDrive。 深入瞭解 [Microsoft 365 api](/graph/overview)。
 
 ### <a name="promote-your-application-in-the-azure-and-microsoft-365-marketplaces"></a>在 Azure 和 Microsoft 365 marketplace 中推廣您的應用程式
 
@@ -81,7 +81,7 @@ ms.locfileid: "98063836"
 
 ### <a name="easy-development"></a>簡易開發
 
-**業界標準通訊協定。**   Microsoft 致力於支援業界標準。 Microsoft 身分識別平臺支援業界標準 OAuth 2.0 和 OpenID Connect 1.0 通訊協定。 深入瞭解 [Microsoft 身分識別平臺驗證通訊協定](active-directory-v2-protocols.md)。
+**業界標準通訊協定。**   Microsoft 致力於支援業界標準。 Microsoft 身分識別平臺支援業界標準 OAuth 2.0 和 OpenID Connect 1.0 通訊協定。 深入瞭解 Microsoft 身分 [識別平臺驗證通訊協定](active-directory-v2-protocols.md)。
 
 **開放原始碼程式庫。**   Microsoft 針對常用的語言和平台提供完整支援的開放原始碼程式庫，進而加快開發速度。 原始碼採用 Apache 2.0 授權，您可以任何分岔以及貢獻回饋給專案。 深入瞭解 [Microsoft 驗證程式庫 (MSAL) ](reference-v2-libraries.md)。
 

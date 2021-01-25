@@ -13,15 +13,15 @@ ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 6333d935e1a902ba173017f8149c098f44398955
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af9dbcbb6c32969b66cd446db634e83ce81f3c92
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88165867"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754724"
 ---
 # <a name="user-gets-consent-for-several-resources-using-msalnet"></a>使用者使用 MSAL.NET 取得數個資源的同意
-Microsoft 身分識別平臺端點不允許您一次取得多個資源的權杖。 使用適用于 .NET 的 Microsoft 驗證程式庫 (MSAL.NET) 時，取得權杖方法中的範圍參數應只包含單一資源的範圍。 不過，您可以使用產生器方法指定其他範圍，預先同意數個資源 `.WithExtraScopeToConsent` 。
+Microsoft 身分識別平臺不允許您一次取得多個資源的權杖。 使用適用于 .NET 的 Microsoft 驗證程式庫 (MSAL.NET) 時，取得權杖方法中的範圍參數應只包含單一資源的範圍。 不過，您可以使用產生器方法指定其他範圍，預先同意數個資源 `.WithExtraScopeToConsent` 。
 
 > [!NOTE]
 > 針對 Microsoft 身分識別平臺，取得數個資源的同意，但不適合 Azure AD B2C。 Azure AD B2C 僅支援系統管理員同意，而不支援使用者同意。

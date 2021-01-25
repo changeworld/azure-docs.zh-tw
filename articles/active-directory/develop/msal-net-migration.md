@@ -13,18 +13,18 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: c6049bf55e379a2629e8cd4ef1427f91fc31d2cd
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: b437efcfa2b0bb2a725929ae0253f48d97d11552
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063598"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754821"
 ---
 # <a name="migrating-applications-to-msalnet"></a>將應用程式遷移至 Azure
 
 適用于 .net 的 Microsoft 驗證程式庫 (MSAL.NET) 和適用于 .NET 的 Azure AD 驗證程式庫 (ADAL.NET) 可用來從 Azure AD 驗證 Azure AD 實體和要求權杖。 到目前為止，大多數開發人員都已使用 Azure AD 驗證程式庫 (ADAL) 要求權杖，進而使用開發人員適用的 Azure AD 平台 (v1.0) 驗證 Azure AD 身分識別 (公司和學校帳戶)。 使用 MSAL：
 
-- 使用 Microsoft 身分識別平臺端點時，您可以透過 Azure AD B2C) ，驗證一組更廣泛的 Microsoft 身分識別 (Azure AD 身分識別和 Microsoft 帳戶，以及社交和本機帳戶。
+- 您可以使用 Microsoft 身分識別平臺，透過 Azure AD B2C) 驗證一組更廣泛的 Microsoft 身分識別 (Azure AD 身分識別和 Microsoft 帳戶，以及社交和本機帳戶。
 - 您的使用者將獲得最佳的單一登入體驗。
 - 您的應用程式可以啟用累加式同意，而支援的條件式存取更容易
 - 您可以從創新中獲益。
@@ -35,9 +35,9 @@ ms.locfileid: "98063598"
 
 ## <a name="differences-between-adal-and-msal-apps"></a>ADAL 與 MSAL 應用程式之間的差異
 
-在大部分情況下，您想使用 MSAL.NET 和 Microsoft 身分識別平台端點，也就是最新一代的 Microsoft 驗證程式庫。 使用 MSAL.NET 取得權杖，以供使用者利用 Azure AD (公司和學校帳戶)、Microsoft (個人) 帳戶 (MSA) 或 Azure AD B2C 登入您的應用程式。
+在大部分情況下，您會想要使用 MSAL.NET 與 Microsoft 身分識別平臺，這是最新一代的 Microsoft 驗證程式庫。 使用 MSAL.NET 取得權杖，以供使用者利用 Azure AD (公司和學校帳戶)、Microsoft (個人) 帳戶 (MSA) 或 Azure AD B2C 登入您的應用程式。
 
-如果您已熟悉開發人員適用的 Azure AD (v1.0) 端點 (和 ADAL.NET)，您可以閱讀 [Microsoft 身分識別平台 (v2.0) 端點有何不同？](../azuread-dev/azure-ad-endpoint-comparison.md)。
+如果您已熟悉開發人員 (v1.0) 端點 (和 ADAL.NET) 的 Azure AD，您可能會想要閱讀 Microsoft 身分 [識別平臺的不同之處](../azuread-dev/azure-ad-endpoint-comparison.md)。
 
 不過，如果您的應用程式需要使用舊版的 [Active Directory 同盟服務 (ADFS)](/windows-server/identity/active-directory-federation-services) 登入使用者，您仍然需要使用 ADAL.NET。 如需詳細資訊，請參閱 [ADFS 支援](https://aka.ms/msal-net-adfs-support)。
 
@@ -266,4 +266,4 @@ AuthenticationResult result = await appRt.AcquireTokenByRefreshToken(null, rt)
 
 ## <a name="next-steps"></a>後續步驟
 
-如需範圍詳細資訊，請參閱 [Microsoft 身分識別平台端點中的範圍、權限及同意](v2-permissions-and-consent.md)
+您可以在 Microsoft 身分識別平臺中找到範圍[、許可權和同意](v2-permissions-and-consent.md)範圍的詳細資訊

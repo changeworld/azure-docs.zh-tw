@@ -12,16 +12,16 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: 35499810ae13a8ddc5b7bb6306deafef0ef24e0f
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: aa8c00d1ee2a0dc3d019cc75b4e411ede984e74a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246786"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756053"
 ---
-# <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 身分識別平台端點中的權限和同意
+# <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Microsoft 身分識別平台中的權限和同意
 
-與 Microsoft 身分識別平台整合的應用程式，會遵循可讓使用者和系統管理員控制資料存取方式的授權模型。 已在 Microsoft 身分識別平臺端點上更新授權模型的實作為。 它會變更應用程式必須與 Microsoft 身分識別平臺互動的方式。 本文涵蓋此授權模型的基本概念，包括範圍、權限及同意。
+與 Microsoft 身分識別平臺整合的應用程式會遵循授權模型，讓使用者和系統管理員控制資料的存取方式。 已在 Microsoft 身分識別平臺上更新授權模型的實作為。 它會變更應用程式必須與 Microsoft 身分識別平臺互動的方式。 本文涵蓋此授權模型的基本概念，包括範圍、權限及同意。
 
 ## <a name="scopes-and-permissions"></a>範圍和權限
 
@@ -53,7 +53,7 @@ Microsoft 身分識別平台會實作 [OAuth 2.0](active-directory-v2-protocols.
 
 ## <a name="permission-types"></a>權限類型
 
-Microsoft 身分識別平台支援兩種類型的權限：*委派權限* 和 *應用程式權限*。
+Microsoft 身分識別平臺支援兩種類型的許可權： *委派的許可權* 和 *應用程式許可權*。
 
 * **委派權限** 供已有登入使用者的應用程式使用。 針對這些應用程式，使用者或系統管理員會同意應用程式所要求的許可權。 應用程式會委派許可權，以在呼叫目標資源時作為已登入的使用者。 
 
@@ -128,7 +128,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 
 `scope` 參數是應用程式所要求的委派權限清單 (以空格分隔)。 藉由將許可權值附加至資源的識別碼， (應用程式識別碼 URI) 來指出每個許可權。 在要求範例中，應用程式需要權限來讀取使用者的行事曆，以及以使用者身分傳送郵件。
 
-在使用者輸入其認證之後，Microsoft 身分識別平臺端點會檢查是否有相符的 *使用者同意* 記錄。 如果使用者先前尚未同意任何要求的許可權，而且系統管理員未代表整個組織同意這些許可權，Microsoft 身分識別平臺端點就會要求使用者授與所要求的許可權。
+在使用者輸入其認證之後，Microsoft 身分識別平臺會檢查是否有相符的 *使用者同意* 記錄。 如果使用者過去尚未同意任何要求的許可權，而且系統管理員未代表整個組織同意這些許可權，Microsoft 身分識別平臺會要求使用者授與所要求的許可權。
 
 目前， `offline_access` ( 「維持存取權給您存取您的資料」 ) 許可權，並 ( 「將 `user.read` 您登入並讀取您的設定檔」 ) 許可權會自動包含在應用程式的初始同意中。  這些許可權通常是適當的應用程式功能所需的許可權。 此 `offline_access` 許可權可讓應用程式存取對原生應用程式和 web 應用程式而言非常重要的權杖。 `user.read`許可權可提供宣告的存取權 `sub` 。 它可讓用戶端或應用程式在一段時間內正確地識別使用者，並存取基本的使用者資訊。
 
@@ -217,7 +217,7 @@ https://graph.microsoft.com/mail.send
 ```
 
 
-| 參數        | 條件        | 說明                                                                                |
+| 參數        | 條件        | 描述                                                                                |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
 | `tenant` | 必要 | 您想要要求權限的目錄租用戶。 您可以使用 GUID 或易記名稱格式來提供。 也可以一般地與組織參考，如範例中所示。 請勿使用「一般」，因為個人帳戶無法在租使用者的內容中提供系統管理員同意。 若要確保與管理租使用者的個人帳戶具有最佳相容性，請盡可能使用租使用者識別碼。 |
 | `client_id` | 必要 | 應用程式 (用戶端) 識別碼， [Azure 入口網站–應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908) 體驗指派給您的應用程式。 |
@@ -236,7 +236,7 @@ https://graph.microsoft.com/mail.send
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 | --- | --- |
 | `tenant` | 將應用程式所要求的權限授與應用程式的目錄租用戶 (採用 GUID 格式)。 |
 | `state` | 一個包含在要求中而將一併在權杖回應中傳回的值。 它可以是您想要的任何內容的字串。 此狀態用於在驗證要求出現之前，於應用程式中編碼使用者的狀態資訊，例如之前所在的網頁或檢視。 |
@@ -250,7 +250,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
 ```
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 | --- | --- |
 | `error` | 可用於將發生的錯誤分類的錯誤碼字串。 它也可以用來回應錯誤。 |
 | `error_description` | 可協助開發人員識別錯誤根本原因的特定錯誤訊息。 |
@@ -335,7 +335,7 @@ response_type=token            //Code or a hybrid flow is also possible here
 
 此程式碼範例會針對所有已註冊的許可權產生同意頁面（如果上述同意描述並套用 `/.default` 至案例）。 然後，程式碼會傳回 `id_token` ，而不是存取權杖。  
 
-此行為可容納一些舊版用戶端，這些用戶端會從 Azure AD 驗證程式庫 (ADAL) 移至 Microsoft 驗證程式庫 (MSAL) 。 以 Microsoft 身分識別平臺端點為目標的新用戶端不 *應* 使用此設定。
+此行為可容納一些舊版用戶端，這些用戶端會從 Azure AD 驗證程式庫 (ADAL) 移至 Microsoft 驗證程式庫 (MSAL) 。 以 Microsoft 身分識別平臺為目標的新用戶端不 *應* 使用此設定。
 
 ### <a name="client-credentials-grant-flow-and-default"></a>用戶端認證授與流程和/.default  
 

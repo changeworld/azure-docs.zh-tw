@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: cc0d908f479fe5bdf14abb2ace0e6c046fd6d7d5
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: HT
+ms.openlocfilehash: 6052e2243f8b31aa57d4abf27c24a4b045c9eae2
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011944"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754622"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>快速入門：使用 Microsoft 身分識別平台來註冊應用程式
 
@@ -84,8 +84,8 @@ ms.locfileid: "98011944"
 
     | 平台 | 組態設定 |
     | -------- | ---------------------- |
-    | **Web** | 為應用程式輸入 **重新導向 URI**，這是 Microsoft 身分識別平台將使用者重新導向的用戶端，且會在驗證之後傳送安全性權杖的位置。<br/><br/>針對在伺服器上執行的標準 Web 應用程式，選取此平台。 |
-    | **單一頁面應用程式** | 為應用程式輸入 **重新導向 URI**，這是 Microsoft 身分識別平台將使用者重新導向的用戶端，且會在驗證之後傳送安全性權杖的位置。<br/><br/>如果您要以 JavaScript 建立用戶端 Web 應用程式，或使用像是Angular、Vue.js、React.js 或 Blazor WebAssembly 的架構，請選取此平台。 |
+    | **Web** | 輸入應用程式的重新 **導向 URI** 、Microsoft 身分識別平臺重新導向使用者用戶端的位置，以及在驗證之後傳送安全性權杖的位置。<br/><br/>針對在伺服器上執行的標準 Web 應用程式，選取此平台。 |
+    | **單一頁面應用程式** | 輸入應用程式的重新 **導向 URI** 、Microsoft 身分識別平臺重新導向使用者用戶端的位置，以及在驗證之後傳送安全性權杖的位置。<br/><br/>如果您要以 JavaScript 建立用戶端 Web 應用程式，或使用像是Angular、Vue.js、React.js 或 Blazor WebAssembly 的架構，請選取此平台。 |
     | **iOS / macOS** | 輸入應用程式的 **套件組合識別碼**，您可以在 XCode 中的 Info.plist 或組建設定中找到此識別碼。<br/><br/>指定套件組合識別碼時，系統會為您產生重新導向 URI。 |
     | **Android** | 輸入應用程式的 **套件名稱**，您可以在 AndroidManifest.xml 檔案中找到，並產生再輸入 **簽章雜湊**。<br/><br/>指定這些設定時，系統會為您產生重新導向 URI。 |
     | **行動應用程式與傳統型應用程式** | 選取其中一個 **建議的重新導向 URI**，或指定 **自訂重新導向 URI**。<br/>針對桌面應用程式，建議您：<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>針對未使用最新 Microsoft 驗證程式庫 (MSAL) 或未使用訊息代理程式的行動應用程式，請選取此平台。 此外，也請為桌面應用程式選取此平台。 |
@@ -97,7 +97,7 @@ ms.locfileid: "98011944"
 
 ## <a name="add-credentials"></a>新增認證
 
-存取 Web API 的機密用戶端應用程式會使用認證。 機密用戶端的範例包括 Web 應用程式、其他 Web API，或服務和精靈類型的應用程式。 認證可讓您的應用程式以自己的身分進行驗證，不需要在執行階段與使用者進行互動。
+存取 web API 的 [機密用戶端應用程式](msal-client-applications.md) 會使用認證。 機密用戶端的範例包括 [web 應用](scenario-web-app-call-api-overview.md)程式、其他 [web api](scenario-protected-web-api-overview.md)或 [服務和背景程式類型的應用程式](scenario-daemon-overview.md)。 認證可讓您的應用程式以自己的身分進行驗證，不需要在執行階段與使用者進行互動。 
 
 您可以將憑證和用戶端密碼 (字串) 當作認證新增至您的機密用戶端應用程式註冊。
 
@@ -105,7 +105,7 @@ ms.locfileid: "98011944"
 
 ### <a name="add-a-certificate"></a>新增憑證
 
-有時也稱為「公開金鑰」，憑證是建議的認證類型，因為憑證提供比用戶端密碼更高的保證層級。
+有時也稱為「公開金鑰」，憑證是建議的認證類型，因為憑證提供比用戶端密碼更高的保證層級。 如需有關在應用程式中使用憑證作為驗證方法的詳細資訊，請參閱[Microsoft 身分識別平臺應用程式驗證憑證](active-directory-certificate-credentials.md)認證
 
 1. 在 Azure 入口網站的 **應用程式註冊** 中，選取您的應用程式。
 1. 選取 [憑證及祕密] > [上傳憑證]。
@@ -114,7 +114,7 @@ ms.locfileid: "98011944"
 
 ### <a name="add-a-client-secret"></a>新增用戶端密碼
 
-用戶端密碼 (也稱為「應用程式密碼」)是一個字串值，您的應用程式可以用來來取代憑證，以識別自己的身分。 這兩種認證類型較容易使用，而且通常會在開發期間使用，但普遍認為其安全性比不上憑證。 您應該在生產環境中執行的應用程式中使用憑證。
+用戶端密碼 (也稱為「應用程式密碼」)是一個字串值，您的應用程式可以用來來取代憑證，以識別自己的身分。 這兩種認證類型較容易使用，而且通常會在開發期間使用，但普遍認為其安全性比不上憑證。 您應該在生產環境中執行的應用程式中使用憑證。 如需有關應用程式安全性建議的詳細資訊，請參閱 [Microsoft 身分識別平臺的最佳作法和建議](identity-platform-integration-checklist.md#security)
 
 1. 在 Azure 入口網站的 **應用程式註冊** 中，選取您的應用程式。
 1. 選取 [憑證及祕密] >  [新增用戶端密碼]。
@@ -122,6 +122,8 @@ ms.locfileid: "98011944"
 1. 選取持續時間。
 1. 選取 [新增]  。
 1. **記錄祕密值** 以用於您的用戶端應用程式程式碼 - 此值在您離開此頁面後就「不會再次顯示」。
+
+**注意：** 連同秘密值一起產生的識別碼是秘密的識別碼，與應用程式識別碼不同。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -13,12 +13,12 @@ ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 8c8167142876dfac0ae0aeff51e85b66c65c607b
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: ff8e03b813e2cb890192667e3466d920eaabc72c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208843"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756096"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft 身分識別平台和 OAuth 2.0 代理者流程
 
@@ -130,7 +130,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 | 參數 | 描述 |
 | --- | --- |
-| `token_type` | 表示權杖類型值。 Microsoft 身分識別平台唯一支援的類型是 `Bearer`。 如需有關持有人權杖的詳細資訊，請參閱 [OAuth 2.0 授權架構︰持有人權杖使用方式 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt) \(英文\)。 |
+| `token_type` | 表示權杖類型值。 Microsoft 身分識別平臺唯一支援的類型是 `Bearer` 。 如需有關持有人權杖的詳細資訊，請參閱 [OAuth 2.0 授權架構︰持有人權杖使用方式 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt) \(英文\)。 |
 | `scope` | 在權杖中授與的存取範圍。 |
 | `expires_in` | 存取權杖的有效時間長度 (以秒為單位)。 |
 | `access_token` | 所要求的存取權杖。 呼叫端服務可以使用此權杖來向接收端服務進行驗證。 |
@@ -151,7 +151,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 }
 ```
 
-上述存取權杖是 Microsoft Graph 的1.0 格式權杖。 這是因為權杖格式是根據所存取的 **資源** ，以及用來要求它的端點不相關的。 既然 Microsoft Graph 已設為接受 v1.0 權杖，所以當用戶端要求 Microsoft Graph 權杖時，Microsoft 身分識別平台即會產生 v1.0 存取權杖。 其他應用程式可能會指出他們想要的是 v2.0 格式權杖、v1.0 格式權杖，或甚至是專屬或加密的權杖格式。  V1.0 和 v2.0 端點都可以發出權杖的任何一種格式，如此一來，不論用戶端要求權杖的方式或位置為何，資源一律都可以取得正確的權杖格式。 
+上述存取權杖是 Microsoft Graph 的1.0 格式權杖。 這是因為權杖格式是根據所存取的 **資源** ，以及用來要求它的端點不相關的。 Microsoft Graph 設定為接受 v1.0 權杖，因此當用戶端要求 Microsoft Graph 的權杖時，Microsoft 身分識別平臺會產生 v1.0 存取權杖。 其他應用程式可能會指出他們想要的是 v2.0 格式權杖、v1.0 格式權杖，或甚至是專屬或加密的權杖格式。  V1.0 和 v2.0 端點都可以發出權杖的任何一種格式，如此一來，不論用戶端要求權杖的方式或位置為何，資源一律都可以取得正確的權杖格式。 
 
 只有應用程式應該檢查存取權杖。 用戶端 **不得** 檢查存取權杖。 檢查程式碼中其他應用程式的存取權杖，會導致您的應用程式在應用程式變更權杖的格式或開始加密時，意外中斷。 
 
@@ -201,7 +201,7 @@ Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 
 ### <a name="default-and-combined-consent"></a>/.預設和合併的同意
 
-中介層應用程式會將用戶端新增至已知用戶端應用程式清單的資訊清單中，然後用戶端可以針對自己本身與中介層應用程式觸發合併的同意流程。 在 Microsoft 身分識別平台端點上，此作業是使用 [`/.default` 範圍](v2-permissions-and-consent.md#the-default-scope)來完成。 當使用已知用戶端應用程式和 `/.default` 來觸發同意畫面時，同意畫面會顯示 **兩個** 用戶端對中介層 API 的權限，也會要求中介層 API 需要的任何權限。 使用者提供兩個應用程式的同意，然後 OBO 流程就能運作。
+中介層應用程式會將用戶端新增至已知用戶端應用程式清單的資訊清單中，然後用戶端可以針對自己本身與中介層應用程式觸發合併的同意流程。 在 Microsoft 身分識別平臺上，這是使用[ `/.default` 範圍](v2-permissions-and-consent.md#the-default-scope)來完成。 當使用已知用戶端應用程式和 `/.default` 來觸發同意畫面時，同意畫面會顯示 **兩個** 用戶端對中介層 API 的權限，也會要求中介層 API 需要的任何權限。 使用者提供兩個應用程式的同意，然後 OBO 流程就能運作。
 
 ### <a name="pre-authorized-applications"></a>已預先授權應用程式
 

@@ -12,20 +12,20 @@ ms.date: 8/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a8c9a15761a4b37dfcf5ba7cc4cf046390092145
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: bd2bd67774eb55051e55e4433984c0fd1fda5240
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672140"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755579"
 ---
-# <a name="signing-key-rollover-in-microsoft-identity-platform"></a>在 Microsoft 身分識別平臺中簽署金鑰變換
+# <a name="signing-key-rollover-in-the-microsoft-identity-platform"></a>在 Microsoft 身分識別平臺中簽署金鑰變換
 本文討論 Microsoft 身分識別平臺用來簽署安全性權杖時，所需瞭解的公開金鑰。 請務必注意，這些金鑰會定期變換，且在緊急狀況下，可能會立即進行匯總。 所有使用 Microsoft 身分識別平臺的應用程式，都應該能夠以程式設計的方式處理金鑰變換流程。 請繼續閱讀以了解金鑰的運作方式、如何評估變換對應用程式的影響，以及必要時如何更新應用程式或建立定期手動變換程序來處理金鑰變換。
 
-## <a name="overview-of-signing-keys-in-microsoft-identity-platform"></a>Microsoft 身分識別平臺中的簽署金鑰總覽
-Microsoft 身分識別平臺使用建基於業界標準的公開金鑰密碼編譯，以在其本身與使用它的應用程式之間建立信任。 實際上，其運作方式如下： Microsoft 身分識別平臺會使用由公開和私密金鑰組所組成的簽署金鑰。 當使用者登入使用 Microsoft 身分識別平臺進行驗證的應用程式時，Microsoft 身分識別平臺會建立包含使用者相關資訊的安全性權杖。 此權杖是由 Microsoft 身分識別平臺使用其私密金鑰來簽署，然後再傳回給應用程式。 若要確認權杖是否有效且來自 Microsoft 身分識別平臺，應用程式必須使用 Microsoft 身分識別平臺公開的公開金鑰來驗證權杖的簽章，該公開金鑰包含在租使用者的 [OpenID Connect 探索檔](https://openid.net/specs/openid-connect-discovery-1_0.html) 或 SAML/WS-饋送 [同盟元資料檔案](../azuread-dev/azure-ad-federation-metadata.md)中。
+## <a name="overview-of-signing-keys-in-the-microsoft-identity-platform"></a>Microsoft 身分識別平臺中的簽署金鑰總覽
+Microsoft 身分識別平臺使用建基於業界標準的公開金鑰密碼編譯，以在其本身與使用它的應用程式之間建立信任。 實際上，其運作方式如下： Microsoft 身分識別平臺會使用由公開和私密金鑰組所組成的簽署金鑰。 當使用者登入使用 Microsoft 身分識別平臺進行驗證的應用程式時，Microsoft 身分識別平臺會建立包含使用者相關資訊的安全性權杖。 此權杖是由 Microsoft 身分識別平臺在傳送回應用程式之前使用其私密金鑰來簽署。 若要確認權杖是否有效且來自 Microsoft 身分識別平臺，應用程式必須使用 Microsoft 身分識別平臺公開的公開金鑰來驗證權杖的簽章，該公開金鑰包含在租使用者的 [OpenID Connect 探索檔](https://openid.net/specs/openid-connect-discovery-1_0.html) 或 SAML/WS-饋送 [同盟元資料檔案](../azuread-dev/azure-ad-federation-metadata.md)中。
 
-基於安全性考慮，Microsoft 身分識別平臺的簽署金鑰會定期進行匯總，而且在發生緊急狀況的情況下，可以立即變換。 這兩個金鑰的匯總之間沒有任何設定或保證時間-與 Microsoft 身分識別平臺整合的任何應用程式都應該準備好處理金鑰變換事件，無論發生的頻率為何。 如果沒有，應用程式又嘗試使用過期的金鑰來驗證權杖上的簽章，登入要求便會失敗。  每隔24小時檢查一次更新是最佳作法，每隔五分鐘就會進行節流 (一次，如果發現權杖的金鑰識別碼不明，最) 立即重新整理金鑰檔。 
+基於安全性考慮，Microsoft 身分識別平臺的簽署金鑰會定期進行匯總，而且在發生緊急狀況的情況下，可以立即變換。 這兩個金鑰的匯總之間沒有設定或保證的時間-任何與 Microsoft 身分識別平臺整合的應用程式都應該準備好處理金鑰變換事件，無論發生的頻率為何。 如果沒有，應用程式又嘗試使用過期的金鑰來驗證權杖上的簽章，登入要求便會失敗。  每隔24小時檢查一次更新是最佳作法，每隔五分鐘就會進行節流 (一次，如果發現權杖的金鑰識別碼不明，最) 立即重新整理金鑰檔。 
 
 OpenID Connect 探索文件和同盟中繼資料文件中永遠有一個以上的有效金鑰可用。 您的應用程式應該準備好使用檔中指定的任何金鑰，因為一個金鑰可能很快就會推出，另一個可能會取代，以此類推。  出現的金鑰數目可能會隨著時間而改變，因為我們支援新的平臺、新的雲端或新的驗證通訊協定。 JSON 回應中的金鑰順序和其公開順序都不應視為 meaninful 至您的應用程式。 
 

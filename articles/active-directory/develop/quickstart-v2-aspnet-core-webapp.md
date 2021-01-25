@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 293a8d8b8add37f78e5a900b093ec89e95851aec
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: c20685c0c392ece68dc80b57afc6680f2efd9e35
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178631"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754511"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>快速入門：將「使用 Microsoft 登入」新增至 ASP.NET Core Web 應用程式
 
@@ -148,7 +148,7 @@ ms.locfileid: "98178631"
 
 `AddAuthentication()` 方法會將服務設定為可新增 Cookie 型驗證 (用於瀏覽器案例)，以及可對 OpenID Connect 設定挑戰。
 
-包含 `.AddMicrosoftIdentityWebApp` 的程式碼行會將 Microsoft 身分識別驗證新增至您的應用程式。 接著，其會設定為使用 Microsoft 身分識別平台端點，根據 *appsettings.json* 設定檔中 `AzureAD` 區段的資訊進行登入：
+包含 `.AddMicrosoftIdentityWebApp` 的程式碼行會將 Microsoft 身分識別驗證新增至您的應用程式。 然後設定為使用 Microsoft 身分識別平臺來登入，根據 `AzureAD` 設定檔 *上appsettings.js* 一節中的資訊來登入：
 
 | *appsettings.json* 金鑰 | 描述                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|

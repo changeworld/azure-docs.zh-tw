@@ -1,6 +1,6 @@
 ---
 title: Microsoft 身分識別平台的程式碼範例
-description: 提供可用的 Microsoft 身分識別平台 (v2.0 端點) 程式碼範例的索引 (依案例分類)。
+description: 提供可用 Microsoft 身分識別平臺程式碼範例的索引（依案例組織）。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -12,23 +12,23 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 3baeb87bf3fe1cdcd5e9f27aed2587eed060c5a8
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
-ms.translationtype: HT
+ms.openlocfilehash: 368a1acdfda66c3714979d27037737a75bbada5a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064516"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756638"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft 身分識別平台程式碼範例 (v2.0 端點)
 
-您可以使用 Microsoft 身分識別平台：
+您可以使用 Microsoft 身分識別平臺：
 
 - 將驗證和授權新增至您的 Web 應用程式與 Web API。
 - 要求存取權杖以存取受保護的 Web API。
 
-本文簡短描述 Microsoft 身分識別平台端點，並提供範例連結。 這些範例會說明操作方式，並提供可在應用程式中使用的程式碼片段。 在程式碼範例頁面上，您可以找到詳細的讀我主題，協助您了解需求並進行安裝及設定。 程式碼內有註解可幫助您了解重要區段。
+本文簡要說明並提供 Microsoft 身分識別平臺範例的連結。 這些範例會說明操作方式，並提供可在應用程式中使用的程式碼片段。 在程式碼範例頁面上，您可以找到詳細的讀我主題，協助您了解需求並進行安裝及設定。 程式碼內有註解可幫助您了解重要區段。
 
-若要了解每個範例類型的基本案例，請參閱 [Microsoft 身分識別平台端點的應用程式類型](v2-app-types.md)。
+若要瞭解每個範例類型的基本案例，請參閱 [Microsoft 身分識別平臺的應用程式類型](v2-app-types.md)。
 
 您也可以在 GitHub 上參與範例。 若要了解做法，請參閱 [Microsoft Azure Active Directory 範例與文件](https://github.com/Azure-Samples?page=3&query=active-directory)。
 
@@ -121,7 +121,7 @@ ms.locfileid: "98064516"
 
 ## <a name="web-apis"></a>Web API
 
-下列範例顯示如何使用 Microsoft 身分識別平台端點保護 Web API，以及如何從 Web API 呼叫下游的 API。
+下列範例示範如何使用 Microsoft 身分識別平臺保護 web API，以及如何從 web API 呼叫下游 API。
 
 | 平台 | 範例 |
 | -------- | ------------------- |
@@ -133,7 +133,7 @@ ms.locfileid: "98064516"
 
 ## <a name="azure-functions-as-web-apis"></a>Azure Functions 即 Web API
 
-下列範例顯示如何使用 HttpTrigger 保護 Azure 函式，並使用 Microsoft 身分識別平台端點公開 Web API，以及如何從 Web API 呼叫下游的 API。
+下列範例示範如何使用 HttpTrigger 保護 Azure 函式，以及如何使用 Microsoft 身分識別平臺來公開 web API，以及如何從 web API 呼叫下游 API。
 
 | 平台 | 範例 |
 | -------- | ------------------- |

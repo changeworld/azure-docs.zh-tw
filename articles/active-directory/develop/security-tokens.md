@@ -1,7 +1,7 @@
 ---
 title: 安全性權杖 |蔚藍
 titleSuffix: Microsoft identity platform
-description: 深入瞭解 Microsoft 身分識別平臺 (v2.0) 中的安全性權杖的基本概念。
+description: 瞭解 Microsoft 身分識別平臺中安全性權杖的基本概念。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,18 +13,18 @@ ms.date: 05/11/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 88dc4bb86459cd0390c4c01deb871aa93e39c6d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9668d3b0b57e36fb95421f8b502b9b743be8eb31
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84266741"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756220"
 ---
 # <a name="security-tokens"></a>安全性權杖
 
 集中式身分識別提供者特別適用于使用者位於全球各地且不需要從商業網路登入的應用程式。 Microsoft 身分識別平臺會驗證使用者並提供安全性權杖，例如 [存取權杖](developer-glossary.md#access-token)、重新整理 [權杖](developer-glossary.md#refresh-token)和 [識別碼權杖](developer-glossary.md#id-token)，以允許 [用戶端應用程式](developer-glossary.md#client-application) 存取 [資源伺服器](developer-glossary.md#resource-server)上的受保護資源。
 
-**存取權杖**是[授權伺服器](developer-glossary.md#authorization-server)在[OAuth 2.0](active-directory-v2-protocols.md)流程中所發出的安全性權杖。 它包含使用者的相關資訊，以及適用權杖的應用程式;可以用來存取 web Api 和其他受保護的資源。 若要深入瞭解 Microsoft 身分識別平臺如何發行存取權杖，請參閱 [存取權杖](access-tokens.md)。
+**存取權杖** 是 [授權伺服器](developer-glossary.md#authorization-server)在 [OAuth 2.0](active-directory-v2-protocols.md)流程中所發出的安全性權杖。 它包含使用者的相關資訊，以及適用權杖的應用程式;可以用來存取 web Api 和其他受保護的資源。 若要深入瞭解 Microsoft 身分識別平臺如何發行存取權杖，請參閱 [存取權杖](access-tokens.md)。
 
 存取權杖只會在短時間內有效，因此授權伺服器有時會在發出存取權杖時同時發出重新整理 **權杖** 。 然後，用戶端應用程式可以在需要時，為新的存取權杖交換此重新整理權杖。 若要深入瞭解 Microsoft 身分識別平臺如何使用重新整理權杖來撤銷許可權，請參閱 [權杖撤銷](access-tokens.md#token-revocation)。
 
@@ -35,7 +35,7 @@ ms.locfileid: "84266741"
 
 ## <a name="validating-security-tokens"></a>驗證安全性權杖
 
-它是由已產生權杖的應用程式、已登入使用者的 web 應用程式，或要呼叫的 web API 來驗證權杖。 權杖是由 **安全性權杖伺服器 (STS) ** 與私密金鑰簽署。 STS 會發佈對應的公開金鑰。 若要驗證權杖，應用程式會使用 STS 公開金鑰來驗證簽章，以驗證簽章是使用私密金鑰所建立。
+它是由已產生權杖的應用程式、已登入使用者的 web 應用程式，或要呼叫的 web API 來驗證權杖。 權杖是由 **安全性權杖伺服器 (STS)** 與私密金鑰簽署。 STS 會發佈對應的公開金鑰。 若要驗證權杖，應用程式會使用 STS 公開金鑰來驗證簽章，以驗證簽章是使用私密金鑰所建立。
 
 權杖的有效期僅限一段時間。 STS 通常會提供一對權杖：
 
@@ -46,7 +46,7 @@ ms.locfileid: "84266741"
 
 ## <a name="json-web-tokens-jwts-and-claims"></a> (Jwt) 和宣告的 JSON Web 權杖
 
-Microsoft 身分識別平臺會將安全性權杖實作為 **JSON Web 權杖， (jwt ** 包含 **宣告**的) 。 由於 Jwt 是用來做為安全性權杖，因此這種形式的驗證有時也稱為 **JWT 驗證**。
+Microsoft 身分識別平臺會將安全性權杖實作為 **JSON Web 權杖， (jwt** 包含 **宣告** 的) 。 由於 Jwt 是用來做為安全性權杖，因此這種形式的驗證有時也稱為 **JWT 驗證**。
 
 宣告 [會提供一個](developer-glossary.md#claim) 實體（例如用戶端應用程式或 [資源擁有](developer-glossary.md#resource-owner)者）給另一個實體（例如資源伺服器）的判斷提示。 宣告也可以稱為 JWT 宣告或 JSON Web 權杖宣告。
 

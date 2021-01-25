@@ -1,5 +1,6 @@
 ---
-title: 建立可呼叫 web Api 的 web 應用程式-Microsoft 身分識別平臺 |蔚藍
+title: 建立可呼叫 web Api 的 web 應用程式 |蔚藍
+titleSuffix: Microsoft identity platform
 description: '瞭解如何建立 web 應用程式，以呼叫 web Api (總覽) '
 services: active-directory
 author: jmprieur
@@ -11,18 +12,18 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b4123b0424e52c6a2919de4b60bcc6158062b0f1
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 1fdbdada54320ef28f6a4b04a7f415c835acc9dd
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442628"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756289"
 ---
 # <a name="scenario-a-web-app-that-calls-web-apis"></a>案例：呼叫 web Api 的 web 應用程式
 
 瞭解如何建立 web 應用程式，以將使用者登入 Microsoft 身分識別平臺，然後代表已登入的使用者呼叫 web Api。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 此案例假設您已完成 [案例：登入使用者的 Web 應用程式](scenario-web-app-sign-user-overview.md)。
 

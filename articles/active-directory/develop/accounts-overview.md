@@ -13,18 +13,18 @@ ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev, devx-track-java
 ms.reviewer: shoatman
-ms.openlocfilehash: 404ffbc09a69b623a421bd0c01550d72e5c03158
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fac66e8f82ea4c04e866b28fed5f8d0860ab81ef
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88115980"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755962"
 ---
 # <a name="accounts--tenant-profiles-android"></a>帳戶和租用戶設定檔 (Android)
 
 本文概述 `account` Microsoft 身分識別平臺中的內容。
 
-Microsoft 驗證程式庫 (MSAL) API 會以「詞彙」*帳戶*取代「*使用者*」一詞。 其中一個原因是使用者 (的人或軟體代理程式) 可能會有多個帳戶，或可使用多個帳戶。 這些帳戶可能位於使用者的組織，以及/或使用者所屬的其他組織中。
+Microsoft 驗證程式庫 (MSAL) API 會以「詞彙」*帳戶* 取代「*使用者*」一詞。 其中一個原因是使用者 (的人或軟體代理程式) 可能會有多個帳戶，或可使用多個帳戶。 這些帳戶可能位於使用者的組織，以及/或使用者所屬的其他組織中。
 
 Microsoft 身分識別平臺中的帳戶包含：
 

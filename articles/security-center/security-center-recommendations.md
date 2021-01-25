@@ -11,30 +11,39 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/25/2020
+ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 115d89783a849a9c4c7adb2fceceaf8d1575c785
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: dbda0aecdadd81da0f7681a5fc9b140157d5e8f3
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795971"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756821"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure 資訊安全中心的安全性建議 
+
 本主題說明如何查看並瞭解 Azure 資訊安全中心中的建議，以協助保護您的 Azure 資源。
 
 
 ## <a name="what-are-security-recommendations"></a>有哪些安全性建議？
 
-建議是讓您採取的動作，以便保護您的資源。
-
 資訊安全中心會定期分析 Azure 資源的安全性狀態，以識別潛在的安全性弱點。 然後為您提供如何補救這些弱點的建議。
+
+建議您採取的動作，以保護和強化您的資源。 
 
 每項建議都會提供：
 
 - 問題的簡短描述
 - 執行建議所需執行的補救步驟
 - 受影響的資源
+
+## <a name="how-does-microsoft-decide-what-needs-securing-and-hardening"></a>Microsoft 如何決定需要安全和強化的專案？
+
+資訊安全中心的建議是以 Azure 安全性基準測試為基礎。 
+
+Azure 安全性效能評定是 Microsoft 針對以通用合規性架構為基礎的安全性和合規性最佳做法所撰寫的一組 Azure 特定指導方針。 這項廣泛的基準測試建基於 [網際網路安全性 (CIS) ](https://www.cisecurity.org/benchmark/azure/) 的控制，以及美國的 [標準與技術局 (NIST) ](https://www.nist.gov/) ，並著重于以雲端為中心的安全性。
+
+深入了解 [Azure 安全性效能評定](../security/benchmarks/introduction.md)。
 
 ## <a name="monitor-recommendations"></a>監視建議 <a name="monitor-recommendations"></a>
 

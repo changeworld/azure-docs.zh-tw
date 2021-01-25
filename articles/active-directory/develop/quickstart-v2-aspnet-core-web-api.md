@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: ca22d4f1ff48222b33030eb44d7feb62b1d154cd
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: HT
+ms.openlocfilehash: 7d38ee1782987afce703fbd8b4203186bbcbb505
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011879"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754475"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>快速入門：以 Microsoft 身分識別平台保護 ASP.NET Core Web API
 
@@ -96,7 +96,7 @@ Web API 會從用戶端應用程式接收權杖，而 Web API 中的程式碼會
 
 `AddAuthentication()` 方法會將服務設定為新增以 JwtBearer 為基礎的驗證。
 
-包含 `.AddMicrosoftIdentityWebApi` 的這行程式碼會將 Microsoft 身分識別平台授權新增至您的 Web API。 接著，會將服務設定為根據 *appsettings.json* 設定檔中 `AzureAD` 區段的資訊，驗證由 Microsoft 身分識別平台端點核發的存取權杖：
+包含的行會 `.AddMicrosoftIdentityWebApi` 將 Microsoft 身分識別平臺授權新增至您的 WEB API。 接著，它會設定為根據 `AzureAD` 在設定檔 *上appsettings.js* 一節中的資訊來驗證 Microsoft 身分識別平臺所發出的存取權杖：
 
 | *appsettings.json* 金鑰 | 描述                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|

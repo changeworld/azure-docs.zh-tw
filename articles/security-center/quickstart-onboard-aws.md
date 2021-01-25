@@ -3,16 +3,16 @@ title: 將您的 AWS 帳戶連線至 Azure 資訊安全中心
 description: 從 Azure 資訊安全中心監視您的 AWS 資源
 author: memildin
 ms.author: memildin
-ms.date: 12/29/2020
+ms.date: 01/24/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 4c919115efb39a8e8c008eab69dc087792f7b105
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
-ms.translationtype: HT
+ms.openlocfilehash: 2ad3ab8c39d9f9a29e74bd139fb5ddd1e5faeff9
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814307"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755147"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>將您的 AWS 帳戶連線到 Azure 資訊安全中心
 
@@ -33,13 +33,13 @@ Azure 資訊安全中心會保護 Azure、Amazon Web Services (AWS) 和 Google C
 
 在下面的螢幕擷取畫面中，您可以看到 AWS 帳戶顯示在資訊安全中心的 [概觀] 儀表板中。
 
-:::image type="content" source="./media/quickstart-onboard-aws/aws-account-in-overview.png" alt-text="資訊安全中心的概觀儀表板上所列的 3 個 GCP 專案" lightbox="./media/quickstart-onboard-gcp/gcp-account-in-overview.png":::
+:::image type="content" source="./media/quickstart-onboard-aws/aws-account-in-overview.png" alt-text="資訊安全中心的總覽儀表板上列出三個 GCP 專案" lightbox="./media/quickstart-onboard-gcp/gcp-account-in-overview.png":::
 
 ## <a name="availability"></a>可用性
 
 |層面|詳細資料|
 |----|:----|
-|版本狀態：|預覽<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|版本狀態：|公開上市 (GA) |
 |定價：|需要[適用於伺服器的 Azure Defender](defender-for-servers-introduction.md)|
 |必要的角色和權限：|相關 Azure 訂用帳戶上的 **擁有者**<br>如果擁有者提供服務主體詳細資料，**參與者** 也可以與 AWS 帳戶連線|
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|
@@ -136,9 +136,9 @@ Azure 資訊安全中心會保護 Azure、Amazon Web Services (AWS) 和 Google C
 1. 設定 [AWS 驗證] 索引標籤中的選項：
     1. 輸入連接器的 [顯示名稱]。
     1. 確認訂用帳戶正確無誤。 這是將包含連接器和 AWS 安全性中樞建議的訂用帳戶。
-    1. 根據您在[步驟 2. 在 AWS 中設定資訊安全中心的驗證](#step-2-set-up-authentication-for-security-center-in-aws)中選擇的驗證選項：
+    1. 根據您在步驟2中選擇的驗證選項 [。在 AWS 中設定適用于安全性中心的驗證](#step-2-set-up-authentication-for-security-center-in-aws)：
         - 選取 [假設角色]，然後從 [為資訊安全中心建立 IAM 角色](#create-an-iam-role-for-security-center) 貼上 ARN。
-            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="在 Azure 入口網站中，將 ARN 檔案貼入 AWS 連線精靈的相關欄位":::
+            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="將 ARN 檔案貼入 Azure 入口網站中 AWS 連接 wizard 的相關欄位":::
 
             或者
 
@@ -164,7 +164,7 @@ Azure 資訊安全中心會保護 Azure、Amazon Web Services (AWS) 和 Google C
 
 ### <a name="step-6-confirmation"></a>步驟 6. 確認
 
-在成功建立連接器並正確設定 AWS 安全性中樞之後：
+成功建立連接器，並正確設定 AWS 安全性中樞：
 
 - 資訊安全中心會掃描環境中的 AWS EC2 執行個體，並將其上線至 Azure Arc，以安裝 Log Analytics 代理程式，並提供威脅防護和安全性建議。 
 - ASC 服務每 6 小時會掃描一次新的 AWS EC2 執行個體，並根據設定加以上線。
@@ -190,7 +190,7 @@ Azure 資訊安全中心會保護 Azure、Amazon Web Services (AWS) 和 Google C
 支援將 AWS 機器自動上線至 Azure Arc 的作業系統
 
 - Ubuntu 16.04 - 依預設會預先安裝 SSM 代理程式
-- Ubuntu 18.04 - 依預設會預先安裝 SSM 代理程式
+- Ubuntu 18.04-依預設會預先安裝 SSM 代理程式
 - Windows 伺服器 - 依預設會預先安裝 SSM 代理程式
 - CentOS Linux 7 – SSM 應手動安裝或個別上線
 - SUSE Linux Enterprise Server (SLES) 15 (x64) - SSM 應手動安裝或個別上線

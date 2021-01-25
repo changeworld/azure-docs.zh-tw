@@ -1,5 +1,6 @@
 ---
-title: 將呼叫 web Api 的傳統型應用程式移至生產-Microsoft 身分識別平臺 |蔚藍
+title: 將呼叫 web Api 的桌面應用程式移至生產環境 |蔚藍
+titleSuffix: Microsoft identity platform
 description: 瞭解如何將呼叫 web Api 的桌面應用程式移至生產環境
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 325f95f2830ef021a4ac79de48695dda570f7817
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 05b93848bff66adc49d2855ee98fff6c9b7a2d3d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629777"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756508"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>呼叫 web Api 的桌面應用程式：移至生產環境
 
@@ -31,7 +32,7 @@ ms.locfileid: "97629777"
 > [!NOTE]
 > 針對 Microsoft 身分識別平臺，獲得數個資源的同意，但不適合 Azure Active Directory (Azure AD) B2C。 Azure AD B2C 僅支援系統管理員同意，而不支援使用者同意。
 
-您無法使用 Microsoft 身分識別平臺 (v2.0) 端點，同時取得數個資源的權杖。 `scopes`參數只能包含單一資源的範圍。 您可以使用參數，確定使用者已預先同意至數個資源 `extraScopesToConsent` 。
+您無法使用 Microsoft 身分識別平臺一次取得數個資源的權杖。 `scopes`參數只能包含單一資源的範圍。 您可以使用參數，確定使用者已預先同意至數個資源 `extraScopesToConsent` 。
 
 比方說，您可能有兩個具有兩個範圍的資源：
 

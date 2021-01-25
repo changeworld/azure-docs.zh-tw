@@ -1,5 +1,6 @@
 ---
-title: 註冊可登入使用者的 web 應用程式-Microsoft 身分識別平臺 |蔚藍
+title: 註冊可登入使用者的 web 應用程式 |蔚藍
+titleSuffix: Microsoft identity platform
 description: 瞭解如何註冊可登入使用者的 web 應用程式
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7ca294d3d7764737d4e2be55aae25bc8ff08a8d1
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: b6240f88d309cbf4f26375c5f961d716b472755d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011521"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756264"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>登入使用者的 Web 應用程式：應用程式註冊
 
@@ -41,7 +42,7 @@ ms.locfileid: "98011521"
 > 使用的入口網站會根據您的應用程式是否在 Microsoft Azure 公用雲端或在全國或主權雲端中執行而有所不同。 如需詳細資訊，請參閱 [國家](./authentication-national-cloud.md#app-registration-endpoints)雲端。
 
 
-1. 登入<a href="https://portal.azure.com/" target="_blank">Azure 入口網站 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。 
+1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。 
 1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
 1. 搜尋並選取 [Azure Active Directory]  。
 1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。
@@ -91,7 +92,7 @@ ms.locfileid: "98011521"
 
    1. 輸入金鑰描述。
    1. 選取 **1 年** 的金鑰持續時間。
-   1. 選取 [新增]  。
+   1. 選取 [新增]。
    1. 出現金鑰值時，將其複製以供稍後進行。 此值將不會再次顯示，也無法透過任何其他方式來抓取。
 
 # <a name="python"></a>[Python](#tab/python)
@@ -106,7 +107,7 @@ ms.locfileid: "98011521"
 1. 在 [ **用戶端密碼** ] 區段中，選取 [ **新增用戶端密碼**]，然後：
    1. 輸入金鑰描述。
    1. 選取 [1 年]  作為 [金鑰持續時間]。
-   1. 選取 [新增]  。
+   1. 選取 [新增]。
    1. 出現金鑰值時，將它複製。 稍後您將會用到此資訊。
 ---
 

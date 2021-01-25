@@ -1,7 +1,7 @@
 ---
 title: 應用程式模型 |蔚藍
 titleSuffix: Microsoft identity platform
-description: 瞭解註冊應用程式，使其可以與 Microsoft 身分識別平臺 (v2.0) 整合的程式。
+description: 瞭解註冊應用程式以與 Microsoft 身分識別平臺整合的程式。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 04/28/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 5aca96a9c3bc4e8f1061f677e316565b10014ac9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ba41e36d12b58da2e572cf870195716eacaddef
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88117476"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755689"
 ---
 # <a name="application-model"></a>應用程式模型
 
@@ -34,7 +34,7 @@ ms.locfileid: "88117476"
 * 定義定義 web API 存取權的範圍。 一般而言，當應用程式想要存取您的 API 時，它必須要求您所定義範圍的許可權。
 * 與 Microsoft 身分識別平臺共用秘密，以證明應用程式的身分識別。  這與應用程式是機密用戶端應用程式的情況有關。 機密用戶端應用程式是可以安全保存認證的應用程式。 他們需要信任的後端伺服器來儲存認證。
 
-註冊之後，應用程式將會獲得一個唯一的識別碼，讓應用程式在要求權杖時，與 Microsoft 身分識別平臺共用。 如果應用程式是 [機密用戶端應用程式](developer-glossary.md#client-application)，它也會共用秘密或公開金鑰，視使用的是憑證或密碼而定。
+註冊之後，應用程式將會獲得唯一的識別碼，讓應用程式在要求權杖時，與 Microsoft 身分識別平臺共用。 如果應用程式是 [機密用戶端應用程式](developer-glossary.md#client-application)，它也會共用秘密或公開金鑰，視使用的是憑證或密碼而定。
 
 Microsoft 身分識別平臺表示使用模型的應用程式，可滿足兩個主要功能：
 
@@ -55,7 +55,7 @@ Microsoft 身分識別平臺：
 
 ## <a name="multi-tenant-apps"></a>多租用戶應用程式
 
-在 Microsoft 身分識別平臺中， [應用程式物件](developer-glossary.md#application-object) 會描述應用程式。 在部署時，Microsoft 身分識別平臺會使用應用程式物件作為藍圖來建立 [服務主體](developer-glossary.md#service-principal-object)，以代表目錄或租使用者內應用程式的具體實例。 服務主體會定義應用程式可在特定目標目錄中實際執行的作業、可使用該目錄的資源、可存取的資源等。 Microsoft 身分識別平台會透過[同意](developer-glossary.md#consent)從應用程式物件建立服務主體。
+在 Microsoft 身分識別平臺中， [應用程式物件](developer-glossary.md#application-object) 會描述應用程式。 在部署時，Microsoft 身分識別平臺會使用應用程式物件作為藍圖來建立 [服務主體](developer-glossary.md#service-principal-object)，以代表目錄或租使用者內的應用程式具體實例。 服務主體會定義應用程式可在特定目標目錄中實際執行的作業、可使用該目錄的資源、可存取的資源等。 Microsoft 身分識別平臺會透過 [同意](developer-glossary.md#consent)，從應用程式物件建立服務主體。
 
 下圖顯示由同意驅動的簡化 Microsoft 身分識別平台佈建流程。 它會顯示兩個租使用者： *A* 和 *B*。
 

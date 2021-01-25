@@ -3,12 +3,12 @@ title: 復原服務保存庫概觀
 description: 復原服務保存庫的總覽。
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: ab6b27bdc7ac9b01385ed43830d0af5900210d43
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0ed37446e1ccf0780f924143c8f063964adf0004
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017316"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755122"
 ---
 # <a name="recovery-services-vaults-overview"></a>復原服務保存庫概觀
 
@@ -22,7 +22,7 @@ ms.locfileid: "96017316"
 
 - 虛 **刪除**：透過虛刪除，即使惡意執行者刪除備份 (或不小心刪除備份資料) ，備份資料仍會保留14天，以允許復原該備份專案，而不會遺失資料。 在「虛刪除」狀態中，備份資料保留的額外14天不會產生任何費用。 [深入了解](backup-azure-security-feature-cloud.md)。
 
-- **跨區域還原**：跨區域還原 (CRR) 可讓您在次要區域（即 azure 配對的區域）中還原 azure vm。 如果 Azure 在主要區域中宣告了嚴重損壞，次要區域中複寫的資料就可以在次要區域中還原，以降低其環境的主要區域發生的即時停機。 [深入了解](backup-azure-arm-restore-vms.md#cross-region-restore)。
+- **跨區域還原**：跨區域還原 (CRR) 可讓您在次要區域（即 azure 配對的區域）中還原 azure vm。 藉由在保存 [庫層級](backup-create-rs-vault.md#set-cross-region-restore)啟用這項功能，您可以在選擇時隨時還原次要區域中複寫的資料。 這可讓您在發生嚴重損壞狀況時還原次要區域資料，而不需要等待 Azure 宣告嚴重損壞 (，與保存庫) 的 GRS 設定不同。 [深入了解](backup-azure-arm-restore-vms.md#cross-region-restore)。
 
 ## <a name="storage-settings-in-the-recovery-services-vault"></a>復原服務保存庫中的儲存體設定
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: b7d14ee321a1160420d106151276ae6aef513c5b
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
-ms.translationtype: HT
+ms.openlocfilehash: 1ec046ca6b42a5ca8f33b0347c562c85abd42684
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064397"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756164"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>教學課程：使用授權碼流程來登入使用者，並從 JavaScript 單頁應用程式 (SPA) 呼叫 Microsoft Graph API
 
@@ -28,7 +28,7 @@ ms.locfileid: "98064397"
 > * 使用 PKCE 執行 OAuth 2.0 授權碼流程
 > * 登入個人的 Microsoft 帳戶以及公司和學校帳戶
 > * 取得存取權杖
-> * 呼叫需要從 Microsoft 身分識別平台端點取得存取權杖的 Microsoft Graph API 或自有 API
+> * 呼叫 Microsoft Graph 或您自己的 API，此 API 需要從 Microsoft 身分識別平臺取得的存取權杖
 
 MSAL.js 2.0 改良了 MSAL.js 1.0，可在瀏覽器中支援授權碼流程，而非隱含的授與流程。 MSAL.js 2.0 **不** 支援隱含流程。
 
@@ -41,7 +41,7 @@ MSAL.js 2.0 改良了 MSAL.js 1.0，可在瀏覽器中支援授權碼流程，�
 
 :::image type="content" source="media/tutorial-v2-javascript-auth-code/diagram-01-auth-code-flow.png" alt-text="顯示單頁應用程式中授權碼流程的圖表":::
 
-您在本教學課程中建立的應用程式可讓 JavaScript SPA 從 Microsoft 身分識別平台端點取得安全性權杖，以查詢 Microsoft Graph API。 在此案例中，於使用者登入之後，系統會要求存取權杖，並將其新增到授權標頭中的 HTTP 要求內。 權杖取得和更新作業是由適用於 JavaScript 的 Microsoft Authentication Library (MSAL.js) 負責處理的。
+您在本教學課程中建立的應用程式可讓 JavaScript SPA 查詢 Microsoft Graph API，方法是從 Microsoft 身分識別平臺取得安全性權杖。 在此案例中，於使用者登入之後，系統會要求存取權杖，並將其新增到授權標頭中的 HTTP 要求內。 權杖取得和更新作業是由適用於 JavaScript 的 Microsoft Authentication Library (MSAL.js) 負責處理的。
 
 本教學課程會使用下列程式庫：
 
@@ -558,13 +558,13 @@ function readMail() {
 
 #### <a name="get-a-user-token-interactively"></a>以互動方式取得使用者權杖
 
-使用者完成初始登入後，應用程式應該就不會在使用者每次需要存取受保護的資源時要求其重新驗證 (也就是要求權杖)。 若要避免這類重新驗證要求，請呼叫 `acquireTokenSilent`。 但是，有時候您可能必須強制要求使用者與 Microsoft 身分識別平台端點互動。 例如：
+使用者完成初始登入後，應用程式應該就不會在使用者每次需要存取受保護的資源時要求其重新驗證 (也就是要求權杖)。 若要避免這類重新驗證要求，請呼叫 `acquireTokenSilent`。 不過，在某些情況下，您可能需要強制使用者與 Microsoft 身分識別平臺互動。 例如：
 
 - 使用者需要重新輸入其認證，因為密碼已過期。
 - 您的應用程式要求資源存取權，而您需要使用者同意。
 - 需要雙因素驗證。
 
-呼叫 `acquireTokenPopup` 會開啟快顯視窗 (呼叫 `acquireTokenRedirect` 則會將使用者重新導向至 Microsoft 身分識別平台端點)。 在該視窗中，使用者必須藉由確認其認證、同意必要的資源，或完成雙因素驗證來進行互動。
+呼叫 `acquireTokenPopup` 會開啟快顯視窗 (，或將 `acquireTokenRedirect` 使用者重新導向至 Microsoft 身分識別平臺) 。 在該視窗中，使用者必須藉由確認其認證、同意必要的資源，或完成雙因素驗證來進行互動。
 
 #### <a name="get-a-user-token-silently"></a>以無訊息方式取得使用者權杖
 
@@ -618,7 +618,7 @@ function callMSGraph(endpoint, token, callback) {
 
 ### <a name="sign-in-to-the-application"></a>登入應用程式
 
-在瀏覽器載入您的 index.html 檔案之後，請選取 [登入]。 系統會提示您使用 Microsoft 身分識別平台端點登入：
+在瀏覽器載入您的 index.html 檔案之後，請選取 [登入]。 系統會提示您使用 Microsoft 身分識別平臺登入：
 
 :::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="顯示登入對話方塊的網頁瀏覽器":::
 

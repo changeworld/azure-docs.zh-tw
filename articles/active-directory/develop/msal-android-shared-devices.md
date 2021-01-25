@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: fc32b4f583aea2fa9a34ab8b235f3f99fe4def9d
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 85f8b340635354d4bb0f28f2b3d79b617bd897f8
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562163"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754892"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>適用於 Android 裝置的共用裝置模式
 
@@ -34,7 +34,7 @@ ms.locfileid: "94562163"
 若要建立共用裝置模式應用程式，開發人員和雲端裝置系統管理員會一起運作：
 
 - 開發人員會撰寫單一帳戶應用程式 (在共用裝置模式下不支援多帳戶應用程式) 、新增 `"shared_device_mode_supported": true` 至應用程式的設定，以及撰寫程式碼來處理共用裝置登出之類的作業。
-- 裝置系統管理員可透過安裝驗證器應用程式，並使用驗證器應用程式將裝置設定為共用模式，來準備要共用的裝置。 只有處於 [雲端裝置系統管理員](../roles/permissions-reference.md#cloud-device-administrator-permissions) 角色的使用者可以使用 [驗證器應用程式](../user-help/user-help-auth-app-overview.md)，讓裝置進入共用模式。 您可以透過下列方式，在 Azure 入口網站中設定組織角色的成員資格： **Azure Active Directory**  >  **角色和**  >  **系統管理員雲端裝置系統管理員** 。
+- 裝置系統管理員可透過安裝驗證器應用程式，並使用驗證器應用程式將裝置設定為共用模式，來準備要共用的裝置。 只有處於 [雲端裝置系統管理員](../roles/permissions-reference.md#cloud-device-administrator-permissions) 角色的使用者可以使用 [驗證器應用程式](../user-help/user-help-auth-app-overview.md)，讓裝置進入共用模式。 您可以透過下列方式，在 Azure 入口網站中設定組織角色的成員資格： **Azure Active Directory**  >  **角色和**  >  **系統管理員雲端裝置系統管理員**。
 
  本文主要著重于開發人員應考慮的事項。
 
@@ -42,7 +42,7 @@ ms.locfileid: "94562163"
 
 使用 Microsoft 驗證程式庫 SDK 撰寫的應用程式 (MSAL) 可以管理單一帳戶或多個帳戶。 如需詳細資訊，請參閱 [單一帳戶模式或多重帳戶模式](single-multi-account.md)。 適用于您應用程式的 Microsoft 身分識別平臺功能會根據應用程式是在單一帳戶模式或多重帳戶模式中執行而有所不同。
 
-**共用裝置模式應用程式只能在單一帳戶模式下運作** 。
+**共用裝置模式應用程式只能在單一帳戶模式下運作**。
 
 > [!IMPORTANT]
 > 僅支援多重帳戶模式的應用程式無法在共用裝置上執行。 如果員工載入不支援單一帳戶模式的應用程式，它就不會在共用裝置上執行。

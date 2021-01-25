@@ -14,12 +14,12 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: eec24ca19af8c41a842b1db3db4b9e16f748f029
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 6a1f4a02ebf42c0f181b595aae0a5fa0bcc9b41d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653243"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755919"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft 身分識別平臺識別碼權杖
 
@@ -89,7 +89,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`groups:src1`|JSON 物件 | 若為沒有長度限制 (請參閱上面的 `hasgroups`) 但是對權杖而言仍然太大的權杖要求，則會包含使用者的完整 groups 清單連結。 在 JWT 中以分散式宣告形式取代 `groups` 宣告，在 SAML 中則以新宣告形式取代。 <br><br>**範例 JWT 值**： <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }`<br><br> 如需詳細資訊，請參閱 [群組超額](#groups-overage-claim)宣告。|
 
 > [!NOTE]
-> V1.0 和 v2.0 id_token 在上述範例中所見的資訊數量有所差異。 版本是根據其要求所在的端點。 雖然現有的應用程式可能會使用 Azure AD 端點，但新的應用程式應該使用 v2.0 「Microsoft 身分識別平臺」端點。
+> V1.0 和 v2.0 id_token 在上述範例中所見的資訊數量有所差異。 版本是根據其要求所在的端點。 雖然現有的應用程式可能會使用 Azure AD 端點，但新的應用程式應該使用「Microsoft 身分識別平臺」。
 >
 > - 1.0 版： Azure AD 端點： `https://login.microsoftonline.com/common/oauth2/authorize`
 > - 2.0 版： Microsoft 身分識別平臺端點： `https://login.microsoftonline.com/common/oauth2/v2.0/authorize`

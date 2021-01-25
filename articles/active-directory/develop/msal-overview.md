@@ -13,15 +13,15 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 2b6266f308fce75f136aa4a2482c5b1be6eedb8e
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: c16eb2af5dfb103541c2eac207eb8ee5c303168f
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063360"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754711"
 ---
-# <a name="overview-of-the-microsoft-authentication-library-msal"></a>介紹 Microsoft 驗證程式庫 (MSAL) 
-Microsoft 驗證程式庫 (MSAL) 可讓開發人員從 Microsoft 身分識別平臺端點取得 [權杖](developer-glossary.md#security-token) ，以便驗證使用者並存取安全的 web api。 您可以使用它來提供 Microsoft Graph、其他 Microsoft Api、協力廠商 web Api 或您自己的 web API 的安全存取。 MSAL 支援許多不同的應用程式架構和平臺，包括 .NET、JavaScript、JAVA、Python、Android 和 iOS。
+# <a name="overview-of-the-microsoft-authentication-library-msal"></a>Microsoft 驗證程式庫 (MSAL) 概觀
+Microsoft 驗證程式庫 (MSAL) 可讓開發人員從 Microsoft 身分識別平臺取得 [權杖](developer-glossary.md#security-token) ，以驗證使用者並存取安全的 web api。 您可以使用它來提供 Microsoft Graph、其他 Microsoft Api、協力廠商 web Api 或您自己的 web API 的安全存取。 MSAL 支援許多不同的應用程式架構和平臺，包括 .NET、JavaScript、JAVA、Python、Android 和 iOS。
 
 MSAL 可讓您透過多種平台通用的 API，以不同的方式取得權杖。 使用 MSAL 有下列優點：
 
@@ -59,6 +59,6 @@ MSAL 可用於許多應用程式案例，包括：
 
 ## <a name="differences-between-adal-and-msal"></a>ADAL 與 MSAL 的差異
 
-Active Directory 驗證程式庫 (ADAL) 可與適用於開發人員的 Azure AD (v1.0) 端點整合；此時 MSAL 會與 Microsoft 身分識別平台 (v2.0) 端點整合。 V1.0 端點支援工作帳戶，但不支援個人帳戶。 v2.0 端點可將 Microsoft 個人帳戶和工作帳戶統一成單一驗證系統。 此外，您也可以透過 MSAL 取得 Azure AD B2C 的驗證。
+Active Directory 驗證程式庫 (ADAL) 與適用于開發人員 (v1.0) 端點的 Azure AD 整合，其中 MSAL 與 Microsoft 身分識別平臺整合。 V1.0 端點支援工作帳戶，但不支援個人帳戶。 v2.0 端點可將 Microsoft 個人帳戶和工作帳戶統一成單一驗證系統。 此外，您也可以透過 MSAL 取得 Azure AD B2C 的驗證。
 
 如需更具體的資訊，請參閱[從 ADAL.NET 移轉至 MSAL.NET](msal-net-migration.md) 和[從 ADAL.js 移轉至 MSAL.js](msal-compare-msal-js-and-adal-js.md)。

@@ -12,12 +12,12 @@ ms.date: 11/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 61d07c1ba912a0e24b2f4e5fa67243b4525db367
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b35b39d7072b22d9cc3f7b4f4ef8886431b06f69
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81536177"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754661"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>接受1.0 版權杖的 web API 範圍
 
@@ -64,7 +64,7 @@ var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 Azure AD 所用的邏輯如下所示：
 
 - 針對 ADAL (Azure AD v1.0) 端點搭配 v1.0 存取權杖 (唯一可能的) ，aud = 資源
-- 針對 MSAL (Microsoft 身分識別平臺 (v2.0) # A3 端點，要求接受 v2.0 權杖之資源的存取權杖， `aud=resource.AppId`
+- 針對 MSAL (Microsoft 身分識別平臺) 為接受 v2.0 權杖的資源要求存取權杖， `aud=resource.AppId`
 - 針對 MSAL (v2.0 端點) 詢問可接受 v1.0 存取權杖之資源的存取權杖 (這是上述) 的情況，Azure AD 會取得最後一個斜線之前的所有內容，並將其作為資源識別碼，藉此從要求的範圍剖析所需的物件。 因此，如果 HTTPs： \/ /database.windows.net 預期有 "HTTPs： \/ /database.windows.net/" 的物件，您必須要求 "HTTPs： \/ /database.windows.net//.default" 的範圍。 另請參閱 GitHub 問題 [#747：省略資源 url 的尾端斜線，這會導致 sql 驗證失敗](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)。
 
 ## <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>要求存取 v1.0 應用程式所有權限的範圍

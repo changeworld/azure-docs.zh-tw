@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 8861e641f5ee6a10576425a7702ba02da297a0bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0127c8d796126d1e99b1fa38a9506df477c7eb49
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631268"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755735"
 ---
 # <a name="using-directory-schema-extension-attributes-in-claims"></a>在宣告中使用目錄架構延伸模組屬性
 
@@ -29,7 +29,7 @@ ms.locfileid: "91631268"
 
 目錄架構延伸模組屬性一律與租使用者中的應用程式相關聯，並由應用程式的 *applicationId* 名稱參考。
 
-目錄架構延伸模組屬性的識別碼是 *Extension_xxxxxxxxx_AttributeName*格式。  其中 *xxxxxxxxx* 是為其定義擴充功能的應用程式的 *applicationId* 。
+目錄架構延伸模組屬性的識別碼是 *Extension_xxxxxxxxx_AttributeName* 格式。  其中 *xxxxxxxxx* 是為其定義擴充功能的應用程式的 *applicationId* 。
 
 ## <a name="registering-and-using-directory-schema-extensions"></a>註冊和使用目錄架構延伸模組
 您可以透過下列兩種方式之一來註冊和填入目錄架構延伸模組屬性：
@@ -38,7 +38,7 @@ ms.locfileid: "91631268"
 - 藉由使用 Microsoft Graph 註冊、設定的值，以及從 [架構延伸](/graph/extensibility-overview)讀取。 [PowerShell Cmdlet](/powershell/azure/active-directory/using-extension-attributes-sample) 也可供使用。
 
 ### <a name="emitting-claims-with-data-from-directory-schema-extension-attributes-created-with-ad-connect"></a>從使用 AD Connect 建立的目錄架構延伸模組屬性發出宣告與資料
-使用 AD Connect 建立和同步處理的目錄架構延伸模組屬性，一律會與 AD Connect 所使用的應用程式識別碼產生關聯。 您可以使用它們作為宣告的來源，方法是在入口網站 UI 中的 [ **企業應用** 程式] 設定中，針對使用資源庫或非資源庫應用程式設定體驗註冊的 SAML 應用 **程式，以及**透過應用程式註冊體驗註冊之應用程式的宣告對應原則，將它們設定為宣告。  一旦透過 AD Connect 建立的目錄延伸模組屬性在目錄中，它就會顯示在 SAML SSO 宣告設定 UI 中。
+使用 AD Connect 建立和同步處理的目錄架構延伸模組屬性，一律會與 AD Connect 所使用的應用程式識別碼產生關聯。 您可以使用它們作為宣告的來源，方法是在入口網站 UI 中的 [ **企業應用** 程式] 設定中，針對使用資源庫或非資源庫應用程式設定體驗註冊的 SAML 應用 **程式，以及** 透過應用程式註冊體驗註冊之應用程式的宣告對應原則，將它們設定為宣告。  一旦透過 AD Connect 建立的目錄延伸模組屬性在目錄中，它就會顯示在 SAML SSO 宣告設定 UI 中。
 
 ### <a name="emitting-claims-with-data-from-directory-schema-extension-attributes-created-for-an-application-using-graph-or-powershell"></a>使用 Graph 或 PowerShell 以針對應用程式所建立之目錄架構延伸屬性的資料發出宣告
 如果使用 Microsoft Graph 或 PowerShell (透過應用程式) 的初始設定或布建步驟，為應用程式登錄目錄架構延伸模組屬性，則可以在 Azure Active Directory 中設定相同的應用程式，以便在使用者登入時從宣告中的使用者物件接收該屬性中的資料。  您可以設定應用程式，以在使用 [選擇性宣告](active-directory-optional-claims.md#configuring-directory-extension-optional-claims)在該相同應用程式上註冊的目錄架構延伸中接收資料。  這些可以在應用程式資訊清單中設定。  這可讓多租使用者應用程式登錄目錄架構延伸模組屬性，以供自己使用。 當應用程式布建到租使用者時，相關聯的目錄架構延伸模組就會變成可在該租使用者中的使用者上進行設定，並可供使用。  在租使用者中設定並授與同意之後，就可以使用它來透過 graph 儲存和取出資料，並對應到 Microsoft 身分識別平臺發出給應用程式之權杖中的宣告。

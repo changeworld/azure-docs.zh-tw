@@ -1,5 +1,6 @@
 ---
-title: 從 daemon 應用程式呼叫 web API-Microsoft 身分識別平臺 |蔚藍
+title: 從 daemon 應用程式呼叫 web API |蔚藍
+titleSuffix: Microsoft identity platform
 description: 瞭解如何建立可呼叫 web API 的 daemon 應用程式。
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0dfd729a48b7e81028078fd035b3b900f4d7b9bc
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: a94cbebffbe2c735515d9758a2353a9857676311
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444109"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756584"
 ---
 # <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>呼叫 web Api 的 Daemon 應用程式-從應用程式呼叫 web API
 

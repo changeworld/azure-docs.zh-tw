@@ -13,12 +13,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 34cdaa42f3a41ae04c73c570bb4fede01a786af2
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 98ae81626db637f5b0bd6bfe9e294c32293d09e5
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107833"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755072"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>使用 Microsoft 驗證程式庫 (MSAL) 取得和快取權杖
 
@@ -30,7 +30,7 @@ MSAL 會在取得權杖之後加以快取。 您的應用程式程式碼應該�
 
 ## <a name="scopes-when-acquiring-tokens"></a>取得權杖時的範圍
 
-[範圍](v2-permissions-and-consent.md) 是 web API 公開的許可權，可讓用戶端應用程式要求存取。 用戶端應用程式在提出驗證要求以取得 Web API 的存取權杖時，會要求使用者同意這些範圍。 MSAL 可讓您取得權杖來存取開發人員 (v1.0) 和 Microsoft 身分識別平台 (v2.0) API 的 Azure AD。 v2.0 通訊協定會使用範圍而非要求中的資源。 如需詳細資訊，請參閱 [v1.0 和 v2.0 的比較](../azuread-dev/azure-ad-endpoint-comparison.md)。 根據其所接受的 Web API 權杖版本組態，v2.0 端點會對 MSAL 傳回存取權杖。
+[範圍](v2-permissions-and-consent.md) 是 web API 公開的許可權，可讓用戶端應用程式要求存取。 用戶端應用程式在提出驗證要求以取得 Web API 的存取權杖時，會要求使用者同意這些範圍。 MSAL 可讓您取得權杖，以存取 (v1.0) 和 Microsoft 身分識別平臺 Api 的開發人員 Azure AD。 v2.0 通訊協定會使用範圍而非要求中的資源。 如需詳細資訊，請參閱 [v1.0 和 v2.0 的比較](../azuread-dev/azure-ad-endpoint-comparison.md)。 根據其所接受的 Web API 權杖版本組態，v2.0 端點會對 MSAL 傳回存取權杖。
 
 有幾個 MSAL 的權杖取得方法需要 `scopes` 參數。 `scopes`參數是宣告所需許可權和所要求資源的字串清單。 已知的範圍是 [Microsoft Graph 許可權](/graph/permissions-reference)。
 

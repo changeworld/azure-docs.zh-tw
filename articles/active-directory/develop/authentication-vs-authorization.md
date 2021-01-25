@@ -1,7 +1,7 @@
 ---
 title: 驗證與授權 |蔚藍
 titleSuffix: Microsoft identity platform
-description: 深入瞭解 Microsoft 身分識別平臺 (v2.0) 中的驗證和授權基本概念。
+description: 深入瞭解 Microsoft 身分識別平臺中的驗證和授權基本概念。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 5087278e5c89514cd43b7ca871a58f18e0fa98f2
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: b81b34010736bce33085cb1ebf0faa3da6a41bd6
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678141"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755384"
 ---
 # <a name="authentication-vs-authorization"></a>驗證與授權
 
@@ -54,7 +54,7 @@ Microsoft 身分識別平臺會提供身分識別即服務，為應用程式開�
 * **Oauth 與 saml**：平臺會使用 OAuth 2.0 進行授權和 saml 以進行驗證。 如需有關如何搭配使用這些通訊協定來驗證使用者，以及取得存取受保護資源之授權的詳細資訊，請參閱 [Microsoft 身分識別平臺和 OAuth 2.0 SAML 持有](./scenario-token-exchange-saml-oauth.md)人判斷提示流程。
 * **OpenID Connect 與 saml**：平臺會使用 OPENID CONNECT 和 saml 來驗證使用者，並啟用單一登入。 SAML 驗證通常會與身分識別提供者搭配使用，例如 Active Directory 同盟服務 (AD FS) 同盟至 Azure AD，因此通常用於企業應用程式。 OpenID Connect 通常用於純雲端中的應用程式，例如行動應用程式、網站和 web Api。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 適用于其他涵蓋驗證和授權基本概念的主題：
 

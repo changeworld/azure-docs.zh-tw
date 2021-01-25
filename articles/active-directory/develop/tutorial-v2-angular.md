@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: c4c7d021c7c3a5a32d537a50fa45449fdee7e817
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
-ms.translationtype: HT
+ms.openlocfilehash: 105353598a2af60c407bacf02b4527b2de84e450
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979924"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756155"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>教學課程：讓使用者登入並從 Angular 單頁應用程式呼叫 Microsoft Graph API
 
@@ -271,7 +271,7 @@ this.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 
 #### <a name="get-a-user-token-interactively"></a>以互動方式取得使用者權杖
 
-有時候，您需要使用者與 Microsoft 身分識別平台端點互動。 例如：
+有時您需要使用者與 Microsoft 身分識別平臺互動。 例如：
 
 * 使用者可能需要重新輸入其認證，因為密碼已過期。
 * 您的應用程式要求其他資源範圍的存取權，需要使用者同意。
@@ -279,7 +279,7 @@ this.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 
 大部分應用程式的建議模式都是先呼叫 `acquireTokenSilent`，再捕捉例外狀況，然後呼叫 `acquireTokenPopup` (或 `acquireTokenRedirect`) 以啟動互動式要求。
 
-呼叫 `acquireTokenPopup` 會導致出現快顯登入視窗。 或者，`acquireTokenRedirect` 會將使用者重新導向至 Microsoft 身分識別平台端點。 在該視窗中，使用者必須確認其認證、同意必要的資源，或完成雙因素驗證。
+呼叫 `acquireTokenPopup` 會導致出現快顯登入視窗。 或者， `acquireTokenRedirect` 將使用者重新導向至 Microsoft 身分識別平臺。 在該視窗中，使用者必須確認其認證、同意必要的資源，或完成雙因素驗證。
 
 ```javascript
   const requestObj = {

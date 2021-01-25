@@ -13,12 +13,12 @@ ms.date: 01/11/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 580ec0761c997a0ee7611f7104aa48650c8573e7
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: a313633c6c1799136b8b8911ae780ca13be5d2c3
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98107407"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756123"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft 身分識別平台和 OAuth 2.0 授權碼流程
 
@@ -26,7 +26,7 @@ OAuth 2.0 授權碼授與可用於裝置上所安裝的應用程式中，以存�
 
 本文說明如何在您的應用程式中使用任何語言直接針對通訊協定進行程式設計。  建議您盡可能改為使用支援的 Microsoft 驗證程式庫 (MSAL)，以[取得權杖並呼叫受保護的 Web API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)。  另請參閱[使用 MSAL 的範例應用程式](sample-v2-code.md)。
 
-如需 OAuth 2.0 授權碼流程的說明，請參閱 [OAuth 2.0 規格的 4.1 節](https://tools.ietf.org/html/rfc6749)。 其用來在大部分的應用程式類型 (包括[單頁應用程式](v2-app-types.md#single-page-apps-javascript)、[Web 應用程式](v2-app-types.md#web-apps)和[原生安裝的應用程式](v2-app-types.md#mobile-and-native-apps)) 中執行驗證和授權。 這個流程可讓應用程式安全地取得 access_tokens，以便用來存取受 Microsoft 身分識別平台端點保護的資源，而且取得重新整理權杖以取得額外的 access_tokens，並取得已登入使用者的識別碼權杖。
+如需 OAuth 2.0 授權碼流程的說明，請參閱 [OAuth 2.0 規格的 4.1 節](https://tools.ietf.org/html/rfc6749)。 其用來在大部分的應用程式類型 (包括[單頁應用程式](v2-app-types.md#single-page-apps-javascript)、[Web 應用程式](v2-app-types.md#web-apps)和[原生安裝的應用程式](v2-app-types.md#mobile-and-native-apps)) 中執行驗證和授權。 流程可讓應用程式安全地取得可用來存取受 Microsoft 身分識別平臺保護之資源的 access_tokens，以及重新整理權杖以取得已登入使用者的其他 access_tokens 和識別碼權杖。
 
 ## <a name="protocol-diagram"></a>通訊協定圖表
 
@@ -77,16 +77,16 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `scope`  | required    | 您要使用者同意的 [範圍](v2-permissions-and-consent.md) 空格分隔清單。  在要求的 `/authorize` 階段中，這可以涵蓋多項資源，讓您的應用程式對於您想要呼叫的多個 Web API 徵得同意。 |
 | `response_mode`   | 建議使用 | 指定將產生的權杖送回到應用程式所應該使用的方法。 可以是下列其中一項：<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` 會提供程式碼，以作為重新導向 URI 的查詢字串參數。 如果您要求可使用隱含流程的識別碼權杖，就無法使用 [OpenID 規格](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)中指定的 `query`。如果您只要求程式碼，您可以使用 `query`、`fragment` 或 `form_post`。 `form_post` 會執行 POST，其中包含您重新導向 URI 的程式碼。 |
 | `state`                 | 建議使用 | 同樣會隨權杖回應傳回之要求中所包含的值。 其可以是您想要之任何內容的字串。 隨機產生的唯一值通常用於 [防止跨站台要求偽造攻擊](https://tools.ietf.org/html/rfc6749#section-10.12)。 此值也可以將驗證要求發生前使用者在應用程式中的狀態相關資訊 (例如他們所在的網頁或檢視) 編碼。 |
-| `prompt`  | 選用    | 表示需要的使用者互動類型。 此時唯有 `login`、`none` 及 `consent` 是有效值。<br/><br/>- `prompt=login` 會強制使用者在該要求上輸入認證，否定單一登入。<br/>- `prompt=none` 則相反，其會確保使用者不會看到任何互動式提示。 如果無法透過單一登入以無訊息方式完成要求，Microsoft 身分識別平台端點將傳回 `interaction_required` 錯誤。<br/>- `prompt=consent` 會在使用者登入之後觸發 OAuth 同意對話方塊，詢問使用者是否要授與權限給應用程式。<br/>- `prompt=select_account` 將中斷單一登入，其中會列出工作階段或任何已記住的帳戶中的所有帳戶，或提供選擇使用不同帳戶的選項。<br/> |
+| `prompt`  | 選用    | 表示需要的使用者互動類型。 此時唯有 `login`、`none` 及 `consent` 是有效值。<br/><br/>- `prompt=login` 會強制使用者在該要求上輸入認證，否定單一登入。<br/>- `prompt=none` 則相反，其會確保使用者不會看到任何互動式提示。 如果要求無法透過單一登入以無訊息方式完成，Microsoft 身分識別平臺將會傳回 `interaction_required` 錯誤。<br/>- `prompt=consent` 會在使用者登入之後觸發 OAuth 同意對話方塊，詢問使用者是否要授與權限給應用程式。<br/>- `prompt=select_account` 將中斷單一登入，其中會列出工作階段或任何已記住的帳戶中的所有帳戶，或提供選擇使用不同帳戶的選項。<br/> |
 | `login_hint`  | 選用    | 如果您事先知道其使用者名稱，可用來預先填入使用者登入頁面的使用者名稱/電子郵件地址欄位。 通常應用程式會在重新驗證期間使用此參數，已經使用 `preferred_username` 宣告從上一個登入擷取使用者名稱。   |
 | `domain_hint`  | 選用    | 如果包含，它會略過使用者在登入頁面上以電子郵件為基礎的探索程序，藉以提供稍微更有效率的使用者體驗，例如，將使用者傳送到同盟識別提供者。 通常應用程式會在重新驗證 (擷取上一次登入的 `tid` ) 期間使用此參數。 如果 `tid` 宣告值是 `9188040d-6c67-4c5b-b112-36a304b66dad`，您應該使用 `domain_hint=consumers`。 否則，使用 `domain_hint=organizations`。  |
 | `code_challenge`  | 建議 / 必要 | 用來透過「代碼交換的證明金鑰」(PKCE) 保護授權碼授與。 如果包含 `code_challenge_method`，則為必要參數。 如需詳細資訊，請參閱 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 現在建議所有的應用程式類型，包括原生應用程式、SPA 和機密用戶端 (例如 Web 應用程式)。 |
-| `code_challenge_method` | 建議 / 必要 | 用來為 `code_challenge` 參數編碼 `code_verifier` 的方法。 這 *應該* 是 `S256` ，但 `plain` 如果基於某些原因而導致用戶端無法支援 SHA256，則規格允許使用。 <br/><br/>如果排除，則當包含 `code_challenge` 時，會假設 `code_challenge` 是純文字。 Microsoft 身分識別平台同時支援 `plain` 和 `S256`。 如需詳細資訊，請參閱 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 這是使用[授權碼流程單頁應用程式](reference-third-party-cookies-spas.md)所需的必要條件。|
+| `code_challenge_method` | 建議 / 必要 | 用來為 `code_challenge` 參數編碼 `code_verifier` 的方法。 這 *應該* 是 `S256` ，但 `plain` 如果基於某些原因而導致用戶端無法支援 SHA256，則規格允許使用。 <br/><br/>如果排除，則當包含 `code_challenge` 時，會假設 `code_challenge` 是純文字。 Microsoft 身分識別平臺支援 `plain` 和 `S256` 。 如需詳細資訊，請參閱 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 這是使用[授權碼流程單頁應用程式](reference-third-party-cookies-spas.md)所需的必要條件。|
 
 
-此時，會要求使用者輸入其認證並完成驗證。 Microsoft 身分識別平台端點也會確認使用者已經同意 `scope` 查詢參數所指出的權限。 如果使用者未曾同意這些權限的任何一項，就會要求使用者同意要求的權限。 [這裡提供權限、同意與多租用戶應用程式](v2-permissions-and-consent.md)的詳細資料。
+此時，會要求使用者輸入其認證並完成驗證。 Microsoft 身分識別平臺也會確保使用者已同意查詢參數中所指出的許可權 `scope` 。 如果使用者未曾同意這些權限的任何一項，就會要求使用者同意要求的權限。 [這裡提供權限、同意與多租用戶應用程式](v2-permissions-and-consent.md)的詳細資料。
 
-一旦使用者驗證並同意，Microsoft 身分識別平台端點就會使用 `response_mode` 參數中指定的方法，將回應傳回至位於指定 `redirect_uri` 所在的應用程式。
+一旦使用者驗證並授與同意，Microsoft 身分識別平臺將會 `redirect_uri` 使用參數中指定的方法，將回應傳回給您的應用程式 `response_mode` 。
 
 #### <a name="successful-response"></a>成功回應
 
@@ -333,7 +333,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `tenant`        | required     | 要求路徑中的 `{tenant}` 值可用來控制可登入應用程式的人員。 允許的值為 `common`、`organizations`、`consumers` 及租用戶識別碼。 如需更多詳細資訊，請參閱 [通訊協定基本概念](active-directory-v2-protocols.md#endpoints)。   |
 | `client_id`     | required    | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗指派給您應用程式的 **應用程式 (用戶端) 識別碼**。 |
 | `grant_type`    | required    | 必須是授權碼流程此階段的 `refresh_token` 。 |
-| `scope`         | required    | 範圍的空格分隔清單。 在此階段中要求的範圍必須相當於或為原始 authorization_code 要求階段中所要求的範圍子集。 如果這個要求中指定的範圍遍及多個資源伺服器，Microsoft 身分識別平台端點就會傳回第一個範圍中所指定資源的權杖。 如需範圍的詳盡說明，請參閱 [權限、同意和範圍](v2-permissions-and-consent.md)。 |
+| `scope`         | required    | 範圍的空格分隔清單。 在此階段中要求的範圍必須相當於或為原始 authorization_code 要求階段中所要求的範圍子集。 如果此要求中指定的範圍跨越多個資源伺服器，則 Microsoft 身分識別平臺會傳回第一個範圍中所指定資源的權杖。 如需範圍的詳盡說明，請參閱 [權限、同意和範圍](v2-permissions-and-consent.md)。 |
 | `refresh_token` | required    | 您在流程的第二個階段中取得的 refresh_token。 |
 | `client_secret` | Web Apps 所需 | 您在應用程式註冊入口網站中為應用程式建立的應用程式密碼。 此參數不應用於原生應用程式中，因為 client_secrets 無法可靠地儲存在裝置上。 這是 Web 應用程式和 Web API 的必要參數，能夠將 client_secret 安全地儲存在伺服器端。 此密碼必須經過 URL 編碼。 如需詳細資訊，請參閱 [URI 一般語法規格](https://tools.ietf.org/html/rfc3986#page-12)。 |
 

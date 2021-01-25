@@ -13,14 +13,14 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 33dffa40e0236483d641c2e2bbe318bb62a7724d
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f4ae26a489b823e2347841cf72690d6cd8462611
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678182"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755306"
 ---
-# <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft 身分識別平臺中可設定的權杖存留期 (預覽版) 
+# <a name="configurable-token-lifetimes-in-the-microsoft-identity-platform-preview"></a>Microsoft 身分識別平臺中可設定的權杖存留期 (預覽版) 
 
 您可以指定 Microsoft 身分識別平臺所發出的存取、識別碼或 SAML 權杖的存留期。 不論是針對組織中所有的應用程式、針對多租用戶 (多組織) 應用程式，還是針對組織中特定的服務主體，都可以設定權杖存留期。 不過，我們目前不支援設定 [受控識別服務主體](../managed-identities-azure-resources/overview.md)的權杖存留期。
 
@@ -50,7 +50,7 @@ ms.locfileid: "98678182"
 
 ### <a name="saml-tokens"></a>SAML 權杖
 
-許多 web 架構 SAAS 應用程式都會使用 SAML 權杖，並使用 Azure Active Directory 的 SAML2 通訊協定端點取得。 使用 WS-同盟的應用程式也會使用它們。 權杖的預設存留期為1小時。 從應用程式的觀點來看，權杖的有效期間是由權杖中元素的 NotOnOrAfter 值所指定 `<conditions …>` 。 在權杖的有效期間結束之後，用戶端必須起始新的驗證要求，這通常會在沒有互動式登入的情況下滿足，因為單一登入 (SSO) 會話權杖的結果。
+許多 web 架構 SaaS 應用程式都會使用 SAML 權杖，並使用 Azure Active Directory 的 SAML2 通訊協定端點取得。 使用 WS-同盟的應用程式也會使用它們。 權杖的預設存留期為1小時。 從應用程式的觀點來看，權杖的有效期間是由權杖中元素的 NotOnOrAfter 值所指定 `<conditions …>` 。 在權杖的有效期間結束之後，用戶端必須起始新的驗證要求，這通常會在沒有互動式登入的情況下滿足，因為單一登入 (SSO) 會話權杖的結果。
 
 您可以使用中的參數來變更 NotOnOrAfter 的值 `AccessTokenLifetime` `TokenLifetimePolicy` 。 它會設定為原則中所設定的存留期（如果有的話），加上五分鐘的時鐘誤差因數。
 
@@ -58,7 +58,7 @@ ms.locfileid: "98678182"
 
 ### <a name="id-tokens"></a>ID 權杖
 
-識別碼權杖會傳遞至網站與原生用戶端。 識別碼權杖包含使用者的設定檔資訊。 識別碼權杖會繫結至特定的使用者與用戶端組合。 識別碼權杖在到期前都會被視為有效。 通常，Web 應用程式會將應用程式中的使用者工作階段存留期，與針對該使用者簽發之識別碼權杖的存留期做比對。 您可以調整識別碼權杖的存留期，以控制 web 應用程式的應用程式會話過期的頻率，以及要求使用者以無訊息方式或互動方式) ，向 Microsoft 身分識別平臺重新驗證的頻率 (。
+識別碼權杖會傳遞至網站與原生用戶端。 識別碼權杖包含使用者的設定檔資訊。 識別碼權杖會繫結至特定的使用者與用戶端組合。 識別碼權杖在到期前都會被視為有效。 通常，Web 應用程式會將應用程式中的使用者工作階段存留期，與針對該使用者簽發之識別碼權杖的存留期做比對。 您可以調整識別碼權杖的存留期，以控制 web 應用程式在應用程式會話過期的頻率，以及要求使用者以無訊息方式或互動的方式) 重新驗證使用者的頻率 (。
 
 ### <a name="token-lifetime-policy-properties"></a>權杖存留期原則屬性
 
@@ -274,6 +274,6 @@ Microsoft 身分識別平臺會使用兩種 SSO 會話權杖：持續性和非�
 | [Get-AzureADServicePrincipalPolicy](/powershell/module/azuread/get-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | 取得與指定的服務主體連結的任何原則。|
 | [Remove-AzureADServicePrincipalPolicy](/powershell/module/azuread/remove-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | 從指定的服務主體移除原則。|
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解，請參閱 [如何設定權杖存留期的範例](configure-token-lifetimes.md)。

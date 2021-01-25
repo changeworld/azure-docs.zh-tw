@@ -14,12 +14,12 @@ ms.date: 11/11/2019
 ms.author: rayluo
 ms.reviewer: marsma, rayluo, nacanuma
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 213184409c9f5ee21ac9f61be1ad138fbbaa3590
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 42ffc7ffba20868b23675fd8613fd3ef11b0924a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107850"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755049"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>適用于 Python 的 ADAL 至 MSAL 遷移指南
 
@@ -38,13 +38,13 @@ ADAL 適用于 Azure Active Directory (Azure AD) v1.0 端點。 Microsoft 驗證
   - OAuth 2.0 版
   - OpenID Connect (OIDC) 
 
-如需詳細資訊，請參閱 [Microsoft 身分識別平臺 (v2.0) 端點的不同之處](../azuread-dev/azure-ad-endpoint-comparison.md) 。
+查看 [Microsoft 身分識別平臺有何不同？](../azuread-dev/azure-ad-endpoint-comparison.md) 如需詳細資訊，請參閱。
 
 ### <a name="scopes-not-resources"></a>範圍，而非資源
 
 ADAL Python 會取得資源的權杖，但 MSAL Python 會取得範圍的權杖。 MSAL Python 中的 API 介面不再有資源參數。 您必須提供範圍做為字串清單，以宣告所需的許可權和要求的資源。 若要查看範圍的一些範例，請參閱 [Microsoft Graph 的範圍](/graph/permissions-reference)。
 
-您可以將 `/.default` 範圍尾碼新增至資源，以協助將您的應用程式從 v1.0 端點 (ADAL) 遷移至 Microsoft 身分識別平臺端點 (MSAL) 。 例如，針對的資源值 `https://graph.microsoft.com` ，相等的範圍值為 `https://graph.microsoft.com/.default` 。  如果資源不是在 URL 格式中，而是表單的資源識別碼 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` ，您仍然可以使用範圍值 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` 。
+您可以將 `/.default` 範圍尾碼新增至資源，以協助將您的應用程式從 v1.0 端點（ (ADAL) ）遷移至 Microsoft 身分識別平臺 (MSAL) 。 例如，針對的資源值 `https://graph.microsoft.com` ，相等的範圍值為 `https://graph.microsoft.com/.default` 。  如果資源不是在 URL 格式中，而是表單的資源識別碼 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` ，您仍然可以使用範圍值 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` 。
 
 如需不同類型的範圍的詳細資訊，請參閱 [Microsoft 身分識別平臺中的許可權和同意](./v2-permissions-and-consent.md) ，以及 [接受 V1.0 權杖的 Web API 範圍](./msal-v1-app-scopes.md) 文章。
 
@@ -92,7 +92,7 @@ def get_preexisting_rt_and_their_scopes_from_elsewhere():
     # You may be able to append "/.default" to your v1 resource to form a scope
     # See https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope
 
-    # Or maybe you have an app already talking to Microsoft identity platform v2,
+    # Or maybe you have an app already talking to the Microsoft identity platform,
     # powered by some 3rd-party auth library, and persist its tokens somehow.
 
     # Either way, you need to extract RTs from there, and return them like this.

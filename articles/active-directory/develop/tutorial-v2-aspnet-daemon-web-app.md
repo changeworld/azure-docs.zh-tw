@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 5f2560cdc062edb41ecda935eb9b8efe630949dc
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: HT
+ms.openlocfilehash: 7d34039a5d56feb42473b1a2b24def5244ec3e04
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015941"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756138"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>教學課程：建置會使用 Microsoft 身分識別平台的多租用戶精靈
 
@@ -49,7 +49,7 @@ ms.locfileid: "98015941"
 
 ![圖表顯示 UserSync 應用程式與三個連線至 Azure 的本機項目，開始點驗證是以互動方式取得權杖以連線至 Azure AD，AccountController 取得管理員同意以連線至 Azure AD，SyncController 讀取使用者以連線至 Microsoft Graph。](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
 
-若要進一步了解此範例中使用的概念，請閱讀[適用於身分識別平台端點的用戶端認證通訊協定文件](v2-oauth2-client-creds-grant-flow.md)。
+如需此範例中所使用概念的詳細資訊，請參閱 [身分識別平臺的用戶端認證通訊協定檔](v2-oauth2-client-creds-grant-flow.md)。
 
 ## <a name="clone-or-download-this-repository"></a>複製或下載此存放庫
 

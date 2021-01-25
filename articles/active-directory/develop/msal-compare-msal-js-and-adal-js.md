@@ -13,16 +13,16 @@ ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 6894d84f489d3719f1106ba4de79cb85fa45c5ed
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: a1ec8c31681ab6c0ac40ba33e94f33057ee948e7
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064945"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754792"
 ---
 # <a name="differences-between-msaljs-and-adaljs"></a>MSAL.js 與 ADAL.js 之間的差異
 
-適用于 JavaScript 的 Microsoft 驗證程式庫 ( # A0) 和適用于 JavaScript 的 Azure AD 驗證程式庫 ( # A1) 可用來從 Azure AD 驗證 Azure AD 實體和要求權杖。 到目前為止，大多數開發人員都已經使用 ADAL 要求權杖，進而使用開發人員適用的 Azure AD (v1.0) 驗證 Azure AD 身分識別 (公司和學校帳戶)。 現在使用 MSAL.js，您就可以透過 Microsoft 身分識別平台 (v2.0)，驗證一組更廣泛的 Microsoft 身分識別 (Azure AD 身分識別和 Microsoft 帳戶，以及透過 Azure AD B2C 的社交和本機帳戶)。
+適用于 JavaScript 的 Microsoft 驗證程式庫 ( # A0) 和適用于 JavaScript 的 Azure AD 驗證程式庫 ( # A1) 可用來從 Azure AD 驗證 Azure AD 實體和要求權杖。 到目前為止，大多數開發人員都已經使用 ADAL 要求權杖，進而使用開發人員適用的 Azure AD (v1.0) 驗證 Azure AD 身分識別 (公司和學校帳戶)。 現在，您可以使用 MSAL.js，透過 Microsoft 身分識別平臺，透過 Azure AD B2C) 驗證一組更廣泛的 Microsoft 身分識別 (Azure AD 身分識別和 Microsoft 帳戶，以及社交和本機帳戶。
 
 本文描述如何在適用於 JavaScript 的 Microsoft 驗證程式庫 (MSAL.js) 和適用於 JavaScript 的 Azure AD 驗證程式庫 (ADAL.js) 之間做選擇，並比較這兩個程式庫。
 

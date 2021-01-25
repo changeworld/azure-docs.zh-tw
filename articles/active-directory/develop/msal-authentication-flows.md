@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/08/2020
+ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda
-ms.openlocfilehash: 4a902ed53e92cd073d81626e80bdb3c8629ad072
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78932e5852453fe996e26a278f8a1859a8ecf546
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89437865"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755023"
 ---
 # <a name="authentication-flows"></a>驗證流程
 
@@ -53,9 +53,9 @@ Microsoft 驗證程式庫 (MSAL) 支援數個在不同應用程式案例中使�
 其中有數個流程同時支援互動式和非互動式權杖的取得。
 
   - **Interactive** 表示系統會提示使用者輸入。 例如，提示使用者登入、執行多重要素驗證 (MFA) ，或將其他同意授與資源。
-  - **非互動式**或 *無*訊息驗證會嘗試以登入伺服器 *無法* 提示使用者提供其他資訊的方式取得權杖。
+  - **非互動式** 或 *無* 訊息驗證會嘗試以登入伺服器 *無法* 提示使用者提供其他資訊的方式取得權杖。
 
-以 MSAL 為基礎的應用程式應該會先嘗試以 *無*訊息方式取得權杖，然後只有在非互動式方法失敗時才以互動方式取得權杖。 如需此模式的詳細資訊，請參閱 [使用 Microsoft 驗證程式庫 (MSAL) 取得和 ](msal-acquire-cache-tokens.md)快取權杖。
+以 MSAL 為基礎的應用程式應該會先嘗試以 *無* 訊息方式取得權杖，然後只有在非互動式方法失敗時才以互動方式取得權杖。 如需此模式的詳細資訊，請參閱 [使用 Microsoft 驗證程式庫 (MSAL) 取得和 ](msal-acquire-cache-tokens.md)快取權杖。
 
 ## <a name="authorization-code"></a>授權碼
 
@@ -219,11 +219,11 @@ IWA 不會略過多重要素驗證。 若已設定多重要素驗證，如果需
 這表示下列其中一個條件成立：
 
 - 您是開發人員在 Azure 入口網站中選取了 **[授** 與]。
-- 租使用者系統管理員已在 Azure 入口網站 (中應用程式註冊的 [ **API 許可權**] 索引標籤中選取了 [**授與/撤銷系統管理員同意 {tenant domain}** ]，請參閱[新增許可權以存取您的 web API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api)) 。
+- 租使用者系統管理員已在 Azure 入口網站 (中應用程式註冊的 [ **API 許可權**] 索引標籤中選取了 [**授與/撤銷系統管理員同意 {tenant domain}** ]，請參閱 [新增許可權以存取您的 web API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api)) 。
 - 您已提供使用者同意應用程式的方式;請參閱 [要求個別使用者同意](v2-permissions-and-consent.md#requesting-individual-user-consent)。
 - 您已提供方法讓租使用者系統管理員同意應用程式;請參閱系統 [管理員同意](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)。
 
-已針對 .NET 傳統型、.NET Core 和 Windows 通用平台應用程式啟用 IWA 流程。 在 .NET Core 上，您必須將使用者名稱提供給 IWA，因為 .NET Core 無法從作業系統取得使用者名稱。
+已針對 .NET 傳統型、.NET Core 和 Windows 通用平台應用程式啟用 IWA 流程。
 
 如需同意的詳細資訊，請參閱 [v2.0 權限和同意](v2-permissions-and-consent.md)。
 

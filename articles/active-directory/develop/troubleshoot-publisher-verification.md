@@ -1,5 +1,6 @@
 ---
-title: 針對發行者驗證進行疑難排解 - Microsoft 身分識別平台 | Azure
+title: 疑難排解發行者驗證 |蔚藍
+titleSuffix: Microsoft identity platform
 description: 說明如何藉由呼叫 Microsoft Graph Api，針對 Microsoft 身分識別平臺進行發行者驗證的疑難排解。
 services: active-directory
 author: rwike77
@@ -12,12 +13,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 857659cdd97666dba585c1ec22c750e29bf28879
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 10609f2706d257dbe5d8f43b85da5f06cb986cae
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169166"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756187"
 ---
 # <a name="troubleshoot-publisher-verification"></a>針對發行者驗證進行疑難排解
 如果您無法完成此程式，或在 [發行者驗證](publisher-verification-overview.md)中遇到非預期的行為，您應該先執行下列動作，如果您收到錯誤或看到非預期的行為： 

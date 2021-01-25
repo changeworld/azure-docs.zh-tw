@@ -13,16 +13,16 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: 033d5cfa5dbe5e0010bc1182f54643ec04db3ce3
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: HT
+ms.openlocfilehash: 24c29d34c14e6237bc79e38741ea244da5429e9e
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017607"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754565"
 ---
 # <a name="how-to-remove-an-application-registered-with-the-microsoft-identity-platform"></a>如何移除使用 Microsoft 身分識別平台所註冊的應用程式
 
-已使用 Microsoft 身分識別平台註冊應用程式的企業開發人員和軟體即服務 (SaaS) 提供者，可能需要移除應用程式的註冊。
+企業開發人員和軟體即服務 (SaaS) 提供者（使用 Microsoft 身分識別平臺註冊應用程式）可能需要移除應用程式的註冊。
 
 在後續章節中，您將了解如何：
 

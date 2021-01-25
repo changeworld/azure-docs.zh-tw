@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: b165cd4abd55026e10aa43eb20faa85b887de194
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 6a33da602eaa9bee20f155eaa550e558e5dcbeca
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065038"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755555"
 ---
 # <a name="app-registration-reference"></a>App 註冊參考
 
@@ -27,7 +27,7 @@ ms.locfileid: "98065038"
 
 ## <a name="my-applications-or-converged-applications"></a>我的應用程式或交集的應用程式
 
-此清單包含所有為搭配 Microsoft 身分識別平台 (v2.0) 端點使用而註冊的應用程式。 這些應用程式能夠讓使用者使用個人的 Microsoft 帳戶登入，也可使用工作/學校帳戶從 Azure Active Directory 登入。 若要深入了解身分識別平台端點，請參閱 [v2.0 概觀](./v2-overview.md)。 這些應用程式也可以用來與 Microsoft 帳戶驗證端點 `https://login.live.com`整合。
+這份清單包含所有已註冊以與 Microsoft 身分識別平臺搭配使用的應用程式。 這些應用程式能夠讓使用者使用個人的 Microsoft 帳戶登入，也可使用工作/學校帳戶從 Azure Active Directory 登入。 若要深入瞭解 Microsoft 身分識別平臺，請參閱 [2.0 版總覽](./v2-overview.md)。 這些應用程式也可以用來與 Microsoft 帳戶驗證端點 `https://login.live.com`整合。
 
 ## <a name="azure-ad-only-applications"></a>僅限 Azure AD 的應用程式
 
@@ -39,7 +39,7 @@ ms.locfileid: "98065038"
 
 ## <a name="application-secrets"></a>應用程式密碼
 
-應用程式秘密是可讓您的應用程式使用 Microsoft 身分識別平臺執行可靠 [用戶端驗證](https://tools.ietf.org/html/rfc6749#section-2.3) 的認證。 在 OAuth 和 OpenID Connect 中，應用程式密碼通常稱為 `client_secret`。 在 v2.0 通訊協定中，任何在 web 可定址位置收到安全性權杖的應用程式 (使用 `https` 配置) 必須使用應用程式密碼，以在兌換該安全性權杖時向 Microsoft 身分識別平臺識別其身分。 此外，在裝置上收到權杖的任何原生用戶端都將禁止使用應用程式密碼來執行用戶端驗證。 這項限制可防止在不安全的環境中儲存機密資料。
+應用程式秘密是可讓您的應用程式使用 Microsoft 身分識別平臺執行可靠 [用戶端驗證](https://tools.ietf.org/html/rfc6749#section-2.3) 的認證。 在 OAuth 和 OpenID Connect 中，應用程式密碼通常稱為 `client_secret`。 在 v2.0 通訊協定中，任何在 web 可定址位置收到安全性權杖的應用程式 (使用 `https` 配置) 必須使用應用程式密碼，以在兌換該安全性權杖時，向 Microsoft 身分識別平臺識別其身分。 此外，在裝置上收到權杖的任何原生用戶端都將禁止使用應用程式密碼來執行用戶端驗證。 這項限制可防止在不安全的環境中儲存機密資料。
 
 每個應用程式最後都能在任何時間點包含兩個有效的應用程式密碼。 藉由維護兩個密碼，您就能夠在應用程式的整個環境中執行定期的金鑰變換。 一旦將應用程式的全部內容移轉至新的密碼之後，您可能會刪除舊的密碼，並佈建一個新密碼。
 
