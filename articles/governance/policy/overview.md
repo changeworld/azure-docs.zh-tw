@@ -1,14 +1,14 @@
 ---
 title: Azure 原則的概觀
 description: Azure 原則是 Azure 中的一個服務，您可以在 Azure 環境中用來建立、指派和管理原則定義。
-ms.date: 10/05/2020
+ms.date: 01/14/2021
 ms.topic: overview
-ms.openlocfilehash: 96fd29b5e3d24bc3e678461a95005e004a8a3a80
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
-ms.translationtype: HT
+ms.openlocfilehash: df430586af2e701ec2881f6ea760095fd2ca79d0
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803947"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220723"
 ---
 # <a name="what-is-azure-policy"></a>什麼是 Azure 原則？
 
@@ -83,7 +83,7 @@ Azure 原則在下列兩個資源提供者中有數個權限，一般稱之為�
 
 ### <a name="resources-covered-by-azure-policy"></a>Azure 原則所涵蓋的資源
 
-Azure 原則會評估 Azure 中的所有資源和已啟用 Arc 的資源。 某些資源提供者 (例如[來賓設定](./concepts/guest-configuration.md)、[Azure Kubernetes Service](../../aks/intro-kubernetes.md) 和 [Azure Key Vault](../../key-vault/general/overview.md)) 會有更深入的管理設定和物件整合。 若要深入了解，請參閱[資源提供者模式](./concepts/definition-structure.md)。
+Azure 原則會評估訂用帳戶層級上或底下的所有 Azure 資源，包括已啟用 Arc 的資源。 某些資源提供者 (例如[來賓設定](./concepts/guest-configuration.md)、[Azure Kubernetes Service](../../aks/intro-kubernetes.md) 和 [Azure Key Vault](../../key-vault/general/overview.md)) 會有更深入的管理設定和物件整合。 若要深入了解，請參閱[資源提供者模式](./concepts/definition-structure.md)。
 
 ### <a name="recommendations-for-managing-policies"></a>管理原則的建議
 

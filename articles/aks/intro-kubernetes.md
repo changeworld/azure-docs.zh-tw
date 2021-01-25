@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 05/06/2019
 ms.custom: mvc
-ms.openlocfilehash: 75f4602be15ef2487272ed5790d92c4c884c551f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
-ms.translationtype: HT
+ms.openlocfilehash: 4115ab2140cd3bf67135e494e16fb8121c040ff6
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681545"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246191"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -66,9 +66,9 @@ AKS 支援建立已啟用 GPU 的節點集區。 Azure 目前提供單一或多�
 
 ### <a name="confidential-computing-nodes-public-preview"></a>機密計算節點 (公開預覽)
 
-AKS 支援建立 Intel SGX 型的機密計算節點集區 (DCSv2 VM)。 機密計算節點可讓容器在硬體型信任且隔離的執行環境 (記憶體保護區) 中執行。 透過證明而與程式碼完整性結合的容器之間的隔離，可以協助您實現深度防禦的容器安全性策略。 機密計算節點同時支援機密容器 (現有的 docker 應用程式) 和記憶體保護區感知容器。
+AKS 支援建立 Intel SGX 型的機密計算節點集區 (DCSv2 VM)。 機密計算節點可讓容器在硬體型的信任執行環境 (記憶體保護區) 中執行。 透過證明而與程式碼完整性結合的容器之間的隔離，可以協助您實現深度防禦的容器安全性策略。 機密計算節點同時支援機密容器 (現有的 Docker 應用程式) 和記憶體保護區感知容器。
 
-如需詳細資訊，請參閱 [AKS 上的機密計算節點][conf-com-node]
+如需詳細資訊，請參閱 [AKS 上的機密計算節點][conf-com-node]。
 
 ### <a name="storage-volume-support"></a>存放磁碟區支援
 
@@ -98,9 +98,9 @@ Kubernetes 具有豐富的開發和管理工具生態系統，例如 Helm 和 Vi
 
 此外，Azure Dev Spaces 可為小組提供快速、疊代的 Kubernetes 開發經驗。 使用基本設定，您就可以直接在 AKS 中執行容器並進行偵錯。 若要開始使用，請參閱 [Azure Dev Spaces][azure-dev-spaces]。
 
-Azure DevOps 專案提供簡單的解決方案，可讓您將現有的程式碼與 Git 存放庫帶入 Azure。 DevOps 專案會自動建立 ASK (Azure DevOps Services 中的發行管線，其中包含 CI 建置管線) 等 Azure 資源、設定 CD 發行管線，然後建立監視用的 Azure Application Insights 資源。
+DevOps Starter 提供簡單的解決方案，讓您可以將現有的程式碼和 Git 存放庫帶入 Azure。 DevOps Starter 會自動建立 ASK (Azure DevOps Services 中的發行管線，其中包含 CI 建置管線) 等 Azure 資源、設定 CD 發行管線，然後建立監視用的 Azure Application Insights 資源。
 
-如需詳細資訊，請參閱 [Azure DevOps 專案][azure-devops]。
+如需詳細資訊，請參閱 [DevOps Starter][azure-devops]。
 
 ## <a name="docker-image-support-and-private-container-registry"></a>Docker 映像支援和私人容器登錄
 

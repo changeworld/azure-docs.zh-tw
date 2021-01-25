@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: c59bd7f9bc8c5049572afdf93343222b30c0007b
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: d1546ef92d923b9d72c4aca0ddf61d2b93646656
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131899"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602340"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>使用成本警示監視使用量和支出
 
@@ -29,7 +29,7 @@ ms.locfileid: "92131899"
 
 ## <a name="credit-alerts"></a>點數警示
 
-點數警示會在使用 Azure 點數預付金時通知您。 預付金適用於具有 Enterprise 合約的組織。 點數警示會在使用額度達 90% 和 100% 的 Azure 點數餘額時自動產生。 每當警示產生時，就會在成本警示和傳送給帳戶擁有者的電子郵件中反映該警示。
+當您的 Azure 預付款 (先前稱為預付金) 被取用時，信用額度警示會通知您。 Azure 預付款適用於具有 Enterprise 合約的組織。 信用額度警示會在您 Azure 預付款信用額度餘額的 90% 和 100% 時自動產生。 每當警示產生時，就會在成本警示和傳送給帳戶擁有者的電子郵件中反映該警示。
 
 ## <a name="department-spending-quota-alerts"></a>部門費用配額警示
 
@@ -57,7 +57,7 @@ ms.locfileid: "92131899"
 
 所有警示都會顯示警示類型。 預算警示會顯示它的產生原因及其適用的預算名稱。 每個警示都會顯示它的產生日期、它的狀態，以及警示適用的範圍 (訂用帳戶或管理群組)。
 
-可能的狀態包括**作用中**和**已關閉**。 [作用中] 狀態表示警示仍然相關。 [已關閉] 狀態表示有人標示了警示，將其設定為不再相關。
+可能的狀態包括 **作用中** 和 **已關閉**。 [作用中] 狀態表示警示仍然相關。 [已關閉] 狀態表示有人標示了警示，將其設定為不再相關。
 
 從清單中選取要檢視其詳細資料的警示。 警示詳細資料會顯示警示的詳細資訊。 預算警示包含預算的連結。 如果有適用於預算警示的建議，則也會顯示建議的連結。 預算、點數和部門支出配額警示都會提供連結以便在成本分析中進行分析，而您可以在其中瀏覽警示範圍的成本。 下列範例顯示某部門的支出與警示詳細資料。
 

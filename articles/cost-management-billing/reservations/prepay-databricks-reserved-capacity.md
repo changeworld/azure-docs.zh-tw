@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: b7d7380114046fbeaaf4b6eb2660997d64168715
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
-ms.translationtype: HT
+ms.openlocfilehash: 390a8b421a7b34391bde689e4b968fa98cdbaf76
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91368561"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599157"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>使用預先購買來最佳化 Azure Databricks 成本
 
@@ -43,12 +43,12 @@ Databricks 預先購買會套用至所有 Databricks 工作負載和層級。 �
 
 - 您必須擔任下列項目的擁有者角色：至少一個 Enterprise 合約 (供應項目號碼：MS-AZR-0017P 或 MS-AZR-0148P) 或 Microsoft 客戶合約，或是使用隨用隨付費率的個別訂用帳戶 (供應項目號碼：MS-AZR-0003P 或 MS-AZR-0023P)。
 - 針對 EA 訂用帳戶，必須在 EA 入口網站中啟用 [新增保留執行個體] 選項。 或者，如果該設定已停用，則您必須是訂用帳戶的 EA 管理員。
-- 針對企業訂用帳戶，必須在 [EA 入口網站](https://ea.azure.com/)中啟用**新增保留執行個體**。 或者，如果該設定已停用，則您必須是訂用帳戶的 EA 系統管理員。
+- 針對企業訂用帳戶，必須在 [EA 入口網站](https://ea.azure.com/)中啟用 **新增保留執行個體**。 或者，如果該設定已停用，則您必須是訂用帳戶的 EA 系統管理員。
 
 **若要購買：**
 
 1. 移至 [Azure 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D)。
-1. 選取一個訂用帳戶。 使用 [訂用帳戶]  清單來選取用來支付保留容量的訂用帳戶。 訂用帳戶的付款方式為收取保留容量的預付費用。 費用會從註冊的承諾用量金額餘額扣除或作為超額部分收費。
+1. 選取一個訂用帳戶。 使用 [訂用帳戶]  清單來選取用來支付保留容量的訂用帳戶。 訂用帳戶的付款方式為收取保留容量的預付費用。 費用會從註冊的 Azure 預付款 (先前稱為預付金) 餘額扣除或作為超額部分收費。
 1. 選取範圍。 使用 [範圍]  清單來選取訂用帳戶範圍：
     - **單一資源群組範圍** — 只會將保留折扣套用至所選資源群組中的相符資源。
     - **單一訂用帳戶範圍** — 會將保留折扣套用至所選訂用帳戶中的相符資源。

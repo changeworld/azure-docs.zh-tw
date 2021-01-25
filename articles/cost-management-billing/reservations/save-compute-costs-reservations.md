@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: overview
 ms.date: 12/15/2020
 ms.author: banders
-ms.openlocfilehash: b79bde204d82b069b3314855a45a680b863c3f69
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
-ms.translationtype: HT
+ms.openlocfilehash: 0e45e9741e92bb9e1fe23af79695cae06e64e871
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560486"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602056"
 ---
 # <a name="what-are-azure-reservations"></a>什麼是 Azure 保留項目？
 
@@ -56,7 +56,7 @@ Azure 保留可協助您藉由承諾多項產品一年或三年期的方案來�
 
 ## <a name="how-is-a-reservation-billed"></a>保留的計費方式為何？ 
 
-保留會計費至與訂用帳戶繫結的付款方式。 保留成本是從您的預付餘額扣除 (如果有的話)。 當您的預付餘額未涵蓋保留的成本時，您會支付超額部分。 如果您有來自個別方案的訂用帳戶採用隨用隨付費率，您的帳戶所擁有的信用卡會立即被收取預付費用。 每月付款會出現在您的發票上，且您的信用卡會每月扣款。 當您透過發票計費時，您會在下一張發票上看到費用。 
+保留會計費至與訂用帳戶繫結的付款方式。 保留費用會從您 Azure 預付款 (先前稱為預付金) 的餘額扣除 (如果有的話)。 當您的 Azure 預付款餘額不能涵蓋保留費用時，您將需要支付超額部分。 如果您有來自個別方案的訂用帳戶採用隨用隨付費率，您的帳戶所擁有的信用卡會立即被收取預付費用。 每月付款會出現在您的發票上，且您的信用卡會每月扣款。 當您透過發票計費時，您會在下一張發票上看到費用。 
 
 ## <a name="who-can-manage-a-reservation-by-default"></a>預設可以管理保留的人員
 

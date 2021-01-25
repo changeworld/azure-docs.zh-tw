@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: b82f4252754e79813629e0c792ee0ba35e437714
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: HT
+ms.openlocfilehash: bd43b668c318b825c5c5b6f36fc1da1055863bed
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151512"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599102"
 ---
 # <a name="save-costs-for-azure-synapse-analytics-charges-with-reserved-capacity"></a>使用保留容量節省 Azure Synapse Analytics 費用的成本
 
@@ -46,7 +46,7 @@ Azure Synapse Analytics 保留大小應該以您取用的計算資料倉儲單�
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 選取 [所有服務]   > [保留]  。
 3. 選取一個訂用帳戶。 使用 [訂用帳戶] 清單來選擇用來支付保留容量的訂用帳戶。 訂用帳戶的付款方式為收取保留容量的費用。 訂用帳戶類型必須是 Enterprise 合約 (供應項目號碼：MS-AZR-0017P 或 MS-AZR-0148P) 或隨用隨付 (供應項目號碼：MS-AZR-0003P 或 MS-AZR-0023P)。
-   - 針對企業訂用帳戶，費用會從註冊的承諾用量金額餘額扣除或作為超額部分收費。
+   - 針對 Enterprise 訂用帳戶，費用會從註冊的 Azure 預付款 (先前稱為預付金) 餘額扣除或作為超額部分收費。
    - 針對隨用隨付訂用帳戶，費用是透過訂用帳戶的信用卡或發票付款方式收取。
 4. 選取範圍。 使用 [範圍] 清單來選擇訂用帳戶範圍。
    - **單一資源群組範圍** — 只會將保留折扣套用至所選資源群組中的相符資源。
@@ -57,7 +57,7 @@ Azure Synapse Analytics 保留大小應該以您取用的計算資料倉儲單�
 5. 選取 [區域] 以選擇保留容量涵蓋的 Azure 區域。
 6. 選擇數量。 輸入您想要購買的 100 個資料倉儲單位 (cDWU) 數量。    
    例如，數量為 30 會每小時提供您 3,000 個 cDWU 的保留容量。
-7. 請參閱**成本**一節中的 Azure Synapse Analytics 保留容量保留成本。
+7. 請參閱 **成本** 一節中的 Azure Synapse Analytics 保留容量保留成本。
 8. 選取 [購買]  。
 9. 選取 [檢視此保留]  以查看購買狀態。
 

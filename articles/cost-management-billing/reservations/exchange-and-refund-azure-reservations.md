@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 12/15/2020
 ms.author: banders
-ms.openlocfilehash: b0f17149eb646b6108dc6a81922e6e5b00f143d6
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
-ms.translationtype: HT
+ms.openlocfilehash: 045ab35a35aa4caefb1e1bcbbf7bf78b726c09f7
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560537"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601452"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure 保留的自助式交換和退費
 
@@ -47,7 +47,7 @@ Azure 保留可提供彈性，以協助您滿足不斷演變的需求。 您可�
 
 ### <a name="enterprise-agreement-customers"></a>Enterprise 合約客戶
 
-款項會新增至交換和退款的預付金 (如果原本是使用交換或退款來購買的話)。 如果使用所購買保留的預付金期限已失效，則會將點數新增至您目前的 Enterprise 合約預付金期限。 點數的有效期是從退款日期起算的 90 天內。 未使用的點數會在 90 天結束時到期。
+如果原本是使用交換或退款來購買的話，款項會新增至用於交換和退款的 Azure 預付款 (先前稱為預付金)。 如果使用所購買保留的 Azure 預付款期限已失效，則會將信用額度新增至您目前 Enterprise 合約的 Azure 預付款期限。 點數的有效期是從退款日期起算的 90 天內。 未使用的點數會在 90 天結束時到期。
 
 如果原始購買是以超額部分進行的，則購買保留的原始發票和所有後續的發票都會重新開立並調整。 Microsoft 會針對退款發出貸項憑單。
 

@@ -3,17 +3,17 @@ title: Azure EA 合約和修訂文件
 description: 本文將說明 Azure EA 合約和修訂文件如何影響您使用 Azure EA 入口網站的方式。
 author: bandersmsft
 ms.author: banders
-ms.date: 09/03/2020
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 9e6750bd8404b4f9b910dda93859a0ca3fd268d4
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
-ms.translationtype: HT
+ms.openlocfilehash: c2c3636e98d67616826b03cca9657b806c5bd653
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442525"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598007"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA 合約和修訂文件
 
@@ -21,7 +21,7 @@ ms.locfileid: "89442525"
 
 ## <a name="enrollment-provisioning-status"></a>註冊佈建狀態
 
-新 Azure 預付款的開始日期是由區域營運中心開始進行處理的日期所定義。 由於透過 Azure EA 入口網站的 Azure 預付款訂單是在 UTC 時區僅型處理，如果您的 Azure 預付款採購單是在不同的區域進行處理，您可能會遇到一些延遲。 採購單上的範圍開始日期會顯示 Azure 預付款的開始日期。 範圍開始日期是 Azure EA 入口網站中開始顯示 Azure 預付款的日期。
+新 Azure 預付款 (先前稱為預付金) 的開始日期是由區域營運中心開始進行處理的日期所定義。 由於透過 Azure EA 入口網站的 Azure 預付款訂單是在 UTC 時區僅型處理，如果您的 Azure 預付款採購單是在不同的區域進行處理，您可能會遇到一些延遲。 採購單上的範圍開始日期會顯示 Azure 預付款的開始日期。 範圍開始日期是 Azure EA 入口網站中開始顯示 Azure 預付款的日期。
 
 ## <a name="support-for-enterprise-customers"></a>對企業客戶的支援
 
@@ -60,7 +60,7 @@ ms.locfileid: "89442525"
 
 ### <a name="how-the-calculation-works"></a>計算的運作方式
 
-LSP 會在 EA 入口網站中提供單一百分比數字。  入口網站上的所有商業資訊都是依照 LSP 所提供的百分比加費。 範例：
+LSP 會在 EA 入口網站中提供單一百分比數字。    入口網站上的所有商業資訊都是依照 LSP 所提供的百分比加費。 範例：
 
 - 客戶簽署 Azure 預付款為 100,000 美元的 EA。
 - 服務 A 的計量費率為每小時 10 美元。
@@ -101,13 +101,14 @@ LSP 會在 EA 入口網站中提供單一百分比數字。  入口網站上的
 在客戶檢視中，檢閱預付款期間 [使用量摘要] 中的加成價格。 Microsoft 價格仍可在合作夥伴檢視中取得。 您可以使用右上方的合作夥伴加成「人員」開關來切換檢視。
 
 1. 檢閱價位表中的價格。
-1. 在發佈之前，您可以選取 [檢視使用量摘要] > [客戶檢視] 索引標籤上的 [編輯] 進行變更。 
-  服務價格和預付款餘額都會以相同的百分比加成。 如果貨幣餘額和計量費率有不同的百分比，或不同服務有不同的百分比，則請勿使用此功能。
+1. 在發佈之前，您可以選取 [檢視使用量摘要] > [客戶檢視] 索引標籤上的 [編輯] 進行變更。
+   
+服務價格和預付款餘額都會以相同的百分比加成。 如果貨幣餘額和計量費率有不同的百分比，或不同服務有不同的百分比，則請勿使用此功能。
 
 **步驟三： 發佈**
 
 在檢閱並驗證定價之後，請按一下 [發佈]。
-  
+  
 選取發佈之後，企業系統管理員就能立即使用具有加成的定價。 但無法對加成進行編輯。 您必須停用加成並從步驟一開始。
 
 ### <a name="which-enrollments-have-a-markup-enabled"></a>哪些註冊已啟用加成？

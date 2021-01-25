@@ -9,18 +9,18 @@ ms.subservice: enterprise
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: d707051e20b4ce9d1289557aec6f8256c2e6bfba
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: HT
+ms.openlocfilehash: 643aac7927cc7b14693387fbb5765bdcd0214dc2
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150067"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598242"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>了解您的 Azure Enterprise 合約帳單
 
 當 Azure Enterprise 合約客戶超過組織的信用額度，或使用信用額度未涵蓋的服務時，他們就會收到發票。
 
-貴組織的信用額度包含您的承諾用量金額。 承諾用量金額是貴組織針對 Azure 服務使用量所預付的金額。 您可以連絡您的 Microsoft 客戶經理或轉銷商，在 Enterprise 合約中增加承諾用量金額的資金。
+貴組織的信用額度包含您的 Azure 預付款 (先前稱為預付金)。 Azure 預付款是貴組織針對 Azure 服務使用量所預付的金額。 您可以連絡您的 Microsoft 客戶經理或轉銷商，在 Enterprise 合約中增加 Azure 預付款的資金。
 
 本教學課程僅適用於具有 Azure Enterprise 合約的 Azure 客戶。
 
@@ -95,7 +95,7 @@ ms.locfileid: "92150067"
 
 本節內容僅適用於澳洲、日本或新加坡的 Azure 客戶。
 
-在企業版入口網站中，比較您在 [報表] > [使用量摘要] 中顯示的總使用量金額與服務超額發票。 服務超額發票包含超過組織信用額度的使用量，和/或信用額度未涵蓋的服務。 **使用量摘要**的金額不含稅。
+在企業版入口網站中，比較您在 [報表] > [使用量摘要] 中顯示的總使用量金額與服務超額發票。 服務超額發票包含超過組織信用額度的使用量，和/或信用額度未涵蓋的服務。 **使用量摘要** 的金額不含稅。
 
 登入 [Azure EA 入口網站](https://ea.azure.com)，然後選取 [報告]。 在索引標籤右上角，將檢視從 **M** 切換為 **C**，以符合發票上的期間。  
 
@@ -119,13 +119,13 @@ ms.locfileid: "92150067"
 
 本節內容僅適用於澳洲、日本或新加坡的 Azure 客戶。
 
-在企業入口網站的 [報表] > [使用量摘要] 上，比較您的 Azure Marketplace 總計和 Marketplace 發票。 Marketplace 發票僅適用於 Azure Marketplace 購買和使用量。 **使用量摘要**上的數量已包含由發行者決定的稅金。
+在企業入口網站的 [報表] > [使用量摘要] 上，比較您的 Azure Marketplace 總計和 Marketplace 發票。 Marketplace 發票僅適用於 Azure Marketplace 購買和使用量。 **使用量摘要** 上的數量已包含由發行者決定的稅金。
 
 登入 [Enterprise 入口網站](https://ea.azure.com)，然後選取 [報告]。 在索引標籤右上角，將檢視從 **M** 切換為 **C**，以符合發票上的期間。  
 
 ![在 [使用量摘要] 上顯示 M + C 選項的螢幕擷取畫面。](./media/review-enterprise-agreement-bill/ea-portal-usage-sumary-cm-option.png)  
 
-**Azure Marketplace** 總計應該符合 Marketplace 發票上的**銷售總額**。 若要取得依使用量計算的費用詳細資訊，請前往 [下載使用量]。 在 [Marketplace 費用] 下方，選取 [下載]。 Marketplace 價格包含發行者所決定的稅額。 客戶不會收到來自發行者的個別發票，以收集交易的稅額。
+**Azure Marketplace** 總計應該符合 Marketplace 發票上的 **銷售總額**。 若要取得依使用量計算的費用詳細資訊，請前往 [下載使用量]。 在 [Marketplace 費用] 下方，選取 [下載]。 Marketplace 價格包含發行者所決定的稅額。 客戶不會收到來自發行者的個別發票，以收集交易的稅額。
 
 ![在 Marketplace 費用下方顯示下載選項的螢幕擷取畫面。](./media/review-enterprise-agreement-bill/ea-portal-download-usage-marketplace.png)
 
@@ -155,7 +155,7 @@ ms.locfileid: "92150067"
 
 ## <a name="request-detailed-usage-information"></a>要求詳細的使用量資訊
 
-企業系統管理員可以在 Azure 企業版入口網站中檢視其使用量資料的摘要、已使用的承諾用量金額，以及與其他使用量相關聯的費用。 費用會顯示在所有帳戶和訂用帳戶的摘要層級上。
+企業系統管理員可以在 Azure 企業版入口網站中檢視其使用量資料的摘要、已使用預付款，以及與其他使用量相關聯的費用。 費用會顯示在所有帳戶和訂用帳戶的摘要層級上。
 
 若要檢視特定帳戶的詳細使用量，請移至 [報表] > [下載使用量]，來下載使用量詳細資料報表。
 
@@ -166,7 +166,7 @@ ms.locfileid: "92150067"
 
 ## <a name="reports"></a>報表
 
-企業系統管理員可以在 Azure 企業版入口網站中檢視其使用量資料的摘要、已使用的承諾用量金額，以及與其他使用量相關聯的費用。 費用會顯示在所有帳戶和訂用帳戶的摘要層級上。
+企業系統管理員可以在 Azure 企業版入口網站中檢視其使用量資料的摘要、已使用預付款，以及與其他使用量相關聯的費用。 費用會顯示在所有帳戶和訂用帳戶的摘要層級上。
 
 ### <a name="azure-enterprise-reports"></a>Azure 企業版報告
 
@@ -296,8 +296,8 @@ Azure Marketplace 費用有兩種類型：
 
 若要在 Azure 企業版入口網站中檢視不同的費用：
 
-- **使用量摘要報表**：**同時**顯示依使用量和月費計算的 Azure Marketplace 費用。
-- **Marketplace 費用報表**：**僅**顯示以使用量計算的 Azure Marketplace 費用。  一次性費用不會顯示。
+- **使用量摘要報表**：**同時** 顯示依使用量和月費計算的 Azure Marketplace 費用。
+- **Marketplace 費用報表**：**僅** 顯示以使用量計算的 Azure Marketplace 費用。  一次性費用不會顯示。
 
 > [!NOTE]
 > Azure Marketplace 不適用於 MPSA 註冊。
@@ -403,7 +403,7 @@ See [Power BI self-service sign up](https://powerbi.microsoft.com/documentation/
 
 ### <a name="why-is-my-cost-showing-as-0"></a>為何我的成本顯示為 $0？
 
-針對**直接註冊**客戶，企業系統管理員可以將使用量報告成本/定價資訊的存取權提供給帳戶擁有者和部門系統管理員。 請遵循下列步驟：
+針對 **直接註冊** 客戶，企業系統管理員可以將使用量報告成本/定價資訊的存取權提供給帳戶擁有者和部門系統管理員。 請遵循下列步驟：
 
 1. 在 Azure 企業版入口網站中，選取左側導覽區中的 [管理]。
 1. 選取 DA (部門系統管理員) 檢視費用旁的藍色鉛筆。
@@ -414,9 +414,9 @@ See [Power BI self-service sign up](https://powerbi.microsoft.com/documentation/
 > [!NOTE]
 > 如果您是帳戶擁有者或部門系統管理員，請洽詢企業系統管理員以啟用定價功能。
 
-針對**間接註冊**的客戶，請向您的合作夥伴確認他們已為您啟用定價功能。 這只能由合作夥伴完成。 啟用之後，您就能以企業系統管理員的身分查看註冊的成本和價格。
+針對 **間接註冊** 的客戶，請向您的合作夥伴確認他們已為您啟用定價功能。 這只能由合作夥伴完成。 啟用之後，您就能以企業系統管理員的身分查看註冊的成本和價格。
 
-想要為帳戶擁有者或部門系統管理員啟用 [檢視費用] 功能的合作夥伴，請遵循**直接註冊**底下的步驟。
+想要為帳戶擁有者或部門系統管理員啟用 [檢視費用] 功能的合作夥伴，請遵循 **直接註冊** 底下的步驟。
 
 ### <a name="why-is-there-no-sku-information-on-my-usage-detail-report"></a>使用量詳細資料報表上為什麼沒有任何 SKU 資訊？
 

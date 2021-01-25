@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 8cef36cf26231758eb839379d0c020484cbe09fb
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: e0a7553269e1223a5e744db967d65814877878ab
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132596"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598262"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>計費和成本管理的自動化案例
 
@@ -103,7 +103,7 @@ Web Direct 和企業客戶可以使用所有下列 API (除了註明的以外)�
 ### <a name="whats-the-difference-between-the-enterprise-reporting-apis-and-the-consumption-apis-when-should-i-use-each"></a>企業報告 API 與使用量 API 之間有何差異？ 各自的使用時機為何？
 這些 API 有一組類似的功能，並且可以回答同一組計費與成本管理空間相關問題。 但它們的目標對象不同：
 
-- 企業報告 API 這類 API 適用於已經與 Microsoft 簽署 Enterprise 合約的客戶，該合約會授與他們存取協商承諾用量和自訂定價的權限。 這類 API 需要您可從[企業版入口網站](https://ea.azure.com)取得的金鑰。 如需這些 API 的說明，請參閱[適用於企業客戶的報告 API 概觀](enterprise-api.md)。
+- 企業報告 API 這類 API 適用於已經與 Microsoft 簽署 Enterprise 合約的客戶，該合約會授與他們存取協商 Azure 預付款 (先前稱為預付金) 和自訂定價的權限。 這類 API 需要您可從[企業版入口網站](https://ea.azure.com)取得的金鑰。 如需這些 API 的說明，請參閱[適用於企業客戶的報告 API 概觀](enterprise-api.md)。
 
 - 所有客戶皆可取得使用量 API，但有一些例外狀況。 如需詳細資訊，請參閱 [Azure 使用量 API 概觀](consumption-api-overview.md)和[ Azure 使用量 API 參考](/rest/api/consumption/)。 我們建議將所提供的 API 作為最新開發案例的解決方案。
 
@@ -112,7 +112,7 @@ Web Direct 和企業客戶可以使用所有下列 API (除了註明的以外)�
 
 - [使用量詳細資料 API](/rest/api/consumption/usagedetails) 可提供每個計量器執行個體的 Azure 使用量和成本資訊。 提供的資料已通過 Azure 中的成本計量系統，而且已隨著其他可能的變更套用成本：
 
-   - 因為使用預付承諾用量而造成的帳戶變更
+   - 因為使用預付的 Azure 預付款而造成的帳戶變更
    - 因為 Azure 發現使用量差異而造成的帳戶變更
 
 - [使用量 API](/previous-versions/azure/reference/mt219003(v=azure.100)) \(英文\) 會在未經處理的 Azure 使用量資訊通過 Azure 中的成本計量系統之前提供該資訊。 此資料可能與在 Azure 費用計量系統之後看到的使用量或費用金額沒有任何相互關聯。

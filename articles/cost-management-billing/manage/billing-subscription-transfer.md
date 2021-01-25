@@ -8,15 +8,15 @@ tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/11/2020
+ms.date: 01/06/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: d37225f988cc906bdd92467afcf3f286220eebda
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: ae588708a41c1259628b726a3a471034dba7d131
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027861"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601550"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>將 Azure 訂用帳戶的帳單擁有權轉移給另一個帳戶
 
@@ -72,6 +72,18 @@ Visual Studio 和 Microsoft 合作夥伴網路訂用帳戶都有相關聯的每�
    1. 服務 (例如儲存體) 的存取金鑰。 如需詳細資訊，請參閱[關於 Azure 儲存體帳戶](../../storage/common/storage-account-create.md)
    1. 服務 (例如 Azure 虛擬機器) 的遠端存取認證。
 1. 如果您正與合作夥伴協力作業，請考慮更新訂用帳戶的合作夥伴 ID。 您可以在 [Azure 入口網站](https://portal.azure.com)更新合作夥伴識別碼。 如需詳細資訊，請參閱[將合作夥伴識別碼連結到您的 Azure 帳戶](link-partner-id.md)。
+
+## <a name="cancel-a-transfer-request"></a>取消轉移要求
+
+一次只能有一個作用中的移轉要求。 移轉要求的有效期為 15 天。 15 天之後，移轉要求就會過期。
+
+若要取消移轉要求：
+
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 瀏覽至 [訂用帳戶] > 選取您傳送移轉要求的訂用帳戶 > 選取 [移轉帳單擁有權]。
+1. 在頁面底部，選取 [取消移轉要求]。
+
+:::image type="content" source="./media/billing-subscription-transfer/transfer-billing-owership-cancel-request.png" alt-text="顯示 [移轉帳單擁有權] 視窗及 [取消移轉要求] 選項的範例" lightbox="./media/billing-subscription-transfer/transfer-billing-owership-cancel-request.png" :::
 
 ## <a name="troubleshooting"></a>疑難排解
 

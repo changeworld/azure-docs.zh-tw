@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 4dd22427038bc7c4052ee714c3ec3ce45d7a1837
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: fc9b6c4edc5d08c30b1eadb5084155b10d0e55a3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132817"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601514"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>如何透過 Azure 成本管理將雲端投資最佳化
 
@@ -53,7 +53,7 @@ Azure 成本管理可提供您規劃、分析以及減少費用，以便將雲�
 
 #### <a name="visibility"></a>可見性
 
-如果結構良好，成本管理可協助您告知人員所負責的 Azure 成本或所花的錢。 Azure 的服務專門針對深入了解錢花在*哪裡*而設計。 利用這些工具。 這些工具有助於找出未充分使用的資源、消除浪費，並將節省成本的機會發揮到極致。
+如果結構良好，成本管理可協助您告知人員所負責的 Azure 成本或所花的錢。 Azure 的服務專門針對深入了解錢花在 *哪裡* 而設計。 利用這些工具。 這些工具有助於找出未充分使用的資源、消除浪費，並將節省成本的機會發揮到極致。
 
 #### <a name="accountability"></a>責任
 
@@ -103,7 +103,7 @@ Azure 會提供工具來協助您評估程序。 這些工具可讓您了解啟�
 
 #### <a name="enterprise-agreement"></a>[Enterprise 合約](https://azure.microsoft.com/pricing/enterprise-agreement/)
 
-- 預付承諾用量的選項
+- 預付的 Azure 預付款選項 (先前稱為預付金)
 - 取得較低的 Azure 定價
 
 #### <a name="azure-in-csp"></a>[Azure in CSP](https://azure.microsoft.com/offers/ms-azr-0145p/)

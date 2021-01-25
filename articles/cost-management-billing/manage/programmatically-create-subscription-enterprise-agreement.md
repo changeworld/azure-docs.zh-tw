@@ -5,16 +5,16 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 01/13/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 0cdd25b2937dd1fb2cc70ef7b1c5a9e9ddaef375
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
-ms.translationtype: HT
+ms.openlocfilehash: bd155ea3c98231cf20fa7c62325e3c2ecfb89920
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780598"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185915"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>使用最新的 API 以程式設計方式建立 Azure Enterprise 合約訂用帳戶
 
@@ -31,7 +31,9 @@ ms.locfileid: "96780598"
 您必須擁有註冊帳戶的「擁有者」角色，才能建立訂用帳戶。 有兩種方式可取得此角色：
 
 * 您註冊中的 Enterprise 管理員可以[讓您成為帳戶擁有者](https://ea.azure.com/helpdocs/addNewAccount) (需登入)，這可讓您成為註冊帳戶的擁有者。
-* 註冊帳戶的現有擁有者可以[授與您存取權](grant-access-to-create-subscription.md)。 同樣地，若要使用服務主體來建立 EA 訂用帳戶，您必須[授與該服務主體建立訂用帳戶的能力](grant-access-to-create-subscription.md)。
+* 註冊帳戶的現有擁有者可以[授與您存取權](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put)。 同樣地，若要使用服務主體來建立 EA 訂用帳戶，您必須[授與該服務主體建立訂用帳戶的能力](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put)。 
+  > [!NOTE]
+  > 請確定您使用正確的 API 版本來授與註冊帳戶擁有者權限。 針對本文及其中所述的 API，請使用 [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) API。 如果您要遷移以使用較新的 API，您必須使用 [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) 來再次授與擁有者權限。 您先前使用 [2015-07-01 版本](grant-access-to-create-subscription.md)進行的設定不會自動轉換為使用較新的 API。
 
 ## <a name="find-accounts-you-have-access-to"></a>尋找您可以存取的帳戶
 

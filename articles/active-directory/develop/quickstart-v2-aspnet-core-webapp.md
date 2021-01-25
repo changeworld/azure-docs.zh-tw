@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 34af3a7b6c3dd9420c07b6b29ff114b8139fea39
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: HT
+ms.openlocfilehash: 293a8d8b8add37f78e5a900b093ec89e95851aec
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011963"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178631"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>快速入門：將「使用 Microsoft 登入」新增至 ASP.NET Core Web 應用程式
 
@@ -38,7 +38,7 @@ ms.locfileid: "98011963"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>選項 1：註冊和自動設定您的應用程式，然後下載程式碼範例
 >
-> 1. 移至 [Azure 入口網站 - 應用程式註冊](https://aka.ms/aspnetcore2-1-aad-quickstart-v2)。
+> 1. 移至 <a href="https://aka.ms/aspnetcore2-1-aad-quickstart-v2/" target="_blank">Azure 入口網站 - 應用程式註冊<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入門體驗。
 > 1. 輸入應用程式的名稱，並選取 [註冊]。
 > 1. 依照指示按一下滑鼠，即可下載並自動設定新的應用程式。
 >
@@ -52,11 +52,11 @@ ms.locfileid: "98011963"
 > 1. 搜尋並選取 [Azure Active Directory]  。
 > 1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。
 > 1. 輸入應用程式的 [名稱]，例如 `AspNetCore-Quickstart`。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
-> 1. 輸入值為 `https://localhost:44321/` 的 [重新導向 URI]
+> 1. 輸入值為 `https://localhost:44321/` 的 [重新導向 URI]。
 > 1. 選取 [註冊]。
 > 1. 在 [管理] 底下，選取 [驗證]。
-> 1. 在 [重新導向 URI] 底下，選取 [新增 URI]，然後輸入 `https://localhost:44321/signin-oidc`
-> 1. 輸入值為 `https://localhost:44321/signout-oidc` 的 [登出 URL]
+> 1. 在 [重新導向 URI] 底下，選取 [新增 URI]，然後輸入 `https://localhost:44321/signin-oidc`。
+> 1. 輸入值為 `https://localhost:44321/signout-oidc` 的 [登出 URL]。
 > 1. 在 [隱含授與] 底下，選取 [識別碼權杖]。
 > 1. 選取 [儲存]。
 

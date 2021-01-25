@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 7c8a35e7c8ecd0952f8e02b66c5071253d9b0445
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: HT
+ms.openlocfilehash: 072377f98939d996547cb6ee9f9a535b4b32a3dc
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348920"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98597950"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA VM 保留執行個體
 
@@ -25,7 +25,7 @@ ms.locfileid: "96348920"
 
 ### <a name="partial-refunds"></a>部分退費
 
-當 EA 客戶退回使用超額而不是預付金購買的保留時，我們會發出部分退費。
+當 EA 客戶退回使用超額而不是 Azure 預付款 (先前稱為預付金) 購買的保留時，我們會發出部分退費。
 
 在 EA 入口網站中，退費會顯示為上個月的負數調整，而在當月則會顯示為正數調整。 其顯示會與保留交換類似。 貸項憑單會參考原始發票號碼；因此，若要讓初始購買與貸項憑單協調一致，請參考原始發票號碼。
 

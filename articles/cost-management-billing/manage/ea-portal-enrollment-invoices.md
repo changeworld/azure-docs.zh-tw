@@ -3,18 +3,18 @@ title: Azure 企業版註冊發票
 description: 本文將說明如何管理 Azure 企業發票，並採取相關行動。
 author: bandersmsft
 ms.author: banders
-ms.date: 12/09/2020
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: c64127f7ebbb416d9dfebb5e417cd27d51697665
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: 90ae9bdcee5f5f4c4281f2c3f931389b2ebf9486
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030717"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598077"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure 企業版註冊發票
 
@@ -238,7 +238,7 @@ Azure 企業版入口網站會篩選掉非作用中的註冊。 您必須取消�
 
 ### <a name="enterprise-agreement-units-of-measure"></a>Enterprise 合約的測量單位
 
-Enterprise 合約的測量單位常會與我們其他方案 (例如 Microsoft Online Services 合約方案 (MOSA)) 中顯示的不同。 此差異的意思是，許多服務的測量單位都會進行彙總，以提供標準化的定價。 在 Azure 企業版入口網站中，[使用量摘要] 檢視中顯示的測量單位一律為企業量值。 [易記服務名稱](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) Excel 檔案中提供了每項服務目前的測量單位和轉換的完整清單。
+Enterprise 合約的測量單位常會與我們其他方案 (例如 Microsoft Online Services 合約方案 (MOSA)) 中顯示的不同。 此差異的意思是，許多服務的測量單位都會進行彙總，以提供標準化的定價。 在 Azure 企業版入口網站中，[使用量摘要] 檢視中顯示的測量單位一律為企業量值。 提交[支援要求](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)會提供您每項服務目前的測量單位和轉換的完整清單。
 
 ### <a name="conversion-between-usage-detail-report-and-the-usage-summary-page"></a>使用量詳細資料包表和使用量摘要頁面之間的轉換
 
@@ -324,13 +324,6 @@ Azure 預付款是針對 Azure 服務預付的金額。 使用服務時就會用
 發票會在計費週期結束後的下個月發出。 如果計費頻率是每月，則 9 月份的發票將於 10 月發行出，這兩個合作夥伴皆是如此。 如果計費週期為每季或每年，客戶會收到先前相關聯之合作夥伴在其期間內使用量的發票，其他使用量將會根據計費幅度向新的合作夥伴收取費用。
 
 ## <a name="next-steps"></a>後續步驟
-
-- 下列 Excel 檔案提供 Azure 服務的詳細資料，並會在每個月的 6 號和 20 號更新：
-
-   | Title | 描述 | 檔案名稱 |
-   | --- | --- | --- |
-   | [易記服務名稱](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) | 列出所有作用中的服務，並包括： <br>  <ul><li>服務類別</li>   <li>易記服務名稱</li>   <li>預付款名稱和組件編號</li> <li>使用量名稱和組件編號</li>   <li>測量單位</li>   <li>報表中使用量與顯示的企業版入口網站使用量之間的轉換因素</li></ul> | Friendly\_Service\_Names.xlsx |
-   | [服務下載欄位](https://azurepricing.blob.core.windows.net/supplemental/Service_Download_Fields.xlsx) | 此試算表會列出「使用量下載報表」中的服務相關欄位所有的可能組合。 | Service\_Download\_Fields.xlsx |
 
 - 如需了解發票和費用的相關資訊，請參閱[了解您的 Azure Enterprise 合約帳單](../understand/review-enterprise-agreement-bill.md)。
 - 若要開始使用 Azure 企業版入口網站，請參閱[開始使用 Azure EA 入口網站](ea-portal-get-started.md)。

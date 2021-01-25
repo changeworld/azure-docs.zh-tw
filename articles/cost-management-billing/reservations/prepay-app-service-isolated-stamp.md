@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: feb7be6ad5dbd0dfbd04b05836842d0476780d40
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: HT
+ms.openlocfilehash: fb463d80e8cb980505df825d6f22d75f8a5c5f5a
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151537"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599205"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>使用保留容量來節省 Azure App Service 隔離式方案戳記費用的成本
 
@@ -48,7 +48,7 @@ ms.locfileid: "92151537"
 
 1. 移至 [Azure 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D)。
 1. 選取一個訂用帳戶。 使用 [訂用帳戶]  清單來選擇用來支付保留容量的訂用帳戶。 訂用帳戶的付款方式為收取保留容量的費用。 訂用帳戶類型必須是 Enterprise 合約 (供應項目號碼：MS-AZR-0017P 或 MS-AZR-0148P) 或隨用隨付 (供應項目號碼：MS-AZR-0003P 或 MS-AZR-0023P) 或 CSP 訂用帳戶。
-    - 針對企業訂用帳戶，費用會從註冊的承諾用量金額餘額扣除或作為超額部分收費。
+    - 針對 Enterprise 訂用帳戶，費用會從註冊的 Azure 預付款 (先前稱為預付金) 餘額扣除或作為超額部分收費。
     - 針對隨用隨付訂用帳戶，費用是透過訂用帳戶的信用卡或發票付款方式收取。
 1. 選取 [範圍]  以選擇訂用帳戶範圍。
     - **單一資源群組範圍** — 只會將保留折扣套用至所選資源群組中的相符資源。
@@ -57,7 +57,7 @@ ms.locfileid: "92151537"
 1. 選取 [區域]  以選擇保留容量涵蓋的 Azure 區域，並將保留新增至購物車。
 1. 選取隔離式方案類型，然後按一下 [選取]  。  
     ![範例 ](./media/prepay-app-service-isolated-stamp/app-service-isolated-stamp-select.png)
-1. 輸入要保留的 App Service 隔離式方案戳記數量。 例如，數量為三會在一個區域內提供三個保留戳記。 按一下 **[下一步**檢閱 + 購買]。
+1. 輸入要保留的 App Service 隔離式方案戳記數量。 例如，數量為三會在一個區域內提供三個保留戳記。 按一下 **[下一步** 檢閱 + 購買]。
 1. 檢閱並按一下 [立即購買]  。
 
 購買之後，請移至[保留](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)以檢視購買狀態，並隨時加以監視。

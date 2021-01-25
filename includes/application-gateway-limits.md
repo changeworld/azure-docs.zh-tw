@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: ff97aa6c6f04ad41ba6e1b986f3cc0734ec7a326
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
-ms.translationtype: HT
+ms.openlocfilehash: 4c7c68bf690097004f2f3310a8d89ce954d7f87f
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92526118"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98612907"
 ---
 | 資源 | 限制 | 注意 |
 | --- | --- | --- |
@@ -32,6 +32,9 @@ ms.locfileid: "92526118"
 | 每個接聽程式的 URL 對應 |1 | |
 | 每個 URL 對應的路徑型規則數上限|100||
 | 重新導向組態 |100<sup>1</sup>| |
+| 重新產生規則集的數目 |400| |
+| 每個重新產生規則集的標頭或 URL 設定數目|40| |
+| 每個重新產生規則集的條件數目|40| |
 | 並行的 WebSocket 連線 |中型閘道 20k<br> 大型閘道 50k| |
 | URL 長度上限|32KB| |
 | HTTP/2 的標頭大小上限 |4KB| |

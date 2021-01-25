@@ -3,18 +3,18 @@ title: 適用於合作夥伴的 Azure 成本管理入門
 description: 本文說明合作夥伴如何使用 Azure 成本管理功能，以及如何為其客戶啟用成本管理存取權。
 author: bandersmsft
 ms.author: banders
-ms.date: 11/16/2020
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: cd3ca4d3ddf73469cd1f1fc065eccb369cf765af
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
-ms.translationtype: HT
+ms.openlocfilehash: 8a04cb2c590bc4f0104a93ac7c7c2cf7b71a4662
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905667"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602180"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>適用於合作夥伴的 Azure 成本管理入門
 
@@ -71,9 +71,9 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 
 使用計費帳戶範圍可檢視您所有客戶和帳單設定檔的稅前成本。 對於客戶在 Microsoft 客戶合約上以使用量為基礎的產品，才會顯示發票成本。 不過，對於客戶依據 Microsoft 客戶合約和 CSP 供應項目購買的產品，則會顯示發票成本。 目前，在該範圍中檢視成本的預設貨幣是美元。 針對該範圍而設定的預算也是以美元為單位。
 
-無論客戶的帳單貨幣為何，合作夥伴在使用計費帳戶範圍對其客戶、訂用帳戶、資源和資源群組設定預算及管理成本時，都會以美元為單位。
+無論帳單貨幣為何，合作夥伴在使用計費帳戶範圍對其客戶、訂用帳戶、資源和資源群組設定預算及管理成本時，都會以美元為單位。
 
-合作夥伴在成本分析檢視中也會以特定的帳單貨幣來篩選客戶的成本。 選取 [實際成本] 清單，可用支援的客戶帳單貨幣檢視成本。
+合作夥伴在成本分析檢視中也會以特定的帳單貨幣來篩選客戶的成本。 選取 [實際成本] 清單，即可使用支援的帳單貨幣檢視成本。
 
 ![此範例顯示為實際成本選取貨幣的情形](./media/get-started-partners/actual-cost-selector.png)
 
@@ -83,7 +83,7 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 
 使用帳單設定檔範圍，可用帳單貨幣檢視您所有的客戶在發票中包含的所有產品和訂用帳戶的稅前成本。 您可以使用 **InvoiceID** 篩選，針對特定發票篩選帳單設定檔中的成本。 此篩選會顯示特定發票的使用量和產品購買成本。 您也可以篩選發票上特定客戶的成本，以查看稅前成本。
 
-在您將客戶登錄至 Microsoft 客戶合約後，您會收到發票，其中包含這些客戶在 Microsoft 客戶合約上的所有產品 (使用量、購買和權利) 的所有費用。 以相同的貨幣計費時，這些發票也會包含仍在 CSP 供應項目下的客戶在權利和購買的產品 (例如 SaaS、Azure Marketplace 和保留) 方面的費用。
+在您將客戶登錄至 Microsoft 客戶合約後，您會收到發票，其中包含這些客戶在 Microsoft 客戶合約上的所有產品 (使用量、購買和權利) 的所有費用。 以相同的貨幣計費時，這些發票也會包含仍在傳統 CSP 供應項目下 (不在 Azure 方案上) 的客戶在權利和購買產品 (例如 SaaS、Azure Marketplace 和保留) 方面的費用。
 
 為了方便對客戶發票進行費用的對帳，帳單設定檔範圍可讓您查看客戶的發票所產生的所有成本。 和發票一樣，該範圍會顯示每個客戶在新的 Microsoft 客戶合約中的成本。 該範圍也會顯示仍在現行 CSP 供應項目下的客戶權利產品所有的費用。
 
@@ -91,7 +91,7 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 
 帳單設定檔會定義發票中包含的訂用帳戶。 帳單設定檔在功能上與 Enterprise 合約註冊相同。 帳單設定檔是發票產生所在的範圍。
 
-目前，客戶的帳單貨幣即為在帳單設定檔範圍中檢視成本時的預設貨幣。 對帳單設定檔範圍設定的預算，會以帳單貨幣為單位。
+目前，帳單貨幣即為在帳單設定檔範圍中檢視成本時的預設貨幣。 對帳單設定檔範圍設定的預算，會以帳單貨幣為單位。
 
 合作夥伴可使用該範圍對發票進行對帳。 而且，他們可使用該範圍以帳單貨幣設定下列項目的預算：
 
@@ -220,7 +220,7 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 | 數量 | 已購買或使用的測量數量。 計費期間所使用的計量數量。 | 單位數目。 請確定此數目符合您的帳單系統在對帳期間所包含的資訊。 |
 | unitOfMeasure | 識別服務的計費單位。 例如，GB 和小時。 | 識別服務的計費單位。 例如，GB、小時和 10,000 秒。 |
 | pricingCurrency | 定義單位價格的貨幣。 | 價格清單中的貨幣。|
-| billingCurrency | 定義計費成本的貨幣。 | 客戶所在地理區域的貨幣。 |
+| billingCurrency | 定義計費成本的貨幣。 | 在發票上定義為計費貨幣的貨幣。 |
 | chargeType | 定義成本在 Azure 成本管理中顯示的費用類型，例如購買和退款。 | 費用或調整的類型。 不適用於目前的活動。 |
 | costinBillingCurrency | 稅前的延伸成本或混合成本 (以計費貨幣為單位)。 | N/A |
 | costinPricingCurrency | 要與價格相互關聯的稅前延伸成本或混合成本 (以帳單貨幣為單位)。 | N/A |

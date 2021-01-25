@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 349caa9a4fa34d87e0a4d99089a1063be66307f4
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: HT
+ms.openlocfilehash: ae80ddd9efe8274a29a4b8dd91b7a3c391eefc3a
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017556"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178682"
 ---
 # <a name="quickstart-aspnet-core-web-app-that-signs-in-users-and-calls-microsoft-graph-on-their-behalf"></a>快速入門：式登入使用者並代表他們呼叫 Microsoft Graph 的 ASP.NET Core Web 應用程
 
@@ -38,7 +38,7 @@ ms.locfileid: "98017556"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>選項 1：註冊和自動設定您的應用程式，然後下載程式碼範例
 >
-> 1. 移至 [Azure 入口網站 - 應用程式註冊](https://aka.ms/aspnetcore-webapp-calls-graph-quickstart-v2)。
+> 1. 移至 <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetCoreWebAppQuickstartPage/sourceType/docs" target="_blank">Azure 入口網站 - 應用程式註冊<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入門體驗。
 > 1. 輸入應用程式的名稱，並選取 [註冊]  。
 > 1. 依照指示按一下滑鼠，即可下載並自動設定新的應用程式。
 >
@@ -52,10 +52,10 @@ ms.locfileid: "98017556"
 > 1. 搜尋並選取 [Azure Active Directory]  。
 > 1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。
 > 1. 輸入應用程式的 [名稱]，例如 `AspNetCoreWebAppCallsGraph-Quickstart`。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
-> 1. 輸入值為 `https://localhost:44321/signin-oidc` 的 [重新導向 URI]
+> 1. 輸入值為 `https://localhost:44321/signin-oidc` 的 [重新導向 URI]。
 > 1. 選取 [註冊]。
 > 1. 在 [管理] 底下，選取 [驗證]。
-> 1. 輸入值為 `https://localhost:44321/signout-oidc` 的 [登出 URL]
+> 1. 輸入值為 `https://localhost:44321/signout-oidc` 的 [登出 URL]。
 > 1. 選取 [儲存]。
 > 1. 在 **管理** 下，選取 [憑證與秘密] > [新增用戶端密碼]。
 > 1. 輸入 [描述]，例如 `clientsecret1`。
