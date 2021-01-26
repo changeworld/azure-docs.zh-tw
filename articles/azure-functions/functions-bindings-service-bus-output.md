@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 2d0b66d2b4d89b512b34cb33a5607b471b7d1e84
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 12e57361b9e275fc441df27a3a1381989d48751c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040937"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788565"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure 服務匯流排 Azure Functions 的輸出系結
 
@@ -87,6 +87,41 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+下列範例顯示的 JAVA 函式，會 `myqueue` 在 HTTP 要求觸發時，將訊息傳送至服務匯流排佇列。
+
+```java
+@FunctionName("httpToServiceBusQueue")
+@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
+public String pushToQueue(
+  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+  final String message,
+  @HttpOutput(name = "response") final OutputBinding<T> result ) {
+      result.setValue(message + " has been sent.");
+      return message;
+ }
+```
+
+ 在 [Java 函式執行階段程式庫](/java/api/overview/azure/functions/runtime)中，對其值要寫入至服務匯流排佇列的函式參數使用 `@QueueOutput` 註釋。  參數類型應為 `OutputBinding<T>`，其中 T 是任何原生 Java 類型的 POJO。
+
+JAVA 函數也可以寫入至服務匯流排主題。 下列範例會使用 `@ServiceBusTopicOutput` 批註來描述輸出系結的設定。 
+
+```java
+@FunctionName("sbtopicsend")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
+            final ExecutionContext context) {
+        
+        String name = request.getBody().orElse("Azure Functions");
+
+        message.setValue(name);
+        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+        
+    }
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 下列範例示範 function.json 檔案中的服務匯流排觸發程序繫結，以及使用此繫結的 [JavaScript 函式](functions-reference-node.md)。 此函式會使用計時器觸發程序，每隔 15 秒傳送一則佇列訊息。
@@ -139,6 +174,39 @@ module.exports = function (context, myTimer) {
 };
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+下列範例顯示在檔案的 *function.js* 中的服務匯流排輸出系結，以及使用此系結的 [PowerShell](functions-reference-powershell.md) 函式。 
+
+以下是 *function.json* 檔案中的繫結資料：
+
+```json
+{
+  "bindings": [
+    {
+      "type": "serviceBus",
+      "direction": "out",
+      "connection": "AzureServiceBusConnectionString",
+      "name": "outputSbMsg",
+      "queueName": "outqueue",
+      "topicName": "outtopic"
+    }
+  ]
+}
+```
+
+以下是建立訊息作為函式輸出的 PowerShell。
+
+```powershell
+param($QueueItem, $TriggerMetadata) 
+
+Push-OutputBinding -Name outputSbMsg -Value @{ 
+    name = $QueueItem.name 
+    employeeId = $QueueItem.employeeId 
+    address = $QueueItem.address 
+} 
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 下列範例示範如何在 Python 中寫出服務匯流排佇列。
@@ -189,41 +257,6 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
     return 'OK'
 ```
 
-# <a name="java"></a>[Java](#tab/java)
-
-下列範例顯示的 JAVA 函式，會 `myqueue` 在 HTTP 要求觸發時，將訊息傳送至服務匯流排佇列。
-
-```java
-@FunctionName("httpToServiceBusQueue")
-@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
-public String pushToQueue(
-  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
-  final String message,
-  @HttpOutput(name = "response") final OutputBinding<T> result ) {
-      result.setValue(message + " has been sent.");
-      return message;
- }
-```
-
- 在 [Java 函式執行階段程式庫](/java/api/overview/azure/functions/runtime)中，對其值要寫入至服務匯流排佇列的函式參數使用 `@QueueOutput` 註釋。  參數類型應為 `OutputBinding<T>`，其中 T 是任何原生 Java 類型的 POJO。
-
-JAVA 函數也可以寫入至服務匯流排主題。 下列範例會使用 `@ServiceBusTopicOutput` 批註來描述輸出系結的設定。 
-
-```java
-@FunctionName("sbtopicsend")
-    public HttpResponseMessage run(
-            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
-            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
-            final ExecutionContext context) {
-        
-        String name = request.getBody().orElse("Azure Functions");
-
-        message.setValue(name);
-        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
-        
-    }
-```
-
 ---
 
 ## <a name="attributes-and-annotations"></a>屬性和註釋
@@ -262,17 +295,21 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 
 C# 指令碼不支援屬性。
 
+# <a name="java"></a>[Java](#tab/java)
+
+`ServiceBusQueueOutput`和 `ServiceBusTopicOutput` 批註可用於以函式輸出的形式寫入訊息。 使用這些批註裝飾的參數必須宣告為 `OutputBinding<T>` ，其中 `T` 是對應至訊息型別的型別。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 JavaScript 不支援屬性。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 不支援屬性。
+
 # <a name="python"></a>[Python](#tab/python)
 
 Python 指令碼不支援屬性。
-
-# <a name="java"></a>[Java](#tab/java)
-
-`ServiceBusQueueOutput`和 `ServiceBusTopicOutput` 批註可用於以函式輸出的形式寫入訊息。 使用這些批註裝飾的參數必須宣告為 `OutputBinding<T>` ，其中 `T` 是對應至訊息型別的型別。
 
 ---
 
@@ -330,15 +367,19 @@ Python 指令碼不支援屬性。
 
 * 若要存取會話識別碼，請系結至 [`Message`](/dotnet/api/microsoft.azure.servicebus.message) 型別並使用 `sessionId` 屬性。
 
+# <a name="java"></a>[Java](#tab/java)
+
+使用 [AZURE 服務匯流排 SDK](../service-bus-messaging/index.yml) ，而不是內建的輸出系結。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 使用存取佇列或主題 `context.bindings.<name from function.json>` 。 您可以將字串、位元組陣列或 JavaScript 物件 (還原序列化為的 JSON) `context.binding.<name>` 。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+服務匯流排的輸出可透過 Cmdlet 使用， `Push-OutputBinding` 您可以在其中傳遞符合 *function.json* 檔案中系結名稱參數所指定之名稱的引數。
+
 # <a name="python"></a>[Python](#tab/python)
-
-使用 [AZURE 服務匯流排 SDK](../service-bus-messaging/index.yml) ，而不是內建的輸出系結。
-
-# <a name="java"></a>[Java](#tab/java)
 
 使用 [AZURE 服務匯流排 SDK](../service-bus-messaging/index.yml) ，而不是內建的輸出系結。
 
@@ -388,7 +429,7 @@ Python 指令碼不支援屬性。
 |---------|---------|---------|
 |prefetchCount|0|取得或設定訊息接收者可以同時要求的訊息數目。|
 |maxAutoRenewDuration|00:05:00|將自動更新訊息鎖定的最大持續時間。|
-|autoComplete|true|觸發程式是否應該在處理之後自動呼叫完成，或是函式程式碼會手動呼叫 complete。<br><br>`false`只有在 c # 中才支援將設定為。<br><br>如果設定為，則觸發程式會在函式 `true` 執行成功完成時自動完成訊息，否則會放棄訊息。<br><br>當設定為時 `false` ，您必須負責呼叫 [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) 方法來完成、放棄或 deadletter 訊息。 如果擲回例外狀況 (但未呼叫任何 `MessageReceiver` 方法) ，則會保留鎖定。 鎖定過期後，訊息會以遞增的方式重新排入佇列， `DeliveryCount` 而且會自動更新鎖定。<br><br>在非 C # 函式中，函式中的例外狀況會導致執行時間在背景中呼叫 `abandonAsync` 。 如果未發生任何例外狀況，則 `completeAsync` 會在背景中呼叫。 |
+|autoComplete|true|觸發程式是否應該在處理之後自動呼叫完成，或是函式程式碼會手動呼叫 complete。<br><br>`false`只有在 c # 中才支援將設定為。<br><br>如果設定為，則觸發程式會在函式 `true` 執行成功完成時自動完成訊息，否則會放棄訊息。<br><br>當設定為時 `false` ，您必須負責呼叫 [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet&preserve-view=true) 方法來完成、放棄或 deadletter 訊息。 如果擲回例外狀況 (但未呼叫任何 `MessageReceiver` 方法) ，則會保留鎖定。 鎖定過期後，訊息會以遞增的方式重新排入佇列， `DeliveryCount` 而且會自動更新鎖定。<br><br>在非 C # 函式中，函式中的例外狀況會導致執行時間在背景中呼叫 `abandonAsync` 。 如果未發生任何例外狀況，則 `completeAsync` 會在背景中呼叫。 |
 |maxConcurrentCalls|16|對回呼的最大並行呼叫數目，訊息抽取應針對每個縮放的實例起始。 Functions 執行階段預設會並行處理多個訊息。|
 |maxConcurrentSessions|2000|每個縮放的實例可以同時處理的最大會話數目。|
 

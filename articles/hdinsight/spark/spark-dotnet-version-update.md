@@ -6,12 +6,12 @@ ms.author: nidutta
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/05/2021
-ms.openlocfilehash: 4b95e4f164eb2c1d0a881cf9ab14696c3cbed4a7
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: a1602f29a6d0066ec3c99e990532411621652c47
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122190"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788124"
 ---
 # <a name="updating-net-for-apache-spark-to-version-v10--in-hdinsight"></a>將 Apache Spark 的 .NET 更新至 HDInsight 中的1.0 版
 
@@ -42,9 +42,9 @@ ms.locfileid: "98122190"
 
 2. 下載 [install-worker.sh](https://github.com/dotnet/spark/blob/master/deployment/install-worker.sh) 腳本，將步驟1中下載的背景工作二進位檔安裝到 HDI 叢集的所有背景工作節點。  
 
-3. 將上述檔案上傳至您的叢集可存取的 Azure 儲存體帳戶。 如需詳細資訊，請參閱 [APACHE SPARK HDI 部署一文的 .net](https://docs.microsoft.com/dotnet/spark/tutorials/hdinsight-deployment#upload-files-to-azure) 。
+3. 將上述檔案上傳至您的叢集可存取的 Azure 儲存體帳戶。 如需詳細資訊，請參閱 [APACHE SPARK HDI 部署一文的 .net](/dotnet/spark/tutorials/hdinsight-deployment#upload-files-to-azure) 。
 
-4. `install-worker.sh`使用腳本動作，在叢集中的所有背景工作節點上執行腳本。 如需詳細資訊，請參閱 [APACHE SPARK HDI 部署一文的 .net](https://docs.microsoft.com/dotnet/spark/tutorials/hdinsight-deployment#run-the-hdinsight-script-action) 。
+4. `install-worker.sh`使用腳本動作，在叢集中的所有背景工作節點上執行腳本。 如需詳細資訊，請參閱 [APACHE SPARK HDI 部署一文的 .net](/dotnet/spark/tutorials/hdinsight-deployment#run-the-hdinsight-script-action) 。
 
 ### <a name="update-your-application-to-use-specific-version"></a>更新您的應用程式以使用特定版本
 
@@ -58,4 +58,4 @@ ms.locfileid: "98122190"
 
 ## <a name="next-steps"></a>後續步驟
 
-[在 HDInsight 上部署 Apache Spark 應用程式的 .NET](https://docs.microsoft.com/dotnet/spark/tutorials/hdinsight-deployment)
+[在 HDInsight 上部署 Apache Spark 應用程式的 .NET](/dotnet/spark/tutorials/hdinsight-deployment)

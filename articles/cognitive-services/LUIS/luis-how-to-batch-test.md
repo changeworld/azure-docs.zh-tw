@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 12/29/2020
-ms.openlocfilehash: 0834b8f00e4c414b3a36314b80f6c99fb8f2aea2
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: b297330f3562babf9e83d36934827f7b92d5ea35
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955207"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787007"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>使用一組範例語句的批次測試
 
@@ -99,7 +99,7 @@ ms.locfileid: "97955207"
 
 若要檢閱批次測試結果，請選取 [查看結果]。 測試結果會以圖形顯示對使用中的版本預測測試語句的結果。
 
-批次圖表會顯示四個象限的結果。 圖表的右邊是一個篩選條件。 篩選包含意圖和實體。 當您選取某個[圖表區段](luis-concept-batch-test.md#batch-test-results)或圖表內的某一點時，相關聯的語句即會顯示於圖表下方。
+批次圖表會顯示四個象限的結果。 圖表的右邊是一個篩選條件。 篩選包含意圖和實體。 當您選取某個[圖表區段](#review-batch-results-for-intents)或圖表內的某一點時，相關聯的語句即會顯示於圖表下方。
 
 將滑鼠停留在圖表上方時，滑鼠滾輪可以放大或縮小圖表中的顯示。 當圖表上有許多點緊密聚集在一起時，這非常有用。
 
@@ -166,7 +166,7 @@ LUIS 入口網站中的圖表，您可以執行下列動作：
 
 ## <a name="batch-testing-using-the-rest-api"></a>使用 REST API 的批次測試 
 
-LUIS 可讓您使用 LUIS 入口網站和 REST API 來進行批次測試。 以下列出 REST API 的端點。 如需使用 LUIS 入口網站進行批次測試的詳細資訊，請參閱 [教學課程：批次測試資料集](luis-tutorial-batch-testing.md)。 使用下列完整的 Url，將預留位置值取代為您自己的 LUIS 預測金鑰和端點。 
+LUIS 可讓您使用 LUIS 入口網站和 REST API 來進行批次測試。 以下列出 REST API 的端點。 如需使用 LUIS 入口網站進行批次測試的詳細資訊，請參閱 [教學課程：批次測試資料集]()。 使用下列完整的 Url，將預留位置值取代為您自己的 LUIS 預測金鑰和端點。 
 
 請記得將您的 LUIS 金鑰新增至 `Ocp-Apim-Subscription-Key` 標頭中，並設定 `Content-Type` 為 `application/json` 。
 
@@ -265,5 +265,3 @@ API 會傳回數個物件：
 
 * [使用 LUIS 標示建議的語調](luis-how-to-review-endpoint-utterances.md)
 * [使用功能來改善 LUIS 應用程式效能](luis-how-to-add-features.md)
-* [透過此教學課程來了解批次測試](luis-tutorial-batch-testing.md)
-* [了解批次測試概念](luis-concept-batch-test.md).

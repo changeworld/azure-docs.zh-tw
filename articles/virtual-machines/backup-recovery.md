@@ -1,19 +1,19 @@
 ---
-title: 概述 Linux Vm 的備份選項
-description: 概述 Linux Azure 虛擬機器的備份選項。
+title: 總覽 Vm 的備份選項
+description: 概述 Azure 虛擬機器的備份選項。
 author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 8/03/2020
 ms.author: cynthn
-ms.openlocfilehash: c56adc852b504d3a0663a9607b3472cb3348e7a5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5a093de0a27c8379cb6eff9c2bc3867dfdc20db5
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972351"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787802"
 ---
-# <a name="backup-and-restore-options-for-linux-virtual-machines-in-azure"></a>Azure 中 Linux 虛擬機器的備份和還原選項
+# <a name="backup-and-restore-options-for-virtual-machines-in-azure"></a>Azure 中虛擬機器的備份和還原選項
 
 您可以定期建立備份以保護您的資料。 可供 VM 使用的備份選項有數個，視您的使用案例而定。
 
@@ -21,7 +21,7 @@ ms.locfileid: "91972351"
 
 若要備份執行生產工作負載的 Azure VM，請使用 Azure 備份。 Azure 備份同時針對 Windows 和 Linux VM 支援應用程式一致備份。 Azure 備份會建立復原點，並儲存在異地備援復原保存庫。 當您從復原點還原時，可以還原整個 VM 或只還原特定檔案。 
 
-如需 Azure VM 適用的簡單實際操作 Azure 備份簡介，請參閱適用於 [Linux](./linux/tutorial-backup-vms.md) 或 [Windows](./windows/tutorial-backup-vms.md) 的「備份 Azure 虛擬機器」教學課程。
+如需 Azure Vm Azure 備份的簡單實際操作簡介，請參閱 [Azure 備份快速入門](../backup/quick-backup-vm-portal.md)。
 
 如需有關 Azure 備份運作方式的詳細資訊，請參閱[在 Azure 中規劃您的 VM 備份基礎結構](../backup/backup-azure-vms-introduction.md)
 
@@ -46,4 +46,4 @@ ms.locfileid: "91972351"
 
 
 ## <a name="next-steps"></a>後續步驟
-您可以試用 Azure 備份，方法是遵循適用於 [Linux](./linux/tutorial-backup-vms.md) 或 [Windows](./windows/tutorial-backup-vms.md) 的「備份 Windows 虛擬機器教學課程」。
+您可以遵循 [Azure 備份快速入門](../backup/quick-backup-vm-portal.md)來嘗試 Azure 備份。

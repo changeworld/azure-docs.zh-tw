@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
-ms.openlocfilehash: f002bfdd5aeb784b5b10b549389e663216fa0361
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: cd2fd8dc8c10864089b198db1ca1089f994a3ffb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561217"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788446"
 ---
 # <a name="testing-for-luis-devops"></a>測試 LUIS DevOps
 
@@ -28,7 +28,7 @@ ms.locfileid: "97561217"
 這種測試類似于您可以在[LUIS 入口網站](https://www.luis.ai/)中進行的[互動式測試](./luis-concept-test.md)。
 
 - **批次測試** -批次測試是您目前定型模型的完整測試，以測量其效能。 不同于單元測試，批次測試不會通過 | 測試失敗。 批次測試的預期不是每個測試都會傳回預期的意圖和預期的實體。 相反地，批次測試可協助您在應用程式中查看每個意圖和實體的精確度，並協助您在進行改善時進行比較。  
-這種測試與您可以在 LUIS 入口網站中以互動方式執行的 [批次測試](./luis-concept-batch-test.md) 相同。
+這種測試與您可以在 LUIS 入口網站中以互動方式執行的 [批次測試](./luis-how-to-batch-test.md) 相同。
 
 您可以從專案的開頭使用單元測試。 只有在您開發 LUIS 應用程式的架構，而且正在改善其精確度時，批次測試才是真正的價值。
 
@@ -42,7 +42,7 @@ ms.locfileid: "97561217"
 * 預期意圖
 * 預期的實體。
 
-使用 LUIS [批次檔語法](./luis-concept-batch-test.md#batch-syntax-template-for-intents-with-entities) ，在 JSON 格式的檔案中定義一組測試。 例如：
+使用 LUIS [批次檔語法](./luis-how-to-batch-test.md#batch-syntax-template-for-intents-with-entities) ，在 JSON 格式的檔案中定義一組測試。 例如：
 
 ```JSON
 [
@@ -85,7 +85,7 @@ ms.locfileid: "97561217"
 
 #### <a name="designing-batch-tests"></a>設計批次測試
 
-批次測試集應該包含大量測試案例，其設計目的是要跨所有意圖和 LUIS 應用程式中的所有實體進行測試。 如需定義批次測試集的詳細資訊，請參閱 [LUIS 入口網站中的批次測試](./luis-concept-batch-test.md) 。
+批次測試集應該包含大量測試案例，其設計目的是要跨所有意圖和 LUIS 應用程式中的所有實體進行測試。 如需定義批次測試集的詳細資訊，請參閱 [LUIS 入口網站中的批次測試](./luis-how-to-batch-test.md) 。
 
 ### <a name="running-tests"></a>執行測試
 
@@ -93,7 +93,7 @@ LUIS 入口網站提供可協助進行互動式測試的功能：
 
 * [**互動式測試**](./luis-concept-test.md) 可讓您提交範例語句，並取得 LUIS 辨識意圖和實體的回應。 您可以透過視覺化檢查來確認測試是否成功。
 
-* [**批次測試**](./luis-concept-batch-test.md) 會使用批次測試檔案作為輸入，以驗證您使用中的定型版本以測量其預測精確度。 批次測試可協助您在使用中版本中查看每個意圖和實體的精確度，並以圖表顯示結果。
+* [**批次測試**](./luis-how-to-batch-test.md) 會使用批次測試檔案作為輸入，以驗證您使用中的定型版本以測量其預測精確度。 批次測試可協助您在使用中版本中查看每個意圖和實體的精確度，並以圖表顯示結果。
 
 #### <a name="running-tests-in-an-automated-build-workflow"></a>在自動化組建工作流程中執行測試
 

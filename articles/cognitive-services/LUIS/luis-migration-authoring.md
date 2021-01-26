@@ -11,12 +11,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 12/14/2020
-ms.openlocfilehash: 086bc17938064571e8759ecda633fb5f87d1060f
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 3ff48ff5a3f46d8ec0fbf81b4cd20d20c217344b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616808"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787632"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>遷移至 Azure 資源撰寫金鑰
 
@@ -81,7 +81,7 @@ Language Understanding (LUIS) 撰寫驗證已從電子郵件帳戶變更為 Azur
    > ![匯出您的應用程式。](./media/migrate-authoring-key/migration-export-apps.png)
 
 
-4. 在遷移區域的視窗中，系統會要求您將應用程式遷移至其所撰寫之相同區域中的 Azure 資源。 LUIS 有三個撰寫區域 [和入口網站](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-authoring-regions)。 此視窗會顯示您所擁有之應用程式的撰寫區域。 根據您所使用的區域入口網站和您所撰寫的應用程式而定，顯示的遷移區域可能會不同。 
+4. 在遷移區域的視窗中，系統會要求您將應用程式遷移至其所撰寫之相同區域中的 Azure 資源。 LUIS 有三個撰寫區域 [和入口網站](./luis-reference-regions.md#luis-authoring-regions)。 此視窗會顯示您所擁有之應用程式的撰寫區域。 根據您所使用的區域入口網站和您所撰寫的應用程式而定，顯示的遷移區域可能會不同。 
 
    > [!div class="mx-imgBorder"]
    > ![多區域遷移。](./media/migrate-authoring-key/migration-regional-flow.png)

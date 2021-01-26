@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: af9087f0dd45212ec88b620dcd965c895b86bbce
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: baa071c8967c97cb5df2b8f522b3737436bdb359
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108187"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787700"
 ---
 # <a name="manage-qna-maker-resources"></a>管理 QnA Maker 資源
 
@@ -130,12 +130,12 @@ App service （為已發佈的知識庫提供 QnA Maker 的預測執行時間）
 ### <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>將 App Service 環境設定為裝載 QnA Maker App Service
 App Service 環境 (ASE) 可以用來裝載 QnA Maker App Service。 請依照下列步驟執行：
 
-1. 建立 App Service 環境，並將其標示為「外部」。 如需相關指示，請遵循 [教學](https://docs.microsoft.com/azure/app-service/environment/create-external-ase) 課程。
+1. 建立 App Service 環境，並將其標示為「外部」。 如需相關指示，請遵循 [教學](../../../app-service/environment/create-external-ase.md) 課程。
 2.  在 App Service 環境內建立 App service。
     * 檢查 App service 的設定，並新增 ' PrimaryEndpointKey ' 做為應用程式設定。 ' PrimaryEndpointKey ' 的值應該設定為 " \<app-name\> -PrimaryEndpointKey"。 應用程式名稱是在 App service URL 中定義。 比方說，如果 App service URL 是 "mywebsite.myase.p.azurewebsite.net"，則應用程式名稱會是 "mywebsite"。 在此情況下，' PrimaryEndpointKey ' 的值應該設定為 "mywebsite-PrimaryEndpointKey"。
     * 建立 Azure 搜尋服務。
     * 確定已適當設定 Azure 搜尋服務和應用程式設定。 
-      請遵循此 [教學](https://docs.microsoft.com/azure/cognitive-services/qnamaker/reference-app-service?tabs=v1#app-service)課程。
+      請遵循此 [教學](../reference-app-service.md?tabs=v1#app-service)課程。
 3.  更新與 App Service 環境相關聯的網路安全性群組
     * 依據您的需求更新預先建立的輸入安全性規則。
     * 將來源為「服務標籤」的新輸入安全性規則和來源服務標記新增為 ' CognitiveServicesManagement '。
@@ -371,7 +371,7 @@ QnA Maker 的 **App Service** 資源使用認知搜尋資源。 為了變更 QnA
 
     ![QnA Maker 受控 (預覽) 設定頁面的螢幕擷取畫面](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-configuration.png)
 
-1. 按一下 [檔案]  。
+1. 按一下 [儲存]。
 
 > [!NOTE]
 > 如果您變更與 QnA Maker 相關聯的 Azure 搜尋服務，您將無法存取所有已存在的知識庫。 變更 Azure 搜尋服務之前，請務必先匯出現有的知識庫。

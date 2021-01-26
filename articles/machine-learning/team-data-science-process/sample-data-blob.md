@@ -1,6 +1,6 @@
 ---
-title: Azure Blob 儲存體中的資料範例 - Team Data Science Process
-description: 為儲存於 Azure blob 儲存體中的資料進行取樣的方法，您可以利用程式設計方式加以下載，然後使用以 Python 撰寫的程序進行取樣。
+title: Azure Blob 儲存體中的範例資料-Team Data 科學流程
+description: 以程式設計方式下載儲存在 Azure Blob 儲存體中的資料，然後使用以 Python 撰寫的程式進行取樣。
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b190bf0c474640c07d84971069072d3af2faa66d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c5827a0e07e537b66684f852d8f3e1500cd9febb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321902"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788836"
 ---
-# <a name="sample-data-in-azure-blob-storage"></a><a name="heading"></a>Azure blob 儲存體中的範例資料
+# <a name="sample-data-in-azure-blob-storage"></a><a name="heading"></a>Azure Blob 儲存體中的範例資料
 
-本文說明為儲存於 Azure blob 儲存體中的資料進行取樣的方法，您可以利用程式設計方式加以下載，然後使用以 Python 撰寫的程序進行取樣。
+本文涵蓋以程式設計方式下載 Azure Blob 儲存體儲存在中的資料，然後使用以 Python 撰寫的程式進行取樣。
 
 **為何要對您的資料進行取樣？**
 如果您規劃分析的資料集很龐大，通常最好是對資料進行向下取樣，將資料縮減為更小但具代表性且更容易管理的大小。 取樣有助於資料理解、探索和特徵工程。 它在 Cortana 分析程序中扮演的角色是能夠快速建立資料處理函式與機器學習服務模型的原型。
@@ -28,7 +28,7 @@ ms.locfileid: "93321902"
 這個取樣工作是 [Team Data Science Process (TDSP)](./index.yml)中的一個步驟。
 
 ## <a name="download-and-down-sample-data"></a>下載和降低取樣資料
-1. 使用下列 Python 程式碼範例中的 Blob 服務，從 Azure blob 儲存體下載資料： 
+1. 使用下列範例 Python 程式碼中的 Blob 服務，從 Azure Blob 儲存體下載資料： 
 
     ```python
     from azure.storage.blob import BlobService

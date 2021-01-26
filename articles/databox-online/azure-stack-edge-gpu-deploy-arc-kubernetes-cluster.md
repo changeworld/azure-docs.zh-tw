@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 11/12/2020
 ms.author: alkohli
-ms.openlocfilehash: 342f6a2c4761104823694f2181b3ffa8726a441e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 53ef73c70f5d20133e7b408ad7af91c3778e5568
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449423"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787446"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 裝置上啟用 Kubernetes 叢集上的 Azure Arc
 
@@ -22,7 +22,7 @@ ms.locfileid: "96449423"
 此程式適用于已 [在 Azure Stack Edge Pro 裝置上審核 Kubernetes 工作負載](azure-stack-edge-gpu-kubernetes-workload-management.md) 的人員，並熟悉 [Azure Arc 啟用的 Kubernetes (Preview) ](../azure-arc/kubernetes/overview.md)的概念。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在 Kubernetes 叢集上啟用 Azure Arc 之前，請確定您已在 Azure Stack Edge Pro 裝置和將用來存取裝置的用戶端上完成下列必要條件：
 
@@ -39,7 +39,7 @@ ms.locfileid: "96449423"
 
 1. 您有將用來存取 Azure Stack Edge Pro 裝置的 Windows 用戶端系統。
   
-    - 用戶端正在執行 Windows PowerShell 5.0 或更新版本。 若要下載 Windows PowerShell 的最新版本，請移至 [ [安裝 Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows)。
+    - 用戶端正在執行 Windows PowerShell 5.0 或更新版本。 若要下載 Windows PowerShell 的最新版本，請移至 [ [安裝 Windows PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows)。
     
     - 您也可以讓任何其他用戶端使用 [支援的作業系統](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) 。 本文說明使用 Windows 用戶端的程式。 
     
@@ -145,7 +145,7 @@ ms.locfileid: "96449423"
     > - 若要在您的裝置上部署 Azure Arc，請確定您使用的是 [Azure Arc 支援的區域](../azure-arc/kubernetes/overview.md#supported-regions)。 
     > - 使用 `az account list-locations` 命令來找出要傳入 Cmdlet 的確切位置名稱 `Set-HcsKubernetesAzureArcAgent` 。 位置名稱的格式通常不含任何空格。
     
-    範例如下：
+    請看以下範例：
    
     ```powershell
     [10.128.44.240]: PS>Set-HcsKubernetesAzureArcAgent -SubscriptionId "062c67a6-019b-40af-a775-c4dc1abe56ed" -ResourceGroupName "myaserg1" -ResourceName "myasetestresarc" -Location "westeurope" -TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47" -ClientId "aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b" -ClientSecret "<password>"

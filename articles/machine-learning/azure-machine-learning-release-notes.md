@@ -9,16 +9,45 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 11aa739beeb07c3de056d8a2430b556fcc40b178
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 6e92fb39845944898bebf6446c35f0932e13b5b8
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746725"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788870"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning 版本資訊
 
 在本文中，您將瞭解 Azure Machine Learning 版本。  如需完整的 SDK 參考內容，請造訪 Azure Machine Learning 的 [**適用于 Python 的主要 SDK**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 參考頁面。
+
+ ## <a name="2021-01-25"></a>2021-01-25
+
+### <a name="azure-machine-learning-sdk-for-python-v1210"></a>Azure Machine Learning SDK for Python v 1.21。0
++ **Bug 修正和改善**
+  + **azure-cli-ml**
+    + 修正搭配 UserAssigned Identity 使用 AmlCompute 時的 CLI 解說文字
+  + **azureml-contrib-automl-dnn-願景**
+    + AutoML 視覺執行會顯示 [部署] 和 [下載] 按鈕，而且可以部署或下載模型，類似于其他 AutoML 執行。 有兩個新的檔案 (scoring_file_v_1_0_0 .py 和 conda_env_v_1_0_0. yml) 其中包含執行推斷的腳本和 yml 檔案，以重新建立 conda 環境。 ' Pth ' 檔案也已重新命名為使用 ' pt ' 延伸模組。
+  + **azureml-core**
+    + 適用于 azure-cli 的 MSI 支援-ml
+    + 使用者指派的受控識別支援。
+    + 有了這項變更，客戶就應該能夠提供使用者指派的身分識別，用來從客戶金鑰保存庫提取金鑰以進行靜態加密。
+    +  修正大型檔案設定檔的 row_count = 0-修正以空白字元填補的分隔值的雙重轉換錯誤
+    + 移除輸出資料集 GA 的實驗旗標
+    + 更新如何提取特定模型版本的檔
+    + 允許在私用連結時更新混合模式存取的工作區
+    + 修正以移除資料存放區上的其他註冊以繼續執行功能
+    + 已新增 CLI/SDK 支援，以更新工作區的主要使用者指派身分識別
+  + **azureml-interpret**
+    + 已更新 azureml-解讀以解讀0.16。0
+    + azureml 中的說明用戶端記憶體優化-解讀
+  + **azureml-train-automl-runtime**
+    + 啟用 ADB 執行的串流
+  + **azureml-train-core**
+    + 修正以移除資料存放區上的其他註冊以繼續執行功能
+  + **azureml-widgets**
+    + 客戶不應該使用 widget 來查看現有執行資料視覺效果的變更，現在可在選擇性地使用條件式超參數時取得支援。
+    + 使用者執行小工具現在包含執行排入佇列狀態的詳細說明。
 
 
  ## <a name="2021-01-11"></a>2021-01-11
@@ -118,7 +147,7 @@ ms.locfileid: "98746725"
 ## <a name="2020-11-30"></a>2020-11-30
 ### <a name="azure-machine-learning-studio-notebooks-experience-november-update"></a>Azure Machine Learning Studio 筆記本體驗 (11 月更新) 
 + **新功能**
-   + 原生終端機。 使用者現在可以透過[整合式終端](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal)機存取整合式終端機，以及 Git 操作。
+   + 原生終端機。 使用者現在可以透過[整合式終端](./how-to-run-jupyter-notebooks.md#terminal)機存取整合式終端機，以及 Git 操作。
   + 複製資料夾 
   + 計算下拉式清單的成本 
   + 離線計算 Pylance 

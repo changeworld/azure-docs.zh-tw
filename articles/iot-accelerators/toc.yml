@@ -132,7 +132,7 @@
       href: /azure/architecture/reference-architectures/iot
       items:
         - name: 下載
-          href: 'https://aka.ms/iotrefarchitecture'
+          href: /azure/architecture/reference-architectures/iot
     - name: 常見問題集
       href: iot-accelerators-faq.md
     - name: Stack Overflow

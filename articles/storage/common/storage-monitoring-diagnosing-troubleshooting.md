@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 18d36e37554a5d2b37488b7a1525f8290dc03da0
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 50d78e83bbbeb4b0252c83f9f52e94599ea6946c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763263"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787955"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>監視、診斷與疑難排解 Microsoft Azure 儲存體
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -767,7 +767,7 @@ WireShark 會反白顯示任何存在 **packetlist** 視窗的錯誤。 您也�
 >
 
 ### <a name="appendix-4-using-excel-to-view-metrics-and-log-data"></a><a name="appendix-4"></a>附錄 4：使用 Excel 檢視度量與記錄資料
-許多工具都可讓您從 Azure 資料表儲存體中下載使用分隔格式的儲存體度量資料，方便您將資料載入 Excel 以供檢視及分析。 來自 Azure Blob 儲存體的儲存體記錄資料已經使用分隔格式，方便您直接載入 Excel。 不過，您還需要依據[儲存體分析記錄格式](/rest/api/storageservices/Storage-Analytics-Log-Format)與[儲存體分析度量資料表結構描述](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema)中的資訊，新增適當的資料行標題。
+許多工具都可讓您從 Azure 資料表儲存體中下載使用分隔格式的儲存體度量資料，方便您將資料載入 Excel 以供檢視及分析。 Azure Blob 儲存體的儲存體記錄資料已採用可載入 Excel 的分隔格式。 不過，您還需要依據[儲存體分析記錄格式](/rest/api/storageservices/Storage-Analytics-Log-Format)與[儲存體分析度量資料表結構描述](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema)中的資訊，新增適當的資料行標題。
 
 若要將您從 Blob 儲存體下載的儲存體記錄資料匯入 Excel：
 

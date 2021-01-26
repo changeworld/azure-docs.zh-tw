@@ -3,12 +3,12 @@ title: 管理多個環境的應用程式
 description: Azure Service Fabric 應用程式可以在任意大小 (從一部機器至數千部機器) 的叢集上執行。 在某些情況下，您會想要針對各種環境以不同的方式設定應用程式。 本文說明如何定義每個環境的不同應用程式參數。
 ms.topic: conceptual
 ms.date: 02/23/2018
-ms.openlocfilehash: 51bc77abca8ce2b3878df1c1859203618d3e2e27
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: c907540c03788ab5f4087a96e301f18ab7ced4ca
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574440"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787972"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>管理多個環境的應用程式
 
@@ -38,7 +38,7 @@ Azure Service Fabric 叢集可讓您使用任意數量的機器 (從一部至數
 
 在 Service Fabric 中建立具名的應用程式執行個體時，您可以傳入參數。 執行的方式取決於您如何建立應用程式執行個體。
 
-  - 在 PowerShell 中，此 [`New-ServiceFabricApplication`](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) Cmdlet 會以雜湊表形式接受應用程式參數。
+  - 在 PowerShell 中，此 [`New-ServiceFabricApplication`](/powershell/module/servicefabric/new-servicefabricapplication) Cmdlet 會以雜湊表形式接受應用程式參數。
   - 使用 sfctl 時，此 [`sfctl application create`](./service-fabric-sfctl-application.md#sfctl-application-create) 命令會使用參數作為 JSON 字串。 install.sh 指令碼會使用 sfctl。
   - Visual Studio 會在應用程式專案的 [參數] 資料夾中為您提供一組參數檔案。 使用 Azure DevOps Services 或 Azure DevOps Server 從 Visual Studio 發佈時，會使用這些參數檔案。 在 Visual Studio 中，參數檔案會傳遞至 Deploy-FabricApplication.ps1 指令碼。
 

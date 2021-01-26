@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/28/2017
-ms.openlocfilehash: 2e6da1783c3bec4958783494cb6928f5a6a69a58
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 63d46298de2f480d97d25de2ec7e1ec78fbebd8d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822347"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789458"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>使用 Azure Toolkit for IntelliJ 來在 HDInsight 中透過 VPN 遠端偵錯 Apache Spark 應用程式
 
@@ -27,7 +27,7 @@ ms.locfileid: "97822347"
 1. 在 IntelliJ IDEA 中建立 Scala 應用程式，然後設定它以進行遠端偵錯。
 1. 執行和偵錯應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * **Azure 訂用帳戶**。 如需詳細資訊，請參閱[取得 Azure 的免費試用](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * **HDInsight 中的 Apache Spark 叢集**。 如需指示，請參閱[在 Azure HDInsight 中建立 Apache Spark 叢集](apache-spark-jupyter-spark-sql.md)。
@@ -41,7 +41,7 @@ ms.locfileid: "97822347"
 
 請遵循下列連結的指示來建立 Azure 虛擬網路，然後確認桌上型電腦和虛擬網路之間的連線能力：
 
-* [使用 Azure 入口網站建立具有站對站 VPN 連線的 VNet](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [使用 Azure 入口網站建立具有站對站 VPN 連線的 VNet](../../vpn-gateway/tutorial-site-to-site-portal.md)
 * [使用 PowerShell 建立具有站對站 VPN 連線的 VNet](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 * [使用 PowerShell 設定虛擬網路的點對站連線](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 

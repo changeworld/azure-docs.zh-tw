@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: 994e5a11cd3b42de339ed11a9d2517c81856e672
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: c4e2894d193309c169adbea96491e0754d479a8a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96581687"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786802"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>管理 Azure 資料箱閘道的存取、電源和連線模式
 
@@ -68,7 +68,7 @@ ms.locfileid: "96581687"
 
 您應該可以 `User` 存取 Active Directory 租使用者，因此您可以 `Read all directory objects` 。 來賓使用者沒有許可權 `Read all directory objects` 。 如果您是來賓，則產生啟用金鑰、在裝置上建立共用以及建立使用者的作業將會失敗。
 
-如需如何提供存取權給使用者 Microsoft Graph API 的詳細資訊，請參閱 [Microsoft Graph 許可權參考](https://docs.microsoft.com/graph/permissions-reference)。
+如需如何提供存取權給使用者 Microsoft Graph API 的詳細資訊，請參閱 [Microsoft Graph 許可權參考](/graph/permissions-reference)。
 
 ### <a name="register-resource-providers"></a>註冊資源提供者
 
@@ -95,7 +95,7 @@ Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Register
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 ```
 
-如需如何註冊資源提供者的詳細資訊，請參閱 [解決資源提供者註冊的錯誤](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors)。
+如需如何註冊資源提供者的詳細資訊，請參閱 [解決資源提供者註冊的錯誤](../azure-resource-manager/templates/error-register-resource-provider.md)。
 
 ## <a name="manage-connectivity-mode"></a>管理連線模式
 

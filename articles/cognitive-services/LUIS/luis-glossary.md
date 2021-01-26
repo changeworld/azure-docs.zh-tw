@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: cc7dac3767ca5c9e2429f4691a458f88ad1af707
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7c65c8272172cab9f5361d16141bf7b229037480
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151986"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786939"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>常用詞彙和概念的語言理解詞彙
 Language Understanding (LUIS) 詞彙說明使用 LUIS 服務時可能遇到的詞彙。
@@ -50,12 +50,13 @@ Language Understanding (LUIS) 詞彙說明使用 LUIS 服務時可能遇到的�
 
 ## <a name="batch-test"></a>批次測試
 
-批次測試是能夠使用一致且已知的使用者語句測試集來驗證目前 LUIS 應用程式的模型。 批次測試是在 [JSON 格式](luis-concept-batch-test.md#batch-file-format)的檔案中定義。
+批次測試是能夠使用一致且已知的使用者語句測試集來驗證目前 LUIS 應用程式的模型。 批次測試是在 [JSON 格式](./luis-how-to-batch-test.md#batch-test-file)的檔案中定義。
+
 
 另請參閱：
-* [概念](luis-concept-batch-test.md)
+* [概念](./luis-how-to-batch-test.md)
 * [如何](luis-how-to-batch-test.md) 執行批次測試
-* [教學](luis-tutorial-batch-testing.md) 課程-建立和執行批次測試
+* [教學](./luis-how-to-batch-test.md) 課程-建立和執行批次測試
 
 ### <a name="f-measure"></a>F 量值
 
@@ -69,7 +70,7 @@ Language Understanding (LUIS) 詞彙說明使用 LUIS 服務時可能遇到的�
 
 在批次測試中，資料點代表您的應用程式不正確預測了存在目標意圖/實體的語句。
 
-### <a name="precision"></a>Precision
+### <a name="precision"></a>準確率
 在批次測試中，精確度 (也稱為陽性預測值) 是相關語句在所擷取語句之間的比例。
 
 動物批次測試的範例是預測的為伍數目除以動物 (為伍和非為伍等) 的總次數。
@@ -109,7 +110,7 @@ Language Understanding (LUIS) 詞彙說明使用 LUIS 服務時可能遇到的�
 
 描述項是先前用於機器學習 [功能](#features)的詞彙。
 
-## <a name="domain"></a>Domain
+## <a name="domain"></a>網域
 
 在 LUIS 的脈絡中，領域是一個知識的範圍。 您的網域是您的案例所特有的。 不同的網域會使用在網域內容中具有意義的特定語言和術語。 例如，如果您要建立應用程式來播放音樂，則您的應用程式會有音樂專屬的條款和語言–例如「歌曲、曲目、專輯、歌詞、b 邊、演出者」。 如需網域的範例，請參閱 [預建網域](#prebuilt-domain)。
 
@@ -162,7 +163,7 @@ LUIS 預測端點 URL 是您在撰寫併發布 [LUIS 應用程式](#application-
 
 查看預建[實體](#prebuilt-entity)的預建模型專案
 
-## <a name="features"></a>特性
+## <a name="features"></a>功能
 
 在機器學習中，功能是可協助模型辨識特定概念的特性。 這是 LUIS 可以使用的提示，但不能使用硬規則。
 
@@ -194,7 +195,7 @@ LUIS 預測端點 URL 是您在撰寫併發布 [LUIS 應用程式](#application-
 
 請參閱 [應用程式 (應用程式) ](#application-app)的定義。
 
-## <a name="model"></a>模型
+## <a name="model"></a>型號
 
 學習) 模型的 (機器是對輸入資料進行預測的函式。 在 LUIS 中，我們會將意圖分類器和實體擷取器統稱為「模型」，而我們會將一組以「應用程式」方式一起定型、發佈及查詢的模型。
 
@@ -302,7 +303,7 @@ LUIS 配額是 Azure 訂用帳戶層的限制。 LUIS 配額會受到每秒要�
 
 請參閱[變更預先建置 datetimeV2 實體的時區](luis-concept-data-alteration.md?#change-time-zone-of-prebuilt-datetimev2-entity)。
 
-## <a name="token"></a>Token
+## <a name="token"></a>權杖
 [Token](luis-language-support.md#tokenization)是 LUIS 可辨識的最小文字單位。 這在語言方面稍有不同。
 
 若為 **英文**，權杖是連續範圍 (不會有任何空格或標點符號) 字母和數位。 空間不是標記。
@@ -314,7 +315,7 @@ LUIS 配額是 Azure 訂用帳戶層的限制。 LUIS 配額會受到每秒要�
 |`425-555-5555`|5|電話號碼。 每個標點符號都是單一權杖，因此會  `425-555-5555` 是5個權杖：<br>`425`<br>`-`<br>`555`<br>`-`<br>`5555` |
 |`https://luis.ai`|7|`https`<br>`:`<br>`/`<br>`/`<br>`luis`<br>`.`<br>`ai`<br>|
 
-## <a name="train"></a>定型
+## <a name="train"></a>Train
 
 [訓練](luis-how-to-train.md) 是在上一次定型之後，對使用中版本的任何變更進行教學 LUIS 的流程。
 
@@ -326,7 +327,7 @@ LUIS 配額是 Azure 訂用帳戶層的限制。 LUIS 配額會受到每秒要�
 
 定型錯誤是您定型資料上不符合其標籤的預測。
 
-## <a name="utterance"></a>語句
+## <a name="utterance"></a>表達
 
 「使用者輸入」（ [語句](luis-concept-utterance.md) ）是指對話中句子的簡短文字代表。 它是一種自然語言片語，例如「第2個票證到西雅圖的下週二」。 新增範例語句來定型模型，而模型會在執行時間于新語句上預測
 

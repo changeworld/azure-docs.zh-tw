@@ -4,12 +4,12 @@ description: 在本教學課程中，您將了解如何在 Azure 中相應放大
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 063c83818ec2e98491f9062e936b9a1e7b2c4356
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
-ms.translationtype: HT
+ms.openlocfilehash: cdc7ba8d6c83ae72ffb8f1afae3954b3a46dc6ec
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97702169"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787989"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>教學課程：在 Azure 中調整 Service Fabric 叢集
 
@@ -809,7 +809,7 @@ az deployment group create --resource-group sfclustertutorialgroup --template-fi
 > [!WARNING]
 > 不建議經常使用 Remove-AzServiceFabricNodeType 從生產環境叢集移除節點類型。 它是非常危險的命令，因為它會刪除節點類型後的虛擬機器擴展集資源。 
 
-若要移除節點類型，請執行 [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) Cmdlet。  節點類型必須是銀級或金級[持久性層級][durability]。此 Cmdlet 會刪除與節點類型相關聯的擴展集，而且需要一些時間才能完成。  接著在每個要移除的節點上執行 [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) Cmdlet，以刪除節點狀態，並從叢集中移除節點。 如果節點上有服務，則會先將服務移出至另一個節點。 如果叢集管理員找不到複本/服務的節點，則作業會延遲/封鎖。
+若要移除節點類型，請執行 [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) Cmdlet。  節點類型必須是銀級或金級[持久性層級][durability]。此 Cmdlet 會刪除與節點類型相關聯的擴展集，而且需要一些時間才能完成。  接著在每個要移除的節點上執行 [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate) Cmdlet，以刪除節點狀態，並從叢集中移除節點。 如果節點上有服務，則會先將服務移出至另一個節點。 如果叢集管理員找不到複本/服務的節點，則作業會延遲/封鎖。
 
 ```powershell
 $groupname = "sfclustertutorialgroup"

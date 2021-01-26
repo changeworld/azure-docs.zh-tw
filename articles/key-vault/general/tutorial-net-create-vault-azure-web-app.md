@@ -10,23 +10,23 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 2504efcbd79ab0e43f958b86564709b6ac6295a6
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
-ms.translationtype: HT
+ms.openlocfilehash: 2960726cf687908e8e4aed9333fce490dd7ff006
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733051"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788732"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>教學課程：使用受控識別透過 .NET 將 Key Vault 連線至 Azure Web 應用程式
 
 [Azure Key Vault](./overview.md) 可讓您以更高的安全性儲存認證和其他秘密。 不過，您的程式碼必須向 Key Vault 進行驗證，才能擷取認證。 [Azure 資源的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)可在 Azure Active Directory (Azure AD) 中將自動受控的識別提供給 Azure 服務，以利解決此問題。 您可以使用此身分識別來完成任何支援 Azure AD 驗證的服務驗證 (包括 Key Vault)，不需要在程式碼中顯示認證。
 
-在本教學課程中，您將建立 Azure Web 應用程式，並將其部署至 [Azure App Service](https://docs.microsoft.com/azure/app-service/overview)。 您將透過[適用於 .NET 的 Azure Key Vault 秘密用戶端程式庫](/dotnet/api/overview/azure/key-vault)和 [Azure CLI](/cli/azure/get-started-with-azure-cli)，使用受控識別向 Azure 金鑰保存庫驗證您的 Azure Web 應用程式。 當您使用自選的開發語言、Azure PowerShell 和 (或) Azure 入口網站時，適用的基本原則是一樣的。
+在本教學課程中，您將建立 Azure Web 應用程式，並將其部署至 [Azure App Service](../../app-service/overview.md)。 您將透過[適用於 .NET 的 Azure Key Vault 秘密用戶端程式庫](/dotnet/api/overview/azure/key-vault)和 [Azure CLI](/cli/azure/get-started-with-azure-cli)，使用受控識別向 Azure 金鑰保存庫驗證您的 Azure Web 應用程式。 當您使用自選的開發語言、Azure PowerShell 和 (或) Azure 入口網站時，適用的基本原則是一樣的。
 
 如需本教學課程中介紹的 Azure App Service Web 應用程式和部署的詳細資訊，請參閱：
-- [App Service 概觀](https://docs.microsoft.com/azure/app-service/overview)
-- [在 Azure App Service 中建立 ASP.NET Core Web 應用程式](https://docs.microsoft.com/azure/app-service/quickstart-dotnetcore)
-- [本機 Git 部署至 Azure App Service](https://docs.microsoft.com/azure/app-service/deploy-local-git)
+- [App Service 概觀](../../app-service/overview.md)
+- [在 Azure App Service 中建立 ASP.NET Core Web 應用程式](../../app-service/quickstart-dotnetcore.md)
+- [本機 Git 部署至 Azure App Service](../../app-service/deploy-local-git.md)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -67,7 +67,7 @@ dotnet run
 
 您會看到來自應用程式的 "Hello World!" 訊息顯示在頁面上。
 
-若要進一步了解如何建立適用於 Azure 的 Web 應用程式，請參閱[在 Azure App Service 中建立 ASP.NET Core Web 應用程式](https://docs.microsoft.com/azure/app-service/quickstart-dotnetcore)
+若要進一步了解如何建立適用於 Azure 的 Web 應用程式，請參閱[在 Azure App Service 中建立 ASP.NET Core Web 應用程式](../../app-service/quickstart-dotnetcore.md)
 
 ## <a name="deploy-the-app-to-azure"></a>將應用程式部署至 Azure
 
@@ -228,7 +228,7 @@ http://<your-webapp-name>.azurewebsites.net
 
 您會看到來自應用程式的 "Hello World!" 訊息，如同您先前造訪 `http://localhost:5000` 時所看到的。
 
-如需使用 Git 部署 Web 應用程式的詳細資訊，請參閱[本機 Git 部署至 Azure App Service](https://docs.microsoft.com/azure/app-service/deploy-local-git)
+如需使用 Git 部署 Web 應用程式的詳細資訊，請參閱[本機 Git 部署至 Azure App Service](../../app-service/deploy-local-git.md)
  
 ## <a name="configure-the-web-app-to-connect-to-key-vault"></a>設定 Web 應用程式以連線至 Key Vault
 
@@ -264,7 +264,7 @@ az keyvault set-policy --name "<your-keyvault-name>" --object-id "<principalId>"
 
 ### <a name="modify-the-app-to-access-your-key-vault"></a>修改應用程式以存取您的金鑰保存庫
 
-在本教學課程中，您將使用 [Azure Key Vault 秘密用戶端程式庫](https://docs.microsoft.com/dotnet/api/overview/azure/security.keyvault.secrets-readme)進行示範。 您也可以使用 [Azure Key Vault 憑證用戶端程式庫](https://docs.microsoft.com/dotnet/api/overview/azure/security.keyvault.certificates-readme)或 [Azure Key Vault 金鑰用戶端程式庫](https://docs.microsoft.com/dotnet/api/overview/azure/security.keyvault.keys-readme)。
+在本教學課程中，您將使用 [Azure Key Vault 秘密用戶端程式庫](/dotnet/api/overview/azure/security.keyvault.secrets-readme)進行示範。 您也可以使用 [Azure Key Vault 憑證用戶端程式庫](/dotnet/api/overview/azure/security.keyvault.certificates-readme)或 [Azure Key Vault 金鑰用戶端程式庫](/dotnet/api/overview/azure/security.keyvault.keys-readme)。
 
 #### <a name="install-the-packages"></a>安裝套件
 

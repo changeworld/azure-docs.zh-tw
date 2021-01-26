@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 2758c75e27eb1e00368b51a932723ba1bd7c675a
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 8a6bfb1c6aa268914e6dd1157115067b15bfa404
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96581710"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786905"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>使用 Azure 入口網站來管理 Azure 資料箱閘道上的共用 
 
@@ -50,7 +50,7 @@ ms.locfileid: "96581710"
 5. 從區塊 Blob、分頁 Blob 或檔案中選擇 [儲存體服務]  。 所選擇的服務類型取決於您想要資料以哪一種格式存在 Azure 中。 例如，在此例中，我們想要資料以 blob 區塊的形式存在於 Azure 中，因此我們選取 [ **區塊 blob**]。 如果選擇 [分頁 Blob]，您必須確定資料對齊 512 個位元組。 例如，VHDX 一律是 512 位元組規格。
 
    > [!IMPORTANT]
-   > 如果您使用的是資料箱閘道裝置，請確定您使用的 Azure 儲存體帳戶沒有設定永久性原則。 如需詳細資訊，請參閱[設定和管理 Blob 儲存體的不變性原則](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)。
+   > 如果您將 Azure 儲存體帳戶與資料箱閘道裝置搭配使用，請確定您所使用的 Azure 儲存體帳戶並未設定了不變性原則。 如需詳細資訊，請參閱[設定和管理 Blob 儲存體的不變性原則](../storage/blobs/storage-blob-immutability-policies-manage.md)。
 
 6. 此步驟取決於您要建立 SMB 還是 NFS 共用。
     - **如果建立 SMB 共用** - 在 [完整權限本機使用者] 欄位中，從 [新建] 或 [使用現有的] 中擇一。 如果建立新的本機使用者，請提供 [使用者名稱]、[密碼]，然後確認密碼。 這會將使用權限指派給本機使用者。 當您在此指派權限之後，就可以使用 [檔案總管] 來修改這些權限。

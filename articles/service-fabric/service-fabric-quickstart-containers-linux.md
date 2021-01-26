@@ -4,12 +4,12 @@ description: 在此快速入門中，您將使用您的應用程式建置 Docker
 ms.topic: quickstart
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 27d9c96643feb805a785e1e535cd8cac2602082b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
-ms.translationtype: HT
+ms.openlocfilehash: f58b8feda0e88d8a5e7cddaabbc650b0f0ab3973
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741912"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788157"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>快速入門：將 Linux 容器部署至 Service Fabric
 
@@ -25,7 +25,7 @@ Azure Service Fabric 是一個分散式系統平台，可讓您部署及管理�
 
 1. 如果您沒有訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-2. 安裝 [Azure CLI](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)
+2. 安裝 [Azure CLI](/cli/azure/install-azure-cli-apt)
 
 3. 安裝 [Service Fabric SDK 和 CLI](service-fabric-get-started-linux.md#installation-methods)
 
@@ -107,7 +107,7 @@ Mozilla Firefox 是 Ubuntu 16.04 中的預設瀏覽器。 若要將憑證匯入 
     ./install.sh
     ```
 
-3. 開啟網頁瀏覽器，並瀏覽至叢集的 Service Fabric Explorer 端點。 端點的格式如下： **https://\<my-azure-service-fabric-cluster-url>:19080/Explorer** ；例如，`https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`。 </br>
+3. 開啟網頁瀏覽器，並瀏覽至叢集的 Service Fabric Explorer 端點。 端點的格式如下：**https://\<my-azure-service-fabric-cluster-url>:19080/Explorer**；例如，`https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`。 </br>
 
 4. 展開 [應用程式] 節點，您可以看到投票應用程式類型和您建立的執行個體現在有一個項目。
 
@@ -149,7 +149,7 @@ Service Fabric 可確保如果發生失敗，容器執行個體會自動移至�
 
     您現在可以選擇調整 Web 前端服務的執行個體數目。
 
-3. 將數字變更為 **2** ，然後按一下 [調整服務]。
+3. 將數字變更為 **2**，然後按一下 [調整服務]。
 4. 按一下樹狀檢視中的 **fabric:/Voting/azurevotefront** 節點，然後展開分割區節點 (以 GUID 表示)。
 
     ![Service Fabric Explorer 調整服務完成][containersquickstartscaledone]
@@ -168,7 +168,7 @@ Service Fabric 可確保如果發生失敗，容器執行個體會自動移至�
 
 刪除叢集及其取用之所有資源的最簡單方式，就是刪除資源群組。
 
-登入 Azure 並選取您要移除叢集的訂用帳戶識別碼。 您可以登入 Azure 入口網站以尋找您的訂用帳戶識別碼。 使用 [az group delete](/cli/azure/group?view=azure-cli-latest) 命令來刪除資源群組和所有叢集資源。
+登入 Azure 並選取您要移除叢集的訂用帳戶識別碼。 您可以登入 Azure 入口網站以尋找您的訂用帳戶識別碼。 使用 [az group delete](/cli/azure/group) 命令來刪除資源群組和所有叢集資源。
 
 ```azurecli
 az login

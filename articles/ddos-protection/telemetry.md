@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 86e4a111be7585373ecf4c2fe9508f2bfca7de16
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: a3f6c14b7ed2686a262f28510efb37068cfb9cb3
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915074"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787293"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>檢視和設定 DDoS 保護遙測
 
@@ -34,10 +34,10 @@ Azure DDoS 保護標準透過 DDoS 攻擊分析，提供詳細的攻擊見解和
 > [!NOTE]
 > 雖然 Azure 入口網站上會顯示多個 **匯總** 選項，但是每個度量只支援下表列出的匯總類型。 這種混淆很抱歉，我們正努力解決此問題。
 
-以下是適用于 Azure DDoS 保護標準的 [計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftnetworkpublicipaddresses) 。 這些計量也可透過診斷設定匯出 (請參閱 [查看和設定 DDoS 診斷記錄](diagnostic-logging.md)) 。
+以下是適用于 Azure DDoS 保護標準的 [計量](../azure-monitor/platform/metrics-supported.md#microsoftnetworkpublicipaddresses) 。 這些計量也可透過診斷設定匯出 (請參閱 [查看和設定 DDoS 診斷記錄](diagnostic-logging.md)) 。
 
 
-| 計量 | 計量顯示名稱 | 單位 | 彙總類型 | 描述 |
+| Metric | 計量顯示名稱 | 單位 | 彙總類型 | 描述 |
 | --- | --- | --- | --- | --- |
 | ByteCount | 位元組計數 | Count | 總計 | 在期間內傳輸的位元組總數 |
 | BytesDroppedDDoS | 傳入位元組數捨棄 DDoS | 每秒位元組 | 最大值 | 傳入位元組數捨棄 DDoS| 

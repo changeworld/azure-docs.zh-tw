@@ -3,15 +3,15 @@ title: Azure Service Fabric 具狀態 Reliable Services 診斷
 description: Azure Service Fabric 具狀態可靠服務診斷功能
 ms.topic: conceptual
 ms.date: 8/24/2018
-ms.openlocfilehash: 5a3831dd4f8d5402980fac3daf8c35d9884c852d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 774a771d0c9701076a5d6c070963bf6224a571dd
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840756"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789325"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>具狀態 Reliable Services 診斷功能
-Azure Service Fabric 具狀態可靠服務 StatefulServiceBase 類別會發出 [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) 事件，可用於偵錯服務、提供執行階段運作情形的深入了解，以及協助疑難排解。
+Azure Service Fabric 具狀態可靠服務 StatefulServiceBase 類別會發出 [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource) 事件，可用於偵錯服務、提供執行階段運作情形的深入了解，以及協助疑難排解。
 
 ## <a name="eventsource-events"></a>EventSource 事件
 具狀態可靠服務之 StatefulServiceBase 類別的 EventSource 名稱是 "Microsoft-ServiceFabric-Services"。 當 [Visual Studio 中正在偵錯](service-fabric-debugging-your-application.md)服務時，此事件來源的事件會出現在 [診斷事件](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio)視窗中。
@@ -58,7 +58,7 @@ Windows 作業系統中預設可用的 [Windows 效能監視器](/previous-versi
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId`
 
-*ServiceFabricPartitionId* 是與效能計數器執行個體相關聯 Service Fabric 資料分割識別碼的字串表示法。 資料分割識別碼是 GUID，其字串表示是透過 [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) 格式規範 "D" 產生。
+*ServiceFabricPartitionId* 是與效能計數器執行個體相關聯 Service Fabric 資料分割識別碼的字串表示法。 資料分割識別碼是 GUID，其字串表示是透過 [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) 格式規範 "D" 產生。
 
 *ServiceFabricReplicaId* 是與某一可靠服務特定複本相關聯的識別碼。 複本識別碼包含在效能計數器實例名稱中，以確保其唯一性，並避免與相同資料分割所產生的其他效能計數器實例發生衝突。 [這裡](service-fabric-concepts-replica-lifecycle.md)會詳細介紹複本以及它們在可靠服務中的角色。
 
@@ -73,13 +73,13 @@ Windows 作業系統中預設可用的 [Windows 效能監視器](/previous-versi
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId:StateProviderId_PerformanceCounterInstanceDifferentiator_StateProviderName`
 
-*ServiceFabricPartitionId* 是與效能計數器執行個體相關聯 Service Fabric 資料分割識別碼的字串表示法。 資料分割識別碼是 GUID，其字串表示是透過 [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) 格式規範 "D" 產生。
+*ServiceFabricPartitionId* 是與效能計數器執行個體相關聯 Service Fabric 資料分割識別碼的字串表示法。 資料分割識別碼是 GUID，其字串表示是透過 [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) 格式規範 "D" 產生。
 
 *ServiceFabricReplicaId* 是與某一可靠服務特定複本相關聯的識別碼。 複本識別碼包含在效能計數器實例名稱中，以確保其唯一性，並避免與相同資料分割所產生的其他效能計數器實例發生衝突。 [這裡](service-fabric-concepts-replica-lifecycle.md)會詳細介紹複本以及它們在可靠服務中的角色。
 
 *StateProviderId* 是與可靠服務內的狀態提供者相關聯的識別碼。 狀態提供者識別碼會包含在效能計數器實例名稱中，以區分 TStore 與另一個。
 
-PerformanceCounterInstanceDifferentiator** 是區別識別碼，與狀態供應器內的效能計數器執行個體相關聯。 區分碼會包含在效能計數器執行個體名稱中，以確保其唯一性，並避免與相同狀態供應器所產生的其他效能計數器執行個體名稱發生衝突。
+PerformanceCounterInstanceDifferentiator 是區別識別碼，與狀態供應器內的效能計數器執行個體相關聯。 區分碼會包含在效能計數器執行個體名稱中，以確保其唯一性，並避免與相同狀態供應器所產生的其他效能計數器執行個體名稱發生衝突。
 
 *StateProviderName* 是與可靠服務內的狀態提供者相關聯的名稱。 狀態提供者名稱包含在效能計數器實例名稱中，讓使用者可以輕鬆地識別它所提供的狀態。
 

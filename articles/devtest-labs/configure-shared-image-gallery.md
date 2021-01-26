@@ -3,27 +3,27 @@ title: 在 Azure DevTest Labs 中設定共用映射庫 |Microsoft Docs
 description: 瞭解如何在 Azure DevTest Labs 中設定共用映射庫，讓使用者在建立實驗室資源時，從共用位置存取映射。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 96563b1dcfac171af38b229bb81d12b3afda2e2f
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: febcff640efc29eb4916250366641635f9d8721e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327972"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788416"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中設定共用映像庫
-DevTest Labs 現在支援 [共用映射庫](../virtual-machines/windows/shared-image-galleries.md) 功能。 它可讓實驗室使用者在建立實驗室資源時，從共用位置存取映射。 它也可協助您在自訂管理的 VM 映射周圍建立結構和組織。 共用映射庫功能支援：
+DevTest Labs 現在支援 [共用映射庫](../virtual-machines/shared-image-galleries.md) 功能。 它可讓實驗室使用者在建立實驗室資源時，從共用位置存取映射。 它也可協助您在自訂管理的 VM 映射周圍建立結構和組織。 共用映射庫功能支援：
 
 - 受控于映射的全域複製
 - 更方便管理的映射版本控制和群組
 - 在支援可用性區域的區域中，使用區域多餘的儲存體 (ZRS) 帳戶，讓您的映射具有高度可用性。 ZRS 針對區域性失敗提供更佳的復原能力。
 - 使用 Azure 角色型存取控制 (Azure RBAC) 在訂用帳戶之間，甚至是在租使用者之間共用。
 
-如需詳細資訊，請參閱 [共用映射庫檔](../virtual-machines/windows/shared-image-galleries.md)。 
+如需詳細資訊，請參閱 [共用映射庫檔](../virtual-machines/shared-image-galleries.md)。 
  
 如果您有大量需要維護的受控映像，而且想要提供給全公司使用時，便可使用共用映像庫作為存放庫，以便輕鬆地更新及共用映像。 作為實驗室擁有者，您可以將現有的共用映射庫連結至您的實驗室。 程式庫附加之後，實驗室使用者就可以從這些最新的映射建立電腦。 這項功能的主要優點是 DevTest Labs 現在可以利用跨實驗室、跨訂用帳戶和跨區域共用映射的優點。 
 
 > [!NOTE]
-> 若要瞭解與共享映射資源庫服務相關聯的成本，請參閱 [共用映射庫的計費](../virtual-machines/windows/shared-image-galleries.md#billing)。
+> 若要瞭解與共享映射資源庫服務相關聯的成本，請參閱 [共用映射庫的計費](../virtual-machines/shared-image-galleries.md#billing)。
 
 ## <a name="considerations"></a>考量
 - 您一次只能將一個共用映射庫連結到實驗室。 如果您想要附加另一個資源庫，您必須卸離現有的資源庫，並附加另一個資源庫。 

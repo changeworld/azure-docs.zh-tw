@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: cd0b73dd22e5e2cab720bb1a33e58e25e517b1f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2a514af99baa2d828df1aee35a0e6339d39e617
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604979"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788548"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Functions 的 Azure 服務匯流排觸發程式
 
@@ -45,7 +45,7 @@ public static void Run(
 
 # <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-下列範例示範 function.json** 檔案中的服務匯流排觸發程序繫結，以及使用此繫結的 [C# 指令碼函式](functions-reference-csharp.md)。 此函式可讀取[訊息中繼資料](#message-metadata)和記錄服務匯流排佇列訊息。
+下列範例示範 function.json 檔案中的服務匯流排觸發程序繫結，以及使用此繫結的 [C# 指令碼函式](functions-reference-csharp.md)。 此函式可讀取[訊息中繼資料](#message-metadata)和記錄服務匯流排佇列訊息。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -83,91 +83,6 @@ public static void Run(string myQueueItem,
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-下列範例示範 function.json** 檔案中的服務匯流排觸發程序繫結，以及使用此繫結的 [JavaScript 函式](functions-reference-node.md)。 此函式可讀取[訊息中繼資料](#message-metadata)和記錄服務匯流排佇列訊息。 
-
-以下是 *function.json* 檔案中的繫結資料：
-
-```json
-{
-"bindings": [
-    {
-    "queueName": "testqueue",
-    "connection": "MyServiceBusConnection",
-    "name": "myQueueItem",
-    "type": "serviceBusTrigger",
-    "direction": "in"
-    }
-],
-"disabled": false
-}
-```
-
-以下是 JavaScript 指令碼程式碼：
-
-```javascript
-module.exports = function(context, myQueueItem) {
-    context.log('Node.js ServiceBus queue trigger function processed message', myQueueItem);
-    context.log('EnqueuedTimeUtc =', context.bindingData.enqueuedTimeUtc);
-    context.log('DeliveryCount =', context.bindingData.deliveryCount);
-    context.log('MessageId =', context.bindingData.messageId);
-    context.done();
-};
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-下列範例示範如何透過觸發程式讀取服務匯流排佇列訊息。
-
-服務匯流排系結是在*類型*設定為的*function.js*中定義 `serviceBusTrigger` 。
-
-```json
-{
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "name": "msg",
-      "type": "serviceBusTrigger",
-      "direction": "in",
-      "queueName": "inputqueue",
-      "connection": "AzureServiceBusConnectionString"
-    }
-  ]
-}
-```
-
-* _ \_ _ \_ .Py*中的程式碼會將參數宣告為 `func.ServiceBusMessage` ，可讓您讀取函數中的佇列訊息。
-
-```python
-import azure.functions as func
-
-import logging
-import json
-
-def main(msg: func.ServiceBusMessage):
-    logging.info('Python ServiceBus queue trigger processed message.')
-
-    result = json.dumps({
-        'message_id': msg.message_id,
-        'body': msg.get_body().decode('utf-8'),
-        'content_type': msg.content_type,
-        'expiration_time': msg.expiration_time,
-        'label': msg.label,
-        'partition_key': msg.partition_key,
-        'reply_to': msg.reply_to,
-        'reply_to_session_id': msg.reply_to_session_id,
-        'scheduled_enqueue_time': msg.scheduled_enqueue_time,
-        'session_id': msg.session_id,
-        'time_to_live': msg.time_to_live,
-        'to': msg.to,
-        'user_properties': msg.user_properties,
-        'metadata' : msg.metadata
-    })
-
-    logging.info(result)
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 下列 JAVA 函數會使用 JAVA 函式執行時間連結 `@ServiceBusQueueTrigger` [庫](/java/api/overview/azure/functions/runtime) 中的注釋來描述服務匯流排佇列觸發程式的設定。 函式會抓取放置在佇列中的訊息，並將它新增至記錄。
@@ -199,6 +114,120 @@ def main(msg: func.ServiceBusMessage):
     ) {
         context.getLogger().info(message);
     }
+```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+下列範例示範 function.json 檔案中的服務匯流排觸發程序繫結，以及使用此繫結的 [JavaScript 函式](functions-reference-node.md)。 此函式可讀取[訊息中繼資料](#message-metadata)和記錄服務匯流排佇列訊息。
+
+以下是 *function.json* 檔案中的繫結資料：
+
+```json
+{
+"bindings": [
+    {
+    "queueName": "testqueue",
+    "connection": "MyServiceBusConnection",
+    "name": "myQueueItem",
+    "type": "serviceBusTrigger",
+    "direction": "in"
+    }
+],
+"disabled": false
+}
+```
+
+以下是 JavaScript 指令碼程式碼：
+
+```javascript
+module.exports = function(context, myQueueItem) {
+    context.log('Node.js ServiceBus queue trigger function processed message', myQueueItem);
+    context.log('EnqueuedTimeUtc =', context.bindingData.enqueuedTimeUtc);
+    context.log('DeliveryCount =', context.bindingData.deliveryCount);
+    context.log('MessageId =', context.bindingData.messageId);
+    context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+下列範例顯示在檔案的 *function.js* 中的服務匯流排觸發程式系結，以及使用此系結的 [PowerShell](functions-reference-powershell.md) 函式。 
+
+以下是 *function.json* 檔案中的繫結資料：
+
+```json
+{
+  "bindings": [
+    {
+      "name": "mySbMsg",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "topicName": "mytopic",
+      "subscriptionName": "mysubscription",
+      "connection": "AzureServiceBusConnectionString"
+    }
+  ]
+}
+```
+
+以下是傳送服務匯流排訊息時所執行的函式。
+
+```powershell
+param([string] $mySbMsg, $TriggerMetadata)
+
+Write-Host "PowerShell ServiceBus queue trigger function processed message: $mySbMsg"
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+下列範例示範如何透過觸發程式讀取服務匯流排佇列訊息。
+
+服務匯流排系結是在 *類型* 設定為的 *function.js* 中定義 `serviceBusTrigger` 。
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "msg",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "queueName": "inputqueue",
+      "connection": "AzureServiceBusConnectionString"
+    }
+  ]
+}
+```
+
+*_\__ \_ .Py* 中的程式碼會將參數宣告為 `func.ServiceBusMessage` ，可讓您讀取函數中的佇列訊息。
+
+```python
+import azure.functions as func
+
+import logging
+import json
+
+def main(msg: func.ServiceBusMessage):
+    logging.info('Python ServiceBus queue trigger processed message.')
+
+    result = json.dumps({
+        'message_id': msg.message_id,
+        'body': msg.get_body().decode('utf-8'),
+        'content_type': msg.content_type,
+        'expiration_time': msg.expiration_time,
+        'label': msg.label,
+        'partition_key': msg.partition_key,
+        'reply_to': msg.reply_to,
+        'reply_to_session_id': msg.reply_to_session_id,
+        'scheduled_enqueue_time': msg.scheduled_enqueue_time,
+        'session_id': msg.session_id,
+        'time_to_live': msg.time_to_live,
+        'to': msg.to,
+        'user_properties': msg.user_properties,
+        'metadata' : msg.metadata
+    })
+
+    logging.info(result)
 ```
 
 ---
@@ -268,14 +297,6 @@ def main(msg: func.ServiceBusMessage):
 
 C# 指令碼不支援屬性。
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-JavaScript 不支援屬性。
-
-# <a name="python"></a>[Python](#tab/python)
-
-Python 指令碼不支援屬性。
-
 # <a name="java"></a>[Java](#tab/java)
 
 `ServiceBusQueueTrigger`批註可讓您建立在建立服務匯流排佇列訊息時執行的函式。 可用的設定選項包括佇列名稱和連接字串名稱。
@@ -283,6 +304,18 @@ Python 指令碼不支援屬性。
 `ServiceBusTopicTrigger`批註可讓您指定主題和訂用帳戶，以將觸發函式的資料作為目標。
 
 如需詳細資訊，請參閱觸發程式 [範例](#example) 。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+JavaScript 不支援屬性。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 不支援屬性。
+
+# <a name="python"></a>[Python](#tab/python)
+
+Python 指令碼不支援屬性。
 
 ---
 
@@ -299,7 +332,7 @@ Python 指令碼不支援屬性。
 |**topicName**|**TopicName**|要監視的主題名稱。 只有在監視主題時設定 (不適用於佇列)。|
 |**subscriptionName**|**SubscriptionName**|要監視的訂用帳戶名稱。 只有在監視主題時設定 (不適用於佇列)。|
 |**connection**|**[連接]**|應用程式設定的名稱包含要用於此繫結的服務匯流排連接字串。 如果應用程式設定名稱是以 "AzureWebJobs" 開頭，您只能指定名稱的其餘部分。 例如，如果您將設定 `connection` 為 "MyServiceBus"，則函式執行時間會尋找名為 "AzureWebJobsMyServiceBus" 的應用程式設定。 如果您將 `connection` 保留空白，則 Functions 執行階段會使用應用程式設定中名稱為 "AzureWebJobsServiceBus" 的預設服務匯流排連接字串。<br><br>若要取得連接字串，請遵循[取得管理認證](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)所示的步驟。 連接字串必須是用於服務匯流排命名空間，而不限於特定佇列或主題。 |
-|**accessRights**|**存取**|連接字串的存取權限。 可用值為 `manage` 和 `listen`。 預設值是 `manage`，這表示 `connection` 已具備**管理**權限。 如果您使用沒有**管理**權限的連接字串，請將 `accessRights` 設定為 "listen"。 否則，Functions 執行階段在嘗試執行需要管理權限的作業時可能會失敗。 在 Azure Functions 2.x 版和更新版本中，因為最新版的服務匯流排 SDK 不支援管理作業，所以無法使用此屬性。|
+|**accessRights**|**存取**|連接字串的存取權限。 可用值為 `manage` 和 `listen`。 預設值是 `manage`，這表示 `connection` 已具備 **管理** 權限。 如果您使用沒有 **管理** 權限的連接字串，請將 `accessRights` 設定為 "listen"。 否則，Functions 執行階段在嘗試執行需要管理權限的作業時可能會失敗。 在 Azure Functions 2.x 版和更新版本中，因為最新版的服務匯流排 SDK 不支援管理作業，所以無法使用此屬性。|
 |**isSessionsEnabled**|**IsSessionsEnabled**|`true` 如果連接到 [會話感知](../service-bus-messaging/message-sessions.md) 的佇列或訂用帳戶。 `false` 否則為預設值。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -313,8 +346,8 @@ Python 指令碼不支援屬性。
 * `string` - 如果訊息是文字。
 * `byte[]` - 適用於二進位資料。
 * 自訂類型 - 如果訊息包含 JSON，Azure Functions 會嘗試將 JSON 資料還原序列化。
-* `BrokeredMessage` -使用 [BrokeredMessage. GetBody \<T> ( # B1 ](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) 方法提供已還原序列化的訊息。
-* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) -當設定為時，用來接收和認可訊息容器 (所需的訊息 [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) `false`) 
+* `BrokeredMessage` -使用 [BrokeredMessage. GetBody \<T> ( # B1 ](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1&preserve-view=true) 方法提供已還原序列化的訊息。
+* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet&preserve-view=true) -當設定為時，用來接收和認可訊息容器 (所需的訊息 [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) `false`) 
 
 這些參數類型適用于 Azure Functions 1.x 版;若是2.x 和更新版本，請使用 [`Message`](/dotnet/api/microsoft.azure.servicebus.message) 而不是 `BrokeredMessage` 。
 
@@ -325,23 +358,27 @@ Python 指令碼不支援屬性。
 * `string` - 如果訊息是文字。
 * `byte[]` - 適用於二進位資料。
 * 自訂類型 - 如果訊息包含 JSON，Azure Functions 會嘗試將 JSON 資料還原序列化。
-* `BrokeredMessage` -使用 [BrokeredMessage. GetBody \<T> ( # B1 ](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) 方法提供已還原序列化的訊息。
+* `BrokeredMessage` -使用 [BrokeredMessage. GetBody \<T> ( # B1 ](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1&preserve-view=true) 方法提供已還原序列化的訊息。
 
 這些參數適用于 Azure Functions 1.x 版;若是2.x 和更新版本，請使用 [`Message`](/dotnet/api/microsoft.azure.servicebus.message) 而不是 `BrokeredMessage` 。
-
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-使用存取佇列或主題訊息 `context.bindings.<name from function.json>` 。 服務匯流排訊息會以字串或 JSON 物件的形式傳遞至函式。
-
-# <a name="python"></a>[Python](#tab/python)
-
-佇列訊息可透過輸入的參數提供給函數 `func.ServiceBusMessage` 。 服務匯流排訊息會以字串或 JSON 物件的形式傳遞至函式。
 
 # <a name="java"></a>[Java](#tab/java)
 
 傳入的服務匯流排訊息可透過 `ServiceBusQueueMessage` 或參數取得 `ServiceBusTopicMessage` 。
 
 如需[詳細資訊，請參閱範例](#example)。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+使用存取佇列或主題訊息 `context.bindings.<name from function.json>` 。 服務匯流排訊息會以字串或 JSON 物件的形式傳遞至函式。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+服務匯流排實例可透過在檔案的 [名稱] 屬性 *上* 的 [function.js] 中設定的參數使用。
+
+# <a name="python"></a>[Python](#tab/python)
+
+佇列訊息可透過輸入的參數提供給函數 `func.ServiceBusMessage` 。 服務匯流排訊息會以字串或 JSON 物件的形式傳遞至函式。
 
 ---
 
@@ -351,13 +388,13 @@ Python 指令碼不支援屬性。
 
 ## <a name="peeklock-behavior"></a> PeekLock 行為
 
-Functions 執行階段會在 [PeekLock 模式](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode)中收到訊息。 它會在函數成功完成時，於訊息中呼叫 `Complete`，或是在函數失敗時呼叫 `Abandon`。 如果函式執行時間較 `PeekLock` 逾時還長，只要函式正在執行中，就會自動更新鎖定。 
+Functions 執行階段會在 [PeekLock 模式](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode)中收到訊息。 它會在函數成功完成時，於訊息中呼叫 `Complete`，或是在函數失敗時呼叫 `Abandon`。 如果函式執行時間較 `PeekLock` 逾時還長，只要函式正在執行中，就會自動更新鎖定。
 
-`maxAutoRenewDuration` 在 *host.json* 中是可設定的，其對應至 [OnMessageOptions.MaxAutoRenewDuration](/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet)。 根據服務匯流排文件，此設定允許的上限為 5 分鐘，而您可以將 Functions 時間限制從預設的 5 分鐘增加至 10 分鐘。 您不會想對服務匯流排函式這麼做，因為您會超過服務匯流排更新限制。
+`maxAutoRenewDuration` 在 *host.json* 中是可設定的，其對應至 [OnMessageOptions.MaxAutoRenewDuration](/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet&preserve-view=true)。 根據服務匯流排文件，此設定允許的上限為 5 分鐘，而您可以將 Functions 時間限制從預設的 5 分鐘增加至 10 分鐘。 您不會想對服務匯流排函式這麼做，因為您會超過服務匯流排更新限制。
 
 ## <a name="message-metadata"></a>訊息中繼資料
 
-服務匯流排觸發程序提供數個[中繼資料屬性](./functions-bindings-expressions-patterns.md#trigger-metadata)。 這些屬性可作為其他繫結中繫結運算式的一部分或程式碼中的參數使用。 這些屬性是 [Message](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet) 類別的成員。
+服務匯流排觸發程序提供數個[中繼資料屬性](./functions-bindings-expressions-patterns.md#trigger-metadata)。 這些屬性可作為其他繫結中繫結運算式的一部分或程式碼中的參數使用。 這些屬性是 [Message](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet&preserve-view=true) 類別的成員。
 
 |屬性|類型|描述|
 |--------|----|-----------|

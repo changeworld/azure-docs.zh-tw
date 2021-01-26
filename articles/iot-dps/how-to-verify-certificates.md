@@ -7,12 +7,12 @@ ms.date: 02/26/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 50e8dfd2998b50bfff7341e49ac4d0770c115166
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2020205357c68e007a1a375c4853e8c04afd2019
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530857"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789055"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>如何使用您的裝置佈建服務執行 X.509 CA 憑證擁有權證明
 
@@ -29,43 +29,43 @@ ms.locfileid: "90530857"
 
 若要向佈建服務註冊 CA 憑證並取得驗證碼，以在擁有權證明期間使用，請遵循下列步驟。 
 
-1. 在 Azure 入口網站中，瀏覽至您的佈建服務，並從左側功能表開啟 [憑證]****。 
-2. 按一下 [新增]**** 以新增新的憑證。
+1. 在 Azure 入口網站中，瀏覽至您的佈建服務，並從左側功能表開啟 [憑證]。 
+2. 按一下 [新增] 以新增新的憑證。
 3. 為您的憑證輸入易記的顯示名稱。 瀏覽至代表 X.509 憑證公開部分的 .cer 或 .pem 檔案。 按一下 [上傳] 。
-4. 一旦取得您的憑證已成功上傳的通知後，請按一下 [儲存]****。
+4. 一旦取得您的憑證已成功上傳的通知後，請按一下 [儲存]。
 
     ![Upload certificate](./media/how-to-verify-certificates/add-new-cert.png)  
 
-   [憑證總管]**** 清單中會顯示您的憑證。 請注意，這個憑證的 [狀態]**** 是 [未驗證]**。
+   [憑證總管] 清單中會顯示您的憑證。 請注意，這個憑證的 [狀態] 是 [未驗證]。
 
 5. 按一下您在上一個步驟中新增的憑證。
 
 6. 在 [憑證詳細資料]  中，按一下 [產生驗證碼]  。
 
-7. 佈建服務會建立**驗證碼**，您可以用它來驗證憑證擁有權。 將程式碼複製到剪貼簿。 
+7. 佈建服務會建立 **驗證碼**，您可以用它來驗證憑證擁有權。 將程式碼複製到剪貼簿。 
 
    ![驗證憑證](./media/how-to-verify-certificates/verify-cert.png)  
 
 ## <a name="digitally-sign-the-verification-code-to-create-a-verification-certificate"></a>以數位方式簽署驗證碼，以建立驗證憑證
 
-現在，您必須使用與 X.509 CA 憑證相關聯的私密金鑰來簽署這個驗證碼**，如此就會產生簽章。 這稱為[擁有權證明](https://tools.ietf.org/html/rfc5280#section-3.1)，且會產生已簽署的驗證憑證。
+現在，您必須使用與 X.509 CA 憑證相關聯的私密金鑰來簽署這個驗證碼，如此就會產生簽章。 這稱為[擁有權證明](https://tools.ietf.org/html/rfc5280#section-3.1)，且會產生已簽署的驗證憑證。
 
 Microsoft 提供了工具和範例，協助您建立已簽署的驗證憑證： 
 
-- **Azure IoT 中樞 C SDK**提供 PowerShell (Windows) 及 Bash (Linux) 指令碼，協助您建立 CA 憑證和分葉憑證來進行開發，以及使用驗證碼執行擁有權證明。 您可以將適用您系統的[檔案](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates)下載至工作資料夾，並遵循[管理 CA 憑證讀我檔案](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的指示，對 CA 憑證執行擁有權證明。 
-- **Azure IoT 中樞 C# SDK** 包含[群組憑證驗證範例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample)，可用來執行擁有權證明。
+- **Azure IoT 中樞 C SDK** 提供 PowerShell (Windows) 及 Bash (Linux) 指令碼，協助您建立 CA 憑證和分葉憑證來進行開發，以及使用驗證碼執行擁有權證明。 您可以將適用您系統的[檔案](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates)下載至工作資料夾，並遵循[管理 CA 憑證讀我檔案](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的指示，對 CA 憑證執行擁有權證明。 
+- **Azure IoT 中樞 C# SDK** 包含 [群組憑證驗證範例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample)，可用來執行擁有權證明。
  
 > [!IMPORTANT]
 > 除了執行擁有權證明外，先前所提到的 PowerShell 和 Bash 指令碼也可讓您建立根憑證、中繼憑證和分葉憑證，以用於驗證和佈建裝置。 這些憑證應只限用於開發。 一律不能用在生產環境中。 
 
-文件中提供的 PowerShell 和 Bash 指令碼及 SDK 皆依賴 [OpenSSL](https://www.openssl.org/)。 您也可以使用 OpenSSL 或其他第三方工具，來協助您執行擁有權證明。 如需深入了解如何使用與 SDK 一起提供的工具，請參閱[如何使用 SDK 中提供的工具](how-to-use-sdk-tools.md)。 
+文件中提供的 PowerShell 和 Bash 指令碼及 SDK 皆依賴 [OpenSSL](https://www.openssl.org/)。 您也可以使用 OpenSSL 或其他第三方工具，來協助您執行擁有權證明。 如需使用 Sdk 提供之工具的範例，請參閱 [建立 x.509 憑證鏈](tutorial-custom-hsm-enrollment-group-x509.md#create-an-x509-certificate-chain)。 
 
 
 ## <a name="upload-the-signed-verification-certificate"></a>上傳已簽署的驗證憑證
 
-1. 在入口網站中，將產生的簽章當作驗證憑證上傳至佈建服務。 在 Azure 入口網站的 [憑證詳細資料]**** 中，使用 [驗證憑證 .pem 或.cer 檔案]**** 欄位旁的 [檔案總管]__ 圖示，從您的系統上傳已簽署的驗證憑證。
+1. 在入口網站中，將產生的簽章當作驗證憑證上傳至佈建服務。 在 Azure 入口網站的 [憑證詳細資料] 中，使用 [驗證憑證 .pem 或.cer 檔案] 欄位旁的 [檔案總管] 圖示，從您的系統上傳已簽署的驗證憑證。
 
-2. 一旦憑證上傳成功後，按一下 [確認]****。 憑證的 [狀態] 在 [憑證總管]清單中會變更為 _已驗證_。 ************ 如果無法自動更新，請按一下 [重新整理]****。
+2. 一旦憑證上傳成功後，按一下 [確認]。 憑證的 [狀態] 在 [憑證總管]清單中會變更為 _已驗證_。  如果無法自動更新，請按一下 [重新整理]。
 
    ![上傳憑證驗證](./media/how-to-verify-certificates/upload-cert-verification.png)  
 

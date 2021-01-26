@@ -9,18 +9,16 @@ adobe-target: true
 adobe-target-activity: DocsExp–377467–A/B– Quickstarts/Python App–12.11
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-python-1
-ms.openlocfilehash: f60534f7d319bfe0b9e8e7bd4447770bcd6d45e3
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
-ms.translationtype: HT
+ms.openlocfilehash: 11e47e83da09699d60ada11539dbb2f000f075db
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134427"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788667"
 ---
 # <a name="quickstart-create-a-python-app-using-azure-app-service-on-linux"></a>快速入門：在 Linux 上使用 Azure App Service 建立 Python 應用程式
 
 在本快速入門中，您會將 Python 應用程式部署到 [Linux 上的 App Service](overview.md#app-service-on-linux)，這是 Azure 可高度擴充、自我修復的 Web 裝載服務。 您會在 Mac、Linux 或 Windows 電腦上使用本機 [Azure 命令列介面 (CLI)](/cli/azure/install-azure-cli)，以部署具有 Flask 或 Django 架構的範例。 您設定的 Web 應用程式會使用免費的 App Service 層，因此在本文過程中不會產生任何費用。
-
-如需 **一般字詞的定義**，請參閱 [Azure 術語概述](/azure/developer/python/cloud-azure-terminology?toc=/azure/app-service/toc.json)。
 
 > [!TIP]
 > 如果您想要改為使用 Visual Studio Code，請遵循我們的 **[Visual Studio Code App Service 快速入門](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)** 。

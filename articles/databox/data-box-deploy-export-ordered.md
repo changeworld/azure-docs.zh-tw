@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: aac1fb8e2da7a3c84b3abff47c8f476b9fb9049c
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 42476e2689cc503edc19e8e299a01ce922f1bf42
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704333"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789190"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>教學課程：建立 Azure 資料箱的匯出順序
 
@@ -28,7 +28,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 > * 追蹤匯出順序
 > * 取消匯出順序
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 訂購裝置之前，請先完成下列資料箱服務和裝置的設定必要條件。
 
@@ -179,7 +179,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
 15. 選取一個使用者身分識別，用來管理對此資源的存取。 選擇 [選取使用者身分識別]。 在右側的面板中，選取要使用的訂用帳戶和受控識別。 然後選擇 [選取]  。
 
-    使用者指派的受控識別是一項獨立的 Azure 資源，可用來管理多個資源。 如需詳細資訊，請參閱[受控識別類型](/azure/active-directory/managed-identities-azure-resources/overview)。  
+    使用者指派的受控識別是一項獨立的 Azure 資源，可用來管理多個資源。 如需詳細資訊，請參閱[受控識別類型](../active-directory/managed-identities-azure-resources/overview.md)。  
 
     如果您需要建立新的受控識別，請遵循[使用 Azure 入口網站對使用者指派的受控識別建立、列出、刪除或指派角色](../../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)中的指引。
     

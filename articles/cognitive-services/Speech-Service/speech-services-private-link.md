@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: alexeyo
-ms.openlocfilehash: 61be4b45df94c902c0473b94a6dd83237c72da3c
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 51989a9219cdbfebf833c99849dba67c939cf77a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196109"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786837"
 ---
 # <a name="use-speech-services-through-a-private-endpoint"></a>透過私人端點使用語音服務
 
@@ -293,7 +293,7 @@ az cognitiveservices account update --name my-speech-resource-name --resource-gr
 語音轉換文字有兩個 REST Api。 每個 API 都有不同的用途，使用不同的端點，而且當您在啟用私人端點的案例中使用它時，需要不同的方法。
 
 語音轉換文字 REST Api 如下：
-- [語音轉換文字 REST API v3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30)，用於 [批次](batch-transcription.md) 轉譯和 [自訂語音](custom-speech-overview.md)。 v3.0 是 v2.0 [的後續版本](/azure/cognitive-services/speech-service/migrate-v2-to-v3)
+- [語音轉換文字 REST API v3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30)，用於 [批次](batch-transcription.md) 轉譯和 [自訂語音](custom-speech-overview.md)。 v3.0 是 v2.0 [的後續版本](./migrate-v2-to-v3.md)
 - 用於線上轉譯的[短音訊語音轉換文字 REST API](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) 
 
 在私人端點案例中使用語音轉換文字 REST API，以取得短音訊和文字轉換語音 REST API。 這相當於本文稍後所述的 [語音 SDK 案例](#speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk) 。 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 04f873763b087bfd5168abc2c558cc9d7161c361
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 850171a4f1f303ef344fa5007325093c6363615b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132132"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789072"
 ---
 # <a name="azure-security-baseline-for-azure-hpc-cache"></a>適用于 Azure HPC Cache 的 Azure 安全性基準
 
@@ -538,7 +538,7 @@ HPC Cache 不允許在其資源上執行應用程式或安裝軟體。
 
 ## <a name="logging-and-threat-detection"></a>記錄與威脅偵測
 
-如需詳細資訊，請參閱 [Azure 安全性效能評定：記錄與威脅偵測](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)。
+如需詳細資訊，請參閱 [Azure 安全性效能評定：記錄與威脅偵測](../security/benchmarks/security-controls-v2-logging-threat-detection.md)。
 
 ### <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1：啟用 Azure 資源的威脅偵測
 
@@ -747,7 +747,7 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 
 ## <a name="posture-and-vulnerability-management"></a>狀況和弱點管理
 
-如需詳細資訊，請參閱 [Azure 安全性效能評定：狀況和弱點管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)。
+如需詳細資訊，請參閱 [Azure 安全性效能評定：狀況和弱點管理](../security/benchmarks/security-controls-v2-posture-vulnerability-management.md)。
 
 ### <a name="pv-3-establish-secure-configurations-for-compute-resources"></a>PV-3：建立計算資源的安全設定
 
@@ -873,9 +873,9 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 
 - [雲端採用架構 - Azure 資料安全性和加密最佳做法](../security/fundamentals/data-encryption-best-practices.md?bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json) (機器翻譯)
 
-- [Azure 安全性效能評定 - 資產管理](/azure/security/benchmarks/security-controls-v2-asset-management)
+- [Azure 安全性效能評定 - 資產管理](../security/benchmarks/security-controls-v2-asset-management.md)
 
-- [Azure 安全性效能評定 - 資料保護](/azure/security/benchmarks/security-controls-v2-data-protection)
+- [Azure 安全性效能評定 - 資料保護](../security/benchmarks/security-controls-v2-data-protection.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -903,7 +903,7 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 
 **指引**：持續測量並降低個別資產及其裝載環境的風險。 優先處理高價值資產和高度公開的攻擊面，例如已發佈的應用程式、網路輸入和輸出點、使用者和系統管理員端點等等。
 
-- [Azure 安全性效能評定 - 狀態和弱點管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
+- [Azure 安全性效能評定 - 狀態和弱點管理](../security/benchmarks/security-controls-v2-posture-vulnerability-management.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -944,7 +944,7 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 如需詳細資訊，請參閱下列參考資料：
 - [Azure 安全性最佳做法 11 - 架構。單一整合的安全性策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy) (機器翻譯)
 
-- [Azure 安全性效能評定 - 網路安全性](/azure/security/benchmarks/security-controls-v2-network-security)
+- [Azure 安全性效能評定 - 網路安全性](../security/benchmarks/security-controls-v2-network-security.md)
 
 - [Azure 網路安全性概觀](../security/fundamentals/network-overview.md)
 
@@ -972,9 +972,9 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 
 如需詳細資訊，請參閱下列參考資料：
 
-- [Azure 安全性效能評定 - 身分識別管理](/azure/security/benchmarks/security-controls-v2-identity-management)
+- [Azure 安全性效能評定 - 身分識別管理](../security/benchmarks/security-controls-v2-identity-management.md)
 
-- [Azure 安全性效能評定 - 特殊權限存取](/azure/security/benchmarks/security-controls-v2-privileged-access)
+- [Azure 安全性效能評定 - 特殊權限存取](../security/benchmarks/security-controls-v2-privileged-access.md)
 
 - [Azure 安全性最佳做法 11 - 架構。單一整合的安全性策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy) (機器翻譯)
 
@@ -1006,9 +1006,9 @@ Azure 資訊安全中心會指派每個警示的嚴重性，以協助您設定�
 
 如需詳細資訊，請參閱下列參考資料：
 
-- [Azure 安全性效能評定 - 記錄與威脅偵測](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
+- [Azure 安全性效能評定 - 記錄與威脅偵測](../security/benchmarks/security-controls-v2-logging-threat-detection.md)
 
-- [Azure 安全性效能評定 - 事件回應](/azure/security/benchmarks/security-controls-v2-incident-response)
+- [Azure 安全性效能評定 - 事件回應](../security/benchmarks/security-controls-v2-incident-response.md)
 
 - [Azure 安全性最佳做法 4 - 流程。更新雲端的事件回應流程](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud) (機器翻譯)
 

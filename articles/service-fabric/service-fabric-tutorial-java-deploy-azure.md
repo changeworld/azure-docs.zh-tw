@@ -4,12 +4,12 @@ description: 在本教學課程中，了解如何將 Java Service Fabric 應用�
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.custom: mvc, devx-track-java, devx-track-azurecli
-ms.openlocfilehash: c2e2b2883bfa01d3a36de5d58425449f6f973010
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
-ms.translationtype: HT
+ms.openlocfilehash: 48cb7df49fb918ebd30883edc573cc63b6e35e4a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97702152"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789392"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>教學課程：將 Java 應用程式部署到 Azure 中的 Service Fabric 叢集
 
@@ -35,7 +35,7 @@ ms.locfileid: "97702152"
 開始進行本教學課程之前：
 
 * 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
+* [安裝 Azure CLI](/cli/azure/install-azure-cli)
 * 安裝適用於 [Mac](service-fabric-get-started-mac.md) 或 [Linux](service-fabric-get-started-linux.md) 的 Service Fabric SDK
 * [安裝 Python 3](https://wiki.python.org/moin/BeginnersGuide/Download)
 

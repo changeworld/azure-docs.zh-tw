@@ -1,5 +1,5 @@
 ---
-title: Azure 媒體播放機完整設定
+title: Azure 媒體播放器完整安裝
 description: 瞭解如何設定 Azure 媒體播放機。
 author: IngridAtMicrosoft
 ms.author: inhenkel
@@ -7,21 +7,26 @@ ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 15f5918748df80cec01ccf89835a0ef51da64529
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13abe333bcf3f67ea1a1ba823c693deaa60bc723
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296241"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788802"
 ---
 # <a name="azure-media-player-full-setup"></a>Azure 媒體播放器完整安裝 #
 
 Azure 媒體播放器很容易設定。 只需要幾分鐘的時間，就能直接從您的 Azure 媒體服務帳戶取得媒體內容的基本播放。 版本的範例目錄中也會提供[範例](https://github.com/Azure-Samples/azure-media-player-samples)。
 
+<!--//aka.ms/ampembed?url=https%3A%2F%2Fxpouyatdemo-euwe.streaming.media.azure.net%2Fc9b6ac82-c187-4882-a3d3-1a67204ac58e%2Fconnect2017-v3.ism%2Fmanifest-->
+
+以下是 AMS 影片的範例。
+
+> [!VIDEO https://aka.ms/ampembed?url=https%3A%2F%2Fxpouyatdemo-euwe.streaming.media.azure.net%2Fc9b6ac82-c187-4882-a3d3-1a67204ac58e%2Fconnect2017-v3.ism%2Fmanifest]
 
 ## <a name="step-1-include-the-javascript-and-css-files-in-the-head-of-your-page"></a>步驟1：將 JavaScript 和 CSS 檔案包含在頁面的開頭 ##
 
-您可以使用 Azure 媒體播放機來存取 CDN 裝載版本的腳本。 通常建議您在結尾主體標記之前放入 JavaScript `<body>` ，而不是在 `<head>` ，但 Azure 媒體播放機包含 ' HTML5 Shiv '，這必須位於舊版 IE 版本的開頭，才能將影片標記視為有效元素。
+您可以使用 Azure 媒體播放機來存取 CDN 裝載版本的腳本。 通常建議您在結尾主體標記之前放入 JavaScript `<body>` ，而不是在 `<head>` ，但 Azure Meia 播放套裝程式含 ' HTML5 Shiv '，其必須位於舊版 IE 版本的開頭，才能將影片標記視為有效元素。
 
 > [!NOTE]
 > 如果您已經在使用 HTML5 shiv （例如 [Modernizr](https://modernizr.com/) ），您可以在任何位置包含 Azure 媒體播放機 JavaScript。 不過，請確定您的 Modernizr 版本包含適用于影片的 shiv。
@@ -34,7 +39,7 @@ Azure 媒體播放器很容易設定。 只需要幾分鐘的時間，就能直�
 ```
 
 > [!IMPORTANT]
-> 您**不**應在生產環境中使用 `latest` 版本，因為此版本將依需求而變動。 取代為 `latest` Azure 媒體播放機的版本。 例如，以 `2.1.1` 取代 `latest`。 您可以在[這裡](azure-media-player-changelog.md)查詢 Azure 媒體播放器的版本。
+> 您 **不** 應在生產環境中使用 `latest` 版本，因為此版本將依需求而變動。 取代為 `latest` Azure 媒體播放機的版本。 例如，以 `2.1.1` 取代 `latest`。 您可以在[這裡](azure-media-player-changelog.md)查詢 Azure 媒體播放器的版本。
 
 > [!NOTE]
 > 從 `1.2.0` 版本開始，不再需要將位置包含在回溯 techs 中 (它會自動從 azuremediaplayer.min.js 檔) 的相對路徑中挑選位置。 您可以在上述腳本之後，在中新增下列腳本，以修改 fallback techs 的位置 `<head>` 。

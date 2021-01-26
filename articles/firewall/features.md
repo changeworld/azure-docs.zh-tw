@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 10/08/2020
 ms.author: victorh
-ms.openlocfilehash: 6c71d9325ff7c1c5d2e7eff03a587a28335efd72
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 69eaf3ca60378afd810d712d85ea7ef732e41e3e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94652139"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788225"
 ---
 # <a name="azure-firewall-features"></a>Azure 防火牆功能
 
@@ -101,7 +101,7 @@ Azure 防火牆可以隨著您的需求擴大，以容納多變的網路流量�
 
 ## <a name="azure-monitor-logging"></a>Azure 監視器記錄
 
-所有事件都會與 Azure 監視器整合，讓您可以將記錄封存至儲存體帳戶、將事件串流至事件中樞，或者將它們傳送到 Azure 監視器記錄。 如 Azure 監視器記錄範例，請參閱 [Azure 防火牆 Azure 監視器記錄](log-analytics-samples.md)。
+所有事件都會與 Azure 監視器整合，讓您可以將記錄封存至儲存體帳戶、將事件串流至事件中樞，或者將它們傳送到 Azure 監視器記錄。 如 Azure 監視器記錄範例，請參閱 [Azure 防火牆 Azure 監視器記錄](./firewall-workbook.md)。
 
 如需詳細資訊，請參閱[教學課程：監視 Azure 防火牆記錄和計量](./firewall-diagnostics.md)。 
 

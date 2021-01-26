@@ -4,12 +4,12 @@ description: 尋找有關使用 Azure 備份備份 Azure Vm 上的 SQL Server �
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 56dcf29a5c703a72fd137a5f1bf129f568a03b4b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: ca785e217da4355a44ffbb26b813d55d942c5c14
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735804"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787615"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有關在 Azure VM 備份上執行的 SQL Server 資料庫的常見問題
 
@@ -101,7 +101,10 @@ Azure 備份復原服務保存庫可以偵測和保護與保存庫位於相同�
 您 [加入至 autoprotected 實例](backup-sql-server-database-azure-vms.md#enable-auto-protection) 的資料庫可能不會立即出現在 [受保護的專案] 下。 這是因為探索通常每隔 8 小時才會執行一次。 但是，如果您選取 [重新探索 **db**] 以手動執行探索，您可以立即探索和保護新的資料庫，如下圖所示：
 
   ![手動探索新加入的資料庫](./media/backup-azure-sql-database/view-newly-added-database.png)
-  
+
+## <a name="can-i-protect-databases-on-virtual-machines-that-have-azure-disk-encryption-ade-enabled"></a>我可以保護已啟用 Azure 磁碟加密 (ADE) 的虛擬機器上的資料庫嗎？
+是的，您可以保護已啟用 Azure 磁碟加密 (ADE) 的虛擬機器上的資料庫。
+
 ## <a name="can-i-protect-databases-that-have-tde-transparent-data-encryption-turned-on-and-will-the-database-stay-encrypted-through-the-entire-backup-process"></a>我是否可以保護 TDE (透明資料加密的資料庫) 開啟，資料庫是否會透過整個備份程式保持加密狀態？
 
 是的，Azure 備份支援啟用 TDE 的 SQL Server 資料庫或伺服器的備份。 備份支援使用 Azure 所管理的金鑰進行 [TDE](/sql/relational-databases/security/encryption/transparent-data-encryption) ，或使用客戶管理的金鑰 (BYOK) 。  備份不會在備份過程中執行任何 SQL 加密，因此資料庫會在備份時保持加密狀態。

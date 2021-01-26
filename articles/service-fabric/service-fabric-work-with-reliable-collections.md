@@ -3,12 +3,12 @@ title: 使用可靠的集合
 description: 瞭解在 Azure Service Fabric 應用程式中使用可靠集合的最佳做法。
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 2d027dc432d1a0a20888bfca4f59bc41866e358d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 908f24cc22c969a34a513ff3fd3ceaa788420620
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651901"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787870"
 ---
 # <a name="working-with-reliable-collections"></a>使用可靠的集合
 Service Fabric 透過可靠的集合向 .NET 開發人員提供具狀態的程式設計模型。 具體來說，Service Fabric 提供了可靠的字典和可靠的佇列類別。 當您使用這些類別時，您的狀態是分割的 (延展性)、複寫的 (可用性)，且在分割區內交易 (ACID 語意)。 讓我們看看可靠字典物件的一般用法，並看看它實際上的作用。
@@ -226,4 +226,4 @@ public struct ItemId
 
 若要了解如何實作版本容錯的資料合約，請參閱[版本容錯序列化回呼](/dotnet/framework/wcf/feature-details/version-tolerant-serialization-callbacks) \(機器翻譯\)。
 
-若要了解如何提供可跨多個版本相互操作的資料結構，請參閱 [IExtensibleDataObject](/dotnet/api/system.runtime.serialization.iextensibledataobject?view=netcore-3.1) \(機器翻譯\)。
+若要了解如何提供可跨多個版本相互操作的資料結構，請參閱 [IExtensibleDataObject](/dotnet/api/system.runtime.serialization.iextensibledataobject) \(機器翻譯\)。

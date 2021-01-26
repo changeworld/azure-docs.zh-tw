@@ -4,12 +4,12 @@ description: 瞭解如何在 Azure Kubernetes Service (AKS) 叢集設定以主�
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 6b23bf285d89a5f3285825feef849b3d168ed62f
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 531d1dc4169b5f4adecfb29c3e116049cb99c3c9
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762031"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787819"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS)  (preview) 上的主機型加密
 
@@ -28,7 +28,7 @@ ms.locfileid: "98762031"
 - 確定您已 `aks-preview` 安裝 CLI 擴充功能 v 0.4.55 或更高版本
 - 確定您在 [ `EnableEncryptionAtHostPreview` 已啟用] 下有功能旗標 `Microsoft.ContainerService` 。
 
-若要能夠針對您的 Vm 或虛擬機器擴展集使用主機加密，您必須在訂用帳戶上啟用此功能。 傳送電子郵件給 encryptionAtHost@microsoft.com 您的訂用帳戶識別碼，以取得訂用帳戶啟用的功能。
+若要能夠針對您的 Vm 或虛擬機器擴展集使用主機加密，您必須在訂用帳戶上啟用此功能。 使用您的訂用帳戶識別碼，將電子郵件傳送至 encryptionAtHost@microsoft，以啟用訂用帳戶的功能。
 
 ### <a name="register-encryptionathost--preview-features"></a>註冊 `EncryptionAtHost`  預覽功能
 

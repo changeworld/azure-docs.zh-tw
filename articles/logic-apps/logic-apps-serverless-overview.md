@@ -8,12 +8,12 @@ ms.author: jehollan
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 03/30/2017
-ms.openlocfilehash: 0f20bb5fb249ad6bac862afe2b0e8eee4b32e2a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 470857883144f4bf8c21a1921afacb7ba3f5ca00
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75666545"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788090"
 ---
 # <a name="azure-serverless-overview-for-building-cloud-based-apps-and-solutions-with-azure-logic-apps-and-azure-functions"></a>Azure 無伺服器：使用 Azure Logic Apps 和 Azure Functions 建立雲端式應用程式和解決方案的總覽
 
@@ -35,7 +35,7 @@ ms.locfileid: "75666545"
 
 Azure Functions 是一項服務，可讓您輕鬆地在雲端中執行程式碼片段或「函式」。 您可以只撰寫目前問題所需的程式碼，而不必擔心整個應用程式或基礎結構的需求。 Functions 可讓開發更有生產力，而且您可以使用您選擇的開發語言，例如 C#、F#、Node.js、Python 或 PHP。 您只需支付程式碼執行的時間，而 Azure 會視需要進行調整。
 
-若要開始使用 Azure Functions，請先 [建立您的第一個 Azure 函數](../azure-functions/functions-create-first-azure-function.md)。 如需函數的詳細技術資訊，請參閱 [開發人員參考](../azure-functions/functions-reference.md)。
+若要開始使用 Azure Functions，請先 [建立您的第一個 Azure 函數](../azure-functions/functions-get-started.md)。 如需函數的詳細技術資訊，請參閱 [開發人員參考](../azure-functions/functions-reference.md)。
 
 ## <a name="how-can-i-build-and-deploy-serverless-apps-in-azure"></a>如何在 Azure 中建立和部署無伺服器應用程式？
 

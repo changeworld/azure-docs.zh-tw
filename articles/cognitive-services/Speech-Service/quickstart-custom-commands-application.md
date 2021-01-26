@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.custom: references_regions
-ms.openlocfilehash: 2cc37cc66c06dc9e6997c6a031a9c60ad050c01a
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: ea32358aa86a6093cd72adf959d5fe731cf1e125
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601758"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786871"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>使用自訂命令建立語音助理
 
@@ -35,7 +35,7 @@ ms.locfileid: "98601758"
 * 東南亞
 * 印度中部
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 > [!div class="checklist"]
 > * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">在支援自訂命令的區域中建立 Azure 語音資源。<span class="docon docon-navigate-external x-hidden-focus"></span></a> 請參閱上方的 **區域可用性** 一節，以取得支援的區域清單。
@@ -104,7 +104,7 @@ ms.locfileid: "98601758"
 
 1. 選取左窗格中的 [ **設定** ]，然後選取中間窗格中的 [  **LUIS 資源** ]。
 1. 選取預測資源，或選取 [ **建立新資源**] 建立一個。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
     
     > [!div class="mx-imgBorder"]
     > ![設定 LUIS 資源](media/custom-commands/set-luis-resources.png)
@@ -136,4 +136,4 @@ ms.locfileid: "98601758"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您使用了現有的應用程式。 接下來，在 [操作 [說明] 區段](how-to-custom-commands-create-application-with-simple-commands.md)中，您將瞭解如何從頭開始設計、開發、測試和整合自訂命令應用程式。
+在本文中，您使用了現有的應用程式。 接下來，在 [操作 [說明] 區段](./how-to-develop-custom-commands-application.md)中，您將瞭解如何從頭開始設計、開發、測試和整合自訂命令應用程式。

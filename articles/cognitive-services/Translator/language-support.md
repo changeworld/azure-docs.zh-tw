@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: e8e54a97c13a69fce2e80676fa68d6d795736a83
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: a359c4f0de6dab70b334da7e7d29ad4b273385ab
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703117"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789274"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>文字和語音翻譯的語言和區域支援
 
@@ -91,7 +91,7 @@ Translator 支援下列適用于文字到文字翻譯的語言。
 | 普什圖文 | `ps` |
 | 波斯文 | `fa` |
 | 波蘭文 | `pl` |
-| 葡萄牙文 (巴西) | `pt-br` |
+| 葡萄牙文 (巴西) | `pt` |
 | 葡萄牙文 (葡萄牙) | `pt-pt` |
 | 旁遮普文 | `pa` |
 | 奎雷塔洛歐多米文 | `otq` |
@@ -343,7 +343,7 @@ Translator 會偵測下列翻譯和音譯語言。
 | 挪威文      | `nb`          |
 | 波斯文      | `fa`          |
 | 波蘭文      | `pl`          |
-| 葡萄牙文 (巴西) | `pt-br` |
+| 葡萄牙文 (巴西) | `pt` |
 | 旁遮普文|`pa`|
 | 羅馬尼亞文      | `ro`          |
 | 俄文      | `ru`          |

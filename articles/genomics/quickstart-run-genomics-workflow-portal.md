@@ -9,12 +9,12 @@ ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 85665dbda2ed11ffa04b71e4317f2b34b83d317f
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: HT
+ms.openlocfilehash: cefb0105a0a95d26aadea2a98fc4d3cec68ccc03
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349362"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787346"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>快速入門：透過 Microsoft Genomics 服務執行工作流程
 
@@ -144,4 +144,4 @@ msgen list -f c:\temp\config.txt
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已將範例輸入資料上傳至 Azure 儲存體，並已透過 `msgen` Python 用戶端將工作流程提交至 Microsoft Genomics 服務。 若要了解有關可與 Microsoft Genomics 服務搭配使用的其他輸入檔案類型詳細資訊，請參閱下列頁面：[配對的 FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [多個 FASTQ 或 BAM](quickstart-input-multiple.md)。 您也可以下載 "Genomics Tutorial.ipynb" 檔案，並使用像是 [Jupyter](../notebooks/tutorial-create-run-jupyter-notebook.md) 的筆記本讀取程式來開啟檔案並執行，以使用我們的 [Azure Notebooks 範例](https://aka.ms/genomicsnotebook)探索本教學課程。
+在本文中，您已將範例輸入資料上傳至 Azure 儲存體，並已透過 `msgen` Python 用戶端將工作流程提交至 Microsoft Genomics 服務。 若要了解有關可與 Microsoft Genomics 服務搭配使用的其他輸入檔案類型詳細資訊，請參閱下列頁面：[配對的 FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [多個 FASTQ 或 BAM](quickstart-input-multiple.md)。 您也可以下載 "Genomics Tutorial.ipynb" 檔案，並使用像是 [Jupyter](https://notebooks.azure.com) 的筆記本讀取程式來開啟檔案並執行，以使用我們的 [Azure Notebooks 範例](https://aka.ms/genomicsnotebook)探索本教學課程。

@@ -11,16 +11,16 @@ ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: b305a07997ccd2cbab0d963ced2bd23ab7a97690
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 398cbd49f79cbeb5f486e3f8ca33987d5357add6
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683402"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789441"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>教學課程：載入紐約計程車資料集
 
-本教學課程會使用 [COPY 語句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) ，從 Azure blob 儲存體帳戶載入紐約計程車資料集。 本教學課程是使用 [Azure 入口網站](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS)：
+本教學課程使用 [COPY 語句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) ，從 Azure Blob 儲存體帳戶載入紐約計程車資料集。 本教學課程是使用 [Azure 入口網站](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS)：
 
 > [!div class="checklist"]
 >
@@ -90,7 +90,7 @@ ms.locfileid: "98683402"
 
 ## <a name="create-tables-for-the-sample-data"></a>建立範例資料的資料表
 
-您已準備好開始將資料載入新資料倉儲的程序。 本教學課程的這個部分會說明如何使用 COPY 語句，從 Azure 儲存體 blob 載入紐約市計程車 cab 資料集。 若要瞭解如何將資料移至 Azure blob 儲存體，或直接從來源載入資料，請參閱 [載入總覽](design-elt-data-loading.md)。
+您已準備好開始將資料載入新資料倉儲的程序。 本教學課程的這個部分會說明如何使用 COPY 語句，從 Azure 儲存體 blob 載入紐約市計程車 cab 資料集。 若要瞭解如何讓您的資料 Azure Blob 儲存體，或直接從來源載入資料，請參閱 [載入總覽](design-elt-data-loading.md)。
 
 執行下列 SQL 腳本，並指定您要載入之資料的相關資訊。 這項資訊包括資料所在位置、資料內容的格式，以及資料的資料表定義。
 

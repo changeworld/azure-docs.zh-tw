@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 28c7f2c0a61150b2014f669f37ac84ee3a94aebf
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: f112d0e96c6ff0caf3c5e3762304158f70963f14
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752161"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787024"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>部署 Azure 雲端服務 (延伸支援的必要條件) 
 
@@ -49,23 +49,23 @@ CloudServices           Microsoft.Compute    Registered
 #### <a name="virtual-network-located-in-same-resource-group"></a>位於相同資源群組中的虛擬網路
 ```xml
 <VirtualNetworkSite name="<vnet-name>"/> 
-<AddressAssignments> 
-<InstanceAddress roleName="<role-name>"> 
-<Subnets> 
-<Subnet name="<subnet-name>"/> 
-</Subnets> 
-</InstanceAddress> 
+  <AddressAssignments> 
+    <InstanceAddress roleName="<role-name>"> 
+     <Subnets> 
+       <Subnet name="<subnet-name>"/> 
+     </Subnets> 
+    </InstanceAddress> 
 ```
 
 #### <a name="virtual-network-located-in-different-resource-group"></a>位於不同資源群組中的虛擬網路
 ```xml
 <VirtualNetworkSite name="/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>"/> 
-<AddressAssignments> 
-<InstanceAddress roleName="<role-name>"> 
-<Subnets> 
-<Subnet name="<subnet-name>"/> 
-</Subnets> 
-</InstanceAddress> 
+   <AddressAssignments> 
+     <InstanceAddress roleName="<role-name>"> 
+       <Subnets> 
+        <Subnet name="<subnet-name>"/> 
+       </Subnets> 
+     </InstanceAddress> 
 ```
 ### <a name="2-remove-the-old-plugins"></a>2) 移除舊的外掛程式
 

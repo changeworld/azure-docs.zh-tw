@@ -3,12 +3,12 @@ title: 使用 Azure 實驗室服務設定教室實驗室 | Microsoft Docs
 description: 在本教學課程中，您會使用 Azure Lab Services 來設定教室實驗室，且其中包含您教室中學生所使用的虛擬機器。
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: 3abbf5221382b46dbf4e73f9f4dc3b639bc5ecbd
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
-ms.translationtype: HT
+ms.openlocfilehash: 8093a1fd270cdba8bdccaf48737bf6737bdd394d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602479"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787413"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>教學課程：設定教室實驗室 
 您將在本教學課程中設定教室實驗室，且其中包含教室中學生所使用的虛擬機器。  
@@ -127,7 +127,7 @@ ms.locfileid: "96602479"
 
 您可以將實驗室使用者清單同步到現有的 Azure Active Directory (Azure AD) 群組，這樣就不需要手動新增或刪除使用者。 
 
-您可以在組織的 Azure Active Directory 中建立 Azure AD 群組，以管理組織資源和雲端式應用程式的存取權。 若要深入了解，請參閱 [Azure AD 群組](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)。 如果您的組織使用 Microsoft Office 365 或 Azure 服務，則您的組織已經有管理您 Azure Active Directory 的管理員。 
+您可以在組織的 Azure Active Directory 中建立 Azure AD 群組，以管理組織資源和雲端式應用程式的存取權。 若要深入了解，請參閱 [Azure AD 群組](../active-directory/fundamentals/active-directory-manage-groups.md)。 如果您的組織使用 Microsoft Office 365 或 Azure 服務，則您的組織已經有管理您 Azure Active Directory 的管理員。 
 
 > [!IMPORTANT]
 > 請確定使用者清單是空的。 如果實驗室中已有您手動新增或透過匯入 CSV 檔案來新增的現有使用者，則不會出現將實驗室同步至現有群組的選項。 
@@ -204,4 +204,3 @@ CSV 文字檔會用來儲存以逗號分隔 (CSV) 的表格式資料 (數字和�
 
 > [!div class="nextstepaction"]
 > [連線到教室實驗室中的 VM](tutorial-connect-virtual-machine-classroom-lab.md)
-

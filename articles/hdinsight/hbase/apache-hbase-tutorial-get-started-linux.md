@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 04/14/2020
-ms.openlocfilehash: d24c63e3a2989173e718cd27fa43cecc50181047
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
-ms.translationtype: HT
+ms.date: 01/22/2021
+ms.openlocfilehash: 3aff700493fbdc0c2b8a9a3dcb4dbbafe9b10761
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533490"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788769"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>教學課程：使用 Azure HDInsight 中的 Apache HBase
 
@@ -50,8 +50,8 @@ ms.locfileid: "92533490"
     |資源群組|建立 Azure 資源管理群組，或使用現有的群組。|
     |Location|指定資源群組的位置。 |
     |ClusterName|輸入 HBase 叢集的名稱。|
-    |叢集登入名稱和密碼|預設登入名稱為 **admin** 。|
-    |SSH 使用者名稱和密碼|預設的使用者名稱為 **sshuser** 。|
+    |叢集登入名稱和密碼|預設登入名稱為 **admin**。|
+    |SSH 使用者名稱和密碼|預設的使用者名稱為 **sshuser**。|
 
     其他參數都是選擇性的。  
 
@@ -344,12 +344,18 @@ HDInsight 中的 HBase 隨附於 Web UI，以供監視叢集。 使用 Web UI，
    - 工作
    - 軟體屬性
 
+## <a name="cluster-recreation"></a>叢集重建
+
+刪除 HBase 叢集之後，您可以使用相同的預設 Blob 容器建立另一個 HBase 叢集。 這個新叢集會挑選您在原始叢集中建立的 HBase 資料表。 不過，為了避免不一致，我們建議您先停用 HBase 資料表，然後再刪除叢集。 
+
+您可以使用 HBase 命令 `disable 'Contacts'`。 
+
 ## <a name="clean-up-resources"></a>清除資源
 
-為了避免不一致，建議您在刪除叢集之前，先停用 HBase 資料表。 您可以使用 HBase 命令 `disable 'Contacts'`。 如果您不打算繼續使用此應用程式，請使用下列步驟來刪除所建立的 HBase 叢集：
+如果您不打算繼續使用此應用程式，請使用下列步驟來刪除所建立的 HBase 叢集：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-1. 在頂端的 [搜尋]  方塊中，輸入 **HDInsight** 。
+1. 在頂端的 [搜尋]  方塊中，輸入 **HDInsight**。
 1. 在 [服務]  底下，選取 [HDInsight 叢集]  。
 1. 從出現的 HDInsight 叢集清單中，在您為本教學課程建立的叢集旁按一下 [...]  。
 1. 按一下 **[刪除]** 。 按一下 [是]  。

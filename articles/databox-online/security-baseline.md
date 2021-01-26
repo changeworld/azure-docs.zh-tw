@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0de08c166aba7609210892a32836bee9b07d5394
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 1d7cd07ee8ae8b35d51fbdd25b34602c2e799c75
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203043"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787259"
 ---
 # <a name="azure-security-baseline-for-azure-stack-edge"></a>適用于 Azure Stack Edge 的 Azure 安全性基準
 
@@ -22,7 +22,7 @@ ms.locfileid: "98203043"
 
 ## <a name="network-security"></a>網路安全性
 
-如需詳細資訊，請參閱 [Azure 安全性效能評定：網路安全性](/azure/security/benchmarks/security-controls-v2-network-security)。
+如需詳細資訊，請參閱 [Azure 安全性效能評定：網路安全性](../security/benchmarks/security-controls-v2-network-security.md)。
 
 ### <a name="ns-1-implement-security-for-internal-traffic"></a>NS-1：執行內部流量的安全性
 
@@ -104,7 +104,7 @@ Azure Stack Edge 裝置使用自己的入侵偵測功能來保護服務。
 
 ## <a name="identity-management"></a>身分識別管理
 
-如需詳細資訊，請參閱 [Azure 安全性效能評定：身分識別管理](/azure/security/benchmarks/security-controls-v2-identity-management)。
+如需詳細資訊，請參閱 [Azure 安全性效能評定：身分識別管理](../security/benchmarks/security-controls-v2-identity-management.md)。
 
 ### <a name="im-2-manage-application-identities-securely-and-automatically"></a>IM-2：安全且自動地管理應用程式識別碼
 
@@ -181,7 +181,7 @@ Azure Stack Edge 裝置開機進入鎖定狀態以進行本機存取。 針對�
 
 ## <a name="privileged-access"></a>特殊權限存取
 
-如需詳細資訊，請參閱 [Azure 安全性效能評定：特殊權限存取](/azure/security/benchmarks/security-controls-v2-privileged-access)。
+如需詳細資訊，請參閱 [Azure 安全性效能評定：特殊權限存取](../security/benchmarks/security-controls-v2-privileged-access.md)。
 
 ### <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2：限制對業務關鍵系統的系統管理存取
 
@@ -236,7 +236,7 @@ Azure Stack Edge Pro 裝置是內部部署裝置，可在本機處理資料，�
 
 - [瞭解特殊許可權的存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
 
-- [部署特殊權限存取工作站](/azure/active-directory/devices/howto-azure-managed-workstation) (機器翻譯)
+- [部署特殊權限存取工作站](/security/compass/privileged-access-deployment) (機器翻譯)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -244,7 +244,7 @@ Azure Stack Edge Pro 裝置是內部部署裝置，可在本機處理資料，�
 
 ## <a name="data-protection"></a>資料保護
 
-如需詳細資訊，請參閱 [Azure 安全性效能評定：資料保護](/azure/security/benchmarks/security-controls-v2-data-protection)。
+如需詳細資訊，請參閱 [Azure 安全性效能評定：資料保護](../security/benchmarks/security-controls-v2-data-protection.md)。
 
 ### <a name="dp-2-protect-sensitive-data"></a>DP-2：保護敏感性資料
 
@@ -274,7 +274,7 @@ Azure Stack Edge Pro 裝置是內部部署裝置，可在本機處理資料，�
 
 ## <a name="asset-management"></a>資產管理
 
-如需詳細資訊，請參閱 [Azure 安全性效能評定：資產管理](/azure/security/benchmarks/security-controls-v2-asset-management)。
+如需詳細資訊，請參閱 [Azure 安全性效能評定：資產管理](../security/benchmarks/security-controls-v2-asset-management.md)。
 
 ### <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1：確保安全性小組能夠看到資產的風險
 
@@ -308,7 +308,7 @@ Azure Stack Edge Pro 裝置是內部部署裝置，可在本機處理資料，�
 
 **指導** 方針：您可以帶入自己的應用程式，以在任何本機建立的虛擬機器上執行。 使用 PowerShell 腳本在您的 Stack Edge 裝置上建立本機計算虛擬機器。 強烈建議您只帶入受信任的應用程式，以便在本機虛擬機器上執行。 
 
-- [如何在 Windows 環境中控制 PowerShell 腳本執行](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.1&amp;viewFallbackFrom=powershell-6&amp;preserve-view=true)
+- [如何在 Windows 環境中控制 PowerShell 腳本執行](/powershell/module/microsoft.powershell.security/set-executionpolicy?preserve-view=true&amp;viewFallbackFrom=powershell-6&view=powershell-7.1)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -316,7 +316,7 @@ Azure Stack Edge Pro 裝置是內部部署裝置，可在本機處理資料，�
 
 ## <a name="logging-and-threat-detection"></a>記錄與威脅偵測
 
-如需詳細資訊，請參閱 [Azure 安全性效能評定：記錄與威脅偵測](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)。
+如需詳細資訊，請參閱 [Azure 安全性效能評定：記錄與威脅偵測](../security/benchmarks/security-controls-v2-logging-threat-detection.md)。
 
 ### <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1：啟用 Azure 資源的威脅偵測
 
@@ -380,7 +380,7 @@ Azure Stack Edge Pro 裝置是內部部署裝置，可在本機處理資料，�
 
 ## <a name="incident-response"></a>事件回應
 
-如需詳細資訊，請參閱 [Azure 安全性效能評定：事件回應](/azure/security/benchmarks/security-controls-v2-incident-response)。
+如需詳細資訊，請參閱 [Azure 安全性效能評定：事件回應](../security/benchmarks/security-controls-v2-incident-response.md)。
 
 ### <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1：準備 – 更新 Azure 的事件回應流程
 
@@ -466,7 +466,7 @@ Azure Sentinel 可讓您對絕大多數的記錄來源進行廣泛的資料分�
 
 - [Azure 資訊安全中心的安全性警示](../security-center/security-center-alerts-overview.md)
 
-- [使用標記來組織 Azure 資源](/azure/azure-resource-manager/resource-group-using-tags)
+- [使用標記來組織 Azure 資源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -488,7 +488,7 @@ Azure Sentinel 可讓您對絕大多數的記錄來源進行廣泛的資料分�
 
 ## <a name="posture-and-vulnerability-management"></a>狀況和弱點管理
 
-如需詳細資訊，請參閱 [Azure 安全性效能評定：狀況和弱點管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)。
+如需詳細資訊，請參閱 [Azure 安全性效能評定：狀況和弱點管理](../security/benchmarks/security-controls-v2-posture-vulnerability-management.md)。
 
 ### <a name="pv-3-establish-secure-configurations-for-compute-resources"></a>PV-3：建立計算資源的安全設定
 
@@ -547,7 +547,7 @@ Azure Sentinel 可讓您對絕大多數的記錄來源進行廣泛的資料分�
 
 ## <a name="endpoint-security"></a>端點安全性
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：端點安全性](/azure/security/benchmarks/security-controls-v2-endpoint-security)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：端點安全性](../security/benchmarks/security-controls-v2-endpoint-security.md)。*
 
 ### <a name="es-1-use-endpoint-detection-and-response-edr"></a>ES-1：使用端點偵測和回應 (EDR) 
 
@@ -569,7 +569,7 @@ Azure Sentinel 可讓您對絕大多數的記錄來源進行廣泛的資料分�
 
 ## <a name="backup-and-recovery"></a>備份及修復
 
-如需詳細資訊，請參閱 [Azure 安全性效能評定：備份和復原](/azure/security/benchmarks/security-controls-v2-backup-recovery)。
+如需詳細資訊，請參閱 [Azure 安全性效能評定：備份和復原](../security/benchmarks/security-controls-v2-backup-recovery.md)。
 
 ### <a name="br-1-ensure-regular-automated-backups"></a>BR-1：確保定期自動備份
 
@@ -623,7 +623,7 @@ Azure 儲存體帳戶的存取權是由 Azure 訂用帳戶和與該儲存體帳�
 
 ## <a name="governance-and-strategy"></a>控管與策略
 
-如需詳細資訊，請參閱 [Azure 安全性效能評定：治理和策略](/azure/security/benchmarks/security-controls-v2-governance-strategy)。
+如需詳細資訊，請參閱 [Azure 安全性效能評定：治理和策略](../security/benchmarks/security-controls-v2-governance-strategy.md)。
 
 ### <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1：定義資產管理和資料保護策略 
 
@@ -648,15 +648,15 @@ Azure 儲存體帳戶的存取權是由 Azure 訂用帳戶和與該儲存體帳�
 -   適當的密碼編譯標準
 
 如需詳細資訊，請參閱下列參考資料：
-- [Azure 安全性架構建議 - 儲存體、資料和加密](https://docs.microsoft.com/azure/architecture/framework/security/storage-data-encryption?toc=/security/compass/toc.json&amp;bc=/security/compass/breadcrumb/toc.json) (機器翻譯)
+- [Azure 安全性架構建議 - 儲存體、資料和加密](/azure/architecture/framework/security/storage-data-encryption?bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json) (機器翻譯)
 
 - [Azure 安全性基礎觀念 - Azure 資料安全性、加密和儲存體](../security/fundamentals/encryption-overview.md) (機器翻譯)
 
-- [雲端採用架構 - Azure 資料安全性和加密最佳做法](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json) (機器翻譯)
+- [雲端採用架構 - Azure 資料安全性和加密最佳做法](../security/fundamentals/data-encryption-best-practices.md?bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json) (機器翻譯)
 
-- [Azure 安全性效能評定 - 資產管理](/azure/security/benchmarks/security-controls-v2-asset-management)
+- [Azure 安全性效能評定 - 資產管理](../security/benchmarks/security-controls-v2-asset-management.md)
 
-- [Azure 安全性效能評定 - 資料保護](/azure/security/benchmarks/security-controls-v2-data-protection)
+- [Azure 安全性效能評定 - 資料保護](../security/benchmarks/security-controls-v2-data-protection.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -684,7 +684,7 @@ Azure 儲存體帳戶的存取權是由 Azure 訂用帳戶和與該儲存體帳�
 
 **指引**：持續測量並降低個別資產及其裝載環境的風險。 優先處理高價值資產和高度公開的攻擊面，例如已發佈的應用程式、網路輸入和輸出點、使用者和系統管理員端點等等。
 
-- [Azure 安全性效能評定 - 狀態和弱點管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
+- [Azure 安全性效能評定 - 狀態和弱點管理](../security/benchmarks/security-controls-v2-posture-vulnerability-management.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -725,7 +725,7 @@ Azure 儲存體帳戶的存取權是由 Azure 訂用帳戶和與該儲存體帳�
 如需詳細資訊，請參閱下列參考資料：
 - [Azure 安全性最佳做法 11 - 架構。單一整合的安全性策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy) (機器翻譯)
 
-- [Azure 安全性效能評定 - 網路安全性](/azure/security/benchmarks/)
+- [Azure 安全性效能評定 - 網路安全性](../security/benchmarks/index.yml)
 
 - [Azure 網路安全性概觀](../security/fundamentals/network-overview.md)
 
@@ -753,9 +753,9 @@ Azure 儲存體帳戶的存取權是由 Azure 訂用帳戶和與該儲存體帳�
 
 如需詳細資訊，請參閱下列參考資料：
 
-- [Azure 安全性效能評定 - 身分識別管理](/azure/security/benchmarks/security-controls-v2-identity-management)
+- [Azure 安全性效能評定 - 身分識別管理](../security/benchmarks/security-controls-v2-identity-management.md)
 
-- [Azure 安全性效能評定 - 特殊權限存取](/azure/security/benchmarks/security-controls-v2-privileged-access)
+- [Azure 安全性效能評定 - 特殊權限存取](../security/benchmarks/security-controls-v2-privileged-access.md)
 
 - [Azure 安全性最佳做法 11 - 架構。單一整合的安全性策略](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy) (機器翻譯)
 
@@ -787,9 +787,9 @@ Azure 儲存體帳戶的存取權是由 Azure 訂用帳戶和與該儲存體帳�
 
 如需詳細資訊，請參閱下列參考資料：
 
-- [Azure 安全性效能評定 - 記錄與威脅偵測](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
+- [Azure 安全性效能評定 - 記錄與威脅偵測](../security/benchmarks/security-controls-v2-logging-threat-detection.md)
 
-- [Azure 安全性效能評定 - 事件回應](/azure/security/benchmarks/security-controls-v2-incident-response)
+- [Azure 安全性效能評定 - 事件回應](../security/benchmarks/security-controls-v2-incident-response.md)
 
 - [Azure 安全性最佳做法 4 - 流程。更新雲端的事件回應流程](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud) (機器翻譯)
 
@@ -801,5 +801,5 @@ Azure 儲存體帳戶的存取權是由 Azure 訂用帳戶和與該儲存體帳�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性效能評定 V2 概觀](/azure/security/benchmarks/overview)
-- 深入了解 [Azure 資訊安全性基準](/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定 V2 概觀](../security/benchmarks/overview.md)
+- 深入了解 [Azure 資訊安全性基準](../security/benchmarks/security-baselines-overview.md)

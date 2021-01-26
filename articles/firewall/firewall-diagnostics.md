@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 11/04/2020
 ms.author: victorh
-ms.openlocfilehash: 2dd1b51c6bcdbc531661d9ecf45d3d0282eb5b45
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 52c6ef9edfc42bf1ad3b3279e0fa4e19b4cf502c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358842"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788259"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>監視 Azure 防火牆記錄和計量
 
@@ -24,7 +24,7 @@ ms.locfileid: "94358842"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 開始之前，您應該先閱讀 [Azure 防火牆記錄和計量](logs-and-metrics.md) ，以瞭解適用于 azure 防火牆的診斷記錄和計量。
 
@@ -43,9 +43,9 @@ ms.locfileid: "94358842"
    * AzureFirewallDnsProxy
 
 
-3. 選取 [ **新增診斷設定** ]。 [診斷設定] 頁面中提供診斷記錄的設定。
+3. 選取 [新增診斷設定]。 [診斷設定] 頁面中提供診斷記錄的設定。
 5. 在此範例中，Azure 監視器記錄會儲存記錄，因此請輸入 **防火牆記錄分析** 作為名稱。
-6. 在 [ **記錄** ] 底下，選取 [ **>azurefirewallapplicationrule** ]、[ **AzureFirewallNetworkRule** ]、[ **AzureFirewallThreatIntelLog** ] 和 [ **AzureFirewallDnsProxy** ] 以收集記錄。
+6. 在 [ **記錄**] 底下，選取 [ **>azurefirewallapplicationrule**]、[ **AzureFirewallNetworkRule**]、[ **AzureFirewallThreatIntelLog**] 和 [ **AzureFirewallDnsProxy** ] 以收集記錄。
 7. 選取 [ **傳送至 Log Analytics** ] 以設定您的工作區。
 8. 選取您的訂用帳戶。
 9. 選取 [儲存]。
@@ -104,15 +104,15 @@ ms.locfileid: "94358842"
 
 您可以使用下列任何方法，檢視和分析活動記錄資料：
 
-* **Azure 工具** ：透過 Azure PowerShell、Azure CLI、Azure REST API 或 Azure 入口網站，從活動記錄擷取資訊。 [活動作業與 Resource Manager](../azure-resource-manager/management/view-activity-logs.md) 一文會詳述每個方法的逐步指示。
-* **Power BI** ：如果您還沒有 [Power BI](https://powerbi.microsoft.com/pricing) 帳戶，可以免費試用。 使用 [Power BI 的 Azure 活動記錄內容套件](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/)，您可以使用預先設定的儀表板 (可按原樣使用或加以自訂) 來分析資料。
-* **Azure Sentinel** ：您可以將 Azure 防火牆記錄連線到 Azure Sentinel，讓您可以在活頁簿中查看記錄資料、使用它來建立自訂警示，並將其納入以改善您的調查。 Azure Sentinel 中的 Azure 防火牆資料連線器目前處於公開預覽狀態。 如需詳細資訊，請參閱 [連接 Azure 防火牆的資料](../sentinel/connect-azure-firewall.md)。
+* **Azure 工具**：透過 Azure PowerShell、Azure CLI、Azure REST API 或 Azure 入口網站，從活動記錄擷取資訊。 [活動作業與 Resource Manager](../azure-resource-manager/management/view-activity-logs.md) 一文會詳述每個方法的逐步指示。
+* **Power BI**：如果您還沒有 [Power BI](https://powerbi.microsoft.com/pricing) 帳戶，可以免費試用。 使用 [Power BI 的 Azure 活動記錄內容套件](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/)，您可以使用預先設定的儀表板 (可按原樣使用或加以自訂) 來分析資料。
+* **Azure Sentinel**：您可以將 Azure 防火牆記錄連線到 Azure Sentinel，讓您可以在活頁簿中查看記錄資料、使用它來建立自訂警示，並將其納入以改善您的調查。 Azure Sentinel 中的 Azure 防火牆資料連線器目前處於公開預覽狀態。 如需詳細資訊，請參閱 [連接 Azure 防火牆的資料](../sentinel/connect-azure-firewall.md)。
 
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>檢視及分析網路和應用程式規則記錄
 
 [Azure 監視器記錄](../azure-monitor/insights/azure-networking-analytics.md)會收集計數器和事件記錄。 它也納入了視覺效果和強大的搜尋功能來分析您的記錄。
 
-如需 Azure 防火牆 log analytics 範例查詢，請參閱 [Azure 防火牆 log analytics](log-analytics-samples.md)範例。
+如需 Azure 防火牆 log analytics 範例查詢，請參閱 [Azure 防火牆 log analytics](./firewall-workbook.md)範例。
 
 [Azure 防火牆活頁簿](firewall-workbook.md) 為 azure 防火牆資料分析提供了彈性的畫布。 您可以使用它，在 Azure 入口網站中建立豐富的視覺效果報表。 您可以利用多個在 Azure 中部署的防火牆，並將它們結合成整合的互動式體驗。
 
@@ -122,7 +122,7 @@ ms.locfileid: "94358842"
 > 如果您熟悉 Visual Studio 以及在 C# 中變更常數和變數值的基本概念，您可以使用 GitHub 所提供的[記錄檔轉換器工具 (英文)](https://github.com/Azure-Samples/networking-dotnet-log-converter)。
 
 ## <a name="view-metrics"></a>檢視計量
-流覽至 Azure 防火牆，並在 [ **監視** 選取的 **計量** ] 下進行。 若要檢視可用的值，請選取 [計量] 下拉式清單。
+流覽至 Azure 防火牆，並在 [ **監視** 選取的 **計量**] 下進行。 若要檢視可用的值，請選取 [計量] 下拉式清單。
 
 ## <a name="next-steps"></a>後續步驟
 

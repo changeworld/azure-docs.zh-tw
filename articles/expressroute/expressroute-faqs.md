@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: deb5f07340f44e7ae4da3372fd17e484d500e6ab
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 1be7331b0c2309350316d1c88c54e6018400463c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573253"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789342"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常見問題集
 
@@ -256,7 +256,7 @@ Dynamics 365 和 Common Data Service (CD) 環境裝載於 Azure 上，因此客�
 
 ### <a name="can-virtual-networks-linked-to-the-same-expressroute-circuit-talk-to-each-other"></a>連結至相同 ExpressRoute 電路的虛擬網路是否可以互通訊息？
 
-是。 在連線到相同 ExpressRoute 電路的虛擬網路中部署的虛擬機器可以互相通訊。 建議您設定 [虛擬網路對等互連](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) ，以加速此通訊。
+是。 在連線到相同 ExpressRoute 電路的虛擬網路中部署的虛擬機器可以互相通訊。 建議您設定 [虛擬網路對等互連](../virtual-network/virtual-network-peering-overview.md) ，以加速此通訊。
 
 ### <a name="can-i-use-site-to-site-connectivity-for-virtual-networks-in-conjunction-with-expressroute"></a>我是否可以將虛擬網路的站對站連線與 ExpressRoute 搭配使用?
 
@@ -387,7 +387,7 @@ Microsoft 365 服務需要啟用 premium 附加元件。 請參閱[定價詳細�
 
 ### <a name="can-i-access-microsoft-365-over-the-internet-even-if-expressroute-was-configured-for-my-organization"></a>即使已針對我的組織設定 ExpressRoute，還是可以透過網際網路存取 Microsoft 365？
 
-可以。 即使已針對您的網路設定 ExpressRoute，仍可透過網際網路連線 Microsoft 365 服務端點。 如果您所在位置的網路設定為透過 ExpressRoute 連線到 Microsoft 365 服務，請洽詢貴組織的網路團隊。
+是。 即使已針對您的網路設定 ExpressRoute，仍可透過網際網路連線 Microsoft 365 服務端點。 如果您所在位置的網路設定為透過 ExpressRoute 連線到 Microsoft 365 服務，請洽詢貴組織的網路團隊。
 
 ### <a name="how-can-i-plan-for-high-availability-for-microsoft-365-network-traffic-on-azure-expressroute"></a>如何針對 Azure ExpressRoute 上的 Microsoft 365 網路流量規劃高可用性？
 請參閱 [Azure ExpressRoute 的高可用性和容錯移轉](/microsoft-365/enterprise/network-planning-with-expressroute)中的建議事項
@@ -428,4 +428,4 @@ Microsoft 365 服務需要啟用 premium 附加元件。 請參閱[定價詳細�
 
 ### <a name="does-the-expressroute-service-store-customer-data"></a>ExpressRoute 服務是否會儲存客戶資料？
 
-不會。
+否。
