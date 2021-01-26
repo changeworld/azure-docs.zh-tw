@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: troubleshooting
-ms.date: 04/19/2019
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: b950f80ba8c2bdbaf7a515dc1ce127b934723177
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17b8d6de198746a79a50c4fbda805b364212e3c4
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85558564"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796060"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>針對 Azure 資料箱 Blob 儲存體的相關問題進行疑難排解
 
@@ -65,7 +65,8 @@ ms.locfileid: "85558564"
 |錯誤訊息  |建議的動作 |
 |---------|---------|
 |連接逾時。 |登入資料箱裝置，並檢查它是否已解除鎖定。 裝置重新開機時，會一直鎖定，直到有人登入為止。|
+|REST API 驗證失敗，並出現錯誤：伺服器無法驗證要求。 請確定授權標頭值的格式正確，包括簽章。 ErrorCode： AuthenticationFailed。 |發生這種情況的其中一個原因是裝置時間未與 Azure 同步。 如果有大量的時間扭曲，當您嘗試透過 REST API 將資料複製到資料箱時，REST API 的驗證就會中斷。 在這種情況下，您可以開啟輸出 UDP 123 埠，以允許存取 `time.windows.com` 。 一旦裝置時間與 Azure 同步，驗證應該會成功。 |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解 [資料箱 Blob 儲存體系統需求](data-box-system-requirements-rest.md)。

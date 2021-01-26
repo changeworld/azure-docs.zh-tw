@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: b4feb177abbdbfb9666be0ea0746c8316acdf5ae
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 2f8dc9f53c36f59a152fc34361b3726ea2cc001c
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250752"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797027"
 ---
 # <a name="advanced-features-of-the-azure-metrics-explorer"></a>Azure 計量瀏覽器的 Advanced 功能
 
@@ -129,16 +129,19 @@ ms.locfileid: "98250752"
 
    ![顯示您可以篩選)  (屬性維度的螢幕擷取畫面。](./media/metrics-charts/028.png)
 
-3. 選取您要在繪製圖表時包含的維度值。 下列範例會篩選出成功的儲存體交易：
+3. 選取您要套用至維度 (屬性) 的運算子。 預設運算子是 = (equals) 
+
+   ![顯示您可以與篩選準則搭配使用之操作員的螢幕擷取畫面。](./media/metrics-charts/filter-operator.png)
+
+4. 選取您要在繪製圖表時套用至篩選的維度值 (此範例顯示篩選出成功的儲存體交易) ：
 
    ![螢幕擷取畫面，顯示已成功篩選的儲存體交易。](./media/metrics-charts/029.png)
 
-4. 選取 **篩選器選取器** 以外的範圍來關閉它。 現在圖表會顯示失敗的儲存體交易數目：
+5. 選取篩選器值之後，請按一下 [篩選器選取器] 以外的位置以將它關閉。 現在圖表會顯示失敗的儲存體交易數目：
 
    ![顯示失敗的儲存體交易數目的螢幕擷取畫面。](./media/metrics-charts/030.png)
 
-您可以重複這些步驟，以將多個篩選套用至相同的圖表。
-
+6. 您可以重複步驟1-5，以將多個篩選套用至相同的圖表。
 
 
 ## <a name="metric-splitting"></a>度量分割
@@ -158,9 +161,18 @@ ms.locfileid: "98250752"
 
    圖表現在會顯示多行，每個維度區段各有一個：
 
-   ![顯示每個維度區段之線條的螢幕擷取畫面。](./media/metrics-charts/032.png)
+   ![顯示多行的螢幕擷取畫面，每個維度區段各行一個。](./media/metrics-charts/segment-dimension.png)
+   
+3. 選擇依選取的維度分割之後，要顯示的值數目限制。 預設限制為10，如上圖所示。 限制的範圍是 1-50。
+   
+   ![顯示分割限制的螢幕擷取畫面，這會限制分割之後的值數目。](./media/metrics-charts/segment-dimension-limit.png)
+   
+4. 選擇區段上的排序次序： [遞增] 或 [遞減]。 預設選取範圍為遞減。
+   
+   ![顯示分割值之排序次序的螢幕擷取畫面。](./media/metrics-charts/segment-dimension-sort.png)
 
-3. 選取 **群組選取器** 以外的範圍來關閉它。
+5. 按一下 [分組選取器] 以外的位置以將它關閉。
+   
 
    > [!NOTE]
    > 若要隱藏您的案例不相關的區段，並讓圖表更容易閱讀，請在相同維度上同時使用篩選和分割。

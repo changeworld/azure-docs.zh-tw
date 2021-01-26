@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 8d24ed014dd66235383b58cbcb7404aaf00f863e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
-ms.translationtype: HT
+ms.openlocfilehash: 217872586d09531926b43a13d826efe559c70597
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308969"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796762"
 ---
 # <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>教學課程：Azure Active Directory (AD) 單一登入 (SSO) 與 F5 整合
 
@@ -94,7 +94,7 @@ F5 支援 **SP 和 IDP** 起始的 SSO。
     在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://<YourCustomFQDN>.f5.com/`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [F5 用戶端支援小組](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [F5 用戶端支援小組](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入] 頁面上的 [SAML 簽署憑證] 區段中，尋找 [同盟中繼資料 XML]，然後選取 [下載]，以下載憑證並將其儲存在電腦上。
 
@@ -175,7 +175,7 @@ F5 支援 **SP 和 IDP** 起始的 SSO。
      ![顯示 SAML 服務提供者的螢幕擷取畫面。](./media/advance-kerbf5-tutorial/configure09.png)
  
  
-1. 按一下 [加入新資料列]，然後選取上一個步驟中建立的**外部 IdP 連接器**。
+1. 按一下 [加入新資料列]，然後選取上一個步驟中建立的 **外部 IdP 連接器**。
 
     ![醒目提示 [新增資料列] 按鈕的螢幕擷取畫面。](./media/advance-kerbf5-tutorial/configure10.png)
  
@@ -314,7 +314,7 @@ F5 支援 **SP 和 IDP** 起始的 SSO。
 
 ### <a name="create-f5-test-user"></a>建立 F5 測試使用者
 
-在本節中，您會在 F5 中建立名為 B.Simon 的使用者。 請與 [F5 客戶支援小組](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45)合作，在 F5 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。 
+在本節中，您會在 F5 中建立名為 B.Simon 的使用者。 請與 [F5 客戶支援小組](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45)合作，在 F5 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。 
 
 ## <a name="test-sso"></a>測試 SSO 
 
@@ -335,3 +335,9 @@ F5 支援 **SP 和 IDP** 起始的 SSO。
 - [設定適用於標頭式應用程式的 F5 單一登入](headerf5-tutorial.md)
 
 - [設定適用於 Kerberos 應用程式的 F5 單一登入](kerbf5-tutorial.md)
+
+- [適用于安全混合式存取的 F5 大型 IP APM 與 Azure AD 整合](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-integration)
+
+- [在 Azure IaaS 中部署 F5 大型 IP 虛擬 Edition VM 以進行安全混合式存取的教學課程](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-bigip-deployment-guide)
+
+- [適用于無密碼 VPN 的 Azure Active Directory 單一登入與 F5 BIG IP 整合的教學課程](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-password-less-vpn)

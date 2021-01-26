@@ -7,22 +7,16 @@ ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 13abe333bcf3f67ea1a1ba823c693deaa60bc723
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: b6b239f44311424db2e80c59e2aba639ae3c0000
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788802"
+ms.locfileid: "98797455"
 ---
 # <a name="azure-media-player-full-setup"></a>Azure 媒體播放器完整安裝 #
 
 Azure 媒體播放器很容易設定。 只需要幾分鐘的時間，就能直接從您的 Azure 媒體服務帳戶取得媒體內容的基本播放。 版本的範例目錄中也會提供[範例](https://github.com/Azure-Samples/azure-media-player-samples)。
-
-<!--//aka.ms/ampembed?url=https%3A%2F%2Fxpouyatdemo-euwe.streaming.media.azure.net%2Fc9b6ac82-c187-4882-a3d3-1a67204ac58e%2Fconnect2017-v3.ism%2Fmanifest-->
-
-以下是 AMS 影片的範例。
-
-> [!VIDEO https://aka.ms/ampembed?url=https%3A%2F%2Fxpouyatdemo-euwe.streaming.media.azure.net%2Fc9b6ac82-c187-4882-a3d3-1a67204ac58e%2Fconnect2017-v3.ism%2Fmanifest]
 
 ## <a name="step-1-include-the-javascript-and-css-files-in-the-head-of-your-page"></a>步驟1：將 JavaScript 和 CSS 檔案包含在頁面的開頭 ##
 

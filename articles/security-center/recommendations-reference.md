@@ -1,18 +1,18 @@
 ---
 title: Azure 資訊安全中心建議完整參考資料表
-description: 本文列出 Azure 資訊安全中心的安全性建議，可協助保護您的資源。
+description: 本文列出 Azure 資訊安全中心的安全性建議，可協助您強化及保護您的資源。
 author: memildin
 ms.service: security-center
 ms.topic: reference
-ms.date: 01/24/2021
+ms.date: 01/26/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: cd72e904f659b7bd9c7e2df86b46fe20bd26ec33
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: f6d881036b0ebaa79d1052e41b8ec649bb1e8d6d
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757092"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797163"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>安全性建議 - 參考指南
 
@@ -22,7 +22,7 @@ ms.locfileid: "98757092"
 
 若要了解如何回應這些建議，請參閱 [Azure 資訊安全中心的補救建議](security-center-remediate-recommendations.md)。
 
-您的安全分數是根據您所完成的資訊安全中心建議數目而定。 若要判斷應優先處理哪些建議，請著眼於各項的嚴重性，以及該項目對您安全分數的潛在影響。
+您的安全分數是根據您已完成的資訊安全中心建議數目。 若要決定要先解決的建議，請查看每個建議的嚴重性，以及它對您的安全分數可能會有的影響。
 
 > [!TIP]
 > 如果建議的描述顯示「無相關原則」，通常是因為該建議取決於其他建議及其原則。 例如「應補救失敗的端點保護健康情況...」這項建議，是取決於另一項負責檢查是否已安裝端點保護解決方案的建議 (「應安裝端點保護解決方案...」)。 基礎建議則確實具備原則。

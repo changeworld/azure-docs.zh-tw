@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 6bf21205c028eaff08eef91757424f8b52764ada
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
-ms.translationtype: HT
+ms.openlocfilehash: ba58af8d3d28efcc7f97be01a96202a2203a3459
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936136"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796934"
 ---
 # <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>教學課程：設定 Azure Active Directory 與 F5 之間的單一登入 (SSO)
 
@@ -466,3 +466,9 @@ ms.locfileid: "97936136"
 - [設定適用於 Kerberos 應用程式的 F5 單一登入](kerbf5-tutorial.md)
 
 - [設定適用於進階 Kerberos 應用程式的 F5 單一登入](advance-kerbf5-tutorial.md)
+
+- [適用于安全混合式存取的 F5 大型 IP APM 與 Azure AD 整合](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-integration)
+
+- [在 Azure IaaS 中部署 F5 大型 IP 虛擬 Edition VM 以進行安全混合式存取的教學課程](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-bigip-deployment-guide)
+
+- [適用于無密碼 VPN 的 Azure Active Directory 單一登入與 F5 BIG IP 整合的教學課程](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-password-less-vpn) 

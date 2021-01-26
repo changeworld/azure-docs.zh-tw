@@ -229,3 +229,5 @@
       href: ../../virtual-wan/security-baseline.md
     - name: VPN 閘道安全性基準
       href: ../../vpn-gateway/security-baseline.md
+    - name: Windows 虛擬桌面安全性基準
+      href: ../../virtual-desktop/security-baseline.md

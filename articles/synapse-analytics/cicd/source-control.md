@@ -8,22 +8,18 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 1f1a74f3a26a079039e68eb8e59fac4c18ff0c32
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 3564609d869bef090f0a3db5e6040ba0f5ad80b0
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219737"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796963"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Azure Synapse Studio 中的原始檔控制
 
-根據預設，Azure Synapse Studio 會直接針對 Synapse 服務進行撰寫。 不過，此體驗具有下列限制：
+根據預設，Azure Synapse Studio 會直接針對 Synapse 服務進行撰寫。 如果您需要使用 Git 進行原始檔控制協同作業，Synapse Studio 可讓您將工作區與 Git 存放庫、Azure DevOps 或 GitHub 建立關聯。 
 
-- Synapse studio 不包含用來儲存變更的暫存儲存體。 儲存和共用變更的唯一方式是透過 **發佈** ，而且所有變更都會直接發佈至 Synapse 服務。
-
-- Synapse Studio 未針對協同作業和版本控制優化。
-
-為了提供原始檔控制功能，Synapse Studio 可讓您將工作區與 Git 存放庫、Azure DevOps 或 GitHub 產生關聯。 本文將概述如何在已啟用 git 存放庫的 Synapse 工作區中設定和運作。 此外，我們也強調了一些最佳作法和疑難排解指南。
+本文將概述如何在已啟用 git 存放庫的 Synapse 工作區中設定和運作。 此外，我們也強調了一些最佳作法和疑難排解指南。
 
 > [!NOTE]
 > Azure Government 雲端無法使用 Azure Synapse Studio git 整合。

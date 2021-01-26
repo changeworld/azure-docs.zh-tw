@@ -13,18 +13,18 @@ ms.date: 12/3/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 50a2f56824db67b73199439922e662339ff30872
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 22352f6d0c7dc48b98be5fcb4101f262adc480d6
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755291"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98795616"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft 身分識別平台的應用程式驗證憑證認證
 
 Microsoft 身分識別平臺可讓應用程式在可使用用戶端密碼的任何地方使用自己的認證來進行驗證，例如，在 OAuth 2.0  [用戶端認證授](v2-oauth2-client-creds-grant-flow.md) 與流程和代理 [者 (OBO](v2-oauth2-on-behalf-of-flow.md)) 流程中。
 
-應用程式可用於驗證的一種認證格式是 [JSON Web 權杖](./security-tokens.md#json-web-tokens-jwts-and-claims) ， (JWT) 使用應用程式所擁有之憑證簽署的判斷提示。
+應用程式可用於驗證的一種認證格式是 [JSON Web 權杖](./security-tokens.md#json-web-tokens-and-claims) ， (JWT) 使用應用程式所擁有之憑證簽署的判斷提示。
 
 ## <a name="assertion-format"></a>判斷提示格式
 

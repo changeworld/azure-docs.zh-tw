@@ -3,19 +3,19 @@ title: 'DB2 至 Azure Vm 上的 SQL Server (遷移指南) '
 description: 遵循本指南，將您的 DB2 伺服器遷移至 Azure Vm 上的 SQL Server。
 ms.custom: ''
 ms.service: virtual-machines-sql
-ms.subservice: ''
+ms.subservice: migration-guide
 ms.devlang: ''
 ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 5312ee08bad9d0b84e13c53fe4b1de59fad896f1
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: c3f3af6a1c114d6587992f79e95dcc0c1ccb41e6
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326041"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797463"
 ---
 # <a name="migration-guide-db2-to-sql-server-on-azure-vms"></a>遷移指南： DB2 至 Azure Vm 上的 SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]

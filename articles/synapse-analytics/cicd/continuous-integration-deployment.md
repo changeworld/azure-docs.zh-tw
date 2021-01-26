@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 7a665bf05167a6bdf20c7325c66a5d0e439aa7f1
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: ba5286b16b6e640e968b50174e39a05328e750a4
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223681"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797302"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure Synapse 工作區的持續整合和傳遞
 
@@ -134,3 +134,13 @@ ms.locfileid: "98223681"
 -   **在構件遷移之前準備** 集區。 如果您已將 SQL 腳本或筆記本附加至開發工作區中的集區，則需要在不同環境中使用相同的集區名稱。 
 -   **基礎結構即程式碼 (IaC)**。 基礎結構 (網路、虛擬機器、負載平衡器和連線拓撲的管理) 在描述性模型中，使用與 DevOps 小組用於原始程式碼的相同版本控制。 
 -   **其他**。 查看 [ADF 構件的最佳作法](../../data-factory/continuous-integration-deployment.md#best-practices-for-cicd)
+
+## <a name="troubleshooting-artifacts-deployment"></a>針對構件部署進行疑難排解 
+
+### <a name="use-the-synapse-workspace-deployment-task"></a>使用 Synapse 工作區部署工作
+
+在 Synapse 中，所有類型的構件都不是與 ADF 不同的 ARM 資源。 您無法使用 ARM 範本部署工作來部署 Synapse 構件
+ 
+### <a name="unexpected-token-error-in-release"></a>發行中發生未預期的權杖錯誤
+
+當您的參數檔案具有未進行轉義的參數值時，發行管線將無法剖析檔案，但出現未預期的標記。 建議您覆寫參數或 KeyVault 以取得參數。 您也可以將替代方法加倍。

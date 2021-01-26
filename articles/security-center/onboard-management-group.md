@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2020
 ms.author: memildin
-ms.openlocfilehash: 4ecd436b548c29c520a7538970d4d703cc8488d2
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
-ms.translationtype: HT
+ms.openlocfilehash: 31472b0a0eedee03d5cfcb6ff47a97033a8c78e0
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027562"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796074"
 ---
 # <a name="enable-security-center-on-all-subscriptions-in-a-management-group"></a>在管理群組中的所有訂用帳戶上啟用資訊安全中心
 
@@ -98,4 +98,4 @@ ms.locfileid: "93027562"
 既然您已將整個管理群組上線，請啟用 Azure Defender 的進階保護。 
 
 > [!div class="nextstepaction"]
-> [啟用 Azure Defender](security-center-pricing.md)
+> [啟用 Azure Defender](security-center-pricing.md#enable-azure-defender)

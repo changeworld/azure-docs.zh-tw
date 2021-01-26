@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 8bc303f619d145cc280e6caab65781bd42d1b314
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
-ms.translationtype: HT
+ms.openlocfilehash: db80ae66761e49ce90f25a22f0e74cf8a1300796
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489688"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797238"
 ---
 # <a name="choose-the-right-postgresql-server-option-in-azure"></a>在 Azure 中選擇適當的 PostgreSQL 伺服器選項
 
@@ -21,7 +21,7 @@ ms.locfileid: "92489688"
 進行決策時，請考慮 PaaS 的下列三個選項，或在 Azure VM (IaaS) 上執行
 - [適用於 PostgreSQL 的 Azure 資料庫單一伺服器](./overview-single-server.md)
 - [適用於 PostgreSQL 的 Azure 資料庫彈性伺服器](./flexible-server/overview.md)
-- [適用於 PostgreSQL 的超大規模 Azure 資料庫 (Citus)]()
+- [適用於 PostgreSQL 的超大規模 Azure 資料庫 (Citus)](hyperscale/index.yml)
 
 **PostgreSQL on Azure VM** 選項屬於 IaaS 的企業類別。 透過此服務，您可以在 Azure 雲端平台上完全受控的虛擬機器中執行 PostgreSQL 伺服器。 所有最新版本的 PostgreSQL 都可以安裝在 IaaS 虛擬機器上。 PostgreSQL 與適用於 PostgreSQL 的 Azure 資料庫的最大差異在於，PostgreSQL on Azure VM 提供資料庫引擎的控制權。 不過，此控制權是管理 VM 和許多資料庫管理 (DBA) 工作的責任成本。 這些工作包括維護和修補資料庫伺服器、資料庫復原，以及高可用性的設計。
 

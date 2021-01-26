@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 35469c7a11d47e586187b55bde1e8ad8a0c94f5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc54cc8dfc34db8aa88690c03ef0b18991e60776
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448414"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797120"
 ---
 # <a name="the-azure-defender-dashboard"></a>Azure Defender 儀表板
 
@@ -37,7 +37,7 @@ Azure Defender 儀表板提供：
 
 1. **Advanced protection** -Azure Defender 包含許多適用于虛擬機器、SQL 資料庫、容器、web 應用程式、網路等的先進威脅防護功能。 在此 [advanced protection] 區段中，您可以查看所選訂用帳戶中每個保護的資源狀態。 選取其中任何一項，直接移至該保護類型的設定區域。
 
-1. **深入** 解析-新聞的這個輪流窗格、建議閱讀，以及高優先順序的警示，可讓資訊安全中心深入瞭解與您和您的訂用帳戶相關的安全性問題。 無論是由弱點分析工具在您的 Vm 上探索到的高嚴重性 Cve 清單，或是由資訊安全中心小組成員提供的新 blog 文章，您都可以在 **Azure Defender 儀表板**的 [見解] 窗格中找到此清單。
+1. **深入** 解析-新聞的這個輪流窗格、建議閱讀，以及高優先順序的警示，可讓資訊安全中心深入瞭解與您和您的訂用帳戶相關的安全性問題。 無論是由弱點分析工具在您的 Vm 上探索到的高嚴重性 Cve 清單，或是由資訊安全中心小組成員提供的新 blog 文章，您都可以在 **Azure Defender 儀表板** 的 [見解] 窗格中找到此清單。
 
 
 
@@ -49,4 +49,4 @@ Azure Defender 儀表板提供：
 如需 Azure Defender 的詳細資訊，請參閱 [Azure Defender 簡介](azure-defender.md)
 
 > [!div class="nextstepaction"]
-> [啟用 Azure Defender](security-center-pricing.md)
+> [啟用 Azure Defender](security-center-pricing.md#enable-azure-defender)

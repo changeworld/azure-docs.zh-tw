@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: 5f1332255ae83a32f9b71d24d812b00fad9b7fa1
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 34fd595a03f67201b303c94764668bf86a6c244b
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637916"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796904"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>針對 Azure Data Factory 中的 SSIS Integration Runtime 管理進行疑難排解
 
@@ -151,7 +151,7 @@ SSIS IR 會定期自動更新。 升級期間會建立新的 Azure Batch 集區�
 
 如果 SSIS IR 佈建失敗，則系統會刪除所有已建立的資源。 不過，如果訂用帳戶或資源群組層級有資源刪除鎖定，則系統無法如預期地刪除虛擬網路資源。 若要修正此錯誤，請移除刪除鎖定，然後重新啟動 IR。
 
-### <a name="vnetresourcegrouplockedduringstop"></a>VNetResourceGroupLockedDuringStop
+### <a name="vnetresourcegrouplockedduringstopvnetdeletelock"></a>VNetResourceGroupLockedDuringStop/VNetDeleteLock
 
 當您停止 SSIS IR 時，系統會刪除與虛擬網路相關的所有資源。 但如果訂用帳戶或資源群組層級有資源刪除鎖定，則刪除作業會失敗。 在此情況下，刪除鎖定同樣是由客戶控制和設定的。 因此，其必須移除刪除鎖定，然後再次停止 SSIS IR。
 

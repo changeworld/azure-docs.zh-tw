@@ -10,14 +10,17 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: fd3c8a08e5512d15be4dfb26ca3eff151d08386f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e31128687cfcc1f4e32879328ad3227182efb9ce
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651357"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797366"
 ---
 # <a name="use-azure-sentinel-watchlists"></a>使用 Azure Sentinel watchlists
+
+> [!IMPORTANT]
+> Watchlists 功能目前為 **預覽** 狀態。 請參閱 [Microsoft Azure 預覽的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ，以取得適用于 Azure 功能（Beta、預覽或尚未發行正式運作）的其他法律條款。
 
 Azure Sentinel watchlists 可讓您從外部資料源收集資料，以便與您 Azure Sentinel 環境中的事件相互關聯。 一旦建立之後，您就可以在搜尋、偵測規則、威脅搜尋和回應手冊中使用 watchlists。 Watchlists 會以名稱/值組的形式儲存在 Azure Sentinel 工作區中，並快取以獲得最佳查詢效能和低延遲。
 
@@ -33,7 +36,7 @@ Azure Sentinel watchlists 可讓您從外部資料源收集資料，以便與您
 
 ## <a name="create-a-new-watchlist"></a>建立新的關注清單
 
-1. 在 Azure 入口網站中，流覽至 [ **Azure Sentinel** 設定關注清單]，  >  **Configuration**  >  **Watchlist** 然後選取 [**加入新** 的]。
+1. 在 Azure 入口網站中，流覽至 [ **Azure Sentinel** 設定關注清單]，  >    >  然後選取 [**加入新** 的]。
 
     > [!div class="mx-imgBorder"]
     > ![新關注清單](./media/watchlists/sentinel-watchlist-new.png)
@@ -62,7 +65,7 @@ Azure Sentinel watchlists 可讓您從外部資料源收集資料，以便與您
 
 ## <a name="use-watchlists-in-queries"></a>在查詢中使用 watchlists
 
-1. 在 Azure 入口網站中，流覽至 [ **Azure Sentinel** 設定  >  **Configuration**  >  **關注清單**]，選取您要使用的關注清單，然後選取 [**在 Log Analytics 中查看**]。
+1. 在 Azure 入口網站中，流覽至 [ **Azure Sentinel** 設定  >    >  **關注清單**]，選取您要使用的關注清單，然後選取 [**在 Log Analytics 中查看**]。
 
     :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-list.png" alt-text="在查詢中使用 watchlists" lightbox="./media/watchlists/sentinel-watchlist-queries-list.png":::
 
@@ -73,11 +76,43 @@ Azure Sentinel watchlists 可讓您從外部資料源收集資料，以便與您
 
     :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-fields.png" alt-text="具有關注清單欄位的查詢" lightbox="./media/watchlists/sentinel-watchlist-queries-fields.png":::
     
+1. 您可以藉由將關注清單視為聯結和查閱的資料表，針對關注清單中的資料查詢任何資料表中的資料。
+
+    ```kusto
+    Heartbeat
+    | lookup kind=leftouter _GetWatchlist('IPlist') 
+     on $left.ComputerIP == $right.IPAddress
+    ```
+    :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-join.png" alt-text="針對關注清單進行查詢作為查閱":::
+
 ## <a name="use-watchlists-in-analytics-rules"></a>在分析規則中使用 watchlists
 
-若要在分析規則中使用 watchlists，請在 Azure 入口網站中，流覽至 **Azure Sentinel** 設定  >  **Configuration**  >  **分析**，並 `_GetWatchlist('<watchlist>')` 在查詢中使用函數建立規則。
+若要在分析規則中使用 watchlists，請在 Azure 入口網站中，流覽至 **Azure Sentinel** 設定  >    >  **分析**，並 `_GetWatchlist('<watchlist>')` 在查詢中使用函數建立規則。
 
-:::image type="content" source="./media/watchlists/sentinel-watchlist-analytics-rule.png" alt-text="在分析規則中使用 watchlists" lightbox="./media/watchlists/sentinel-watchlist-analytics-rule.png":::
+1. 在此範例中，請使用下列值來建立名為 "ipwatchlist" 的關注清單：
+
+    :::image type="content" source="./media/watchlists/create-watchlist.png" alt-text="關注清單的四個專案清單":::
+
+    :::image type="content" source="./media/watchlists/sentinel-watchlist-new-2.png" alt-text="建立具有四個專案的關注清單":::
+
+1. 接下來，建立分析規則。  在此範例中，我們只會在關注清單中包含來自 IP 位址的事件：
+
+    ```kusto
+    //Watchlist as a variable
+    let watchlist = (_GetWatchlist('ipwatchlist') | project IPAddress);
+    Heartbeat
+    | where ComputerIP in (watchlist)
+    ```
+    ```kusto
+    //Watchlist inline with the query
+    Heartbeat
+    | where ComputerIP in ( 
+        (_GetWatchlist('ipwatchlist')
+        | project IPAddress)
+    )
+    ```
+
+:::image type="content" source="./media/watchlists/sentinel-watchlist-analytics-rule-2.png" alt-text="在分析規則中使用 watchlists":::
 
 ## <a name="view-list-of-watchlists-aliases"></a>查看 watchlists 別名的清單
 

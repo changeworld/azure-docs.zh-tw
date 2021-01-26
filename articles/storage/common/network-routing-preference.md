@@ -10,12 +10,13 @@ ms.date: 05/12/2020
 ms.author: santoshc
 ms.reviewer: tamram
 ms.subservice: common
-ms.openlocfilehash: 5b4a1b1f27dff059090d78e24a6a0eca0bbbf01f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions
+ms.openlocfilehash: 9afe58434d60280f635deab75b763077bc76b93c
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514207"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797627"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage-preview"></a>設定 Azure 儲存體的網路路由喜好設定 (預覽)
 
@@ -65,9 +66,36 @@ ms.locfileid: "85514207"
 
 Azure 儲存體的路由喜好設定適用於下列區域：
 
-- 法國南部
-- 美國中北部
+- 美國中部 
+- 美國中部 EUAP
+- 美國東部 
+- 美國東部 2
+- 美國東部 2 
+- 美國東部 2 EUAP
+- 美國中南部
 - 美國中西部
+- 美國西部 
+- 美國西部 2 
+- 法國中部 
+- 法國南部 
+- 德國北部 
+- 德國中西部 
+- 美國中北部
+- 北歐 
+- 挪威東部 
+- 瑞士北部
+- 瑞士西部
+- 英國南部 
+- 英國西部 
+- 西歐 
+- 阿拉伯聯合大公國中部
+- 東亞 
+- 東南亞 
+- 日本東部 
+- 日本西部 
+- 印度西部
+- 澳大利亞東部 
+- 澳大利亞東南部 
 
 下列已知問題會影響到 Azure 儲存體的路由喜好設定 (預覽)：
 
@@ -75,7 +103,7 @@ Azure 儲存體的路由喜好設定適用於下列區域：
 
 ## <a name="pricing-and-billing"></a>價格和計費
 
-如需定價和計費的詳細資料，請參閱[什麼是路由喜好設定 (預覽)？](../../virtual-network/routing-preference-overview.md#pricing)中的**定價**一節。
+如需定價和計費的詳細資料，請參閱 [什麼是路由喜好設定 (預覽)？](../../virtual-network/routing-preference-overview.md#pricing)中的 **定價** 一節。
 
 ## <a name="next-steps"></a>後續步驟
 

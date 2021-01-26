@@ -7,16 +7,14 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d9c8df4fe296bcd40f26847233fcd49bcab573c0
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
-ms.translationtype: HT
+ms.openlocfilehash: 23d00acc03ee879036a823f0c3d7fe2f67902e31
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709438"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797021"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender 簡介
-
-[!INCLUDE [Solorigate banner](../../includes/security-center-solorigate.md)]
 
 Azure 資訊安全中心的功能涵蓋雲端安全性的兩大要素：
 
@@ -101,4 +99,4 @@ Azure Defender 包含對您的虛擬機器和容器登錄進行弱點掃描的�
 在本文中，您已了解 Azure Defender 的優點。 
 
 > [!div class="nextstepaction"]
-> [啟用 Azure Defender](security-center-pricing.md)
+> [啟用 Azure Defender](security-center-pricing.md#enable-azure-defender)

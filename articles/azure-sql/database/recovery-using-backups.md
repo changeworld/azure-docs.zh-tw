@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 11/13/2020
-ms.openlocfilehash: a70571dcf380fc2186565a40778991ac70a218d6
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 0c3db3b3f22f9f2639012068924708537f9ada77
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797208"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98795325"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>使用自動資料庫備份復原-Azure SQL Database & SQL 受控執行個體
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -53,8 +53,8 @@ ms.locfileid: "97797208"
 
 | **部署選項** | **正在處理的並行要求的最大數目** | **正在提交的並行要求的最大數目** |
 | :--- | --: | --: |
-|**單一資料庫 (每個訂閱)**|10|60|
-|**彈性集區 (每個集區)**|4|200|
+|**單一資料庫 (每個訂閱)**|30|100|
+|**彈性集區 (每個集區)**|4|2000|
 
 
 沒有內建方法可還原整部伺服器。 如需如何完成這項工作的範例，請參閱 [Azure SQL Database：完整伺服器](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666)復原。
@@ -168,7 +168,7 @@ ms.locfileid: "97797208"
 
 #### <a name="sql-managed-instance"></a>SQL 受控執行個體
 
-若要從 Azure 入口網站將受控實例資料庫異地還原至您選擇的區域中現有的受控實例，請選取您想要還原資料庫的受控實例。 依照下列步驟執行：
+若要從 Azure 入口網站將受控實例資料庫異地還原至您選擇的區域中現有的受控實例，請選取您想要還原資料庫的受控實例。 請遵循下列步驟：
 
 1. 選取 [ **新增資料庫**]。
 2. 輸入所需的資料庫名稱。
@@ -253,7 +253,7 @@ ms.locfileid: "97797208"
 
 若要使用 Azure CLI 來還原受控實例資料庫，請參閱 [az sql midb restore](/cli/azure/sql/midb#az-sql-midb-restore)。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 自動備份可在發生使用者和應用程式錯誤、意外刪除資料庫和長時間中斷時保護您的資料庫。 所有服務層級和計算大小都可以取得此內建功能。
 

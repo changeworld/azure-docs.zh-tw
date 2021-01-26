@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 08/25/2020
 ms.author: alehall
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2658240e670e617f7296881f733ff369b9bf8f87
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: d4beef9383b8e51e1295639c18e745fd0fdf8588
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219006"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796944"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-cli"></a>快速入門：使用 Azure CLI 建立 Azure Synapse 工作區
 
@@ -50,31 +50,12 @@ Azure CLI 是管理 Azure 資源的 Azure 命令列體驗。 您可以在瀏覽�
     |SqlPassword| 選擇安全的密碼。|
     |||
 
-2. 建立資源群組作為 Azure Synapse 工作區的容器：
+1. 建立資源群組作為 Azure Synapse 工作區的容器：
     ```azurecli
     az group create --name $SynapseResourceGroup --location $Region
     ```
-3. 擷取 ADLS Gen 2 儲存體帳戶金鑰：
-    ```azurecli
-    StorageAccountKey=$(az storage account keys list \
-      --account-name $StorageAccountName \
-      | jq -r '.[0] | .value')
-    ```
-4. 擷取 ADLS Gen 2 儲存體端點 URL：
-    ```azurecli
-    StorageEndpointUrl=$(az storage account show \
-      --name $StorageAccountName \
-      --resource-group $StorageAccountResourceGroup \
-      | jq -r '.primaryEndpoints | .dfs')
-    ```
 
-5. (選擇性) 您一律可以查看 ADLS Gen2 的儲存體帳戶金鑰和端點為何：
-    ```azurecli
-    echo "Storage Account Key: $StorageAccountKey"
-    echo "Storage Endpoint URL: $StorageEndpointUrl"
-    ```
-
-6. 建立 Azure Synapse 工作區：
+1. 建立 Azure Synapse 工作區：
     ```azurecli
     az synapse workspace create \
       --name $SynapseWorkspaceName \
@@ -86,14 +67,14 @@ Azure CLI 是管理 Azure 資源的 Azure 命令列體驗。 您可以在瀏覽�
       --location $Region
     ```
 
-7. 取得 Azure Synapse 工作區的 Web 和開發 URL：
+1. 取得 Azure Synapse 工作區的 Web 和開發 URL：
     ```azurecli
     WorkspaceWeb=$(az synapse workspace show --name $SynapseWorkspaceName --resource-group $SynapseResourceGroup | jq -r '.connectivityEndpoints | .web')
 
     WorkspaceDev=$(az synapse workspace show --name $SynapseWorkspaceName --resource-group $SynapseResourceGroup | jq -r '.connectivityEndpoints | .dev')
     ```
 
-8. 建立防火牆規則，以允許從您的電腦存取 Azure Synapse 工作區：
+1. 建立防火牆規則，以允許從您的電腦存取 Azure Synapse 工作區：
 
     ```azurecli
     ClientIP=$(curl -sb -H "Accept: application/json" "$WorkspaceDev" | jq -r '.message')
@@ -103,7 +84,7 @@ Azure CLI 是管理 Azure 資源的 Azure 命令列體驗。 您可以在瀏覽�
     az synapse workspace firewall-rule create --end-ip-address $ClientIP --start-ip-address $ClientIP --name "Allow Client IP" --resource-group $SynapseResourceGroup --workspace-name $SynapseWorkspaceName
     ```
 
-9. 開啟儲存在環境變數 `WorkspaceWeb` 中的 Azure Synapse 工作區 Web URL 位址，以存取您的工作區：
+1. 開啟儲存在環境變數 `WorkspaceWeb` 中的 Azure Synapse 工作區 Web URL 位址，以存取您的工作區：
 
     ```azurecli
     echo "Open your Azure Synapse Workspace Web URL in the browser: $WorkspaceWeb"

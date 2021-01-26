@@ -7,12 +7,12 @@ ms.date: 01/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: c6d62cf7b93255336d87cec1d0fef2c567cde9f2
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 200e1fd7bfffef403fa459d3de13dc31145b8a33
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791825"
+ms.locfileid: "98796622"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>適用於 App Service 的 Azure Defender 簡介
 
@@ -62,9 +62,9 @@ Azure Defender 會監視對您 App Service 資源的許多威脅。 警示幾乎
 
 ### <a name="dangling-dns-detection"></a>無關聯 DNS 偵測
 
-適用于 App Service 的 Azure Defender 也會在 App Service 網站已解除委任時，識別 DNS 註冊機構中剩餘的任何 DNS 專案-這些是所謂的無關聯 DNS 專案。 目前，DNS 專案指向不存在的資源，而您的子域很容易接管。 Azure Defender 不會掃描您的 DNS 註冊機構是否 *有現有* 的無關聯 dns 專案;當 App Service 網站已解除委任，而且其自訂網域 (DNS 專案) 未刪除時，就會向您發出警示。
+適用于 App Service 的 Azure Defender 也會在 App Service 網站已解除委任時，識別 DNS 註冊機構中剩餘的任何 DNS 專案-這些是所謂的無關聯 DNS 專案。 當您移除網站，而不是從 DNS 註冊機構移除其自訂網域時，DNS 專案會指向不存在的資源，而您的子域很容易接管。 Azure Defender 不會掃描您的 DNS 註冊機構是否 *有現有* 的無關聯 dns 專案;當 App Service 網站已解除委任，而且其自訂網域 (DNS 專案) 未刪除時，就會向您發出警示。
 
-子域接管是組織常見的高嚴重性威脅。 當威脅執行者偵測到無關聯的 DNS 專案時，他們會在目的地位址建立自己的網站。 系統會將適用于組織網域的流量導向至威脅執行者的網站，並可將該流量用於各式各樣的惡意活動。 
+子域接管是組織常見的高嚴重性威脅。 當威脅執行者偵測到無關聯的 DNS 專案時，他們會在目的地位址建立自己的網站。 系統會將適用于組織網域的流量導向至威脅執行者的網站，並可將該流量用於各式各樣的惡意活動。
 
 無論您的網域是否使用 Azure DNS 或外部網域註冊機構進行管理，以及適用于 Windows 和 Linux 上的 App Service，都可以使用無關聯的 DNS 保護。
 
@@ -100,4 +100,4 @@ Azure Defender 會監視對您 App Service 資源的許多威脅。 警示幾乎
 - 如需 Azure Defender for App Service 警示的清單，請參閱 [警示的參考表](alerts-reference.md#alerts-azureappserv)。
 - 如需 App Service 方案的詳細資訊，請參閱 [App Service 方案](https://azure.microsoft.com/pricing/details/app-service/plans/)。
 > [!div class="nextstepaction"]
-> [啟用 Azure Defender](security-center-pricing.md)
+> [啟用 Azure Defender](security-center-pricing.md#enable-azure-defender)
