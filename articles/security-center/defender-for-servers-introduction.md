@@ -7,12 +7,12 @@ ms.date: 9/23/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 711963a60d5c75031ff676a9c7f1db47f20fe895
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
-ms.translationtype: HT
+ms.openlocfilehash: b7457e258cf8a9936e9a63ab9eec9edc0b54d3eb
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275256"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797729"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>適用於伺服器的 Azure Defender 簡介
 
@@ -27,7 +27,7 @@ ms.locfileid: "92275256"
 
 適用於伺服器的 Azure Defender 所提供的威脅偵測和保護功能包括：
 
-- **適用於端點的 Microsoft Defender 整合授權 (僅限 Windows)** - 適用於伺服器的 Azure Defender 包括[適用於端點的 Microsoft Defender](https://www.microsoft.com/microsoft-365/security/endpoint-defender)。 兩者搭配運作下，可提供完整的端點偵測和回應 (EDR) 功能。 [深入了解](security-center-wdatp.md)。
+- **適用於端點的 Microsoft Defender 整合授權 (僅限 Windows)** - 適用於伺服器的 Azure Defender 包括 [適用於端點的 Microsoft Defender](https://www.microsoft.com/microsoft-365/security/endpoint-defender)。 兩者搭配運作下，可提供完整的端點偵測和回應 (EDR) 功能。 [深入了解](security-center-wdatp.md)。
 
     適用於端點的 Microsoft Defender 偵測到威脅時會觸發警示。 警示會顯示在資訊安全中心中。 在資訊安全中心，您也可以切換至適用於端點的 Microsoft Defender 主控台並執行詳細的調查，以找出攻擊的範圍。 深入了解適用於端點的 Microsoft Defender。
 
@@ -97,4 +97,4 @@ ms.locfileid: "92275256"
 - 無論是由資訊安全中心產生警示，還是由不同的安全性產品資訊安全中心接收的警示，您都可以將其匯出。 若要將您的警示匯出至 Azure Sentinel、任何第三方 SIEM 或任何其他外部工具，請依照[將警示匯出至 SIEM](continuous-export.md) 中的指示操作。
 
 - > [!div class="nextstepaction"]
-    > [啟用 Azure Defender](security-center-pricing.md)
+    > [啟用 Azure Defender](security-center-pricing.md#enable-azure-defender)

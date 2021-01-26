@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: e73126cfc54294a7b9d54ff62c406d5e686ac470
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a8928f9d52fd8e721ac770dda8f0cbf0162a0f61
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95982702"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797920"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>將 Azure-SSIS 整合執行階段加入虛擬網路
 
@@ -73,7 +73,10 @@ Data Factory 可讓您將 Azure-SSIS IR 加入透過傳統部署模型或 Azure 
 
 ## <a name="access-to-data-sources-protected-by-ip-firewall-rule"></a>存取 IP 防火牆規則所保護的資料來源
 
-如果您的 SSIS 套件存取的資料存放區/資源僅允許特定的靜態公用 IP 位址，而且您想要保護這些資源從 Azure-SSIS IR 的存取權，您可以將自己的 [公用 IP 位址](../virtual-network/virtual-network-public-ip-address.md) 加入 Azure-SSIS IR，同時將其加入虛擬網路，然後將 ip 防火牆規則新增至相關的資源，以允許來自這些 IP 位址的存取。
+如果您的 SSIS 套件存取的資料存放區/資源僅允許特定的靜態公用 IP 位址，而且您想要保護這些資源對這些 Azure-SSIS IR 資源的存取，您可以在將公用 IP 位址加入至虛擬網路時，將 [公用 IP 位址](../virtual-network/virtual-network-public-ip-address.md) 與 Azure-SSIS IR 建立關聯，然後將 ip 防火牆規則新增至相關的資源，以允許來自這些 IP 位址的存取。 有兩種替代方式可以執行這項操作： 
+
+- 當您建立 Azure-SSIS IR 時，您可以攜帶自己的公用 IP 位址，並透過 [DATA FACTORY UI 或 SDK](#join-the-azure-ssis-ir-to-a-virtual-network)來指定它們。 只有 Azure-SSIS IR 的輸出網際網路連線會使用您提供的公用 IP 位址，而子網中的其他裝置將不會使用它們。
+- 您也可以設定 Azure-SSIS IR 將加入之子網的 [虛擬網路 NAT](../virtual-network/nat-overview.md) ，而此子網中的所有輸出連線都會使用您指定的公用 IP 位址。
 
 在所有情況下，只能透過 Azure Resource Manager 部署模型來部署虛擬網路。
 

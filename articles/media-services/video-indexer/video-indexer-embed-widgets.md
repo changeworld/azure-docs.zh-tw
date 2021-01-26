@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/10/2020
+ms.date: 01/25/2021
 ms.author: juliako
 ms.custom: devx-track-js
-ms.openlocfilehash: 1bc751ae293abbb7aa330a99a4b66a917d150906
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b13086e11e1181bba91a3255e68e9f8a32e78450
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994973"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797778"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>在您的應用程式中內嵌影片索引子小工具
 
@@ -303,6 +303,10 @@ iframe 視窗的標題也可透過將 `&title=<YourTitle>` 提供給 iframe URL 
 | `embed-both-widgets`              | 內嵌 VI 播放程式和深入解析，並在其間進行通訊。                      |
 | `url-generator`                   | 根據使用者指定的選項產生 widget 自訂內嵌 URL。             |
 | `html5-player`                    | 使用預設的 HTML5 影片播放機內嵌 VI 見解。                           |
+
+## <a name="supported-browsers"></a>支援的瀏覽器
+
+如需詳細資訊，請參閱 [支援的瀏覽器](video-indexer-overview.md#supported-browsers)。
 
 ## <a name="next-steps"></a>後續步驟
 

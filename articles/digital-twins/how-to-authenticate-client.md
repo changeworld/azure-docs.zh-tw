@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2502fdd14acae206b8440fe602639aa49be55f4e
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: eba3958ae5dd307b80b04371d3659a129d5acf89
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045915"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797857"
 ---
 # <a name="write-client-app-authentication-code"></a>撰寫用戶端應用程式驗證碼
 
 [設定 Azure 數位 Twins 實例和驗證](how-to-set-up-instance-portal.md)之後，您可以建立將用來與實例互動的用戶端應用程式。 設定好入門用戶端專案之後，您必須 **在該用戶端應用程式中撰寫程式碼，以** 對 Azure 數位 Twins 實例進行驗證。
 
-Azure 數位 Twins 會使用以 [OAUTH 2.0 為基礎的 Azure AD 安全性權杖](../active-directory/develop/security-tokens.md#json-web-tokens-jwts-and-claims)來執行驗證。 若要驗證您的 SDK，您必須使用 Azure 數位 Twins 的正確許可權取得持有人權杖，並將它與您的 API 呼叫一起傳遞。 
+Azure 數位 Twins 會使用以 [OAUTH 2.0 為基礎的 Azure AD 安全性權杖](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims)來執行驗證。 若要驗證您的 SDK，您必須使用 Azure 數位 Twins 的正確許可權取得持有人權杖，並將它與您的 API 呼叫一起傳遞。 
 
 本文說明如何使用 `Azure.Identity` 用戶端程式庫取得認證。 雖然本文說明 c # 中的程式碼範例（例如您針對 [.net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)撰寫的內容），但您可以使用版本的， `Azure.Identity` 不論您使用的 sdk 為何 (如需 azure 數位 Twins 可用 sdk 的詳細資訊，請參閱作法 [*：使用 Azure 數位 Twins api 和 sdk*](how-to-use-apis-sdks.md)) 。
 
@@ -112,7 +112,7 @@ Azure 數位 Twins 會使用以 [OAUTH 2.0 為基礎的 Azure AD 安全性權杖
 
 如果上述的醒目提示驗證案例並未涵蓋您應用程式的需求，您可以探索 [**Microsoft 身分識別平臺**](../active-directory/develop/v2-overview.md#getting-started)所提供的其他驗證類型。 此平臺的檔涵蓋其他驗證案例，依應用程式類型進行組織。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解 Azure 數位 Twins 中的安全性運作方式：
 * [*概念： Azure 數位 Twins 解決方案的安全性*](concepts-security.md)

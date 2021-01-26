@@ -120,6 +120,10 @@
       href: azure-monitor.md
     - name: 設定災害復原方案
       href: disaster-recovery.md
+    - name: 設定 KDC proxy
+      href: key-distribution-center-proxy.md
+    - name: 設定 RD 閘道角色
+      href: rd-gateway-role.md
 - name: 概念
   items:
     - name: 內建角色
@@ -170,6 +174,10 @@
       href: azure-monitor-glossary.md
     - name: 資料地點
       href: data-locations.md
+    - name: 安全性
+      items:
+        - name: 安全性基準
+          href: security-baseline.md
 - name: 疑難排解
   items:
     - name: 疑難排解概觀、意見反應和支援

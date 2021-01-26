@@ -3,19 +3,19 @@ title: 'SQL Server Azure Vm 上的 SQL Server (遷移指南) '
 description: 遵循本指南，將您的個別 SQL Server 資料庫移轉至 Azure 虛擬機器上的 SQL Server， (Vm) 。
 ms.custom: ''
 ms.service: virtual-machines-sql
-ms.subservice: ''
+ms.subservice: migration-guide
 ms.devlang: ''
 ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 3b0fdccd3eaf6e6bd94b595107022f738bdd8382
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: cc2a641cb017edace24db5df69bc4adf3a607524
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325907"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797880"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>遷移指南：在 Azure Vm 上 SQL Server 至 SQL Server 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -33,7 +33,7 @@ ms.locfileid: "96325907"
 
 :::image type="content" source="media/sql-server-to-sql-on-azure-vm-migration-overview/migration-process-flow-small.png" alt-text="遷移程式流程":::
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 遷移至 Azure Vm 上的 SQL Server 需要下列各項： 
 
@@ -152,7 +152,7 @@ Data Migration Assistant (DMA) 藉由偵測可能影響新版本 SQL Server 中�
 
 | **功能** | **元件** | **(s 的遷移方法)** |
 | --- | --- | --- |
-| **資料庫** | 模型  | 使用 SQL Server Management Studio 的腳本 |
+| **資料庫** | 型號  | 使用 SQL Server Management Studio 的腳本 |
 || Tempdb | 規劃將 TempDB 移到 [AZURE VM 暫存磁片 (SSD](../../virtual-machines/windows/performance-guidelines-best-practices.md#temporary-disk)) 以獲得最佳效能。 請務必挑選具有足夠本機 SSD 的 VM 大小，以容納您的 TempDB。 |
 || 具有 Filestream 的使用者資料庫 |  使用 [備份和還原](../../virtual-machines/windows/migrate-to-vm-from-sql-server.md#back-up-and-restore) 方法來進行遷移。 DMA 不支援具有 Filestream 的資料庫。 |
 | **安全性** | SQL Server 和 Windows 登入 | 使用 DMA 來 [遷移使用者](/sql/dma/dma-migrateserverlogins)登入。 |
