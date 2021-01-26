@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: 39081bc7bec7cfd76ccfc9107d5c2286affb7df0
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
-ms.translationtype: HT
+ms.openlocfilehash: e7e63ea56edc2b76383ee4c034fd39dd8b8259c1
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913765"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786000"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>針對具有兩組驗證認證的資源，將秘密的輪替自動化
 
@@ -234,8 +234,8 @@ az storage account keys list -n vaultrotationstorage
 
 ## <a name="next-steps"></a>後續步驟
 
-- 教學課程：[一組認證的秘密輪替](https://docs.microsoft.com/azure/key-vault/secrets/tutorial-rotation)
+- 教學課程：[一組認證的秘密輪替](./tutorial-rotation.md)
 - 概觀：[使用 Azure 事件方格監視 Key Vault](../general/event-grid-overview.md)
-- 如何：[在 Azure 入口網站中建立您的第一個函式](../../azure-functions/functions-create-first-azure-function.md)
+- 如何：[在 Azure 入口網站中建立您的第一個函式](../../azure-functions/functions-get-started.md)
 - 操作說明：[在 Key Vault 祕密變更時接收電子郵件](../general/event-grid-logicapps.md)
 - 參考：[Azure Key Vault 的 Azure 事件方格事件結構描述](../../event-grid/event-schema-key-vault.md)

@@ -4,7 +4,6 @@ description: 瞭解如何使用 PowerShell 建立具有私人 IP 位址的虛擬
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: d5f18929-15e3-40a2-9ee3-8188bc248ed8
@@ -17,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 2825d8d9f8be7c56d7beea767a1afb7a290eafa2
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 43c2e2c8905ca60e59caed3fdf1b4920f509fd88
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222593"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98783779"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>使用 PowerShell 建立具有靜態私人 IP 位址的虛擬機器
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 您可以使用靜態私人 IP 位址建立虛擬機器 (VM) 。 如果您想要選取子網中指派給 VM 的位址，請指派靜態私人 IP 位址，而不是動態位址。 深入瞭解 [靜態私人 IP 位址](./public-ip-addresses.md#allocation-method)。 若要將指派給現有 VM 的私人 IP 位址從動態變更為靜態，或使用公用 IP 位址，請參閱 [新增、變更或移除 IP 位址](virtual-network-network-interface-addresses.md)。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-a-virtual-machine"></a>建立虛擬機器
 

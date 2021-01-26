@@ -7,24 +7,24 @@ ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 25f761d85ebfd0ac16f182941c5b5c29636066bf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a7df9ba1318f40de8af392cfaedbe51d7a5df755
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000329"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784927"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>使用 Azure Functions 和 Azure 服務匯流排來呼叫或觸發邏輯應用程式
 
 當您需要部署長時間執行的接聽程式或工作時，可以使用 [Azure Functions](../azure-functions/functions-overview.md) 來觸發邏輯應用程式。 例如，您可以建立一個函式，以在 [Azure 服務匯流排](../service-bus-messaging/service-bus-messaging-overview.md) 佇列上接聽，並立即將邏輯應用程式引發為推送觸發程式。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
 * Azure 服務匯流排命名空間。 如果您沒有命名空間，請 [先建立命名空間](../service-bus-messaging/service-bus-create-namespace-portal.md)。
 
-* 函數應用程式，這是您函式的容器。 如果您沒有函式應用程式，請 [先建立函式應用程式](../azure-functions/functions-create-first-azure-function.md)，並確定您選取的是 [.net] 做為執行時間堆疊。
+* 函數應用程式，這是您函式的容器。 如果您沒有函式應用程式，請 [先建立函式應用程式](../azure-functions/functions-get-started.md)，並確定您選取的是 [.net] 做為執行時間堆疊。
 
 * [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
 

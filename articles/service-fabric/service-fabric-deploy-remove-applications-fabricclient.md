@@ -4,12 +4,12 @@ description: 使用 FabricClient API 來部署和移除 Service Fabric 中的應
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 565e6b8f23f159a5c231295694830917217a3d19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 343a37c983b1d64a4b1986913d9d6fd648a113fe
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89009295"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785544"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>使用 FabricClient 來部署和移除應用程式
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ FabricClient fabricClient = new FabricClient();
 ## <a name="upload-the-application-package"></a>上傳應用程式封裝
 假設您在 Visual Studio 中組建並封裝名為 *MyApplication* 的應用程式。 根據預設，ApplicationManifest.xml 中列出的應用程式類型名稱會是 "MyApplicationType"。  應用程式封裝（其中包含必要的應用程式資訊清單、服務資訊清單和程式碼/設定/資料封裝）位於 *C:\Users \& lt; Username &gt; \Documents\Visual Studio 2019 \ Projects\MyApplication\MyApplication\pkg\Debug*。
 
-上傳應用程式套件會將它放在內部 Service Fabric 元件可以存取的位置。 Service Fabric 會在應用程式套件的註冊期間驗證應用程式套件。 但是，如果您想要在本機確認應用程式封裝 (也就是在上傳) 之前，請使用 [>remove-servicefabricapplicationpackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) Cmdlet。
+上傳應用程式套件會將它放在內部 Service Fabric 元件可以存取的位置。 Service Fabric 會在應用程式套件的註冊期間驗證應用程式套件。 但是，如果您想要在本機確認應用程式封裝 (也就是在上傳) 之前，請使用 [>remove-servicefabricapplicationpackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) Cmdlet。
 
 [Copy-ServiceFabricApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) API 會將應用程式套件上傳至叢集映像存放區。 
 
@@ -66,7 +66,7 @@ FabricClient fabricClient = new FabricClient();
 建議您在成功註冊應用程式之後，移除應用程式套件。  從映像存放區刪除應用程式套件會釋放系統資源。  保留未使用的應用程式套件會耗用磁碟儲存空間，並會導致應用程式效能問題。 使用 [RemoveApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.removeapplicationpackage) API 從映像存放區刪除應用程式套件。
 
 ## <a name="create-an-application-instance"></a>建立應用程式執行個體
-您可以使用 [CreateApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.createapplicationasync) API，從任何已成功註冊的應用程式類型，將應用程式具現化。 每個應用程式名稱的開頭必須為 "fabric:"** 配置，而且必須是 (叢集內) 每個應用程式執行個體的唯一名稱。 如果已在目標應用程式類型的應用程式資訊清單中定義預設服務，也會一併建立這些服務。
+您可以使用 [CreateApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.createapplicationasync) API，從任何已成功註冊的應用程式類型，將應用程式具現化。 每個應用程式名稱的開頭必須為 "fabric:" 配置，而且必須是 (叢集內) 每個應用程式執行個體的唯一名稱。 如果已在目標應用程式類型的應用程式資訊清單中定義預設服務，也會一併建立這些服務。
 
 多個應用程式執行個體可以針對任何指定的已註冊應用程式類型版本來建立。 每個應用程式執行個體將在隔離狀態下執行，包含本身的工作目錄和程序集。
 
@@ -92,7 +92,7 @@ FabricClient fabricClient = new FabricClient();
 
 ## <a name="troubleshooting"></a>疑難排解
 ### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage 要求 ImageStoreConnectionString
-Service Fabric SDK 環境應已正確設定預設值。 但若有需要，所有命令的 ImageStoreConnectionString都應符合 Service Fabric 叢集正在使用的值。 您可以在使用 [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) 和 Get-ImageStoreConnectionStringFromClusterManifest 命令擷取的叢集資訊清單 ImageStoreConnectionString 中找到此值：
+Service Fabric SDK 環境應已正確設定預設值。 但若有需要，所有命令的 ImageStoreConnectionString都應符合 Service Fabric 叢集正在使用的值。 您可以在使用 [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest) 和 Get-ImageStoreConnectionStringFromClusterManifest 命令擷取的叢集資訊清單 ImageStoreConnectionString 中找到此值：
 
 ```powershell
 PS C:\> Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest)

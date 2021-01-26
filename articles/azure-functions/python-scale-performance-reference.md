@@ -4,12 +4,12 @@ description: 瞭解如何使用可高度效能的 Python 開發 Azure Functions 
 ms.topic: article
 ms.date: 10/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: baa362f029678f266f154df912a9178a6626667d
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: e3bbdb8819062d45d071633e0208fb58a003da54
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935864"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786101"
 ---
 # <a name="improve-throughput-performance-of-python-apps-in-azure-functions"></a>改善 Azure Functions 中的 Python 應用程式輸送量效能
 
@@ -22,10 +22,10 @@ ms.locfileid: "97935864"
 
 預設設定適用于大部分的 Azure Functions 應用程式。 不過，您可以根據您的工作負載設定檔來採用設定，以改善應用程式輸送量的效能。 第一個步驟是瞭解您正在執行的工作負載類型。
 
-|| I/o 系結工作負載 | CPU 系結的工作負載 |
-|--| -- | -- |
-|函數應用程式特性| <ul><li>應用程式需要處理許多並行調用。</li> <li> 應用程式會處理大量 i/o 事件，例如網路呼叫和磁片讀取/寫入。</li> </ul>| <ul><li>應用程式會執行長時間執行的計算，例如調整大小的影像。</li> <li>應用程式會進行資料轉換。</li> </ul> |
-|範例| <ul><li>Web API</li><ul> | <ul><li>資料處理</li><li> 機器學習推斷</li><ul>|
+| 工作負載類型 | 函數應用程式特性       | 範例                                          |
+| ------------- | ---------------------------------- | ------------------------------------------------- |
+| **I/o 系結**     | •應用程式需要處理許多並行調用。<br>•應用程式會處理大量 i/o 事件，例如網路呼叫和磁片讀取/寫入。 | • Web Api                                          |
+| **受 CPU 限制**     | •應用程式會執行長時間執行的計算，例如調整大小的影像。<br>•應用程式會進行資料轉換。                                                | •資料處理<br>•機器學習推斷<br> |
 
  
 因為真實世界的函式工作負載通常是 i/o 和 CPU 系結的混合，所以您應該在實際的生產負載下分析應用程式。

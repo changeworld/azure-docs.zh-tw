@@ -7,12 +7,12 @@ ms.date: 1/20/2021
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b7947eab93ebc8e523e163af601893522132e06a
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 4612e1236af5fbe47db9a3569e2f4da2378017e2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98745662"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784892"
 ---
 # <a name="build-and-deploy-the-iot-plug-and-play-bridge"></a>建立並部署 IoT 隨插即用橋接器
 
@@ -212,7 +212,7 @@ Debug\pnpbridge_bin.exe
 
 本節中的步驟假設您在 Windows 10 電腦上有下列開發環境。 這些工具可讓您建立 IoT Edge 模組並部署到您的 IoT Edge 裝置：
 
-- Windows 子系統 Linux 版 (WSL) 2 （執行 Ubuntu 18.04 LTS）。 若要深入瞭解，請參閱 [Windows 子系統 Linux 版的 Windows 10 安裝指南](https://docs.microsoft.com/windows/wsl/install-win10)。
+- Windows 子系統 Linux 版 (WSL) 2 （執行 Ubuntu 18.04 LTS）。 若要深入瞭解，請參閱 [Windows 子系統 Linux 版的 Windows 10 安裝指南](/windows/wsl/install-win10)。
 - 適用于 Windows 的 Docker Desktop 已設定為使用 WSL 2。 若要深入瞭解，請參閱 [Docker DESKTOP WSL 2 後端](https://docs.docker.com/docker-for-windows/wsl/)。
 - [Visual Studio Code 安裝在您的 Windows 環境中](https://code.visualstudio.com/docs/setup/windows) ，並安裝下列三個擴充功能：
 

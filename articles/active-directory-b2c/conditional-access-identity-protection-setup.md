@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2472183673e5f06f5664a306a69d14c2eaf5f82d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: HT
+ms.openlocfilehash: 654206bccd25bf09fcdc5c3e7ee72ba97c75af2a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949763"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785476"
 ---
 # <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>在 Azure AD B2C 中設定 Identity Protection 和條件式存取
 
@@ -94,9 +94,7 @@ Azure AD B2C 目前支援下列風險偵測：
 
 1. 在 [安全性] 底下，選取 [條件式存取 (預覽)]。 [條件式存取原則] 頁面隨即開啟。 
 
-1. 選取 [新增原則] 並遵循 Azure AD 條件式存取文件，建立新的原則。 以下是一個範例：
-
-   - [登入風險型條件式存取：啟用條件式存取原則](../active-directory/conditional-access/howto-conditional-access-policy-risk.md#enable-with-conditional-access-policy)
+1. 選取 [新增原則] 並遵循 Azure AD 條件式存取文件，建立新的原則。 針對以風險為基礎的原則，您必須根據您要做為條件的風險類型，根據 [使用者風險](../active-directory/conditional-access/howto-conditional-access-policy-risk-user.md#enable-with-conditional-access-policy) 或登 [入風險](../active-directory/conditional-access/howto-conditional-access-policy-risk.md#enable-with-conditional-access-policy) 來設定個別原則。 我們不建議在單一原則中使用這兩種風險類型。
 
    > [!IMPORTANT]
    > 選取您想要套用原則的使用者時，請勿僅選取 [所有使用者]，否則您可能封鎖自己而無法登入。

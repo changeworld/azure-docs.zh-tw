@@ -1,7 +1,7 @@
 ---
 title: 使用 PowerShell 計算 Blob 容器的大小
 titleSuffix: Azure Storage
-description: 您可以加總 Azure Blob 儲存體中每個 Blob 的大小，計算出 Azure Blob 儲存體的容器大小。
+description: 藉由計算每個 blob 的大小，計算 Azure Blob 儲存體中容器的大小。
 services: storage
 author: tamram
 ms.service: storage
@@ -11,16 +11,16 @@ ms.topic: sample
 ms.date: 12/04/2019
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: de275bcca1644750532809b35ae85d954d3cac6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
+ms.openlocfilehash: 87ef18530c549396b7d8fe1ec4ff0e08cb8535e8
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89076900"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784270"
 ---
 # <a name="calculate-the-size-of-a-blob-container-with-powershell"></a>使用 PowerShell 計算 Blob 容器的大小
 
-此指令碼會加總容器中 Blob 的大小，計算出 Azure Blob 儲存體的容器大小。
+此腳本會藉由計算容器中 blob 的大小，計算 Azure Blob 儲存體中容器的大小。
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 

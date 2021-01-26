@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: f6daee6d4cfc3c074e004fb3835f62218e48d9ff
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 3bf137f968082e677f45c20947793232b9181220
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96581902"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786607"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Azure Data Box Gateway 的使用案例
 
@@ -40,7 +40,7 @@ Data Box Gateway 的主要優點之一是能夠持續將資料嵌入裝置，然
 
 當您想要將資料長期保留在雲端時，即可使用 Data Box Gateway。 您可以使用封存儲存層來進行長期保留。
 
-封存層已優化，可將很少存取的資料儲存至少180天。 封存層提供最低的儲存成本，但存取成本最高。 如需詳細資訊，請移至[封存存取層](/azure/storage/blobs/storage-blob-storage-tiers#archive-access-tier)。
+封存層已優化，可將很少存取的資料儲存至少180天。 封存層提供最低的儲存成本，但存取成本最高。 如需詳細資訊，請移至[封存存取層](../storage/blobs/storage-blob-storage-tiers.md#archive-access-tier)。
 
 ### <a name="move-data-to-the-archive-tier"></a>將資料移至封存層
 
@@ -48,14 +48,14 @@ Data Box Gateway 的主要優點之一是能夠持續將資料嵌入裝置，然
 
 - 透過[使用 Data Box Gateway 傳輸資料](data-box-gateway-deploy-add-shares.md)中所述的一般傳輸程序，使用 Data Box Gateway 裝置將資料上傳至 Azure。
 - 將資料上傳之後，您必須將資料移至封存層。 您可以使用兩種方式來設定 blob 層：使用 Azure PowerShell 腳本或 Azure 儲存體生命週期管理原則。  
-    - 如果使用 Azure PowerShell，請遵循下列 [步驟](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier) ，將資料移至封存層。
+    - 如果使用 Azure PowerShell，請遵循下列 [步驟](../databox/data-box-how-to-set-data-tier.md#use-azure-powershell-to-set-the-blob-tier) ，將資料移至封存層。
     - 如果使用 Azure 生命週期管理，請遵循下列步驟，將資料移至封存層。
-        - [註冊](/azure/storage/common/storage-lifecycle-management-concepts) Blob 生命週期管理服務的預覽，以使用封存層。
-        - 使用下列原則來[封存內嵌資料](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-after-ingest)。
+        - [註冊](../storage/blobs/storage-lifecycle-management-concepts.md) Blob 生命週期管理服務的預覽，以使用封存層。
+        - 使用下列原則來[封存內嵌資料](../storage/blobs/storage-lifecycle-management-concepts.md#archive-data-after-ingest)。
 - 一旦 blob 標示為封存，閘道就無法再修改它們，除非這些 blob 移至經常性存取層或非經常性存取層。 如果檔案在本機儲存體中，對本機複本所做的任何變更 (包括刪除) 都不會上傳到封存層。
 - 若要讀取封存儲存體中的資料，您必須將 blob 層變更為經常性存取或非經常性存取，以解除凍結資料。 在閘道上[重新整理共用](data-box-gateway-manage-shares.md#refresh-shares)不會將 Blob 解除凍結。
 
-如需詳細資訊，請了解如何[管理 Azure Blob 儲存體生命週期](/azure/storage/common/storage-lifecycle-management-concepts)。
+如需詳細資訊，請了解如何[管理 Azure Blob 儲存體生命週期](../storage/blobs/storage-lifecycle-management-concepts.md)。
 
 ## <a name="initial-bulk-transfer-followed-by-incremental-transfer"></a>初始大量傳輸後接著增量傳輸
 
@@ -65,10 +65,10 @@ Data Box Gateway 的主要優點之一是能夠持續將資料嵌入裝置，然
 
 請遵循下列步驟來將資料複製到資料箱，並上傳至 Azure 儲存體。
 
-1. [訂購資料箱](/azure/databox/data-box-deploy-ordered)。
-2. [設定資料箱](/azure/databox/data-box-deploy-set-up)。
-3. [透過 SMB 將資料複製到資料箱](/azure/databox/data-box-deploy-copy-data)。
-4. [返回資料箱，確認資料已上傳至 Azure](/azure/databox/data-box-deploy-picked-up)。
+1. [訂購資料箱](../databox/data-box-deploy-ordered.md)。
+2. [設定資料箱](../databox/data-box-deploy-set-up.md)。
+3. [透過 SMB 將資料複製到資料箱](../databox/data-box-deploy-copy-data.md)。
+4. [返回資料箱，確認資料已上傳至 Azure](../databox/data-box-deploy-picked-up.md)。
 5. 將資料上傳至 Azure 之後，所有資料應該會位在 Azure 儲存體容器中。 在資料箱的儲存體帳戶中，移至 Blob (和檔案) 容器，確定已複製所有資料。 請記下容器名稱，因為您稍後將使用此名稱。 例如，在下列螢幕擷取畫面中，`databox` 容器將用於增量傳輸。
 
     ![資料箱上有資料的容器](media/data-box-gateway-use-cases/data-container.png)

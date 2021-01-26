@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: fcfd3da30ef9ace723b4204f5924591b1e2717f8
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 59359cdd3e3c035d4cb6789295d41bb3908019bb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503160"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785815"
 ---
 # <a name="azure-monitor-logs-for-azure-standard-load-balancer"></a>Azure Standard Load Balancer 的 Azure 監視器記錄
 
@@ -48,7 +48,7 @@ ms.locfileid: "97503160"
 6. 在 [**診斷設定** 建立] 窗格的 [**名稱**] 方塊中，輸入 **myLBDiagnostics** 。
 7. **診斷設定** 有三個選項。 您可以選擇其中一個、兩個或全部三個，並針對您的需求進行設定：
 
-   * **封存至儲存體帳戶**。 您將需要已為此進程建立的儲存體帳戶。 若要建立儲存體帳戶，請參閱[如何建立儲存體帳戶](../storage/common/storage-account-create.md?tabs=azure-portal)。
+   * **封存至儲存體帳戶**。 您將需要已為此進程建立的儲存體帳戶。 若要建立儲存體帳戶，請參閱[儲存體帳戶](../storage/common/storage-account-create.md?tabs=azure-portal)。
      1. 選取 [封存 **至儲存體帳戶** ] 核取方塊。
      2. 選取 [ **設定** ] 以開啟 [ **選取儲存體帳戶** ] 窗格。
      3. 在 [ **訂** 用帳戶] 下拉式清單中，選取您的儲存體帳戶建立所在的訂用帳戶。
@@ -74,7 +74,7 @@ ms.locfileid: "97503160"
 
 ## <a name="view-and-analyze-the-activity-log"></a>檢視和分析活動記錄檔
 
-預設會產生活動記錄。 您可以 [遵循本文中的指示](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log)，將其設定為在訂用帳戶層級上匯出。 若要深入瞭解這些記錄，請閱讀 [View 活動記錄以監視資源的動作](../azure-resource-manager/management/view-activity-logs.md) 文章。
+預設會產生活動記錄。 您可以 [遵循本文中的指示](../azure-monitor/platform/activity-log.md)，將其設定為在訂用帳戶層級上匯出。 若要深入瞭解這些記錄，請閱讀 [View 活動記錄以監視資源的動作](../azure-resource-manager/management/view-activity-logs.md) 文章。
 
 您可以使用下列其中一種方法來查看和分析活動記錄資料：
 
@@ -112,5 +112,5 @@ Azure Load Balancer 的計量對記錄匯出功能有下列限制：
 * 使用的 SNAT 埠和已配置 SNAT 埠的計量目前無法匯出為記錄。
 
 ## <a name="next-steps"></a>後續步驟
-* [檢查負載平衡器的可用計量](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics)
-* [遵循 Azure 監視器指示來建立及測試查詢](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)
+* [檢查負載平衡器的可用計量](./load-balancer-standard-diagnostics.md)
+* [遵循 Azure 監視器指示來建立及測試查詢](../azure-monitor/log-query/log-query-overview.md)

@@ -12,25 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/19/2020
+ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: 2326746d274c68225cd4c8569df6a20d6050ec1a
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 7944ea48feaca1eb8312e01d876bf9627af429d1
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900887"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784790"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>在 Azure Sentinel 中找出使用者和實體行為分析 (UEBA) 的 advanced 威脅
 
 > [!IMPORTANT]
 >
-> - UEBA 和實體頁面功能現在已在下列 Azure Sentinel 地理位置和區域 **正式推出** ：
->    - 美國地理位置
->    - 歐洲西部區域
->    - 澳大利亞地理位置
->
-> - 在所有其他地理位置和區域中，這些功能仍可供 **預覽**。 請參閱 [**Microsoft Azure 預覽的補充使用條款**](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ，以取得適用于 Azure 功能（Beta、預覽或尚未發行正式運作）的其他法律條款。
+> - UEBA 和實體頁面的功能現已 **正式推出** **_all_* _ Azure Sentinel 地理位置和區域。
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>什麼是使用者和實體行為分析 (UEBA) ？
 
@@ -50,7 +45,7 @@ Azure Sentinel 中的 UEBA 功能可消除分析師工作負載的 drudgery，�
 
 根據 Gartner 的 UEBA 解決方案的典範，Azure Sentinel 根據三個參考框架提供「外接」方法：
 
-- **使用案例：** 藉由根據安全性研究來排列相關的攻擊媒介和案例的優先順序，並根據 MITRE ATT&CK 的策略、技術和子技術，將各種實體放在終止鏈中的受害者、perpetrators 或資料點;Azure Sentinel 特別著重于每個資料來源可提供的最有價值記錄檔。
+- _ *使用案例：** 根據 MITRE ATT 的安全性研究來排列相關的攻擊媒介和案例的優先順序，&CK 的策略、技術和子技術的架構，以在終止鏈中將各種實體作為受害者、perpetrators 或 pivot 點;Azure Sentinel 特別著重于每個資料來源可提供的最有價值記錄檔。
 
 - **資料來源：** 雖然第一次且最重要的是支援 Azure 資料來源，但是 Azure Sentinel thoughtfully 會選取協力廠商資料來源，以提供符合我們威脅案例的資料。
 
@@ -163,7 +158,7 @@ Entity insights 是 Microsoft 安全性研究人員所定義的查詢，可協�
 | TimeProcessed             | 由 EBA 引擎處理的啟用時間戳            |
 | ActivityType              | 活動的高層級類別                                 |
 | ActionType                | 活動的標準化名稱                                     |
-| 使用者名稱                  | 起始活動之使用者的使用者名稱                    |
+| UserName                  | 起始活動之使用者的使用者名稱                    |
 | UserPrincipalName         | 起始活動之使用者的完整使用者名稱               |
 | EventSource               | 提供原始事件的資料來源                        |
 | SourceIPAddress           | 起始活動的 IP 位址                        |

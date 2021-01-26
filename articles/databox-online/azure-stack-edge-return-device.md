@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 730774f33d43754d4ca198ed170159fa4f872e09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c35bde40cac9629f084d69d52f119651b5655f7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903675"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784472"
 ---
 # <a name="return-your-azure-stack-edge-pro-device"></a>退回您的 Azure Stack Edge Pro 裝置
 
@@ -86,7 +86,7 @@ ms.locfileid: "90903675"
 
 4. 請參閱 **隱私權條款** ，並針對您已檢查並同意隱私權條款的附注選取核取方塊。
 
-5. 選取 [ **起始**傳回]。
+5. 選取 [ **起始** 傳回]。
 
     ![退貨裝置4](media/azure-stack-edge-return-device/return-device-4.png) 
 
@@ -101,7 +101,7 @@ ms.locfileid: "90903675"
 若要排程取貨，請採取下列步驟。
 
 1. 關閉裝置。 在本機 Web UI 中，移至 [維護] > [電源設定]。
-2. 選取 [關機]。 系統提示您進行確認時，按一下 [是] 以繼續。 如需詳細資訊，請參閱[管理電源](data-box-gateway-manage-access-power-connectivity-mode.md#manage-power)。
+2. 選取 [關機]。 系統提示您進行確認時，按一下 [是] 以繼續。 如需詳細資訊，請參閱[管理電源](../databox-gateway/data-box-gateway-manage-access-power-connectivity-mode.md#manage-power)。
 3. 拔下電源線，並移除與裝置相連的所有網路線。
 4. 使用您自己的盒子或 Azure 所提供的空盒來準備運送包裝。 將裝置和裝置隨附的電源線放在盒子中。
 5. 將 Azure 提供的運送標籤貼到包裝上。

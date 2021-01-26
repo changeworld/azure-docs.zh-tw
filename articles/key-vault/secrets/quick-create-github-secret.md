@@ -8,12 +8,12 @@ ms.date: 11/24/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 9509f84b14a42180189a529282b5db348deab279
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: HT
+ms.openlocfilehash: c1e8062210de1d7d99f57a4e0b155492f7dfdd9a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95920226"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785971"
 ---
 # <a name="use-key-vault-secrets-in-github-actions-workflows"></a>在 GitHub Actions 工作流程中使用 Key Vault 秘密
 
@@ -25,7 +25,7 @@ ms.locfileid: "95920226"
 ## <a name="prerequisites"></a>先決條件 
 - GitHub 帳戶。 如果您沒有帳戶，請[免費](https://github.com/join)註冊。  
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- 連線至 GitHub 存放庫的 Azure App。 此範例使用[將容器部署至 Azure App Service](https://docs.microsoft.com/azure/developer/javascript/tutorial-vscode-docker-node-01)。 
+- 連線至 GitHub 存放庫的 Azure App。 此範例使用[將容器部署至 Azure App Service](/azure/developer/javascript/tutorial-vscode-docker-node-01)。 
 - Azure 金鑰保存庫。  您可以使用 Azure 入口網站、Azure CLI 或 Azure PowerShell 建立 Azure Key Vault。
 
 ## <a name="workflow-file-overview"></a>工作流程檔案概觀

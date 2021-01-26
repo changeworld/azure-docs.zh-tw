@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: a2048a509bdbe11c948ac8eb2daa6e78013c2fa5
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: c58f4a553073eb3ed062ef9ec2a66c8e4f40e57b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753784"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785120"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>呼叫 Web API 的傳統型應用程式：取得權杖
 
@@ -451,7 +451,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
 ```
 
-您通常只需要一個參數 (`scopes`)。 根據您 Windows 系統管理員設定原則的方式而定，您 Windows 電腦上的應用程式可能不允許查詢已登入的使用者。 在此情況下，請使用第二個方法 (`.WithUsername()`)，並以 UPN 格式傳入登入使用者的使用者名稱，例如 `joe@contoso.com`。 在 .NET Core 上，只有採用使用者名稱的多載可供使用，因為 .NET Core 平台無法向 OS 要求使用者名稱。
+您通常只需要一個參數 (`scopes`)。 根據您 Windows 系統管理員設定原則的方式而定，您 Windows 電腦上的應用程式可能不允許查詢已登入的使用者。 在此情況下，請使用第二個方法 (`.WithUsername()`)，並以 UPN 格式傳入登入使用者的使用者名稱，例如 `joe@contoso.com`。
 
 下列範例會呈現最新的案例，並說明您可以取得的例外狀況種類及其緩和措施。
 

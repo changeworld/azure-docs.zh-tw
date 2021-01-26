@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/26/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: a08756a1e3153aa69bd0e79dc23e88d4bf211e5d
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
-ms.translationtype: HT
+ms.openlocfilehash: bad4bc4d0016b2898b315bfb9799dc8972be7b12
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950681"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785865"
 ---
 # <a name="tutorial-add-paging-to-search-results-using-the-net-sdk"></a>教學課程：使用 .NET SDK 將分頁新增至搜尋結果
 
@@ -192,7 +192,7 @@ ms.locfileid: "91950681"
     }
     ```
 
-    我們會使用 HTML 表格，讓選項能夠整齊地對齊。 不過，所有動作均來自 @Html.ActionLink 陳述式，每個都使用**新**模型來呼叫控制器，而此模型是使用與我們稍早新增之 **paging** 屬性不同的項目所建立的。
+    我們會使用 HTML 表格，讓選項能夠整齊地對齊。 不過，所有動作均來自 @Html.ActionLink 陳述式，每個都使用 **新** 模型來呼叫控制器，而此模型是使用與我們稍早新增之 **paging** 屬性不同的項目所建立的。
 
     第一頁和最後一頁選項不會傳送 "first" 和 "last" 之類的字串，但會改為傳送正確的頁碼。
 
@@ -272,7 +272,7 @@ ms.locfileid: "91950681"
     **RunQueryAsync** 方法現在將因為第三個參數而顯示語法錯誤 (我們很快就會討論到這一點)。
 
     > [!Note]
-    > 對 **TempData** 的呼叫會將值 (一個**物件**) 儲存於暫存位置，儘管這個暫存位置「只」會針對一次呼叫來保留。 如果我們將某個項目儲存於暫存資料中，則其將適用於下一次對控制器動作的呼叫，但在那之後該呼叫就一定會讓其消失。 由於這個生命週期很短，因此，我們會在每次呼叫 **PageAsync** 時，將搜尋文字和 paging 屬性儲存回暫存位置。
+    > 對 **TempData** 的呼叫會將值 (一個 **物件**) 儲存於暫存位置，儘管這個暫存位置「只」會針對一次呼叫來保留。 如果我們將某個項目儲存於暫存資料中，則其將適用於下一次對控制器動作的呼叫，但在那之後該呼叫就一定會讓其消失。 由於這個生命週期很短，因此，我們會在每次呼叫 **PageAsync** 時，將搜尋文字和 paging 屬性儲存回暫存位置。
 
 1. 更新 **Index(model)** 動作以儲存暫存變數，以及將最左邊的頁面參數新增至 **RunQueryAsync** 呼叫。
 

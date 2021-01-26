@@ -12,12 +12,12 @@ metadata:
   author: v-dalc
   ms.author: alkohli
   ms.date: 10/29/2020
-  ms.openlocfilehash: 811d0555e6fd39f372b4742501a3114bbc9a25b4
-  ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-  ms.translationtype: HT
+  ms.openlocfilehash: d0a02f92957d133afc107a1a82a9ad05bb0c0332
+  ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+  ms.translationtype: MT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 12/03/2020
-  ms.locfileid: "96579910"
+  ms.lasthandoff: 01/26/2021
+  ms.locfileid: "98786498"
 landingContent:
 - title: 關於資料箱閘道
   linkLists:
@@ -28,9 +28,9 @@ landingContent:
   - linkListType: architecture
     links:
     - text: 選擇資料傳輸選項
-      url: /azure/storage/common/storage-choose-data-transfer-solution
+      url: ../storage/common/storage-choose-data-transfer-solution.md
     - text: 使用網路或離線傳輸
-      url: /azure/storage/common/storage-solution-large-dataset-low-network#offline-transfer-or-network-transfer
+      url: ../storage/common/storage-solution-large-dataset-low-network.md#offline-transfer-or-network-transfer
   - linkListType: whats-new
     links:
     - text: 2007 版本資訊 - 目前

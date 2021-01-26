@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: 349f0b72ad7f3cb98e8f4ae9105efa9718f0b11b
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: ee9a20d3e5bb6974676d6d7a8285a56247756f64
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752252"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784934"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 資訊安全中心的新功能
 
@@ -39,6 +39,7 @@ ms.locfileid: "98752252"
 - [適用于內部部署和多雲端電腦的弱點評定已正式推出 (GA) ](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga)
 - [管理群組的安全分數現在可供預覽](#secure-score-for-management-groups-is-now-available-in-preview)
 - [安全分數 API 已正式推出 (GA) ](#secure-score-api-is-released-for-general-availability-ga)
+- [針對 App Service 新增至 Azure Defender 的無關聯 DNS 保護](#dangling-dns-protections-added-to-azure-defender-for-app-service)
 - [正式推出的多雲端連接器 (GA) ](#multi-cloud-connectors-are-released-for-general-availability-ga)
 - [從您的訂用帳戶和管理群組的安全分數豁免整個建議](#exempt-entire-recommendations-from-your-secure-score-for-subscriptions-and-management-groups)
 - [使用者現在可以向全域管理員要求整個租使用者的可見度](#users-can-now-request-tenant-wide-visibility-from-their-global-administrator)
@@ -107,13 +108,28 @@ Azure 安全性效能評定是 Microsoft 針對以通用合規性架構為基礎
 深入了解 [Azure 資訊安全中心內的安全分數和安全性控制項](secure-score-security-controls.md)。
 
 
+### <a name="dangling-dns-protections-added-to-azure-defender-for-app-service"></a>針對 App Service 新增至 Azure Defender 的無關聯 DNS 保護
+
+子域接管是組織常見的高嚴重性威脅。 當您的 DNS 記錄指向取消布建網站時，就會發生子域接管。 這類 DNS 記錄也稱為「無關聯 DNS」專案。 CNAME 記錄特別容易受到這種威脅。 
+
+子域接管可讓威脅執行者將適用于組織網域的流量，重新導向至執行惡意活動的網站。
+
+適用于 App Service 的 Azure Defender 現在會在 App Service 網站解除委任時，偵測到無關聯的 DNS 專案。 這是 DNS 專案指向不存在資源的時間，而您的網站很容易受到子域接管的影響。 無論您的網域是使用 Azure DNS 或外部網域註冊機構來管理，並同時適用于 Windows 和 Linux 上的 App Service 上的 App Service，都可以使用這些保護。
+
+深入了解：
+
+- [App Service 警示參考表](alerts-reference.md#alerts-azureappserv) -包含兩個新的 Azure Defender 警示，這些警示會在偵測到無關聯的 DNS 專案時觸發
+- [防止無關聯的 DNS 專案，並避免子域接管](../security/fundamentals/subdomain-takeover.md) -瞭解子域接管和無關聯 dns 方面的威脅
+- [適用於 App Service 的 Azure Defender 簡介](defender-for-app-service-introduction.md)
+
+
 ### <a name="multi-cloud-connectors-are-released-for-general-availability-ga"></a>正式推出的多雲端連接器 (GA) 
 
 由於雲端工作負載通常需要跨越多個雲端平台，因此雲端安全性服務必須執行相同動作。
 
 Azure 資訊安全中心會保護 Azure、Amazon Web Services (AWS) 和 Google Cloud Platform (GCP) 中的工作負載。
 
-連接您的 AWS 或 GCP 帳戶可將其原生安全性工具（例如 AWS 安全性中樞和 GCP 安全性命令中心）整合到 Azure 資訊安全中心中。
+連接您的 AWS 或 GCP 帳戶可將其原生安全性工具（例如 AWS 安全性中樞和 GCP Security 命令中心）整合到 Azure 資訊安全中心中。
 
 這項功能表示，在所有主要雲端環境中，安全中心都會提供可見度和保護。 這項整合的一些優點：
 
@@ -153,7 +169,7 @@ Azure 資訊安全中心會保護 Azure、Amazon Web Services (AWS) 和 Google C
 
 ### <a name="users-can-now-request-tenant-wide-visibility-from-their-global-administrator"></a>使用者現在可以向全域管理員要求整個租使用者的可見度
 
-如果使用者沒有看到安全性中心資料的許可權，他們現在會看到其組織全域管理員的連結要求許可權。 要求會包含想要的角色，以及其必要原因的理由。
+如果使用者沒有查看資料中心資料的許可權，他們現在會看到從其組織的全域管理員要求許可權的連結。 要求會包含想要的角色，以及其必要原因的理由。
 
 :::image type="content" source="media/security-center-management-groups/request-tenant-permissions.png" alt-text="橫幅會通知使用者，他們可以要求整個租使用者的許可權。":::
 
@@ -331,7 +347,7 @@ Azure 資訊安全中心的清查頁面已使用下列變更進行更新：
 
 確定您的 Web 應用程式會要求憑證，必定可提高其安全性。 但對於不對外公開的 Web 應用程式，這一點則無關緊要。 如果您透過 HTTP 存取您的網站，而非 HTTPS，將不會收到任何用戶端憑證。 因此如果您的應用程式需要用戶端憑證，請勿允許透過 HTTP 傳入您應用程式的要求。 深入了解如何[為 Azure App Service 設定 TLS 相互驗證](../app-service/app-service-web-configure-tls-mutual-auth.md)。
 
-經此變更後，現在的建議只是建議的最佳做法，而不會影響您的分數。 
+有了這項變更，建議的建議最佳作法就是不會影響您的分數。 
 
 在[安全性控制項及其建議](secure-score-security-controls.md#security-controls-and-their-recommendations)中了解各個安全性控制中有哪些建議。
 
@@ -369,7 +385,7 @@ Azure 資訊安全中心的連續匯出工具可讓您匯出資訊安全中心�
 
 - **已強化連續匯出的 deployifnotexist 原則**。 現在的原則可以：
 
-    - **檢查設定是否已啟用。** 若未啟用，原則會顯示為不符合規範，並建立符合規範的資源。 在[設定連續匯出](continuous-export.md#set-up-a-continuous-export)中，深入了解「使用 Azure 原則索引標籤進行大規模部署」中提供的 Azure 原則範本。
+    - **檢查設定是否已啟用。** 若未啟用，原則會顯示為不符合規範，並建立符合規範的資源。 若要深入瞭解所提供的 Azure 原則範本，請參閱 [設定連續匯出](continuous-export.md#set-up-a-continuous-export)中的「以 Azure 原則索引標籤進行大規模部署」。
 
     - **支援匯出安全性結果。** 使用 Azure 原則範本時，您可以將連續匯出設定為包含結果。 這在匯出含有「子」建議的建議時有其重要性，例如弱點評量掃描器的結果，或「父系」建議「您應在機器上安裝系統更新」的特定系統更新結果。
     
@@ -389,7 +405,7 @@ Azure 資訊安全中心的連續匯出工具可讓您匯出資訊安全中心�
 - [建議清單現在包含篩選器](#recommendations-list-now-includes-filters)
 - [自動佈建體驗已改善並擴充](#auto-provisioning-experience-improved-and-expanded)
 - [連續匯出中現在可以使用安全分數 (預覽)](#secure-score-is-now-available-in-continuous-export-preview)
-- [「您應在機器上安裝系統更新」建議現在包含子建議](#system-updates-should-be-installed-on-your-machines-recommendation-now-includes-sub-recommendations)
+- [「應該在您的電腦上安裝系統更新」建議現在包含 subrecommendations](#system-updates-should-be-installed-on-your-machines-recommendation-now-includes-subrecommendations)
 - [Azure 入口網站中的原則管理頁面現在會顯示預設原則指派的狀態](#policy-management-page-in-the-azure-portal-now-shows-status-of-default-policy-assignments)
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>已新增 29 個預覽建議，以增加 Azure 安全性效能評定的涵蓋範圍
@@ -468,13 +484,13 @@ NIST SP 800-171 R2 標準版現已提供內建方案，可與 Azure 資訊安全
 深入了解如何[連續匯出資訊安全中心資料](continuous-export.md)。
 
 
-### <a name="system-updates-should-be-installed-on-your-machines-recommendation-now-includes-sub-recommendations"></a>「您應在機器上安裝系統更新」建議現在包含子建議
+### <a name="system-updates-should-be-installed-on-your-machines-recommendation-now-includes-subrecommendations"></a>「應該在您的電腦上安裝系統更新」建議現在包含 subrecommendations
 
-**您應在機器上安裝系統更新** 建議已有所增強。 新版本會包含每個遺漏更新的子建議，並提供下列改良功能：
+**您應在機器上安裝系統更新** 建議已有所增強。 新版本包含每個遺漏更新的 subrecommendations，並提供下列改良功能：
 
 - Azure 入口網站的 Azure 資訊安全中心頁面會提供經過重新設計的體驗。 **您應在機器上安裝系統更新** 的建議詳細資料包含結果清單，如下所示。 當您選取單一結果時，詳細資料窗格隨即開啟，其中含有補救資訊的連結和受影響的資源清單。
 
-    :::image type="content" source="./media/upcoming-changes/system-updates-should-be-installed-subassessment.png" alt-text="在入口網站體驗中開啟其中一個子建議，以取得更新的建議":::
+    :::image type="content" source="./media/upcoming-changes/system-updates-should-be-installed-subassessment.png" alt-text="開啟入口網站體驗中的其中一個 subrecommendations，以取得更新的建議":::
 
 - Azure Resource Graph (ARG) 的建議有更豐富的資料。 ARG 是專門設計來提供有效率資源探索的 Azure 服務。 您可以使用 ARG 在一組指定的訂用帳戶中大規模查詢，以便有效率地控管您的環境。 
 
@@ -560,7 +576,7 @@ Azure Resource Graph 是 Azure 中的一項服務，透過大規模查詢一組�
 - 資產清查利用 (ARG)
 - 我們已記載範例 ARG 查詢，說明如何[識別未啟用多重要素驗證 (MFA) 的帳戶](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled)
 
-在 ARG 中，有可供您在查詢中使用的資料表。
+在 ARG 內，您可以在查詢中使用資料表的資料。
 
 :::image type="content" source="./media/release-notes/azure-resource-graph-tables.png" alt-text="Azure Resource Graph Explorer 和可用的資料表":::
 
@@ -716,7 +732,7 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 
 現已正式提供 [Azure 檔案儲存體](../storage/files/storage-files-introduction.md)和 [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) 的支援。
 
-從 2020 年 10 月 1 日起，我們將開始收取保護這些服務資源的費用。
+從2020年10月1日起，我們將開始收取這些服務的資源保護費用。
 
 請在＜[適用於儲存體的 Azure Defender](defender-for-storage-introduction.md)＞中深入了解。
 
@@ -826,7 +842,7 @@ Azure 資訊安全中心現在會保護 Azure、Amazon Web Services (AWS) 和 Go
 
 預覽建議「Pod 安全性原則應定義於 Kubernetes Services 中」已淘汰，如 [Azure Kubernetes Service](../aks/use-pod-security-policies.md) 文件中所述。
 
-Pod 安全性原則 (預覽) 功能即將淘汰，2020 年 10 月 15 日之後將不再可供使用，請改為使用適用於 AKS 的 Azure 原則。
+Pod 安全性原則 (preview) 功能已設定為 Azure 原則取代，並將于2020年10月15日之後無法再使用，以利 AKS。
 
 淘汰 Pod 安全性原則 (預覽) 之後，您必須在任何使用已淘汰功能的現有叢集上停用此功能，以執行未來的叢集升級並保留在 Azure 支援的範圍中。
 
@@ -973,4 +989,4 @@ Pod 安全性原則 (預覽) 功能即將淘汰，2020 年 10 月 15 日之後�
 您可以放心地忽略這些原則，並不會對您的環境造成任何影響。 如果您想要啟用這些原則，請在 https://aka.ms/SecurityPrP 註冊預覽版，然後從下列選項中選取：
 
 1. **單一預覽** – 僅加入此個人預覽版。 明確提及「ASC 連續掃描」作為您想要加入的預覽。
-1. **進行中的計畫** – 新增到此個人預覽版及未來的個人預覽版。 您必須完成設定檔和隱私權合約。
+1. **進行中的計畫** – 新增到此個人預覽版及未來的個人預覽版。 您將需要完成設定檔和隱私權協定。

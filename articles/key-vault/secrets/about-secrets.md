@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4ded48fe8f04d2cdba40650974fd5002d659e381
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
-ms.translationtype: HT
+ms.openlocfilehash: 78e9c50cb0601f6be69ae61f3a8e02621c7dd808
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705263"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786034"
 ---
 # <a name="about-azure-key-vault-secrets"></a>關於 Azure Key Vault 秘密
 
@@ -84,7 +84,7 @@ Key Vault 也支援秘密的 contentType 欄位。 用戶端可以指定祕密�
 
 ## <a name="azure-storage-account-key-management"></a>Azure 儲存體帳戶金鑰管理
 
-Key Vault 可管理 [Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-account-overview)金鑰：
+Key Vault 可管理 [Azure 儲存體帳戶](../../storage/common/storage-account-overview.md)金鑰：
 
 - 在內部，Key Vault 可列出 (同步) Azure 儲存體帳戶金鑰。 
 - Key Vault 會定期重新產生 (輪替) 金鑰。
@@ -92,7 +92,7 @@ Key Vault 可管理 [Azure 儲存體帳戶](https://docs.microsoft.com/azure/sto
 - Key Vault 可管理儲存體帳戶和傳統儲存體帳戶的金鑰。
 
 如需詳細資訊，請參閱：
-- [儲存體帳戶存取金鑰](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage)
+- [儲存體帳戶存取金鑰](../../storage/common/storage-account-keys-manage.md)
 - [Azure Key Vault 中的儲存體帳戶金鑰管理](../secrets/overview-storage-keys.md))
 
 

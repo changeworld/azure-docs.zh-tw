@@ -3,17 +3,17 @@ title: 可靠集合的指導方針
 description: 在 Azure Service Fabric 應用程式中使用 Service Fabric 可靠集合的指導方針和建議。
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 63e6de436bdaceed7f1d2a78e8385dd14bfc0ed6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f12db76f324d07c178b49150d4e574476e7d9929
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260914"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784320"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Service Fabric 中 Reliable Collection 的指導方針與建議
 本節提供使用 Reliable State Manager 和 Reliable Collection 的指導方針。 目標是要協助使用者避開常見的陷阱。
 
-指導方針會編排成簡單的建議，前面再加上「請」、「請考慮」、「請避免」或「請不要」字詞********。
+指導方針會編排成簡單的建議，前面再加上「請」、「請考慮」、「請避免」或「請不要」字詞。
 
 * 請不要修改讀取作業所傳回自訂類型的物件 (例如 `TryPeekAsync` 或 `TryGetValueAsync`)。 可靠的集合就像並行的集合一樣，會傳回物件參考而不是複本。
 * 請不要在未經修改之前，就深層複製傳回的自訂類型物件。 由於結構和內建類型都是傳值 (pass-by-value)，因此您不需要在其上執行深層複製，除非其包含您想要修改的參考類型欄位或屬性。
@@ -54,7 +54,7 @@ ms.locfileid: "86260914"
 * 暫時性資料分割的仲裁遺失會導致資料遺失
 * 備份和還原不適用於暫時性服務
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * [使用可靠的集合](service-fabric-work-with-reliable-collections.md)
 * [交易和鎖定](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * 管理資料
@@ -64,4 +64,4 @@ ms.locfileid: "86260914"
   * [Reliable State Manager 組態](service-fabric-reliable-services-configuration.md)
 * 其他
   * [Reliable Services 快速入門](service-fabric-reliable-services-quick-start.md)
-  * [可靠的集合的開發人員參考資料](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+  * [可靠的集合的開發人員參考資料](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

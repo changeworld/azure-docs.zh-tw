@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 3dbfcacb6ea5922a01d52dfe39189f09f48d4b4a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ea4a4a47e91e88c00ca8a4e886d0372a24482907
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006076"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784303"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Azure Logic Apps 中觸發程式和動作類型的架構參考指南
 
@@ -819,18 +819,18 @@ Azure Logic Apps 提供各種不同的動作類型 - 各有不同的輸入會定
 
 | 動作類型 | 描述 | 
 |-------------|-------------| 
-| [**撰寫**](#compose-action) | 從可具有多種類型的輸入建立單一輸出。 | 
+| [**組成**](#compose-action) | 從可具有多種類型的輸入建立單一輸出。 | 
 | [**執行 JavaScript 程式碼**](#run-javascript-code) | 執行符合特定準則的 JavaScript 程式碼片段。 如需程式碼需求和詳細資訊，請參閱 [使用內嵌程式碼加入和執行程式碼片段](../logic-apps/logic-apps-add-run-inline-code.md)。 |
-| [**功能**](#function-action) | 呼叫 Azure 函式。 | 
+| [**函式**](#function-action) | 呼叫 Azure 函式。 | 
 | [**HTTP**](#http-action) | 呼叫 HTTP 端點。 | 
-| [**Join**](#join-action) | 從陣列中的所有項目建立字串，並使用指定的分隔字元來分隔這些項目。 | 
+| [**加入**](#join-action) | 從陣列中的所有項目建立字串，並使用指定的分隔字元來分隔這些項目。 | 
 | [**剖析 JSON**](#parse-json-action) | 從 JSON 內容中的屬性建立易記的權杖。 其後，您可以在邏輯應用程式中納入權杖，以參考這些屬性。 | 
 | [**查詢**](#query-action) | 根據條件或篩選條件，從另一個陣列中的項目建立陣列。 | 
 | [**回應**](#response-action) | 建立對連入呼叫或要求的回應。 | 
-| [**選取**](#select-action) | 根據指定的對應從另一個陣列中轉換項目，以使用 JSON 物件建立陣列。 | 
-| [**表**](#table-action) | 從陣列建立 CSV 或 HTML 資料表。 | 
+| [**選擇**](#select-action) | 根據指定的對應從另一個陣列中轉換項目，以使用 JSON 物件建立陣列。 | 
+| [**資料表**](#table-action) | 從陣列建立 CSV 或 HTML 資料表。 | 
 | [**終止**](#terminate-action) | 停止正在執行的工作流程。 | 
-| [**等**](#wait-action) | 將工作流程暫停指定的持續期間，或直到指定的日期和時間為止。 | 
+| [**等候**](#wait-action) | 將工作流程暫停指定的持續期間，或直到指定的日期和時間為止。 | 
 | [**工作流程**](#workflow-action) | 將工作流程內嵌於另一個工作流程內。 | 
 ||| 
 
@@ -852,10 +852,10 @@ Azure Logic Apps 提供各種不同的動作類型 - 各有不同的輸入會定
 
 | 動作類型 | 描述 | 
 |-------------|-------------| 
-| [**Foreach**](#foreach-action) | 以迴圈對陣列中的每個項目執行相同的動作。 | 
+| [**ForEach**](#foreach-action) | 以迴圈對陣列中的每個項目執行相同的動作。 | 
 | [**如果**](#if-action) | 根據是否符合指定的條件來執行動作。 | 
-| [**範圍**](#scope-action) | 根據一組動作的群組狀態來執行動作。 | 
-| [**參數**](#switch-action) | 在運算式、物件或權杖中的值符合各個案例所指定的值時，執行組織為案例的動作。 | 
+| [**影響範圍**](#scope-action) | 根據一組動作的群組狀態來執行動作。 | 
+| [**開關**](#switch-action) | 在運算式、物件或權杖中的值符合各個案例所指定的值時，執行組織為案例的動作。 | 
 | [**直到**](#until-action) | 以迴圈執行動作，直到符合指定的條件為止。 | 
 |||  
 
@@ -1126,7 +1126,7 @@ Azure Logic Apps 提供各種不同的動作類型 - 各有不同的輸入會定
 
 ### <a name="function-action"></a>函式動作
 
-此動作會呼叫先前建立的 [Azure 函式](../azure-functions/functions-create-first-azure-function.md)。
+此動作會呼叫先前建立的 [Azure 函式](../azure-functions/functions-get-started.md)。
 
 ```json
 "<Azure-function-name>": {
@@ -1506,7 +1506,7 @@ Azure Logic Apps 提供各種不同的動作類型 - 各有不同的輸入會定
 
 * 您的工作流程可以在 **Foreach** 迴圈、**Until** 迴圈 (包括循序迴圈) 和平行分支 *以外* 的任何位置使用 **回應** 動作。 
 
-* 只有在 **回應** 動作所需的所有動作都已在 [HTTP 要求逾時限制](../logic-apps/logic-apps-limits-and-config.md#request-limits)內完成時，原始的 HTTP 要求才會取得工作流程的回應。
+* 只有當 **回應** 動作所需的所有動作都已在 [HTTP 超時限制](../logic-apps/logic-apps-limits-and-config.md#http-limits)內完成時，原始要求才會取得您的工作流程回應。
 
   不過，如果您的工作流程呼叫另一個邏輯應用程式作為巢狀工作流程，父工作流程將會等待巢狀工作流程完成，無論在巢狀工作流程完成之前經過了多少時間。
 

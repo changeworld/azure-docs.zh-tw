@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: d749c901b21651eec7b3e25ce111fb107e09b754
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 5c414a11085a6a37dee6be522dcf513e8990e5e2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883345"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786346"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight 版本資訊
 
@@ -48,7 +48,7 @@ HDInsight 3.6 ML 服務叢集類型將于 31 2020 年12月結束支援。 客戶
 
 ## <a name="behavior-changes"></a>行為變更
 ### <a name="add-nsg-rule-checking-before-scaling-operation"></a>在調整作業之前新增 NSG 規則檢查
-HDInsight 將網路安全性群組新增 (Nsg) 和使用者定義的路由 (Udr) 檢查調整作業。 除了建立叢集之外，還會針對叢集調整進行相同的驗證。 這種驗證有助於防止無法預期的錯誤。 如果未通過驗證，則無法調整規模。 若要深入瞭解如何正確設定 Nsg 和 Udr，請參閱 [HDInsight 管理 IP 位址](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)。
+HDInsight 將網路安全性群組新增 (Nsg) 和使用者定義的路由 (Udr) 檢查調整作業。 除了建立叢集之外，還會針對叢集調整進行相同的驗證。 這種驗證有助於防止無法預期的錯誤。 如果未通過驗證，則無法調整規模。 若要深入瞭解如何正確設定 Nsg 和 Udr，請參閱 [HDInsight 管理 IP 位址](./hdinsight-management-ip-addresses.md)。
 
 ## <a name="upcoming-changes"></a>即將推出的變更
 即將發行的版本中將會發生下列變更。
@@ -72,7 +72,7 @@ HDInsight 會持續改善叢集的可靠性和效能。
 此發行版本沒有任何元件版本變更。 您可以在 [本](./hdinsight-component-versioning.md)檔中找到 hdinsight 4.0 和 hdinsight 3.6 目前的元件版本。
 
 ## <a name="known-issues"></a>已知問題
-### <a name="prevent-hdinsight-cluster-vms-from-rebooting-periodically"></a>防止 HDInsight 叢集 Vm 定期重新開機
+### <a name="prevent-hdinsight-cluster-vms-from-rebooting-periodically"></a>防止 HDInsight 叢集 VM 定期重新開機
 
 自2020年11月起，您可能已注意到 HDInsight 叢集 Vm 定期重新開機。 這可能是由下列原因所造成：
 
@@ -84,4 +84,3 @@ HDInsight 會持續改善叢集的可靠性和效能。
 https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/replace_cacert_script.sh
 https://healingscriptssa.blob.core.windows.net/healingscripts/ChangeOOMPolicyAndApplyLatestConfigForClamav.sh
 ```
-

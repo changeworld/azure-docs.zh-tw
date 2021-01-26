@@ -4,12 +4,12 @@ description: 瞭解 Azure Service Fabric 可靠的集合物件序列化，包括
 ms.topic: conceptual
 ms.date: 5/8/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1d29f5d3391bdea0b21997a392d4d2e053b7ec65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29bb9a2dfb028d223d63559b35735e78d7e6bcf8
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018615"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784354"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Azure Service Fabric 中的 Reliable Collection 物件序列化
 Reliable Collections 會複寫並保存其項目，以確保在電腦發生失敗和電力中斷時能持續保留這些項目。
@@ -20,7 +20,7 @@ Reliable State Manager 包含內建的序列化程式，並允許為指定的類
 
 ## <a name="built-in-serializers"></a>內建的序列化程式
 
-Reliable State Manager 包含一些常見類型的內建序列化程式，以便透過預設方式有效率地將這些類型序列化。 針對其他類型，Reliable State Manager 會回復為使用 [DataContractSerializer](/dotnet/api/system.runtime.serialization.datacontractserializer?view=netcore-3.1)。
+Reliable State Manager 包含一些常見類型的內建序列化程式，以便透過預設方式有效率地將這些類型序列化。 針對其他類型，Reliable State Manager 會回復為使用 [DataContractSerializer](/dotnet/api/system.runtime.serialization.datacontractserializer)。
 內建的序列化程式較有效率，因為它們知道它們的類型無法變更，所以不需要包含類型的相關資訊 (例如其類型名稱)。
 
 Reliable State Manager 具有下列類型的內建序列化程式： 
@@ -140,7 +140,7 @@ public class OrderKeySerializer : IStateSerializer<OrderKey>
 
 ## <a name="next-steps"></a>後續步驟
   * [序列化與升級](service-fabric-application-upgrade-data-serialization.md)
-  * [可靠的集合的開發人員參考資料](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+  * [可靠的集合的開發人員參考資料](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)
   * [使用 Visual Studio 升級您的應用程式](service-fabric-application-upgrade-tutorial.md) 會逐步引導您使用 Visual Studio 進行應用程式升級。
   * [使用 Powershell 升級您的應用程式](service-fabric-application-upgrade-tutorial-powershell.md) 會逐步引導您使用 powershell 來升級應用程式。
   * 使用 [升級參數](service-fabric-application-upgrade-parameters.md)來控制您應用程式的升級方式。

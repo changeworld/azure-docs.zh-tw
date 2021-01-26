@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/11/2020
 ms.author: juliako
-ms.openlocfilehash: 6b5a228c12cfc874673dda854de6d4dcc25f28c1
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 06f5e19718445f44dd2302faf280f083cce0774f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014530"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98783796"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>什麼是 Azure 媒體服務影片索引器？
 
@@ -115,6 +115,21 @@ ms.locfileid: "98014530"
     如需詳細資訊，請參閱 [將視覺介面控件內嵌到應用程式](video-indexer-embed-widgets.md)。
 
 如果您使用的是網站，則會將深入解析新增為中繼資料，並顯示在入口網站中。 如果您使用的是 API，則深入解析會以 JSON 檔案的形式來提供。
+
+## <a name="supported-browsers"></a>支援的瀏覽器
+
+下列清單顯示支援的瀏覽器，可供您用於影片索引子網站以及內嵌 widget 的應用程式。 此清單也會顯示支援的最低瀏覽器版本：
+
+- Edge、version：16
+- Firefox，版本：54
+- Chrome，版本：58
+- Safari，版本：11
+- Opera，版本：44
+- Opera Mobile、version：59
+- Android 瀏覽器，版本：81
+- Samsung Browser，version：7
+- 適用于 Android 的 Chrome，版本：87
+- 適用于 Android 的 Firefox，版本：83
 
 ## <a name="next-steps"></a>後續步驟
 

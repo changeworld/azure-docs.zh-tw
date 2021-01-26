@@ -8,12 +8,12 @@ ms.author: jehollan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 2fae7d2526e6c95efe83ca8fa742a6d92457b897
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22e0c7304f7a53a86bc5c6739a2061352d738d29
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86520744"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784807"
 ---
 # <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>使用 Azure Logic Apps 與 Azure Functions 來建立串流的客戶深入解析儀表板
 
@@ -46,20 +46,20 @@ Azure Logic Apps 在雲端中提供無伺服器工作流程引擎，讓您可以
 
 若要偵測某些文字後的情感，您可以使用 [Azure 認知服務](https://azure.microsoft.com/services/cognitive-services/)。
 
-1. 在邏輯應用程式設計工具中的觸發程序之下，選擇 [新增步驟]****。
+1. 在邏輯應用程式設計工具中的觸發程序之下，選擇 [新增步驟]。
 
-2. 尋找 [文字分析]**** 連接器。
+2. 尋找 [文字分析] 連接器。
 
 3. 選取 [偵測 **情感** ] 動作。
 
 4. 如果出現提示，請提供適用於文字分析服務的有效認知服務金鑰。
 
-5. 在 [要求本文]**** 下，選取 [推文文字]**** 欄位，以提供推文文字作為分析的輸入。
+5. 在 [要求本文] 下，選取 [推文文字] 欄位，以提供推文文字作為分析的輸入。
 
 取得推文資料與推文的深入解析之後，您現在可以使用其他數個相關的連接器以及其動作：
 
 * **Power BI - 將資料列新增至串流資料集**︰在 Power BI 儀表板上檢視傳入的推文。
-* **Azure Data Lake 附加**檔案：將客戶資料新增至要納入分析作業的 Azure Data Lake 資料集。
+* **Azure Data Lake 附加** 檔案：將客戶資料新增至要納入分析作業的 Azure Data Lake 資料集。
 * **SQL-加入資料列**：將資料儲存在資料庫中，以供日後抓取。
 * **Slack - 傳送訊息**︰通知 Slack 通道有關可能需要有所行動的負面意見反應。
 
@@ -67,23 +67,23 @@ Azure Logic Apps 在雲端中提供無伺服器工作流程引擎，讓您可以
 
 ## <a name="process-data-with-azure-functions"></a>使用 Azure Functions 處理資料
 
-建立函式之前，請先在 Azure 訂用帳戶中建立函式應用程式。 此外，為了讓邏輯應用程式直接呼叫函式，函式必須具有 HTTP 觸發程序繫結，例如，可使用 **HttpTrigger** 範本。 了解[如何在 Azure 入口網站中建立您的第一個函式應用程式和涵式](../azure-functions/functions-create-first-azure-function.md)。
+建立函式之前，請先在 Azure 訂用帳戶中建立函式應用程式。 此外，為了讓邏輯應用程式直接呼叫函式，函式必須具有 HTTP 觸發程序繫結，例如，可使用 **HttpTrigger** 範本。 了解[如何在 Azure 入口網站中建立您的第一個函式應用程式和涵式](../azure-functions/functions-get-started.md)。
 
 針對此案例，請使用推文文字作為 Azure 函式的要求本文。 在您的函式程式碼中，定義用來判斷推文文字是否包含關鍵字或片語的邏輯。 根據案例的需要，維持簡單或複雜的函式。
 在函式結尾處，將包含某些資料的回應傳回邏輯應用程式，例如，簡單的布林值 (例如 `containsKeyword`) 或複雜的物件。
 
 > [!TIP]
-> 若要存取邏輯應用程式函式中的複雜回應，請使用**剖析 JSON** 動作。
+> 若要存取邏輯應用程式函式中的複雜回應，請使用 **剖析 JSON** 動作。
 
 完成後，請儲存函式，然後在您建置的邏輯應用程式中，將此函式新增為動作。
 
 ## <a name="add-azure-function-to-logic-app"></a>將 Azure 函式新增至邏輯應用程式
 
-1. 在邏輯應用程式設計工具中的 [偵測情感]**** 動作下，選擇 [新增步驟]****。
+1. 在邏輯應用程式設計工具中的 [偵測情感] 動作下，選擇 [新增步驟]。
 
 2. 尋找 **Azure Functions** 連接器，然後選取您建立的函式。
 
-3. 在 [要求本文]**** 下，選取 [推文文字]****。
+3. 在 [要求本文] 下，選取 [推文文字]。
 
 ![已設定的 Azure Function 步驟][2]
 
@@ -91,16 +91,16 @@ Azure Logic Apps 在雲端中提供無伺服器工作流程引擎，讓您可以
 
 若要檢閱目前或先前任何應用程式邏輯的執行，您可以在 Azure 入口網站或 Visual Studio 中，或是透過 Azure REST API 和 SDK，使用 Azure Logic Apps 提供的多種偵錯和監視功能。
 
-若要輕鬆地測試邏輯應用程式，請在邏輯應用程式設計工具中選擇 [執行觸發程序]****。 觸發程序會根據您指定的排程，對推文進行輪詢，直到找到符合準則的推文。 執行進行時，設計工具會顯示該執行的即時檢視。
+若要輕鬆地測試邏輯應用程式，請在邏輯應用程式設計工具中選擇 [執行觸發程序]。 觸發程序會根據您指定的排程，對推文進行輪詢，直到找到符合準則的推文。 執行進行時，設計工具會顯示該執行的即時檢視。
 
 若要在 Visual Studio 或 Azure 入口網站中檢視之前的執行記錄： 
 
-* 開啟 Visual Studio Cloud Explorer。 尋找邏輯應用程式，開啟應用程式的捷徑功能表。 選取 [開啟執行歷程記錄]****。
+* 開啟 Visual Studio Cloud Explorer。 尋找邏輯應用程式，開啟應用程式的捷徑功能表。 選取 [開啟執行歷程記錄]。
 
   > [!TIP]
   > 如果您在 Visual Studio 2019 中沒有此命令，請檢查您是否有最新的 Visual Studio 更新。
 
-* 在 Azure 入口網站中，尋找您的邏輯應用程式。 在邏輯應用程式功能表上，選擇 [概觀]****。 
+* 在 Azure 入口網站中，尋找您的邏輯應用程式。 在邏輯應用程式功能表上，選擇 [概觀]。 
 
 ## <a name="create-automated-deployment-templates"></a>建立自動部署範本
 
@@ -108,7 +108,7 @@ Azure Logic Apps 在雲端中提供無伺服器工作流程引擎，讓您可以
 
 如需 Azure 函式的部署範本範例，請查看 [Azure 快速入門範本存放庫](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [尋找 Azure Logic Apps 的其他範例和案例](logic-apps-examples-and-scenarios.md)
 

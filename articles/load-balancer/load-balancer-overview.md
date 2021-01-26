@@ -12,14 +12,14 @@ ms.topic: overview
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 1/14/2020
+ms.date: 1/25/2021
 ms.author: allensu
-ms.openlocfilehash: e8d0afab14d02ffe16db535f173456b55ab53d69
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
-ms.translationtype: HT
+ms.openlocfilehash: d5d2f83ddb4f37e1379bb7d60a76ddc70d61f99a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97860923"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785832"
 ---
 # <a name="what-is-azure-load-balancer"></a>什麼是 Azure Load Balancer？
 
@@ -56,7 +56,7 @@ Azure Load Balancer 會在開放系統互相連線 (OSI) 模型的第四層運�
 
 - 啟用 **[IPv6](../virtual-network/ipv6-overview.md)** 的 **[負載平衡](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)** 支援。
 
-- Standard Load Balancer 可透過 [Azure 監視器](../azure-monitor/overview.md)提供多維度計量。  您可針對指定維度篩選、分組及劃分這些計量，  且您可深入檢視服務目前和過去的效能和健康情況。  此外也支援資源健康情況。 如需詳細資訊，請參閱 **[Standard Load Balancer 診斷](load-balancer-standard-diagnostics.md)** 。
+- Standard Load Balancer 可透過 [Azure 監視器](../azure-monitor/overview.md)提供多維度計量。  您可針對指定維度篩選、分組及劃分這些計量，  且您可深入檢視服務目前和過去的效能和健康情況。 [Azure Load Balancer 的見解] (https://docs.microsoft.com/azure/load-balancer/load-balancer-insights) 提供預先設定的儀表板，其中包含適用于這些計量的實用視覺效果。  此外也支援資源健康情況。 如需詳細資訊，請參閱 **[Standard Load Balancer 診斷](load-balancer-standard-diagnostics.md)** 。
 
 - 平衡 **[多個連接埠、多個 IP 位址或這兩者](./load-balancer-multivip-overview.md)** 上的服務負載。
 

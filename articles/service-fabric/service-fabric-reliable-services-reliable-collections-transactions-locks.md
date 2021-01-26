@@ -3,22 +3,22 @@ title: 可靠集合中的交易和鎖定模式
 description: Azure Service Fabric Reliable State Manager 和 Reliable Collections 交易和鎖定。
 ms.topic: conceptual
 ms.date: 5/1/2017
-ms.openlocfilehash: 57ca46047641b79d5e4c50ede4a27e16dcec5d89
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 5d2cbb517ea5ca45697cd9124b82e9ef13dd32db
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576718"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784337"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric Reliable Collections 中的交易和鎖定模式
 
 ## <a name="transaction"></a>交易
 
-交易就是以單一工作邏輯單元執行的一連串作業。 它展現了常見 [ACID](https://en.wikipedia.org/wiki/ACID)的 ACID *(不可* 部分完成性、*一致性*、*隔離*、*持久性*) 資料庫交易的屬性：
+交易就是以單一工作邏輯單元執行的一連串作業。 它展現了常見 [](https://en.wikipedia.org/wiki/ACID)的 ACID *(不可* 部分完成性、*一致性*、*隔離*、*持久性*) 資料庫交易的屬性：
 
 * **不可部分完成性**︰交易必須是不可部分完成的工作單位。 換句話說，執行其所有資料修改，或完全不執行。
 * **一致性**︰交易完成時，所有資料必須維持一致的狀態。 所有內部資料結構在交易結束時必須是正確的。
-* **隔離**︰並行交易所做的修改，必須與任何其他並行交易所做的修改隔離。 用於 [ITransaction](/dotnet/api/microsoft.servicefabric.data.itransaction?view=azure-dotnet) 中之作業的隔離等級是由執行作業的 [IReliableState](/dotnet/api/microsoft.servicefabric.data.ireliablestate?view=azure-dotnet) 所決定。
+* **隔離**︰並行交易所做的修改，必須與任何其他並行交易所做的修改隔離。 用於 [ITransaction](/dotnet/api/microsoft.servicefabric.data.itransaction) 中之作業的隔離等級是由執行作業的 [IReliableState](/dotnet/api/microsoft.servicefabric.data.ireliablestate) 所決定。
 * **耐久性**：交易完成之後，其作用會永久存在系統中。 即使發生系統失敗仍會保存修改。
 
 ### <a name="isolation-levels"></a>隔離層級
@@ -84,4 +84,4 @@ ms.locfileid: "96576718"
 * [Reliable Services 通知](service-fabric-reliable-services-notifications.md)
 * [備份與還原 Reliable Services (災害復原)](service-fabric-reliable-services-backup-restore.md)
 * [Reliable State Manager 組態](service-fabric-reliable-services-configuration.md)
-* [可靠的集合的開發人員參考資料](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+* [可靠的集合的開發人員參考資料](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

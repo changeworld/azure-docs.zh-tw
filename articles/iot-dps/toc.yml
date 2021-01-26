@@ -124,8 +124,6 @@
       items:
         - name: 管理註冊 - 入口網站
           href: how-to-manage-enrollments.md
-        - name: 管理註冊 - 服務 SDK
-          href: how-to-manage-enrollments-sdks.md
         - name: 設定已驗證的 CA 憑證
           href: how-to-verify-certificates.md
         - name: 復原裝置憑證
@@ -150,10 +148,6 @@
         - name: Windows
           href: ../iot-edge/how-to-auto-provision-simulated-device-windows.md
           maintainContext: true
-    - name: 透過 SDK 使用證明機制
-      href: use-hsm-with-sdk.md
-    - name: 使用 SDK 工具進行開發
-      href: how-to-use-sdk-tools.md
     - name: 如何從裝置傳送其他資料
       href: how-to-send-additional-data.md
     - name: 疑難排解

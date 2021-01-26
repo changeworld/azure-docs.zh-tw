@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.date: 6/29/2017
 ms.author: mcoskun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4a336daf9bd7400d049233a22a04d64d561b42c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5b48cc6cca2e143c48ed7bdfc99de936be2a227
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021947"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784574"
 ---
 # <a name="reliable-services-notifications"></a>Reliable Services 通知
-通知可讓用戶端追蹤對於他們感興趣物件所進行的變更。 兩種類型的物件支援通知：「可靠的狀態管理員」** 和「可靠的字典」**。
+通知可讓用戶端追蹤對於他們感興趣物件所進行的變更。 兩種類型的物件支援通知：「可靠的狀態管理員」和「可靠的字典」。
 
 使用通知的常見原因如下：
 
@@ -40,9 +40,9 @@ ms.locfileid: "89021947"
 
 * 復原︰當複本啟動時，它會從磁碟復原為先前的狀態。 復原結束時，它會利用 **NotifyStateManagerChangedEventArgs** 引發事件，其中包含一組復原的可靠狀態。
 * 完整備份︰在複本可加入組態集之前，必須先建置它。 有時，這需要主要複本的可靠狀態管理員的狀態完整複本，以套用到閒置的次要複本。 次要複本上的可靠狀態管理員會使用 **NotifyStateManagerChangedEventArgs** 引發事件，其中包含一組它從主要複本取得的可靠狀態。
-* 還原︰在災害復原案例中，複本的狀態可經由 **RestoreAsync**從備份還原。 在這類案例中，主要複本上的可靠狀態管理員會使用 **NotifyStateManagerChangedEventArgs** 引發事件，其中包含一組它從備份還原來的可靠狀態。
+* 還原︰在災害復原案例中，複本的狀態可經由 **RestoreAsync** 從備份還原。 在這類案例中，主要複本上的可靠狀態管理員會使用 **NotifyStateManagerChangedEventArgs** 引發事件，其中包含一組它從備份還原來的可靠狀態。
 
-若要註冊交易通知及/或狀態管理員通知，您必須向可靠的狀態管理員分別註冊 **TransactionChanged** 或 **StateManagerChanged** 事件。 註冊這些事件處理常式的常見位置是您的具狀態服務的建構函式。 當您註冊建構函式時，您也不會錯過 **IReliableStateManager**存留期間的變更所造成的任何通知。
+若要註冊交易通知及/或狀態管理員通知，您必須向可靠的狀態管理員分別註冊 **TransactionChanged** 或 **StateManagerChanged** 事件。 註冊這些事件處理常式的常見位置是您的具狀態服務的建構函式。 當您註冊建構函式時，您也不會錯過 **IReliableStateManager** 存留期間的變更所造成的任何通知。
 
 ```csharp
 public MyService(StatefulServiceContext context)
@@ -103,7 +103,7 @@ public void OnStateManagerChangedHandler(object sender, NotifyStateManagerChange
 
 * 重建︰在 **ReliableDictionary** 從過去復原或複製的本機狀態或備份，復原其狀態時呼叫。
 * 清除︰在透過 **ClearAsync** 方法清除 **ReliableDictionary** 的狀態時呼叫。
-* 加入︰在已將項目加入至 **ReliableDictionary**時呼叫。
+* 加入︰在已將項目加入至 **ReliableDictionary** 時呼叫。
 * 更新︰在已更新 **IReliableDictionary** 中的項目時呼叫。
 * 移除︰在已刪除 **IReliableDictionary** 中的項目時呼叫。
 
@@ -195,9 +195,9 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 ```
 
 ## <a name="recommendations"></a>建議
-* ** 完成通知事件。
-* ** 執行任何耗費資源的作業 (例如 IO 作業) 做為同步事件的一部分。
-* ** Action 類型。 未來可能會加入新的 Action 類型。
+*  完成通知事件。
+*  執行任何耗費資源的作業 (例如 IO 作業) 做為同步事件的一部分。
+*  Action 類型。 未來可能會加入新的 Action 類型。
 
 以下是要牢記在心的一些事項：
 
@@ -211,4 +211,4 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 * [Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [Reliable Services 快速入門](service-fabric-reliable-services-quick-start.md)
 * [備份與還原 Reliable Services (災害復原)](service-fabric-reliable-services-backup-restore.md)
-* [可靠的集合的開發人員參考資料](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+* [可靠的集合的開發人員參考資料](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

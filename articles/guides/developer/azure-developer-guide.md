@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 9999b2fa116a2336f8e50fb166e5d870ae4b5a5f
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: a193ccd060c75cf4031449ddf3318af6e4691436
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165054"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786464"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開發人員開始使用指南
 
@@ -84,7 +84,7 @@ Azure 提供可支援應用程式開發和裝載需求的服務。 Azure 提供�
 
 > **使用時機**：當您的程式碼是透過其他 Azure 服務、Web 事件或依排程觸發時，請使用 Azure Functions。 當您不需要整個託管專案的額外負荷時，或只想要支付程式碼執行時間的費用時，也可以使用 Functions。 若要深入了解，請參閱 [Azure Functions 概觀](../../azure-functions/functions-overview.md)。
 >
-> **開始使用**：遵循 Functions 快速入門教學課程，從入口網站 [建立第一個函式](../../azure-functions/functions-create-first-azure-function.md)。
+> **開始使用**：遵循 Functions 快速入門教學課程，從入口網站 [建立第一個函式](../../azure-functions/functions-get-started.md)。
 >
 > **立即試用**：Azure Functions 可讓您執行程式碼，而不需要註冊 Azure 帳戶。 請立即試用，並[建立您的第一個 Azure 函式](https://tryappservice.azure.com/)。
 

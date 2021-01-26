@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 90ffd1c01411982f56aed3332c499aa0c10b8a94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7af0a4c26a47644973e936eb37e221853d74c03
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257599"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784658"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric 安全性 
 
@@ -56,7 +56,7 @@ ms.locfileid: "86257599"
 
 ## <a name="apply-an-access-control-list-acl-to-your-certificate-for-your-service-fabric-cluster"></a>將存取控制清單 (ACL) 套用至您 Service Fabric 叢集的憑證
 
-[虛擬機器擴展集延伸模組](/cli/azure/vmss/extension?view=azure-cli-latest) 發行者 Microsoft.Azure.ServiceFabric 是用來設定您的節點安全性的。
+[虛擬機器擴展集延伸模組](/cli/azure/vmss/extension) 發行者 Microsoft.Azure.ServiceFabric 是用來設定您的節點安全性的。
 若要針對您的 Service Fabric 叢集程序將 ACL 套用至憑證，請使用下列 Resource Manager 範本屬性：
 
 ```json
@@ -270,7 +270,7 @@ Azure 服務（包括 [Service Fabric](https://techcommunity.microsoft.com/t5/az
 
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 在執行 Windows Server 的 Vm 或電腦上建立叢集： [Service Fabric 建立 Windows server 的](service-fabric-cluster-creation-for-windows-server.md)叢集。
 * 在執行 Linux 的 Vm 或電腦上建立叢集： [建立 linux](service-fabric-cluster-creation-via-portal.md)叢集。

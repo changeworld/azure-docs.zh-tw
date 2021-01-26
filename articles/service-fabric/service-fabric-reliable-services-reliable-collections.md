@@ -3,16 +3,16 @@ title: 可靠的集合簡介
 description: Service Fabric 具狀態服務提供可靠的集合，可讓您撰寫高度可用、可調整且低延遲的雲端應用程式。
 ms.topic: conceptual
 ms.date: 3/10/2020
-ms.openlocfilehash: 6e0f39b994087fe44038e62e85326945589c719a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d705f81b4ad31559886e43226febcd4cf1d345d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86245121"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784371"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Azure Service Fabric 具狀態服務中可靠的集合簡介
 
-可靠的集合可讓您撰寫高度可用、可擴充且低延遲的雲端應用程式，如同您在撰寫單一電腦應用程式一般。 Microsoft.ServiceFabric.Data.Collections**** 命名空間中的類別提供一組集合，可讓您自動具有高度可用的狀態。 開發人員只需將程式設計為可靠的集合 API，並讓可靠的集合來管理複寫和本機狀態。
+可靠的集合可讓您撰寫高度可用、可擴充且低延遲的雲端應用程式，如同您在撰寫單一電腦應用程式一般。 Microsoft.ServiceFabric.Data.Collections 命名空間中的類別提供一組集合，可讓您自動具有高度可用的狀態。 開發人員只需將程式設計為可靠的集合 API，並讓可靠的集合來管理複寫和本機狀態。
 
 可靠的集合和其他高可用性技術 (例如 Redis、Azure 表格服務和 Azure 佇列服務) 之間的主要差異是狀態會保留在本機服務執行個體中，但同時也被設定為高可用性。 這表示：
 
@@ -38,13 +38,13 @@ Reliable Collection 具有增強式一致性保證，可讓您更輕鬆地推論
 * 沒有 out 參數：使用傳回 `ConditionalValue<T>` `bool` 值，而不是 out 參數。 `ConditionalValue<T>` 就像 `Nullable<T>`，但不需要 T 就可以成為結構。
 * 交易：使用交易物件，讓使用者可在交易中的多個可靠的集合上群組動作。
 
-現在，Microsoft.ServiceFabric.Data.Collections**** 包含三個集合：
+現在，Microsoft.ServiceFabric.Data.Collections 包含三個集合：
 
-* [可靠的字典](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliabledictionary_2)：表示可複寫、交易式和非同步索引鍵/值組的集合。 類似於 **ConcurrentDictionary**，其索引鍵和值可以是任何類型。
-* [可靠的佇列](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1)：表示可複寫、交易式和非同步的嚴格先進先出 (FIFO) 佇列。 類似於 **ConcurrentQueue**，其值可以是任何類型。
-* [可靠的並行佇列](service-fabric-reliable-services-reliable-concurrent-queue.md)︰代表儘可能最佳的複寫、交易與非同步排序序列，以達到高輸送量。 類似於 ConcurrentQueue****，其值可以是任何類型。
+* [可靠的字典](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2#microsoft_servicefabric_data_collections_ireliabledictionary_2)：表示可複寫、交易式和非同步索引鍵/值組的集合。 類似於 **ConcurrentDictionary**，其索引鍵和值可以是任何類型。
+* [可靠的佇列](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1#microsoft_servicefabric_data_collections_ireliablequeue_1)：表示可複寫、交易式和非同步的嚴格先進先出 (FIFO) 佇列。 類似於 **ConcurrentQueue**，其值可以是任何類型。
+* [可靠的並行佇列](service-fabric-reliable-services-reliable-concurrent-queue.md)︰代表儘可能最佳的複寫、交易與非同步排序序列，以達到高輸送量。 類似於 ConcurrentQueue，其值可以是任何類型。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [& 建議的可靠集合指導方針](service-fabric-reliable-services-reliable-collections-guidelines.md)
 * [使用可靠的集合](service-fabric-work-with-reliable-collections.md)
@@ -57,4 +57,4 @@ Reliable Collection 具有增強式一致性保證，可讓您更輕鬆地推論
   * [Reliable State Manager 組態](service-fabric-reliable-services-configuration.md)
 * 其他
   * [Reliable Services 快速入門](service-fabric-reliable-services-quick-start.md)
-  * [可靠的集合的開發人員參考資料](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+  * [可靠的集合的開發人員參考資料](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

@@ -3,12 +3,12 @@ title: 建立獨立 Azure Service Fabric 叢集
 description: 在執行 Windows Server (無論是在內部部署或任何雲端) 的任何電腦 (實體或虛擬) 上建立 Azure Service Fabric 叢集。
 ms.topic: conceptual
 ms.date: 2/21/2019
-ms.openlocfilehash: 36883f2c8b09fa3f8f013e0267dafa2a8220e5d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41af655be07ccae2b66e75f5bfe87629cdb54924
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843187"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785679"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>建立在 Windows Server 上執行的獨立叢集
 您可以使用 Azure Service Fabric 在執行 Windows Server 的任何虛擬機器或電腦上建立 Service Fabric 叢集。 這表示您能夠在包含一組互連式 Windows Server 電腦的任何環境中部署和執行 Service Fabric 應用程式，不論該環境是內部部署或是透過任何雲端提供者來提供。 Service Fabric 會提供一個安裝封裝來建立稱為獨立 Windows Server 封裝的 Service Fabric 叢集。 傳統的 Service Fabric 叢集在 Azure 上是以受控服務的形式提供，而獨立 Service Fabric 叢集則是自助服務。 如需差異的詳細資訊，請參閱[比較 Azure 和獨立 Service Fabric 叢集](./service-fabric-deploy-anywhere.md)。
@@ -46,14 +46,14 @@ ms.locfileid: "91843187"
 <a id="createcluster"></a>
 
 ## <a name="create-the-cluster"></a>建立叢集
-已使用安裝套件安裝數個範例叢集組態檔。 *ClusterConfig.Unsecure.DevCluster.json* 是最簡單的叢集組態︰在單一電腦上執行的不安全叢集 (包含三個節點)。  其他組態檔說明使用 X.509 憑證或 Windows 安全性保護之單一或多重電腦的叢集。  您不需要修改本教學課程的任何預設組態設定，但請瀏覽組態檔並熟悉設定。  **nodes** 區段描述叢集中的三個節點︰名稱、IP 位址、[節點類型、容錯網域和升級網域](service-fabric-cluster-manifest.md#nodes-on-the-cluster)。  **properties** 區段定義叢集的[安全性、可靠性層級、診斷集合和節點類型](service-fabric-cluster-manifest.md#cluster-properties)。
+已使用安裝套件安裝數個範例叢集組態檔。 *ClusterConfig.Unsecure.DevCluster.json* 是最簡單的叢集組態︰在單一電腦上執行的不安全叢集 (包含三個節點)。  其他組態檔說明使用 X.509 憑證或 Windows 安全性保護之單一或多重電腦的叢集。  您不需要修改本教學課程的任何預設組態設定，但請瀏覽組態檔並熟悉設定。  **nodes** 區段描述叢集中的三個節點︰名稱、IP 位址、[節點類型、容錯網域和升級網域](service-fabric-cluster-manifest.md#nodes-on-the-cluster)。  **properties** 區段定義叢集的 [安全性、可靠性層級、診斷集合和節點類型](service-fabric-cluster-manifest.md#cluster-properties)。
 
 本文所建立的叢集並不安全。  任何人都可以匿名方式連線並執行管理作業，所以一律要使用 X.509 憑證或 Windows 安全性來保護生產叢集。  只有在建立叢集時才會設定安全性，而且不可能在叢集建立之後啟用安全性。 更新設定檔會啟用[憑證安全性](service-fabric-windows-cluster-x509-security.md)或 [Windows 安全性](service-fabric-windows-cluster-windows-security.md)。 若要深入了解 Service Fabric 叢集安全性，請閱讀[保護叢集](service-fabric-cluster-security.md)。
 
 ### <a name="step-1-create-the-cluster"></a>步驟 1:建立叢集
 
 #### <a name="scenario-a-create-an-unsecured-local-development-cluster"></a>狀況 A：建立不安全的本機開發叢集
-Service Fabric 可以使用[範例](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)中所含的 *ClusterConfig.Unsecure.DevCluster.json* 檔案，部署到一個電腦開發叢集。
+Service Fabric 可以使用 [範例](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)中所含的 *ClusterConfig.Unsecure.DevCluster.json* 檔案，部署到一個電腦開發叢集。
 
 將獨立封裝解除封裝到電腦，將範例組態檔複製到本機電腦，然後從獨立套件資料夾，透過系統管理員 PowerShell 工作階段，執行 *CreateServiceFabricCluster.ps1* 指令碼。
 
@@ -116,7 +116,7 @@ Service Fabric 可以使用[範例](https://github.com/Azure-Samples/service-fab
 .\ClusterConfig.json 和 .\MicrosoftAzureServiceFabric.cab 分別為叢集設定與執行階段 .cab 檔案的路徑。
 
 ### <a name="step-2-connect-to-the-cluster"></a>步驟 2:連線至叢集
-連線到叢集，以確認叢集正在執行且可用。 ServiceFabric PowerShell 模組會隨著執行階段套件一起安裝。  您可以從其中一個叢集節點，或透過 Service Fabric 執行階段從遠端電腦來連線到叢集。  [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) Cmdlet 會建立叢集連線。
+連線到叢集，以確認叢集正在執行且可用。 ServiceFabric PowerShell 模組會隨著執行階段套件一起安裝。  您可以從其中一個叢集節點，或透過 Service Fabric 執行階段從遠端電腦來連線到叢集。  [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) Cmdlet 會建立叢集連線。
 
 若要連線到不安全的叢集，請執行下列 PowerShell 命令：
 
@@ -129,7 +129,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.234:19000
 ```
 
-如需連線到叢集的其他範例，請參閱[連線到安全的叢集](service-fabric-connect-to-secure-cluster.md)。 連線到叢集之後，使用 [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) Cmdlet 來顯示叢集中的節點清單以及每個節點的狀態資訊。 每個節點的 **HealthState** 應該為「正常」。
+如需連線到叢集的其他範例，請參閱[連線到安全的叢集](service-fabric-connect-to-secure-cluster.md)。 連線到叢集之後，使用 [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode) Cmdlet 來顯示叢集中的節點清單以及每個節點的狀態資訊。 每個節點的 **HealthState** 應該為「正常」。
 
 ```powershell
 PS C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer> Get-ServiceFabricNode |Format-Table

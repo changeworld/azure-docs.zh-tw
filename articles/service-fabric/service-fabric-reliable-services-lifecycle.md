@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 162ad87f79109cf38d3d0013608812155c6988a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ea8fa6933052374721d8d205d5b07386c807ae2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86252244"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784591"
 ---
 # <a name="reliable-services-lifecycle-overview"></a>Reliable Services 生命週期概觀
 > [!div class="op_single_selector"]
@@ -113,7 +113,7 @@ Service Fabric 基於各種原因變更具狀態服務的「主要」。 最常�
 
 未完全處理取消作業的服務將會遇到幾個問題。 這些作業可能會變慢，因為 Service Fabric 會以正常程序等待服務停止。 這可能最終會導致逾時的失敗升級和復原。 無法採用取消權杖也可能造成不平衡的叢集。 叢集變成不平衡，因為節點變成經常性存取，但無法重新平衡服務，因為將服務移至其他地方耗費太多時間。 
 
-因為這些服務是具有狀態的，所以它們會使用[可靠集合](service-fabric-reliable-services-reliable-collections.md)。 在 Service Fabric 中，當「主要」降級時，首先發生的事情是撤銷基礎狀態的寫入存取權。 這會導致可能影響服務生命週期的第二組問題。 集合會根據時間和複本是否正在移動或關機而傳回例外狀況。 應該正確處理這些例外狀況。 Service Fabric 擲回的例外狀況屬於永久 [ (`FabricException`) ](/dotnet/api/system.fabric.fabricexception?view=azure-dotnet) 和暫時性 [ (`FabricTransientException`) ](/dotnet/api/system.fabric.fabrictransientexception?view=azure-dotnet) 分類。 永久性例外狀況應該要記錄並擲回，而暫時性例外狀況可能會根據一些重試邏輯來重試。
+因為這些服務是具有狀態的，所以它們會使用[可靠集合](service-fabric-reliable-services-reliable-collections.md)。 在 Service Fabric 中，當「主要」降級時，首先發生的事情是撤銷基礎狀態的寫入存取權。 這會導致可能影響服務生命週期的第二組問題。 集合會根據時間和複本是否正在移動或關機而傳回例外狀況。 應該正確處理這些例外狀況。 Service Fabric 擲回的例外狀況屬於永久 [ (`FabricException`) ](/dotnet/api/system.fabric.fabricexception) 和暫時性 [ (`FabricTransientException`) ](/dotnet/api/system.fabric.fabrictransientexception) 分類。 永久性例外狀況應該要記錄並擲回，而暫時性例外狀況可能會根據一些重試邏輯來重試。
 
 處理由於使用與服務生命週期事件搭配使用的 `ReliableCollections` 而造成的例外況況，是測試和驗證可靠服務的重要環節。 建議一律先在低於負載的情況下執行服務，同時執行升級和[混亂測試](service-fabric-controlled-chaos.md)，然後再部署到生產。 下列基本步驟協助確保您的服務正確地實作，並正確地處理生命週期事件。
 
@@ -126,7 +126,7 @@ Service Fabric 基於各種原因變更具狀態服務的「主要」。 最常�
   - `OnCloseAsync()` 路徑失敗會導致呼叫 `OnAbort()`，這是服務清除並釋放已宣告之任何資源的最後努力機會。 這個一般會在於節點上偵測到永久錯誤，或因內部失敗而 Service Fabric 無法可靠地管理服務執行個體生命週期時呼叫。
   - 具狀態服務複本變更角色 (例如變更為主要或次要角色) 時，會呼叫 `OnChangeRoleAsync()`。 主要複本會獲得寫入狀態 (可建立並寫入可靠的集合)。 次要複本則會獲得讀取狀態 (只能從現有的可靠集合讀取)。 具狀態服務中的大部分工作會在主要複本執行。 次要複本可以執行唯讀驗證、產生報表、資料採礦或其他唯讀作業。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - [Reliable Services 簡介](service-fabric-reliable-services-introduction.md)
 - [Reliable Services 快速入門](service-fabric-reliable-services-quick-start.md)
 - [複本和實例](service-fabric-concepts-replica-lifecycle.md)

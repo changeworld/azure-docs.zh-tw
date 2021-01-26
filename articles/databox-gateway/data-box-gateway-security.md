@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 10/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 11122b57a1971f328a8a83c3dea136813426c060
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 13d3809611714992f24a66a96c22074e69fba9bd
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96581890"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786651"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Azure 資料箱閘道安全性和資料保護
 
@@ -63,7 +63,7 @@ ms.locfileid: "96581890"
 [!INCLUDE [data-box-gateway-password-best-practices](../../includes/data-box-gateway-password-best-practices.md)]
 - 使用本機 web UI 來 [變更密碼](data-box-gateway-manage-access-power-connectivity-mode.md#manage-device-access)。 如果您變更密碼，請務必通知所有遠端存取使用者，讓他們不會在登入時發生問題。
 
-## <a name="protect-your-data"></a>保護資料
+## <a name="protect-your-data"></a>保護您的資料
 
 本節說明可保護傳輸中和儲存資料的資料箱閘道安全性功能。
 
@@ -85,7 +85,7 @@ ms.locfileid: "96581890"
 
 若要保護資料箱閘道虛擬機器上的虛擬磁片，建議您啟用 BitLocker。 根據預設，不會啟用 BitLocker。 如需詳細資訊，請參閱
 
-- [Hyper-V 管理員中的加密支援設定](hhttps://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
+- [Hyper-V 管理員中的加密支援設定](/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
 - [虛擬機器中的 BitLocker 支援](https://kb.vmware.com/s/article/2036142)
 
 ## <a name="manage-personal-information"></a>管理個人資訊

@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/03/2021
-ms.openlocfilehash: b1a732350c69d366458af6e388102e1f67395abf
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
-ms.translationtype: HT
+ms.openlocfilehash: 9c79a1ab46513da54d61f1da5c1ba3a6dd480a95
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120513"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785358"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>教學課程：使用 DMS 在離線狀態下將 SQL Server 移轉至 Azure SQL Database
 
-您可以使用 Azure 資料庫移轉服務，將資料庫從 SQL Server 執行個體遷移至 [Azure SQL Database](/azure/sql-database/)。 在本教學課程中，您會使用 Azure 資料庫移轉服務，將已還原至 SQL Server 2016 (或更新版本) 內部部署執行個體的 [Adventureworks2016](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-ver15&tabs=ssms#download-backup-files) 資料庫遷移至 Azure SQL Database 中的單一資料庫或集區資料庫。
+您可以使用 Azure 資料庫移轉服務，將資料庫從 SQL Server 執行個體遷移至 [Azure SQL Database](/azure/sql-database/)。 在本教學課程中，您會使用 Azure 資料庫移轉服務，將已還原至 SQL Server 2016 (或更新版本) 內部部署執行個體的 [Adventureworks2016](/sql/samples/adventureworks-install-configure?tabs=ssms&view=sql-server-ver15#download-backup-files) 資料庫遷移至 Azure SQL Database 中的單一資料庫或集區資料庫。
 
 您將了解如何：
 > [!div class="checklist"]

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: a5a69c35e5c7e33443c3810cad9ab4e21b048328
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 6912124ce8d1741731d625dccfea445417b2488d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148812"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785011"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>將 MXChip IoT DevKit 連線到 Azure IoT 遠端監視解決方案加速器
 
@@ -120,7 +120,7 @@ DevKit 會重新開機，然後開始執行程式碼。
 
 ## <a name="change-device-id"></a>變更裝置識別碼
 
-若要將程式碼中的硬式編碼 **AZ3166** 變更為自訂裝置識別碼，請修改[遠端監視範例](../iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md)中顯示的程式碼。
+若要將程式碼中的硬式編碼 **AZ3166** 變更為自訂裝置識別碼，請修改 [遠端監視範例](/previous-versions/azure/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2)中顯示的程式碼。
 
 ## <a name="problems-and-feedback"></a>問題與意見反應
 
