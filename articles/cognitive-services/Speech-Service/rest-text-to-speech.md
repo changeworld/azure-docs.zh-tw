@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: d858474eca34243a007d0d0ac1e023a4a0fab8ec
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 53be2f6795593bf44cafde149242b13ed4fdfe50
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572335"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790472"
 ---
 # <a name="text-to-speech-rest-api"></a>文字轉換語音 REST API
 
@@ -59,12 +59,10 @@ ms.locfileid: "98572335"
 | 日本東部 | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 南韓中部 | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美國中北部 | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| 北歐 | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| 南非北部 | `https://southafricanorth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 歐洲北部 | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美國中南部 | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 東南亞 | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 英國南部 | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| 美國中西部 | `https://westcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 西歐 | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美國西部 | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美國西部 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -279,5 +277,5 @@ Authorization: Bearer [Base64 access_token]
 ## <a name="next-steps"></a>後續步驟
 
 - [建立 Azure 免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
-- [適用于長格式音訊的非同步合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+- [適用于長格式音訊的非同步合成](./long-audio-api.md)
 - [開始使用自訂語音](how-to-custom-voice.md)

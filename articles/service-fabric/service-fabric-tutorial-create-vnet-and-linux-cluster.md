@@ -4,12 +4,12 @@ description: 了解如何使用 Azure CLI 將 Linux Service Fabric 叢集部署�
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 52eba2e5780b1a66f3884a764631908335372273
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 77cc49c1b79e5c24e78a67a69493aa0b0059d565
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738967"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791066"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>將 Linux Service Fabric 叢集部署到 Azure 虛擬網路
 
@@ -86,7 +86,7 @@ Ubuntu 18.04 LTS 兩個範本之間的差異
 
 **AzureDeploy** 會宣告用來部署叢集和相關聯資源的許多值。 您可能需要為自己的部署修改某些參數：
 
-|參數|範例值|注意|
+|參數|範例值|備註|
 |---|---||
 |adminUserName|vmadmin| 叢集 VM 的系統管理員使用者名稱。 |
 |adminPassword|Password#1234| 叢集 VM 的系統管理員密碼。|
@@ -106,7 +106,7 @@ Ubuntu 18.04 LTS 兩個範本之間的差異
 
 ### <a name="create-a-cluster-using-an-existing-certificate"></a>使用現有的憑證建立叢集
 
-下列指令碼會使用 [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest) 命令和範本，部署以現有憑證保護的新叢集。 此命令也會在 Azure 中建立新的金鑰保存庫，並上傳您的憑證。
+下列指令碼會使用 [az sf cluster create](/cli/azure/sf/cluster) 命令和範本，部署以現有憑證保護的新叢集。 此命令也會在 Azure 中建立新的金鑰保存庫，並上傳您的憑證。
 
 ```azurecli
 ResourceGroupName="sflinuxclustergroup"
@@ -132,7 +132,7 @@ az sf cluster create --resource-group $ResourceGroupName --location $Location \
 
 ### <a name="create-a-cluster-using-a-new-self-signed-certificate"></a>使用新的自我簽署憑證建立叢集
 
-下列指令碼會使用 [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest) 命令和範本，在 Azure 中部署新的叢集。 此命令也會在 Azure 中建立新的金鑰保存庫、將新的自我簽署憑證新增至金鑰保存庫，並將憑證檔案下載至本機。
+下列指令碼會使用 [az sf cluster create](/cli/azure/sf/cluster) 命令和範本，在 Azure 中部署新的叢集。 此命令也會在 Azure 中建立新的金鑰保存庫、將新的自我簽署憑證新增至金鑰保存庫，並將憑證檔案下載至本機。
 
 ```azurecli
 ResourceGroupName="sflinuxclustergroup"

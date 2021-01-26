@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: bf79fe8766d36fe59595be43250341d49b5460c8
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: ba50def51bcea4f477bea5cecbe5b1ed0409b01a
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95559520"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98792289"
 ---
 您可以選擇使用自己的金鑰來管理每個受控磁碟層級的加密。 使用客戶管理的金鑰對受控磁碟進行伺服器端加密，提供與 Azure Key Vault 的整合體驗。 您可以將[您的 RSA 金鑰](../articles/key-vault/keys/hsm-protected-keys.md)匯入 Key Vault，或在 Azure Key Vault 中產生新的 RSA 金鑰。 
 
@@ -22,8 +22,6 @@ Azure 受控磁碟會使用[信封加密](../articles/storage/common/storage-cli
 #### <a name="full-control-of-your-keys"></a>完全掌控您的金鑰
 
 您必須將存取權授與 Key Vault 中的受控磁片，才能使用您的金鑰來加密和解密 DEK。 這可讓您完全控制您的資料和金鑰。 您可以隨時停用金鑰或撤銷對受控磁碟的存取權。 您也可以使用 Azure Key Vault 監視稽核加密金鑰使用量，以確保只有受控磁碟或其他信任的 Azure 服務會存取您的金鑰。
-
-當您停用或刪除金鑰時，任何使用該金鑰之磁片的 Vm 都會自動關機。 之後，除非再次啟用金鑰或指派新的金鑰，否則將無法使用 VM。
 
 對於進階 SSD、標準 SSD，以及標準 HDD：當您停用或刪除您的金鑰時，對於磁碟使用該金鑰的任何 VM，都將自動關閉。 之後，除非再次啟用金鑰或指派新的金鑰，否則將無法使用 VM。    
 

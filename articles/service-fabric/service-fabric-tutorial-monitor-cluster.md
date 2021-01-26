@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: f9ad0f443b1647499f7085693f34f4da9ec85398
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
-ms.translationtype: HT
+ms.openlocfilehash: ecd05a838425d57e0eaff2fa571d72b5a87e92a6
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331986"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791773"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>教學課程：在 Azure 中監視 Service Fabric 叢集
 
@@ -74,7 +74,7 @@ Azure 監視器記錄會從裝載於雲端的應用程式和服務收集和分�
 
 ### <a name="view-service-fabric-events-including-actions-on-nodes"></a>檢視 Service Fabric 事件，包括節點上的動作
 
-在 Service Fabric 分析頁面上，按一下 **叢集事件** 的圖形。  隨即顯示已收集的所有系統事件記錄。 為了方便參考，這些記錄均來自 Azure 儲存體帳戶中的 **WADServiceFabricSystemEventsTable** ，而且同樣地，您接下來看到的 Reliable Service 和 Actor 事件均分別來自那些表格。
+在 Service Fabric 分析頁面上，按一下 **叢集事件** 的圖形。  隨即顯示已收集的所有系統事件記錄。 為了方便參考，這些記錄均來自 Azure 儲存體帳戶中的 **WADServiceFabricSystemEventsTable**，而且同樣地，您接下來看到的 Reliable Service 和 Actor 事件均分別來自那些表格。
     
 ![查詢操作通道](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-events.png)
 
@@ -240,7 +240,7 @@ ServiceFabricReliableActorEvent
 ## <a name="query-the-eventstore-service"></a>查詢 EventStore 服務
 [EventStore 服務](service-fabric-diagnostics-eventstore.md)可讓您了解叢集或工作負載在指定時間點的狀態。 EventStore 是具狀態的 Service Fabric 服務，可維護叢集中的事件。 事件會透過 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)、REST 和 API 公開。 EventStore 會直接查詢叢集，以取得叢集中有關所有實體的診斷資料。若要查看 EventStore 中可用的事件完整清單，請參閱 [Service Fabric 事件](service-fabric-diagnostics-event-generation-operational.md)。
 
-EventStore API 可以使用 [Service Fabric 用戶端程式庫](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library)，以程式設計方式進行查詢。
+EventStore API 可以使用 [Service Fabric 用戶端程式庫](/dotnet/api/overview/azure/service-fabric#client-library)，以程式設計方式進行查詢。
 
 以下為透過 GetClusterEventListAsync 函式，針對介於 2018-04-03T18:00:00Z 和 2018-04-04T18:00:00Z 之間的所有叢集事件所提出的範例要求。
 
@@ -299,10 +299,10 @@ Service Fabric 導入了由健康情況實體組成的[健康情況模型](servi
 
 叢集會自動填入系統元件所傳送的健康情況報告。 請參閱 [使用系統健康狀態報告進行疑難排解](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)。
 
-Service Fabric 會針對每種支援的 [實體類型](service-fabric-health-introduction.md#health-entities-and-hierarchy)公開健康情況查詢。 您可透過 API (在 [FabricClient.HealthManager](/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet) 上使用方法)、PowerShell Cmdlet 和 REST 來存取查詢。 這些查詢會傳回實體的完整健康情況資訊：彙總健康情況、實體健康事件、子系健康情況 (如果適用)、狀況不佳評估 (當實體狀況不佳時)，以及子系健康情況統計資料 (如果適用)。
+Service Fabric 會針對每種支援的 [實體類型](service-fabric-health-introduction.md#health-entities-and-hierarchy)公開健康情況查詢。 您可透過 API (在 [FabricClient.HealthManager](/dotnet/api/system.fabric.fabricclient.healthmanager) 上使用方法)、PowerShell Cmdlet 和 REST 來存取查詢。 這些查詢會傳回實體的完整健康情況資訊：彙總健康情況、實體健康事件、子系健康情況 (如果適用)、狀況不佳評估 (當實體狀況不佳時)，以及子系健康情況統計資料 (如果適用)。
 
 ### <a name="get-cluster-health"></a>取得叢集健康情況
-[Get-ServiceFabricClusterHealth Cmdlet](/powershell/module/servicefabric/get-servicefabricclusterhealth) 會傳回叢集實體的健康情況，並包含應用程式和節點 (叢集子系) 的健全狀態。  首先使用 [Connect-ServiceFabricCluster Cmdlet](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) 連線到叢集。
+[Get-ServiceFabricClusterHealth Cmdlet](/powershell/module/servicefabric/get-servicefabricclusterhealth) 會傳回叢集實體的健康情況，並包含應用程式和節點 (叢集子系) 的健全狀態。  首先使用 [Connect-ServiceFabricCluster Cmdlet](/powershell/module/servicefabric/connect-servicefabriccluster) 連線到叢集。
 
 叢集的狀態是 11 個節點、系統應用程式，以及依所述設定的 fabric:/Voting。
 
@@ -454,7 +454,7 @@ HealthEvents            : None
 ```
 
 ### <a name="get-node-health"></a>取得節點的健康情況
-[Get-ServiceFabricNodeHealth Cmdlet](/powershell/module/servicefabric/get-servicefabricnodehealth) 會傳回節點實體的健康情況，並包含節點上報告的健康情況事件。 首先使用 [Connect-ServiceFabricCluster Cmdlet](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) 連線到叢集。 下列範例會使用預設的健康情況原則，來取得特定節點的健康情況：
+[Get-ServiceFabricNodeHealth Cmdlet](/powershell/module/servicefabric/get-servicefabricnodehealth) 會傳回節點實體的健康情況，並包含節點上報告的健康情況事件。 首先使用 [Connect-ServiceFabricCluster Cmdlet](/powershell/module/servicefabric/connect-servicefabriccluster) 連線到叢集。 下列範例會使用預設的健康情況原則，來取得特定節點的健康情況：
 
 ```powershell
 Get-ServiceFabricNodeHealth _nt1vm_3

@@ -3,18 +3,18 @@ title: Service Fabric 應用程式升級
 description: 本文章提供升級 Service Fabric 應用程式的簡介，其中包括選擇升級模式和執行健康狀態檢查。
 ms.topic: conceptual
 ms.date: 8/5/2020
-ms.openlocfilehash: 8eecd923b009ecbe9f4e607ad57a99b3f20955b9
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: f3fad8d0ede92004706d9a1f4e14353715361b63
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309842"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792009"
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric 應用程式升級
 Azure Service Fabric 應用程式是服務集合。 在升級期間，Service Fabric 會比較新的 [應用程式資訊清單](service-fabric-application-and-service-manifests.md) 與舊版本，並決定應用程式中哪些服務需要更新。 Service Fabric 會比較服務資訊清單中的版本號碼和上一版中的版本號碼。 如果服務未變更，則該服務不會升級。
 
 > [!NOTE]
-> [ApplicationParameter](/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)不會在應用程式升級期間保留。 為了保留目前的應用程式參數，使用者應先取得參數，並將其傳遞至升級 API 呼叫，如下所示：
+> [ApplicationParameter](/dotnet/api/system.fabric.description.applicationdescription.applicationparameters#System_Fabric_Description_ApplicationDescription_ApplicationParameters)不會在應用程式升級期間保留。 為了保留目前的應用程式參數，使用者應先取得參數，並將其傳遞至升級 API 呼叫，如下所示：
 ```powershell
 $myApplication = Get-ServiceFabricApplication -ApplicationName fabric:/myApplication
 $appParamCollection = $myApplication.ApplicationParameters
@@ -52,7 +52,7 @@ Service Fabric 在升級期間進行的健康狀態原則以及檢查不限於�
 不受監控手動模式在每次於更新網域上升級之後都需要手動介入，以開始進行下一個更新網域上的升級。 系統不會執行任何 Service Fabric 健康狀態檢查。 系統管理員在開始下一個更新網域中的升級之前，會執行健康狀態或狀態檢查。
 
 ## <a name="upgrade-default-services"></a>升級預設服務
-某些定義於[應用程式資訊清單](service-fabric-application-and-service-manifests.md)中的預設服務參數，也可在應用程式升級的過程中一併升級。 只有支援透過 [Update-ServiceFabricService](/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) 進行變更的服務參數，才能在升級的過程中變更。 在應用程式升級期間變更預設服務的行為如下：
+某些定義於[應用程式資訊清單](service-fabric-application-and-service-manifests.md)中的預設服務參數，也可在應用程式升級的過程中一併升級。 只有支援透過 [Update-ServiceFabricService](/powershell/module/servicefabric/update-servicefabricservice) 進行變更的服務參數，才能在升級的過程中變更。 在應用程式升級期間變更預設服務的行為如下：
 
 1. 會建立不存在於叢集中的新應用程式資訊清單中的預設服務。
 2. 會更新同時存在於舊有與新的應用程式資訊清單中的預設服務。 新應用程式資訊清單中的預設服務參數會覆寫現有服務的參數。 在預設服務更新失敗時，應用程式升級會自動回復。
@@ -64,14 +64,14 @@ Service Fabric 在升級期間進行的健康狀態原則以及檢查不限於�
 > [EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) 叢集組態設定值必須是 *true*，以啟用規則 2) 和 3) 上述項目 (預設服務更新或刪除)。 從 Service Fabric 5.5 版開始即支援此功能。
 
 ## <a name="upgrading-multiple-applications-with-https-endpoints"></a>使用 HTTPS 端點來升級多個應用程式
-使用**HTTP 時**，您必須小心不要針對相同應用程式的不同實例使用**相同的埠**。 原因是 Service Fabric 將無法升級其中一個應用程式執行個體的憑證。 舉例來說，如果應用程式 1 或應用程式 2 都想要將其憑證 1 升級至憑證 2。 當進行升級時，Service Fabric 可能已清除憑證 1 在 http.sys 的註冊，儘管另一個應用程式仍然在使用它。 為了防止這種情況，Service Fabric 會偵測到該連接埠上已經有另一個應用程式以該憑證註冊 (因為 http.sys)，而讓作業失敗。
+使用 **HTTP 時**，您必須小心不要針對相同應用程式的不同實例使用 **相同的埠**。 原因是 Service Fabric 將無法升級其中一個應用程式執行個體的憑證。 舉例來說，如果應用程式 1 或應用程式 2 都想要將其憑證 1 升級至憑證 2。 當進行升級時，Service Fabric 可能已清除憑證 1 在 http.sys 的註冊，儘管另一個應用程式仍然在使用它。 為了防止這種情況，Service Fabric 會偵測到該連接埠上已經有另一個應用程式以該憑證註冊 (因為 http.sys)，而讓作業失敗。
 
-因此，Service Fabric 不支援在不同的應用程式執行個體中，使用「相同的連接埠」**** 來升級兩個不同的服務。 換句話說，您無法在相同連接埠的不同服務上使用相同的憑證。 如果您需要在相同的連接埠上使用共用憑證，就必須使用放置條件約束，以確保將這些服務放在不同的機器上。 或者，可能的話，考慮針對每個應用程式執行個體中的每個服務，使用 Service Fabric 動態連接埠。 
+因此，Service Fabric 不支援在不同的應用程式執行個體中，使用「相同的連接埠」來升級兩個不同的服務。 換句話說，您無法在相同連接埠的不同服務上使用相同的憑證。 如果您需要在相同的連接埠上使用共用憑證，就必須使用放置條件約束，以確保將這些服務放在不同的機器上。 或者，可能的話，考慮針對每個應用程式執行個體中的每個服務，使用 Service Fabric 動態連接埠。 
 
 如果您看到使用 https 進行升級失敗，系統將會顯示錯誤警告「Windows HTTP 伺服器 API 針對共用連接埠的應用程式不支援多個憑證」。
 
 ## <a name="application-upgrade-flowchart"></a>應用程式升級流程圖
-本段落下面的流程圖可以協助您了解 Service Fabric 應用程式的升級程序。 特別是，此流程會說明逾時 (包括 HealthCheckStableDuration**、HealthCheckRetryTimeout** 和 UpgradeHealthCheckInterval**) 如何協助控制一個更新網域中的升級被視為成功或失敗的時機。
+本段落下面的流程圖可以協助您了解 Service Fabric 應用程式的升級程序。 特別是，此流程會說明逾時 (包括 HealthCheckStableDuration、HealthCheckRetryTimeout 和 UpgradeHealthCheckInterval) 如何協助控制一個更新網域中的升級被視為成功或失敗的時機。
 
 ![Service Fabric 應用程式的升級程序][image]
 

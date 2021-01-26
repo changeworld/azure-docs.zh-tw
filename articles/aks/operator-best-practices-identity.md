@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: a63a756448f9c7202c79c3b4625fc99d4a90dc52
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8e0c7324f5b73b3a2ac5e5fd6fa256202035077a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014052"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790964"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中驗證和授權的最佳做法
 
@@ -98,39 +98,42 @@ roleRef:
 2. 存取 Kubernetes API。 此存取層級是藉由 [KUBERNETES RBAC](#use-kubernetes-role-based-access-control-kubernetes-rbac) (傳統) 或整合 Azure RBAC 與 AKS 來 Kubernetes 授權來控制。
 若要瞭解如何使用 Azure RBAC 將許可權授與 Kubernetes API，請參閱 [使用 AZURE rbac 進行 Kubernetes 授權](manage-azure-rbac.md)。
 
-## <a name="use-pod-identities"></a>使用 Pod 身分識別
+## <a name="use-pod-managed-identities"></a>使用 Pod 受控身分識別
 
 **最佳做法指引** - 請勿使用 Pod 或容器映像內的固定認證，因為這些認證有外洩或濫用的風險。 請改用 Pod 身分識別，以使用中央 Azure AD 身分識別解決方案自動要求存取權。 Pod 身分識別僅適用于 Linux Pod 和容器映射。
 
+> [!NOTE]
+> 即將推出適用于 Windows 容器的 Pod 受控識別支援。
+
 當 Pod 需要存取其他 Azure 服務時 (例如 Cosmos DB、Key Vault 或 Blob 儲存體)，Pod 將需要存取認證。 這些存取認證可以使用容器映像來定義或插入作為 Kubernetes 祕密，但必須以手動方式建立並指派。 認證通常會跨 Pod 重複使用，而不會定期輪替。
 
-適用于 Azure 資源的受控識別 (目前實作為相關聯的 AKS 開放原始碼專案) 可讓您透過 Azure AD 自動要求存取服務。 您不需手動定義 Pod 的認證，因為 Pod 會即時要求存取權杖，並且可用該權杖來存取其獲指派的服務。 在 AKS 中，叢集操作員會部署兩個元件，讓 Pod 能夠使用受控識別：
+適用于 Azure 資源的 Pod 受控識別可讓您透過 Azure AD 自動要求存取服務。 Pod 受控身分識別目前為預覽版，可供 Azure Kubernetes Service。 請參閱 [Azure Kubernetes Service (Preview 中的使用 Azure Active Directory pod 管理的 ]( https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) 身分識別) 檔以開始使用。 使用 Pod 受控身分識別時，您不需要手動定義 Pod 的認證，而是會即時要求存取權杖，而且只能用來存取其指派的服務。 在 AKS 中，有兩個元件可處理作業，以允許 pod 使用受控識別：
 
 * **節點管理身分識別 (NMI) 伺服器** 是在 AKS 叢集中的每個節點上以 DaemonSet 形式執行的 Pod。 NMI 伺服器會接聽 Pod 對 Azure 服務的要求。
-* **受控識別控制器 (MIC)** 是一個中央 Pod，有權查詢 Kubernetes API 伺服器，以及檢查對應至 Pod 的 Azure 身分識別對應。
+* **Azure 資源提供者** 會查詢 Kubernetes API 伺服器，並檢查對應至 Pod 的 azure 身分識別對應。
 
-當 Pod 要求存取 Azure 服務時，網路規則即會將流量重新導向至節點管理身分識別 (NMI) 伺服器。 NMI 伺服器會根據 Pod 的遠端位址識別要求存取 Azure 服務的 Pod，並查詢受控識別控制器 (MIC)。 MIC 會檢查 AKS 叢集中的 Azure 身分識別對應，然後，NMI 伺服器會根據 Pod 的身分識別對應向 Azure Active Directory (AD) 要求存取權杖。 Azure AD 會將存取權提供給 NMI 伺服器，繼而傳回給 Pod。 此存取權杖隨後可供 Pod 用來要求存取 Azure 中的服務。
+當 Pod 要求存取 Azure 服務時，網路規則即會將流量重新導向至節點管理身分識別 (NMI) 伺服器。 NMI 伺服器會根據其遠端位址來識別要求存取 Azure 服務的 pod，並查詢 Azure 資源提供者。 Azure 資源提供者會檢查 AKS 叢集中的 Azure 身分識別對應，然後 NMI 伺服器會根據 pod 的身分識別對應，向 Azure Active Directory 的 (AD) 要求存取權杖。 Azure AD 會將存取權提供給 NMI 伺服器，繼而傳回給 Pod。 此存取權杖隨後可供 Pod 用來要求存取 Azure 中的服務。
 
 在下列範例中，開發人員會建立使用受控識別來要求存取 Azure SQL Database 的 pod：
 
 ![Pod 身分識別可讓 Pod 自動要求存取其他服務](media/operator-best-practices-identity/pod-identities.png)
 
 1. 叢集操作員首先建立在 Pod 要求存取服務時可用來對應身分識別的服務帳戶。
-1. 部署 NMI 伺服器和 MIC，以將 Pod 的任何存取權杖要求轉送至 Azure AD。
+1. 已部署 NMI 伺服器，以轉送任何 pod 要求以及 Azure 資源提供者，以取得 Azure AD 的存取權杖。
 1. 開發人員使用受控識別部署了透過 NMI 伺服器要求存取權杖的 Pod。
 1. 權杖會傳回至 pod 並用來存取 Azure SQL Database
 
 > [!NOTE]
-> 受控 pod 身分識別是開放原始碼專案，Azure 技術支援並不支援。
+> Pod 管理的身分識別目前處於預覽狀態。
 
-若要使用 Pod 身分識別，請參閱 [Kubernetes 應用程式的 Azure Active Directory 身分識別][aad-pod-identity]。
+若要使用 Pod 受控身分識別，請參閱 [Azure Kubernetes Service (Preview) 中使用 Azure Active Directory Pod 管理的 ]( https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity)身分識別。
 
 ## <a name="next-steps"></a>後續步驟
 
 這篇最佳做法文章主要討論叢集和資源的驗證和授權。 若要實作這些最佳做法，請參閱下列文章：
 
 * [整合 Azure Active Directory 與 AKS][aks-aad]
-* [搭配使用 Azure 資源的受控識別與 AKS][aad-pod-identity]
+* [在 Azure Kubernetes Service (Preview 中使用 Azure Active Directory pod 管理的身分識別) ]( https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity)
 
 如需 AKS 中叢集作業的相關詳細資訊，請參閱下列最佳作法：
 

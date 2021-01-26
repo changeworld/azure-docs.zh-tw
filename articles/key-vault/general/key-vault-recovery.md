@@ -8,12 +8,12 @@ ms.author: mbaldwin
 author: msmbaldwin
 manager: rkarlin
 ms.date: 09/30/2020
-ms.openlocfilehash: 4a6b3e4c6354c292d000a307bc25f8532aa9a096
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: a8e8e791f0dbe18322ad43364ae4ffd09b430caf
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250786"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790379"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>使用虛刪除和清除保護 Azure Key Vault 復原管理
 
@@ -26,10 +26,15 @@ ms.locfileid: "98250786"
 ## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/dotnet)
-* [PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+* [PowerShell 模組](/powershell/azure/install-az-ps)。
 * [Azure CLI](/cli/azure/install-azure-cli)
 * Key Vault - 您可以使用 [Azure 入口網站](../general/quick-create-portal.md)、[Azure CLI](../general/quick-create-cli.md) 或 [Azure PowerShell](../general/quick-create-powershell.md) 建立
-* 使用者將需要在訂用帳戶層級 (下列許可權，) 才能在虛刪除的保存庫上執行作業： |KeyVault/位置/deletedVaults/讀取 |查看已虛刪除之金鑰保存庫的屬性 | |KeyVault/位置/deletedVaults/清除/動作 |清除虛刪除的金鑰保存庫 |
+* 使用者將需要在訂用帳戶層級 (下列許可權，) 才能在虛刪除的保存庫上執行作業：
+
+  | 權限 | 說明 |
+  |---|---|
+  |Microsoft.KeyVault/locations/deletedVaults/read|檢視虛刪除之 Key Vault 的屬性|
+  |Microsoft.KeyVault/locations/deletedVaults/purge/action|清除虛刪除的 Key Vault|
 
 
 ## <a name="what-are-soft-delete-and-purge-protection"></a>什麼是虛刪除和清除保護
@@ -390,8 +395,8 @@ ms.locfileid: "98250786"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure Key Vault PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/az.keyvault)
-- [Key Vault Azure CLI 命令](https://docs.microsoft.com/cli/azure/keyvault)
+- [Azure Key Vault PowerShell Cmdlet](/powershell/module/az.keyvault)
+- [Key Vault Azure CLI 命令](/cli/azure/keyvault)
 - [Azure Key Vault 備份](backup.md)
 - [如何啟用 Key Vault 記錄](howto-logging.md)
 - [針對金鑰保存庫的存取進行保護](secure-your-key-vault.md)

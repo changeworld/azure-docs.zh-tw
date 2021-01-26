@@ -3,12 +3,12 @@ title: 適用于 Azure DevTest Labs 的 Azure 安全性基準
 description: 適用于 Azure DevTest Labs 的 Azure 安全性基準
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: eabb55956f97f40312c894ccabd7a341ecc5688c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 09b4e28437c79961d53cf07b068e3169d20fe0c4
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202006"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789899"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>適用于 Azure DevTest Labs 的 Azure 安全性基準
 
@@ -391,7 +391,7 @@ Microsoft 會對支援 Azure DevTest Labs 的基礎資源執行弱點管理。
 
 深入瞭解 [DevTest Labs 映射](image-factory-create.md)處理站，這是一個設定即程式碼的解決方案，可讓您定期自動建立及發佈映射，並使用所有所需的設定。 
 
-訂用帳戶管理員也可以使用 Azure 更新管理解決方案來管理 DevTest Labs Vm 的更新和修補程式。 更新管理依賴本機設定的更新存放庫來修補支援的 Windows 系統。 System Center Updates Publisher (Updates Publisher) 之類的工具可讓您將自訂更新發佈至 Windows Server Update Services (WSUS) 。 此案例可讓更新管理修補使用 Configuration Manager 作為其更新存放庫（具有協力廠商軟體）的機器。
+訂用帳戶管理員也可以使用 Azure 更新管理解決方案來管理 DevTest Labs Vm 的更新和修補程式。 更新管理依賴本機設定的更新存放庫來修補支援的 Windows 系統。 System Center Updates Publisher (Updates Publisher) 之類的工具可讓您將自訂更新發佈至 Windows Server Update Services (WSUS) 。 此案例可讓更新管理修補使用設定管理員作為其更新存放庫（具有協力廠商軟體）的機器。
 
 - [Azure 中的更新管理解決方案](../automation/update-management/overview.md)
 - [管理 Vm 的更新和修補程式](../automation/update-management/overview.md)
@@ -619,7 +619,7 @@ _ *Azure 資訊安全中心監視：** 不適用
 
 - [如何實行 Azure 資訊安全中心弱點評定建議](../security-center/deploy-vulnerability-assessment-vm.md)
 - [Azure Automation State Configuration 概觀](../automation/automation-dsc-overview.md)
-- [將 VHD 上傳至 Azure 並新建 VM 的範例指令碼](../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [將 VHD 上傳至 Azure 並新建 VM 的範例指令碼](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 - [如何在 DevTest Labs 中建立映射 factory](image-factory-create.md)
 
 **Azure 資訊安全中心監視：** 是的

@@ -3,12 +3,12 @@ title: 跨多個實驗室和訂用帳戶 Azure DevTest Labs 使用量
 description: 瞭解如何報告跨多個實驗室和訂用帳戶的 Azure DevTest Labs 使用量。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 9640dc3fd74095a737f382994201dc5610af921a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: d789b9849ec798a396e99420649792937422470f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152208"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789933"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>報告跨多個實驗室和訂用帳戶的 Azure DevTest Labs 使用量
 
@@ -82,5 +82,5 @@ ms.locfileid: "92152208"
     使用者選取高效能 (昂貴) VM 大小？
 -   正在使用哪些 Marketplace 映射？
 
-    是最常見的 VM 基底的自訂映射，是否應建立 [共用映射庫](../virtual-machines/windows/shared-image-galleries.md) 或 [映射](image-factory-create.md)處理站等常見映射存放區。
+    是最常見的 VM 基底的自訂映射，是否應建立 [共用映射庫](../virtual-machines/shared-image-galleries.md) 或 [映射](image-factory-create.md)處理站等常見映射存放區。
 -   哪些自訂映射正在使用或未使用？

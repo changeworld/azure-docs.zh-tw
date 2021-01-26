@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5fcb3226eebf39ab18fb3bb24f0521a0523748d4
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
-ms.translationtype: HT
+ms.openlocfilehash: bc9601dbea5c73c6909bd658f322c345143a526c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134172"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790269"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault 記錄
 
@@ -194,7 +194,7 @@ ms.locfileid: "98134172"
 ## <a name="next-steps"></a>後續步驟
 
 - [如何啟用 Key Vault 記錄](howto-logging.md)
-- [Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/)
+- [Azure 監視器](../../azure-monitor/index.yml)
 - 如需在 .NET Web 應用程式中使用 Azure Key Vault 的教學課程，請參閱[從 Web 應用程式使用 Azure Key Vault](tutorial-net-create-vault-azure-web-app.md)。
 - 如需程式設計參考，請參閱 [Azure 金鑰保存庫開發人員指南](developers-guide.md)。
 - 如需 Azure 金鑰保存庫的 Azure PowerShell 1.0 Cmdlet 清單，請參閱 [Azure 金鑰保存庫 Cmdlet](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)。

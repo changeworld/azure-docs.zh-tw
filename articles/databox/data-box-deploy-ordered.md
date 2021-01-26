@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: alkohli
-ms.openlocfilehash: 91b3e2e86394c889f6fa40f527dd0dd212e1cb57
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 4c44fca7b443a4d289b7ac7e2e507a3c3f305089
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763091"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790778"
 ---
 # <a name="tutorial-order-azure-data-box"></a>教學課程：訂購 Azure 資料箱
 
@@ -338,9 +338,9 @@ PS C:\Windows\System32>
 
 14. 選取一個使用者身分識別，用來管理對此資源的存取。 選擇 [選取使用者身分識別]。 在右側的面板中，選取要使用的訂用帳戶和受控識別。 然後選擇 [選取]  。
 
-    使用者指派的受控識別是一項獨立的 Azure 資源，可用來管理多個資源。 如需詳細資訊，請參閱[受控識別類型](/azure/active-directory/managed-identities-azure-resources/overview)。  
+    使用者指派的受控識別是一項獨立的 Azure 資源，可用來管理多個資源。 如需詳細資訊，請參閱[受控識別類型](../active-directory/managed-identities-azure-resources/overview.md)。  
 
-    如果您需要建立新的受控識別，請遵循[使用 Azure 入口網站對使用者指派的受控識別建立、列出、刪除或指派角色](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)中的指引。
+    如果您需要建立新的受控識別，請遵循[使用 Azure 入口網站對使用者指派的受控識別建立、列出、刪除或指派角色](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)中的指引。
     
     ![選取使用者身分識別](./media/data-box-deploy-ordered/customer-managed-key-10.png)
 

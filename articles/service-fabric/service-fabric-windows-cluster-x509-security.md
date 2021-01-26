@@ -3,12 +3,12 @@ title: 使用憑證保護 Windows 上的叢集
 description: 保護獨立或內部部署叢集 Azure Service Fabric 內的通訊，以及用戶端和叢集之間的通訊。
 ms.topic: conceptual
 ms.date: 10/15/2017
-ms.openlocfilehash: 34ba457ce0f39705393962d5c5ec8fa11668f413
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: d75c644be47ea44f6a8a6ccac91b785af0132833
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686118"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791032"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>使用 X.509 憑證保護 Windows 上的獨立叢集
 本文說明如何保護獨立 Windows 叢集的不同節點之間的通訊。 此外，也會說明如何藉由使用 X.509 憑證，驗證連線到此叢集的用戶端。 驗證可確保只有已獲授權的使用者可以存取叢集和已部署的應用程式，以及執行管理工作。 憑證安全性應在叢集建立之時先在叢集上啟用。  
@@ -355,7 +355,7 @@ $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $Tru
 Connect-ServiceFabricCluster $ConnectArgs
 ```
 
-然後，您可以執行其他的 PowerShell 命令以使用此叢集。 例如，您可以執行 [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) 以顯示此安全叢集上的節點清單。
+然後，您可以執行其他的 PowerShell 命令以使用此叢集。 例如，您可以執行 [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode) 以顯示此安全叢集上的節點清單。
 
 
 若要移除叢集，連線至您下載 Service Fabric 套件的叢集節點，開啟命令列並移至套件資料夾。 現在執行下列命令：

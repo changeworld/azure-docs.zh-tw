@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: fd04e5a7f084de7a95f20b54b99a9e4590f10cd7
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 7df9f7d072af7c5f6523fd1be0432ce51954fa10
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034759"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791874"
 ---
 # <a name="call-functions-from-azure-logic-apps"></a>從 Azure Logic Apps 呼叫函數
 
@@ -31,7 +31,7 @@ ms.locfileid: "98034759"
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-* 函數應用程式，這是在 Azure Functions 中建立之函式的容器，以及您所建立的函式。 如果您沒有函式應用程式，[請先建立該函式應用程式](../azure-functions/functions-create-first-azure-function.md)。 然後，您可以使用 Azure 入口網站在邏輯應用程式外建立函式，或在邏輯應用程式設計工具中[從邏輯應用程式內](#create-function-designer)建立函式。
+* 函數應用程式，這是在 Azure Functions 中建立之函式的容器，以及您所建立的函式。 如果您沒有函式應用程式，[請先建立該函式應用程式](../azure-functions/functions-get-started.md)。 然後，您可以使用 Azure 入口網站在邏輯應用程式外建立函式，或在邏輯應用程式設計工具中[從邏輯應用程式內](#create-function-designer)建立函式。
 
 * 使用邏輯應用程式時，無論是現有或新的函數應用程式和函式，也都要符合相同的需求：
 
@@ -102,9 +102,9 @@ function convertToDateString(request, response){
 
 ## <a name="create-functions-inside-logic-apps"></a>在邏輯應用程式內部建立函式
 
-您可以使用邏輯應用程式設計工具中內建的 Azure Functions 動作，直接從邏輯應用程式的工作流程建立函式，但您只能將此方法用於以 JavaScript 撰寫的函式。 若為其他語言，您可以透過 Azure 入口網站中的 Azure Functions 體驗來建立函數。 如需詳細資訊，請參閱[在 Azure 入口網站中建立您的第一個函式](../azure-functions/functions-create-first-azure-function.md)。
+您可以使用邏輯應用程式設計工具中內建的 Azure Functions 動作，直接從邏輯應用程式的工作流程建立函式，但您只能將此方法用於以 JavaScript 撰寫的函式。 若為其他語言，您可以透過 Azure 入口網站中的 Azure Functions 體驗來建立函數。 如需詳細資訊，請參閱[在 Azure 入口網站中建立您的第一個函式](../azure-functions/functions-get-started.md)。
 
-不過，在 Azure 中建立函式之前，您必須已經有函數應用程式，這是您函式的容器。 如果您沒有函式應用程式，請先建立該函式應用程式。 請參閱[在 Azure 入口網站中建立您的第一個函式](../azure-functions/functions-create-first-azure-function.md)。
+不過，在 Azure 中建立函式之前，您必須已經有函數應用程式，這是您函式的容器。 如果您沒有函式應用程式，請先建立該函式應用程式。 請參閱[在 Azure 入口網站中建立您的第一個函式](../azure-functions/functions-get-started.md)。
 
 1. 在 [Azure 入口網站](https://portal.azure.com)的邏輯應用程式設計工具中，開啟邏輯應用程式。
 

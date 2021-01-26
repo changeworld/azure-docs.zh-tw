@@ -8,12 +8,12 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 12bcb54f4bfdf17209324febeba380ff7789fc0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec7ecb77d37ed1cdf1d13aa7191f5d50e0008c20
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88998980"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790794"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>教學課程：發佈、訂閱雲端中的事件
 
@@ -21,7 +21,7 @@ ms.locfileid: "88998980"
 
 請參閱 [事件方格概念](concepts.md) ，以瞭解事件方格主題和訂用帳戶在繼續之前的內容。
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>先決條件 
 若要完成這個教學課程，您將需要：
 
 * **Azure 訂** 用帳戶-如果您還沒有帳戶，請建立一個 [免費帳戶](https://azure.microsoft.com/free) 。 
@@ -31,7 +31,7 @@ ms.locfileid: "88998980"
 
 ## <a name="create-an-azure-function-in-the-azure-portal"></a>在 Azure 入口網站中建立 Azure 函式
 
-遵循本 [教學](../../azure-functions/functions-create-first-azure-function.md) 課程中所述的步驟來建立 Azure 函數。 
+遵循本 [教學](../../azure-functions/functions-get-started.md) 課程中所述的步驟來建立 Azure 函數。 
 
 以下列程式碼取代程式碼片段：
 
@@ -125,7 +125,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
     ```
 
    >[!NOTE]
-   > **EndpointType**指定訂閱者為 Webhook。  **EndpointUrl**會指定訂閱者接聽事件的 URL。 此 URL 會對應至您稍早設定的 Azure Function 範例。
+   > **EndpointType** 指定訂閱者為 Webhook。  **EndpointUrl** 會指定訂閱者接聽事件的 URL。 此 URL 會對應至您稍早設定的 Azure Function 範例。
 2. 執行下列命令以建立訂用帳戶。 應傳回 HTTP 狀態碼 200 OK。
 
     ```sh

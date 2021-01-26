@@ -12,20 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: aa9160f01ed0040123bd8ac932cfd2443f557bb6
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 8853f3774bb35361746c8b706f38bc54079d74f7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511724"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790981"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>教學課程：使用 Azure Sentinel 調查事件
 
 > [!IMPORTANT]
-> 調查圖表目前為 **預覽** 狀態。 請參閱 [Microsoft Azure 預覽的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ，以取得適用于 Azure 功能（Beta、預覽或尚未發行正式運作）的其他法律條款。
-
+> 調查圖表現已 **正式推出**。 
 
 本教學課程可協助您使用 Azure Sentinel 調查事件。 當您將資料來源連接到 Azure Sentinel 之後，您想要在發生可疑問題時收到通知。 為了讓您能夠這樣做，Azure Sentinel 可讓您建立高階警示規則，以產生您可以指派和調查的事件。
 
@@ -37,7 +36,7 @@ ms.locfileid: "96511724"
 
 事件可以包含多個警示。 它是特定調查的所有相關辨識項的匯總。 系統會根據您在 [ **分析** ] 頁面中建立的分析規則來建立事件。 與警示相關的屬性（例如嚴重性和狀態）都是在事件層級設定。 當您讓 Azure Sentinel 知道您要尋找的威脅種類，以及如何找到它們之後，您可以藉由調查事件來監視偵測到的威脅。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 - 如果您在設定分析規則時使用實體對應欄位，您將只能調查事件。 調查圖形要求您的原始事件必須包含實體。
 
 - 如果您有需要指派事件的來賓使用者，則必須將 Azure AD 租使用者中的 [目錄讀取](../active-directory/roles/permissions-reference.md#directory-readers) 者角色指派給使用者。 一般 (非來賓) 使用者預設會指派此角色。
@@ -113,11 +112,11 @@ ms.locfileid: "96511724"
 
 一旦您解決特定事件 (例如，當您的調查已達到其結論) 時，您應該將事件的狀態設定為 [ **已關閉**]。 當您這樣做時，系統會要求您指定關閉事件的原因，以將事件分類。 此為必要步驟。 按一下 [ **選取分類** ]，然後從下拉式清單中選擇下列其中一項：
 
-- 真肯定的可疑活動
-- 良性正面-可疑但預期
-- 錯誤的正面-不正確的警示邏輯
-- 錯誤正面-不正確的資料
-- 待定
+- 確判為真 - 可疑的活動
+- 確判為良性 - 可疑但已知
+- 誤判為真 - 不正確的警示邏輯
+- 誤判為真 - 不正確的資料
+- 未決定
 
 :::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="醒目顯示 [選取分類] 清單中可用分類的螢幕擷取畫面。":::
 

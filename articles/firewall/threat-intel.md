@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: victorh
-ms.openlocfilehash: e51cc8905a7b4a88bb7f7dabaf24bb30159ff86c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77e36d5ab98f1177b5a0b89ee10b3e6bd22560c2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83655083"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791454"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering"></a>以 Azure 防火牆威脅情報為主的篩選
 
@@ -27,7 +27,7 @@ ms.locfileid: "83655083"
 
 根據預設，警示模式下會啟用威脅情報篩選。 在區域中的入口網站介面變成可用為止之前，您都無法關閉此功能或變更模式。
 
-:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="防火牆威脅情報":::
+:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="威脅情報篩選的入口網站介面":::
 
 ## <a name="logs"></a>記錄
 
@@ -53,6 +53,6 @@ ms.locfileid: "83655083"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 防火牆 Log Analytics 範例](log-analytics-samples.md)
+- 請參閱 [Azure 防火牆 Log Analytics 範例](./firewall-workbook.md)
 - 了解如何[部署和設定 Azure 防火牆](tutorial-firewall-deploy-portal.md)
 - 檢閱 [Microsoft 安全情報報告](https://www.microsoft.com/en-us/security/operations/security-intelligence-report)

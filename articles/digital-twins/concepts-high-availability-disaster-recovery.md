@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 35f4aae246f105d832aaf92c5c5797c8a65b44f1
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 3336a086fbe8f4291f752836a610cd80b773ec2d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938529"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790811"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Azure 數位 Twins 高可用性和嚴重損壞修復
 
@@ -41,7 +41,7 @@ Microsoft **起始的容錯移轉** 是由 microsoft 在罕見的情況下，將
 
 ## <a name="monitor-service-health"></a>監視服務健康情況
 
-當 Azure 數位 Twins 實例容錯移轉和復原時，您可以使用 [Azure 服務健康狀態](https://docs.microsoft.com/azure/service-health/service-health-overview) 工具來監視處理常式。 服務健康狀態會追蹤不同區域和訂用帳戶的 Azure 服務健康狀態，並共用有關中斷和停機時間的服務影響通訊。
+當 Azure 數位 Twins 實例容錯移轉和復原時，您可以使用 [Azure 服務健康狀態](../service-health/service-health-overview.md) 工具來監視處理常式。 服務健康狀態會追蹤不同區域和訂用帳戶的 Azure 服務健康狀態，並共用有關中斷和停機時間的服務影響通訊。
 
 在容錯移轉事件期間，服務健康狀態可提供您的服務關閉和備份時的指示。
 

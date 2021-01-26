@@ -9,12 +9,12 @@ ms.date: 09/08/2020
 ms.topic: how-to
 ms.author: nitinme
 author: nitinme
-ms.openlocfilehash: b8382b76496976054ebb452e39866765d986ccbb
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 8a4b86fb8fa5a87283178d957e07617b908e6286
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368168"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790896"
 ---
 # <a name="sign-in-to-luis-portal"></a>登入 LUIS 入口網站
 
@@ -47,8 +47,8 @@ ms.locfileid: "97368168"
     * **租使用者名稱** -與您的 Azure 訂用帳戶相關聯的租使用者。 您將無法從現有的視窗切換租使用者。 您可以關閉此視窗，並選取畫面右上角的 [圖片] （包含您的姓名縮寫）來切換租使用者。 選取頂端的 **[選擇不同的撰寫資源** ]，以重新開啟視窗。
     * **Azure 資源組名** -您在訂用帳戶中選擇的自訂資源組名。 資源群組可讓您將 Azure 資源分組以方便存取和管理。 如果您的訂用帳戶中目前沒有資源群組，您將無法在 LUIS 入口網站中建立一個資源群組。 移至 [Azure 入口網站](https://ms.portal.azure.com/#create/Microsoft.ResourceGroup) 建立一個，然後移至 LUIS 以繼續登入程式。
     * **Azure 資源名稱** -您選擇的自訂名稱，用來作為撰寫交易 URL 的一部分。 您的資源名稱只可包含英數位元、 `-` 和開頭或結尾不能是 `-` 。 如果名稱中包含任何其他符號，建立資源將會失敗。
-    * **位置** -選擇以 LUIS 目前支援的 [三個撰寫位置](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions) 之一來撰寫您的應用程式，包括：美國西部、西歐和澳大利亞東部
-    * **定價層** -依預設會選取 F0 撰寫定價層，因為這是建議的選項。 如果您要尋找額外的安全性層級，請從 Azure 入口網站建立 [客戶管理的金鑰](https://docs.microsoft.com/azure/cognitive-services/luis/luis-encryption-of-data-at-rest#customer-managed-keys-for-language-understanding) 。
+    * **位置** -選擇以 LUIS 目前支援的 [三個撰寫位置](./luis-reference-regions.md) 之一來撰寫您的應用程式，包括：美國西部、西歐和澳大利亞東部
+    * **定價層** -依預設會選取 F0 撰寫定價層，因為這是建議的選項。 如果您要尋找額外的安全性層級，請從 Azure 入口網站建立 [客戶管理的金鑰](./luis-encryption-of-data-at-rest.md#customer-managed-keys-for-language-understanding) 。
 8. 現在您已成功登入 LUIS。 您現在可以開始建立應用程式。
 
 ## <a name="troubleshooting"></a>疑難排解

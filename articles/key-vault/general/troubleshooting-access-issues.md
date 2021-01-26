@@ -7,19 +7,19 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 8e4e64cd872794354479c29d4aaa000cee45c5a3
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
-ms.translationtype: HT
+ms.openlocfilehash: c5fab8b856ff9c82a0de887dc9c322dbf541348b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901210"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791402"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>針對 Azure Key Vault 存取原則問題進行疑難排解
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
 ### <a name="i-am-not-able-to-list-or-get-secretskeyscertificate-i-am-seeing-something-went-wrong-error"></a>我無法列出或取得祕密/金鑰/憑證。 我看到「發生錯誤...」錯誤。
-如果您在列出/取得/建立或存取秘密時遇到問題，請確定您已定義存取原則以執行該作業：[金鑰保存庫存取原則](https://docs.microsoft.com/azure/key-vault/general/group-permissions-for-apps)
+如果您在列出/取得/建立或存取秘密時遇到問題，請確定您已定義存取原則以執行該作業：[金鑰保存庫存取原則](./assign-access-policy-cli.md)
 
 ### <a name="how-can-i-identify-how-and-when-key-vaults-are-accessed"></a>如何識別存取金鑰保存庫的方式和時間？
 

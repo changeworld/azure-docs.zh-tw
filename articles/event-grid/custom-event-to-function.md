@@ -3,12 +3,12 @@ title: 快速入門：將自訂事件傳送至 Azure 函式 - 事件方格
 description: 快速入門：使用 Azure 事件方格和 Azure CLI 或入口網站來發佈主題，以及訂閱該事件。 Azure 函式會用於端點。
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: aea52bcaa94d6f288e86e44e1a0f294796d8e4a3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: HT
+ms.openlocfilehash: 4fe4753de41443a0537636933364c7b69b25cb27
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996335"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791722"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>快速入門：使用事件方格將自訂事件路由至 Azure 函式
 
@@ -19,7 +19,7 @@ Azure Event Grid 是一項雲端事件服務。 Azure Functions 是其中一個�
 ## <a name="create-azure-function"></a>建立 Azure 函式
 在訂閱自訂主題之前，請先建立一個函式來處理事件。 
 
-1. 使用[建立函式應用程式](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)中的指示，建立函式應用程式。
+1. 使用[建立函式應用程式](../azure-functions/functions-get-started.md)中的指示，建立函式應用程式。
 2. 使用 **事件方格觸發程序** 建立函式。 如果這是您第一次使用此觸發程序，您可能必須按一下 [安裝] 以安裝延伸模組。
     1. 在 [函式應用程式] 頁面上，選取左側功能表上的 [函式]、在範本中搜尋 [事件方格]，然後選取 [Azure Event Grid 觸發程序]。 
 

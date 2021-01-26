@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 01/19/2021
 ms.author: alkohli
-ms.openlocfilehash: ce7568f346773f6b50f5601462bba479b457edce
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: d0b7f871b2ea62c810a6d20f6e20a5e8d3f6306e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763376"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791908"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Azure Stack Edge 2101 版本資訊
 
@@ -59,7 +59,7 @@ Azure Stack Edge 2101 版提供下列新功能。
 
 | 否。 | 功能 | 問題 | 因應措施/註解 |
 | --- | --- | --- | --- |
-| **1.** |Azure Stack Edge Pro + Azure SQL | 建立 SQL database 需要系統管理員存取權。   |請執行下列步驟，而不是中的步驟 1-2 [https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database) 。 <ul><li>在裝置的本機 UI 中，啟用計算介面。 選取計算 **> 適用的計算 > 埠 # > 啟用。**</li><li>`sqlcmd`從您的用戶端電腦下載https://docs.microsoft.com/sql/tools/sqlcmd-utility </li><li>連接到您的計算介面 IP 位址 (已啟用) 的埠，並將 "，1401" 新增至位址的結尾。</li><li>最後一個命令看起來會像這樣： sqlcmd-S {Interface IP}，1401-U SA-P "強！Passw0rd」。</li>在此之後，來自目前檔的步驟3-4 應該相同。 </li></ul> |
+| **1.** |Azure Stack Edge Pro + Azure SQL | 建立 SQL database 需要系統管理員存取權。   |請執行下列步驟，而不是中的步驟 1-2 [https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](../iot-edge/tutorial-store-data-sql-server.md#create-the-sql-database) 。 <ul><li>在裝置的本機 UI 中，啟用計算介面。 選取計算 **> 適用的計算 > 埠 # > 啟用。**</li><li>`sqlcmd`從您的用戶端電腦下載https://docs.microsoft.com/sql/tools/sqlcmd-utility </li><li>連接到您的計算介面 IP 位址 (已啟用) 的埠，並將 "，1401" 新增至位址的結尾。</li><li>最後一個命令看起來會像這樣： sqlcmd-S {Interface IP}，1401-U SA-P "強！Passw0rd」。</li>在此之後，來自目前檔的步驟3-4 應該相同。 </li></ul> |
 | **2.** |重新整理| 不支援透過重新整理還原 **的 blob** 增量變更 |在重新整理之後，Blob 端點（blob 的部分更新）可能會導致更新未上傳至雲端。 例如，動作的順序如下：<ul><li>在雲端中建立 blob。 或從裝置刪除先前上傳的 blob。</li><li>使用重新整理功能將 blob 從雲端重新整理至設備。</li><li>使用 Azure SDK REST Api 只更新 blob 的一部分。</li></ul>這些動作可能會導致 blob 的更新區段無法在雲端中更新。 <br>因應 **措施：透過** Explorer 或命令列使用 robocopy 之類的工具或一般檔案複製來取代整個 blob。|
 |**3.**|節流|在節流期間，如果不允許新的裝置寫入，NFS 用戶端的寫入會失敗，並出現「許可權被拒」錯誤。| 錯誤會顯示如下：<br>`hcsuser@ubuntu-vm:~/nfstest$ mkdir test`<br>mkdir：無法建立目錄 ' test '：已拒絕許可權|
 |**4.**|Blob 儲存體內嵌|針對 Blob 儲存體內嵌使用 AzCopy 第10版時，請使用下列引數來執行 AzCopy： `Azcopy <other arguments> --cap-mbps 2000`| 如果未提供這些限制給 AzCopy，可能會將大量要求傳送到裝置，而導致服務發生問題。|

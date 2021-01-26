@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 16e60b5015107c5f99e63f15bb21c5a375f05340
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 74d2654c54d1ab2ac5d47aa24449c41c20a90b74
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123247"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791133"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫定價層 - 單一伺服器
 
@@ -51,7 +51,7 @@ ms.locfileid: "92123247"
 | IOPS | 變數 |3 IOPS/GB<br/>最小值為 100 IOPS<br/>最大 20000 IOPS | 3 IOPS/GB<br/>最小值為 100 IOPS<br/>最大 20000 IOPS |
 
 > [!NOTE]
-> 下欄區域支援儲存體最高16TB 和 20000 IOPS：美國東部、美國東部2、巴西南部、美國中部、美國西部、美國中北部、美國中南部、歐洲北部、歐洲西部、英國南部、英國西部、東南亞、東亞、日本東部、日本西部、韓國中部、南韓南部、澳大利亞東部、澳大利亞東南部、美國西部2、美國中西部、加拿大東部和加拿大中部。
+> 下欄區域支援儲存體最多16TB 和 20000 IOPS：澳大利亞東部、澳大利亞東南部、巴西南部、加拿大中部、加拿大東部、美國中部、中國東部2、中國北部2、東亞、美國中部、美國東部1、美國東部2、日本東部、日本西部、美國東部2、日本東部、日本西部、北歐、美國中南部、東南亞、南韓南部、瑞士西部、US Gov 東部、US Gov 中南部、US Gov 西南、英國南部、英國西部、西歐、美國中西部、美國西部和美國西部2。
 >
 > 所有其他區域都支援最高4TB 的儲存體和 6000 IOPS。
 >
@@ -59,7 +59,7 @@ ms.locfileid: "92123247"
 您可以在伺服器建立期間和之後新增額外的儲存容量，並允許系統根據您的工作負載的儲存體耗用量自動成長儲存體。
 
 >[!NOTE]
-> 儲存體只能相應增加，無法相應減少。
+> 儲存體只能擴大，而不能縮小。
 
 基本層不提供 IOPS 保證。 在一般用途和記憶體最佳化定價層中，IOPS 與佈建的儲存體大小會以 3:1 的比例調整。
 
@@ -102,9 +102,9 @@ ms.locfileid: "92123247"
 
 ## <a name="pricing"></a>定價
 
-如需最新的定價資訊，請參閱服務的[定價頁面](https://azure.microsoft.com/pricing/details/PostgreSQL/)。 若要查看您所需的設定成本，[Azure 入口網站](https://portal.azure.com/#create/Microsoft.PostgreSQLServer)會根據您選取的選項，在 [定價層]**** 索引標籤中顯示每月成本。 如果您沒有 Azure 訂用帳戶，則可以使用 Azure 價格計算機來取得估計的價格。 在 [Azure 價格計算機](https://azure.microsoft.com/pricing/calculator/)網站上，選取 [新增項目]**** 展開 [資料庫]**** 類別，然後選擇 [適用於 PostgreSQL 的 Azure 資料庫]**** 以自訂選項。
+如需最新的定價資訊，請參閱服務的[定價頁面](https://azure.microsoft.com/pricing/details/PostgreSQL/)。 若要查看您所需的設定成本，[Azure 入口網站](https://portal.azure.com/#create/Microsoft.PostgreSQLServer)會根據您選取的選項，在 [定價層] 索引標籤中顯示每月成本。 如果您沒有 Azure 訂用帳戶，則可以使用 Azure 價格計算機來取得估計的價格。 在 [Azure 價格計算機](https://azure.microsoft.com/pricing/calculator/)網站上，選取 [新增項目]展開 [資料庫] 類別，然後選擇 [適用於 PostgreSQL 的 Azure 資料庫] 以自訂選項。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何 [在入口網站中建立于 postgresql 伺服器](tutorial-design-database-using-azure-portal.md)。
 - 了解[服務限制](concepts-limits.md)。

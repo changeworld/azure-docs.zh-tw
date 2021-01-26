@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 985f9e741a1491a812c1d2b20de96381f8af3fa4
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 084ca039e7f388a11e15b29c579606c6ed3086db
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359841"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790422"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>部署範例標籤工具
 
@@ -101,7 +101,7 @@ ms.locfileid: "97359841"
 > 建立您的 web 應用程式時，您也可以設定授權/驗證。 這不是開始使用的必要條件。 
 
 > [!IMPORTANT]
-> 您可能需要為 web 應用程式啟用 TLS，才能在其位址上查看 `https` 。 遵循 [啟用 tls 端點](https://docs.microsoft.com/azure/container-instances/container-instances-container-group-ssl) 中的指示，設定側車容器，而不是啟用 web 應用程式的 TLS/SSL。
+> 您可能需要為 web 應用程式啟用 TLS，才能在其位址上查看 `https` 。 遵循 [啟用 tls 端點](../../container-instances/container-instances-container-group-ssl.md) 中的指示，設定側車容器，而不是啟用 web 應用程式的 TLS/SSL。
 
 ### <a name="azure-cli"></a>Azure CLI
 

@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 11/23/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: fb36ab8a86a89d6383f93ad58c23956472841de2
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: HT
+ms.openlocfilehash: f21a2cc8218dde8b0cf7203a1fcb1f5cfb9424a2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95539255"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790862"
 ---
 # <a name="what-is-language-understanding-luis"></a>何謂 Language Understanding Intelligent Service (LUIS)？
 
@@ -66,7 +66,7 @@ LUIS 應用程式會提供智慧，讓用戶端應用程式得以做出聰明的
 |`When does your store open?`|StoreHoursAndLocation|開啟|
 |`Schedule a meeting at 1pm with Bob in Distribution`|ScheduleMeeting|下午 1 點、Bob|
 
-使用 [撰寫](https://go.microsoft.com/fwlink/?linkid=2092087 "編寫") API 和 (或) 使用 **[LUIS 入口網站](https://www.luis.ai "LUIS 入口網站")** 建置模型。 深入了解如何使用[入口網站](get-started-portal-build-app.md "入口網站")和 [SDK 用戶端程式庫](azure-sdk-quickstart.md "SDK 用戶端程式庫")來建置。
+使用 [撰寫](https://go.microsoft.com/fwlink/?linkid=2092087 "編寫") API 和 (或) 使用 **[LUIS 入口網站](https://www.luis.ai "LUIS 入口網站")** 建置模型。 深入了解如何使用[入口網站](get-started-portal-build-app.md "入口網站")和 [SDK 用戶端程式庫](./client-libraries-rest-api.md?pivots=rest-api "SDK 用戶端程式庫")來建置。
 
 ## <a name="step-2-get-the-query-prediction"></a>步驟 2:取得查詢預測
 
@@ -128,7 +128,7 @@ LUIS 會提供文字分析中的功能作為現有 LUIS 資源的一部分。 �
 
 ## <a name="learn-with-the-quickstarts"></a>使用快速入門來了解
 
-使用[入口網站](get-started-portal-build-app.md "入口網站")和 [SDK 用戶端程式庫](azure-sdk-quickstart.md "SDK 用戶端程式庫")進行實際操作快速入門來了解 LUIS。
+使用[入口網站](get-started-portal-build-app.md "入口網站")和 [SDK 用戶端程式庫](./client-libraries-rest-api.md?pivots=rest-api "SDK 用戶端程式庫")進行實際操作快速入門來了解 LUIS。
 
 
 ## <a name="deploy-on-premises-using-docker-containers"></a>使用 Docker 容器在內部部署環境進行部署

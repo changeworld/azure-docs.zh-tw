@@ -4,12 +4,12 @@ description: Service Fabric 遠端處理可讓用戶端和服務使用遠端程�
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c3659fea73abae3c9c5264f227b90d0af95a93e7
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: a0486a27d76c978a65c4a3cfd81df52a12e4ea1d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576650"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791572"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>使用 Reliable Services 在 C# 中進行服務遠端處理
 
@@ -160,7 +160,7 @@ string message = await helloWorldClient.HelloWorldAsync();
    </Resources>
    ```
 
-2. 從 `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` 命名空間使用 [FabricTransportServiceRemotingListener](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet)。
+2. 從 `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` 命名空間使用 [FabricTransportServiceRemotingListener](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener)。
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -176,7 +176,7 @@ string message = await helloWorldClient.HelloWorldAsync();
     }
    ```
 
-3. 從 `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` 命名空間使用 [FabricTransportServiceRemotingClientFactory](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) 來建立用戶端。
+3. 從 `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` 命名空間使用 [FabricTransportServiceRemotingClientFactory](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory) 來建立用戶端。
 
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
@@ -255,7 +255,7 @@ string message = await helloWorldClient.HelloWorldAsync();
     }
    ```
 
-3. 在遠端介面上新增[組件屬性](/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet)。
+3. 在遠端介面上新增[組件屬性](/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute)。
 
    ```csharp
     [assembly:  FabricTransportServiceRemotingProvider(RemotingListenerVersion=  RemotingListenerVersion.V2_1, RemotingClientVersion= RemotingClientVersion.V2_1)]
@@ -267,7 +267,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 ### <a name="use-explicit-remoting-classes-to-create-a-listenerclient-factory-for-the-v2-interface-compatible-version"></a>使用明確的遠端類別來建立 V2 (介面相容) 版本的接聽程式/用戶端處理站。
 
-請依照下列步驟進行操作：
+請遵循下列步驟：
 
 1. 在服務資訊清單中新增名稱為 "ServiceEndpointV2_1" 的端點資源。
 
@@ -279,7 +279,7 @@ string message = await helloWorldClient.HelloWorldAsync();
    </Resources>
    ```
 
-2. 使用[遠端 V2 接聽程式](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet)。 預設使用的服務端點資源名稱是 "ServiceEndpointV2_1"。 該名稱必須定義在服務資訊清單中。
+2. 使用[遠端 V2 接聽程式](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener)。 預設使用的服務端點資源名稱是 "ServiceEndpointV2_1"。 該名稱必須定義在服務資訊清單中。
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -297,7 +297,7 @@ string message = await helloWorldClient.HelloWorldAsync();
     }
    ```
 
-3. 使用 V2 [用戶端處理站](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet)。
+3. 使用 V2 [用戶端處理站](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory)。
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
           {
@@ -356,7 +356,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 ### <a name="use-custom-serialization-with-a-remoting-wrapped-message"></a>使用自訂序列化搭配遠端包裝訊息
 
 對於遠端包裝訊息，我們會建立含有所有參數的單一包裝物件作為其中的欄位。
-請依照下列步驟進行操作：
+請遵循下列步驟：
 
 1. 實作 `IServiceRemotingMessageSerializationProvider` 介面，以提供自訂序列化的實作。
     此程式碼片段會顯示實作情況。

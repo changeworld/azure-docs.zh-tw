@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: a78bfc2b4f0c372c915647c0afa40263079af8e5
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8b10e850fd3ae0282785164596f537652148a716
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746072"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790998"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>使用 PowerShell 在多個 IP 組態上進行負載平衡
 
@@ -46,7 +46,7 @@ ms.locfileid: "92746072"
     $myResourceGroup = "contosofabrikam"
     ```
 
-    如需詳細資訊，請參閱[建立資源群組](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json)的步驟 2。
+    如需詳細資訊，請參閱[建立資源群組](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fazure%2fload-balancer%2ftoc.json)的步驟 2。
 
 3. [建立可用性設定組](../virtual-machines/windows/tutorial-availability-sets.md?toc=%2fazure%2fload-balancer%2ftoc.json)以容納 VM。 在此案例中，請使用下列命令：
 
@@ -54,14 +54,14 @@ ms.locfileid: "92746072"
     New-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset" -Location "West Central US"
     ```
 
-4. 遵循[建立 Windows VM](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json)一文中的指示步驟 3 至 5，以準備建立具有單一 NIC 的 VM。 執行步驟 6.1，並使用下列項目，而不是步驟 6.2︰
+4. 遵循[建立 Windows VM](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fazure%2fload-balancer%2ftoc.json)一文中的指示步驟 3 至 5，以準備建立具有單一 NIC 的 VM。 執行步驟 6.1，並使用下列項目，而不是步驟 6.2︰
 
     ```powershell
     $availset = Get-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset"
     New-AzVMConfig -VMName "VM1" -VMSize "Standard_DS1_v2" -AvailabilitySetId $availset.Id
     ```
 
-    然後完成[建立 Windows VM](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json)的步驟 6.3 至 6.8。
+    然後完成[建立 Windows VM](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fazure%2fload-balancer%2ftoc.json)的步驟 6.3 至 6.8。
 
 5. 在每個 VM 中新增第二個 IP 組態。 遵循[對虛擬機器指派多個 IP 位址](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md#add)一文中的指示。 使用下列組態設定：
 

@@ -11,25 +11,25 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: d881394391b7967fe602155eefc9844e013de34e
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 23be8e667d435c2d91d32ebeac30b1e96b45a77e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724743"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790286"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>將 Azure Key Vault 移至另一個訂用帳戶
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 > [!IMPORTANT]
 > **將金鑰保存庫移至另一個訂用帳戶，將會對您的環境造成重大變更。**
 > 確定您瞭解這項變更的影響，並在決定將金鑰保存庫移至新的訂用帳戶之前，仔細遵循本文中的指導方針。
 > 如果您使用受控服務識別 (MSI) 請閱讀檔結尾的移動後指示。 
 
-[Azure Key Vault](overview.md) 會自動系結至其建立所在之訂用帳戶的預設 [AZURE ACTIVE DIRECTORY](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) 租使用者識別碼。 您可以遵循本 [指南](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-to-find-tenant)，找到與您的訂用帳戶相關聯的租使用者識別碼。 所有存取原則專案和角色指派也會系結至此租使用者識別碼。  如果您將 Azure 訂用帳戶從租使用者 A 移到租使用者 B， (使用者和應用程式在租使用者 B 中) 的服務主體將無法存取現有的金鑰保存庫。若要修正此問題，您需要：
+[Azure Key Vault](overview.md) 會自動系結至其建立所在之訂用帳戶的預設 [AZURE ACTIVE DIRECTORY](../../active-directory/fundamentals/active-directory-whatis.md) 租使用者識別碼。 您可以遵循本 [指南](../../active-directory/fundamentals/active-directory-how-to-find-tenant.md)，找到與您的訂用帳戶相關聯的租使用者識別碼。 所有存取原則專案和角色指派也會系結至此租使用者識別碼。  如果您將 Azure 訂用帳戶從租使用者 A 移到租使用者 B， (使用者和應用程式在租使用者 B 中) 的服務主體將無法存取現有的金鑰保存庫。若要修正此問題，您需要：
 
 * 將訂用帳戶中與所有現有金鑰保存庫相關聯的租用戶識別碼變更為租用戶 B。
 * 移除所有現有的存取原則項目。
@@ -37,8 +37,8 @@ ms.locfileid: "97724743"
 
 如需 Azure Key Vault 和 Azure Active Directory 的詳細資訊，請參閱
 - [關於 Azure Key Vault](overview.md)
-- [什麼是 Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
-- [如何尋找租用戶識別碼](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-to-find-tenant)
+- [什麼是 Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)
+- [如何尋找租用戶識別碼](../../active-directory/fundamentals/active-directory-how-to-find-tenant.md)
 
 ## <a name="limitations"></a>限制
 
@@ -47,13 +47,13 @@ ms.locfileid: "97724743"
 
 某些服務主體 (使用者和應用程式) 系結至特定的租使用者。 如果您將金鑰保存庫移至另一個租使用者中的訂用帳戶，則有可能無法還原特定服務主體的存取權。 請檢查以確定您要移動金鑰保存庫的租使用者中有所有必要的服務主體。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-* 目前訂用帳戶的[參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)層級存取權或更高版本，您的金鑰保存庫存在。 您可以使用 [Azure 入口網站](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)、 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)或 [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)來指派角色。
-* [參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) 層級存取權或更高版本，可存取您想要移動金鑰保存庫的訂用帳戶。您可以使用 [Azure 入口網站](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)、 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)或 [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)來指派角色。
-* 新訂用帳戶中的資源群組。 您可以使用 [Azure 入口網站](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal)、 [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-powershell)或 [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-cli)建立一個。
+* 目前訂用帳戶的[參與者](../../role-based-access-control/built-in-roles.md#contributor)層級存取權或更高版本，您的金鑰保存庫存在。 您可以使用 [Azure 入口網站](../../role-based-access-control/role-assignments-portal.md)、 [Azure CLI](../../role-based-access-control/role-assignments-cli.md)或 [PowerShell](../../role-based-access-control/role-assignments-powershell.md)來指派角色。
+* [參與者](../../role-based-access-control/built-in-roles.md#contributor) 層級存取權或更高版本，可存取您想要移動金鑰保存庫的訂用帳戶。您可以使用 [Azure 入口網站](../../role-based-access-control/role-assignments-portal.md)、 [Azure CLI](../../role-based-access-control/role-assignments-cli.md)或 [PowerShell](../../role-based-access-control/role-assignments-powershell.md)來指派角色。
+* 新訂用帳戶中的資源群組。 您可以使用 [Azure 入口網站](../../azure-resource-manager/management/manage-resource-groups-portal.md)、 [PowerShell](../../azure-resource-manager/management/manage-resource-groups-powershell.md)或 [Azure CLI](../../azure-resource-manager/management/manage-resource-groups-cli.md)建立一個。
 
-您可以使用 [Azure 入口網站](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal)、 [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-powershell)、 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-cli)或 [REST API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-rest)來檢查現有的角色。
+您可以使用 [Azure 入口網站](../../role-based-access-control/role-assignments-list-portal.md)、 [PowerShell](../../role-based-access-control/role-assignments-list-powershell.md)、 [Azure CLI](../../role-based-access-control/role-assignments-list-cli.md)或 [REST API](../../role-based-access-control/role-assignments-list-rest.md)來檢查現有的角色。
 
 
 ## <a name="moving-a-key-vault-to-a-new-subscription"></a>將金鑰保存庫移至新的訂用帳戶
@@ -96,7 +96,7 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 ### <a name="update-access-policies-and-role-assignments"></a>更新存取原則和角色指派
 
 > [!NOTE]
-> 如果 Key Vault 使用 [AZURE RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) 許可權模型。 您也必須移除金鑰保存庫角色指派。 您可以使用 [Azure 入口網站](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)、 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)或 [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)來移除角色指派。 
+> 如果 Key Vault 使用 [AZURE RBAC](../../role-based-access-control/overview.md) 許可權模型。 您也必須移除金鑰保存庫角色指派。 您可以使用 [Azure 入口網站](../../role-based-access-control/role-assignments-portal.md)、 [Azure CLI](../../role-based-access-control/role-assignments-cli.md)或 [PowerShell](../../role-based-access-control/role-assignments-powershell.md)來移除角色指派。 
 
 現在，您的保存庫已與正確的租使用者識別碼相關聯，且已移除舊的存取原則專案或角色指派，請設定新的存取原則專案或角色指派。
 
@@ -106,9 +106,9 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 - [使用 PowerShell 指派存取原則](assign-access-policy-powershell.md)
 
 若要新增角色指派，請參閱：
-- [使用入口網站新增角色指派](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
-- [使用 Azure CLI 新增角色指派](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
-- [使用 PowerShell 新增角色指派](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)
+- [使用入口網站新增角色指派](../../role-based-access-control/role-assignments-portal.md)
+- [使用 Azure CLI 新增角色指派](../../role-based-access-control/role-assignments-cli.md)
+- [使用 PowerShell 新增角色指派](../../role-based-access-control/role-assignments-powershell.md)
 
 
 ### <a name="update-managed-identities"></a>更新受控識別

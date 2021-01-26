@@ -3,12 +3,12 @@ title: 新增及移除 Service Fabric 受控叢集的節點類型 (預覽)
 description: 在本教學課程中，您將了解如何新增及移除 Service Fabric 受控叢集的節點類型。
 ms.topic: tutorial
 ms.date: 09/28/2020
-ms.openlocfilehash: 51cc83b4accae5f2791ce378e30f6fa692446b1c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
-ms.translationtype: HT
+ms.openlocfilehash: bb33512652677fc4e46d8ba3668dca985bbcfe01
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316200"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791235"
 ---
 # <a name="tutorial-add-and-remove-node-types-from-a-service-fabric-managed-cluster-preview"></a>教學課程：新增及移除 Service Fabric 受控叢集的節點類型 (預覽)
 
@@ -29,7 +29,7 @@ ms.locfileid: "92316200"
 ## <a name="prerequisites"></a>必要條件
 
 * Service Fabric 受控叢集 (請參閱[部署受控叢集](tutorial-managed-cluster-deploy.md))。
-* [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps?preserve-view=true&view=azps-4.7.0#azservicefabric) 或更新版本 (請參閱[*安裝 Azure PowerShell*](/powershell/azure/install-az-ps?preserve-view=true&view=azps-4.7.0))。
+* [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps#azservicefabric) 或更新版本 (請參閱 [*安裝 Azure PowerShell*](/powershell/azure/install-az-ps))。
 
 ## <a name="add-a-node-type-to-a-service-fabric-managed-cluster"></a>將節點類型新增至 Service Fabric 受控叢集
 

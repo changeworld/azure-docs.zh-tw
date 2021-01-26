@@ -3,30 +3,22 @@ title: Azure IoT 中樞裝置布建服務中的重新布建裝置
 description: 瞭解如何使用裝置布建服務重新布建裝置 (DPS) 實例，以及您可能需要這麼做的原因。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/04/2019
+ms.date: 01/25/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: e5cc5b557aa4dff793f7e87093eeb65028da4f8c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d704e8f9687f3987d80018d84b41c0fd519da172
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010940"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791891"
 ---
 # <a name="how-to-reprovision-devices"></a>如何重新佈建裝置
 
-在 IoT 解決方案的生命週期中，在 IoT 中樞之間移動裝置是很常見的。 移動原因可能包括下列案例：
+在 IoT 解決方案的生命週期中，在 IoT 中樞之間移動裝置是很常見的。 本主題的撰寫是為了協助解決方案操作員設定重新布建原則。
 
-* **地理位置**：當裝置在位置之間移動時，可透過將裝置移轉至較接近每個位置的 IoT 中樞以改善網路延遲。
-
-* **多租用戶**：裝置可能會在相同的 IoT 解決方案內使用，但會重新指派或租給新客戶或客戶網站。 系統可能會使用不同的 IoT 中樞為這個新客戶提供服務。
-
-* **解決方案變更**：裝置可移至新的或已更新的 IoT 解決方案。 此重新指派可能需要裝置與連線至其他後端元件的新 IoT 中樞通訊。 
-
-* **隔離**：類似於解決方案變更。 故障、遭入侵或已過期的裝置可能會重新指派給只能將裝置更新，讓裝置再次符合合規性要求的 IoT 中樞。 在裝置正常運作之後，就會移轉回其主要中樞。
-
-如需更詳細的重新布建總覽，請參閱 [IoT 中樞裝置重新布建概念](concepts-device-reprovision.md)。
+如需更詳細的重新布建案例總覽，請參閱 [IoT 中樞裝置重新布建概念](concepts-device-reprovision.md)。
 
 
 ## <a name="configure-the-enrollment-allocation-policy"></a>設定註冊配置原則

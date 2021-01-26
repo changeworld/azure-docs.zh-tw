@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1577d63822bdb21eff7fcbb3e1343243a3004409
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 70c5593f29b5e83d5d3f318179d365a9235849ca
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033637"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790608"
 ---
 # <a name="speech-to-text-rest-api"></a>語音轉換文字 REST API
 
 語音轉換文字有兩個不同的 REST Api。 每個 API 都提供其特殊用途，並使用不同的端點集合。
 
 語音轉換文字 REST Api 如下：
-- [語音轉換文字 REST API v3.0](#speech-to-text-rest-api-v30) 用於 [批次](batch-transcription.md) 轉譯和 [自訂語音](custom-speech-overview.md)。 v3.0 是 v2.0 [的後續版本](/azure/cognitive-services/speech-service/migrate-v2-to-v3)。
+- [語音轉換文字 REST API v3.0](#speech-to-text-rest-api-v30) 用於 [批次](batch-transcription.md) 轉譯和 [自訂語音](custom-speech-overview.md)。 v3.0 是 v2.0 [的後續版本](./migrate-v2-to-v3.md)。
 - [適用于短音訊的語音轉換文字 REST API](#speech-to-text-rest-api-for-short-audio) 用於線上轉譯，作為 [語音 SDK](speech-sdk.md)的替代方案。 使用此 API 的要求只能針對每個要求傳輸最多60秒的音訊。 
 
 ## <a name="speech-to-text-rest-api-v30"></a>語音轉換文字 REST API v3。0
@@ -45,7 +45,7 @@ REST API v3.0 包含下列功能：
 
 請參閱 [這篇文章](batch-transcription.md)，以瞭解搭配使用 REST API V3.0 與批次轉譯的範例。
 
-如果您使用語音轉換文字 REST API 2.0 版，請參閱 [本指南](/azure/cognitive-services/speech-service/migrate-v2-to-v3)中的如何遷移至 v3.0。
+如果您使用語音轉換文字 REST API 2.0 版，請參閱 [本指南](./migrate-v2-to-v3.md)中的如何遷移至 v3.0。
 
 請參閱 [這裡](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)的完整語音轉換文字 REST API v3.0 參考。
 
@@ -181,7 +181,7 @@ Pronunciation-Assessment: eyJSZWZlcm...
 | HTTP 狀態碼 | 描述 | 可能的原因 |
 |------------------|-------------|-----------------|
 | `100` | 繼續 | 已接受初始要求。 繼續傳送其餘的資料。  (用於區區塊轉送)  |
-| `200` | 確定 | 要求成功；回應主體是 JSON 物件。 |
+| `200` | [確定] | 要求成功；回應主體是 JSON 物件。 |
 | `400` | 不正確的要求 | 未提供語言代碼，不是支援的語言、不正確音訊檔案等等。 |
 | `401` | 未經授權 | 訂用帳戶金鑰或授權權杖在指定的區域中無效，或是無效的端點。 |
 | `403` | 禁止 | 遺漏訂用帳戶金鑰或授權權杖。 |
@@ -335,7 +335,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 }
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [建立 Azure 免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 - [自訂原音模型](./how-to-custom-speech-train-model.md)

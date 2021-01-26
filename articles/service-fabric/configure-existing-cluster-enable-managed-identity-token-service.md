@@ -3,12 +3,12 @@ title: 在現有的 Service Fabric 叢集中設定受控識別支援
 description: 以下說明如何在現有的 Azure Service Fabric 叢集中啟用受控識別支援
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 7bcba34e941f6fee038aa475d7c0869eb65aca2e
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: dc341688cae6d98f53be10351e4e4572a3539e4e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574695"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790034"
 ---
 # <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>在現有的 Service Fabric 叢集中設定受控識別支援
 
@@ -39,7 +39,7 @@ ms.locfileid: "96574695"
 ]
 ```
 
-為了讓變更生效，您也必須變更升級原則，以便在升級透過叢集進行升級時，指定每個節點上的 Service Fabric 執行時間的強制重新開機。 此重新開機可確保新啟用的系統服務已在每個節點上啟動並執行。 在下列程式碼片段中， `forceRestart` 是啟用重新開機的基本設定。 針對其餘的參數，請使用下列所述的值，或使用已針對叢集資源指定的現有自訂值。 您可以從 Azure 入口網站選取 Service Fabric 資源或 resources.azure.com 上的 [網狀架構升級] 選項，以從 Azure 入口網站查看網狀架構升級原則的自訂設定 ( [upgradeDescription] ) 。 您無法從 powershell 或 resources.azure.com 查看升級原則 ( ' upgradeDescription ' ) 的預設選項。 如需其他資訊，請參閱 [ClusterUpgradePolicy](/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet) 。  
+為了讓變更生效，您也必須變更升級原則，以便在升級透過叢集進行升級時，指定每個節點上的 Service Fabric 執行時間的強制重新開機。 此重新開機可確保新啟用的系統服務已在每個節點上啟動並執行。 在下列程式碼片段中， `forceRestart` 是啟用重新開機的基本設定。 針對其餘的參數，請使用下列所述的值，或使用已針對叢集資源指定的現有自訂值。 您可以從 Azure 入口網站選取 Service Fabric 資源或 resources.azure.com 上的 [網狀架構升級] 選項，以從 Azure 入口網站查看網狀架構升級原則的自訂設定 ( [upgradeDescription] ) 。 您無法從 powershell 或 resources.azure.com 查看升級原則 ( ' upgradeDescription ' ) 的預設選項。 如需其他資訊，請參閱 [ClusterUpgradePolicy](/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy) 。  
 
 ```json
 "upgradeDescription": {

@@ -4,12 +4,12 @@ description: 在本教學課程中，您將部署 Service Fabric 受控叢集以
 ms.topic: tutorial
 ms.date: 08/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 0265a1393c697cbd767de13df1064a5eea957380
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
-ms.translationtype: HT
+ms.openlocfilehash: fd54e6f8c5272c3a8fe0e0162ca2e57968b24642
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316177"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791706"
 ---
 # <a name="tutorial-deploy-a-service-fabric-managed-cluster-preview"></a>教學課程：部署 Service Fabric 受控叢集 (預覽)
 
@@ -37,7 +37,7 @@ ms.locfileid: "92316177"
 
 * 安裝 [Service Fabric SDK 和 PowerShell 模組](service-fabric-get-started.md)。
 
-* 安裝 [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps?preserve-view=true&view=azps-4.7.0#azservicefabric) (或更新版本)。
+* 安裝 [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps#azservicefabric) (或更新版本)。
 
 ## <a name="connect-to-your-azure-account"></a>連線至您的 Azure 帳戶
 

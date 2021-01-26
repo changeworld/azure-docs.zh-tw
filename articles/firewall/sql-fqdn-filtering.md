@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 06/18/2020
 ms.author: victorh
-ms.openlocfilehash: 2b1b68b32ccd5a4dda0b71736da4e2d1e2566b6b
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: c65f32cc3ce56ddf3fd235de8c002528e7a3cebd
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97348011"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791437"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>使用 SQL FQDN 設定 Azure 防火牆應用程式規則
 
@@ -96,7 +96,7 @@ ms.locfileid: "97348011"
 3. 利用適當的通訊協定、連接埠和 SQL FQDN，新增應用程式規則，然後選取 [儲存]。
    ![使用 SQL FQDN 的應用程式規則](media/sql-fqdn-filtering/application-rule-sql.png)
 4. 在 VNet 中，從透過防火牆篩選流量的虛擬機器存取 SQL。 
-5. 驗證 [Azure 防火牆記錄](log-analytics-samples.md)顯示允許流量。
+5. 驗證 [Azure 防火牆記錄](./firewall-workbook.md)顯示允許流量。
 
 ## <a name="next-steps"></a>後續步驟
 

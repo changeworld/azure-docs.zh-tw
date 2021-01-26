@@ -4,12 +4,12 @@ description: 說明如何驗證用戶端對 Service Fabric 叢集的存取，以
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2ce0325f7aebac92eb1e7deadd6f6875b75b3755
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a669f7400eb2daf2d71f6caed41560020699c58
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89008806"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791116"
 ---
 # <a name="connect-to-a-secure-cluster"></a>連線到安全的叢集
 
@@ -77,7 +77,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000
 
 ### <a name="connect-to-a-secure-cluster-using-azure-active-directory"></a>使用 Azure Active Directory 連線到安全的叢集
 
-若要連接至使用 Azure Active Directory 來授權叢集系統管理員存取權的安全叢集，請提供叢集憑證指紋，並使用 AzureActiveDirectory** 旗標。  
+若要連接至使用 Azure Active Directory 來授權叢集系統管理員存取權的安全叢集，請提供叢集憑證指紋，並使用 AzureActiveDirectory 旗標。  
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
@@ -156,7 +156,7 @@ Service Fabric SDK 會提供叢集管理的 [FabricClient](/dotnet/api/system.fa
 FabricClient fabricClient = new FabricClient("clustername.westus.cloudapp.azure.com:19000");
 ```
 
-針對在叢集 (例如，Reliable Service) 內執行的程式碼，建立 FabricClient 且不** 指定叢集位址。 FabricClient 連接到目前正在執行程式碼之節點上的本機管理閘道，避免額外的網路躍點。
+針對在叢集 (例如，Reliable Service) 內執行的程式碼，建立 FabricClient 且不指定叢集位址。 FabricClient 連接到目前正在執行程式碼之節點上的本機管理閘道，避免額外的網路躍點。
 
 ```csharp
 FabricClient fabricClient = new FabricClient();
@@ -232,7 +232,7 @@ catch (Exception e)
 
 以下範例依存於 Microsoft.IdentityModel.Clients.ActiveDirectory，版本：2.19.208020213。
 
-如需 AAD 權杖取得的詳細資訊，請參閱 [Microsoft.IdentityModel.Clients.ActiveDirectory](/dotnet/api/microsoft.identitymodel.clients.activedirectory?view=azure-dotnet)。
+如需 AAD 權杖取得的詳細資訊，請參閱 [Microsoft.IdentityModel.Clients.ActiveDirectory](/dotnet/api/microsoft.identitymodel.clients.activedirectory)。
 
 ```csharp
 string tenantId = "C15CFCEA-02C1-40DC-8466-FBD0EE0B05D2";

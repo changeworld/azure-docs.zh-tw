@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 8b4b07288ce2c3570da5482a446b9418c7319011
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
+ms.openlocfilehash: 686afa791df88382e3e5e1b2d233317c36bf1dd6
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87086195"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791301"
 ---
 # <a name="remove-an-application-from-a-service-fabric-cluster-using-powershell"></a>使用 PowerShell 從 Service Fabric 叢集中移除應用程式
 
@@ -37,11 +37,11 @@ ms.locfileid: "87086195"
 
 | Command | 注意 |
 |---|---|
-| [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) | 從叢集移除執行中的 Service Fabric 應用程式執行個體。  |
-| [Unregister-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) | 從叢集取消註冊 Service Fabric 應用程式類型和版本。 |
+| [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication) | 從叢集移除執行中的 Service Fabric 應用程式執行個體。  |
+| [Unregister-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype) | 從叢集取消註冊 Service Fabric 應用程式類型和版本。 |
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Service Fabric PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/service-fabric/overview?view=azureservicefabricps)。
+如需有關 Service Fabric PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/service-fabric/overview)。
 
 您可以在 [PowerShell 範例](../service-fabric-powershell-samples.md)中找到適用於 Azure Service Fabric 的其他 Azure PowerShell 範例。

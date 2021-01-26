@@ -4,12 +4,12 @@ description: 規劃 Service Fabric 叢集時，應考慮的節點類型、持久
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
-ms.openlocfilehash: 731dcfdf25efc4b2f44669dacd8a400037ed47f4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 03ec9b411f13f22a74b864a745acfed922e78b12
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576327"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790693"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric 叢集容量規劃考量
 
@@ -146,7 +146,7 @@ _Durability 層級 * 會指定 Service Fabric Vm 與基礎 Azure 基礎結構的
 | 7 或 8 | 金卡 |
 | 9 以上 | Platinum |
 
-當您增加或減少叢集的大小 (所有節點類型中) 的 VM 實例總和，請考慮將叢集的可靠性從一個層級更新為另一個層級。 如此一來就會觸發變更系統服務複本集計數所需的叢集升級。 請先等候升級完成，再對叢集進行任何其他變更，例如新增節點。  您可以在 Service Fabric Explorer 上或執行 [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) 監視升級的進度
+當您增加或減少叢集的大小 (所有節點類型中) 的 VM 實例總和，請考慮將叢集的可靠性從一個層級更新為另一個層級。 如此一來就會觸發變更系統服務複本集計數所需的叢集升級。 請先等候升級完成，再對叢集進行任何其他變更，例如新增節點。  您可以在 Service Fabric Explorer 上或執行 [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade) 監視升級的進度
 
 ### <a name="capacity-planning-for-reliability"></a>可靠性的容量規劃
 

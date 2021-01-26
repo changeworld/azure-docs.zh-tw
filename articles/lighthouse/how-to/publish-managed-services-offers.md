@@ -3,12 +3,12 @@ title: 將受控服務供應專案發佈至 Azure Marketplace
 description: 瞭解如何將將上線客戶的受控服務供應專案發佈至 Azure Lighthouse。
 ms.date: 12/17/2020
 ms.topic: how-to
-ms.openlocfilehash: a003e671631e9f23654eb524c7c2d937339a9588
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: f6bd504185fab3fc698019a3eb8c530ba93f8abc
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673149"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791368"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>將受控服務供應專案發佈至 Azure Marketplace
 
@@ -18,7 +18,7 @@ ms.locfileid: "97673149"
 
 您必須 [在合作夥伴中心中](../../marketplace/partner-center-portal/create-account.md) 有有效的帳戶，才能建立和發佈供應專案。 如果您還沒有帳戶， [註冊](https://aka.ms/joinmarketplace) 程式會引導您完成在合作夥伴中心中建立帳戶，並在商業 Marketplace 方案中註冊的步驟。
 
-根據 [受管理的服務供應專案認證需求](/legal/marketplace/certification-policies#7004-business-requirements)，您必須擁有 [銀級或金級雲端平臺專長認證等級](/partner-center/learn-about-competencies) 或 [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) ，才能發佈受控服務供應專案。 您也必須輸入潛在客戶目的地，在客戶每次部署您的供應專案時 [，將會在 CRM 系統中建立記錄](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#customer-leads) 。
+根據 [受管理的服務供應專案認證需求](/legal/marketplace/certification-policies#7004-business-requirements)，您必須擁有 [銀級或金級雲端平臺專長認證等級](/partner-center/learn-about-competencies) 或 [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) ，才能發佈受控服務供應專案。 您也必須輸入潛在客戶目的地，在客戶每次部署您的供應專案時 [，將會在 CRM 系統中建立記錄](../../marketplace/plan-managed-service-offer.md#customer-leads) 。
 
 您的 Microsoft 合作夥伴網路 (MPN) 識別碼將會與您發佈的供應項目[自動關聯](../../cost-management-billing/manage/link-partner-id.md) \(部分機器翻譯\)，以追蹤您對客戶參與整體的影響。
 
@@ -38,7 +38,7 @@ ms.locfileid: "97673149"
 
 ## <a name="create-your-offer"></a>建立您的供應項目
 
-如需有關如何建立供應專案的詳細指示，包括您需要提供的所有資訊和資產，請參閱 [建立受控服務供應](../../marketplace/partner-center-portal/create-new-managed-service-offer.md)專案。
+如需有關如何建立供應專案的詳細指示，包括您需要提供的所有資訊和資產，請參閱 [建立受控服務供應](../../marketplace/plan-managed-service-offer.md)專案。
 
 若要瞭解一般發佈程式，請參閱 [Azure Marketplace 和 AppSource 發行指南](../../marketplace/overview.md)。 您也應檢閱[商業市集認證原則](/legal/marketplace/certification-policies)，尤其是[受控服務](/legal/marketplace/certification-policies#700-managed-services)一節。
 
@@ -49,7 +49,7 @@ ms.locfileid: "97673149"
 
 ## <a name="publish-your-offer"></a>發佈您的供應項目
 
-完成所有區段之後，下一步是將供應項目發佈至 Azure Marketplace。 選取 [發行] 按鈕來起始供應項目上線程序。 如需此程式的詳細資訊，請參閱 [這裡](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#publish)。 
+完成所有區段之後，下一步是將供應項目發佈至 Azure Marketplace。 選取 [發行] 按鈕來起始供應項目上線程序。 如需此程式的詳細資訊，請參閱 [這裡](../../marketplace/plan-managed-service-offer.md)。 
 
 您可以隨時[發佈供應項目的更新版本](../..//marketplace/partner-center-portal/update-existing-offer.md)。 例如，您可能會想要將新的角色定義新增至先前發佈的供應項目。 當您這麼做時，已新增供應項目的客戶會在 Azure 入口網站的 [[服務提供者](view-manage-service-providers.md)] 頁面中看到一個圖示，讓他們知道有可用的更新。 每個客戶都可以 [檢查變更](view-manage-service-providers.md#update-service-provider-offers) ，並決定是否要更新為新版本。 
 

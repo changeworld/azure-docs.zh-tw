@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/02/2020
-ms.openlocfilehash: b6fcc294c2b8c131d9a4a058c653ae1f64652ccf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31885eba16d59e2e48a08f84c56271b84e6c565f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324853"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790913"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>在 LUIS 入口網站中測試您的 LUIS 應用程式
 
@@ -40,7 +40,7 @@ ms.locfileid: "91324853"
     > [!div class="mx-imgBorder"]
     > ![訓練 & 測試應用程式頁面](./media/luis-how-to-interactive-test/test.png)
 
-1. 在文字方塊中輸入語句，並選取 Enter。 您可以針對 [測試]**** 輸入任意數目的測試語句，但一次只能輸入一個語句。
+1. 在文字方塊中輸入語句，並選取 Enter。 您可以針對 [測試] 輸入任意數目的測試語句，但一次只能輸入一個語句。
 
 1. 該語句，連同評分最高的意圖及其分數，會被新增至文字方塊底下的語句清單中。
 
@@ -51,7 +51,7 @@ ms.locfileid: "91324853"
 
 您可以在 [ **檢查** ] 面板中檢查測試結果的詳細資料。
 
-1. [測試]**** 滑出面板開啟時，請針對您想要比較的語句選取 [檢查]****。
+1. [測試] 滑出面板開啟時，請針對您想要比較的語句選取 [檢查]。
 
     > [!div class="mx-imgBorder"]
     > ![選取 [檢查] 按鈕以查看測試結果的相關詳細資料](./media/luis-how-to-interactive-test/inspect.png)
@@ -89,21 +89,21 @@ ms.locfileid: "91324853"
 
 ## <a name="view-sentiment-results"></a>檢視情感結果
 
-若已在 [[發行](luis-how-to-publish-app.md#enable-sentiment-analysis)]**** 頁面上設定 [情感分析]****，測試結果將會包含在語句中找到的情感。
+若已在 [[發行](luis-how-to-publish-app.md#enable-sentiment-analysis)] 頁面上設定 [情感分析]，測試結果將會包含在語句中找到的情感。
 
 ## <a name="correct-matched-patterns-intent"></a>修正相符模式的意圖
 
-若您有使用[模式](luis-concept-patterns.md)且語句有符合某個模式，但系統所預測的意圖是錯誤的，請選取模式旁邊的 [編輯]**** 連結，然後選取正確的意圖。
+若您有使用[模式](luis-concept-patterns.md)且語句有符合某個模式，但系統所預測的意圖是錯誤的，請選取模式旁邊的 [編輯] 連結，然後選取正確的意圖。
 
 ## <a name="compare-with-published-version"></a>與已發行的版本比較
 
-您可以搭配已發行的[端點](luis-glossary.md#endpoint)版本來測試應用程式的作用中版本。 在 [檢查]**** 面板中，選取 [與已發行比較]****。 針對已發行模型所做的任何測試，將會從您的 Azure 訂用帳戶配額餘額中扣除。
+您可以搭配已發行的[端點](luis-glossary.md#endpoint)版本來測試應用程式的作用中版本。 在 [檢查] 面板中，選取 [與已發行比較]。 針對已發行模型所做的任何測試，將會從您的 Azure 訂用帳戶配額餘額中扣除。
 
 > [!div class="mx-imgBorder"]
 > ![[與已發行比較]](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
 
 ## <a name="view-endpoint-json-in-test-panel"></a>在 [測試] 面板中檢視端點 JSON
-您可以選取 [顯示 JSON 檢視]**** 來檢視針對比較傳回的端點 JSON。
+您可以選取 [顯示 JSON 檢視] 來檢視針對比較傳回的端點 JSON。
 
 > [!div class="mx-imgBorder"]
 > ![已發行的 JSON 回應](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
@@ -112,14 +112,14 @@ ms.locfileid: "91324853"
 
 ### <a name="luis-endpoint"></a>LUIS 端點
 
-若您有數個 LUIS 端點，請使用 [測試] 面板 [發行] 窗格上的 [其他設定]**** 連結，以變更用於測試的端點。 若您不確定該使用哪一個端點，請選取預設的 [Starter_Key]****。
+若您有數個 LUIS 端點，請使用 [測試] 面板 [發行] 窗格上的 [其他設定] 連結，以變更用於測試的端點。 若您不確定該使用哪一個端點，請選取預設的 [Starter_Key]。
 
 > [!div class="mx-imgBorder"]
 > ![已醒目提示 [其他選項] 的 [測試] 面板](media/luis-how-to-interactive-test/additional-settings-v3-settings.png)
 
 
 ## <a name="batch-testing"></a>批次測試
-請參閱批次測試的[概念](luis-concept-batch-test.md)，並了解[如何](luis-how-to-batch-test.md)測試語句批次。
+請參閱批次測試的[概念](./luis-how-to-batch-test.md)，並了解[如何](luis-how-to-batch-test.md)測試語句批次。
 
 ## <a name="next-steps"></a>後續步驟
 

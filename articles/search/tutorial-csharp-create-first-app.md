@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec98762ac5918437e8fdb8426b54b79b1fb5b222
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
-ms.translationtype: HT
+ms.openlocfilehash: 961e30cf17bf385647f4482c6f767641c6b891af
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939716"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791673"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>教學課程：使用 .NET SDK 建立您的第一個搜尋應用程式
 
@@ -77,7 +77,7 @@ model.resultList = searchResult.Value.GetResults().ToList();
 
 1. 這是旅館索引，因此請輸入您會用來搜尋旅館的一些字詞 (例如，"wifi"、"view"、"bar"、"parking")，並且檢查結果。
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-wifi.png" alt-text="正在搜尋 *pool*" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-wifi.png" alt-text="正在搜尋 *wifi*" border="true":::
 
 希望這個專案將會順利執行，並讓 Web 應用程式執行。 許多更複雜搜尋的基本元件都包含在這一個應用程式中，因此最好一一瀏覽，並逐步重新建立該應用程式。 下列幾節會說明這些步驟。
 
@@ -87,23 +87,23 @@ model.resultList = searchResult.Value.GetResults().ToList();
 
 1. 在 Visual Studio 中，選取 [新增]  >  [專案]，然後選取 [ASP.NET Core Web 應用程式]。
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project1.png" alt-text="正在搜尋 *pool*" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project1.png" alt-text="建立一個雲端專案" border="true":::
 
 1. 為專案命名，例如 "FirstSearchApp"，並設定位置。 選取 [建立]  。
 
 1. 選擇 [Web 應用程式 (模型-檢視-控制器)] 專案範本。
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project2.png" alt-text="正在搜尋 *pool*" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project2.png" alt-text="建立一個 MVC 專案" border="true":::
 
 1. 安裝用戶端程式庫。 在 [工具]  >  [NuGet 套件管理員]  >  [管理解決方案的 NuGet 套件...] 中，請選取 [瀏覽]，然後搜尋 "azure.search.documents"。 安裝 **Azure.Search.Documents** (第 11 版或更新版本)，接受授權合約和相依性。
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="正在搜尋 *pool*" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="使用 NuGet 來新增 Azure 程式庫" border="true":::
 
 ### <a name="initialize-azure-cognitive-search"></a>初始化 Azure 認知搜尋
 
 在此範例中，您會使用公開可用的旅館資料。 這項資料是 50 個虛構旅館名稱和描述的任意集合，專為提供示範資料而建立。 若要存取此資料，請指定名稱和 API 金鑰。
 
-1. 開啟 **appsettings.json** 檔案，並以下列名稱和金鑰取代預設的幾行。 此處所示的 API 金鑰不是金鑰範例，它*就是*存取旅館資料所需的金鑰。 您的檔案看起來應該如下所示。
+1. 開啟 **appsettings.json** 檔案，並以下列名稱和金鑰取代預設的幾行。 此處所示的 API 金鑰不是金鑰範例，它 *就是* 存取旅館資料所需的金鑰。 您的檔案看起來應該如下所示。
 
     ```csharp
     {
@@ -114,7 +114,7 @@ model.resultList = searchResult.Value.GetResults().ToList();
 
 1. 在方案總管中選取檔案，然後在 [屬性] 中，將 [複製到輸出目錄] 設定變更為 [有更新時才複製]。
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png" alt-text="正在搜尋 *pool*" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png" alt-text="將應用程式設定複製到輸出" border="true":::
 
 ## <a name="model-data-structures"></a>模型資料結構
 
@@ -122,7 +122,7 @@ model.resultList = searchResult.Value.GetResults().ToList();
 
 在此步驟中，您將會建立搜尋索引的資料結構，以及在檢視/控制器通訊中使用的搜尋字串模型。 在旅館索引中，每個旅館都有許多房間，而且每個旅館都有多個部分的地址。 合併在一起，旅館完整表示是階層式和巢狀資料結構。 您將需要三個類別來建立每個元件。
 
-**Hotel**、**Address** 和 **Room** 這組類別已知為[*複雜類型*](search-howto-complex-data-types.md)，這是 Azure 認知搜尋的一項重要功能。 複雜類型可以是多層深的類別和子類別，而且會使用比*簡單類型* (只包含基本成員的類別) 更複雜的資料結構表示。
+**Hotel**、**Address** 和 **Room** 這組類別已知為 [*複雜類型*](search-howto-complex-data-types.md)，這是 Azure 認知搜尋的一項重要功能。 複雜類型可以是多層深的類別和子類別，而且會使用比 *簡單類型* (只包含基本成員的類別) 更複雜的資料結構表示。
 
 1. 在 [方案總管] 中，以滑鼠右鍵按一下 [模型]  >  [新增]  >  [新增項目]。
 
@@ -412,7 +412,7 @@ model.resultList = searchResult.Value.GetResults().ToList();
 
 ## <a name="define-methods"></a>定義方法
 
-在此步驟中，請修改**首頁控制器**的內容。
+在此步驟中，請修改 **首頁控制器** 的內容。
 
 1. 開啟 HomeController.cs 檔案，然後將 **using** 陳述式取代如下。
 
@@ -534,15 +534,15 @@ Azure 認知搜尋呼叫會封裝在我們的 **RunQueryAsync** 方法中。
 
 1. 選取 [偵錯]  >  [啟動但不偵錯]，或按下 **F5** 鍵。 如果應用程式如預期般執行，您應該會看到初始索引檢視。
 
-     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-index.png" alt-text="正在搜尋 *pool*" border="true":::
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-index.png" alt-text="開啟應用程式" border="true":::
 
 1. 輸入查詢字串，例如 "beach" (或想到的任何文字)，然後按一下搜尋圖示以傳送要求。
 
-     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-beach.png" alt-text="正在搜尋 *pool*" border="true":::
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-beach.png" alt-text="正在搜尋 *beach*" border="true":::
 
 1. 請嘗試輸入"five star"。 請注意，此查詢不會傳回任何結果。 更複雜的搜尋會將 "five star" 視為 "luxury" 的同義字，並傳回這些結果。 Azure 認知搜尋中提供[同義字](search-synonyms.md)的支援，但是本教學課程系列並未涵蓋此功能。
 
-1. 請嘗試輸入 "hot" 作為搜尋文字。 它_不會_傳回含有 "hotel" 字樣的項目。 我們的搜尋只會找出完整字詞，但是也會傳回幾個結果。
+1. 請嘗試輸入 "hot" 作為搜尋文字。 它 _不會_ 傳回含有 "hotel" 字樣的項目。 我們的搜尋只會找出完整字詞，但是也會傳回幾個結果。
 
 1. 請嘗試其他文字；"pool"、"sunshine"、"view" 等等。 您將會看到 Azure 認知搜尋以其最簡單、但仍令人信服的水準運作。
 
@@ -554,7 +554,7 @@ Azure 認知搜尋呼叫會封裝在我們的 **RunQueryAsync** 方法中。
 
 2. 執行應用程式、輸入 "bar" 作為搜尋文字，然後按一下 [搜尋] 圖示。 例外狀況應該會導致錯誤檢視。
 
-     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-error.png" alt-text="正在搜尋 *pool*" border="true":::
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-error.png" alt-text="強制發生錯誤" border="true":::
 
     > [!Important]
     > 在錯誤頁面傳回內部錯誤編號會被視為安全性風險。 如果您的應用程式用於一般用途，請對發生錯誤時傳回的內容，調查其安全性和最佳做法。

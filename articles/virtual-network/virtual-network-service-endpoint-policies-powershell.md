@@ -17,16 +17,14 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: 1d4fcc280ba2e34d2fa81584846441ad6fe81431
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8e300c9be8f3e59dc9443bf1f1806e4228992ad
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84708190"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790354"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-azure-powershell"></a>使用 Azure PowerShell 管理使用虛擬網路服務端點原則 Azure 儲存體帳戶的資料遭到外泄
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 虛擬網路服務端點原則可讓您從虛擬網路內的服務端點，將存取控制套用至 Azure 儲存體帳戶。 這是保護工作負載安全的關鍵，可管理允許的儲存體帳戶，以及允許資料遭到外泄的位置。
 在本文中，您將學會如何：
@@ -39,6 +37,8 @@ ms.locfileid: "84708190"
 * 確認從子網存取允許的儲存體帳戶。
 * 確認從子網拒絕存取非允許的儲存體帳戶。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -47,7 +47,7 @@ ms.locfileid: "84708190"
 
 ## <a name="create-a-virtual-network"></a>建立虛擬網路
 
-建立虛擬網路之前，您必須為虛擬網路以及在本文中建立的所有其他資源，建立資源群組。 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 來建立資源群組。 下列範例會建立名為 myResourceGroup** 的資源群組： 
+建立虛擬網路之前，您必須為虛擬網路以及在本文中建立的所有其他資源，建立資源群組。 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 來建立資源群組。 下列範例會建立名為 myResourceGroup 的資源群組： 
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -55,7 +55,7 @@ New-AzResourceGroup `
   -Location EastUS
 ```
 
-使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 建立虛擬網路。 下列範例會建立名為 myVirtualNetwork** 的虛擬網路，位址首碼為 10.0.0.0/16**。
+使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 建立虛擬網路。 下列範例會建立名為 myVirtualNetwork 的虛擬網路，位址首碼為 10.0.0.0/16。
 
 ```azurepowershell-interactive
 $virtualNetwork = New-AzVirtualNetwork `
@@ -67,7 +67,7 @@ $virtualNetwork = New-AzVirtualNetwork `
 
 ## <a name="enable-a-service-endpoint"></a>啟用服務端點
 
-在虛擬網路中建立子網。 在此範例中，系統會建立名為「Private (私人)」** 的子網路，當中包含適用於 Microsoft.Storage 的服務端點**： 
+在虛擬網路中建立子網。 在此範例中，系統會建立名為「Private (私人)」的子網路，當中包含適用於 Microsoft.Storage 的服務端點： 
 
 ```azurepowershell-interactive
 $subnetConfigPrivate = Add-AzVirtualNetworkSubnetConfig `
@@ -124,7 +124,7 @@ $rule3 = New-AzNetworkSecurityRuleConfig `
   -SourcePortRange *
 ```
 
-使用 [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) 建立網路安全性群組。 下列範例會建立名為 myNsgPrivate** 的網路安全性群組。
+使用 [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) 建立網路安全性群組。 下列範例會建立名為 myNsgPrivate 的網路安全性群組。
 
 ```azurepowershell-interactive
 $nsg = New-AzNetworkSecurityGroup `
@@ -134,7 +134,7 @@ $nsg = New-AzNetworkSecurityGroup `
   -SecurityRules $rule1,$rule2,$rule3
 ```
 
-使用[>new-azvirtualnetworksubnetconfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig)將網路安全性群組關聯至*私人*子網，然後將子網設定寫入至虛擬網路。 下列範例會將 myNsgPrivate** 網路安全性群組與「私人」** 子網路建立關聯：
+使用 [>new-azvirtualnetworksubnetconfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig)將網路安全性群組關聯至 *私人* 子網，然後將子網設定寫入至虛擬網路。 下列範例會將 myNsgPrivate 網路安全性群組與「私人」子網路建立關聯：
 
 ```azurepowershell-interactive
 Set-AzVirtualNetworkSubnetConfig `
@@ -238,7 +238,7 @@ $privateSubnet = Get-AzVirtualNetwork `
   | Get-AzVirtualNetworkSubnetConfig -Name Private
 ```
 
-允許使用[AzStorageAccountNetworkRule](/powershell/module/az.network/add-aznetworksecurityruleconfig)從*私人*子網存取儲存體帳戶的網路。
+允許使用 [AzStorageAccountNetworkRule](/powershell/module/az.network/add-aznetworksecurityruleconfig)從 *私人* 子網存取儲存體帳戶的網路。
 
 ```azurepowershell-interactive
 Add-AzStorageAccountNetworkRule `
@@ -303,7 +303,7 @@ $virtualNetwork | Set-AzVirtualNetwork
 
 若要測試對儲存體帳戶的網路存取，請在子網中部署 VM。
 
-使用[new-azvm](/powershell/module/az.compute/new-azvm)在*私人*子網中建立虛擬機器。 執行接下來的命令時，系統會提示您輸入認證。 您輸入的值會設定為 VM 的使用者名稱和密碼。 `-AsJob` 選項會在背景建立 VM，以便您繼續進行下一步。
+使用 [new-azvm](/powershell/module/az.compute/new-azvm)在 *私人* 子網中建立虛擬機器。 執行接下來的命令時，系統會提示您輸入認證。 您輸入的值會設定為 VM 的使用者名稱和密碼。 `-AsJob` 選項會在背景建立 VM，以便您繼續進行下一步。
 
 ```azurepowershell-interactive
 New-AzVm -ResourceGroupName myresourcegroup `
@@ -323,7 +323,7 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 
 ### <a name="confirm-access-to-the-allowed-storage-account"></a>確認存取 *允許* 的儲存體帳戶
 
-請使用 [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) 來傳回 VM 的公用 IP 位址。 以下範例會傳回 myVmPrivate** 虛擬機器的公用 IP 位址：
+請使用 [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) 來傳回 VM 的公用 IP 位址。 以下範例會傳回 myVmPrivate 虛擬機器的公用 IP 位址：
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress `
@@ -338,7 +338,7 @@ Get-AzPublicIpAddress `
 mstsc /v:<publicIpAddress>
 ```
 
-將會建立一個「遠端桌面通訊協定」(.rdp) 檔案，並下載至您的電腦。 開啟所下載的 rdp 檔案。 如果出現提示，請選取 [連接]。 輸入您在建立 VM 時指定的使用者名稱和密碼。 您可能需要選取 [其他選擇]****，然後選取 [使用不同的帳戶]****，以指定您在建立 VM 時輸入的認證。 選取 [確定]  。 您可能會在登入過程中收到憑證警告。 如果您收到警告，請選取 [是]**** 或 [繼續]**** 以繼續進行連線。
+將會建立一個「遠端桌面通訊協定」(.rdp) 檔案，並下載至您的電腦。 開啟所下載的 rdp 檔案。 如果出現提示，請選取 [連接]  。 輸入您在建立 VM 時指定的使用者名稱和密碼。 您可能需要選取 [其他選擇]  ，然後選取 [使用不同的帳戶]  ，以指定您在建立 VM 時輸入的認證。 選取 [確定]  。 您可能會在登入過程中收到憑證警告。 如果您收到警告，請選取 [是]  或 [繼續]  以繼續進行連線。
 
 在 *myVmPrivate* VM 上，使用 PowerShell 將 Azure 檔案共用從允許的儲存體帳戶對應到磁片磁碟機 Z。 
 
@@ -358,7 +358,7 @@ Z                                      FileSystem    \\allowedaccount.file.core.
 
 Azure 檔案共用已成功對應至 Z 磁碟機。
 
-關閉 myVmPrivate 虛擬機器的遠端桌面工作階段。
+關閉 myVmPrivate  虛擬機器的遠端桌面工作階段。
 
 ### <a name="confirm-access-is-denied-to-non-allowed-storage-account"></a>確認拒絕存取 *非允許* 的儲存體帳戶
 
@@ -372,7 +372,7 @@ New-PSDrive -Name X -PSProvider FileSystem -Root "\\notallowedaccount.file.core.
 
 存取共用遭到拒絕，且您收到 `New-PSDrive : Access is denied` 錯誤。 因為儲存體帳戶 *notallowedaccount* 不在服務端點原則的允許資源清單中，所以拒絕存取。 
 
-關閉 myVmPublic** VM 的遠端桌面工作階段。
+關閉 myVmPublic  VM 的遠端桌面工作階段。
 
 ## <a name="clean-up-resources"></a>清除資源
 

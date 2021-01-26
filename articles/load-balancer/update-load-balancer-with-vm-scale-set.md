@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/30/2020
 ms.author: irenehua
-ms.openlocfilehash: f8f664375e53a1cef28b0c7b95207770434f67fa
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: d5614490bfd2cfb67b6b7afd7b7b8643bbf754bd
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97893258"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790084"
 ---
 # <a name="how-to-updatedelete-azure-load-balancer-used-by-virtual-machine-scale-sets"></a>如何更新/刪除虛擬機器擴展集所使用的 Azure Load Balancer
 
 ## <a name="how-to-set-up-azure-load-balancer-for-scaling-out-virtual-machine-scale-sets"></a>如何設定擴充虛擬機器擴展集的 Azure Load Balancer
-  * 請確定 Load Balancer 已設定 [輸入 NAT](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest) 集區，且虛擬機器擴展集放在 Load Balancer 的後端集區中。 當新的虛擬機器實例新增至虛擬機器擴展集時，Azure Load Balancer 將會自動在輸入 NAT 集區中建立新的輸入 NAT 規則。 
+  * 請確定 Load Balancer 已設定 [輸入 NAT](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest) 集區，且虛擬機器擴展集放在 Load Balancer 的後端集區中。 當新的虛擬機器實例新增至虛擬機器擴展集時，Azure Load Balancer 將會自動在輸入 NAT 集區中建立新的輸入 NAT 規則。 
   * 若要檢查是否已正確設定輸入 NAT 集區， 
   1. 在 https://portal.azure.com 登入 Azure 入口網站。
   
@@ -35,7 +35,7 @@ ms.locfileid: "97893258"
 ## <a name="how-to-add-inbound-nat-rules"></a>如何新增輸入 NAT 規則？ 
   * 無法新增個別的輸入 NAT 規則。 不過，您可以針對虛擬機器擴展集中的所有實例，使用已定義的前端埠範圍和後端埠來新增一組輸入 NAT 規則。
   * 若要為虛擬機器擴展集新增一組完整的輸入 NAT 規則，您必須先在 Load Balancer 中建立輸入 NAT 集區，然後從虛擬機器擴展集的網路設定檔中參考輸入 NAT 集區。 使用 CLI 的完整範例如下所示。
-  * 新的輸入 NAT 集區不應與現有的輸入 NAT 集區具有重迭的前端埠範圍。 若要查看已設定的現有輸入 NAT 集區，您可以使用此 [CLI 命令](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest#az_network_lb_inbound_nat_pool_list)
+  * 新的輸入 NAT 集區不應與現有的輸入 NAT 集區具有重迭的前端埠範圍。 若要查看已設定的現有輸入 NAT 集區，您可以使用此 [CLI 命令](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest#az_network_lb_inbound_nat_pool_list)
 ```azurecli-interactive
 az network lb inbound-nat-pool create 
         -g MyResourceGroup 
@@ -92,7 +92,7 @@ az network lb inbound-nat-pool update
    
 1. 在 [ **新增前端 IP 位址** ] 頁面上，輸入值並選取 **[確定]**
 
-1. 如果需要新的負載平衡規則，請遵循本教學課程中的[步驟 5](https://docs.microsoft.com/azure/load-balancer/load-balancer-multiple-ip#step-5-configure-the-health-probe)和[步驟 6](https://docs.microsoft.com/azure/load-balancer/load-balancer-multiple-ip#step-5-configure-the-health-probe)
+1. 如果需要新的負載平衡規則，請遵循本教學課程中的[步驟 5](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe)和[步驟 6](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe)
 
 1. 若有需要，請使用新建立的前端 IP 設定，建立一組新的輸入 NAT 規則。 您可以在 [上一節] 中找到範例。
 

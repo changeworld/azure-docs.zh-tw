@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: 0fa1ff016ed787725ffde10ade67040a09c7e238
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5a5d9412ca77b73c08acbbfdbdc95371bb6f032b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285912"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791201"
 ---
 # <a name="windows-virtual-machines-documentation"></a>Windows 虛擬機器文件
 
@@ -39,7 +39,7 @@ Azure Windows 虛擬機器使用 Windows Server 提供隨選、高度可調整�
 - [建立 VM 擴展集](/azure/virtual-machines/windows/tutorial-create-vmss)
 - [負載平衡的 VM](/azure/virtual-machines/windows/tutorial-load-balancer)
 - [透過虛擬網路管理 VM](/azure/virtual-machines/windows/tutorial-virtual-network)
-- [備份 VM](/azure/virtual-machines/windows/tutorial-backup-vms)
+- [備份 VM](/azure/backup/quick-backup-vm-portal)
 - [監視 VM](/azure/virtual-machines/windows/tutorial-monitoring)
 - [管理 VM 安全性](/azure/virtual-machines/windows/tutorial-azure-security)
 

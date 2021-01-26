@@ -9,13 +9,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 12/16/2020
-ms.openlocfilehash: 4b1c98d8621267b300a82b697bce66a6b94e82f3
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.date: 01/25/2021
+ms.openlocfilehash: c12e1f4b01b0e2dd7fa21808cf33f45f9a5be59b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825909"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789967"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>使用者在 SQL 受控執行個體上起始的手動容錯移轉
 
@@ -143,6 +143,7 @@ SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_h
 > - 每隔 **15 分鐘** 可能會有一個 (1) 容錯移轉起始于相同的受控執行個體。
 > - 對於 BC 實例，必須有複本的仲裁，才能接受容錯移轉要求。
 > - 對於 BC 實例，無法指定要在哪個可讀取次要複本上起始容錯移轉。
+> - 在自動備份系統完成新資料庫的第一個完整備份之前，將不會允許容錯移轉。
 
 ## <a name="next-steps"></a>後續步驟
 

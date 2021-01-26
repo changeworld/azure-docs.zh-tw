@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 09859be61029242e987603e01b5c3fba8dffb2ca
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: fc85eec008ef099d63d538e4871a1a84573f5a18
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483881"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790440"
 ---
 # <a name="what-is-a-voice-assistant"></a>什麼是語音助理？
 
@@ -47,7 +47,7 @@ ms.locfileid: "96483881"
 
 無論您選擇 [Direct Line 語音](direct-line-speech.md) 或 [自訂命令](custom-commands.md) 來建立您的助理互動，您都可以使用一組豐富的自訂功能，自訂您的小幫手與品牌、產品和特質。
 
-| 類別 | 特性 |
+| 類別 | 功能 |
 |----------|----------|
 |[自訂關鍵字](./custom-keyword-basics.md) | 使用者可以使用自訂關鍵字（例如 "嗨 Contoso"）開始與助理進行交談。 應用程式會在語音 SDK 中使用自訂關鍵字引擎來進行這項設定， [您](./custom-keyword-basics.md)可以在此使用自訂關鍵字來設定。 語音助理可以使用服務端關鍵字驗證來改善關鍵字啟用 (與裝置) 的精確度。
 |[語音轉換文字](speech-to-text.md) | 語音助理使用語音服務的 [語音轉換文字](speech-to-text.md) ，將即時音訊轉換成可辨識的文字。 在您的助理執行和用戶端應用程式中，都可以使用此文字轉譯。
@@ -66,7 +66,7 @@ ms.locfileid: "96483881"
 
 * [GitHub 上的語音助理範例](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant)
 * [教學課程：使用 Azure Bot Service 搭配 c # 語音 SDK 建立小幫手的語音](tutorial-voice-enable-your-bot-speech-sdk.md)
-* [教學課程：使用簡單的語音命令來建立自訂命令應用程式](how-to-custom-commands-create-application-with-simple-commands.md)
+* [教學課程：使用簡單的語音命令來建立自訂命令應用程式](./how-to-develop-custom-commands-application.md)
 
 ## <a name="customization"></a>自訂
 

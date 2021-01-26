@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 25d084b8af148707685b2cbb4368394a12d99db2
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
-ms.translationtype: HT
+ms.openlocfilehash: 64064a584681d84eb6ba023c4777c0fdc4e6ec3d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97005302"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791925"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>教學課程：使用註冊群組佈建多個 x.509 裝置
 
@@ -46,7 +46,7 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
 
 下列必要條件適用於 Windows 開發環境。 針對 Linux 或 macOS，請參閱 SDK 文件中[準備您的開發環境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中的適當章節。
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 並啟用[使用 C++ 的桌面開發](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作負載。 也會支援 Visual Studio 2015 和 Visual Studio 2017。
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 並啟用[使用 C++ 的桌面開發](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作負載。 也會支援 Visual Studio 2015 和 Visual Studio 2017。
 
 * 已安裝最新版的 [Git](https://git-scm.com/download/)。
 
@@ -56,7 +56,7 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
 
 1. 下載 [CMake 建置系統](https://cmake.org/download/)。
 
-    在開始安裝 `CMake` **之前**，請務必將 [Visual Studio](https://visualstudio.microsoft.com/vs/) 先決條件 (Visual Studio 和 [「使用 C++ 進行桌面開發」](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作負載) 安裝在您的機器上。 在符合先決條件，並且驗證過下載項目之後，請安裝 CMake 建置系統。
+    在開始安裝 `CMake` **之前**，請務必將 [Visual Studio](https://visualstudio.microsoft.com/vs/) 先決條件 (Visual Studio 和 [「使用 C++ 進行桌面開發」](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作負載) 安裝在您的機器上。 在符合先決條件，並且驗證過下載項目之後，請安裝 CMake 建置系統。
 
 2. 尋找[最新版](https://github.com/Azure/azure-iot-sdk-c/releases/latest) Azure IoT C SDK 的標籤名稱。
 
@@ -87,7 +87,7 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
     $ cmake -Duse_prov_client:BOOL=ON -Dhsm_custom_lib=/d/azure-iot-sdk-c/cmake/provisioning_client/samples/custom_hsm_example/Debug/custom_hsm_example.lib ..
     ```
 
-    如果 `cmake` 找不到 C++ 編譯，您在執行上述命令時，可能會收到建置錯誤。 如果發生這種情況，請嘗試在 [Visual Studio 命令提示字元](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)中執行此命令。
+    如果 `cmake` 找不到 C++ 編譯，您在執行上述命令時，可能會收到建置錯誤。 如果發生這種情況，請嘗試在 [Visual Studio 命令提示字元](/dotnet/framework/tools/developer-command-prompt-for-vs)中執行此命令。
 
     建置成功之後，就會在您的 `cmake` 目錄中產生 Visual Studio 的解決方案。 最後幾行輸出會類似於下列輸出：
 
@@ -351,7 +351,7 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
 
 在非 Windows 裝置上，您可以從程式碼將憑證鏈結傳遞為憑證存放區。
 
-在 Windows 型裝置上，您必須將簽署憑證 (根和中繼憑證) 新增至 Windows [憑證存放區](https://docs.microsoft.com/windows/win32/secauthn/certificate-stores)。 否則，系統將不會透過傳輸層安全性 (TLS) 安全通道，將簽署憑證傳輸至 DPS。
+在 Windows 型裝置上，您必須將簽署憑證 (根和中繼憑證) 新增至 Windows [憑證存放區](/windows/win32/secauthn/certificate-stores)。 否則，系統將不會透過傳輸層安全性 (TLS) 安全通道，將簽署憑證傳輸至 DPS。
 
 若要將簽署憑證新增至 Windows 型裝置中的憑證存放區：
 

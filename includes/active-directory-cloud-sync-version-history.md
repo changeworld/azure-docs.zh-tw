@@ -1,14 +1,42 @@
 ---
-ms.openlocfilehash: 77866fcb72515d5167d9f06b7d9ad91c59bc7945
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 35cb7ba4523cfbc88daf958fd972b127519385ce
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97700597"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792293"
 ---
 本文列出已發行 Azure Active Directory Connect 布建代理程式的版本和功能。 Azure AD 團隊會定期以新的特性和功能更新布建代理程式。 發行新版本時，會自動更新布建代理程式。 
 
 Microsoft 提供最新代理程式版本的直接支援，以及之前的一個版本。
+
+## <a name="113540"></a>1.1.354.0
+
+2021年1月20日：已發行供下載
+
+### <a name="new-features-and-improvements"></a>新功能和改進
+- 改進 GMSA 體驗，包括支援預先自訂建立的 GMSA 帳戶
+- GMSA 安裝程式的[PowerShell Cmdlet](../articles/active-directory/cloud-sync/how-to-gmsa-cmdlets.md)支援
+- 適用于代理程式安裝 (無訊息安裝的[CLI 支援](../articles/active-directory/cloud-sync/how-to-install-pshell.md)) 
+- 代理程式來源隔離問題的其他診斷
+- Bug 修正，包括減少 OU 範圍篩選器的記憶體使用量、僅針對範圍內使用者執行 PHS、在使用 OU 範圍設定時處理 OU 中的嵌套物件等等。 
+
+
+### <a name="fixed-issues"></a>已修正的問題
+-    當範圍群組超出範圍時防止隔離
+-   設定範圍篩選準則時-PHS 作業現在只會針對範圍內的使用者進行操作
+-   代理程式有時會在升級期間停止回應
+-   使用 OU 範圍設定時，嵌套 Ou 中物件的初始同步處理
+-   使 Repair-AADCloudSyncToolsAccount 更健全
+-   減少 OU 範圍篩選器的大量記憶體使用量
+-   如果角色成員包含安全性群組，則系統管理員角色檢查失敗
+-   修正 GMSA 資料夾許可權問題，以防止代理程式憑證更新
+
+
+
+
+
+
 
 ## <a name="112810"></a>1.1.281.0
 
@@ -18,18 +46,18 @@ Microsoft 提供最新代理程式版本的直接支援，以及之前的一個�
 
 ### <a name="new-features-and-improvements"></a>新功能和改進
 
-* 對[gMSA](../articles/active-directory/cloud-provisioning/how-to-prerequisites.md#group-managed-service-accounts)的支援
+* 對[gMSA](../articles/active-directory/cloud-sync/how-to-prerequisites.md#group-managed-service-accounts)的支援
 * 在增量或差異同步處理週期期間，最多可支援群組大小小於1500的成員。 這適用于使用群組範圍篩選器時
 * 支援成員大小高達15K 的大型群組
 * 初始同步改進
 * Advanced verbose 記錄
-* [AADCloudSyncTools PowerShell 模組](../articles/active-directory/cloud-provisioning/reference-powershell.md)簡介
+* [AADCloudSyncTools PowerShell 模組](../articles/active-directory/cloud-sync/reference-powershell.md)簡介
 * 已修正允許將代理程式安裝在非英文伺服器的限制
 * 只有範圍 (中的物件才支援 PHS 篩選，我們會同步處理所有物件的密碼雜湊) 
 * 已修正代理程式中的記憶體流失問題
 * 改進的布建記錄
-* 支援 [設定 LDAP 連接逾時](../articles/active-directory/cloud-provisioning/how-to-manage-registry-options.md#configure-ldap-connection-timeout) 
-* 支援設定 [參考追蹤](../articles/active-directory/cloud-provisioning/how-to-manage-registry-options.md#configure-referral-chasing) 
+* 支援 [設定 LDAP 連接逾時](../articles/active-directory/cloud-sync/how-to-manage-registry-options.md#configure-ldap-connection-timeout) 
+* 支援設定 [參考追蹤](../articles/active-directory/cloud-sync/how-to-manage-registry-options.md#configure-referral-chasing) 
 
 
 ## <a name="11960"></a>1.1.96.0
@@ -40,7 +68,7 @@ Microsoft 提供最新代理程式版本的直接支援，以及之前的一個�
 
 ### <a name="new-features-and-improvements"></a>新功能和改進
 
-* 包含 [Azure AD Connect 雲端](../articles/active-directory/cloud-provisioning/what-is-cloud-provisioning.md) 布建的支援，可將使用者、連絡人和群組資料從內部部署 Active Directory 同步處理至 Azure AD
+* 包含 [Azure AD Connect cloud sync](../articles/active-directory/cloud-sync/what-is-cloud-sync.md) 的支援，可將使用者、連絡人和群組資料從內部部署 Active Directory 同步處理至 Azure AD
 
 
 ## <a name="11670"></a>1.1.67.0

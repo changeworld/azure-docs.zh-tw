@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.author: tisande
-ms.openlocfilehash: c78e15a0656abd510bbc241d39ffd026afddfd96
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c687b5b18c9cf7b0920b23f49e3c7a2607e0a89f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353658"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791015"
 ---
 # <a name="getting-started-with-sql-queries"></a>開始使用 SQL 查詢
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -187,7 +187,7 @@ Azure Cosmos DB 上大部分的大量讀取工作負載都會使用點讀取和 
 
 * Azure Cosmos DB 只支援嚴謹的 JSON 項目。 類型系統和運算式僅限於處理 JSON 類型。 如需詳細資訊，請參閱 [JSON 規格](https://www.json.org/) \(英文\)。  
 
-* Cosmos 容器是 JSON 專案的無架構集合。 容器專案內和跨容器專案的關聯性會由內含專案（而非主鍵和外鍵關聯）隱含地捕捉。 這項功能對於本文稍後討論的專案內聯接很重要。
+* Cosmos 容器是 JSON 專案的無架構集合。 容器專案內和跨容器專案的關聯性會由內含專案（而非主鍵和外鍵關聯）隱含地捕捉。 這項功能對於 [Azure Cosmos DB](sql-query-join.md)中的聯結所述的專案內聯接很重要。
 
 ## <a name="next-steps"></a>後續步驟
 

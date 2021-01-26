@@ -3,12 +3,12 @@ title: 將受控識別與應用程式搭配使用
 description: 如何在 Azure Service Fabric 應用程式程式碼中使用受控識別來存取 Azure 服務。
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: c89f7bd064e643b978253f2e083c449d904d2cad
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: bec640077a17ccef822afb85fc104728aabb13b1
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108512"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791317"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>如何利用 Service Fabric 應用程式的受控識別來存取 Azure 服務
 
@@ -30,7 +30,7 @@ Azure 身分識別 SDK 現在支援 Service Fabric。 使用 Azure 時，身分�
 下列版本提供這些語言的 Service Fabric 支援： 
 - [版本1.3.0 中的 c #](https://www.nuget.org/packages/Azure.Identity)。 請參閱 [c # 範例](https://github.com/Azure-Samples/service-fabric-managed-identity)。
 - [1.5.0 版中的 Python](https://pypi.org/project/azure-identity/)。 請參閱 [Python 範例](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/identity/azure-identity/tests/managed-identity-live/service-fabric/service_fabric.md)。
-- [版本1.2.0 中的 JAVA](https://docs.microsoft.com/java/api/overview/azure/identity-readme?view=azure-java-stable)。
+- [版本1.2.0 中的 JAVA](https://docs.microsoft.com/java/api/overview/azure/identity-readme)。
 
 將認證初始化和使用認證從 Azure Key Vault 提取秘密的 c # 範例：
 

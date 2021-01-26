@@ -3,12 +3,12 @@ title: 瞭解 Kubernetes 的 Azure 原則
 description: 了解 Azure 原則如何使用 Rego 和 Open Policy Agent 來管理在 Azure 或內部部署中執行 Kubernetes 的叢集。
 ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: e2b9253d8ce60d5dc77d406e3c9d0469539f2c77
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: f25b64bc28535d125c7883f16c9e747d6250ca96
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511326"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789733"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>了解適用於 Kubernetes 叢集的 Azure 原則 \(部分機器翻譯\)
 
@@ -463,7 +463,7 @@ kubectl logs <gatekeeper pod name> -n gatekeeper-system
 
 ## <a name="troubleshooting-the-add-on"></a>針對附加元件進行疑難排解
 
-如需 Kubernetes 的附加元件疑難排解的詳細資訊，請參閱 Azure 原則疑難排解文章中的 [Kubernetes 一節](/azure/governance/policy/troubleshoot/general#add-on-for-kubernetes-general-errors) 。
+如需 Kubernetes 的附加元件疑難排解的詳細資訊，請參閱 Azure 原則疑難排解文章中的 [Kubernetes 一節](../troubleshoot/general.md#add-on-for-kubernetes-general-errors) 。
 
 ## <a name="remove-the-add-on"></a>移除附加元件
 

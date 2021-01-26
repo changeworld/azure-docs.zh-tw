@@ -4,12 +4,12 @@ description: Service Fabric Reliable Actors 的計時器和提醒的簡介，包
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2b97b15ca4eb287f8d8f2c1af932f22acafae546
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f77eb29c9146fe66d5d2b6073c33e30fbab649c2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89016541"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791789"
 ---
 # <a name="actor-timers-and-reminders"></a>動作項目計時器和提醒
 動作項目可藉由註冊計時器或提醒來排程本身的週期性工作。 本文示範如何使用計時器和提醒，以及說明它們之間的差異。
@@ -131,7 +131,7 @@ public class VisualObjectActorImpl extends FabricActor implements VisualObjectAc
 > [!NOTE]
 > 提醒的可靠性會與動作專案狀態提供者所提供的狀態可靠性保證相關聯。 這表示，如果動作專案的狀態持續性設定為 [ *無*]，則在容錯移轉之後不會引發提醒。
 
-為了註冊提醒，動作專案會呼叫 [`RegisterReminderAsync`](/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync?view=azure-dotnet#remarks) 基類上提供的方法，如下列範例所示：
+為了註冊提醒，動作專案會呼叫 [`RegisterReminderAsync`](/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync#remarks) 基類上提供的方法，如下列範例所示：
 
 ```csharp
 protected override async Task OnActivateAsync()

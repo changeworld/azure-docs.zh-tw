@@ -3,12 +3,12 @@ title: 建立 Azure Service Fabric 叢集
 description: 了解如何使用 Azure Resource Manager 在 Azure 中設定安全的 Service Fabric 叢集。  您可以使用預設範本或您自己的叢集範本來建立叢集。
 ms.topic: conceptual
 ms.date: 08/16/2018
-ms.openlocfilehash: fd2c472d24f305e42f1706e5fc49168ccde2a580
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d4daa75fd9383bc19da1b09104ebddff5712c5b4
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008662"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791806"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>使用 Azure Resource Manager 來建立 Service Fabric 叢集 
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "96008662"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Prerequisites 
+## <a name="prerequisites"></a>先決條件 
 在本文中使用 Service Fabric RM Powershell 或 Azure CLI 模組來部署叢集：
 
 * [Azure PowerShell 4.1 和更新版本][azure-powershell]
@@ -34,7 +34,7 @@ ms.locfileid: "96008662"
 
 您可以在此找到 Service Fabric 模組的參考文件：
 * [Az.ServiceFabric](/powershell/module/az.servicefabric)
-* [az SF CLI module](/cli/azure/sf?view=azure-cli-latest)
+* [az SF CLI module](/cli/azure/sf)
 
 ### <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -285,6 +285,6 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 <!-- Links -->
 [azure-powershell]:https://docs.microsoft.com/powershell/azure/install-Az-ps
-[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
+[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [customize-your-cluster-template]: service-fabric-cluster-creation-create-template.md

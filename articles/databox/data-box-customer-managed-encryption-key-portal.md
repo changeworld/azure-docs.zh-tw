@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/19/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: 80a6824edb92d8337481f592cbbf5eb23255b383
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: e6b588ddea5bf4b4c92e89d9cebb37b09b9a86af
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185524"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791539"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>在 Azure Key Vault 中使用客戶管理的金鑰 Azure 資料箱
 
@@ -27,7 +27,7 @@ Azure 資料箱保護裝置的解除鎖定金鑰 (也稱為裝置密碼) ，它�
 
 本文適用于 Azure 資料箱和 Azure Data Box Heavy 裝置。
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 
 適用于資料箱訂單的客戶管理金鑰必須符合下列需求：
 
@@ -95,7 +95,7 @@ Azure 資料箱保護裝置的解除鎖定金鑰 (也稱為裝置密碼) ，它�
 
 7. 選取用來管理此資源之客戶管理金鑰的身分識別類型。 您可以使用在訂單建立期間產生的 **系統指派** 身分識別，或選擇使用者指派的身分識別。
 
-    使用者指派的身分識別是一種獨立的資源，可讓您用來管理資源的存取權。 如需詳細資訊，請參閱[受控識別類型](/azure/active-directory/managed-identities-azure-resources/overview)。
+    使用者指派的身分識別是一種獨立的資源，可讓您用來管理資源的存取權。 如需詳細資訊，請參閱[受控識別類型](../active-directory/managed-identities-azure-resources/overview.md)。
 
     ![選取身分識別類型](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-13.png)
 
@@ -103,7 +103,7 @@ Azure 資料箱保護裝置的解除鎖定金鑰 (也稱為裝置密碼) ，它�
 
     ![選取要使用的身分識別](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-14.png)
 
-    您無法在這裡建立新的使用者身分識別。 若要瞭解如何建立一個，請參閱 [使用 Azure 入口網站建立、列出、刪除或指派角色給使用者指派的受控識別](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)。
+    您無法在這裡建立新的使用者身分識別。 若要瞭解如何建立一個，請參閱 [使用 Azure 入口網站建立、列出、刪除或指派角色給使用者指派的受控識別](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。
 
     選取的使用者身分識別會顯示在 [ **加密類型** ] 設定中。
 
@@ -187,9 +187,9 @@ Azure 資料箱保護裝置的解除鎖定金鑰 (也稱為裝置密碼) ，它�
 |-------------|--------------|---------|
 | SsemUserErrorEncryptionKeyDisabled| 因為已停用客戶管理的金鑰，所以無法提取金鑰。| 是，啟用金鑰版本。|
 | SsemUserErrorEncryptionKeyExpired| 因為客戶管理的金鑰已過期，所以無法提取金鑰。| 是，啟用金鑰版本。|
-| SsemUserErrorKeyDetailsNotFound| 因為找不到客戶管理的金鑰，所以無法提取金鑰。| 如果您刪除了金鑰保存庫，則無法復原客戶管理的金鑰。  如果您將金鑰保存庫遷移至不同的租使用者，請參閱在 [訂用帳戶移動之後變更金鑰保存庫租使用者識別碼](../key-vault/general/move-subscription.md)。 如果您刪除了金鑰保存庫：<ol><li>是的，如果是在清除保護期間，請使用 [復原金鑰保存庫](../key-vault/general/soft-delete-powershell.md#recovering-a-key-vault)的步驟。</li><li>否，如果超出清除保護的持續時間。</li></ol><br>否則，如果金鑰保存庫進行了租使用者遷移，則可以使用下列其中一個步驟來復原： <ol><li>將金鑰保存庫還原回舊的租使用者。</li><li>設定 `Identity = None` ，然後將值設回 `Identity = SystemAssigned` 。 這會在新的身分識別建立之後，刪除並重新建立身分識別。 `Get` `Wrap` `Unwrap` 在金鑰保存庫的存取原則中啟用、和許可權至新的身分識別。</li></ol> |
+| SsemUserErrorKeyDetailsNotFound| 因為找不到客戶管理的金鑰，所以無法提取金鑰。| 如果您刪除了金鑰保存庫，則無法復原客戶管理的金鑰。  如果您將金鑰保存庫遷移至不同的租使用者，請參閱在 [訂用帳戶移動之後變更金鑰保存庫租使用者識別碼](../key-vault/general/move-subscription.md)。 如果您刪除了金鑰保存庫：<ol><li>是的，如果是在清除保護期間，請使用 [復原金鑰保存庫](../key-vault/general/key-vault-recovery.md?tabs=azure-powershell#key-vault-powershell)的步驟。</li><li>否，如果超出清除保護的持續時間。</li></ol><br>否則，如果金鑰保存庫進行了租使用者遷移，則可以使用下列其中一個步驟來復原： <ol><li>將金鑰保存庫還原回舊的租使用者。</li><li>設定 `Identity = None` ，然後將值設回 `Identity = SystemAssigned` 。 這會在新的身分識別建立之後，刪除並重新建立身分識別。 `Get` `Wrap` `Unwrap` 在金鑰保存庫的存取原則中啟用、和許可權至新的身分識別。</li></ol> |
 | SsemUserErrorKeyVaultBadRequestException | 已套用客戶管理的金鑰，但未授與或撤銷金鑰存取權，或因為啟用防火牆而無法存取金鑰保存庫。 | 將選取的身分識別新增至金鑰保存庫，以允許存取客戶管理的金鑰。 如果金鑰保存庫已啟用防火牆，請切換至系統指派的身分識別，然後新增客戶管理的金鑰。 如需詳細資訊，請參閱如何 [啟用金鑰](#enable-key)。 |
-| SsemUserErrorKeyVaultDetailsNotFound| 因為找不到客戶管理的金鑰相關聯的金鑰保存庫，所以無法提取金鑰。 | 如果您刪除了金鑰保存庫，則無法復原客戶管理的金鑰。  如果您將金鑰保存庫遷移至不同的租使用者，請參閱在 [訂用帳戶移動之後變更金鑰保存庫租使用者識別碼](../key-vault/general/move-subscription.md)。 如果您刪除了金鑰保存庫：<ol><li>是的，如果是在清除保護期間，請使用 [復原金鑰保存庫](../key-vault/general/soft-delete-powershell.md#recovering-a-key-vault)的步驟。</li><li>否，如果超出清除保護的持續時間。</li></ol><br>否則，如果金鑰保存庫進行了租使用者遷移，則可以使用下列其中一個步驟來復原： <ol><li>將金鑰保存庫還原回舊的租使用者。</li><li>設定 `Identity = None` ，然後將值設回 `Identity = SystemAssigned` 。 這會在新的身分識別建立之後，刪除並重新建立身分識別。 `Get` `Wrap` `Unwrap` 在金鑰保存庫的存取原則中啟用、和許可權至新的身分識別。</li></ol> |
+| SsemUserErrorKeyVaultDetailsNotFound| 因為找不到客戶管理的金鑰相關聯的金鑰保存庫，所以無法提取金鑰。 | 如果您刪除了金鑰保存庫，則無法復原客戶管理的金鑰。  如果您將金鑰保存庫遷移至不同的租使用者，請參閱在 [訂用帳戶移動之後變更金鑰保存庫租使用者識別碼](../key-vault/general/move-subscription.md)。 如果您刪除了金鑰保存庫：<ol><li>是的，如果是在清除保護期間，請使用 [復原金鑰保存庫](../key-vault/general/key-vault-recovery.md?tabs=azure-powershell#key-vault-powershell)的步驟。</li><li>否，如果超出清除保護的持續時間。</li></ol><br>否則，如果金鑰保存庫進行了租使用者遷移，則可以使用下列其中一個步驟來復原： <ol><li>將金鑰保存庫還原回舊的租使用者。</li><li>設定 `Identity = None` ，然後將值設回 `Identity = SystemAssigned` 。 這會在新的身分識別建立之後，刪除並重新建立身分識別。 `Get` `Wrap` `Unwrap` 在金鑰保存庫的存取原則中啟用、和許可權至新的身分識別。</li></ol> |
 | SsemUserErrorSystemAssignedIdentityAbsent  | 因為找不到客戶管理的金鑰，所以無法提取金鑰。| 是，請檢查： <ol><li>Key vault 仍具有存取原則中的 MSI。</li><li>身分識別是系統指派的類型。</li><li>在金鑰保存庫的存取原則中啟用身分識別的取得、包裝和解除包裝許可權。</li></ol>|
 | SsemUserErrorUserAssignedLimitReached | 新增使用者指派的身分識別失敗，因為您已達到可新增的使用者指派身分識別總數上限。 | 請在重試之前，以較少的使用者身分識別來重試作業，或從資源移除一些使用者指派的身分識別。 |
 | SsemUserErrorCrossTenantIdentityAccessForbidden | 受控識別存取作業失敗。 <br> 注意：這適用于將訂用帳戶移到不同租使用者的案例。 客戶必須手動將身分識別移至新的租使用者。 PFA mail 以取得詳細資料。 | 請將選取的身分識別移至出現訂用帳戶的新租使用者。 如需詳細資訊，請參閱如何 [啟用金鑰](#enable-key)。 |

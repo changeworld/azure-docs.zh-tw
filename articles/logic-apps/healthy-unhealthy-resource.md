@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 7d43c128f0f587a32cc4b8673727579043f268eb
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: ed1fe2885b1be28a03251bcfcecd08bdbd35adcf
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629590"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790067"
 ---
 # <a name="set-up-logging-to-monitor-logic-apps-in-azure-security-center"></a>設定記錄以監視 Azure 資訊安全中心中的邏輯應用程式
 
@@ -20,11 +20,11 @@ ms.locfileid: "97629590"
 > [!TIP]
 > 若要尋找 Logic Apps 服務的目前狀態，請參閱 [Azure 狀態頁面](https://status.azure.com/)，其中會列出每個可用區域中不同產品和服務的狀態。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Azure 訂用帳戶。 如果您沒有訂用帳戶，請在開始前 [建立免費的 Azure 帳戶](https://azure.microsoft.com/free/) 。
 * [已啟用診斷記錄](#enable-diagnostic-logging)的現有邏輯應用程式。
-* 為您的邏輯應用程式啟用記錄所需的 Log Analytics 工作區。 如果您沒有工作區，請先 [建立您的工作區](/azure/azure-monitor/learn/quick-create-workspace)。
+* 為您的邏輯應用程式啟用記錄所需的 Log Analytics 工作區。 如果您沒有工作區，請先 [建立您的工作區](../azure-monitor/learn/quick-create-workspace.md)。
 
 ## <a name="enable-diagnostic-logging"></a>啟用診斷記錄
 

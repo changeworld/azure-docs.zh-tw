@@ -3,12 +3,12 @@ title: 更新委派
 description: 瞭解如何更新客戶先前上線至 Azure Lighthouse 的委派。
 ms.date: 12/03/2020
 ms.topic: how-to
-ms.openlocfilehash: e204d1f3546e6e978f91c7e808065a388a4af4b3
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: eec5d1f2d34e8e3c9e0ded59cb111624b1981873
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093412"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791334"
 ---
 # <a name="update-a-delegation"></a>更新委派
 
@@ -58,9 +58,9 @@ ms.locfileid: "97093412"
 
 ## <a name="updating-managed-service-offers"></a>更新受管理的服務供應專案
 
-如果您透過發佈至 Azure Marketplace 的受控服務供應專案來上線客戶，而您想要更新授權，您可以使用您想要在該客戶的方案中更新的[授權](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#authorization)來[發佈新版本的供應](../../marketplace/partner-center-portal/update-existing-offer.md)專案，以更新委派。 接著，客戶將能夠更新至 Azure 入口網站中的最新版本。
+如果您透過發佈至 Azure Marketplace 的受控服務供應專案來上線客戶，而您想要更新授權，您可以使用您想要在該客戶的方案中更新的[授權](../../marketplace/plan-managed-service-offer.md)來[發佈新版本的供應](../../marketplace/partner-center-portal/update-existing-offer.md)專案，以更新委派。 接著，客戶將能夠更新至 Azure 入口網站中的最新版本。
 
-如果您想要變更管理租使用者，您將需要 [建立併發布新的受控服務供應](../../marketplace/partner-center-portal/create-new-managed-service-offer.md) 專案，讓客戶接受。
+如果您想要變更管理租使用者，您將需要 [建立併發布新的受控服務供應](../../marketplace/plan-managed-service-offer.md) 專案，讓客戶接受。
 
 > [!TIP]
 > 如先前所述，我們建議您不要在相同的客戶與管理租使用者之間使用多個不同的供應專案。 如果您為相同的客戶發佈的新供應專案使用相同的管理租使用者，請確定已移除先前的供應專案，再讓客戶接受較新的供應專案。

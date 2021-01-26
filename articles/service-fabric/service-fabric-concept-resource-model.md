@@ -3,12 +3,12 @@ title: Azure Service Fabric 應用程式資源模型
 description: 本文概述如何使用 Azure Resource Manager 來管理 Azure Service Fabric 應用程式。
 ms.topic: conceptual
 ms.date: 10/21/2019
-ms.openlocfilehash: f4fbd775ab479437c350dc24b9b5511f7a614c8b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 0019f154f301d2b688d4c16c9adb36ec386adef2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576089"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790718"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric 應用程式資源模型
 
@@ -171,13 +171,13 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 
 若要刪除使用 Resource Manager 中的應用程式資源模型所部署的應用程式：
 
-1. 使用 [get-azresource](/powershell/module/az.resources/get-azresource?view=azps-2.5.0) Cmdlet 取得應用程式的資源識別碼：
+1. 使用 [get-azresource](/powershell/module/az.resources/get-azresource) Cmdlet 取得應用程式的資源識別碼：
 
     ```powershell
     Get-AzResource  -Name <String> | f1
     ```
 
-1. 使用 [get-azresource](/powershell/module/az.resources/remove-azresource?view=azps-2.5.0) Cmdlet 來刪除應用程式資源：
+1. 使用 [get-azresource](/powershell/module/az.resources/remove-azresource) Cmdlet 來刪除應用程式資源：
 
     ```powershell
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]

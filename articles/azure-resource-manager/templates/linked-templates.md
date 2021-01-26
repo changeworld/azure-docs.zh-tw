@@ -2,13 +2,13 @@
 title: 連結範本以進行部署
 description: 描述如何在 Azure Resource Manager 範本中使用連結的範本 (ARM 範本) 來建立模組化範本方案。 示範如何傳遞參數值、指定參數檔案，以及動態建立 URL。
 ms.topic: conceptual
-ms.date: 01/20/2021
-ms.openlocfilehash: dd810167e07f1bb23f9563936cb481652953ccd1
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.date: 01/25/2021
+ms.openlocfilehash: 7d4df67b7f69b3e58799f45ad72bd9ed68540dc2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624853"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790930"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 資源時使用連結和巢狀的範本
 
@@ -111,6 +111,10 @@ ms.locfileid: "98624853"
   },
   ...
 ```
+
+> [!NOTE]
+>
+> 當範圍設定為時 `outer` ，您不能 `reference` 在已在嵌套範本中部署的資源之嵌套範本的輸出區段中使用函數。 若要在嵌套的範本中傳回已部署之資源的值，請使用 `inner` 範圍，或將您的嵌套範本轉換成連結的範本。
 
 下列範本會示範如何根據範圍解析範本運算式。 它包含名為的變數，該變數 `exampleVar` 定義于父範本和嵌套範本中。 它會傳回變數的值。
 
@@ -399,10 +403,6 @@ ms.locfileid: "98624853"
   ]
 }
 ```
-
-> [!NOTE]
->
-> 當範圍設定為時 `outer` ，您不能 `reference` 在已在嵌套範本中部署的資源之嵌套範本的輸出區段中使用函數。 若要在嵌套的範本中傳回已部署之資源的值，請使用 `inner` 範圍，或將您的嵌套範本轉換成連結的範本。
 
 ## <a name="linked-template"></a>連結的範本
 

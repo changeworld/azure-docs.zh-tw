@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: d6e52da7fce39a259107fe60a21fb5ead7b18709
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 36724e518f1bae636c2d2602a227b53a11257591
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127816"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791049"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>將受保護的 SharePoint 資料來源新增至您的知識庫
 
@@ -20,7 +20,7 @@ ms.locfileid: "98127816"
 
 如果 QnA Maker 的知識庫管理員不是 Active Directory manager，您必須與 Active Directory 管理員通訊，才能完成此程式。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * 以雲端為基礎的 SharePoint QnA Maker 使用 Microsoft Graph 來取得許可權。 如果您的 SharePoint 是內部部署，您將無法從 SharePoint 進行解壓縮，因為 Microsoft Graph 無法判斷許可權。
 * URL 格式-QnA Maker 僅支援為了共用而產生的 SharePoint url，且格式為 `https://\*.sharepoint.com`
@@ -132,7 +132,7 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
 有因應措施：使用 Azure blob 儲存體透過 API 新增最新的 SharePoint 內容，如下所示： 
 1.  將 SharePoint 檔案下載至本機。 呼叫 API 的使用者必須具有 SharePoint 的存取權。 
-1.  將它們上傳至 Azure blob 儲存體。 這將會[使用 SAS 權杖](https://docs.microsoft.com/azure/storage/common/storage-sas-overview#how-a-shared-access-signature-works)建立安全的共用存取。 
+1.  將它們上傳至 Azure blob 儲存體。 這將會[使用 SAS 權杖](../../../storage/common/storage-sas-overview.md#how-a-shared-access-signature-works)建立安全的共用存取。 
 1. 將使用 SAS 權杖產生的 blob URL 傳遞至 QnA Maker API。 若要允許從檔案解壓縮問題，您必須將尾碼檔案類型新增為 URL 結尾的 ' &ext = pdf ' 或 ' &ext = doc '，然後再將它傳遞給 QnA Maker API>  
 
 

@@ -3,18 +3,18 @@ title: 在 Azure 實驗室服務的實驗室中設定使用方式設定
 description: 瞭解如何設定實驗室的學生人數、讓他們向實驗室註冊、控制他們可以使用 VM 的時數等等。
 ms.topic: article
 ms.date: 12/01/2020
-ms.openlocfilehash: 3b05246445aea708312891ec631a35da3bc1eb8e
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 380a587eecb276c457b93ca3c3f3ac08b2239275
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602626"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791958"
 ---
 # <a name="add-and-manage-lab-users"></a>新增和管理實驗室使用者
 
 本文說明如何將學生使用者新增至實驗室、向實驗室註冊、控制他們可以使用虛擬機器 (VM) 的額外時數，以及其他更多的時間。 
 
-當您新增使用者時，根據預設，[ **限制存取** ] 選項會開啟，而且除非使用者在使用者清單中，否則學生無法向實驗室註冊，即使他們有註冊連結也一樣。 只有列出的使用者可以使用您傳送的註冊連結向實驗室註冊。 您可以關閉 [ **限制存取**]，讓學生可以向實驗室註冊，只要他們有註冊連結即可。 
+當您新增使用者時，[限制存取] 選項會依預設開啟，除非位於使用者清單中，否則學生無法向實驗室註冊，即使他們有註冊連結也一樣。 只有清單中的使用者可以使用您傳送的註冊連結，向實驗室註冊。 您可以關閉 [限制存取]，讓學生能向實驗室註冊 (只要他們有註冊連結)。 
 
 本文說明如何將使用者新增至實驗室。
 
@@ -24,73 +24,73 @@ ms.locfileid: "96602626"
 
 您現在可以將實驗室使用者清單同步至現有的 Azure Active Directory (Azure AD) 群組，如此就不需要手動新增或刪除使用者。 
 
-您可以在組織的 Azure Active Directory 內建立 Azure AD 群組，以管理對組織資源和雲端式應用程式的存取。 若要深入瞭解，請參閱 [Azure AD 群組](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)。 如果您的組織使用 Microsoft Office 365 或 Azure 服務，您的組織將會有管理您 Azure Active Directory 的系統管理員。 
+您可以在組織的 Azure Active Directory 中建立 Azure AD 群組，以管理組織資源和雲端式應用程式的存取權。 若要深入了解，請參閱 [Azure AD 群組](../active-directory/fundamentals/active-directory-manage-groups.md)。 如果您的組織使用 Microsoft Office 365 或 Azure 服務，則您的組織已經有管理您 Azure Active Directory 的管理員。 
 
 ### <a name="sync-users-with-azure-ad-group"></a>使用 Azure AD 群組同步處理使用者
 
 > [!IMPORTANT]
-> 請確定使用者清單是空的。 如果實驗室內有您手動新增或透過匯入 CSV 檔案所新增的現有使用者，將不會出現將實驗室同步至現有群組的選項。 
+> 請確定使用者清單是空的。 如果實驗室中已有您手動新增或透過匯入 CSV 檔案來新增的現有使用者，則不會出現將實驗室同步至現有群組的選項。 
 
 1. 登入 [Azure 實驗室服務網站](https://labs.azure.com/)。
 1. 選取您要使用的實驗室。
 1. 在左側窗格中，選取 [使用者]。 
-1. 按一下 [ **從群組同步**]。 
+1. 按一下 [從群組同步]。 
 
-    :::image type="content" source="./media/how-to-configure-student-usage/add-users-sync-group.png" alt-text="藉由同步處理 Azure AD 群組來新增使用者":::
+    :::image type="content" source="./media/how-to-configure-student-usage/add-users-sync-group.png" alt-text="藉由從 Azure AD 群組同步來新增使用者":::
     
-1. 系統會提示您選取現有的 Azure AD 群組，以將實驗室同步至。 
+1. 系統會提示您選取現有的 Azure AD 群組來同步實驗室。 
     
-    如果您在清單中看不到 Azure AD 群組，可能是因為下列原因：
+    如果您在清單中沒看到 Azure AD 群組，可能是因為下列原因：
 
-    -   如果您是 Azure Active Directory 的來賓使用者 (通常是在擁有 Azure AD) 的組織外部，而且您無法搜尋 Azure AD 內的群組。 在此情況下，您將無法在此情況下將 Azure AD 群組新增至實驗室。 
-    -   透過小組建立的 Azure AD 群組不會顯示在此清單中。 您可以在小組內新增 Azure 實驗室服務應用程式，以直接從 it 內部建立及管理實驗室。 查看 [從小組內部管理實驗室使用者清單的](how-to-manage-user-lists-within-teams.md)詳細資訊。 
-1. 一旦您挑選要將實驗室同步的 Azure AD 群組，請按一下 [ **新增**]。
-1. 一旦實驗室進行同步處理之後，它就會將 Azure AD 群組內的所有人以使用者的形式提取到實驗室中，而您會看到更新的使用者清單。 只有此 Azure AD 群組中的人員才能存取您的實驗室。 使用者清單會每隔24小時重新整理一次，以符合 Azure AD 群組的最新成員資格。 您也可以按一下 [使用者] 索引標籤中的 [同步處理] 按鈕，手動同步處理 Azure AD 群組中的最新變更。
-1. 按一下 [ **全部邀請** ] 按鈕，以將使用者邀請到您的實驗室，這會傳送電子郵件給所有具有實驗室註冊連結的使用者。 
+    -   如果您是 Azure Active Directory 的來賓使用者 (通常是指您在擁有 Azure AD 的組織之外)，而且您無法搜尋 Azure AD 內的群組。 在此情況下，您無法將 Azure AD 群組新增至實驗室。 
+    -   透過 Teams 建立的 Azure AD 群組不會顯示在這份清單中。 您可以在 Teams 內新增 Azure 實驗室服務應用程式，直接從其內部建立和管理實驗室。 深入了解[從 Teams 內部管理實驗室的使用者清單](how-to-manage-user-lists-within-teams.md)。 
+1. 一旦選取要與實驗室同步的 Azure AD 群組後，請按一下 [新增]。
+1. 實驗室開始同步之後，就會將 Azure AD 群組內的所有人以使用者身分提取到實驗室中，而您會看到已更新的使用者清單。 只有此 Azure AD 群組中的人員才能存取您的實驗室。 使用者清單會每隔 24 小時重新整理一次，以符合 Azure AD 群組的最新成員資格。 您也可以按一下 [使用者] 索引標籤中的 [同步] 按鈕，手動同步 Azure AD 群組中的最新變更。
+1. 按一下 [邀請所有人] 按鈕可將使用者邀請至您的實驗室，而這會傳送具有實驗室註冊連結的電子郵件給所有使用者。 
 
 ### <a name="automatic-management-of-virtual-machines-based-on-changes-to-the-azure-ad-group"></a>根據 Azure AD 群組的變更，自動管理虛擬機器 
 
 實驗室同步到 Azure AD 群組之後，實驗室中的虛擬機器數目就會自動符合群組中的使用者數目。 您將無法再手動更新實驗室容量。 當使用者新增至 Azure AD 群組時，實驗室會自動新增該使用者的虛擬機器。 從 Azure AD 群組中刪除使用者時，實驗室會自動從實驗室刪除使用者的虛擬機器。 
 
-## <a name="add-users-manually-from-emails-or-csv-file"></a>從電子郵件 (s) 或 CSV 檔案手動新增使用者
+## <a name="add-users-manually-from-emails-or-csv-file"></a>從電子郵件或 CSV 檔案手動新增使用者
 
-在本節中，您會透過電子郵件地址手動新增學生 (，或) 上傳 CSV 檔案。 
+在本節中，您會手動新增學生 (透過電子郵件地址或上傳 CSV 檔案)。 
 
-### <a name="add-users-by-email-address"></a>依電子郵件地址新增使用者
+### <a name="add-users-by-email-address"></a>以電子郵件地址新增使用者
 
 1. 在左側窗格中，選取 [使用者]。 
-1. 按一下 [ **手動新增使用者**]。 
+1. 按一下 [手動新增使用者]。 
 
     :::image type="content" source="./media/how-to-configure-student-usage/add-users-manually.png" alt-text="手動新增使用者":::
-1. 選取 [透過 **電子郵件地址新增** ] (預設) 、在個別行上輸入學生的電子郵件地址，或以分號分隔的單一行上輸入學生的電子郵件地址。 
+1. 選取 [依電子郵件地址新增] (預設)，在不同行或以分號分隔的單行上輸入學生的電子郵件地址。 
 
     :::image type="content" source="./media/how-to-configure-student-usage/add-users-email-addresses.png" alt-text="新增使用者的電子郵件地址":::
 1. 選取 [儲存]。 
 
-    此清單會顯示目前使用者的電子郵件地址和狀態，無論他們是否已向實驗室註冊。 
+    此清單會顯示目前使用者的電子郵件地址和狀態 (無論他們是否已向實驗室註冊)。 
 
     :::image type="content" source="./media/how-to-configure-student-usage/list-of-added-users.png" alt-text="使用者清單":::
 
     > [!NOTE]
-    > 學生向實驗室註冊之後，清單會顯示其名稱。 清單中顯示的名稱是使用 Azure Active Directory 中學生的名字和姓氏所構成。 
+    > 學生向實驗室註冊後，清單會顯示其名稱。 清單中顯示的名稱都是使用 Azure Active Directory 中學生的名字和姓氏來建立的。 
 
 ### <a name="add-users-by-uploading-a-csv-file"></a>上傳 CSV 檔案以新增使用者
 
-您也可以透過上傳包含其電子郵件地址的 CSV 檔案來新增使用者。 
+您也可以上傳具有使用者電子郵件地址的 CSV 檔案來新增使用者。 
 
-CSV 文字檔用來儲存逗點分隔的 (CSV) 表格式資料 (數位和文字) 。 CSV 檔案會儲存以逗號分隔的資訊，而不是將資訊儲存在資料列欄位中 (例如在試算表) 中。 CSV 檔案中的每一行都會有相同數目的逗點分隔「欄位」。 您可以使用 Excel 輕鬆地建立和編輯 CSV 檔案。
+CSV 文字檔會用來儲存以逗號分隔 (CSV) 的表格式資料 (數字和文字)。 CSV 檔案會儲存以逗號分隔的資訊，而不是將資訊儲存在資料列欄位中 (例如試算表)。 CSV 檔案中的每一行都有相同數目的逗點分隔「欄位」。 您可以使用 Excel 輕鬆地建立和編輯 CSV 檔案。
 
-1. 在 Microsoft Excel 中建立 CSV 檔案，以在一個資料行中列出學生的電子郵件地址。
+1. 在 Microsoft Excel 中，建立一個以單一資料行列出學生電子郵件地址的 CSV 檔案。
 
     :::image type="content" source="./media/how-to-configure-student-usage/csv-file-with-users.png" alt-text="CSV 檔案中的使用者清單":::
-1. 在 [ **使用者** ] 窗格的頂端，選取 [ **新增使用者**]，然後選取 **[上傳 CSV**]。
-1. 選取包含學生電子郵件地址的 CSV 檔案，然後選取 [ **開啟**]。
+1. 在 [使用者] 窗格的頂端選取 [新增使用者]，然後選取 [上傳 CSV]。
+1. 選取包含學生電子郵件地址的 CSV 檔案，然後選取 [開啟]。
 
-    [ **新增使用者** ] 視窗會顯示來自 CSV 檔案的電子郵件地址清單。 
+    [新增使用者] 視窗會顯示 CSV 檔案中的電子郵件地址清單。 
 1. 選取 [儲存]。 
-1. 在 [ **使用者** ] 窗格中，查看已新增的學生清單。 
+1. 在 [使用者] 窗格中，檢視已新增的學生清單。 
 
-    :::image type="content" source="./media/how-to-configure-student-usage/list-of-added-users.png" alt-text="[使用者] 窗格中新增的使用者清單":::
+    :::image type="content" source="./media/how-to-configure-student-usage/list-of-added-users.png" alt-text="[使用者] 窗格中的新增使用者清單":::
 
 ## <a name="send-invitations-to-users"></a>傳送邀請電子郵件給使用者
 
