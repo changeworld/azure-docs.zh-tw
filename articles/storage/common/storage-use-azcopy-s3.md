@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 07a8d2b394e8ca690925c677af676643064a9ba8
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: b94cb6d6302cd92816fe25f6e672b1ce3bb9398d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96901825"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791992"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>使用 AzCopy 將資料從 Amazon S3 複製到 Azure 儲存體
 
-AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob 或檔案。 本文可協助您使用 AzCopy，將物件、目錄和 bucket 從 Amazon Web Services (AWS) S3 複製到 Azure blob 儲存體。
+AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob 或檔案。 本文可協助您使用 AzCopy，將物件、目錄和值區從 Amazon Web Services (AWS) S3 複製到 Azure Blob 儲存體。
 
 ## <a name="choose-how-youll-provide-authorization-credentials"></a>選擇您要如何提供授權認證
 

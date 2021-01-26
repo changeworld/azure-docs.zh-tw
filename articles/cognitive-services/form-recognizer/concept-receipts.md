@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 43eae43d11a48ee6c395e4a86b8e8c1353843991
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 7173efd3dab0e8d2fd3c948a3a9bac07641e78f3
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131438"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792077"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>表單辨識器預建的收據模型
 
-Azure 表單辨識器可以使用其預建的收據模型，分析和解壓縮銷售收據的資訊。 它結合了強大的 [光學字元辨識 (OCR) ](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) 功能，並透過接收理解深度學習模型，從以英文的收據中解壓縮重要資訊。 回條 API 會以英文從銷售收據中解壓縮重要資訊，例如商家名稱、交易日期、交易總計、明細專案等等。 
+Azure 表單辨識器可以使用其預建的收據模型，分析和解壓縮銷售收據的資訊。 它結合了強大的 [光學字元辨識 (OCR) ](../computer-vision/concept-recognizing-text.md) 功能，並透過接收理解深度學習模型，從以英文的收據中解壓縮重要資訊。 回條 API 會以英文從銷售收據中解壓縮重要資訊，例如商家名稱、交易日期、交易總計、明細專案等等。 
 
 ## <a name="understanding-receipts"></a>瞭解收據 
 
@@ -38,7 +38,7 @@ Azure 表單辨識器可以使用其預建的收據模型，分析和解壓縮�
 
 ### <a name="fields-extracted"></a>已解壓縮的欄位
 
-|名稱| 類型 | 描述 | 文字 | 值 (標準化輸出)  |
+|名稱| 類型 | 描述 | Text | 值 (標準化輸出)  |
 |:-----|:----|:----|:----| :----|
 | ReceiptType | 字串 | 銷售收據的類型 | 逐項 |  |
 | MerchantName | 字串 | 發出收據的商家名稱 | Contoso |  |

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 386e0051a64f73b18c1ff76ed33af5f9eebe8aa0
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 90443a898ffdebf33a0c967719ba25a2ccc6f9a7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121408"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792094"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>包含計量、警示和資源健康情況的 Standard Load Balancer 診斷
 
@@ -239,8 +239,8 @@ Azure Standard Load Balancer 支援可輕鬆設定多維度計量的警示。 �
 | 資源健康情況狀態 | 描述 |
 | --- | --- |
 | 可用 | 您的標準負載平衡器資源狀況良好且可供使用。 |
-| 已降級 | 您的標準負載平衡器有影響效能的平臺或使用者起始事件。 資料路徑可用性計量在至少兩分鐘內回報了小於 90% 但大於 25% 的健康情況。 您將體驗到嚴重的效能影響。 [遵循疑難排解 RHC 指南](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) ，判斷是否有使用者起始的事件造成影響您的可用性。
-| [無法使用] | 您的標準負載平衡器資源狀況不良。 資料路徑可用性計量回報的健康情況低於至少兩分鐘的25% 健全狀況。 您將會遇到對輸入連線能力造成顯著的效能影響或缺乏可用性。 可能是使用者或平臺事件造成無法使用的情形。 [遵循疑難排解 RHC 指南](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) ，判斷是否有使用者起始的事件影響您的可用性。 |
+| 已降級 | 您的標準負載平衡器有影響效能的平臺或使用者起始事件。 資料路徑可用性計量在至少兩分鐘內回報了小於 90% 但大於 25% 的健康情況。 您將體驗到嚴重的效能影響。 [遵循疑難排解 RHC 指南](./troubleshoot-rhc.md) ，判斷是否有使用者起始的事件造成影響您的可用性。
+| 無法使用 | 您的標準負載平衡器資源狀況不良。 資料路徑可用性計量回報的健康情況低於至少兩分鐘的25% 健全狀況。 您將會遇到對輸入連線能力造成顯著的效能影響或缺乏可用性。 可能是使用者或平臺事件造成無法使用的情形。 [遵循疑難排解 RHC 指南](./troubleshoot-rhc.md) ，判斷是否有使用者起始的事件影響您的可用性。 |
 | Unknown | 標準負載平衡器資源的資源健康狀態尚未更新，或尚未收到過去10分鐘的資料路徑可用性資訊。 此狀態應該是暫時性的，系統會在收到資料後立即反/映正確的狀態。 |
 
 若要檢視公用標準 Load Balancer 資源的健康情況：

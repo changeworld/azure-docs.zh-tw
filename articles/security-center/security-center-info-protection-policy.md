@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2020
 ms.author: memildin
-ms.openlocfilehash: 0a487f778693e87e680033edd0d80c55d1a85f66
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 34d2e8116b7b914803d1bb68b350c9aadd78439f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013780"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792060"
 ---
 # <a name="sql-information-protection-policy-in-azure-security-center"></a>Azure 資訊安全中心中的 SQL 資訊保護原則
  
@@ -58,7 +58,7 @@ SQL 資訊保護的 [資料探索和分類機制](../azure-sql/database/data-dis
 從資訊安全中心的 [ **定價和設定** ] 頁面，選取 **[SQL 資訊保護**]。
 
 > [!NOTE]
-> 此選項只會針對具有租使用者層級許可權的使用者顯示。 
+> 此選項只會針對具有租使用者層級許可權的使用者顯示。 [將整個租使用者的許可權授與您自己](https://docs.microsoft.com/azure/security-center/security-center-management-groups#grant-tenant-wide-permissions-to-yourself)。
 
 :::image type="content" source="./media/security-center-info-protection-policy/pricing-settings-link-to-information-protection.png" alt-text="從 Azure 資訊安全中心的 [定價和設定] 頁面存取 SQL 資訊保護原則":::
 
@@ -76,7 +76,7 @@ SQL 資訊保護的 [資料探索和分類機制](../azure-sql/database/data-dis
 
 1. 在 [建議詳細資料] 頁面中，從 **狀況良好** 或 **狀況不良** 的索引標籤中選取資料庫。
 
-1. [ **資料探索 & 分類** ] 頁面隨即開啟。 選取 [設定]  。
+1. [ **資料探索 & 分類** ] 頁面隨即開啟。 選取 [設定] 。
 
     :::image type="content" source="./media/security-center-info-protection-policy/access-policy-from-security-center-recommendation.png" alt-text="從 Azure 資訊安全中心的相關建議開啟 SQL 資訊保護原則":::
 
