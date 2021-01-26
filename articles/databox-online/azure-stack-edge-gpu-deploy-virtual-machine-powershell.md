@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/23/2020
+ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 32685207f8d6e81d03c90d01b186337ce79f843a
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 1d286e7661fa14dd63bd55b133c39414e04decc6
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763777"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802979"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>透過 Azure PowerShell 將 Vm 部署到您的 Azure Stack Edge Pro GPU 裝置
 
@@ -25,19 +25,19 @@ ms.locfileid: "97763777"
 
 ![VM 部署工作流程](media/azure-stack-edge-gpu-deploy-virtual-machine-powershell/vm-workflow-r.svg)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 [!INCLUDE [azure-stack-edge-gateway-deploy-vm-prerequisites](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-prerequisites.md)]
 
 
 ## <a name="query-for-built-in-subscription-on-the-device"></a>查詢裝置上的內建訂用帳戶
 
-針對 Azure Resource Manager，只支援單一使用者可見的固定訂用帳戶。 此訂用帳戶對每個裝置而言是唯一的，且此訂用帳戶名稱或訂用帳戶識別碼無法變更
+針對 Azure Resource Manager，只支援單一使用者可見的固定訂用帳戶。 此訂用帳戶在每個裝置上都是唯一的，而且無法變更訂用帳戶名稱或訂用帳戶識別碼。
 
 此訂用帳戶包含建立 VM 所需的所有資源。 
 
 > [!IMPORTANT]
-> 當您從 Azure 入口網站啟用 Vm 時，會建立此訂用帳戶，且該訂用帳戶會在本機裝置上。
+> 當您從 Azure 入口網站啟用 Vm 時，會建立此訂用帳戶，而且它會在本機裝置上。
 
 此訂用帳戶可用來部署 Vm。
 
@@ -118,7 +118,7 @@ Successfully created Resource Group:rg191113014333
 
 ## <a name="create-a-storage-account"></a>建立儲存體帳戶
 
-使用上一個步驟中建立的資源群組來建立新的儲存體帳戶。 這是 **本機儲存體帳戶** ，將用來上傳 VM 的虛擬磁片映射。
+使用上一個步驟中建立的資源群組來建立新的儲存體帳戶。 此帳戶是 **本機儲存體帳戶** ，將用來上傳 VM 的虛擬磁片映射。
 
 ```powershell
 New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resource group name> -Location DBELocal -SkuName Standard_LRS
@@ -177,7 +177,7 @@ key2 gd34TcaDzDgsY9JtDNMUgLDOItUU0Qur3CBo6Q...
 
 ## <a name="add-blob-uri-to-hosts-file"></a>將 Blob URI 新增至 hosts 檔案
 
-您已在 [ [修改主機檔案以進行端點名稱解析](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)] 區段中，為您要用來連線到 blob 儲存體的用戶端，在主機檔案中新增 blob URI。 這是 blob URI 的專案：
+您已在 [ [修改主機檔案以進行端點名稱解析](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)] 區段中，為您用來連線到 blob 儲存體的用戶端，在主機檔案中新增 blob URI。 此專案是用來新增 blob URI：
 
 \<Azure consistent network services VIP \>\<storage name\>. blob ... \<appliance name\>\<dnsdomain\>
 
@@ -256,7 +256,7 @@ $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –S
 New-AzureRMDisk -ResourceGroupName <Resource group name> -DiskName <Disk name> -Disk $DiskConfig
 ```
 
-下方顯示一項範例輸出。 如需此 Cmdlet 的詳細資訊，請移至 [AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0)。
+下方顯示一項範例輸出。 如需此 Cmdlet 的詳細資訊，請移至 [AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0&preserve-view=true)。
 
 ```powershell
 Tags               :
@@ -296,7 +296,7 @@ Set-AzureRmImageOsDisk -Image $imageConfig -OsType 'Linux' -OsState 'Generalized
 New-AzureRmImage -Image $imageConfig -ImageName <Image name>  -ResourceGroupName <Resource group name>
 ```
 
-下方顯示一項範例輸出。 如需此 Cmdlet 的詳細資訊，請移至 [>new-azurermimage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0)。
+下方顯示一項範例輸出。 如需此 Cmdlet 的詳細資訊，請移至 [>new-azurermimage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0&preserve-view=true)。
 
 ```powershell
 New-AzureRmImage -Image Microsoft.Azure.Commands.Compute.Automation.Models.PSImage -ImageName ig191113014333  -ResourceGroupName rg191113014333
@@ -319,8 +319,8 @@ Tags                 : {}
 > [!IMPORTANT]
 > 建立虛擬網路和虛擬網路介面時，適用下列規則：
 > - 您只可以在資源群組)  (建立一個 Vnet，而且必須完全符合該邏輯網路的位址空間。
-> -   Vnet 中只允許一個子網。 子網必須與 Vnet 完全相同的位址空間。
-> -   Vnic 建立期間只允許靜態配置方法，使用者必須提供私人 IP 位址。
+> - Vnet 中只允許一個子網。 子網必須與 Vnet 完全相同的位址空間。
+> - Vnic 建立期間只允許靜態配置方法，使用者必須提供私人 IP 位址。
 
  
 **查詢自動建立的 Vnet**
@@ -498,7 +498,7 @@ The public IP in this case will be the same as the private IP that you passed du
 `Start-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>`
 
 
-如需此 Cmdlet 的詳細資訊，請移至 [new-azurermvm](/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0)。
+如需此 Cmdlet 的詳細資訊，請移至 [new-azurermvm](/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0&preserve-view=true)。
 
 ### <a name="suspend-or-shut-down-the-vm"></a>暫止或關閉 VM
 
@@ -510,7 +510,7 @@ Stop-AzureRmVM [-Name] <String> [-StayProvisioned] [-ResourceGroupName] <String>
 ```
 
 
-如需此 Cmdlet 的詳細資訊，請移至 [new-azurermvm Cmdlet](/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0)。
+如需此 Cmdlet 的詳細資訊，請移至 [new-azurermvm Cmdlet](/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0&preserve-view=true)。
 
 ### <a name="add-a-data-disk"></a>新增資料磁碟
 
@@ -530,10 +530,10 @@ Update-AzureRmVM -ResourceGroupName "<Resource Group Name string>" -VM $VirtualM
 Remove-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>
 ```
 
-如需此 Cmdlet 的詳細資訊，請移至 [new-azurermvm Cmdlet](/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0)。
+如需此 Cmdlet 的詳細資訊，請移至 [new-azurermvm Cmdlet](/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0&preserve-view=true)。
 
 
 
 ## <a name="next-steps"></a>後續步驟
 
-[Azure Resource Manager Cmdlet](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure Resource Manager Cmdlet](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

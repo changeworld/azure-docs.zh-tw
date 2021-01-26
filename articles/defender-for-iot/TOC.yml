@@ -3,13 +3,12 @@
 - name: 概觀
   href: overview.md
   items:
-    - name: 新功能
-      href: release-notes.md
     - name: 方案架構
       href: architecture.md
-- name: 快速入門
-  expanded: true
-  items:
+    - name: 新功能
+      href: release-notes.md
+    - name: 快速入門
+      expanded: true
     - name: 組織的無代理程式解決方案
       items:
         - name: 系統必要條件
@@ -154,6 +153,16 @@
           href: how-to-gain-insight-into-global-regional-and-local-threats.md
         - name: 在內部部署管理主控台上使用警示
           href: how-to-work-with-alerts-on-premises-management-console.md
+        - name: 建立報表
+          items:
+            - name: 建立風險評量報告
+              href: how-to-create-risk-assessment-reports.md
+            - name: 建立攻擊向量報表
+              href: how-to-create-attack-vector-reports.md
+            - name: 建立資料採礦報告
+              href: how-to-create-data-mining-queries.md
+            - name: 建立趨勢和統計資料包表
+              href: how-to-create-data-mining-queries.md
         - name: 擴充裝置資訊
           items:
             - name: 使用裝置通知
@@ -168,8 +177,6 @@
         - name: 追蹤感應器活動
           href: how-to-track-sensor-activity.md
           displayName: 'timeline, time line, time-line, event'
-        - name: 產生報表
-          href: how-to-generate-reports.md
         - name: 對感應器和內部部署管理主控台進行疑難排解
           href: how-to-troubleshoot-the-sensor-and-on-premises-management-console.md
         - name: 設定 SNMP MIB 監視

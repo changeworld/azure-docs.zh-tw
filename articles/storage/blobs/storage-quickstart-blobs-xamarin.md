@@ -1,6 +1,6 @@
 ---
-title: 快速入門：Azure Blob 儲存體程式庫 v12 - Xamarin
-description: 在本快速入門中，您將了解如何搭配使用 Azure Blob 儲存體用戶端程式庫 12 版與 Xamarin，在 Blob (物件) 儲存體中建立容器與 Blob。 接下來，您要了解如何將 Blob 下載到行動裝置，以及如何列出容器中的所有 Blob。
+title: 快速入門： Azure Blob 儲存體程式庫 v12-Xamarin
+description: 在本快速入門中，您將瞭解如何搭配 Xamarin 使用 Azure Blob 儲存體用戶端程式庫第12版，在 Blob (物件) 儲存體中建立容器和 blob。 接下來，您要了解如何將 Blob 下載到行動裝置，以及如何列出容器中的所有 Blob。
 author: codemillmatt
 ms.author: masoucou
 ms.date: 10/09/2020
@@ -8,18 +8,18 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 641117414c855a044d3ed55004b6e6ea15b259ac
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: HT
+ms.openlocfilehash: dab938a526aa89f6fe5a014e10869bd8da8b475d
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96004733"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802356"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>快速入門：Azure Blob 儲存體用戶端程式庫 v12 與 Xamarin
+# <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>快速入門：使用 Xamarin Azure Blob 儲存體用戶端程式庫 v12
 
-開始使用 Azure Blob 儲存體用戶端程式庫 v12 與 Xamarin。 Azure Blob 儲存體是 Microsoft 針對雲端推出的物件儲存體解決方案。 請依照下列步驟來安裝套件，並試用基本工作的範例程式碼。 Blob 儲存體經過最佳化，已能妥善儲存大量的非結構化資料。
+透過 Xamarin 開始使用 Azure Blob 儲存體用戶端程式庫 v12。 Azure Blob 儲存體是 Microsoft 針對雲端推出的物件儲存體解決方案。 請依照下列步驟來安裝套件，並試用基本工作的範例程式碼。 Blob 儲存體經過最佳化，已能妥善儲存大量的非結構化資料。
 
-使用 Azure Blob 儲存體用戶端程式庫 v12 與 Xamarin 來：
+搭配使用 Azure Blob 儲存體用戶端程式庫 v12 與 Xamarin：
 
 * 建立容器
 * 將 Blob 上傳至 Azure 儲存體
@@ -44,7 +44,7 @@ ms.locfileid: "96004733"
 
 ## <a name="setting-up"></a>設定
     
-本節會引導您準備專案以使用 Azure Blob 儲存體用戶端程式庫 v12 與 Xamarin。
+本節會引導您準備專案以搭配 Xamarin 使用 Azure Blob 儲存體用戶端程式庫 v12。
     
 ### <a name="create-the-project"></a>建立專案
 
@@ -99,7 +99,7 @@ Azure Blob 儲存體經過最佳化，已能妥善儲存大量的非結構化資
 
 ## <a name="code-examples"></a>程式碼範例
 
-這些範例程式碼片段會示範如何在 Xamarin.Forms 應用程式中使用適用於 .NET 的 Azure Blob 儲存體用戶端程式庫來執行下列工作：
+這些範例程式碼片段會示範如何在 Xamarin. Forms 應用程式中使用適用于 .NET 的 Azure Blob 儲存體用戶端程式庫來執行下列工作：
 
 * [建立類別層級變數](#create-class-level-variables)
 * [建立容器](#create-a-container)
@@ -110,7 +110,7 @@ Azure Blob 儲存體經過最佳化，已能妥善儲存大量的非結構化資
 
 ### <a name="create-class-level-variables"></a>建立類別層級變數
 
-下列程式碼會宣告數個類別層級變數。 在此範例的其餘部分，這些變數需要與 Azure Blob 儲存體通訊。
+下列程式碼會宣告數個類別層級變數。 他們需要在此範例的其餘部分 Azure Blob 儲存體溝通。
 
 這些是除了在[設定儲存體連接字串](#configure-your-storage-connection-string)一節所設定的儲存體帳戶連接字串以外的變數。
 
@@ -269,7 +269,7 @@ Container Deleted
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已了解如何使用 Azure Blob 儲存體用戶端程式庫 v12 與 Xamarin 來上傳、下載及列出 Blob。
+在本快速入門中，您已瞭解如何搭配 Xamarin 使用 Azure Blob 儲存體用戶端程式庫 v12，來上傳、下載及列出 blob。
 
 若要查看 Blob 儲存體範例應用程式，請繼續查看：
 

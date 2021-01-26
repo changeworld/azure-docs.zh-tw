@@ -3,12 +3,12 @@ title: 從 Azure 備份伺服器復原資料
 description: 從登錄至復原服務保存庫的任何 Azure 備份伺服器，復原該保存庫中保護的資料。
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 0cce45fbaaedad4cfcee0cda768aae2fa294312b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ed8c937f97ec7a74662a8b46a354b0a6db39a2b0
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002965"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806011"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>從 Azure 備份伺服器復原資料
 
@@ -89,5 +89,5 @@ ms.locfileid: "96002965"
 
 閱讀其他常見問題集：
 
-* 關於 Azure VM 備份的[常見問題](backup-azure-vm-backup-faq.md)
+* 關於 Azure VM 備份的[常見問題](backup-azure-vm-backup-faq.yml)
 * 「Azure 備份」代理程式的相關[常見問題](backup-azure-file-folder-backup-faq.md)

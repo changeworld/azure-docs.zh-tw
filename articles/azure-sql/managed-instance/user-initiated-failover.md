@@ -9,13 +9,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 01/25/2021
-ms.openlocfilehash: c12e1f4b01b0e2dd7fa21808cf33f45f9a5be59b
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.date: 01/26/2021
+ms.openlocfilehash: 7588ce055ce0df89a7dca87a75a38c8acccf6d46
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789967"
+ms.locfileid: "98806078"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>使用者在 SQL 受控執行個體上起始的手動容錯移轉
 
@@ -125,7 +125,7 @@ API 回應會是下列其中一種：
 
 ## <a name="monitor-the-failover"></a>監視容錯移轉
 
-若要監視使用者起始的手動容錯移轉進度，請在您最愛的用戶端中執行下列 T-SQL 查詢 (例如 SQL 受控執行個體上的 SSMS) 。 它會讀取 [系統檢視] sys.dm_hadr_fabric_replica_states，以及實例上可用的報表複本。 初始化手動容錯移轉之後，請重新整理相同的查詢。
+若要監視 BC 實例使用者起始的容錯移轉進度，請在您最愛的用戶端中執行下列 T-SQL 查詢 (例如 SQL 受控執行個體上的 SSMS) 。 它會讀取 [系統檢視] sys.dm_hadr_fabric_replica_states，以及實例上可用的報表複本。 初始化手動容錯移轉之後，請重新整理相同的查詢。
 
 ```T-SQL
 SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_hadr_fabric_replica_states
@@ -133,7 +133,13 @@ SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_h
 
 在起始容錯移轉之前，您的輸出將會指出 BC 服務層上目前的主要複本，其中包含 AlwaysOn 可用性群組中的一個主要和三個次要資料庫。 執行容錯移轉時，再次執行此查詢需要指出主要節點的變更。
 
-您將看不到與上述的「BC 服務層」相同的輸出，如下所示。 這是因為 GP 服務層級只以單一節點為基礎。 GP 服務層級的 t-SQL 查詢輸出只會顯示容錯移轉之前和之後的單一節點。 在容錯移轉期間從您的用戶端中斷連線（通常會在一分鐘內持續執行）將會是容錯移轉執行的指示。
+您將看不到與上述的「BC 服務層」相同的輸出，如下所示。 這是因為 GP 服務層級只以單一節點為基礎。 您可以使用替代的 T-SQL 查詢，顯示 GP 服務層級實例節點上的 SQL 進程啟動時間：
+
+```T-SQL
+SELECT sqlserver_start_time, sqlserver_start_time_ms_ticks FROM sys.dm_os_sys_info
+```
+
+在容錯移轉期間，用戶端的連線短暫中斷（通常會在一分鐘內穩定）將會指出容錯移轉的執行，而不論服務層級為何。
 
 > [!NOTE]
 > 完成容錯移轉程式 (不是實際的短時間無法使用) 可能需要幾分鐘的時間來處理 **高強度** 的工作負載。 這是因為實例引擎會處理主要節點上的所有目前交易，並在容錯移轉之前趕上次要節點上的所有交易。

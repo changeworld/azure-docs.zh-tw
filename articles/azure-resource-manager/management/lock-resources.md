@@ -4,12 +4,12 @@ description: 藉由套用鎖定給所有使用者和角色，防止使用者更�
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 53054f89c992139fbbd4f087d2a0344e26d97efc
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 0e8fc74b2da0c253ec9c5bf34ec7543398aea48f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610194"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802438"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>鎖定資源以防止非預期的變更
 
@@ -38,7 +38,7 @@ Resource Manager 鎖定只會套用於管理平面發生的作業，亦即要傳
 
 * 無法刪除 **資源群組** 上的鎖定，可防止 Azure Resource Manager [自動刪除](../templates/deployment-history-deletions.md) 歷程記錄中的部署。 如果您在歷程記錄中到達800部署，您的部署將會失敗。
 
-* **Azure 備份服務** 所建立之 **資源群組** 上的無法刪除鎖定會導致備份失敗。 服務最多支援 18 個還原點。 當鎖定時，備份服務無法清除還原點。 如需詳細資訊，請參閱[常見問題 - 備份 Azure VM](../../backup/backup-azure-vm-backup-faq.md)。
+* **Azure 備份服務** 所建立之 **資源群組** 上的無法刪除鎖定會導致備份失敗。 服務最多支援 18 個還原點。 當鎖定時，備份服務無法清除還原點。 如需詳細資訊，請參閱[常見問題 - 備份 Azure VM](../../backup/backup-azure-vm-backup-faq.yml)。
 
 * **訂用帳戶** 上的唯讀鎖定會阻止 **Azure Advisor** 正常運作。 Advisor 無法儲存其查詢的結果。
 

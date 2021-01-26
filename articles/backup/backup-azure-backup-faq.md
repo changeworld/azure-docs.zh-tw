@@ -3,12 +3,12 @@ title: 常見問題的解答
 description: '有關以下常見問題的解答：包括復原服務保存庫、可以備份的項目、其運作方式、加密和限制等 Azure 備份功能。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: dbe6ce95427b559c037e38525f9f48195a2a76a4
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: f819440001180a3c446f366e61e3ac0f983fa67f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703414"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806652"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 備份 - 常見問題集
 
@@ -70,7 +70,7 @@ ms.locfileid: "98703414"
 
 ### <a name="where-can-i-find-common-questions-about-the-azure-backup-agent-for-azure-vm-backup"></a>哪裡可以找到有關適用於 Azure VM 備份之 Azure 備份代理程式的常見問題？
 
-- 針對在 Azure VM 上執行的代理程式，請參閱這個[常見問題集](backup-azure-vm-backup-faq.md)。
+- 針對在 Azure VM 上執行的代理程式，請參閱這個[常見問題集](backup-azure-vm-backup-faq.yml)。
 - 針對用來備份 Azure 檔案資料夾的代理程式，請參閱這個[常見問題集](backup-azure-file-folder-backup-faq.md)。
 
 ## <a name="general-backup"></a>一般備份
@@ -236,5 +236,5 @@ Microsoft Azure 復原服務 (MARS) 代理程式所使用的加密金鑰，是�
 
 閱讀其他常見問題集：
 
-- Azure VM 的相關[常見問題](backup-azure-vm-backup-faq.md)。
+- Azure VM 的相關[常見問題](backup-azure-vm-backup-faq.yml)。
 - 「Azure 備份」代理程式的相關[常見問題](backup-azure-file-folder-backup-faq.md)
