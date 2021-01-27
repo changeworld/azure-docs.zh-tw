@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/17/2020
-ms.openlocfilehash: 0232682661387e635e6ce8bfb5fc6e03301d130c
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 4b7f71b5405708cc1988fafa5ca9c4628fe0d80b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694803"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882394"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen2"></a>註冊並掃描 Azure Data Lake Storage Gen2
 
@@ -26,7 +26,7 @@ Azure Data Lake Storage Gen2 的資料來源支援下列功能：
 
 - ADF 複製/資料流程活動的資料 **資產之間的** 歷程
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 註冊資料來源之前，請先建立 Azure 範疇帳戶。 如需有關建立範疇帳戶的詳細資訊，請參閱 [快速入門：建立 Azure 範疇帳戶](create-catalog-portal.md)。
 
@@ -48,7 +48,7 @@ Azure Data Lake Storage Gen2 的資料來源支援下列功能：
 1. 將 **角色** 設定為 **儲存體 Blob 資料讀取器** ，並在 [ **選取** 輸入] 方塊底下輸入您的 Azure 範疇帳戶名稱。 然後，選取 [儲存]，將此角色指派提供給您的 Purview 帳戶。
 
 > [!Note]
-> 如需詳細資訊，請參閱[使用 Azure Active Directory 授權存取 blob 和佇列](https://docs.microsoft.com/azure/storage/common/storage-auth-aad)的步驟
+> 如需詳細資訊，請參閱[使用 Azure Active Directory 授權存取 blob 和佇列](../storage/common/storage-auth-aad.md)的步驟
 
 #### <a name="account-key"></a>帳戶金鑰
 

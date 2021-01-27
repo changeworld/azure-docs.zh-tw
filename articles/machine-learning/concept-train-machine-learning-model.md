@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: ac9a1b43ba4ffb537afd658c84edb48ed59a3694
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: a84e4e767092a1507ef0608c21ff1896cb1dde0d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683477"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880939"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 將模型定型
 
@@ -76,7 +76,7 @@ Azure Machine Learning 提供數種方式來定型您的模型，從使用 SDK �
 機器學習管線可以使用先前提及的訓練方法。 管線更常用來建立工作流程，因此其所包含的功能不只是將模型定型而已。 在管線中，您可以使用自動化機器學習或執行設定來定型模型。
 
 * [Azure Machine Learning 中的 ML 管線是什麼？](concept-ml-pipelines.md)
-* [使用 Azure Machine Learning SDK 來建立及執行機器學習管線](how-to-create-your-first-pipeline.md)
+* [使用 Azure Machine Learning SDK 來建立及執行機器學習管線](./how-to-create-machine-learning-pipelines.md)
 * [教學課程：使用 Azure Machine Learning 管線來進行批次評分](tutorial-pipeline-batch-scoring-classification.md)
 * [範例：機器學習管線的 Jupyter Notebook 範例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 * [範例：管線與自動化機器學習](https://aka.ms/pl-automl)
@@ -141,6 +141,6 @@ R SDK 可讓您搭配使用 R 語言與 Azure Machine Learning。 SDK 會使用�
 
 您可以使用 VS Code 擴充功能來執行和管理定型作業。 若要深入瞭解，請參閱 [VS Code 資源管理操作指南](how-to-manage-resources-vscode.md#experiments) 。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 瞭解如何 [設定定型](how-to-set-up-training-targets.md)回合。

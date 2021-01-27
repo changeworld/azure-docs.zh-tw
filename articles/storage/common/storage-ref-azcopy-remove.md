@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: d79b647d216fe28241e5891def574ab598304828
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d28a20a6afc78939491e56f46a32782b4c0844cc
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078215"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878998"
 ---
 # <a name="azcopy-remove"></a>azcopy 移除
 
@@ -28,7 +28,7 @@ azcopy remove [resourceURL] [flags]
 ## <a name="related-conceptual-articles"></a>相關的概念文章
 
 - [開始使用 AzCopy](storage-use-azcopy-v10.md)
-- [使用 AzCopy 和 Blob 儲存體傳輸資料](storage-use-azcopy-blobs.md)
+- [使用 AzCopy 和 Blob 儲存體傳輸資料](./storage-use-azcopy-v10.md#transfer-data)
 - [使用 AzCopy 和檔案儲存體傳輸資料](storage-use-azcopy-files.md) (機器翻譯)
 - [對 AzCopy 進行設定、最佳化及疑難排解](storage-use-azcopy-configure.md)
 
@@ -89,7 +89,7 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 **--delete-** 依預設，如果 blob 有快照集，刪除作業將會失敗。 指定 `include` 以移除根 blob 及其所有快照集，或者指定 `only` 只移除快照集，但保留根 blob。
 
-**--排除-** 移除時排除這些路徑的路徑字串。 此選項不支援萬用字元字元 ( * ) 。 檢查相對路徑前置詞。 例如： `myFolder;myFolder/subDirName/file.pdf`
+**--排除-** 移除時排除這些路徑的路徑字串。 此選項不支援萬用字元字元 ( * ) 。 檢查相對路徑前置詞。 例如：`myFolder;myFolder/subDirName/file.pdf`
 
 **--排除-模式** 字串排除名稱符合模式清單的檔案。 例如： `*.jpg` ; `*.pdf` ;`exactName`
 
@@ -97,9 +97,9 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 **--**   說明移除的協助。
 
-**--include-路徑** 字串在移除時只會包含這些路徑。 此選項不支援萬用字元字元 ( * ) 。 檢查相對路徑前置詞。 例如： `myFolder;myFolder/subDirName/file.pdf`
+**--include-路徑** 字串在移除時只會包含這些路徑。 此選項不支援萬用字元字元 ( * ) 。 檢查相對路徑前置詞。 例如：`myFolder;myFolder/subDirName/file.pdf`
 
-**--include-模式** 字串只包含名稱符合模式清單的檔案。 例如： * `.jpg` ;* `.pdf` ;`exactName`
+**--include-模式** 字串只包含名稱符合模式清單的檔案。 例如： *`.jpg` ;* `.pdf` ;`exactName`
 
 **--檔案清單** 字串會定義檔案的位置，其中包含要刪除的檔案和目錄清單。 相對路徑應該以分行符號分隔，而且路徑不應以 URL 編碼。 
 

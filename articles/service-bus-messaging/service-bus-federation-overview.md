@@ -3,12 +3,12 @@ title: 訊息複寫和跨區域同盟-Azure 服務匯流排 |Microsoft Docs
 description: 本文提供事件複寫和與 Azure 服務匯流排的跨區域同盟的總覽。
 ms.topic: article
 ms.date: 12/12/2020
-ms.openlocfilehash: d5153820feab8b7901356838ec435d992aa82116
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: e47f633fcd9248eab6f47936aa7c45877decc1fe
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803267"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880822"
 ---
 # <a name="message-replication-and-cross-region-federation"></a>訊息複寫和跨區域同盟
 
@@ -150,7 +150,7 @@ Azure Functions 可以在 [Azure 受控識別](../active-directory/managed-ident
 
 Azure Functions 此外，可讓複寫工作直接與 Azure 虛擬網路和 [服務端點](../virtual-network/virtual-network-service-endpoints-overview.md) 整合，以取得所有 azure 訊息服務，並與 [Azure 監視器](../azure-monitor/overview.md)緊密整合。
 
-最重要的是，Azure Functions 具有適用于 [Azure 事件中樞](../azure-functions/functions-bindings-service-bus.md)、 [Azure IoT 中樞](../azure-functions/functions-bindings-event-iot.md)、 [Azure 服務匯流排](../azure-functions/functions-bindings-service-bus.md)、 [azure 事件方格](../azure-functions/functions-bindings-event-grid.md)和 [azure 佇列儲存體](/azure/azure-functions/functions-bindings-storage-queue)、適用于 [RabbitMQ](https://github.com/azure/azure-functions-rabbitmq-extension)的自訂擴充功能和 [Apache Kafka](https://github.com/azure/azure-functions-kafka-extension)的預建、可調整的觸發程式和輸出系結。 大部分的觸發程式會根據記載的計量，將同時執行的實例數目相應增加或減少，以動態方式調整輸送量需求。 
+最重要的是，Azure Functions 具有適用于 [Azure 事件中樞](../azure-functions/functions-bindings-service-bus.md)、 [Azure IoT 中樞](../azure-functions/functions-bindings-event-iot.md)、 [Azure 服務匯流排](../azure-functions/functions-bindings-service-bus.md)、 [azure 事件方格](../azure-functions/functions-bindings-event-grid.md)和 [azure 佇列儲存體](../azure-functions/functions-bindings-storage-queue.md)、適用于 [RabbitMQ](https://github.com/azure/azure-functions-rabbitmq-extension)的自訂擴充功能和 [Apache Kafka](https://github.com/azure/azure-functions-kafka-extension)的預建、可調整的觸發程式和輸出系結。 大部分的觸發程式會根據記載的計量，將同時執行的實例數目相應增加或減少，以動態方式調整輸送量需求。 
 
 使用「Azure Functions 取用方案」時，預建的觸發程式甚至可以在沒有任何訊息可供複寫時縮小為零，這表示您無須支付設定準備好進行調整的成本。 使用取用方案的主要缺點是，複寫工作「從這個狀態喚醒」的延遲明顯高於基礎結構保持執行所在的主控方案。  
 
@@ -167,4 +167,4 @@ Azure Functions 此外，可讓複寫工作直接與 Azure 虛擬網路和 [服�
 - [將事件路由至 Azure 事件中樞](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub)
 - [從 Azure 事件中樞取得事件](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus)
 
-[1]: ./media/service-bus-auto-forwarding/IC628632.gif 
+[1]: ./media/service-bus-auto-forwarding/IC628632.gif

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: cc7579b48307325e25d8914ea4c722a9641883f3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 303244d153877ba71796ff1f075e2e58a5084469
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952143"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880316"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虛擬機器上實作 Oracle Data Guard 
 
@@ -697,4 +697,4 @@ az group delete --name myResourceGroup
 
 [教學課程：建立高可用性的虛擬機器](../../linux/create-cli-complete.md)
 
-[瀏覽 VM 部署 Azure CLI 範例](../../linux/cli-samples.md)
+[瀏覽 VM 部署 Azure CLI 範例](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

@@ -1,24 +1,8 @@
 ---
-title: 將 Azure 媒體服務事件儲存在 Azure Log Analytics 中
-titleSuffix: Azure Media Services
-description: 了解如何將 Azure 媒體服務事件儲存在 Azure Log Analytics 中。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: tutorial
-ms.date: 08/24/2020
-ms.author: inhenkel
-ms.openlocfilehash: cc3060c9253b23b97089ea35625aceb26737baba
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
-ms.translationtype: HT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016990"
+標題：在 Azure Log Analytics 中儲存 Azure 媒體服務事件： Azure 媒體服務描述：瞭解如何在 Azure Log Analytics 中儲存 Azure 媒體服務事件。
+服務： media services documentationcenter： ' ' author： IngridAtMicrosoft manager： femila editor： ' ' manager： editor： ' ' ms. service： media-services ms. 主題：教學課程 ms. 日期： 08/24/2020 ms. 作者： inhenkel
 ---
+
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>教學課程：將 Azure 媒體服務事件儲存在 Azure Log Analytics 中
 
 ## <a name="azure-media-services-events"></a>Azure 媒體服務事件
@@ -53,7 +37,7 @@ Azure 媒體服務 v3 會在 [Azure 事件方格](media-services-event-schemas.m
     > [!div class="mx-imgBorder"]
     > ![Azure 媒體服務入口網站](media/tutorial-events-log-analytics/select-events-01a.png)
 
-1. 選取**Logic Apps 圖示**以建立邏輯應用程式。 這會開啟邏輯應用程式設計工具，您可以在其中建立擷取事件並推送至 Log Analytics 的流程。 
+1. 選取 **Logic Apps 圖示** 以建立邏輯應用程式。 這會開啟邏輯應用程式設計工具，您可以在其中建立擷取事件並推送至 Log Analytics 的流程。 
     > [!div class="mx-imgBorder"]
     > ![建立邏輯應用程式](media/tutorial-events-log-analytics/select-logic-app-02.png)
 
@@ -70,7 +54,7 @@ Azure 媒體服務 v3 會在 [Azure 事件方格](media-services-event-schemas.m
     > [!div class="mx-imgBorder"]
     >![Azure 媒體服務資源群組事件](media/tutorial-events-log-analytics/locate-azure-media-services-events-05.png)
 
-1. 選取要**事件類型項目**。 系統會列出 Azure 媒體服務發出的所有事件。 您可以選取想要追蹤的事件。您可以在這裡新增多個事件類型。 (稍後，您將對邏輯應用程式流程進行小幅變更，以將每個事件種類儲存在不同的 Log Analytics 記錄中，並以動態方式將事件類型名稱傳播到 Log Analytics 記錄名稱。)
+1. 選取要 **事件類型項目**。 系統會列出 Azure 媒體服務發出的所有事件。 您可以選取想要追蹤的事件。您可以在這裡新增多個事件類型。 (稍後，您將對邏輯應用程式流程進行小幅變更，以將每個事件種類儲存在不同的 Log Analytics 記錄中，並以動態方式將事件類型名稱傳播到 Log Analytics 記錄名稱。)
     > [!div class="mx-imgBorder"]
     > ![Azure 媒體服務事件類型](media/tutorial-events-log-analytics/select-azure-media-services-event-type-06.png)
 
@@ -102,29 +86,29 @@ Azure 媒體服務 v3 會在 [Azure 事件方格](media-services-event-schemas.m
     > [!div class="mx-imgBorder"]
     > ![Azure Log Analytics 代理程式管理](media/tutorial-events-log-analytics/select-agents-management-09.png)
 
-1. 複製*工作區識別碼*。
+1. 複製 *工作區識別碼*。
     > [!div class="mx-imgBorder"]
     > ![複製工作區識別碼](media/tutorial-events-log-analytics/copy-workspace-id.png)
 
-1. 在其他瀏覽器索引標籤或視窗的 Azure Log Analytics 資料收集器下，選取 [傳送資料]，為您的連線命名，然後在 [工作區識別碼] 欄位中貼上*工作區識別碼*。
+1. 在其他瀏覽器索引標籤或視窗的 Azure Log Analytics 資料收集器下，選取 [傳送資料]，為您的連線命名，然後在 [工作區識別碼] 欄位中貼上 *工作區識別碼*。
 
 1. 返回工作區瀏覽器索引標籤或視窗，並複製「工作區金鑰」。
     > [!div class="mx-imgBorder"]
     > ![代理程式管理主要金鑰](media/tutorial-events-log-analytics/agents-management-primary-key-10.png)
 
-1. 在其他瀏覽器索引標籤或視窗中，將「工作區金鑰」貼入 **工作區金鑰**欄位。
+1. 在其他瀏覽器索引標籤或視窗中，將「工作區金鑰」貼入 **工作區金鑰** 欄位。
 
 1. 選取 [建立]  。 現在您將建立 JSON 要求本文和自訂記錄名稱。
 
-1. 選取 [JSON 要求本文] 欄位。  隨即會出現**新增動態內容**的連結。
+1. 選取 [JSON 要求本文] 欄位。  隨即會出現 **新增動態內容** 的連結。
 
 1. 選取 [新增動態內容]，然後選取 [主題]。
 
-1. 針對**自訂記錄名稱**執行相同的動作。
+1. 針對 **自訂記錄名稱** 執行相同的動作。
     > [!div class="mx-imgBorder"]
     > ![已選取主題](media/tutorial-events-log-analytics/topic-selected.png)
 
-1. 選取邏輯應用程式的**程式碼檢視**。 尋找輸入和記錄類型行。
+1. 選取邏輯應用程式的 **程式碼檢視**。 尋找輸入和記錄類型行。
     > [!div class="mx-imgBorder"]
     > ![兩行的程式碼檢視](media/tutorial-events-log-analytics/code-view-two-lines.png)
 
@@ -154,7 +138,7 @@ Azure 媒體服務 v3 會在 [Azure 事件方格](media-services-event-schemas.m
 
 1. 選取 [新增即時活動]。
 
-1. 在 [即時活動名稱] 欄位中輸入名稱。 (**描述**欄位為可選。)
+1. 在 [即時活動名稱] 欄位中輸入名稱。 (**描述** 欄位為可選。)
 
 1. 選取 [標準] 雲端編碼。
 
@@ -178,7 +162,7 @@ Azure 媒體服務 v3 會在 [Azure 事件方格](media-services-event-schemas.m
 
 1. 檢閱您的設定，然後選取 [建立]。  即時活動清單隨即出現，並會顯示即時活動內嵌 URL。
 
-1. 將**內嵌 URL**複製到剪貼簿。
+1. 將 **內嵌 URL** 複製到剪貼簿。
 
 1. 選取清單中的 [即時活動] 以查看製作者檢視。
 

@@ -3,19 +3,19 @@ title: Translator Dictionary Lookup 方法
 titleSuffix: Azure Cognitive Services
 description: Dictionary Lookup 方法提供單字和少量慣用片語的替代翻譯。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 01/21/2020
-ms.author: swmachan
-ms.openlocfilehash: 6ada9c06f0befbea4b9aa85f95651e96dec595b7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.author: lajanuar
+ms.openlocfilehash: 88a76a16de43853a001f5db895d6ad418940de0f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021281"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895487"
 ---
 # <a name="translator-30-dictionary-lookup"></a>Translator 3.0：字典查閱
 
@@ -33,7 +33,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 
 在查詢字串上傳遞的要求參數為：
 
-| 查詢參數  | Description |
+| 查詢參數  | 描述 |
 | ------ | ----------- |
 | api-version <img width=200/>   | **必要參數**。<br/>用戶端要求的 API 版本。 值必須是 `3.0` |
 | 從 | **必要參數**。<br/>指定輸入文字的語言。 來源語言必須是 `dictionary` 範圍內包含的[支援語言](./v3-0-languages.md)之一。 |
@@ -49,7 +49,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 | Content-Length   | 必要的要求標頭。<br/>要求本文的長度。 |
 | X-ClientTraceId   | **選擇項**。<br/>用於識別唯一要求的 GUID，由用戶端產生。 若您使用名為 `ClientTraceId` 的查詢參數在查詢字串中包含追蹤識別碼，您就可以省略此標頭。 |
 
-## <a name="request-body"></a>Request body
+## <a name="request-body"></a>要求本文
 
 要求的本文是 JSON 陣列。 每個陣列項目都是字串屬性名為 `Text` 的 JSON 物件，其表示要查閱的字詞。
 
@@ -80,7 +80,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 
     * `posTag`：字串，將這個字詞與詞性標籤建立關聯。
 
-        | 標籤名稱 | Description  |
+        | 標籤名稱 | 描述  |
         |----------|--------------|
         | ADJ      | 形容詞   |
         | ADV      | 副詞      |

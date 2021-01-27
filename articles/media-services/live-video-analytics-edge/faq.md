@@ -3,12 +3,12 @@ title: IoT Edge 常見問題的即時影片分析-Azure
 description: 本文針對 IoT Edge 上的即時影片分析，提供常見問題的解答。
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: f9ef26b9b64bd8a0bad7c83960f2d235ed6461cb
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 0cb378bf614582070dd1bdd0a11706b26437af53
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97762872"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880045"
 ---
 # <a name="live-video-analytics-on-iot-edge-faq"></a>IoT Edge 常見問題的即時影片分析
 
@@ -230,7 +230,7 @@ microsoft.azure.media.live_video_analytics.extensibility.grpc.v1
 
 **我可以使用 Azure 監視器來查看我在雲端或邊緣上媒體圖形的健康情況、計量和效能嗎？**
 
-是的，我們支援這種方法。 若要深入瞭解，請參閱 [Azure 監視器計量總覽](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics)。
+是的，我們支援這種方法。 若要深入瞭解，請參閱 [Azure 監視器計量總覽](../../azure-monitor/platform/data-platform-metrics.md)。
 
 **是否有任何工具可讓您更輕鬆地監視 Media Services IoT Edge 模組？**
 

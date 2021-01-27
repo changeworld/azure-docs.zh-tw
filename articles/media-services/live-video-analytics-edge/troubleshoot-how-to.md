@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: d49f048df7a624dc490acf7cb4c8e5f33aa5f1c6
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: d23294c21d49b1c2ab83c4bf8f110d5d4bc7aafb
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060226"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878285"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>針對 IoT Edge 上的即時影片分析進行疑難排解
 
@@ -66,7 +66,7 @@ az iot edge set-modules --hub-name <iot-hub-name> --device-id lva-sample-device 
     * 500 - IoT Edge 執行階段發生錯誤。
 
     > [!TIP]
-    > 如果您在環境中執行 Azure IoT Edge 模組時遇到問題，請 **[Azure IoT Edge 標準的診斷步驟](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** ，作為疑難排解和診斷的指南。
+    > 如果您在環境中執行 Azure IoT Edge 模組時遇到問題，請 **[Azure IoT Edge 標準的診斷步驟](../../iot-edge/troubleshoot.md?preserve-view=true&view=iotedge-2018-06)** ，作為疑難排解和診斷的指南。
 ### <a name="post-deployment-direct-method-error-code"></a>部署後：直接方法錯誤碼
 1. 如果您收到狀態 `501 code` ，請檢查以確定直接方法名稱正確無誤。 如果方法名稱和要求承載都是正確的，您應該會得到結果，以及成功碼 = 200。 
 1. 如果要求承載不正確，您將會取得狀態 `400 code` 和回應承載，以指出可協助您在直接方法呼叫中診斷問題的錯誤碼和訊息。
@@ -96,7 +96,7 @@ az iot edge set-modules --hub-name <iot-hub-name> --device-id lva-sample-device 
 * 已[成功部署 IoT Edge 模組，然後從裝置中消失](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-deploys-successfully-then-disappears-from-device)。
 
     > [!TIP]
-    > 如果您在環境中執行 Azure IoT Edge 模組時遇到問題，請 **[Azure IoT Edge 標準的診斷步驟](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** ，作為疑難排解和診斷的指南。
+    > 如果您在環境中執行 Azure IoT Edge 模組時遇到問題，請 **[Azure IoT Edge 標準的診斷步驟](../../iot-edge/troubleshoot.md?preserve-view=true&view=iotedge-2018-06)** ，作為疑難排解和診斷的指南。
 ### <a name="live-video-analytics-working-with-external-modules"></a>使用外部模組的即時影片分析
 
 透過 media graph 擴充處理器的即時影片分析可以擴充媒體圖形，以使用 HTTP 或 gRPC 通訊協定從其他 IoT Edge 模組傳送和接收資料。 在 [特定範例](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)中，此媒體圖形可將影片框架作為影像傳送至外部推斷模組（例如 Yolo v3），並使用 HTTP 通訊協定接收以 JSON 為基礎的分析結果。 在這種拓撲中，事件的目的地大多是 IoT 中樞。 在您沒有在中樞上看到推斷事件的情況下，請檢查下列各項：
@@ -213,7 +213,7 @@ IoT Edge 上的即時影片分析提供直接以方法為基礎的程式設計�
 
 1. 選取 [更新]。
 1. 選取 [檢閱 + 建立]  。 成功的驗證訊息會以綠色橫幅張貼。
-1. 選取 [建立]。
+1. 選取 [建立]  。
 1. 更新 **模組身分識別** 對應項以指向 DebugLogsDirectory 參數，指向收集記錄檔的目錄：
 
     a. 在 [ **模組** ] 資料表下，選取 [ **lvaEdge**]。  
@@ -272,7 +272,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 ``` 
 
-[.Net 中的 GRPC 記錄和診斷功能](https://docs.microsoft.com/aspnet/core/grpc/diagnostics?view=aspnetcore-3.1&preserve-view=true) 提供了一些指引，說明如何從 gRPC 伺服器收集一些診斷記錄。 
+[.Net 中的 GRPC 記錄和診斷功能](/aspnet/core/grpc/diagnostics?preserve-view=true&view=aspnetcore-3.1) 提供了一些指引，說明如何從 gRPC 伺服器收集一些診斷記錄。 
 
 ### <a name="a-failed-grpc-connection"></a>失敗的 gRPC 連接 
 
@@ -282,7 +282,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 Live Video Analytics 不會監視或提供任何硬體資源監視。 開發人員將必須使用硬體製造商監視解決方案。 不過，如果您使用 Kubernetes 容器，您可以使用 [Kubernetes 儀表板](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)來監視裝置。 
 
-.NET core 檔中的 gRPC 也會分享一些有關 [效能最佳做法](https://docs.microsoft.com/aspnet/core/grpc/performance?view=aspnetcore-3.1&preserve-view=true) 和 [負載平衡](https://docs.microsoft.com/aspnet/core/grpc/performance?view=aspnetcore-3.1#load-balancing&preserve-view=true)的重要資訊。  
+.NET core 檔中的 gRPC 也會分享一些有關 [效能最佳做法](/aspnet/core/grpc/performance?preserve-view=true&view=aspnetcore-3.1) 和 [負載平衡](/aspnet/core/grpc/performance?preserve-view=true&view=aspnetcore-3.1#load-balancing)的重要資訊。  
 
 ### <a name="troubleshooting-an-inference-server-when-it-does-not-receive-any-frames-and-you-are-receiving-an-unknown-protocol-error"></a>當推斷伺服器未收到任何框架，而您收到「未知」的通訊協定錯誤時進行疑難排解 
 
@@ -296,7 +296,7 @@ Live Video Analytics 不會監視或提供任何硬體資源監視。 開發人�
    ```
 
    如果命令輸出混雜文字的簡短字串，則 telnet 已成功開啟與您的推斷伺服器的連接，並開啟二進位 gRPC 通道。 如果您看不到此錯誤，telnet 將會報告網路錯誤。 
-* 在您的推斷伺服器中，您可以在 gRPC 程式庫中啟用其他記錄。 這可提供有關 gRPC 通道本身的其他資訊。 這會因語言而異，以下是 [c #](https://docs.microsoft.com/aspnet/core/grpc/diagnostics?view=aspnetcore-3.1&preserve-view=true)的指示。 
+* 在您的推斷伺服器中，您可以在 gRPC 程式庫中啟用其他記錄。 這可提供有關 gRPC 通道本身的其他資訊。 這會因語言而異，以下是 [c #](/aspnet/core/grpc/diagnostics?preserve-view=true&view=aspnetcore-3.1)的指示。 
 
 ### <a name="picking-more-images-from-buffer-of-grpc-without-sending-back-result-for-first-buffer"></a>從 gRPC 的緩衝區挑選更多影像，而不會傳回第一個緩衝區的結果
 
@@ -314,6 +314,6 @@ Live Video Analytics 不會監視或提供任何硬體資源監視。 開發人�
 1. 然後，當您擁有所需的影像框架數目時，就可以執行處理邏輯。
 1. 準備好時，請將推斷結果回復為即時影片分析。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 [教學課程：以事件為基礎的影片錄製到雲端並從雲端播放](event-based-video-recording-tutorial.md)

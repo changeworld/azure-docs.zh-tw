@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 35cb7ba4523cfbc88daf958fd972b127519385ce
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 69f0da2f1528ad1f45762a8f754cc2020b4cb880
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98792293"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98900804"
 ---
 本文列出已發行 Azure Active Directory Connect 布建代理程式的版本和功能。 Azure AD 團隊會定期以新的特性和功能更新布建代理程式。 發行新版本時，會自動更新布建代理程式。 
 
@@ -99,5 +99,3 @@ Microsoft 提供最新代理程式版本的直接支援，以及之前的一個�
 * 改頭換面布建代理程式和連接器架構，以獲得更佳的效能、穩定性和可靠性 
 * 使用 UI 驅動的安裝 wizard 簡化布建代理程式設定 
 * 新增自動代理程式更新的支援
-
-

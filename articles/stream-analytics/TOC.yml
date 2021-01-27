@@ -39,7 +39,7 @@
     - name: 建立自訂 .NET 還原序列化程式
       href: custom-deserializer.md
     - name: 建立 IoT Edge 工作
-      href: /azure/iot-edge/tutorial-deploy-stream-analytics?view=iotedge-2018-06
+      href: ../iot-edge/tutorial-deploy-stream-analytics.md?view=iotedge-2018-06
       maintainContext: true
 - name: 範例
   items:
@@ -95,7 +95,7 @@
           href: event-hubs-output.md
         - name: Power BI
           href: power-bi-output.md
-        - name: 表格儲存體
+        - name: 資料表儲存體
           href: table-storage-output.md
         - name: 服務匯流排佇列
           href: service-bus-queues-output.md

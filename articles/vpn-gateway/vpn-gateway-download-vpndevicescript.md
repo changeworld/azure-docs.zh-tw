@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 70d9a8069979a299ad3031de37c525438ab0159d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2593c656e17310c5afb4a897b94cc8c12a618f0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394596"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879489"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>下載可供進行 S2S VPN 連線的 VPN 裝置設定指令碼
 
@@ -34,7 +34,7 @@ ms.locfileid: "89394596"
 3. 建立及設定 Azure VPN 閘道與區域網路閘道之間的 Azure VPN 連線
 4. 設定以區域網路閘道表示的內部部署 VPN 裝置，以使用 Azure VPN 閘道建立實際的 S2S VPN 通道
 
-您可以使用 Azure [入口網站](vpn-gateway-howto-site-to-site-resource-manager-portal.md)、[PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md) 或 [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md) 來完成步驟 1 到 3。 最後一個步驟牽涉到設定 Azure 外部的內部部署 VPN 裝置。 這項功能可讓您下載 VPN 裝置的設定指令碼，且對應的 Azure VPN 閘道、虛擬網路、內部部署網路位址首碼和 VPN 連線屬性等值均已填入。 您可以使用指令碼作為起點，或透過設定主控台將指令碼直接套用至您的內部部署 VPN 裝置。
+您可以使用 Azure [入口網站](./tutorial-site-to-site-portal.md)、[PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md) 或 [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md) 來完成步驟 1 到 3。 最後一個步驟牽涉到設定 Azure 外部的內部部署 VPN 裝置。 這項功能可讓您下載 VPN 裝置的設定指令碼，且對應的 Azure VPN 閘道、虛擬網路、內部部署網路位址首碼和 VPN 連線屬性等值均已填入。 您可以使用指令碼作為起點，或透過設定主控台將指令碼直接套用至您的內部部署 VPN 裝置。
 
 > [!IMPORTANT]
 > * 每個 VPN 裝置設定指令碼的語法不同，高度相依於機型和韌體版本。 請針對可用範本特別注意您的裝置機型和版本資訊。
@@ -49,7 +49,7 @@ ms.locfileid: "89394596"
 
 建立 Azure VPN 閘道、區域網路閘道以及讓兩者相連的連線資源。 下列網頁會指導您逐步執行步驟：
 
-* [在 Azure 入口網站中建立站對站連線](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [在 Azure 入口網站中建立站對站連線](./tutorial-site-to-site-portal.md)
 
 在建立連線資源後，請遵循下列指示以下載 VPN 裝置設定指令碼：
 
@@ -99,4 +99,4 @@ Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript -Name $Connection -Re
 
 ## <a name="next-steps"></a>後續步驟
 
-繼續設定您的[站對站連線](vpn-gateway-howto-site-to-site-resource-manager-portal.md)。
+繼續設定您的[站對站連線](./tutorial-site-to-site-portal.md)。

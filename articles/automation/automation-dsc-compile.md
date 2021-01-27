@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3bb42886c653afbdf8975b532bd2e1e1c3c63ce9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b45aad71e04418c7c7dda4fc3f0c84a5fe99ecdf
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186532"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896337"
 ---
 # <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>編譯 Azure 自動化狀態設定中的 DSC 組態
 
@@ -120,7 +120,7 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
 
 ### <a name="compile-configurations-containing-composite-resources-in-azure-automation"></a>Azure 自動化中包含複合資源的編譯組態
 
-**複合資源**功能可讓您使用 DSC 組態做為組態內的巢狀資源。 這項功能可讓您將多個組態應用到單一資源。 請參閱[複合資源：如需深入了解複合資源，請使用 DSC 組態做為資源](/powershell/scripting/dsc/resources/authoringresourcecomposite)。
+**複合資源** 功能可讓您使用 DSC 組態做為組態內的巢狀資源。 這項功能可讓您將多個組態應用到單一資源。 請參閱[複合資源：如需深入了解複合資源，請使用 DSC 組態做為資源](/powershell/scripting/dsc/resources/authoringresourcecomposite)。
 
 > [!NOTE]
 > 為了使包含複合資源的組態正確編譯，您必須先將複合所依賴的任何 DSC 資源匯入 Azure 自動化。 新增 DSC 複合資源與將任何 PowerShell 模組新增至 Azure 自動化並無差異。 此程式記載於[在 Azure 自動化中管理模組](./shared-resources/modules.md)。
@@ -278,6 +278,6 @@ Import-AzAutomationDscNodeConfiguration -AutomationAccountName 'MyAutomationAcco
 
 - 若要開始使用，請參閱[開始使用 Azure 自動化狀態設定](automation-dsc-getting-started.md)。
 - 若要了解如何編譯 DSC 組態，以將其指派給目標節點，請參閱[編譯 Azure 自動化狀態設定中的 DSC 組態](automation-dsc-compile.md)。
-- 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。
+- 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation)。
 - 如需定價資訊，請參閱 [Azure 自動化狀態設定的定價](https://azure.microsoft.com/pricing/details/automation/)。
 - 如需在持續部署管線中使用狀態設定的範例，請參閱[使用 Chocolatey 設定持續部署](automation-dsc-cd-chocolatey.md)。

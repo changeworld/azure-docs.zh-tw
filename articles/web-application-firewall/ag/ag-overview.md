@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 12/04/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 36f04b02774a01814811ea131388629de27e9f07
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
-ms.translationtype: HT
+ms.openlocfilehash: 2de8a47b841a4a5c82aaeb92419ec3d9714268ea
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621020"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879422"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>什麼是 Azure 應用程式閘道上的 Web 應用程式防火牆?
 
@@ -157,7 +157,7 @@ OWASP 有兩種可用來決定是否要封鎖流量的模式：傳統模式和�
 
 #### <a name="azure-security-center"></a>Azure 資訊安全中心
 
-[資訊安全中心](../../security-center/security-center-introduction.md)可協助您保護、偵測威脅並採取相應的措施。 此服務可讓您完整檢視並控制 Azure 資源的安全性。 應用程式閘道已經[與資訊安全中心整合](../../application-gateway/application-gateway-integration-security-center.md)。 資訊安全中心會掃描您的環境，以偵測未受保護的 Web 應用程式。 並建議應用程式閘道 WAF 保護這些易受攻擊的資源。 您可以直接從資訊安全中心建立防火牆。 這些 WAF 執行個體會與資訊安全中心整合。 然後將警示和健康情況資訊傳送至資訊安全中心以進行報告。
+[資訊安全中心](../../security-center/security-center-introduction.md)可協助您保護、偵測威脅並採取相應的措施。 此服務可讓您完整檢視並控制 Azure 資源的安全性。 應用程式閘道已經[與資訊安全中心整合](../../security-center/security-center-partner-integration.md#integrated-azure-security-solutions)。 資訊安全中心會掃描您的環境，以偵測未受保護的 Web 應用程式。 並建議應用程式閘道 WAF 保護這些易受攻擊的資源。 您可以直接從資訊安全中心建立防火牆。 這些 WAF 執行個體會與資訊安全中心整合。 然後將警示和健康情況資訊傳送至資訊安全中心以進行報告。
 
 ![資訊安全中心概觀視窗](../media/ag-overview/figure1.png)
 

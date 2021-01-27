@@ -3,19 +3,19 @@ title: 要求限制-Translator
 titleSuffix: Azure Cognitive Services
 description: 本文列出 Translator 的要求限制。 費用是根據字元計數來產生，而不是根據受限於每個要求 5,000 個字元的要求頻率。 字元限制是以訂用帳戶為基礎，而 F0 受限於每小時 2 百萬個字元。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.author: swmachan
-ms.openlocfilehash: 8841c55d8f276f048db53a531bd2e9218e498b34
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.author: lajanuar
+ms.openlocfilehash: 2bc2c1361c7d2f73ff8a67e906a6db725f669d52
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016491"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895402"
 ---
 # <a name="request-limits-for-translator"></a>Translator 的要求限制
 
@@ -44,7 +44,7 @@ ms.locfileid: "95016491"
 
 如果您達到或超過這些限制，或在短時間內傳送太大部分的配額，您可能會收到超出配額的回應。 並行要求沒有任何限制。
 
-| 層 | 字元限制 |
+| 服務層級 | 字元限制 |
 |------|-----------------|
 | F0 | 每小時 2 百萬個字元 |
 | S1 | 每小時 4 千萬個字元 |
@@ -64,7 +64,7 @@ ms.locfileid: "95016491"
 
 使用 [BreakSentence](./reference/v3-0-break-sentence.md) 函式時，句子長度受限於 275 個字元。 下列語言有一些例外狀況：
 
-| 語言 | 程式碼 | 字元限制 |
+| Language | 程式碼 | 字元限制 |
 |----------|------|-----------------|
 | 中文 | zh | 166 |
 | 德文 | de | 800 |
@@ -77,7 +77,7 @@ ms.locfileid: "95016491"
 > [!NOTE]
 > 這項限制不適用於翻譯。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [定價](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 * [區域可用性](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1e6aaf1b37073bf93e0aca8237161bf11af3a872
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: ee28f25e766940eb51e92b61fd782b97fd888705
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827218"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879607"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>適用于 SAP 應用程式之最佳網路延遲的 Azure 鄰近放置群組
 以 SAP NetWeaver 或 SAP S/4HANA 架構為基礎的 SAP 應用程式，對 SAP 應用層與 SAP 資料庫層之間的網路延遲很敏感。 此敏感度是大部分在應用層中執行之商務邏輯的結果。 由於 SAP 應用層會執行商務邏輯，因此會以極高的頻率（每秒數以千計或數萬千）向資料庫層發出查詢。 在大部分的情況下，這些查詢的本質很簡單。 它們通常可以在資料庫層上以500微秒或更短的時間執行。
@@ -30,11 +30,11 @@ ms.locfileid: "97827218"
 
 在許多 Azure 區域中，資料中心的數目已增加。 同時，客戶（尤其是高階 SAP 系統）會使用更多的特殊 VM Sku （M 或 Mv2 系列）或 HANA 大型實例。 這些 Azure 虛擬機器類型在所有補充 Azure 區域的資料中心內都不一定都有提供。 這些事實可能會產生可將 SAP 應用層和 SAP DBMS 層之間的網路延遲優化的機會。
 
-為了讓您有機會將網路延遲優化，Azure 提供 [鄰近的放置群組](../../linux/co-location.md)。 鄰近放置群組可用來將不同 VM 類型的群組強制分組到單一 Azure 資料中心，以便將這些不同 VM 類型之間的網路延遲優化到最可能。 在將第一個 VM 部署到這類鄰近放置群組的過程中，VM 會系結至特定的資料中心。 就像這個潛在客戶的音效一樣，結構的使用也會帶來一些限制：
+為了讓您有機會將網路延遲優化，Azure 提供 [鄰近的放置群組](../../co-location.md)。 鄰近放置群組可用來將不同 VM 類型的群組強制分組到單一 Azure 資料中心，以便將這些不同 VM 類型之間的網路延遲優化到最可能。 在將第一個 VM 部署到這類鄰近放置群組的過程中，VM 會系結至特定的資料中心。 就像這個潛在客戶的音效一樣，結構的使用也會帶來一些限制：
 
 - 您無法假設所有 Azure VM 類型都可在每個 Azure 資料中心內使用。 如此一來，就可以限制一個鄰近放置群組中不同 VM 類型的組合。 發生這些限制的原因是執行特定 VM 類型所需的主機硬體，可能不會出現在部署放置群組的資料中心內。
 - 當您調整某個鄰近放置群組內 Vm 的部分大小時，您無法自動假設在所有情況下，新的 VM 類型都可在與鄰近放置群組一部分的其他 Vm 相同的資料中心內使用
-- 由於 Azure 解除硬體，它可能會將鄰近位置群組的特定 Vm 強制至另一個 Azure 資料中心。 如需涵蓋此案例的詳細資訊，請閱讀檔 [共置資源以改善延遲](../../linux/co-location.md#planned-maintenance-and-proximity-placement-groups)  
+- 由於 Azure 解除硬體，它可能會將鄰近位置群組的特定 Vm 強制至另一個 Azure 資料中心。 如需涵蓋此案例的詳細資訊，請閱讀檔 [共置資源以改善延遲](../../co-location.md#planned-maintenance-and-proximity-placement-groups)  
 
 > [!IMPORTANT]
 > 由於可能會有限制，因此應該使用鄰近放置群組：

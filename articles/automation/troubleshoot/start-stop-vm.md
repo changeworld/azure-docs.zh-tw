@@ -2,19 +2,15 @@
 title: 針對 Azure 自動化停機期間啟動/停止 VM 問題進行疑難排解
 description: 本文說明如何疑難排解並解決在使用停機期間啟動/停止 VM 功能期間所引發的問題。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/04/2019
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: bb8fa53fa07d666693ae545c193faaf3d6d0a30c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.topic: troubleshooting
+ms.openlocfilehash: 763e1321556ade73778b82ea70926af21a83f7ec
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187144"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896269"
 ---
 # <a name="troubleshoot-startstop-vms-during-off-hours-issues"></a>針對停機期間啟動/停止 VM 問題進行疑難排解
 
@@ -153,7 +149,7 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
   ```
 
 * 若要啟動和停止 VM，自動化帳戶的執行身分帳戶必須具有 VM 的適當權限。 若要了解如何檢查資源的權限，請參閱[快速入門：使用 Azure 入口網站來檢視指派給使用者的角色](../../role-based-access-control/check-access.md)。 您需要為執行身分帳戶使用的服務主體提供應用程式識別碼。 您可以在 Azure 入口網站中移至您的自動化帳戶來擷取此值。 選取 [帳戶設定] 下的 [執行身分帳戶]，然後選取適當的執行身分帳戶。
-* 如果 VM 在啟動或解除配置時出現問題，VM 本身可能有問題。 範例是當 VM 嘗試關閉、服務停止回應，以及其他情況時所要套用的更新。 移至您的 VM 資源並檢查**活動記錄**，以查看記錄中是否有任何錯誤。 您還可以嘗試登入 VM，以查看事件記錄檔中是否有任何錯誤。 若要深入了解 VM 的疑難排解，請參閱[針對 Azure 虛擬機器進行疑難排解](../../virtual-machines/troubleshooting/index.yml)。
+* 如果 VM 在啟動或解除配置時出現問題，VM 本身可能有問題。 範例是當 VM 嘗試關閉、服務停止回應，以及其他情況時所要套用的更新。 移至您的 VM 資源並檢查 **活動記錄**，以查看記錄中是否有任何錯誤。 您還可以嘗試登入 VM，以查看事件記錄檔中是否有任何錯誤。 若要深入了解 VM 的疑難排解，請參閱[針對 Azure 虛擬機器進行疑難排解](../../virtual-machines/troubleshooting/index.yml)。
 * 檢查[作業資料流](../automation-runbook-execution.md#job-statuses)以尋找任何錯誤。 在入口網站中，移至 [自動化帳戶]，然後在 [程序自動化] 下選取 [作業]。
 
 ## <a name="scenario-my-custom-runbook-fails-to-start-or-stop-my-vms"></a><a name="custom-runbook"></a>案例：我的自訂 Runbook 無法啟動或停止我的 VM

@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 98f8554d6313147c03d4a0bec74e36043cdce342
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4740870dd2d9748aad55150ce1946e3eb666619
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87285266"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878353"
 ---
 # <a name="azcopy-login"></a>azcopy 登入
 
@@ -37,7 +37,7 @@ azcopy login [flags]
 ## <a name="related-conceptual-articles"></a>相關的概念文章
 
 - [開始使用 AzCopy](storage-use-azcopy-v10.md)
-- [使用 AzCopy 和 Blob 儲存體傳輸資料](storage-use-azcopy-blobs.md)
+- [使用 AzCopy 和 Blob 儲存體傳輸資料](./storage-use-azcopy-v10.md#transfer-data)
 - [使用 AzCopy 和檔案儲存體傳輸資料](storage-use-azcopy-files.md) (機器翻譯)
 - [對 AzCopy 進行設定、最佳化及疑難排解](storage-use-azcopy-configure.md)
 
@@ -101,7 +101,7 @@ azcopy login --service-principal --certificate-path /path/to/my/cert --applicati
 
 **--aad-** 要使用 Azure Active Directory 端點的端點字串。 https://login.microsoftonline.com)全域 Azure 雲端的預設 (是正確的。 在國家雲端中進行驗證時，請設定此參數。 受控服務識別不需要。
 
---使用者指派之身分識別的**應用程式識別碼**字串應用程式識別碼。 服務主體驗證的必要。
+--使用者指派之身分識別的 **應用程式識別碼** 字串應用程式識別碼。 服務主體驗證的必要。
 
 **--憑證-** 憑證的路徑字串路徑以進行 SPN 驗證。 以憑證為基礎的服務主體驗證所需。
 
@@ -121,7 +121,7 @@ azcopy login --service-principal --certificate-path /path/to/my/cert --applicati
 
 ## <a name="options-inherited-from-parent-commands"></a>繼承自父命令的選項
 
-|選項|說明|
+|選項|描述|
 |---|---|
 |--cap-mbps float|以每秒 mb 數為單位的傳輸速率上限。 時間的輸送量可能會與端點稍有不同。 如果此選項設定為零，或省略，則輸送量不會有上限。|
 |--output 類型字串|命令輸出的格式。 選項包括： text、json。 預設值為 "text"。|

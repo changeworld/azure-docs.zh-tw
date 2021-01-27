@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: eb31bb09c1e09e4799715fc5a1cbca4b216b28a2
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 469d7ba9e86751312ebf6a6c82b35f065ee6cb50
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922968"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880367"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>將 VPN 閘道 (虛擬網路閘道) 連線到虛擬 WAN
 
@@ -83,7 +83,7 @@ Azure 虛擬網路
 
 1. 在 [虛擬 WAN **VPN 網站** ] 頁面的頂端，選取 [ **網站**]，然後選取 [ **下載站對站 VPN** 設定]。 Azure 會建立含有設定的設定檔。
 
-   ![顯示 [VPN 網站] 頁面的螢幕擷取畫面，其中已選取 [下載站對站 VPN 設定] 動作。](./media/connect-virtual-network-gateway-vwan/download.png "下載這篇文章")
+   ![顯示 [VPN 網站] 頁面的螢幕擷取畫面，其中已選取 [下載站對站 VPN 設定] 動作。](./media/connect-virtual-network-gateway-vwan/download.png "下載")
 2. 下載並開啟設定檔。
 3. 針對第二個網站重複這些步驟。 當您開啟這兩個設定檔之後，您可以繼續進行下一節。
 
@@ -91,7 +91,7 @@ Azure 虛擬網路
 
 在本節中，您會建立兩個 Azure VPN 閘道局域網路閘道。 上一個步驟中的設定檔包含閘道設定。 使用這些設定來建立及設定 Azure VPN 閘道局域網路閘道。
 
-1. 使用這些設定來建立局域網路閘道。 如需有關如何建立 VPN 閘道局域網路閘道的詳細資訊，請參閱 VPN 閘道文章 [建立區域網路網](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway)關。
+1. 使用這些設定來建立局域網路閘道。 如需有關如何建立 VPN 閘道局域網路閘道的詳細資訊，請參閱 VPN 閘道文章 [建立區域網路網](../vpn-gateway/tutorial-site-to-site-portal.md#LocalNetworkGateway)關。
 
    * **IP 位址** -使用從設定檔中針對 *gatewayconfiguration* 所顯示的 Instance0 IP 位址。
    * **Bgp** -如果連線是透過 bgp，請選取 [ **設定 bgp 設定** ]，然後輸入 ASN ' 65515 '。 輸入 BGP 對等 IP 位址。 從設定檔使用 ' Instance0 BgpPeeringAddresses ' 進行 *gatewayconfiguration* 。
@@ -105,7 +105,7 @@ Azure 虛擬網路
 
 ## <a name="5-create-connections"></a><a name="createlocalgateways"></a>5. 建立連接
 
-在本節中，您會建立 VPN 閘道局域網路閘道與虛擬網路閘道之間的連線。 如需有關如何建立 VPN 閘道連線的步驟，請參閱 [設定連接](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#CreateConnection)。
+在本節中，您會建立 VPN 閘道局域網路閘道與虛擬網路閘道之間的連線。 如需有關如何建立 VPN 閘道連線的步驟，請參閱 [設定連接](../vpn-gateway/tutorial-site-to-site-portal.md#CreateConnection)。
 
 1. 在入口網站中，流覽至您的虛擬網路閘道， **然後按一下 [** 連線]。 在 [連線] 頁面的頂部，按一下 [+新增] 以開啟 [新增連線] 頁面。
 2. 在 [ **加入連接** ] 頁面上，為您的連接設定下列值：
@@ -119,7 +119,7 @@ Azure 虛擬網路
 3. 按一下 [確定]  來建立連線。
 4. 您可以在虛擬網路閘道的 [連線] 頁面中檢視連線。
 
-   ![連線](./media/connect-virtual-network-gateway-vwan/connect.png "connection")
+   ![[連接]](./media/connect-virtual-network-gateway-vwan/connect.png "connection")
 5. 重複上述步驟來建立第二個連接。 針對第二個連接，請選取您所建立的其他局域網路閘道。
 6. 如果連線是透過 BGP，則在建立連線之後，請流覽至連線， **然後選取 [** 設定]。 **在 [設定**] 頁面上，針對 [ **BGP**] 選取 [**已啟用**]。 然後按一下 [ **儲存**]。 針對第二個連接重複執行。
 

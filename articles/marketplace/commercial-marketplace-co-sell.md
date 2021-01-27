@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 12/08/2020
-ms.openlocfilehash: b5001898fa18834ce7c04403de70879084df85f1
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: ca090d9bd4f5968b0404cb73af9f8d21197e695d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904903"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880956"
 ---
 # <a name="co-sell-option-in-the-commercial-marketplace"></a>在商業市集中的共同銷售選項
 
-在 [ **與 Microsoft 共同銷售** ] 索引標籤上提供的資訊完全是選擇性的。 您必須達成 [共同銷售就緒和 IP 共同銷售受到激勵狀態](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。 Microsoft 銷售團隊將使用您提供的資訊，在評估其符合客戶需求時，深入瞭解您的供應專案。 您的解決方案無法直接提供給客戶。 如需詳細資訊，請參閱 [與 Microsoft 共同銷售](https://partner.microsoft.com/membership/co-sell-with-microsoft)。
+在 [ **與 Microsoft 共同銷售** ] 索引標籤上提供的資訊完全是選擇性的。 您必須達成 [共同銷售就緒和 IP 共同銷售受到激勵狀態](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。 Microsoft 銷售團隊將使用您提供的資訊，在評估其符合客戶需求時，深入瞭解您的供應專案。 您的解決方案無法直接提供給客戶。 如需詳細資訊，請參閱 [與 Microsoft 共同銷售](https://partner.microsoft.com/membership/co-sell-with-microsoft)。
 
 合作夥伴中心中的共同銷售選項適用于下列供應專案類型。
 
@@ -28,7 +28,7 @@ ms.locfileid: "96904903"
 - 適用于作業的 Dynamics 365
 - Dynamics 365 business central
 - IoT Edge 模組
-- 受管理的服務
+- 受控服務
 - Power BI 應用程式
 - 軟體即服務 (SaaS)
 
@@ -50,7 +50,7 @@ ms.locfileid: "96904903"
 | 裝置 (硬體)  | 牽涉到從裝置製造商建立或銷售硬體的供應專案。 |
 | IP (應用程式)  | 授權給客戶使用的應用程式或其他 copyrightable 材料。 例如：可在內部部署授權及安裝的 CRM 程式。 |
 | 服務 | 特定一次性專案的實際操作專長，通常是透過顧問提供。 例如：將用戶端的用戶端 (設定為用戶端，並假設負責在傳遞) 之後運算元據庫。 |
-| 受管理的服務 | 雲端式專案的實際操作專長，通常會持續進行。 例如：提供平臺和工具來執行線上資料庫，並提供受控服務提供者所提供的持續管理。 |
+| 受控服務 | 雲端式專案的實際操作專長，通常會持續進行。 例如：提供平臺和工具來執行線上資料庫，並提供受控服務提供者所提供的持續管理。 |
 
 ### <a name="solution-areas"></a>解決方案區域
 

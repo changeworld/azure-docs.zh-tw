@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 7e59c8ecc0d7af341ddc1ea79aa42460e00fa444
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 467c2b9fe8758db5c1da43a65c1bfde133df0823
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89419770"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880096"
 ---
 # <a name="vpn-gateway-faq"></a>VPN 閘道常見問題集
 
@@ -38,7 +38,7 @@ ms.locfileid: "89419770"
 
 支援下列跨單位連線：
 
-* 站對站 – 透過 IPsec (IKE v1 和 IKE v2) 的 VPN 連線。 此類型的連線需要 VPN 裝置或 RRAS。 如需詳細資訊，請參閱[站對站](vpn-gateway-howto-site-to-site-resource-manager-portal.md)。
+* 站對站 – 透過 IPsec (IKE v1 和 IKE v2) 的 VPN 連線。 此類型的連線需要 VPN 裝置或 RRAS。 如需詳細資訊，請參閱[站對站](./tutorial-site-to-site-portal.md)。
 * 點對站 – 透過 SSTP (安全通訊端通道通訊協定) 的 VPN 連線或 IKE v2。 此連線不需要 VPN 裝置。 如需詳細資訊，請參閱[點對站](vpn-gateway-howto-point-to-site-resource-manager-portal.md)。
 * VNet 對 VNet – 此類型的連線與站對站組態相同。 VNet 對 VNet 是透過 IPsec (IKE v1 和 IKE v2) 的 VPN 連線， 並不需要 VPN 裝置。 如需詳細資訊，請參閱 [VNet 對 VNet](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)。
 * 多網站 - 這是站對站組態的變體，可讓您將多個內部部署網站連線至虛擬網路。 如需詳細資訊，請參閱[多網站](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)。
@@ -70,13 +70,13 @@ VPN 閘道是一種虛擬網路閘道。 VPN 閘道可透過公用連線在您�
 
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>我可以將以原則為基礎的 VPN 閘道更新為路由式嗎？
 
-否。Azure Vnet 閘道類型無法從原則型變更為路由型或其他方式。 閘道必須刪除並重新建立，程序大約要 60 分鐘的時間。 閘道的 IP 位址不會保留，預先共用金鑰 (PSK) 也不會保留。
+否。 Azure Vnet 閘道類型無法從原則型變更為路由型或其他方式。 閘道必須刪除並重新建立，程序大約要 60 分鐘的時間。 閘道的 IP 位址不會保留，預先共用金鑰 (PSK) 也不會保留。
 1. 刪除與要刪除之閘道相關聯的任何連線。
 1. 刪除閘道：
    - [Azure 入口網站](vpn-gateway-delete-vnet-gateway-portal.md)
    - [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
    - [Azure PowerShell-傳統](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-1. [建立所需類型的新閘道，然後完成 VPN 設定](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)。
+1. [建立所需類型的新閘道，然後完成 VPN 設定](./tutorial-site-to-site-portal.md#VNetGateway)。
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>是否需要 'GatewaySubnet'？
 
@@ -98,7 +98,7 @@ VPN 閘道是一種虛擬網路閘道。 VPN 閘道可透過公用連線在您�
 
 如上所述，區域冗余和區域性閘道 (具有 _AZ_ in name) 的閘道 sku 都依賴 _標準 SKU_ Azure 公用 IP 資源。 Azure 標準 SKU 公用 IP 資源必須使用靜態配置方法。
 
-針對非區域冗余和非區域閘道 _ (沒有_ _AZ_ 的閘道 sku) 名稱，只支援動態 IP 位址指派。 不過，這並不表示 IP 位址會在指派給您的 VPN 閘道之後變更。 VPN 閘道 IP 位址的唯一變更時間，是在閘道被刪除後再重新建立。 當您調整、重設或完成 VPN 閘道的其他內部維護和升級時，VPN 閘道的公用 IP 位址不會變更。
+針對非區域冗余和非區域閘道 _(沒有_ _AZ_ 的閘道 sku) 名稱，只支援動態 IP 位址指派。 不過，這並不表示 IP 位址會在指派給您的 VPN 閘道之後變更。 VPN 閘道 IP 位址的唯一變更時間，是在閘道被刪除後再重新建立。 當您調整、重設或完成 VPN 閘道的其他內部維護和升級時，VPN 閘道的公用 IP 位址不會變更。
 
 ### <a name="how-does-my-vpn-tunnel-get-authenticated"></a>我的 VPN 通道如何獲得驗證？
 

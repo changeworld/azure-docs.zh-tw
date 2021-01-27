@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 3513ba0cd1a894b55da604d54964affa79b6adf4
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 2391a36c02e0bdfe0ea98be7f19fc64f1fbb676f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555962"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879927"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>註冊和掃描 Azure SQL Database 受控執行個體
 
@@ -34,13 +34,13 @@ Azure Purview 不支援掃描 Azure SQL 受控執行個體中的[檢視](/sql/re
 
 - 建立新的 Purview 帳戶 (如果您還沒有帳戶的話)。
 
-- [在 Azure SQL 受控執行個體中設定公用端點](/azure/azure-sql/managed-instance/public-endpoint-configure)
+- [在 Azure SQL 受控執行個體中設定公用端點](../azure-sql/managed-instance/public-endpoint-configure.md)
     > [!Note]
     > 您的組織必須能夠允許公用端點，因為 Purview **尚不支援私人端點**。 如果您使用私人端點，掃描將不會成功。
 
 ### <a name="setting-up-authentication-for-a-scan"></a>設定掃描的驗證
 
-掃描 Azure SQL Database 受控執行個體的驗證。 如果您需要建立新的驗證，則必須[授與對 SQL Database 受控執行個體的資料庫存取權](/azure/azure-sql/database/logins-create-manage)。 Purview 目前支援三種驗證方法：
+掃描 Azure SQL Database 受控執行個體的驗證。 如果您需要建立新的驗證，則必須[授與對 SQL Database 受控執行個體的資料庫存取權](../azure-sql/database/logins-create-manage.md)。 Purview 目前支援三種驗證方法：
 
 - SQL 驗證
 - 服務主體
@@ -85,8 +85,8 @@ Azure Purview 不支援掃描 Azure SQL 受控執行個體中的[檢視](/sql/re
 ##### <a name="configure-azure-ad-authentication-in-the-database-account"></a>在資料庫帳戶中設定 Azure AD 驗證
 
 服務主體或受控識別必須有權取得資料庫、結構描述和資料表的中繼資料。 此外也必須能夠查詢要取樣以進行分類的資料表。
-- [使用 Azure SQL 設定和管理 Azure AD 驗證](/azure/azure-sql/database/authentication-aad-configure)
-- 依照[建立對應至 Azure AD 身分識別的自主使用者](/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#create-contained-users-mapped-to-azure-ad-identities)的必要條件和教學課程，在 Azure SQL Database 受控執行個體中建立 Azure AD 使用者
+- [使用 Azure SQL 設定和管理 Azure AD 驗證](../azure-sql/database/authentication-aad-configure.md)
+- 依照[建立對應至 Azure AD 身分識別的自主使用者](../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell#create-contained-users-mapped-to-azure-ad-identities)的必要條件和教學課程，在 Azure SQL Database 受控執行個體中建立 Azure AD 使用者
 - 將 `db_owner` (**建議**) 權限指派給身分識別
 
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>將服務主體新增至金鑰保存庫和 Purview 的認證

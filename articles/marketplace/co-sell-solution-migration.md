@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 12/07/2020
-ms.openlocfilehash: 0114c75d99d79041631e5078deb33f77863dc35a
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 84d98eedb3ea6f3faaeaecf832811f9f4c78c7c5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98043773"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880350"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>將協力公司的共同銷售解決方案遷移至商業市場
 
@@ -44,7 +44,7 @@ Microsoft 正在移動發佈體驗。 [商業 marketplace](overview.md)藉由在
 
 從 OCP 的進行匯入解決方案之前，請遵循下列步驟：
 
-1. 造訪您公司的 [發行者清單](https://partner.microsoft.com/dashboard/account/v3/publishers/list)。 它包含擁有發行存取權的帳戶擁有者、管理員和開發人員。 深入瞭解 [合作夥伴中心使用者角色](/azure/marketplace/partner-center-portal/manage-account#define-user-roles-and-permissions)。
+1. 造訪您公司的 [發行者清單](https://partner.microsoft.com/dashboard/account/v3/publishers/list)。 它包含擁有發行存取權的帳戶擁有者、管理員和開發人員。 深入瞭解 [合作夥伴中心使用者角色](./partner-center-portal/manage-account.md#define-user-roles-and-permissions)。
 2. 要求其中一個列出的連絡人， [將使用者新增](https://partner.microsoft.com/dashboard/account/usermanagement) 至商用 marketplace 作為 *經理* 或 *開發人員*，因為只有這些角色可以編輯和發佈方案。
 3. 與您的開發人員合作，將您的解決方案從 OCP 動作帳戶移至商用 marketplace。
 4. 決定您要執行下列作業：
@@ -151,9 +151,8 @@ Microsoft 正在移動發佈體驗。 [商業 marketplace](overview.md)藉由在
 6. 我們會在認證評論完成時通知您。 如果我們提供可採取動作的意見反應，請加以解決，然後選取 [ **發行** ] 以起始重新認證。
 7. 供應專案通過認證後，請使用提供的連結來預覽供應專案，並進行任何您可能想要的最終調整。 當您準備好時，請選取 [ **上線** ] (參閱上方的按鈕) ，將您的供應專案發佈至相關的商用 marketplace 店面 (s) 。 一旦上線，您的供應專案將會從原始的 OCP 進行中解決方案保留其共同銷售狀態。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [透過 CSP 合作夥伴轉售](cloud-solution-providers.md)
 - [如何在合作夥伴中心提交共同銷售教材](marketplace-co-sell.md#how-to-submit-co-sell-materials-in-partner-center)
 -  (PDF) 觀看這些[常見問題](https://partner.microsoft.com/resources/detail/co-sell-requirements-publish-commercial-marketplace-faq-pdf)
-

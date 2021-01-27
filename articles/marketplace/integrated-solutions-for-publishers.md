@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
-ms.openlocfilehash: 70dfccb32389d2f1fb492669c9f84a3e6ae77bbb
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 0a3188d5dc2c34c9959ae488ad5a5f962a99f02f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621343"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880265"
 ---
 # <a name="publish-an-integrated-solution"></a>發佈整合式解決方案
 
@@ -32,8 +32,8 @@ ms.locfileid: "96621343"
 ## <a name="eligibility-criteria"></a>適用性準則
 
 * 參與的合作夥伴必須擁有 MPN 識別碼。
-* 參與的服務提供者應 [共同銷售就緒](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。
-* 參與的軟體廠商應為 [IP 共同銷售準備就緒](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。
+* 參與的服務提供者應 [共同銷售就緒](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。
+* 參與的軟體廠商應為 [IP 共同銷售準備就緒](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。
 * 至少一個參與的合作夥伴必須具有下列其中一個領域的金級專長認證：
     - 應用程式開發
     - 應用程式整合

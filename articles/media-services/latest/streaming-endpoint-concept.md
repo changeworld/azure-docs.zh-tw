@@ -1,24 +1,10 @@
 ---
-title: " (源) 的串流端點"
-titleSuffix: Azure Media Services
-description: 深入瞭解串流端點 (原始) 、動態封裝和串流服務，可直接將內容傳遞至用戶端播放機應用程式，或傳遞至內容傳遞網路 (CDN) 。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: conceptual
-ms.date: 02/13/2020
-ms.author: inhenkel
-ms.openlocfilehash: f7307b95912a982bb36efbf2ce18668bd88e1195
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882869"
+# <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>必要欄位。 查看更多有關 aka.ms/skyeye/meta 的資訊。
+標題：串流端點 (源) ： Azure 媒體服務描述：瞭解串流端點 (來源) 、動態封裝和串流服務，可直接將內容傳遞至用戶端播放機應用程式，或傳遞至內容傳遞網路 (CDN) 。 服務： media services documentationcenter： ' ' author： IngridAtMicrosoft manager： femila editor： ' '
+
+ms. 服務：媒體-服務 ms. 工作負載： ms. 主題：概念 ms. 日期： 02/13/2020 ms. 作者： inhenkel
 ---
+
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure 媒體服務中 (原始) 的串流端點
 
 在 Microsoft Azure 媒體服務中， [串流端點](/rest/api/media/streamingendpoints) 代表動態 (即時) 封裝和原始服務，可以使用其中一種常見的串流媒體通訊協定 (HLS 或虛線) ，將即時和隨選內容直接傳遞至用戶端播放機應用程式。 此外， **串流端點** 也提供動態的 (即時) 加密至領先業界的 drm。 

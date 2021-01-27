@@ -6,12 +6,12 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: aa5c2a0070ea0c3a0963f97fc1a04670eeaa4827
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: efa951ce5a15460e3eacfd4c7abecfac17106b4e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701886"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880503"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>什麼是自動檢測或無程式碼附加-Azure 監視器 Application Insights？
 
@@ -23,17 +23,17 @@ Application Insights 與不同的資源提供者整合，並可在不同的環�
 
 當我們加入更多整合時，自動檢測功能矩陣會變得複雜。 下錶針對各種資源提供者、語言和環境的支援，顯示目前狀態的最新狀態。
 
-|環境/資源提供者          | .NET            | .NET Core       | Java            | Node.js         |
-|---------------------------------------|-----------------|-----------------|-----------------|-----------------|
-|Windows 上的 Azure App Service           | GA，OnBD *       | GA，加入      | 私人預覽 | 私人預覽 |
-|Linux 上的 Azure App Service             | 不適用             | 不受支援   | 私人預覽 | 公開預覽  |
-|AKS 上的 Azure App Service               | 不適用             | 設計中       | 設計中       | 設計中       |
-|Azure Functions-基本                | GA，OnBD *       | GA，OnBD *       | GA，OnBD *       | GA，OnBD *       |
-|Azure Functions Windows-相依性 | 不受支援   | 不受支援   | 公開預覽  | 不受支援   |
-|Azure Kubernetes Service               | 不適用             | 設計中       | 透過代理程式   | 設計中       |
-|Azure Vm 視窗                      | 公開預覽  | 不受支援   | 不受支援   | 不受支援   |
-|內部部署 Vm 視窗                | GA，加入      | 不受支援   | 透過代理程式   | 不受支援   |
-|獨立代理程式-任何 env。            | 不受支援   | 不受支援   | GA              | 不受支援   |
+|環境/資源提供者          | .NET            | .NET Core       | Java            | Node.js         | Python          |
+|---------------------------------------|-----------------|-----------------|-----------------|-----------------|-----------------|
+|Windows 上的 Azure App Service           | GA，OnBD *       | GA，加入      | 私人預覽 | 私人預覽 | 不支援   |
+|Linux 上的 Azure App Service             | N/A             | 不支援   | 私人預覽 | 公開預覽  | 不支援   |
+|AKS 上的 Azure App Service               | N/A             | 設計中       | 設計中       | 設計中       | 不支援   |
+|Azure Functions-基本                | GA，OnBD *       | GA，OnBD *       | GA，OnBD *       | GA，OnBD *       | GA，OnBD *       |
+|Azure Functions Windows-相依性 | 不支援   | 不支援   | 公開預覽  | 不支援   | 不支援   |
+|Azure Kubernetes Service               | N/A             | 設計中       | 透過代理程式   | 設計中       | 不支援   |
+|Azure Vm 視窗                      | 公開預覽  | 不支援   | 不支援   | 不支援   | 不支援   |
+|內部部署 Vm 視窗                | GA，加入      | 不支援   | 透過代理程式   | 不支援   | 不支援   |
+|獨立代理程式-任何 env。            | 不支援   | 不支援   | GA              | 不支援   | 不支援   |
 
 * OnBD 預設為開啟，一旦您在支援的環境中部署應用程式，就會自動啟用 Application Insights。 
 

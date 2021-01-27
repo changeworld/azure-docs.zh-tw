@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ff023ad98c7ffa269223b5d0b4a1cecc5fde1feb
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: d7d438b369c863660a032f101e466b6fadf639fa
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410210"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879709"
 ---
 # <a name="azure-encryption-overview"></a>Azure 加密概觀
 
@@ -45,11 +45,11 @@ Azure 支援各種加密模型，包括使用下列方式進行的伺服器端�
 
 這三種伺服器端加密模型提供不同的金鑰管理特性，您可以根據需求進行選擇：
 
-- **服務管理的金鑰** ：結合控制能力與便利性，而且額外負荷很低。
+- **服務管理的金鑰**：結合控制能力與便利性，而且額外負荷很低。
 
-- **客戶管理的金鑰** ：可讓您控制金鑰，包括支援「攜帶您自己的金鑰」(BYOK)，或允許您產生新的金鑰。
+- **客戶管理的金鑰**：可讓您控制金鑰，包括支援「攜帶您自己的金鑰」(BYOK)，或允許您產生新的金鑰。
 
-- **受客戶控制硬體中服務管理的金鑰** ：可讓您在不受 Microsoft 控制的專屬存放庫中管理金鑰。 這個特性稱為「裝載您自己的金鑰」(HYOK)。 不過，設定很複雜，而且大多數 Azure 服務並不支援此模型。
+- **受客戶控制硬體中服務管理的金鑰**：可讓您在不受 Microsoft 控制的專屬存放庫中管理金鑰。 這個特性稱為「裝載您自己的金鑰」(HYOK)。 不過，設定很複雜，而且大多數 Azure 服務並不支援此模型。
 
 ### <a name="azure-disk-encryption"></a>Azure 磁碟加密
 
@@ -181,7 +181,7 @@ Microsoft 可讓客戶在雲端服務與客戶之間進行傳輸時，能夠使�
 
 如需詳細資訊，請參閱
 
-[在 Azure 入口網站中建立站對站連線](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+[在 Azure 入口網站中建立站對站連線](../../vpn-gateway/tutorial-site-to-site-portal.md)
 
 [在 PowerShell 中建立站對站連線](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 

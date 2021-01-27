@@ -2,15 +2,15 @@
 title: 針對 Azure 自動化功能部署問題進行疑難排解
 description: 本文說明如何針對部署 Azure 自動化功能時發生的問題進行疑難排解和解決。
 services: automation
+ms.subservice: ''
 ms.date: 06/30/2020
-ms.topic: conceptual
-ms.service: automation
-ms.openlocfilehash: a6b8384193e821e6c41a0d4d979cda51f6c65b3a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.topic: troubleshooting
+ms.openlocfilehash: 6668fe3c30bd5187016ac2e0c766e7e78d5b3e8c
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070481"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896506"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>針對功能部署問題進行疑難排解
 
@@ -147,7 +147,7 @@ The link cannot be updated or deleted because it is linked to Update Management 
 
 移除功能資源之後，您可以取消連結您的工作區。 請務必從您的工作區和您的自動化帳戶清除這些功能的任何現有成品：
 
-* 針對更新管理，請從您的自動化帳戶移除**更新部署 (排程)** 。
+* 針對更新管理，請從您的自動化帳戶移除 **更新部署 (排程)** 。
 * 若要在停機期間啟動/停止 VM，請在 [設定] > [鎖定] 下，移除自動化帳戶中功能元件的任何鎖定。 如需詳細資訊，請參閱[移除功能](../automation-solution-vm-management.md#remove-the-feature)。
 
 ## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>適用於 Windows 的 Log Analytics擴充功能失敗

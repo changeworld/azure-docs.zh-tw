@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 562ea5e0e9e4851ed59bd3ef917be2f9c48cd2a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8454c5a5bb5b44d2a60ae0095a9b82a19ed27c8d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185546"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896641"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>將 Azure 自動化帳戶移至另一個訂用帳戶
 
@@ -41,7 +41,7 @@ Azure 自動化可讓您將一些資源移到新的資源群組或訂用帳戶�
 
     ![從 Azure 入口網站刪除功能資源的螢幕擷取畫面](../media/move-account/delete-solutions.png)
 
-如果您想要的話，可以使用 [Remove-AzResource](/powershell/module/Az.Resources/Remove-AzResource?view=azps-3.7.0) Cmdlet 來刪除資源：
+如果您想要的話，可以使用 [Remove-AzResource](/powershell/module/Az.Resources/Remove-AzResource) Cmdlet 來刪除資源：
 
 ```azurepowershell-interactive
 $workspaceName = <myWorkspaceName>
@@ -80,7 +80,7 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 
     ![[動作群組] 頁面的螢幕擷取畫面](../media/move-account/delete-action-group.png)
 
-如果您想要的話，可以使用 [Remove-AzActionGroup](/powershell/module/az.monitor/remove-azactiongroup?view=azps-3.7.0) Cmdlet 來刪除您的動作群組：
+如果您想要的話，可以使用 [Remove-AzActionGroup](/powershell/module/az.monitor/remove-azactiongroup) Cmdlet 來刪除您的動作群組：
 
 ```azurepowershell-interactive
 Remove-AzActionGroup -ResourceGroupName <myResourceGroup> -Name StartStop_VM_Notification

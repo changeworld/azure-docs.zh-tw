@@ -8,12 +8,12 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 5c545fa7d58d925dfcb9fa98b301c3bb0a20833e
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
-ms.translationtype: HT
+ms.openlocfilehash: f3504ca4a706e92081209f4eaaa86af9f71c52b3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358566"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880906"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>教學課程：使用影片索引器與邏輯應用程式和 Power Automate
 
@@ -137,4 +137,4 @@ Azure 媒體服務[影片索引器 v2 REST API](https://api-portal.videoindexer.
 > [!div class="nextstepaction"]
 > [使用影片索引器 API](video-indexer-use-apis.md)
 
-如需其他資源，請參閱[影片索引器](https://docs.microsoft.com/connectors/videoindexer-v2/)上的這份文件。
+如需其他資源，請參閱[影片索引器](/connectors/videoindexer-v2/)上的這份文件。

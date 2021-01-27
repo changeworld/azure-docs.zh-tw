@@ -7,18 +7,18 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: bb4987550e4962ba044e0a6aafbfd00145319e94
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: bc369b072f90e675cf882d52b2edae30530f1c18
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804952"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895963"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure 監視器 (預覽中的 Log Analytics 工作區資料匯出) 
 Azure 監視器中的 Log Analytics 工作區資料匯出可讓您從 Log Analytics 工作區中選取的資料表持續將資料匯出到 Azure 儲存體帳戶，或在收集時 Azure 事件中樞。 本文提供這項功能的詳細資料，以及在工作區中設定資料匯出的步驟。
 
 ## <a name="overview"></a>概觀
-針對您的 Log Analytics 工作區設定資料匯出之後，任何傳送至工作區中所選資料表的新資料都會自動匯出到您的儲存體帳戶或您的事件中樞（近乎即時）。
+針對您的 Log Analytics 工作區設定資料匯出後，任何傳送至工作區中所選資料表的新資料都會自動匯出到您的儲存體帳戶（每小時附加 blob）或您的事件中樞（近乎即時）。
 
 ![資料匯出總覽](media/logs-data-export/data-export-overview.png)
 
@@ -67,7 +67,7 @@ Log Analytics 工作區資料匯出會持續從 Log Analytics 工作區匯出資
 ## <a name="export-destinations"></a>匯出目的地
 
 ### <a name="storage-account"></a>儲存體帳戶
-資料會在接近 Azure 監視器時，以近乎即時的方式傳送至儲存體帳戶。 資料匯出設定會為儲存體帳戶中的每個資料表建立一個容器，並 *在後面加* 上該資料表的名稱。 例如，資料表 *SecurityEvent* 會傳送至名為 *am-SecurityEvent* 的容器。
+當儲存體帳戶達到 Azure 監視器並儲存在每小時的附加 blob 時，資料會傳送至儲存體帳戶。 資料匯出設定會為儲存體帳戶中的每個資料表建立一個容器，並 *在後面加* 上該資料表的名稱。 例如，資料表 *SecurityEvent* 會傳送至名為 *am-SecurityEvent* 的容器。
 
 儲存體帳戶 blob 路徑為 *WorkspaceResourceId =/subscriptions/subscription-id/resourcegroups/ \<resource-group\> /providers/microsoft.operationalinsights/workspaces/ \<workspace\> /y =/m =/d =/h = \<four-digit numeric year\> \<two-digit numeric month\> \<two-digit numeric day\> \<two-digit 24-hour clock hour\> 00/PT1H.js開啟*。 因為附加 blob 僅限於儲存體中的50K 寫入，所以如果附加的數目很高，匯出的 blob 數目可能會擴充。 在這種情況下，blob 的命名模式會是 PT1H_ #，其中 # 是增量 blob 計數。
 

@@ -8,18 +8,18 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 58f1c2621165a7074c04752832c6560b2fd3e423
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a3b073cdb90e0c427bfbca15c1440b9122672610
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011960"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880130"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>範例：建立表單辨識器自訂技能
 
 在此 Azure 認知搜尋技能集範例中，您將瞭解如何使用 c # 和 Visual Studio 來建立表單辨識器自訂技能。 表單辨識器會分析檔，並將索引鍵/值組和資料表資料解壓縮。 藉由將表單辨識器包裝在 [自訂技能介面](cognitive-search-custom-skill-interface.md)中，您可以將此功能新增為端對端擴充管線中的一個步驟。 然後，管線可以載入檔並進行其他轉換。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (任何版本) 。
 - 至少五個相同類型的表單。 您可以使用本指南所提供的範例資料。
@@ -30,7 +30,7 @@ ms.locfileid: "96011960"
 
 ## <a name="train-your-model"></a>定型模型
 
-在使用此技能之前，您必須先使用輸入表單來訓練表單辨識器模型。 請依照 [捲曲的快速入門](../cognitive-services/form-recognizer/quickstarts/curl-train-extract.md) ，瞭解如何將模型定型。 您可以使用該快速入門中提供的範例表單，也可以使用您自己的資料。 定型模型之後，請將其 ID 值複製到安全的位置。
+在使用此技能之前，您必須先使用輸入表單來訓練表單辨識器模型。 請依照 [捲曲的快速入門](../cognitive-services/form-recognizer/quickstarts/client-library.md?pivots=programming-language-rest-api) ，瞭解如何將模型定型。 您可以使用該快速入門中提供的範例表單，也可以使用您自己的資料。 定型模型之後，請將其 ID 值複製到安全的位置。
 
 ## <a name="set-up-the-custom-skill"></a>設定自訂技能
 
@@ -59,7 +59,7 @@ ms.locfileid: "96011960"
 POST https://localhost:7071/api/analyze-form
 ```
 
-### <a name="request-body"></a>Request body
+### <a name="request-body"></a>要求本文
 
 從下方的要求本文範本開始。
 

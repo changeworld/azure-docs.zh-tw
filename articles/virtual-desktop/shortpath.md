@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: bfcd8b3c482b4d429a9e3a4d7bc75e27ada63a98
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: c1cdafe2929502293aada32dbae06e342761862b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134393"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876693"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows 虛擬桌面 RDP Shortpath (preview) 
 
@@ -53,12 +53,12 @@ RDP Shortpath 使用工作階段主機的憑證，在用戶端與會話主機之
 
 :::image type="content" source="media/rdp-shortpath-connections.svg" alt-text="RDP Shortpath 網路連線的圖表" lightbox="media/rdp-shortpath-connections.svg":::
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 
 若要支援 RDP Shortpath，Windows 虛擬桌面用戶端必須能夠直接看到工作階段主機。 您可以使用下列其中一種技術來取得直接的瞭解：
 
 * [ExpressRoute 私人對等互連](../expressroute/expressroute-circuit-peerings.md)
-* [站對站 VPN (以 IPsec 為基礎的) ](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [站對站 VPN (以 IPsec 為基礎的) ](../vpn-gateway/tutorial-site-to-site-portal.md)
 * [點對站 VPN (以 IPsec 為基礎的) ](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 * [公用 IP 位址指派](../virtual-network/virtual-network-public-ip-address.md)
 

@@ -3,17 +3,17 @@ title: 使用 Azure IoT 中樞裝置布建服務的自訂配置原則
 description: '如何使用自訂配置原則搭配 Azure IoT 中樞的裝置布建服務 (DPS) '
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/14/2019
+ms.date: 01/26/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 26615b82bb9dcbc1247bec9b7a06b579dfa1eb2b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 4931258af0dd50d091bec98824df5da0e91dbf53
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571635"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895700"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>如何使用自訂配置原則
 
@@ -66,7 +66,7 @@ ms.locfileid: "96571635"
     az group create --name contoso-us-resource-group --location westus
     ```
 
-2. 使用 Azure Cloud Shell 建立具有 [az iot dps create](/cli/azure/iot/dps#az-iot-dps-create) 命令的裝置布建服務。 布建服務會新增至 *contoso-us-資源群組*。
+2. 使用 Azure Cloud Shell，透過 [az iot DPS create](/cli/azure/iot/dps#az-iot-dps-create) 命令 (DPS) 建立裝置布建服務。 布建服務會新增至 *contoso-us-資源群組*。
 
     下列範例會在 *westus* 位置建立名為 contoso-布建服務 *-1098* 的布建服務。 您必須使用唯一的服務名稱。 在服務名稱中組成您自己的尾碼，以取代 **1098**。
 
@@ -96,6 +96,25 @@ ms.locfileid: "96571635"
 
     此命令可能需要數分鐘才能完成。
 
+5. IoT 中樞必須連結至 DPS 資源。 
+
+    執行下列兩個命令來取得您剛才建立之中樞的連接字串：
+
+    ```azurecli-interactive 
+    hubToastersConnectionString=$(az iot hub connection-string show --hub-name contoso-toasters-hub-1098 --key primary --query connectionString -o tsv)
+    hubHeatpumpsConnectionString=$(az iot hub connection-string show --hub-name contoso-heatpumps-hub-1098 --key primary --query connectionString -o tsv)
+    ```
+
+    執行下列命令，以將中樞連結至 DPS 資源：
+
+    ```azurecli-interactive 
+    az iot dps linked-hub create --dps-name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --connection-string $hubToastersConnectionString --location westus
+    az iot dps linked-hub create --dps-name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --connection-string $hubHeatpumpsConnectionString --location westus
+    ```
+
+
+
+
 ## <a name="create-the-custom-allocation-function"></a>建立自訂配置函式
 
 在本節中，您會建立可實作自訂配置原則的 Azure 函式。 此函式會根據裝置的註冊識別碼是否包含字串 **（contoso-tstrsd-007** 或 **-contoso-hpsd-088**），決定裝置應該註冊的部門 IoT 中樞。 它也會根據裝置為 toaster 還是熱度片來設定裝置對應項的初始狀態。
@@ -114,6 +133,8 @@ ms.locfileid: "96571635"
 
     **執行階段堆疊**：從下拉式清單選取 **.NET Core**。
 
+    **版本**：從下拉式清單中選取 [ **3.1** ]。
+
     **區域**：選取與您資源群組相同的區域。 此範例會使用「美國西部」。
 
     > [!NOTE]
@@ -123,19 +144,15 @@ ms.locfileid: "96571635"
 
 4. 在 [摘要] 頁面上，選取 [建立] 以建立函數應用程式。 部署可能需要數分鐘的時間。 完成時，選取 [移至資源]。
 
-5. 在函式應用程式 **總覽** 頁面的左窗格中，選取 [ **+** **函數** ] 旁的 [新增函式]。
+5. 在 [函數應用程式 **總覽** ] 頁面的左窗格中 **，按一下 [** 函式]，然後按一下 [ **+** 新增] 以加入新的函式。
 
-    ![將函數新增至函數應用程式](./media/how-to-use-custom-allocation-policies/create-function.png)
+6. 在 [ **新增** 函式] 頁面上，按一下 [ **HTTP 觸發** 程式]，然後按一下 [ **加入** ] 按鈕。
 
-6. 在 [ **適用于 .net 的 Azure Functions-** 開始使用] 頁面上，針對 [ **選擇部署環境** ] 步驟，選取 **入口網站內** 的磚，然後選取 [ **繼續**]。
+7. 在下一個頁面上，按一下 [程式 **代碼 + 測試**]。 這可讓您編輯名為 **>HTTPtrigger1** 之函式的程式碼。 應開啟 **.csx** 程式碼檔案進行編輯。
 
-    ![選取入口網站開發環境](./media/how-to-use-custom-allocation-policies/function-choose-environment.png)
+8. 參考需要的 NuGet 套件。 若要建立初始裝置對應項，自訂配置函式會使用兩個必須載入裝載環境之 NuGet 套件中所定義的類別。 使用 Azure Functions，NuGet 套件會使用 *function* 檔案來參考。 在此步驟中，您會儲存並上傳所需元件的 *function* 檔。  如需詳細資訊，請參閱搭配 [Azure Functions 使用 NuGet 套件](../azure-functions/functions-reference-csharp.md#using-nuget-packages)。
 
-7. 在下一個頁面上，針對 [ **建立函數** ] 步驟，選取 [ **Webhook + API** ] 磚，然後選取 [ **建立**]。 隨即建立名為 **>HTTPtrigger1** 的函式，而入口網站會顯示 **.csx** 程式碼檔案的內容。
-
-8. 參考需要的 NuGet 套件。 若要建立初始裝置對應項，自訂配置函式會使用兩個必須載入裝載環境之 NuGet 套件中所定義的類別。 使用 Azure Functions，會使用函式的 *主機* 檔案參考 NuGet 套件。 在此步驟中，您會儲存並上傳 *function* 檔案。
-
-    1. 將下列幾行複製到您最愛的編輯器中，並將檔案儲存在您的電腦上作為 *function。*
+    1. 將下列幾行複製到您最愛的編輯器中，並將檔案儲存在您的電腦上做為 *proj*。
 
         ```xml
         <Project Sdk="Microsoft.NET.Sdk">  
@@ -143,21 +160,15 @@ ms.locfileid: "96571635"
                 <TargetFramework>netstandard2.0</TargetFramework>  
             </PropertyGroup>  
             <ItemGroup>  
-                <PackageReference Include="Microsoft.Azure.Devices.Provisioning.Service" Version="1.5.0" />  
-                <PackageReference Include="Microsoft.Azure.Devices.Shared" Version="1.16.0" />  
+                <PackageReference Include="Microsoft.Azure.Devices.Provisioning.Service" Version="1.16.3" />
+                <PackageReference Include="Microsoft.Azure.Devices.Shared" Version="1.27.0" />
             </ItemGroup>  
         </Project>
         ```
 
-    2. 在 **>HTTPtrigger1** 函式上，展開視窗右邊的 [ **視圖** 檔案] 索引標籤。
+    2. 按一下 [程式碼編輯器] 上方的 [ **上傳** ] 按鈕，以上傳您的 *function* 檔。 上傳之後，使用下拉式方塊來確認內容，在程式碼編輯器中選取該檔案。
 
-        ![開啟 view files](./media/how-to-use-custom-allocation-policies/function-open-view-files.png)
-
-    3. 選取 [ **上傳**]，流覽至 **function** 檔案，然後選取 [ **開啟** ] 上傳檔案。
-
-        ![選取上傳檔案](./media/how-to-use-custom-allocation-policies/function-choose-upload-file.png)
-
-9. 以下列程式碼取代 **>HTTPtrigger1** 函式的程式碼，然後選取 [ **儲存**]：
+9. 請確定已在程式碼編輯器中選取 [ *.csx* for **>HTTPtrigger1** ]。 以下列程式碼取代 **>HTTPtrigger1** 函式的程式碼，然後選取 [ **儲存**]：
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -314,29 +325,15 @@ ms.locfileid: "96571635"
 
     **選取要如何將裝置指派給中樞**：選取 [自訂 (使用 Azure 函式)]。
 
+    **訂** 用帳戶：選取您在其中建立 Azure Function 的訂用帳戶。
+
+    **函數應用程式**：依名稱選取您的函數應用程式。 在此範例中，使用了 contoso 函式-**應用程式-1098** 。
+
+    **函數**：選取 **>HTTPtrigger1** 函數。
+
     ![為對稱金鑰證明新增自訂配置註冊群組](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
-4. 在 [新增 **註冊群組**] 上，選取 [ **連結新的 iot 中樞** ] 以連結新的「部門 IoT 中樞」。
-
-    針對這兩個部門 IoT 中樞執行此步驟。
-
-    **訂用帳戶**：如果您有多個訂用帳戶，請選擇您用來建立部門 IoT 中樞的訂用帳戶。
-
-    **IoT 中樞**：選取您建立的其中一個部門中樞。
-
-    **存取原則**：選擇 [iothubowner]。
-
-    ![連結部門 IoT 中樞與佈建服務](./media/how-to-use-custom-allocation-policies/link-divisional-hubs.png)
-
-5. 在 [新增註冊群組] 上，在兩個部門 IoT 中樞都已連結後，您必須以 IoT 中樞群組的形式將其選取作為註冊群組，如下所示：
-
-    ![建立註冊的部門中樞群組](./media/how-to-use-custom-allocation-policies/enrollment-divisional-hub-group.png)
-
-6. 在 [ **新增註冊群組**] 中，向下滾動至 [ **選取 Azure** 函式] 區段，選取您在上一節中建立的函數應用程式。 然後選取您建立的函式，然後選取 [儲存] 以儲存註冊群組。
-
-    ![選取函數並儲存註冊群組](./media/how-to-use-custom-allocation-policies/save-enrollment.png)
-
-7. 儲存註冊之後，請重新開啟它，並記下 [主要金鑰]。 您必須先儲存註冊，才能產生金鑰。 此金鑰將在後續用來產生模擬裝置的唯一裝置金鑰。
+4. 儲存註冊之後，請重新開啟它，並記下 [主要金鑰]。 您必須先儲存註冊，才能產生金鑰。 此金鑰將在後續用來產生模擬裝置的唯一裝置金鑰。
 
 ## <a name="derive-unique-device-keys"></a>衍生唯一的裝置金鑰
 
@@ -386,7 +383,7 @@ ms.locfileid: "96571635"
     $REG_ID2='mainbuilding167-contoso-hpsd-088'
 
     $hmacsha256 = New-Object System.Security.Cryptography.HMACSHA256
-    $hmacsha256.key = [Convert]::FromBase64String($key)
+    $hmacsha256.key = [Convert]::FromBase64String($KEY)
     $sig1 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID1))
     $sig2 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID2))
     $derivedkey1 = [Convert]::ToBase64String($sig1)
@@ -471,7 +468,7 @@ ms.locfileid: "96571635"
     azure-iot-sdk-c\cmake\azure_iot_sdks.sln
     ```
 
-3. 在 Visual Studio 的 [方案總管]  視窗中，瀏覽至 **Provision\_Samples** 資料夾。 展開名為 **prov\_dev\_client\_sample** 的範例專案。 展開 [來源檔案]  ，然後開啟 **prov\_dev\_client\_sample.c**。
+3. 在 Visual Studio 的 [方案總管]  視窗中，瀏覽至 **Provision\_Samples** 資料夾。 展開名為 **prov\_dev\_client\_sample** 的範例專案。 展開 [來源檔案]，然後開啟 **prov\_dev\_client\_sample.c**。
 
 4. 找出 `id_scope` 常數，並將其值取代為您先前複製的 [識別碼範圍]  值。 
 
@@ -559,7 +556,7 @@ ms.locfileid: "96571635"
 
 下表顯示您可能會收到的預期案例和結果錯誤碼。 您可以利用此表格對 Azure Functions 的自訂配置原則失敗進行疑難排解。
 
-| 案例 | 佈建服務的註冊結果 | 佈建 SDK 結果 |
+| 狀況 | 佈建服務的註冊結果 | 佈建 SDK 結果 |
 | -------- | --------------------------------------------- | ------------------------ |
 | Webhook 傳回「200 確定」，且 'iotHubHostName' 設定為有效的 IoT 中樞主機名稱 | 結果狀態：已指派  | SDK 傳回 PROV_DEVICE_RESULT_OK 與中樞資訊 |
 | Webhook 傳回「200 確定」，且回應中包含 'iotHubHostName'，但設定為空字串或 Null | 結果狀態：失敗<br><br> 錯誤碼：CustomAllocationIotHubNotSpecified (400208) | SDK 傳回 PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |

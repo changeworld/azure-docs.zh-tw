@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 028250e25f4d67628c08970e25b4621e78526b6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb0291b18952efc643de18e111154ebe58f041af
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440835"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880079"
 ---
 # <a name="remote-work-using-azure-vpn-gateway-point-to-site"></a>使用 Azure VPN 閘道點對站的遠端工作
 
@@ -65,7 +65,7 @@ Azure 點對站解決方案是以雲端為基礎，而且可以快速布建，�
 4. 設定內部部署裝置以連接到 Azure 虛擬網路閘道。
 5. 從 Azure 入口網站下載點對站設定檔，並將其散發給用戶端
 
-若要瞭解如何設定站對站 VPN 通道，請參閱 [此連結](vpn-gateway-howto-site-to-site-resource-manager-portal.md)。
+若要瞭解如何設定站對站 VPN 通道，請參閱 [此連結](./tutorial-site-to-site-portal.md)。
 
 ## <a name="faq-for-native-azure-certificate-authentication"></a><a name="faqcert"></a>原生 Azure 憑證驗證的常見問題集
 

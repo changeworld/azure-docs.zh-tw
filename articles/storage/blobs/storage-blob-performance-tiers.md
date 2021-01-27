@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 404999cfac5037702eb61fdf74b2c5245ce9eb30
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: cf0b5d29e0dc375a07fe024ef0763c8200275055
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95526114"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880703"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>區塊 Blob 儲存體的效能層級
 
@@ -31,7 +31,7 @@ Azure 區塊 blob 儲存體提供兩個不同的效能層級：
 |區域可用性     |   所有區域      | 在[選取區域](https://azure.microsoft.com/global-infrastructure/services/?products=storage)中       |
 |支援的 [儲存體帳戶類型](../common/storage-account-overview.md#types-of-storage-accounts)     |     一般用途 v2、BlobStorage、一般用途 v1    |    BlockBlobStorage     |
 |支援 [高輸送量區塊 blob](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/)     |    是，超過 4 MiB PutBlock 或 PutBlob 大小     |    是，超過 256 KiB PutBlock 或 PutBlob 大小    |
-|備援     |     查看 [儲存體帳戶的類型](../common/storage-account-overview.md#types-of-storage-accounts)   |  目前僅支援本機冗余儲存體 (LRS) 和區域備援儲存體 (ZRS) <div role="complementary" aria-labelledby="zone-redundant-storage"><sup>1</sup></div>     |
+|備援性     |     查看 [儲存體帳戶的類型](../common/storage-account-overview.md#types-of-storage-accounts)   |  目前僅支援本機冗余儲存體 (LRS) 和區域備援儲存體 (ZRS) <div role="complementary" aria-labelledby="zone-redundant-storage"><sup>1</sup></div>     |
 
 <div id="zone-redundant-storage"><sup>1</sup>區域冗余儲存體 (ZRS) 可在 premium 效能區塊 blob 儲存體帳戶的選取區域中使用。</div>
 
@@ -65,7 +65,7 @@ Premium 效能儲存體適用于需要快速且一致回應時間的工作負載
 
 您無法將現有的標準效能儲存體帳戶轉換為具有 premium 效能的區塊 blob 儲存體帳戶。 若要遷移至 premium 效能儲存體帳戶，您必須建立 BlockBlobStorage 帳戶，並將資料移轉至新的帳戶。 如需詳細資訊，請參閱 [建立 BlockBlobStorage 帳戶](storage-blob-create-account-block-blob.md)。
 
-若要在儲存體帳戶之間複製 blob，您可以使用最新版的 [AzCopy](../common/storage-use-azcopy-blobs.md) 命令列工具。 其他工具（例如 Azure Data Factory）也適用于資料移動和轉換。
+若要在儲存體帳戶之間複製 blob，您可以使用最新版的 [AzCopy](../common/storage-use-azcopy-v10.md#transfer-data) 命令列工具。 其他工具（例如 Azure Data Factory）也適用于資料移動和轉換。
 
 ## <a name="blob-lifecycle-management"></a>Blob 生命週期管理
 

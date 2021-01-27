@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 67c20823d1f80360b2ab23dc3f208673d36a7374
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: dd7b19a2c9e872b811c1aab6e504accb7de383b2
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742211"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896472"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Azure 雲端服務 (傳統) 的部署問題：常見問題 (常見問題) 
 
@@ -52,7 +52,7 @@ ms.locfileid: "98742211"
 
 您也可以在入口網站追蹤訂用帳戶目前的使用量/配額： Azure 入口網站 => 訂閱 => \<appropriate subscription>   => 「使用量 + 配額」。
 
-也可以透過 Azure 計費 API 擷取資源使用量/耗用量的相關資訊。 請參閱 [Azure 資源使用情況 API (預覽)](../cost-management-billing/manage/usage-rate-card-overview.md#azure-resource-usage-api-preview)。
+也可以透過 Azure 計費 API 擷取資源使用量/耗用量的相關資訊。 請參閱 [Azure 使用量 API 總覽](../cost-management-billing/manage/consumption-api-overview.md)。
 
 ## <a name="how-can-i-change-the-size-of-a-deployed-cloud-service-vm-without-redeploying-it"></a>如何在不重新部署的情況下變更已部署之雲端服務 VM 的大小？
 您無法在不重新部署的情況下變更已部署之雲端服務的 VM 大小。 VM 大小已內建於 CSDEF，只可使用重新部署來進行更新。

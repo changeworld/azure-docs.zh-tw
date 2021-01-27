@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8c0fbc2c7830961ca8820e874daaffcf0c58faab
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ef5cddc131e25a1966ca86c3c8650452f73be69e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202108"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879675"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>適用于 Windows 虛擬機器的 Azure 安全性基準
 
@@ -562,7 +562,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 * [Azure RBAC](../../role-based-access-control/overview.md)
 
-* [Azure 內建角色](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
+* [Azure 內建角色](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) (機器翻譯)
 
 **Azure 資訊安全中心監視**：無法使用
 
@@ -618,7 +618,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自動化的作業系統修補程式管理解決方案
 
-**指導** 方針：使用 Azure 更新管理解決方案來管理虛擬機器的更新和修補程式。 更新管理依賴本機設定的更新存放庫來修補支援的 Windows 系統。 System Center Updates Publisher (Updates Publisher) 之類的工具可讓您將自訂更新發佈至 Windows Server Update Services (WSUS) 。 此案例可讓更新管理修補使用 Configuration Manager 作為其更新存放庫（具有協力廠商軟體）的機器。
+**指導** 方針：使用 Azure 更新管理解決方案來管理虛擬機器的更新和修補程式。 更新管理依賴本機設定的更新存放庫來修補支援的 Windows 系統。 System Center Updates Publisher (Updates Publisher) 之類的工具可讓您將自訂更新發佈至 Windows Server Update Services (WSUS) 。 此案例可讓更新管理修補使用設定管理員作為其更新存放庫（具有協力廠商軟體）的機器。
 
 * [Azure 中的更新管理解決方案](../../automation/update-management/overview.md)
 
@@ -630,7 +630,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 ### <a name="53-deploy-automated-patch-management-solution-for-third-party-software-titles"></a>5.3：為協力廠商軟體專案部署自動化的修補程式管理解決方案
 
-**指導** 方針：您可以使用協力廠商修補程式管理解決方案。 您可以使用 Azure 更新管理解決方案來管理虛擬機器的更新和修補程式。 更新管理依賴本機設定的更新存放庫來修補支援的 Windows 系統。 System Center Updates Publisher (Updates Publisher) 之類的工具可讓您將自訂更新發佈至 Windows Server Update Services (WSUS) 。 此案例可讓更新管理修補使用 Configuration Manager 作為其更新存放庫（具有協力廠商軟體）的機器。
+**指導** 方針：您可以使用協力廠商修補程式管理解決方案。 您可以使用 Azure 更新管理解決方案來管理虛擬機器的更新和修補程式。 更新管理依賴本機設定的更新存放庫來修補支援的 Windows 系統。 System Center Updates Publisher (Updates Publisher) 之類的工具可讓您將自訂更新發佈至 Windows Server Update Services (WSUS) 。 此案例可讓更新管理修補使用設定管理員作為其更新存放庫（具有協力廠商軟體）的機器。
 
 * [Azure 中的更新管理解決方案](../../automation/update-management/overview.md)
 
@@ -845,7 +845,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 * [如何設定和管理 Azure 原則](../../governance/policy/tutorials/create-and-manage.md)
 
-* [如何下載 VM 範本的資訊](./download-template.md)
+* [如何下載 VM 範本的資訊](/previous-versions/azure/virtual-machines/windows/download-template)
 
 **Azure 資訊安全中心監視**：無法使用
 
@@ -889,7 +889,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 在大部分的情況下，與 Azure 自動化 Desired State Configuration 結合的 Microsoft 基底 VM 範本，可協助滿足和維護安全性需求。
 
-* [如何下載 VM 範本的資訊](./download-template.md)
+* [如何下載 VM 範本的資訊](/previous-versions/azure/virtual-machines/windows/download-template)
 
 * [建立 ARM 範本的資訊](./ps-template.md)
 

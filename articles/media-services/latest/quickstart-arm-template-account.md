@@ -1,25 +1,11 @@
 ---
-title: 媒體服務帳戶 ARM 範本
-titleSuffix: Azure Media Services
-description: 本文說明如何使用 ARM 範本建立媒體服務帳戶。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: quickstart
-ms.date: 11/24/2020
-ms.author: inhenkel
-ms.custom: subject-armqs
-ms.openlocfilehash: 541a4c17a3212f711be7e2cf096ce3a2d632ee64
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879641"
+標題：媒體服務帳戶 ARM 範本： Azure 媒體服務描述：本文說明如何使用 ARM 範本來建立媒體服務帳戶。
+服務： media services documentationcenter： ' ' author： IngridAtMicrosoft manager： femila editor： ' '
+
+ms. 服務：媒體-服務 ms. 工作負載： ms. 主題：快速入門 ms. 日期： 11/24/2020 ms. 作者： inhenkel ms. 自訂：主題-armqs
+
 ---
+
 # <a name="quickstart-media-services-account-arm-template"></a>快速入門：媒體服務帳戶 ARM 範本
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

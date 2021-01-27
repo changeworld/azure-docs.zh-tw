@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: c29c043a3af46086751629b31ce68217e7226442
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 30176e2df850e6d2794ab9c1542bcb6a89d8f89f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96354958"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880401"
 ---
 # <a name="best-practices-for-optimal-performance-of-your-azure-database-for-mysql---single-server"></a>適用於 MySQL 的 Azure 資料庫-單一伺服器的最佳效能最佳做法
 
@@ -46,9 +46,9 @@ ms.locfileid: "96354958"
 
 適用於 MySQL 的 Azure 資料庫的效能最佳作法是配置足夠的 RAM，讓您的工作集幾乎完全位於記憶體中。 
 
-- 使用[MySQL 伺服器的計量](https://docs.microsoft.com/azure/mysql/concepts-monitoring)，檢查是否使用記憶體百分比達到[限制](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers)。 
+- 使用[MySQL 伺服器的計量](./concepts-monitoring.md)，檢查是否使用記憶體百分比達到[限制](./concepts-pricing-tiers.md)。 
 - 針對這類號碼設定警示，以確保伺服器達到限制時，您可以採取提示動作來修正此問題。 根據所定義的限制，檢查是否相應增加資料庫 SKU （以較高的計算大小或更好的定價層），這會導致效能大幅提升。 
-- 相應增加，直到您的效能數位在調整作業之後不再大幅下降為止。 如需監視資料庫實例計量的詳細資訊，請參閱 [MYSQL DB 計量](https://docs.microsoft.com/azure/mysql/concepts-monitoring#metrics)。
+- 相應增加，直到您的效能數位在調整作業之後不再大幅下降為止。 如需監視資料庫實例計量的詳細資訊，請參閱 [MYSQL DB 計量](./concepts-monitoring.md#metrics)。
 
 ## <a name="next-steps"></a>後續步驟
 

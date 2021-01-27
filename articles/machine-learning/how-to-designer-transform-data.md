@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: be2921f88ad2ecf88c555daf8385f1bd6733e836
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 70f5e17c4cc42201e9aa3d36c9937f6ceb9527d0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554010"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880198"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>在 Azure Machine Learning 表設計工具中轉換資料
 
@@ -52,11 +52,7 @@ ms.locfileid: "94554010"
 
 1. 將 **Adult Census Income Binary classification** (成人人口普查收入二元分類) 資料集拖放到畫布。
 
-1. 選取 **Adult Census Income** (成人人口普查收入) 資料集模組。
-
-1. 於出現在畫布右側的詳細資料窗格中，選取 [輸出]。
-
-1. 選取視覺化圖示 ![視覺化圖示](media/how-to-designer-transform-data/visualize-icon.png)。
+1. 以滑鼠右鍵按一下 [**成人普查收入** 資料集] 模組，然後選取 [**視覺化**  >  **資料集輸出**]。
 
 1. 使用資料預覽視窗來探索資料集。 請特別注意 "native-country" 資料行的值。
 
@@ -74,7 +70,7 @@ ms.locfileid: "94554010"
 
 1. 在畫布右側的模組詳細資料窗格中，將 [分割模式] 設為 [規則運算式]。
 
-1. 輸入 **規則運算式** ：`\"native-country" United-States`。
+1. 輸入 **規則運算式**：`\"native-country" United-States`。
 
     **規則運算式** 模式會測試單一資料行的值。 如需分割資料模組的詳細資訊，請參閱相關的[演算法模組參考頁面](algorithm-module-reference/split-data.md)。
 
@@ -103,13 +99,13 @@ ms.locfileid: "94554010"
 
 1. 在畫布右側的模組詳細資料窗格中，設定下列選項：
     
-    **資料存放區類型** ：Azure Blob 儲存體
+    **資料存放區類型**：Azure Blob 儲存體
 
-    **資料存放區** ：選取現有資料存放區，或選取 [New datastore] \(新增資料存放區\) 來立即建立。
+    **資料存放區**：選取現有資料存放區，或選取 [New datastore] \(新增資料存放區\) 來立即建立。
 
-    **路徑** ：`/data/us-income`
+    **路徑**：`/data/us-income`
 
-    **檔案格式** ：csv
+    **檔案格式**：csv
 
     > [!NOTE]
     > 本文假設您可存取向目前 Azure Machine Learning 工作區註冊的資料存放區。 如需如何設定資料存放區的指示，請參閱[連線到 Azure 儲存體服務](how-to-connect-data-ui.md#create-datastores)。
@@ -120,13 +116,13 @@ ms.locfileid: "94554010"
 
 1. 在畫布右側的模組詳細資料窗格中，設定下列選項：
     
-    **資料存放區類型** ：Azure Blob 儲存體
+    **資料存放區類型**：Azure Blob 儲存體
 
-    **資料存放區** ：選取與上方相同的資料存放區
+    **資料存放區**：選取與上方相同的資料存放區
 
-    **路徑** ：`/data/non-us-income`
+    **路徑**：`/data/non-us-income`
 
-    **檔案格式** ：csv
+    **檔案格式**：csv
 
 1. 確認連線到 **分割資料** 左側連接埠的 **匯出資料** 模組具備 **路徑** `/data/us-income`。
 

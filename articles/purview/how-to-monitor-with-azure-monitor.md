@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 2c21f84b9a10db504afb8ead67ae479518a0afba
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 22c69288479e0247e499a33c2e818c19f7edb2ae
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96603196"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879943"
 ---
 # <a name="azure-purview-metrics-in-azure-monitor"></a>Azure 監視器中的 Azure 範疇計量
 
@@ -79,11 +79,11 @@ Azure 範疇使用者也可以直接從 Azure 範疇帳戶的管理中心存取 
 
    :::image type="content" source="./media/how-to-monitor-with-azure-monitor/step-one-diagnostic-setting.png" alt-text="顯示建立診斷記錄的螢幕擷取畫面。" lightbox="./media/how-to-monitor-with-azure-monitor/step-one-diagnostic-setting.png":::
 
-2. 將事件記錄到儲存體帳戶。 建議將專用儲存體帳戶用於封存診斷記錄。 遵循本文以 [建立儲存體帳戶](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)。
+2. 將事件記錄到儲存體帳戶。 建議將專用儲存體帳戶用於封存診斷記錄。 遵循本文以 [建立儲存體帳戶](../storage/common/storage-account-create.md?tabs=azure-portal)。
 
    :::image type="content" source="./media/how-to-monitor-with-azure-monitor/step-two-diagnostic-setting.png" alt-text="顯示指派診斷記錄之儲存體帳戶的螢幕擷取畫面。" lightbox="./media/how-to-monitor-with-azure-monitor/step-two-diagnostic-setting.png":::
 
-在新建立的儲存體帳戶中，最多允許15分鐘的時間開始接收記錄。 [請參閱 Azure 儲存體帳戶中的資料保留和資源記錄的架構](../azure-monitor/platform/resource-logs-collect-storage.md)。 設定診斷記錄之後，事件會流向儲存體帳戶。
+在新建立的儲存體帳戶中，最多允許15分鐘的時間開始接收記錄。 [請參閱 Azure 儲存體帳戶中的資料保留和資源記錄的架構](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)。 設定診斷記錄之後，事件會流向儲存體帳戶。
 
 ### <a name="scanstatuslogevent"></a>ScanStatusLogEvent
 

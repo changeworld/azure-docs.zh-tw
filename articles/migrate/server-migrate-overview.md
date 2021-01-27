@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 130fcaacedc8aaea7790f6aa9ca7463b4e378e02
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: cf3a3d3fdfcd03f068224c93643d364cd2646290
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070706"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895623"
 ---
 # <a name="select-a-vmware-migration-option"></a>選取 VMware 遷移選項
 
@@ -43,7 +43,7 @@ ms.locfileid: "98070706"
 **Task** | **詳細資料** |**無代理程式** | **以代理程式為基礎**
 --- | --- | --- | ---
 **部署 Azure Migrate 設備** | 在 VMware VM 上執行的輕量設備。<br/><br/> 設備可用來探索及評估機器，以及使用無代理程式遷移來遷移機器。 | 必要。<br/><br/> 如果您已設定要進行評量的設備，您可以使用相同的設備進行無代理程式遷移。 | 不需要。<br/><br/> 如果您已設定要進行評量的設備，您可以將它保留在原處，如果您已完成評量，請將它移除。
-**使用伺服器評量工具** | 使用 Azure Migrate：伺服器評估工具來評估機器。 | 您可以在遷移電腦之前先進行評估，但您不需要這麼做。 | 評量是選擇性的。
+**使用伺服器評量工具** | 使用 Azure Migrate：伺服器評估工具來評估機器。 | 評量是選擇性的。 | 評量是選擇性的。
 **使用伺服器遷移工具** | 在 Azure Migrate 專案中新增 Azure Migrate Server 遷移工具。 | 必要 | 必要
 **準備 VMware 以進行遷移** | 設定 VMware 伺服器和 Vm 上的設定。 | 必要 | 必要
 **在 Vm 上安裝行動服務** | 行動服務在您想要複寫的每個 VM 上執行 | 不需要 | 必要

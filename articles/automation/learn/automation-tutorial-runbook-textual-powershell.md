@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: a1b0dff9421f493958554c659043c49ff2874379
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
+ms.openlocfilehash: 896b4db433164471f41aa09791ede5d677028bfb
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87014995"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896608"
 ---
 # <a name="tutorial-create-a-powershell-runbook"></a>教學課程：建立 PowerShell Runbook
 
@@ -131,7 +131,7 @@ PowerShell Runbook 的生命週期、功能和管理與 PowerShell 工作流程 
 
 您已測試並發行您的 Runbook，但是到目前為止，它似乎並不實用。 您想要讓它管理 Azure 資源。 若要這麼做，Runbook 必須能夠使用您在建立自動化帳戶時自動建立的執行身分帳戶進行驗證。
 
-如以下範例所示，系統會使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) Cmdlet 進行執行身分連線。 如果您要管理跨多個訂用帳戶的資源，您需要使用 `AzContext` 參數搭配 [Get-AzContext](/powershell/module/Az.Accounts/Get-AzContext?view=azps-3.5.0)。
+如以下範例所示，系統會使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) Cmdlet 進行執行身分連線。 如果您要管理跨多個訂用帳戶的資源，您需要使用 `AzContext` 參數搭配 [Get-AzContext](/powershell/module/Az.Accounts/Get-AzContext)。
 
 > [!NOTE]
 > 針對 PowerShell Runbook，`Add-AzAccount` 和 `Add-AzureRMAccount` 是 `Connect-AzAccount` 的別名。 您可使用這些 Cmdlet，也可以在您的自動化帳戶中[將您的模組更新](../automation-update-azure-modules.md)為最新版本。 即使您才剛建立新的自動化帳戶，可能還是需要更新您的模組。
@@ -198,7 +198,7 @@ PowerShell Runbook 的生命週期、功能和管理與 PowerShell 工作流程 
 
 由於您的 Runbook 正在驗證您的 Azure 訂用帳戶，所以您可以管理資源。 讓我們新增一個命令以啟動虛擬機器。 您可以在您的 Azure 訂用帳戶中挑選任何虛擬機器，而現在只要在 Runbook 中將該名稱硬式編碼。
 
-1. 在您的 Runbook 指令碼中，新增 [Start-AzVM](/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) Cmdlet 以啟動虛擬機器。 如下所示，Cmdlet 會啟動名稱為 `VMName` 且具有 `ResourceGroupName` 資源群組的虛擬機器。
+1. 在您的 Runbook 指令碼中，新增 [Start-AzVM](/powershell/module/Az.Compute/Start-AzVM) Cmdlet 以啟動虛擬機器。 如下所示，Cmdlet 會啟動名稱為 `VMName` 且具有 `ResourceGroupName` 資源群組的虛擬機器。
 
    ```powershell
    # Ensures you do not inherit an AzContext in your runbook
@@ -275,7 +275,7 @@ PowerShell Runbook 的生命週期、功能和管理與 PowerShell 工作流程 
 ## <a name="next-steps"></a>後續步驟
 
 * 如需 PowerShell 的詳細資訊 (包括語言參考和學習模組)，請參閱 [PowerShell 文件](/powershell/scripting/overview)。
-* 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。
+* 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation)。
 * 若要開始使用圖形化 Runbook，請參閱[建立圖形化 Runbook](automation-tutorial-runbook-graphical.md)。
 * 若要開始使用 PowerShell 工作流程 Runbook，請參閱[建立 PowerShell 工作流程 Runbook](automation-tutorial-runbook-textual.md)。
 * 若要深入了解 Runbook 類型及其優點和限制，請參閱 [Azure 自動化 Runbook 類型](../automation-runbook-types.md)。

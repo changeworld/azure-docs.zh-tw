@@ -1,5 +1,5 @@
 ---
-title: 回應 Azure 媒體服務事件 | Microsoft Docs
+title: 回應 Azure 媒體服務事件
 description: 本文說明如何使用 Azure 事件方格來訂閱媒體服務事件。
 services: media-services
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 4ef6a920e9334c6e98b18d1db1abf39136c6f4e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d4479914ffee6cf667a5f6db2fd665baf2b857c
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89289147"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895640"
 ---
 # <a name="handling-event-grid-events"></a>處理事件方格事件
 

@@ -12,22 +12,22 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 2d6282c527293abdb8b21e0591548cb51e1339a9
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 688bec24cbcd88130470634abff0688ead8005ef
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539673"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881681"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>使用 Azure Machine Learning 資料集來定型模型 
 
 在本文中，您將瞭解如何使用 [Azure Machine Learning 資料集](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) 來定型機器學習模型。  您可以使用本機或遠端計算目標中的資料集，而不需要擔心連接字串或資料路徑。 
 
-Azure Machine Learning 資料集可讓您與 Azure Machine Learning 訓練功能（例如 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)、 [HyperDrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py) 和 [Azure Machine Learning 管線](how-to-create-your-first-pipeline.md)）緊密整合。
+Azure Machine Learning 資料集可讓您與 Azure Machine Learning 訓練功能（例如 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)、 [HyperDrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py) 和 [Azure Machine Learning 管線](./how-to-create-machine-learning-pipelines.md)）緊密整合。
 
 如果您尚未準備好將資料提供給模型定型，但想要將資料載入到您的筆記本以進行資料探索，請參閱如何 [流覽資料集中的資料](how-to-create-register-datasets.md#explore-data)。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要建立和訓練資料集，您需要：
 
@@ -263,7 +263,7 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 ## <a name="troubleshooting"></a>疑難排解
 
 * **資料集初始化失敗：等候掛接點就緒已超時**： 
-  * 如果您沒有任何輸出 [網路安全性群組](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview) 規則，而且正在使用 `azureml-sdk>=1.12.0` 、更新及其相依性為 `azureml-dataset-runtime` 特定次要版本的最新版本，或如果您在執行中使用它，請重新建立環境，讓它可以有最新的修補程式來進行修正。 
+  * 如果您沒有任何輸出 [網路安全性群組](../virtual-network/network-security-groups-overview.md) 規則，而且正在使用 `azureml-sdk>=1.12.0` 、更新及其相依性為 `azureml-dataset-runtime` 特定次要版本的最新版本，或如果您在執行中使用它，請重新建立環境，讓它可以有最新的修補程式來進行修正。 
   * 如果您使用 `azureml-sdk<1.12.0` ，請升級至最新版本。
   * 如果您有輸出 NSG 規則，請確定有允許服務標籤之所有流量的輸出規則 `AzureResourceMonitor` 。
 
@@ -293,4 +293,4 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 
 * 使用 FileDatasets 將[影像分類模型定型](https://aka.ms/filedataset-samplenotebook)。
 
-* [使用管線以資料集進行定型](how-to-create-your-first-pipeline.md)。
+* [使用管線以資料集進行定型](./how-to-create-machine-learning-pipelines.md)。

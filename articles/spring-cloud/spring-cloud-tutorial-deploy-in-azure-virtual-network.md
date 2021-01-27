@@ -1,5 +1,5 @@
 ---
-title: 教學課程 - 在虛擬網路中部署 Azure Spring Cloud
+title: 在虛擬網路中部署 Azure 春季 Cloud
 description: 在虛擬網路中部署 Azure Spring Cloud (VNet 插入)。
 author: MikeDodaro
 ms.author: brendm
@@ -7,14 +7,14 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9d72d60bd3a1ef23b8122b2bc5ba4f0c5c701254
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
-ms.translationtype: HT
+ms.openlocfilehash: 73dd60dba50d3bd29cda0f538462884822054cf9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587718"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880589"
 ---
-# <a name="tutorial-deploy-azure-spring-cloud-in-a-virtual-network"></a>教學課程：在虛擬網路中部署 Azure Spring Cloud
+# <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>在虛擬網路中部署 Azure 春季 Cloud
 
 **本文適用於：** ✔️ Java ✔️ C#
 
@@ -25,6 +25,9 @@ ms.locfileid: "97587718"
 * 讓 Azure Spring Cloud 應用程式和服務執行階段可以與公司網路上的網際網路分隔開來。
 * 讓 Azure Spring Cloud 可以與內部部署資料中心內的系統或其他虛擬網路中的 Azure 服務互動。
 * 讓客戶得以控制 Azure Spring Cloud 的輸入和輸出網路通訊。
+
+> [!Note]
+> 只有當您建立新的 Azure 春季雲端服務實例時，才可以選取您的 Azure 虛擬網路。 您無法在 Azure 春季雲端建立之後變更為使用另一個虛擬網路。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -77,6 +80,7 @@ az provider register --namespace Microsoft.ContainerService
 1. 選取 [檢閱 + 建立]。 將其他項目保留為預設值，然後選取 [建立]。
 
 ## <a name="grant-service-permission-to-the-virtual-network"></a>將服務權限授與給虛擬網路
+Azure 春季 Cloud 需要您虛擬網路的 **擁有** 者許可權，才能在虛擬網路上授與專用和動態服務主體，以進行進一步的部署和維護。
 
 選取您先前建立的虛擬網路 [azure-spring-cloud-vnet]。
 
@@ -160,9 +164,9 @@ az role assignment create \
    > [!Important]
    > 資源群組會由 Azure Spring Cloud 完全受控。 「請勿」手動刪除或修改其中的任何資源。
 
-## <a name="limitations"></a>限制
+## <a name="using-smaller-subnet-ranges"></a>使用較小的子網範圍
 
-小型的子網路範圍會儲存 IP 位址，但會限制 Azure Spring Cloud 執行個體可以保存的應用程式執行個體數目上限。
+下表顯示 Azure 春季雲端使用較小的子網範圍所支援的應用程式實例數目上限。
 
 | 應用程式子網路 CIDR | IP 總數 | 可用的 IP | 應用程式執行個體上限                                        |
 | --------------- | --------- | ------------- | ------------------------------------------------------------ |
