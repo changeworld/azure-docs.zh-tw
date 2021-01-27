@@ -1,19 +1,19 @@
 ---
 title: 透過 Azure CLI 和 Python 在 Azure Stack Edge Pro GPU 裝置上部署 VM
-description: 說明如何使用 Azure CLI 和 Python，在 Azure Stack Edge Pro GPU 裝置上建立和管理虛擬機器 (VM)。
+description: 說明如何使用 Azure CLI 和 Python，在 Azure Stack Edge Pro GPU 裝置上建立和管理 (Vm) 的虛擬機器。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/07/2020
+ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 54a4a938be18d39993652cecb87b3604e268fcef
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: daf44afbb322cb30ab3a663dce4e935aefa7be13
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678948"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808063"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>使用 Azure CLI 和 Python 在 Azure Stack Edge Pro GPU 裝置上部署 VM
 
@@ -29,7 +29,7 @@ ms.locfileid: "98678948"
 
 ![VM 部署工作流程](media/azure-stack-edge-gpu-deploy-virtual-machine-powershell/vm-workflow-r.svg)
 
-部署工作流程的整體摘要如下所示：
+部署工作流程的高階摘要如下所示：
 
 1. 連線到 Azure Resource Manager
 2. 建立資源群組
@@ -70,9 +70,9 @@ ms.locfileid: "98678948"
 
 3. 您已在 Azure Stack Edge Pro 裝置上和用戶端的信任存放區中建立和安裝所有憑證。 請遵循[步驟 2：建立和安裝用戶端憑證](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)中所述的程序。
 
-4. 您已為 Azure Stack Edge Pro 裝置建立 Base-64 編碼的 .cer 憑證 (PEM 格式)。 這已經上傳為裝置上的簽署鏈，並安裝在您用戶端上的信任根存放區中。 此憑證也必須為 pem 格式，Python 才能在此用戶端上運作。
+4. 您已為 Azure Stack Edge Pro 裝置建立 Base-64 編碼的 .cer 憑證 (PEM 格式)。 該憑證已上傳為裝置上的簽署鏈，並安裝在用戶端的受根信任存放區中。 此憑證也必須為 pem 格式，Python 才能在此用戶端上運作。
 
-    使用 `certutil` 命令，將此憑證轉換為 pem 格式。 您必須在包含憑證的目錄中執行此命令。
+    使用命令將此憑證轉換成 `pem` 格式 `certutil` 。 您必須在包含憑證的目錄中執行此命令。
 
     ```powershell
     certutil.exe <SourceCertificateName.cer> <DestinationCertificateName.pem>
@@ -86,9 +86,9 @@ ms.locfileid: "98678948"
     CertUtil: -encode command completed successfully.
     PS C:\Certificates>
     ```    
-    您稍後也會將此 pem 新增至 Python 存放區。
+    您稍後也會將它新增 `pem` 至 Python 存放區。
 
-5. 您在裝置的本機 Web UI 中的 [網路] 頁面中指派了裝置 IP。 您需要將此 IP 新增至：
+5. 您在裝置的本機 Web UI 中的 [網路] 頁面中指派了裝置 IP。 將此 IP 新增至：
 
     - 用戶端上的 hosts 檔案，或
     - DNS 伺服器組態
@@ -117,7 +117,7 @@ ms.locfileid: "98678948"
 
 ### <a name="verify-profile-and-install-azure-cli"></a>驗證設定檔並安裝 Azure CLI
 
-<!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
+<!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908&preserve-view=true#azure-resource-manager-api-profiles).-->
 
 1. 在用戶端上安裝 Azure CLI。 在此範例中，已安裝 Azure CLI 2.0.80。 若要確認 Azure CLI 的版本，請執行 `az --version` 命令。
 
@@ -149,7 +149,7 @@ ms.locfileid: "98678948"
 
     如果您沒有 Azure CLI，請下載並[在 Windows 上安裝 Azure CLI](/cli/azure/install-azure-cli-windows)。 您可使用 Windows 命令提示字元或透過 Windows PowerShell 執行 Azure CLI。
 
-2. 記下 CLI 的 Python 位置。 您需要此資訊來判斷 Azure CLI 的信任根憑證存放區位置。
+2. 記下 CLI 的 Python 位置。 您需要 Python 位置，以判斷 Azure CLI 的受信任根憑證存放區的位置。
 
 3. 若要執行本文中使用的範例指令碼，您需要下列 Python 程式庫版本：
 
@@ -266,7 +266,7 @@ ms.locfileid: "98678948"
     $ENV:ADAL_PYTHON_SSL_NO_VERIFY = 1
     ```
 
-2. 為 Azure Resource Manager 端點的指令碼設定環境變數、建立資源的位置，以及來源 VHD 所在的路徑。 在所有 Azure Stack Edge Pro 裝置上，資源的位置是固定的且設定為 `dbelocal`。 您也必須指定位址前置詞和私人 IP 位址。 下列所有環境變數都是以您的值為基礎的值，但 `AZURE_RESOURCE_LOCATION` 除外，其應該會硬式編碼為 `"dbelocal"`。
+2. 為 Azure Resource Manager 端點的指令碼設定環境變數、建立資源的位置，以及來源 VHD 所在的路徑。 在所有 Azure Stack Edge Pro 裝置上，資源的位置是固定的且設定為 `dbelocal`。 您也必須指定位址前置詞和私人 IP 位址。 下列所有環境變數都是以您的值為基礎的值 `AZURE_RESOURCE_LOCATION` ，但應該將其硬式編碼為 `"dbelocal"` 。
 
     ```powershell
     $ENV:ARM_ENDPOINT = "https://management.team3device.teatraining1.com"
@@ -319,9 +319,9 @@ ms.locfileid: "98678948"
     ```powershell
     PS C:\Certificates> az login -u EdgeARMuser
     ```
-   使用登入命令之後，系統會提示您輸入密碼。 提供 Azure Resource Manager 密碼。
+   使用 login 命令之後，系統會提示您輸入密碼。 提供 Azure Resource Manager 密碼。
 
-   以下顯示在提供密碼之後成功登入的範例輸出：  
+   以下顯示提供密碼之後成功登入的範例輸出：  
    
    ```output
    PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> az login -u EdgeARMuser
@@ -342,7 +342,7 @@ ms.locfileid: "98678948"
    ]
    PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
    ```
-   記下 `id` 和 `tenantId` 值，這會分別對應至您的 Azure Resource Manager 訂用帳戶識別碼和 Azure Resource Manager 租用戶識別碼，並將在稍後的步驟中使用。
+   請記下 `id` 和值， `tenantId` 因為這些值分別對應到您的 Azure Resource Manager 訂用帳戶識別碼和 Azure Resource Manager 租使用者識別碼，並將在稍後的步驟中使用。
        
    下列環境變數必須設定為以「服務主體」的形式運作：
 

@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解使用 Azure 虛擬機器備份解決方
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 1f4d27563cf292632c6b14c82e36542b86c5d356
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 38ead1591bf2ecadc8bfca5875ac1fa3e69d56ef
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127714"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806377"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>適用于 Azure 虛擬機器的選擇性磁片備份和還原
 
@@ -337,4 +337,4 @@ PI 成本是根據 VM) 大小的實際 (來計算。
 ## <a name="next-steps"></a>後續步驟
 
 - [Azure VM 備份的支援矩陣](backup-support-matrix-iaas.md) \(部分機器翻譯\)
-- [常見問題-備份 Azure Vm](backup-azure-vm-backup-faq.md)
+- [常見問題-備份 Azure Vm](backup-azure-vm-backup-faq.yml)

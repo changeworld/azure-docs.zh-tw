@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 0542d7e0ea204d1e9279e89c9f36b9bc6c6c88fa
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: c34410fcb5e1992f8b7a358801a354a1e1cf190c
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165853"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808012"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database 流量遷移至較新的閘道
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,6 +27,13 @@ ms.locfileid: "98165853"
 ## <a name="status-updates"></a>狀態更新
 
 # <a name="in-progress"></a>[正在進行](#tab/in-progress-ip)
+## <a name="february-2021"></a>2021年2月
+即將將新的 SQL 閘道新增至下欄區域：
+
+- 美國中部：13.89.169.20
+
+這些 SQL 閘道應該會在2021年2月28日開始接受客戶流量。
+
 ## <a name="january-2021"></a>2021 年 1 月
 即將將新的 SQL 閘道新增至下欄區域：
 
@@ -41,7 +48,7 @@ ms.locfileid: "98165853"
 - 韓國中部：52.231.17.22、52.231.17.23
 - 印度西部：104.211.144。4
 
-這些 SQL 閘道應該會在2021年1月31日開始接受客戶流量
+這些 SQL 閘道應該會在2021年1月31日開始接受客戶流量。
 
 # <a name="completed"></a>[Completed](#tab/completed-ip)
 下列閘道遷移已完成： 
@@ -108,7 +115,7 @@ ms.locfileid: "98165853"
 - 美國中部
 - 東南亞
 - 美國中南部
-- 歐洲北部
+- 北歐
 - 美國中北部
 - 日本西部
 - 日本東部

@@ -1,15 +1,15 @@
 ---
 title: 內建原則定義的清單
 description: 列出 Azure 原則的內建原則定義。 分類包括標籤、法規合規性、Key Vault、Kubernetes、來賓設定等等。
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 3b29a4c86ee61247fa3caeb542e08a4ac24ff8c4
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 9fcb66fbb7fdd94de0d265d19c547ca1567417e7
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685802"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98807591"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure 原則的內建原則定義
 
@@ -116,6 +116,10 @@ Azure 入口網站中原則定義的每個內建連結名稱。 使用 [來源] 
 ## <a name="guest-configuration"></a>來賓組態
 
 [!INCLUDE [azure-policy-reference-policies-guest-configuration](../../../../includes/policy/reference/bycat/policies-guest-configuration.md)]
+
+## <a name="hdinsight"></a>HDInsight
+
+[!INCLUDE [azure-policy-reference-policies-hdinsight](../../../../includes/policy/reference/bycat/policies-hdinsight.md)]
 
 ## <a name="internet-of-things"></a>物聯網
 

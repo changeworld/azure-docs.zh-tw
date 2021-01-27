@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 12/04/2020
 ms.author: baanders
-ms.openlocfilehash: e06e660a43aaa0ff5eb79bc00bd8a5d2c61c6580
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: d93f484e318c10489eb1db3e9c65c6e0c7479c90
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045305"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98859527"
 ---
 | 篩選名稱 | 描述 | 篩選文字架構 | 支援的值 | 
 | --- | --- | --- | --- |
@@ -22,10 +22,6 @@ ms.locfileid: "98045305"
 | 內容類型 | 資料值的內容類型 | `datacontenttype = '<contentType>'` | 內容類型為 `application/json` |
 | 規格版本 | 您正在使用的事件架構版本 | `specversion = '<version>'` | 版本必須是 `1.0` 。 這表示 CloudEvents 架構版本1。0 |
 | 通知主體 | 參考通知欄位中的任何屬性 `data` | `$body.<property>` | 請參閱作法：瞭解通知範例的 [*事件資料*](../articles/digital-twins/how-to-interpret-event-data.md) 。 您 `data` 可以使用來參考欄位中的任何屬性。 `$body`
-
-請注意，您可以將多個篩選新增至要求，如下所示： 
-
-:::code language="json" source="~/digital-twins-docs-samples/api-requests/filter-multiple.json":::
 
 下列資料類型支援作為上述資料參考所傳回的值：
 
@@ -39,7 +35,7 @@ ms.locfileid: "98045305"
 
 定義路由篩選時支援下列運算子：
 
-|Family|運算子|範例|
+|系列|運算子|範例|
 |-|-|-|
 |邏輯|和、或 ( ) |`(type != 'microsoft.iot.telemetry' OR datacontenttype = 'application/json') OR (specversion != '1.0')`|
 |比較|<、<=、>、>=、=、！ =|`$body.temperature <= 5.5`

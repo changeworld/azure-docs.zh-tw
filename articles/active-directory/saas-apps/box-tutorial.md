@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/05/2021
+ms.date: 01/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 6c2f8a1e49f97b9f57547fea8b87ba31da310854
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: d21ccdcb1f3854733d045b47a5f43e27bbdf4ccb
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98727916"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98807908"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-box"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Box 整合
 
@@ -92,6 +92,11 @@ ms.locfileid: "98727916"
     > [!NOTE]
     > [登入 URL] 的值不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Box 用戶端支援小組](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire)以取得此值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
+1. 您的 Box 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至 SAML 權杖屬性設定。 以下螢幕擷取畫面顯示上述的範例。 **唯一使用者識別碼** 的預設值為 [**使用者**]，但 Box 預期這會與使用者的電子郵件地址對應。 對此您可以使用清單中的 **user.mail** 屬性，或者根據組織組態使用適當的屬性值。
+
+    ![image](common/default-attributes.png)
+
+
 1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
@@ -106,7 +111,7 @@ ms.locfileid: "98727916"
    1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
    1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
-   1. 按一下頁面底部的 [新增] 。
+   1. 按一下頁面底部的 [新增]  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 

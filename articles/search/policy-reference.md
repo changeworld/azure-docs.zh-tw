@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure 認知搜尋的內建原則定義
 description: 列出適用於 Azure 認知搜尋的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.topic: reference
 author: HeidiSteen
 ms.author: heidist
 ms.service: search
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 697895eab1fc819ba4aaa85b3f28f29e48aba734
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 28c7d5bcd5921f9ae09496d4e7248bad93e6842c
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703621"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806707"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-cognitive-search"></a>適用於 Azure 認知搜尋的 Azure 原則內建定義
 

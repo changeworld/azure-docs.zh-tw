@@ -2,20 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: d3f97abb7617c12493270cbf8286592e5c96b067
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: ed2f53112b736d13d1dbfa3cd443d1794c78e010
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704587"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808276"
 ---
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[應針對您的訂用帳戶指定最多 3 位擁有者](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4f11b553-d42e-4e3a-89be-32ca364cad4c) |建議您最多指定 3 位訂用帳戶擁有者，以降低遭入侵擁有者導致資料外洩的可能。 |AuditIfNotExists, Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_DesignateLessThanXOwners_Audit.json) |
-|[應為您的訂用帳戶提供安全性連絡人電話號碼](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb4d66858-c922-44e3-9566-5cdb7a7be744) |輸入要在 Azure 資訊安全中心偵測到資源洩露時，用來接收通知的電話號碼 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Security_contact_phone_number.json) |
 |[活動記錄至少應保留一年](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb02aacc0-b073-424e-8298-42b22829ee0a) |若保留期未設為 365 天或永久 (保留期設為 0)，此原則就會稽核活動記錄。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLogRetention_365orGreater.json) |
 |[將標籤新增至資源群組](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F726aca4c-86e9-4b04-b0c5-073027359532) |當建立或更新了任何遺失指定標籤的資源群組時，便新增此標籤和值。 您可以藉由觸發補救工作來補救現有的資源群組。 如果標籤以不同的值存在，則不會遭到變更。 |修改 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddTag_ResourceGroup_Modify.json) |
 |[將標籤新增至訂用帳戶](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F96d9a89c-0d67-41fc-899d-2b9599f76a24) |透過補救工作，將指定的標籤和值新增至訂用帳戶。 如果標籤以不同的值存在，則不會遭到變更。 如需原則補救的詳細資訊，請參閱 [https://aka.ms/azurepolicyremediation](https://aka.ms/azurepolicyremediation)。 |修改 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddTag_Subscription_Modify.json) |
@@ -40,6 +39,7 @@ ms.locfileid: "98704587"
 |[Azure 監視器應從所有區域收集活動記錄](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F41388f1c-2db0-4c25-95b2-35d7f5ccbfa9) |此原則會稽核不從所有 Azure 支援區域 (包括全球) 匯出活動的 Azure 監視器記錄設定檔。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_CaptureAllRegions.json) |
 |[必須部署 Azure 監視器解決方案「安全性與稽核」](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3e596b57-105f-48a6-be97-03e9243bad6e) |此原則可確保已部署安全性與稽核。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Security_Audit_MustBeDeployed.json) |
 |[Azure 訂用帳戶應具有用於活動記錄的記錄設定檔](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7796937f-307b-4598-941c-67d3a05ebfe7) |此原則可確保記錄設定檔已啟用，可用於匯出活動記錄。 如果沒有建立記錄檔設定檔來將記錄匯出至儲存體帳戶或事件中樞，則會進行稽核。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Logprofile_activityLogs_Audit.json) |
+|[部署-啟用複寫以在虛擬機器上設定嚴重損壞修復](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fac34a73f-9fa5-4067-9247-a3ecae514468) |沒有嚴重損壞修復設定的虛擬機器很容易發生中斷和其他中斷。 如果虛擬機器尚未設定嚴重損壞修復，這會使用預設設定來啟用複寫，以協助商務持續性。 若要深入了解災害復原，請造訪 [https://aka.ms/asr-doc](https://aka.ms/asr-doc)。 |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/AzureSiteRecovery-Replication-Policy.json) |
 |[部署 - 設定 Azure 資訊安全中心警示的隱藏規則](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F80e94a21-c6cd-4c95-a2c7-beb5704e61c0) |為您的管理群組或訂閱部署隱藏規則，以隱藏 Azure 資訊安全中心警示，避免警示疲乏。 |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_SuppressionRulesForAlerts_Deploy.json) |
 |[針對 Azure 資訊安全中心的資料部署匯出至事件中樞的功能](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcdfcce10-4578-4ecd-9703-530938e4abcb) |針對 Azure 資訊安全中心的資料啟用匯出至事件中樞的功能。 此原則會在指派的範圍內，使用您的條件和目標事件中樞，部署匯出至事件中樞設定。 若要在新建立的訂用帳戶上部署此原則，請開啟 [合規性] 索引標籤，選取不符合規範的相關指派，並建立補救工作。 |deployIfNotExists |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ExportToEventHubAzureSecurityCenterAlertsAndRecommendations_Deploy.json) |
 |[針對 Azure 資訊安全中心的資料部署匯出至 Log Analytics 工作區的功能](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fffb6f416-7bd2-4488-8828-56585fef2be9) |針對 Azure 資訊安全中心的資料啟用匯出至 Log Analytics 工作區的功能。 此原則會在指派的範圍內，使用您的條件和目標工作區，部署匯出至 Log Analytics 工作區設定。 若要在新建立的訂用帳戶上部署此原則，請開啟 [合規性] 索引標籤，選取不符合規範的相關指派，並建立補救工作。 |deployIfNotExists |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ExportToLogAnalyticsWorkspaceAzureSecurityCenterAlertsAndRecommendations_Deploy.json) |

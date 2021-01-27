@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/03/2017
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 600934e2d46c1a84a83fa1290db13b3d0d1508f4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bed1c8fd77e84c69571cfad7dd6b7eeb6607209f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995398"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808050"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>StorSimple 裝置部署問題的疑難排解
 ## <a name="overview"></a>概觀
@@ -33,7 +33,7 @@ ms.locfileid: "95995398"
 本文也會說明適用於疑難排解 StorSimple 部署的工具，並提供疑難排解的逐步範例。
 
 ## <a name="first-time-deployment-issues"></a>第一次部署問題
-如果您在第一次部署裝置時發生問題，請考慮下列各項：
+如果您第一次部署裝置時遇到問題，請考慮下列指引：
 
 * 如果您正在疑難排解實體裝置，請確定硬體已安裝，並遵循[安裝您的 StorSimple 8100 裝置](storsimple-8100-hardware-installation.md)或[安裝您的 StorSimple 8600 裝置](storsimple-8600-hardware-installation.md)中所述的方式進行設定。
 * 檢查部署的先決條件。 請確定您已備妥 [部署檢查清單](storsimple-8000-deployment-walkthrough-u2.md#deployment-configuration-checklist)中描述的所有資訊。
@@ -41,13 +41,13 @@ ms.locfileid: "95995398"
 
 在裝置部署期間，使用者最常面臨的問題通常是在執行安裝精靈，以及透過 Windows PowerShell for StorSimple 註冊裝置時發生。 (您會使用 Windows PowerShell for StorSimple 來註冊並設定 StorSimple 裝置。 如需裝置註冊的詳細資訊，請參閱 [步驟 3：透過 Windows PowerShell for StorSimple 設定和註冊裝置](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple))。
 
-下列各節可協助您解決在第一次設定 StorSimple 裝置時遇到的問題。
+下列各節可協助您解決當您第一次設定 StorSimple 裝置時所遇到的問題。
 
 ## <a name="first-time-setup-wizard-process"></a>第一次執行安裝精靈程序
 下列步驟概述安裝精靈程序。 如需詳細的安裝資訊，請參閱 [部署內部部署 StorSimple 裝置](storsimple-8000-deployment-walkthrough-u2.md)。
 
 1. 執行 [Invoke-HcsSetupWizard](/previous-versions/windows/powershell-scripting/dn688135(v=wps.630)) Cmdlet 來啟動安裝精靈，此精靈將引導您完成其餘步驟。 
-2. 設定網路：安裝精靈可讓您針對 StorSimple 裝置上的 DATA 0 網路介面進行網路設定。 這些設定包括：
+2. 設定網路：安裝精靈可讓您針對 StorSimple 裝置上的 DATA 0 網路介面進行網路設定。 包含下列設定：
    * 虛擬 IP (VIP)、子網路遮罩及閘道 - [Set-HcsNetInterface](/previous-versions/windows/powershell-scripting/dn688161(v=wps.630)) Cmdlet 會在背景中執行。 它會針對 StorSimple 裝置上的 DATA 0 網路介面設定 IP 位址、子網路遮罩及閘道。
    * 主要 DNS 伺服器 - [Set-HcsDnsClientServerAddress](/previous-versions/windows/powershell-scripting/dn688172(v=wps.630)) Cmdlet 會在背景中執行。 它會設定適用於 StorSimple 解決方案的 DNS 設定。
    * NTP 伺服器 - [Set-HcsNtpClientServerAddress](/previous-versions/windows/powershell-scripting/dn688138(v=wps.630)) Cmdlet 會在背景中執行。 它會設定適用於 StorSimple 解決方案的 NTP 伺服器設定。
@@ -58,10 +58,10 @@ ms.locfileid: "95995398"
      > [!IMPORTANT]
      > 密碼是在註冊之前收集，但只有在您成功註冊裝置之後才會套用。 如果套用密碼失敗，系統將提示您再次提供密碼，直到收集到所需的密碼 (符合複雜性需求) 為止。
      
-4. 註冊裝置：最後一個步驟是使用在 Microsoft Azure 中執行的 StorSimple 裝置管理員服務來註冊裝置。 註冊會要求您從 Azure 入口網站 [取得服務註冊金鑰](storsimple-8000-manage-service.md#get-the-service-registration-key)，並在安裝精靈中提供該金鑰。 **成功註冊裝置之後，系統會為您提供服務資料加密金鑰。請務必將此加密金鑰保存在安全的位置，因為它需要向服務註冊所有後續的裝置。**
+4. 註冊裝置：最後一個步驟是使用在 Microsoft Azure 中執行的 StorSimple 裝置管理員服務來註冊裝置。 註冊會要求您從 Azure 入口網站 [取得服務註冊金鑰](storsimple-8000-manage-service.md#get-the-service-registration-key)，並在安裝精靈中提供該金鑰。 **成功註冊裝置之後，系統會為您提供服務資料加密金鑰。請務必將此加密金鑰保存在安全的位置，因為它將需要向服務註冊所有未來的裝置。**
 
 ## <a name="common-errors-during-device-deployment"></a>裝置部署期間的常見錯誤
-下表列出當您進行下列動作時可能遇到的常見錯誤：
+下表列出當您執行下列動作時，可能會遇到的常見錯誤：
 
 * 設定所需的網路設定。
 * 設定選用的 Web Proxy 設定。
@@ -93,8 +93,8 @@ ms.locfileid: "95995398"
 
 請確定您的密碼符合下列需求：
 
-* 裝置系統管理員密碼長度應介於 8 到 15 個字元。
-* 密碼應該包含下列 4 個字元類型的其中 3 個：小寫字母、大寫字母、數字和特殊字元。 
+* 您的裝置系統管理員密碼長度應該介於8到15個字元之間。
+* 密碼應該包含下列其中三種字元類型：小寫字母、大寫字母、數位和特殊字元。 
 * 您的密碼不能與最近的 24 個密碼相同。
 
 此外，請記住，密碼每年都會過期，而您只能在成功註冊裝置之後才能加以變更。 如果註冊因任何因素而失敗，密碼將不會變更。
@@ -135,11 +135,11 @@ ms.locfileid: "95995398"
 | 5 |錯誤 350031：裝置已經註冊。 | |不需採取任何動作。 |
 | 6 |錯誤 350016：裝置註冊失敗。 | |請確定註冊金鑰正確。 |
 | 7 |Invoke-HcsSetupWizard：註冊裝置時發生錯誤。這可能是因為 IP 位址或 DNS 名稱不正確所引發。 請檢查您的網路設定，然後再試一次。 如果問題持續發生，請 [contact Microsoft Support](storsimple-8000-contact-microsoft-support.md)。 (錯誤 350050) |確定裝置可以 Ping 外部網路。 如果您沒有外部網路的連線能力，註冊可能會失敗並產生這個錯誤。 這個錯誤可能是下列一或多個項目的組合：<ul><li>不正確的 IP</li><li>不正確的子網路</li><li>不正確的閘道</li><li>不正確的 DNS 設定</li></ul> |請參閱 [逐步疑難排解範例](#step-by-step-storsimple-troubleshooting-example)中的步驟。 |
-| 8 |Invoke-HcsSetupWizard：由於發生內部服務錯誤 [0x1FBE2]，導致目前的作業失敗。 請稍後再重試操作。 如果問題持續發生， 請連絡 Microsoft 支援服務。 |這是從服務或代理程式針對所有使用者看不見的錯誤所擲回的一般錯誤。 最常見的原因可能是 ACS 驗證失敗。 失敗的原因可能是發生 NTP 伺服器設定問題，而且未正確設定裝置上的時間。 |更正時間 (如果有問題)，然後重試註冊操作。 如果您使用 Set-HcsSystem -Timezone 命令來調整時區，請將時區中的每個字大寫 (例如 "Pacific Standard Time")。  如果問題持續發生，請[連絡 Microsoft 支援](storsimple-8000-contact-microsoft-support.md)以取得後續步驟。 |
+| 8 |Invoke-HcsSetupWizard：由於發生內部服務錯誤 [0x1FBE2]，導致目前的作業失敗。 請在一段時間之後重試此操作。 如果問題持續發生， 請連絡 Microsoft 支援服務。 |這是從服務或代理程式針對所有使用者看不見的錯誤所擲回的一般錯誤。 最常見的原因可能是 ACS 驗證失敗。 失敗的原因可能是發生 NTP 伺服器設定問題，而且未正確設定裝置上的時間。 |更正時間 (如果有問題)，然後重試註冊操作。 如果您使用 Set-HcsSystem -Timezone 命令來調整時區，請將時區中的每個字大寫 (例如 "Pacific Standard Time")。  如果問題持續發生，請[連絡 Microsoft 支援](storsimple-8000-contact-microsoft-support.md)以取得後續步驟。 |
 | 9 |警告：無法啟動裝置。 您的設定裝置系統管理員和 StorSimple Snapshot Manager 密碼尚未變更。 |如果註冊失敗，裝置系統管理員和 StorSimple Snapshot Manager 密碼就不會變更。 | |
 
 ## <a name="tools-for-troubleshooting-storsimple-deployments"></a>適用於疑難排解 StorSimple 部署的工具
-StorSimple 隨附數個工具，可用來疑難排解 StorSimple 解決方案。 它們包括：
+StorSimple 隨附數個工具，可用來疑難排解 StorSimple 解決方案。 這些工具包括：
 
 * 支援封裝和裝置記錄。
 * 專為疑難排解而設計的 Cmdlet。
@@ -153,7 +153,7 @@ StorSimple 隨附數個工具，可用來疑難排解 StorSimple 解決方案。
 3. 使用這個 [逐步程序](storsimple-8000-create-manage-support-package.md#edit-a-support-package) 來開啟和解密支援封裝。
 4. 解密的支援封裝記錄格式為 etw/etvx 格式。 您可以執行下列步驟，在 Windows 事件檢視器中檢視這些檔案：
    
-   1. 在您的 Windows 用戶端執行 **eventvwr** 命令。 這將會啟動事件檢視器。
+   1. 在 Windows 用戶端上執行 **eventvwr.msc** 命令，以啟動事件檢視器。
    2. 在 [動作] 窗格中，按一下 [開啟已儲存的記錄]，並指向 etvx/etw 格式 (支援封裝) 的記錄檔。 您現在可以檢視該檔案。 開啟檔案之後，您可以按一下滑鼠右鍵並將該檔案儲存為文字。
       
       > [!IMPORTANT]
@@ -189,7 +189,7 @@ StorSimple 隨附數個工具，可用來疑難排解 StorSimple 解決方案。
    * 如果此介面狀況良好但未啟用，**ifIndex** 狀態會顯示為 **NotPresent**。
    * 如果介面不存在，它就不會出現在這份清單中。 StorSimple Manager 裝置管理員服務 UI 仍會顯示此介面處於失敗狀態。
 
-如需有關如何使用此 Cmdlet 的詳細資訊，請移至 Windows PowerShell Cmdlet 參考中的 [get-netadapter](/powershell/module/netadapter/get-netadapter?view=win10-ps) 。
+如需有關如何使用此 Cmdlet 的詳細資訊，請移至 Windows PowerShell Cmdlet 參考中的 [get-netadapter](/powershell/module/netadapter/get-netadapter?view=win10-ps&preserve-view=true) 。
 
 下列各節示範來自 `Get-NetAdapter` Cmdlet 的輸出範例。
 
@@ -206,7 +206,7 @@ StorSimple 隨附數個工具，可用來疑難排解 StorSimple 解決方案。
 
 **範例輸出 - 控制站 0**
 
-以下是來自控制站 0 (被動控制站) 的輸出。 未連接 DATA 1、DATA 2 及 DATA 3。 不會列出 DATA 4 和 DATA 5，因為它們不存在於裝置上。
+下列範例資料是控制器 0 (被動控制器) 的輸出。 未連接 DATA 1、DATA 2 及 DATA 3。 不會列出 DATA 4 和 DATA 5，因為它們不存在於裝置上。
 
 ```output
 Controller0>Get-NetAdapter
@@ -222,7 +222,7 @@ DATA0                Intel(R) 82574L Gigabit Network Conn...     15       Up
 
 **範例輸出 - 控制站 1**
 
-以下是來自控制器 1 (主動控制器) 的輸出。 只在裝置上設定了 DATA 0 網路介面且正在運作中。
+下列範例資料是控制器 1 (主動控制器) 的輸出。 只在裝置上設定了 DATA 0 網路介面且正在運作中。
 
 ```output
 Controller1>Get-NetAdapter
@@ -241,7 +241,7 @@ DATA4                Intel(R) Gigabit ET Dual Port Serv...#2     17       NotPre
 ## <a name="troubleshoot-with-the-test-connection-cmdlet"></a>Test-Connection Cmdlet 的疑難排解
 您可以使用 `Test-Connection` Cmdlet，來判斷 StorSimple 裝置是否可連線到外部網路。 如果已在安裝精靈中正確設定所有網路參數 (包括 DNS)，您就可以使用 `Test-Connection` Cmdlet 來傳送 Ping 給網路外部的已知位址，例如 outlook.com。
 
-如果 ping 已停用，您應該啟用 ping 以進行此 Cmdlet 之連線問題的疑難排解。
+如果 ping Cmdlet 已停用，您應該啟用 ping 以用於對連線問題進行疑難排解。
 
 請參閱下列來自 `Test-Connection` Cmdlet 的輸出範例。
 
@@ -250,7 +250,7 @@ DATA4                Intel(R) Gigabit ET Dual Port Serv...#2     17       NotPre
 
 **範例輸出 - 不正確的 DNS**
 
-在下列範例中，沒有任何 IPV4 與 IPV6 位址的輸出，表示不會解析 DNS。 這表示沒有外部網路的連線能力，而且必須提供正確的 DNS。
+下列範例不包含 IPV4 和 IPV6 位址的任何輸出，這表示無法解析 DNS。 沒有外部網路的連線能力，且必須提供正確的 DNS。
 
 ```output
 Source        Destination     IPV4Address      IPV6Address
@@ -263,7 +263,7 @@ HCSNODE0      outlook.com
 
 **範例輸出 - 正確的 DNS**
 
-在下列範例中，DNS 會傳回的 IPV4 位址，表示已正確設定 DNS。 這確認具有外部網路的連線能力。
+在下列範例中，DNS 會傳回的 IPV4 位址，表示已正確設定 DNS。 輸出會確認具有外部網路的連線能力。
 
 ```output
 Source        Destination     IPV4Address      IPV6Address
@@ -281,29 +281,29 @@ HCSNODE0      outlook.com     132.245.92.194
 1. 確定裝置已註冊。
 2. 檢查裝置狀態。 如果裝置已停用、處於維護模式或離線狀態，您可能會看到下列其中一個錯誤：
    
-   * ErrorCode.CiSDeviceDecommissioned - 這表示裝置已停用。
-   * ErrorCode.DeviceNotReady - 這表示裝置處於維護模式。
-   * ErrorCode.DeviceNotReady - 這表示裝置處於離線狀態。
+   * ErrorCode. Errorcode.cisdevicedecommissioned：指出裝置已停用。
+   * ErrorCode. Errorcode.devicenotready：指出裝置處於維護模式。
+   * ErrorCode. Errorcode.devicenotready：表示裝置不在線上。
 3. 確認 StorSimple 裝置管理員服務正在執行中 (使用 [Get-ClusterResource](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee461004(v=technet.10)) Cmdlet)。 如果服務不在執行中，您可能會看到下列錯誤：
    
    * ErrorCode.CiSApplianceAgentNotOnline
-   * ErrorCode.CisPowershellScriptHcsError - 這表示在執行 Get-ClusterResource 時發生例外狀況。
+   * ErrorCode. CisPowershellScriptHcsError：表示執行 Get-clusterresource 時發生例外狀況。
 4. 檢查存取控制服務 (ACS) 權杖。 如果它擲回 Web 例外狀況，則可能是因為下列因素而產生的結果：閘道問題、遺漏 Proxy 驗證、不正確的 DNS 或驗證失敗。 您可能會看到下列錯誤：
    
-   * ErrorCode.CiSApplianceGateway - 這表示 HttpStatusCode.BadGateway 例外狀況：名稱解析程式服務無法解析主機名稱。
-   * ErrorCode.CiSApplianceProxy - 這表示 HttpStatusCode.ProxyAuthenticationRequired 例外狀況 (HTTP 狀態碼 407)：用戶端無法向 Proxy 伺服器進行驗證。
-   * ErrorCode.CiSApplianceDNSError - 這表示 WebExceptionStatus.NameResolutionFailure 例外狀況：名稱解析程式服務無法解析主機名稱。
-   * ErrorCode.CiSApplianceACSError - 這表示服務傳回驗證錯誤，但有連線能力。
+   * ErrorCode. Errorcode.cisappliancegateway：指出 HttpStatusCode. Httpstatuscode.badgateway 例外狀況：名稱解析程式服務無法解析主機名稱。
+   * Errorcode.cisapplianceproxy：指出 HttpStatusCode. Httpstatuscode.proxyauthenticationrequired 例外狀況 (HTTP 狀態碼 407) ：用戶端無法向 proxy 伺服器進行驗證。
+   * ErrorCode. Errorcode.cisappliancednserror：指出 WebExceptionStatus. Webexceptionstatus.nameresolutionfailure 例外狀況：名稱解析程式服務無法解析主機名稱。
+   * ErrorCode. CiSApplianceACSError：表示服務傳回驗證錯誤，但有連線能力。
      
-     如果服務未擲回 Web 例外狀況，請檢查導致 ErrorCode.CiSApplianceFailure 產生的錯誤。 這表示設備失敗。
+     如果未擲回 web 例外狀況，請檢查 CiSApplianceFailure，這表示設備失敗。
 5. 檢查雲端服務連線。 如果服務擲回 Web 例外狀況，您可能會看到下列錯誤：
    
-   * ErrorCode.CiSApplianceGateway - 這表示 HttpStatusCode.BadGateway 例外狀況：中繼 Proxy 伺服器收到來自其他 Proxy 或來自原始伺服器的不正確要求。
-   * ErrorCode.CiSApplianceProxy - 這表示 HttpStatusCode.ProxyAuthenticationRequired 例外狀況 (HTTP 狀態碼 407)：用戶端無法向 Proxy 伺服器進行驗證。
-   * ErrorCode.CiSApplianceDNSError - 這表示 WebExceptionStatus.NameResolutionFailure 例外狀況：名稱解析程式服務無法解析主機名稱。
-   * ErrorCode.CiSApplianceACSError - 這表示服務傳回驗證錯誤，但有連線能力。
+   * ErrorCode. Errorcode.cisappliancegateway：指出 HttpStatusCode. Httpstatuscode.badgateway 例外狀況：中繼 proxy 伺服器收到來自另一個 proxy 或源伺服器的錯誤要求。
+   * Errorcode.cisapplianceproxy：指出 HttpStatusCode. Httpstatuscode.proxyauthenticationrequired 例外狀況 (HTTP 狀態碼 407) ：用戶端無法向 proxy 伺服器進行驗證。
+   * ErrorCode. Errorcode.cisappliancednserror：指出 WebExceptionStatus. Webexceptionstatus.nameresolutionfailure 例外狀況：名稱解析程式服務無法解析主機名稱。
+   * ErrorCode. CiSApplianceACSError：表示服務傳回驗證錯誤，但有連線能力。
      
-     如果服務未擲回 Web 例外狀況，請檢查導致 ErrorCode.CiSApplianceSaasServiceError 發生的錯誤。 這表示 StorSimple 裝置管理員服務發生問題。
+     如果未擲回 web 例外狀況，請檢查 Errorcode.cisappliancesaasserviceerror，這表示 StorSimple 裝置管理員服務有問題。
 6. 檢查 Azure 服務匯流排連線。 ErrorCode.CiSApplianceServiceBusError 表示裝置無法連接到服務匯流排。
 
 記錄檔 CiSCommandletLog0Curr.errlog 和 CiSAgentsvc0Curr.errlog 將提供更多資訊，例如，例外狀況詳細資料。
@@ -357,7 +357,7 @@ Device is registered successfully
 Checking connectivity from device to SaaS.. Failure
 ```
 
-該裝置無法使用目前的 Web Proxy 設定來連接。 這可能是 Web Proxy 設定問題或網路連線問題。 在此情況下，您應該確定 Web Proxy 設定正確無誤，而且您的 Web Proxy 伺服器在線上且可連線。
+該裝置無法使用目前的 Web Proxy 設定來連接。 Web proxy 設定或網路連線問題可能有問題。 在此情況下，您應該確定 Web Proxy 設定正確無誤，而且您的 Web Proxy 伺服器在線上且可連線。
 
 ## <a name="troubleshoot-with-the-sync-hcstime-cmdlet"></a>使用 Sync-HcsTime Cmdlet 疑難排解
 此 Cmdlet 可顯示裝置的時間。 如果裝置時間與 NTP 伺服器之間有時間差，您可以使用此 Cmdlet 強制同步裝置與 NTP 伺服器的時間。
@@ -419,11 +419,11 @@ Trace complete.
 ## <a name="troubleshoot-with-the-get-hcsroutingtable-cmdlet"></a>使用 Get-HcsRoutingTable Cmdlet 疑難排解
 此 Cmdlet 可顯示您 StorSimple 裝置的路由表。 路由表是一組規則，可以協助您判斷經由網際網路通訊協定 (IP) 傳輸的資料封包會將被導向的位置。
 
-路由表會顯示將資料路由到指定的網路的介面和閘道器。 還提供路由計量，此計量是決定到達特定目的地所採取路徑的工具。 路由計量的值越低，建議採用的指數越高。
+路由表會顯示將資料路由到指定的網路的介面和閘道器。 此外，它也會提供路由計量，也就是取得到達特定目的地之路徑的決策 maker。 路由計量的值越低，建議採用的指數越高。
 
-例如，如果您有 2 個已連接到網際網路的網路介面，DATA 2 和DATA 3。 如果 DATA 2 和DATA 3 的路由計量分別是 15 和 261，路由計量值較低的 DATA 2 便是建議用來連接網際網路的介面。
+例如，假設您有兩個網路介面（DATA 2 和 DATA 3）連接到網際網路。 如果資料2和資料3的路由度量分別是15和261，則具有較低路由計量的 DATA 2 就是用來連線到網際網路的慣用介面。
 
-如果您的 StorSimple 裝置正在執行 Update 1，則 DATA 0 的網路介面是雲端流量的最佳選擇。 這表示即使有其他支援雲端的介面，系統還是會透過 DATA 0 路由雲端流量。
+如果您的 StorSimple 裝置正在執行 Update 1，則 DATA 0 的網路介面是雲端流量的最佳選擇。 透過此設定，即使有其他已啟用雲端的介面，大部分的雲端流量都會透過 DATA 0 路由傳送。<!--This implies that even if there are other cloud-enabled interfaces, the cloud traffic would be routed through DATA 0. - Preceding sentence replaces this one. Use of "This implies" is a bit murky. DATA 0 will be the preferred network interface? Is my translation OK?-->
 
 如果您執行 `Get-HcsRoutingTable` Cmdlet，但未指定任何參數 (如下列範例所示)，該 Cmdlet 會同時輸出 IPv4 和 IPv6 路由表。 您也可以指定 `Get-HcsRoutingTable -IPv4` 或 `Get-HcsRoutingTable -IPv6`，以取得相關的路由表。
 
@@ -504,7 +504,7 @@ Invoke-HcsSetupWizard: An error has occurred while registering the device. This 
 +FullyQualifiedErrorID: CiSClientCommunicationErros, Microsoft.HCS.Management.PowerShell.Cmdlets.InvokeHcsSetupWizardCommand
 ```
 
-錯誤可能是因為下列其中一個原因所引發：
+此錯誤可能是由下列任何問題所造成：
 
 * 不正確的硬體安裝
 * 故障的網路介面
@@ -526,9 +526,10 @@ Invoke-HcsSetupWizard: An error has occurred while registering the device. This 
 3. 確認網路介面的健康情況：
    
    * 使用 Get-NetAdapter Cmdlet 來偵測  DATA 0 網路介面的健康情況。 
-   * 如果連結沒有運作，**ifindex** 狀態會指出介面已關閉。 然後您必須檢查連接埠到設備與連接埠到交換器的網路連線。 您也必須排除不健全的纜線。 
-   * 如果您懷疑主動控制器上的 DATA 0 連接埠故障，可透過連接到控制器 1 上的 DATA 0 連接埠來確認這一點。 若要確認這一點，可從裝置背後的控制站 0 拔除網路纜線、將纜線連接到控制站 1，然後再次執行 Get-NetAdapter Cmdlet。
-     如果控制器上的 DATA 0 連接埠失敗，請[連絡 Microsoft 支援](storsimple-8000-contact-microsoft-support.md)以取得後續步驟。 您可能需要更換系統上的控制站。
+   * 如果連結沒有作用，則 `ifindex` 狀態會指出介面已關閉。 然後您必須檢查連接埠到設備與連接埠到交換器的網路連線。 您也必須排除不健全的纜線。 
+   * 如果您懷疑作用中控制器上的 DATA 0 埠失敗，您可以藉由連接到控制器1上的 DATA 0 埠來確認。 從裝置背面的控制器0中斷連接網路纜線，將纜線連接至控制器1，然後再次執行 Get-NetAdapter Cmdlet。
+   
+     如果控制器上的 DATA 0 埠失敗，請 [聯絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md) 以進行後續步驟。 您可能需要更換系統上的控制站。
 4. 確認與交換器的連線能力：
    
    * 確定主要機箱上的控制站 0 和控制站 1 上的 DATA 0 網路介面位於同一個子網路上。 
@@ -544,7 +545,7 @@ Invoke-HcsSetupWizard: An error has occurred while registering the device. This 
      > 
      > 
 6. 使用 Test-Connection Cmdlet 來確認您擁有外部網路的連線能力。 如需詳細資訊，請參閱 [Test-Connection Cmdlet 的疑難排解](#troubleshoot-with-the-test-connection-cmdlet)。
-7. 檢查防火牆干擾。 如果您已確認虛擬 IP (VIP)、子網路、閘道和 DNS 設定都正確，但仍看見連線問題，則可能是您的防火牆封鎖了裝置與外部網路之間的通訊。 您必須確定 StorSimple 裝置上的連接埠 80 和 443 可用於傳出通訊。 如需詳細資訊，請參閱 [StorSimple 裝置的網路需求](storsimple-8000-system-requirements.md#networking-requirements-for-your-storsimple-device)。
+7. 檢查防火牆干擾。 如果您已確認虛擬 IP (VIP) 、子網、閘道和 DNS 設定都正確無誤，而且仍看到連線問題，則可能是您的防火牆封鎖了裝置與外部網路之間的通訊。 請確定 StorSimple 裝置上的連接埠 80 和 443 可用來進行傳出通訊。 如需詳細資訊，請參閱 [StorSimple 裝置的網路需求](storsimple-8000-system-requirements.md#networking-requirements-for-your-storsimple-device)。
 8. 查看記錄。 請移至 [可用來疑難排解的支援封裝和裝置記錄](#support-packages-and-device-logs-available-for-troubleshooting)。
 9. 如果上述步驟並未解決問題，請 [連絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md) 以尋求協助。
 

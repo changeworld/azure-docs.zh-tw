@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/10/2017
+ms.date: 01/11/2021
 ms.author: timlt
-ms.openlocfilehash: f9c7a2df83e9d630ce2b4635a830fb941180c758
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 286f00318715764a5943387e6b362b3c8e69a82e
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021824"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808150"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 系列：混合式雲端存放解決方案
 
@@ -44,7 +44,7 @@ StorSimple 使用 [儲存體分層](#automatic-storage-tiering) 管理各種儲�
 | 透明整合 |使用 iSCSI 通訊協定，以無形的方式連結資料儲存設備。 這可確保儲存在雲端、在資料中心或在遠端伺服器上的資料會看似儲存在單一位置。 |
 | 降低儲存成本 |配置足夠符合目前需求的本機或雲端儲存體，且只在必要時才擴充雲端儲存體。 它可以進一步地降低儲存體需求和支出，方法是消除相同資料的備援版本 (重複資料刪除)，並使用壓縮。 |
 | 簡化儲存管理 |提供系統管理工具，可用來設定和管理在內部部署、在遠端伺服器上和在雲端中儲存的資料。 此外，您可以從 Microsoft Management Console (MMC) 嵌入式管理單元來管理備份和還原功能。|
-| 改進災害復原和提高合規性 |不需要延長復原時間。 相反地，它會在需要時還原資料。 這表示正常作業可以在最少干擾的情況下繼續執行。 此外，您還可以設定原則以指定備份排程和資料保留。 |
+| 改進災害復原和提高合規性 |不需要延長復原時間。 相反地，它會在需要時還原資料，讓一般作業可以在中斷的情況下繼續進行。 此外，您還可以設定原則以指定備份排程和資料保留。 |
 | 資料行動性 |您可以從其他站台存取上傳至 Microsoft Azure 雲端服務的資料，以供復原和移轉使用。 此外，您可以使用 StorSimple，在 Microsoft Azure 中執行的虛擬機器 (VM) 上設定 StorSimple 雲端設備。 VM 然後可以使用虛擬裝置來存取儲存的資料，以供測試或復原使用。 |
 | 業務持續性 |允許 StorSimple 5000-7000 系列的使用者將他們的資料移轉到 StorSimple 8000 系列裝置。 |
 | Azure 政府機構入口網站中的可用性 |StorSimple 可以在 Azure Government 入口網站中使用。 如需詳細資訊，請參閱 [在政府機構入口網站中部署您的內部部署 StorSimple 裝置](storsimple-8000-deployment-walkthrough-gov-u2.md)。 |
@@ -60,7 +60,7 @@ Microsoft Azure StorSimple 解決方案包括下列元件：
 * **StorSimple 雲端設備** – 也稱為 StorSimple 虛擬設備，這是 StorSimple 裝置的軟體版本，可複寫實體混合式存放裝置的架構和大部分功能。 StorSimple 雲端設備會在 Azure 虛擬機器中的單一節點上執行。 可利用 Azure 進階儲存體帳戶的高階虛擬裝置可在 Update 2 及更新版本中使用。
 * **StorSimple 裝置管理員服務** – Azure 入口網站的延伸模組，可讓您透過單一 Web 介面管理 StorSimple 裝置或 StorSimple 雲端設備。 您可以使用 StorSimple 裝置管理員服務來建立和管理服務、檢視和管理裝置、檢視警示、管理磁碟區，以及檢視和管理備份原則與備份目錄。
 * **Windows PowerShell for StorSimple** – 可讓您管理 StorSimple 裝置的命令列介面。 Windows PowerShell for StorSimple 的功能包括：可讓您註冊您的 StorSimple 裝置、在您的裝置上設定網路介面、安裝特定類型的更新，以及透過存取支援工作階段及變更裝置狀態來疑難排解您的裝置。 藉由連接至序列主控台或使用 Windows PowerShell 遠端處理，您可以存取 Windows PowerShell for StorSimple。
-* **Azure PowerShell StorSimple Cmdlet** – 一組 Windows PowerShell Cmdlet，可讓您從命令列將服務層級和移轉工作自動化。 如需適用於 StorSimple 的 Azure PowerShell Cmdlet 的詳細資訊，請移至 [Cmdlet 參考](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0#azure)。
+* **Azure PowerShell StorSimple Cmdlet** – 一組 Windows PowerShell Cmdlet，可讓您從命令列將服務層級和移轉工作自動化。 如需適用於 StorSimple 的 Azure PowerShell Cmdlet 的詳細資訊，請移至 [Cmdlet 參考](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0&preserve-view=true#azure)。
 * **StorSimple Snapshot Manager** – MMC 嵌入式管理單元，可使用磁碟區群組和 Windows 磁碟區陰影複製服務產生應用程式一致備份。 此外，您可以使用 StorSimple Snapshot Manager 建立備份排程及複製或還原磁碟區。
 * **StorSimple Adapter for SharePoint** – 此工具可將 Microsoft Azure StorSimple 儲存體和資料保護明確延伸至 SharePoint 伺服器陣列，並可讓您從 SharePoint 管理中心入口網站檢視和管理 StorSimple 儲存體。
 
@@ -73,7 +73,7 @@ Microsoft Azure StorSimple 解決方案包括下列元件：
 ## <a name="storsimple-device"></a>StorSimple 裝置
 Microsoft Azure StorSimple 裝置是內部部署混合式儲存體陣列，可透過主要儲存體和 iSCSI 存取其中儲存的資料。 它會管理雲端儲存體之間的通訊，並協助確保所有儲存在 Microsoft Azure StorSimple 方案的資料安全性和機密性。
 
-StorSimple 裝置包括 SSD 和硬碟 HDD，並支援叢集和自動容錯移轉。 它包含共用處理器、共用儲存體，以及兩個鏡像控制站。 每個控制站都可提供下列功能：
+StorSimple 裝置包含 Ssd 和硬碟 (Hdd) ，以及支援叢集和自動容錯移轉。 它包含共用處理器、共用儲存體，以及兩個鏡像控制站。 每個控制站都可提供下列功能：
 
 * 連接到主機電腦
 * 最多六個網路連接埠可連接到區域網路 (LAN)
@@ -95,7 +95,7 @@ StorSimple 裝置包括 SSD 和硬碟 HDD，並支援叢集和自動容錯移轉
 * 您可以在雲端中建立無限量的雲端設備，視需要將其開啟和關閉。
 * 可協助您模擬災害復原、開發和測試案例中的內部部署環境，並可協助從備份進行項目層級的擷取。
 
-StorSimple 雲端設備可在兩種機型中使用：8010 裝置 (先前稱為 1100 機型) 和 8020 裝置。 8010 裝置的最大容量為 30 TB。 利用 Azure 進階儲存體帳戶的 8020 裝置的最大容量為 64 TB。  (在本機層中，Azure premium 儲存體會將資料儲存在 Ssd，而標準儲存體會將資料儲存在 Hdd 上 ) 。請注意，您必須擁有 Azure premium 儲存體帳戶才能使用 premium 儲存體。
+StorSimple 雲端設備可在兩種機型中使用：8010 裝置 (先前稱為 1100 機型) 和 8020 裝置。 8010 裝置的最大容量為 30 TB。 利用 Azure 進階儲存體帳戶的 8020 裝置的最大容量為 64 TB。  (在本機層中，Azure premium 儲存體會將資料儲存在 Ssd，而標準儲存體會將資料儲存在 Hdd 上 ) 。您必須擁有 Azure premium 儲存體帳戶才能使用 premium 儲存體。
 
 如需 StorSimple 雲端設備的詳細資訊，請移至[部署和管理 Azure 中的 StorSimple 雲端設備](storsimple-8000-cloud-appliance-u2.md)。
 
@@ -124,12 +124,12 @@ Windows PowerShell for StorSimple 提供了可用來建立和管理 Microsoft Az
 * 透過存取支援工作階段來疑難排解您的裝置。
 * 變更裝置狀態。
 
-您可以從序列主控台 (在與裝置直接連線的主機電腦上) 或使用 Windows PowerShell 遠端處理來遠端存取 Windows PowerShell for StorSimple。 請注意，部分 Windows PowerShell for StorSimple 工作 (例如初始裝置註冊) 只能在序列主控台上執行。
+您可以從序列主控台 (在與裝置直接連線的主機電腦上) 或使用 Windows PowerShell 遠端處理來遠端存取 Windows PowerShell for StorSimple。 某些適用於 StorSimple 的 Windows PowerShell 工作（例如初始裝置註冊）只能在序列主控台上完成。
 
 如需詳細資訊，請移至 [使用 Windows PowerShell for StorSimple 管理您的裝置](storsimple-8000-windows-powershell-administration.md)。
 
 ## <a name="azure-powershell-storsimple-cmdlets"></a>Azure PowerShell StorSimple Cmdlet
-Azure PowerShell StorSimple Cmdlet 是一組 Windows PowerShell Cmdlet 集合，可讓您從命令列將服務層級和移轉工作自動化。 如需適用於 StorSimple 的 Azure PowerShell Cmdlet 的詳細資訊，請移至 [Cmdlet 參考](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0)。
+Azure PowerShell StorSimple Cmdlet 是一組 Windows PowerShell Cmdlet 集合，可讓您從命令列將服務層級和移轉工作自動化。 如需適用於 StorSimple 的 Azure PowerShell Cmdlet 的詳細資訊，請移至 [Cmdlet 參考](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0&preserve-view=true)。
 
 ## <a name="storsimple-snapshot-manager"></a>StorSimple Snapshot Manager
 StorSimple Snapshot Manager 是 Microsoft Management Console (MMC) 嵌入式管理單元，可用來建立本機和雲端資料的一致時間點備份複本。 嵌入式管理單元會在 Windows Server 型的主機上執行。 您可以使用 StorSimple Snapshot Manager 進行下列作業：
@@ -139,7 +139,7 @@ StorSimple Snapshot Manager 是 Microsoft Management Console (MMC) 嵌入式管�
 * 管理備份原則，方便在預先決定的排程上備份資料並儲存在指定位置 (在本機或在雲端中)。
 * 還原磁碟區和個別檔案。
 
-系統會以快照集的方式擷取備份，快照集僅會記錄建立上次快照集之後所做的變更，而且需要的儲存空間遠少於完整備份。 您可以建立備份排程或視需要進行立即備份。 此外，您還可以使用 StorSimple Snapshot Manager 建立可控制要儲存多少快照集的保留原則。 如果您之後需要將資料從備份還原，StorSimple Snapshot Manager 可讓您從本機或雲端快照集的類別中進行選取。 
+系統會以快照集的方式擷取備份，快照集僅會記錄建立上次快照集之後所做的變更，而且需要的儲存空間遠少於完整備份。 您可以建立備份排程或視需要進行立即備份。 此外，您還可以使用 StorSimple Snapshot Manager 建立可控制要儲存多少快照集的保留原則。 如果您之後需要從備份還原資料，StorSimple Snapshot Manager 可讓您從本機或雲端快照的目錄中選取。 
 
 如果發生損毀，或如果因為其他原因而必須還原資料，StorSimple Snapshot Manager 會在需要時將它以累加方式還原。 當您還原檔案、更換設備或將作業移到另一個站台時，資料還原不需要您將整個系統關閉。
 
@@ -148,7 +148,7 @@ StorSimple Snapshot Manager 是 Microsoft Management Console (MMC) 嵌入式管�
 ## <a name="storsimple-adapter-for-sharepoint"></a>StorSimple Adapter for SharePoint
 Microsoft Azure StorSimple 包括 StorSimple Adapter for SharePoint，其為可將 StorSimple 儲存體和資料保護功能明確延伸至 SharePoint 伺服器陣列的選擇性元件。 將配接器與遠端 Blob 儲存體 (RBS) 提供者和 SQL Server RBS 功能搭配使用，可讓您將 Blob 移至由 Microsoft Azure StorSimple 系統備份的伺服器。 Microsoft Azure StorSimple 接著可根據使用方式，在本機或在雲端中儲存 BLOB 資料。
 
-您可以在 SharePoint 管理中心入口網站內管理 StorSimple Adapter for SharePoint。 因此，SharePoint 管理仍然是集中式管理，而所有的儲存體會顯示在 SharePoint 伺服陣列中。
+您可以在 SharePoint 管理中心入口網站內管理 StorSimple Adapter for SharePoint。 因此，SharePoint 管理仍保持集中式，而且所有的儲存體都會出現在 SharePoint 伺服器陣列中。
 
 如需詳細資訊，請移至 [StorSimple Adapter for SharePoint](storsimple-adapter-for-sharepoint.md)。 
 
@@ -186,7 +186,7 @@ StorSimple 會隨著使用模式變更而調整並重新排列資料和儲存體
 
 StorSimple 會跨所有快照集和主要資料 (主機寫入的資料) 將客戶資料進行重複資料刪除。 儘管重複資料刪除適合用來提升儲存效率，但它會使「存在雲端中的資料」這個問題變得複雜。 階層式的主要資料和快照集資料會彼此重疊。 雲端中的資料單一區塊可用來作為階層式的主要資料，且還會由數個快照集所參考。 每個雲端快照集都會確保所有時間點資料的副本都會鎖定於雲端，直到將該快照集刪除為止。
 
-僅當沒有參考到該資料時，才會將資料從雲端刪除。 例如，如果我們採用 StorSimple 裝置中所有資料的雲端快照集，然後刪除一些主要資料，會看到 _主要資料_ 立即降低。 包括階層式資料和備份的 _雲端資料_ 則會維持不變。 這是因為仍有快照集會參考雲端資料。 在將雲端快照集刪除之後 (和其他參考相同資料的快照集)，雲端耗用量就會降低。 我們在移除雲端資料之前，會檢查已無快照集仍參考該資料。 此程序稱為 _記憶體回收_，並且會在裝置上以背景服務執行。 並不會立即移除雲端資料，因為記憶體回收服務在刪除之前，會檢查對該資料的其他參考。 記憶體回收的速度會依快照集的總數和資料的總數而定。 一般而言，會在一週以內將雲端資料清除。
+僅當沒有參考到該資料時，才會將資料從雲端刪除。 例如，如果我們採用 StorSimple 裝置中所有資料的雲端快照集，然後刪除一些主要資料，會看到 _主要資料_ 立即降低。 包含階層式資料和備份的 _雲端資料_ 會維持不變。 這是因為仍有快照集會參考雲端資料。 在將雲端快照集刪除之後 (和其他參考相同資料的快照集)，雲端耗用量就會降低。 我們在移除雲端資料之前，會檢查已無快照集仍參考該資料。 此程序稱為 _記憶體回收_，並且會在裝置上以背景服務執行。 並不會立即移除雲端資料，因為記憶體回收服務在刪除之前，會檢查對該資料的其他參考。 記憶體回收的速度會依快照集的總數和資料的總數而定。 一般而言，會在一週以內將雲端資料清除。
 
 
 ### <a name="thin-provisioning"></a>精簡佈建
@@ -217,8 +217,8 @@ Microsoft Azure StorSimple 會使用重複資料刪除和資料壓縮，來進�
 | 虛擬化 |虛擬機器 |是* |只有使用固定在本機的磁碟區時才支援 |Update 2 和更新版本 |
 | 資料庫 |SQL |是* |只有使用固定在本機的磁碟區時才支援 |Update 2 和更新版本 |
 | 視訊監視 |視訊監視 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 2 和更新版本 |
-| Backup |主要目標備份 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 3 和更新版本 |
-| Backup |次要目標備份 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 3 和更新版本 |
+| 備份 |主要目標備份 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 3 和更新版本 |
+| 備份 |次要目標備份 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 3 和更新版本 |
 
 是&#42; - 應套用解決方案指導方針和限制。
 
@@ -245,7 +245,7 @@ StorSimple 8000 系列裝置不支援下列工作負載。 如果部署於 StorS
 
 是&#42; - 應套用解決方案指導方針和限制。
 
-以下是與 StorSimple 搭配使用來建立解決方案的其他軟體清單。
+以下是與 StorSimple 搭配使用以建立解決方案的其他軟體清單。
 
 | 工作負載類型 | 與 StorSimple 搭配使用的軟體 | 支援的版本|解決方案指南的連結| 
 | --- | --- | --- | --- |
@@ -292,7 +292,7 @@ StorSimple 8000 系列裝置不支援下列工作負載。 如果部署於 StorS
 | 固定在本機的磁碟區 |位於裝置上，而且永遠不會分層至雲端的磁碟區。 |
 | 本機快照 |儲存在 Microsoft Azure StorSimple 裝置之磁碟區資料的時間點複本。 |
 | Microsoft Azure StorSimple |一種功能強大的解決方案，其中包含資料中心儲存體應用裝置和軟體，可讓 IT 組織運用雲端儲存體，就好像它是資料中心儲存體一般。 StorSimple 可簡化資料保護和資料管理的方式，同時降低成本。 這個解決方案透過與雲端的完美整合，將主要儲存體、封存、備份和災害復原 (DR) 合而為一。 藉由結合企業級平台上的 SAN 儲存體和雲端資料管理，StorSimple 裝置啟用了所有儲存體相關需求的速度、簡化及可靠性。 |
-| 電源和冷卻模組 (PCM) |StorSimple 裝置的硬體元件，其中包含電源供應器和冷卻風扇，因此命名為電源和冷卻模組。 裝置的主要機箱有兩個 764W PCM，而 EBOD 機箱有兩個 580W PCM。 |
+| 電源和冷卻模組 (PCM) |StorSimple 裝置的硬體元件，由電源供應器和冷卻風扇所組成;因此，名稱的電源和冷卻模組。 裝置的主要機箱有兩個 764W PCM，而 EBOD 機箱有兩個 580W PCM。 |
 | 主要機箱 |StorSimple 裝置的主要機箱，其中包含應用程式平台控制器。 |
 | 復原時間目標 (RTO) |發生災害之後，商務程序或系統完全還原之前應該延長的時間量上限。 |
 | 序列連接 SCSI (SAS) |硬碟 (HDD) 的類型。 |
@@ -307,7 +307,7 @@ StorSimple 8000 系列裝置不支援下列工作負載。 如果部署於 StorS
 | 進行備份 |一種可讓使用者進行磁碟區互動式備份的功能。 相對於透過定義的原則進行自動備份，它是進行磁碟區手動備份的替代方式。 |
 | 精簡佈建 |一種可在儲存體系統中以最佳效率使用可用之儲存空間的方法。 在精簡佈建中，會根據每個使用者在任何給定時間所需的最小空間，在多個使用者之間配置儲存體。 另請參閱 *豐富佈建*。 |
 | 分層 |根據目前使用量、時間以及與其他資料的關聯性來排列邏輯群組中的資料。 StorSimple 會自動排列各層的資料。 |
-| 磁碟區 |以磁碟機形式呈現的邏輯存放區域。 StorSimple 磁碟區會對應至主機所掛接的磁碟區，包括透過使用 iSCSI 及 StorSimple 裝置探索到的磁碟區。 |
+| 磁碟區 |以磁碟機形式呈現的邏輯存放區域。 StorSimple 磁片區會對應至主機所裝載的磁片區，包括透過使用 iSCSI 和 StorSimple 裝置所探索到的磁片區。 |
 | 磁碟區容器 |磁碟區和套用至其中之設定的群組。 StorSimple 裝置中分組為磁碟區容器的所有磁碟區。 磁碟區容器設定包括儲存體帳戶、使用相關聯的加密金鑰將資料傳送至雲端的加密設定，以及對牽涉到雲端之作業所耗用的頻寬。 |
 | 磁碟區群組 |在 StorSimple Snapshot Manager 中，磁碟區群組是為了協助處理備份而設定的磁碟區集合。 |
 | 磁碟區陰影複製服務 (VSS) |一種 Windows Server 作業系統服務，可藉由與 VSS 感知應用程式通訊，來協調建立增量快照，以促進應用程式一致性。 VSS 確保取得快照時應用程式會暫時停用。 |

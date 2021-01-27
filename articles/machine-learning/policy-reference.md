@@ -1,18 +1,18 @@
 ---
 title: Azure Machine Learning 的內建原則定義
 description: 列出 Azure Machine Learning Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.author: larryfr
 author: BlackMist
 ms.topic: reference
 ms.service: machine-learning
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 778930d7370496387067823e88aa63f840b46782
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 09350ae9482ea89c0a0012a338a5a06832f0becc
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703552"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98807039"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-machine-learning"></a>Azure 原則 Azure Machine Learning 的內建原則定義
 

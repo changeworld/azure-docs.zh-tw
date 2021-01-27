@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
-ms.date: 06/26/2020
-ms.openlocfilehash: 74dd3a6b19d241fdf05e6438226227147ba4afbd
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.date: 01/25/2021
+ms.openlocfilehash: da21fd2b6f8d427369cee89e0ad93d63e8608784
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165938"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808260"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL Database 和 Azure Synapse Analytics 連線結構
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -66,7 +66,7 @@ SQL Database 和 Azure Synapse 中的伺服器支援伺服器連線原則設定�
 ![此圖顯示如何透過 Azure SQL Database 閘道建立 TCP 會話，而所有後續的封包都會流經閘道。](./media/connectivity-architecture/connectivity-onprem.png)
 
 > [!IMPORTANT]
-> 額外的開啟 TCP 通訊埠1434和14000-14999，以啟用 [與 DAC 的連接](/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)
+> 額外的開啟 TCP 通訊埠1434和14000-14999，以啟用 [與 DAC 的連接](/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators#connecting-with-dac)
 
 ## <a name="gateway-ip-addresses"></a>閘道 IP 位址
 
@@ -83,7 +83,7 @@ SQL Database 和 Azure Synapse 中的伺服器支援伺服器連線原則設定�
 | 巴西南部         | 104.41.11.5, 191.233.200.14, 191.234.144.16, 191.234.152.3 |
 | 加拿大中部       | 40.85.224.249, 52.246.152.0, 20.38.144.1 |
 | 加拿大東部          | 40.86.226.166, 52.242.30.154, 40.69.105.9 , 40.69.105.10 |
-| 美國中部           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 |
+| 美國中部           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1, 13.89.169.20 |
 | 中國東部           | 139.219.130.35     |
 | 中國東部 2         | 40.73.82.1         |
 | 中國北部          | 139.219.15.17      |
@@ -104,7 +104,7 @@ SQL Database 和 Azure Synapse 中的伺服器支援伺服器連線原則設定�
 | 南韓中部        | 52.231.32.42, 52.231.17.22 ,52.231.17.23 |
 | 南韓南部          | 52.231.200.86      |
 | 美國中北部     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
-| 歐洲北部         | 40.113.93.91, 191.235.193.75, 52.138.224.1, 13.74.104.113 |
+| 北歐         | 40.113.93.91, 191.235.193.75, 52.138.224.1, 13.74.104.113 |
 | 挪威東部          | 51.120.96.0        |
 | 挪威西部          | 51.120.216.0       |
 | 南非北部   | 102.133.152.0, 102.133.120.2       |

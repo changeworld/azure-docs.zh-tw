@@ -4,12 +4,12 @@ description: 了解如何使用 C# 開發 Azure Functions。
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 77ae736c787666df5e78358bc78e06eee9b7d4f9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 335cc3017e7b016666324306181c90a0e405a956
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936918"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806315"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# 開發人員參考
 
@@ -140,7 +140,7 @@ public static class BindingExpressionsExample
 
 此檔案的目的是要提供資訊給調整控制器，以用於調整取用 [方案的決策](event-driven-scaling.md)。 因此，檔案只會有觸發程序資訊，而不會有輸入或輸出繫結。
 
-產生的 *function.json* 檔案包含 `configurationSource` 屬性 (property)，指示執行階段使用 .NET 屬性 (attribute) 屬性進行繫結，而不是使用 *function.json* 設定。 以下是範例：
+產生的 *function.json* 檔案包含 `configurationSource` 屬性 (property)，指示執行階段使用 .NET 屬性 (attribute) 屬性進行繫結，而不是使用 *function.json* 設定。 以下為範例：
 
 ```json
 {

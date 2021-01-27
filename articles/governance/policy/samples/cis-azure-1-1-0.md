@@ -1,15 +1,15 @@
 ---
 title: CIS Microsoft Azure 基礎基準測試的法規合規性詳細資料
 description: CIS Microsoft Azure 基礎基準測試法規合規性內建方案的詳細資料。 每個控制項都會對應至一或多個可協助評量的 Azure 原則定義。
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 0e1c63f92809b6afa1f6d2e61b8ae169f9eec07d
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 85467c086225c4d9e7699debb9871dbd197ebfd2
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685641"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98807064"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-regulatory-compliance-built-in-initiative"></a>CIS Microsoft Azure 基礎基準測試法規合規性內建方案的詳細資料
 
@@ -135,7 +135,7 @@ ms.locfileid: "98685641"
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[弱點評量解決方案應修復弱點](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F760a85ff-6162-42b3-8d70-698e268f648c) |Azure 資訊安全中心會依建議監視弱點評定解決方案偵測到的弱點，以及不具弱點評定解決方案的 VM。 |AuditIfNotExists, Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VMVulnerabilities_Audit.json) |
+|[虛擬機器上應啟用弱點評估解決方案](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F501541f7-f7e7-4cd6-868c-4190fdad3ac9) |稽核虛擬機器，以偵測其是否正在執行支援的弱點評估解決方案。 每個網路風險和安全性計畫的核心部分都在於識別和分析弱點。 Azure 資訊安全中心的標準定價層包含掃描虛擬機器的弱點，不需額外費用。 此外，資訊安全中心可以自動為您部署此工具。 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ServerVulnerabilityAssessment_Audit.json) |
 
 ### <a name="ensure-asc-default-policy-setting-monitor-jit-network-access-is-not-disabled"></a>確定 ASC 預設原則設定 [監視 JIT 網路存取] 不是 [已停用]
 
@@ -176,14 +176,6 @@ ms.locfileid: "98685641"
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[訂用帳戶應具有連絡人電子郵件地址以處理安全性問題](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4f4f78b8-e367-4b10-a341-d9a4ad5cf1c7) |為確保在您的其中一個訂用帳戶有潛在安全性缺口時，您組織中的相關人員會收到通知，請設定要接收資訊安全中心所傳來電子郵件通知的安全性連絡人。 |AuditIfNotExists, Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Security_contact_email.json) |
-
-### <a name="ensure-that-security-contact-phone-number-is-set"></a>確定已設定安全性連絡人的 [電話號碼]
-
-**識別碼**：CIS Azure 2.17 **擁有權**：客戶
-
-|名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
-|---|---|---|---|
-|[應為您的訂用帳戶提供安全性連絡人電話號碼](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb4d66858-c922-44e3-9566-5cdb7a7be744) |輸入要在 Azure 資訊安全中心偵測到資源洩露時，用來接收通知的電話號碼 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Security_contact_phone_number.json) |
 
 ### <a name="ensure-that-send-email-notification-for-high-severity-alerts-is-set-to-on"></a>確定 [在出現高嚴重性警示時傳送電子郵件通知] 會設定為 [開啟]
 

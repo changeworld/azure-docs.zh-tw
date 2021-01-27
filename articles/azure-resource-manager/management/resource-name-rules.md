@@ -2,13 +2,13 @@
 title: 資源命名限制
 description: 顯示命名 Azure 資源的規則和限制。
 ms.topic: conceptual
-ms.date: 12/29/2020
-ms.openlocfilehash: bd8ba72d43b7e3e5a9145d756741436f0a49e18b
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.date: 01/26/2021
+ms.openlocfilehash: d298688dbd13cc32c9cca078b5e20e6a5f054450
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762483"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806887"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure 資源的命名規則和限制
 
@@ -635,7 +635,7 @@ ms.locfileid: "98762483"
 > | --- | --- | --- | --- |
 > | managedInstances | 全域 | 1-63 | 小寫字母、數字和連字號。<br><br>不能以連字號開頭或結尾。 <br><br> 不能有任何特殊字元，例如 `@` 。 |
 > | servers | 全域 | 1-63 | 小寫字母、數字和連字號。<br><br>不能以連字號開頭或結尾。 |
-> | servers / administrators | 伺服器 |  | 必須是 `ActiveDirectory`。 <br><br> 不能有任何特殊字元，例如 `@` 。|
+> | servers / administrators | 伺服器 |  | 必須是 `ActiveDirectory`。 |
 > | servers / databases | 伺服器 | 1-128 | 不能使用：<br>`<>*%&:\/?`<br><br>不能以句號或空格結尾。 |
 > | servers / databases / syncGroups | [資料庫] | 1-150 | 英數字元、連字號和底線。 |
 > | servers / elasticPools | 伺服器 | 1-128 | 不能使用：<br>`<>*%&:\/?`<br><br>不能以句號或空格結尾。 |

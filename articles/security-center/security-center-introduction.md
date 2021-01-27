@@ -12,14 +12,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2021
+ms.date: 01/26/2021
 ms.author: memildin
-ms.openlocfilehash: 3ed290cc35195dfb02db9fbb72f092f6f4688291
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 9f39988375f58f75dad2b623cd3d937022a072e7
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757300"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806191"
 ---
 # <a name="what-is-azure-security-center"></a>什麼是 Azure 資訊安全中心？
 
@@ -105,9 +105,8 @@ Azure 資訊安全中心的價值核心在於其建議。 建議是專為工作�
 
 ### <a name="integration-with-microsoft-defender-for-endpoint"></a>與端點的 Microsoft Defender 整合
 
-資訊安全中心可與端點 Microsoft Defender 進行自動原生整合。 這表示不需要任何設定，您的 Windows 和 Linux 機器即可與資訊安全中心的建議與評量功能完全整合。
+適用于伺服器的 Azure Defender 包含自動與 Microsoft Defender for Endpoint 的原生整合。 深入瞭解， [使用資訊安全中心的整合式 EDR 解決方案來保護您的端點： Microsoft Defender For Endpoint](security-center-wdatp.md)
 
-此外，資訊安全中心可讓您在伺服器環境自動化執行應用程式控制原則。 資訊安全中心的自適性應用程式控制會在所有 Windows 伺服器啟用端對端應用程式核准清單。 建立規則和檢查違規全都會自動完成，您不需要動手。
 
 ### <a name="protect-paas"></a>保護 PaaS
 

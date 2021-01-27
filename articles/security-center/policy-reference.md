@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure 資訊安全中心的內建原則定義
 description: 列出適用於 Azure 資訊安全中心的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 01/24/2021
+ms.date: 01/25/2021
 ms.topic: reference
 author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 1192e765dc3cc001f8d1a1c6a28fe1a5cf4c9ecc
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 568b8761f2b528b1f5d8e3971503834ab5321ed5
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757266"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806936"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>適用於 Azure 資訊安全中心的 Azure 原則內建定義
 

@@ -796,6 +796,10 @@
       href: /python/api/overview/azure/datafactory
 - name: 資源
   items:
+    - name: 資料流程保留容量總覽
+      href: data-flow-reserved-capacity-overview.md
+    - name: 資料流程瞭解保留費用
+      href: data-flow-understand-reservation-charges.md
     - name: 白皮書
       href: whitepapers.md
     - name: 常見問題集

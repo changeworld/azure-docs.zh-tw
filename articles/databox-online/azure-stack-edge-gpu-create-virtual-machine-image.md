@@ -6,24 +6,24 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: fd55110bbfaed72051bfc388692421cd8209609d
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 0985779aeb14fd4f3d6a12cf152e4c63c909d613
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763763"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806673"
 ---
 # <a name="create-custom-vm-images-for-your-azure-stack-edge-pro-device"></a>為 Azure Stack Edge Pro 裝置建立自訂 VM 映像
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-若要在 Azure Stack Edge Pro 裝置上部署 VM，您必須能夠建立可用於建立 VM 的自訂 VM 映像。 本文說明建立 Linux 或 Windows VM 自訂映像所需的步驟，您可將其用於在 Azure Stack Edge Pro 裝置上部署 VM。
+若要在 Azure Stack Edge Pro 裝置上部署 VM，您必須能夠建立可用於建立 VM 的自訂 VM 映像。 本文說明建立 Linux 或 Windows VM 自訂映射所需的步驟，這些映射可用來在您的 Azure Stack Edge Pro 裝置上部署 Vm。
 
 ## <a name="vm-image-workflow"></a>VM 映像工作流程
 
-此工作流程會要求您在 Azure 中建立虛擬機器、自訂 VM、一般化，然後下載對應至該 VM 的 VHD。 此一般化 VHD 會上傳至 Azure Stack Edge Pro、從該 VHD 建立受控磁碟、從受控磁碟建立映像，最後從該映像建立 VM。   
+此工作流程會要求您在 Azure 中建立虛擬機器、自訂 VM、一般化，然後下載對應至該 VM 的 VHD。 此一般化 VHD 會上傳至 Azure Stack Edge Pro。 從該 VHD 建立受控磁片。 從受控磁片建立映射。 最後，會從該映射建立 Vm。
 
 如需詳細資訊，請移至[使用 Azure PowerShell 在 Azure Stack Edge Pro 裝置上部署 VM](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md)。
 
@@ -76,7 +76,7 @@ ms.locfileid: "97763763"
 |[Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.ubuntuserver) |Ubuntu Server 是全世界最受歡迎的雲端 Linux 環境。|Canonical|
 |[Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.debian) |Debian GNU/Linux 是最受歡迎其中一個 Linux 散發套件。     |credativ|
 
-如需可運作的 Azure Marketplace 映像完整清單 (目前尚未測試)，請移至 [Azure Stack Hub 可用的 Azure Marketplace 項目](/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910)。
+如需可運作的 Azure Marketplace 映像完整清單 (目前尚未測試)，請移至 [Azure Stack Hub 可用的 Azure Marketplace 項目](/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910&preserve-view=true)。
 
 
 ## <a name="next-steps"></a>後續步驟

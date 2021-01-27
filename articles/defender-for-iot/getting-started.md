@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/26/2020
 ms.author: shhazam
-ms.openlocfilehash: ed6c88826b41df0bdfef8cbbcb2569b3cea8f868
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 82fcf7f129d5caba471d6d72da83a317b26c638c
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832381"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98807898"
 ---
-# <a name="getting-started-with-defender-for-iot"></a>開始使用 Defender for IoT
+# <a name="get-started-with-defender-for-iot"></a>開始使用適用于 IoT 的 Defender
 
 本文概述設定適用于 IoT 的 Azure Defender 所需的步驟。 處理常式需要您：
 
@@ -80,7 +80,7 @@ ms.locfileid: "97832381"
 
 若要安裝和設定：
 
-1. 從適用于 IoT 的 Defender 入口網站選取 [ **消費者入門** ]。
+1. 從適用于 IoT 的 Defender 入口網站選取 [ **開始使用** ]。
 1. 選取 [內部 **部署管理主控台** ] 索引標籤。
 1. 選擇版本，然後選取 [ **下載**]。
 1. 安裝內部部署管理主控台軟體。 如需詳細資訊，請參閱 [Defender For IoT 安裝](how-to-install-software.md)。
@@ -105,7 +105,7 @@ ms.locfileid: "97832381"
 
 從適用于 IoT 的 Azure Defender 入口網站下載 ISO 套件、安裝軟體，以及設定感應器。
 
-1. 從適用于 IoT 的 Defender 入口網站選取 [ **消費者入門** ]。
+1. 從適用于 IoT 的 Defender 入口網站選取 [ **開始使用** ]。
 1. 選取 [ **設定感應器**]。
 1. 選擇版本，然後選取 [ **下載**]。
 1. 安裝感應器軟體。 如需詳細資訊，請參閱 [Defender For IoT 安裝](how-to-install-software.md)。
@@ -127,7 +127,7 @@ ms.locfileid: "97832381"
 
 藉由設定 Azure Sentinel，將警示資訊傳送至 Azure Sentinel。 請參閱 [將您的資料從 Defender For IoT 連接到 Azure Sentinel](how-to-configure-with-sentinel.md)。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [歡迎使用適用于 IoT 的 Azure Defender](overview.md)
 

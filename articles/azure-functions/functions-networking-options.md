@@ -1,16 +1,16 @@
 ---
 title: Azure Functions 網路選項
 description: Azure Functions 中所有可用的網路選項概觀。
-author: jeffhollan
+author: cachai2
 ms.topic: conceptual
-ms.date: 10/27/2020
-ms.author: jehollan
-ms.openlocfilehash: f4d7611f285535680469f3a334ab889b0b644bfe
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 1/21/2021
+ms.author: cachai
+ms.openlocfilehash: 2c3f207e98f574bb6c43f87d34b0a404e263e83c
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936853"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806989"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 網路選項
 
@@ -85,12 +85,9 @@ Azure Functions 中的虛擬網路整合會使用共用基礎結構搭配 App Se
 
 若要深入了解，請參閱[虛擬網路服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)。
 
-## <a name="restrict-your-storage-account-to-a-virtual-network-preview"></a>將您的儲存體帳戶限制為虛擬網路 (預覽版) 
+## <a name="restrict-your-storage-account-to-a-virtual-network"></a>將儲存體帳戶限定於虛擬網路 
 
-建立函式應用程式時，您必須建立或連結至支援 Blob、佇列及資料表儲存體的一般用途 Azure 儲存體帳戶。  您可以使用服務端點或私人端點所保護的儲存體帳戶來取代此儲存體帳戶。  這項預覽功能目前僅適用于西歐的 Windows Premium 方案。  若要使用限制為私人網路的儲存體帳戶來設定函數：
-
-> [!NOTE]
-> 限制儲存體帳戶目前僅適用于使用西歐的 Windows 的 Premium 函式
+建立函式應用程式時，您必須建立或連結至支援 Blob、佇列及資料表儲存體的一般用途 Azure 儲存體帳戶。  您可以使用服務端點或私人端點所保護的儲存體帳戶來取代此儲存體帳戶。  這項功能目前僅適用于 Windows Premium 方案。  若要使用限制為私人網路的儲存體帳戶來設定函數：
 
 1. 使用未啟用服務端點的儲存體帳戶來建立函數。
 1. 設定函式以連接到您的虛擬網路。
