@@ -1,5 +1,5 @@
 ---
-title: 封裝和傳遞以案例為基礎的遷移指引 |Microsoft Docs
+title: 封裝和傳遞以案例為基礎的遷移指導方針
 description: 本文將為您提供封裝和傳遞的案例指引，協助您從 Azure 媒體服務 v2 遷移至 v3。
 services: media-services
 author: IngridAtMicrosoft
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 74437a4adee9e2853f7b932316d57e406b7d00be
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 78f3e6ee53d5158096882f5554054c3ff06a32b4
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690284"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895232"
 ---
 # <a name="packaging-and-delivery-scenario-based-migration-guidance"></a>封裝和傳遞以案例為基礎的遷移指導方針
 

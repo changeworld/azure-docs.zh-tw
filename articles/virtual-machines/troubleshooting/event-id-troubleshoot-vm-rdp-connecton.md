@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 507cd6cfe9f251dbc304b579d634ff986b001264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c293945a52dd810975b36144f224278163166ba8
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87088592"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878438"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>依事件識別碼對 Azure VM 的 RDP 連線問題進行疑難排解 
 
@@ -43,7 +43,7 @@ ms.locfileid: "87088592"
 
 若要從遠端連線到 VM，請使用[如何使用遠端工具對 Azure VM 問題進行疑難排解](remote-tools-troubleshoot-azure-vm-issues.md)中的其中一個方法。
 
-## <a name="scenario-1"></a>實例 1
+## <a name="scenario-1"></a>案例 1
 
 ### <a name="event-logs"></a>事件記錄檔
 
@@ -58,7 +58,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **來源：**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **日期：**          *時間* <br />
 **事件識別碼：**      1058 <br />
-工作**類別：** 沒有 <br />
+工作 **類別：** 沒有 <br />
 **層級：**         錯誤 <br />
 **關鍵字：**      經典 <br />
 **使用者：**          N/A <br />
@@ -69,7 +69,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **來源：**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **日期：**          *時間* <br />
 **事件識別碼：**      1058 <br />
-工作**類別：** 沒有 <br />
+工作 **類別：** 沒有 <br />
 **層級：**         錯誤 <br />
 **關鍵字：**      經典 <br />
 **使用者：**          N/A <br />
@@ -80,7 +80,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **來源：**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **日期：**          *時間* <br />
 **事件識別碼：**      1057 <br />
-工作**類別：** 沒有 <br />
+工作 **類別：** 沒有 <br />
 **層級：**         錯誤 <br />
 **關鍵字：**      經典 <br />
 **使用者：**          N/A <br />
@@ -98,7 +98,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **來源：**        Schannel <br />
 **日期：**          — <br />
 **事件識別碼：**      36870 <br />
-工作**類別：** 沒有 <br />
+工作 **類別：** 沒有 <br />
 **層級：**         錯誤 <br />
 **關鍵 字：**       <br />
 **使用者：**          SYSTEM <br />
@@ -156,23 +156,23 @@ Start-Service -Name "SessionEnv"
 
 如果您無法更新憑證，請依照下列步驟嘗試刪除憑證：
 
-1. 在相同 VNET 中的另一個 VM 上開啟 [執行]**** 方塊，並輸入 **mmc**，然後按 [確定]****。 
+1. 在相同 VNET 中的另一個 VM 上開啟 [執行] 方塊，並輸入 **mmc**，然後按 [確定]。 
 
-2. 在 [檔案]**** 功能表上，選取 [新增/移除嵌入式管理單元]****。
+2. 在 [檔案] 功能表上，選取 [新增/移除嵌入式管理單元]。
 
-3. 在 [可用的嵌入式管理單元]**** 清單中選取 [憑證]****，然後選取 [新增]****。
+3. 在 [可用的嵌入式管理單元] 清單中選取 [憑證]，然後選取 [新增]。
 
 4. 選取 [電腦帳戶]，然後選取 [下一步]。
 
-5. 選取 [其他電腦]****，然後針對有問題 VM 新增 IP 位址。
+5. 選取 [其他電腦]，然後針對有問題 VM 新增 IP 位址。
    >[!Note]
    >請嘗試使用內部網路，以避免使用虛擬 IP 位址。
 
-6. 選取 [完成]****，然後選取 [確定]****。
+6. 選取 [完成]，然後選取 [確定]。
 
    ![選取電腦](./media/event-id-troubleshoot-vm-rdp-connecton/select-computer.png)
 
-7. 展開憑證，移至 Remote Desktop\Certificates 資料夾，以滑鼠右鍵按一下憑證，然後選取 [刪除]****。
+7. 展開憑證，移至 Remote Desktop\Certificates 資料夾，以滑鼠右鍵按一下憑證，然後選取 [刪除]。
 
 8. 重新啟動遠端桌面組態服務：
 
@@ -220,7 +220,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **來源：**        Schannel <br />
 **日期：**          — <br />
 **事件識別碼：**      36871 <br />
-工作**類別：** 沒有 <br />
+工作 **類別：** 沒有 <br />
 **層級：**         錯誤 <br />
 **關鍵 字：**       <br />
 **使用者：**          SYSTEM <br />
@@ -235,11 +235,11 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 
 RDP 使用 TLS 1.0 作為預設通訊協定。 不過，您可以將此通訊協定變更為已成為新標準的 TLS 1.1。
 
-若要對此問題進行疑難排解，請參閱[對使用 RDP 連線至 Azure VM 時的驗證錯誤進行疑難排解](troubleshoot-authentication-error-rdp-vm.md#tls-version)。
+若要對此問題進行疑難排解，請參閱[對使用 RDP 連線至 Azure VM 時的驗證錯誤進行疑難排解](/troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm#tls-version)。
 
 ## <a name="scenario-3"></a>案例 3
 
-如果您已在 VM 上安裝**遠端桌面連線代理人**角色，請檢查在過去 24 小時內是否有事件 2056 或事件 1296。 在 CMD 執行個體中執行下列命令： 
+如果您已在 VM 上安裝 **遠端桌面連線代理人** 角色，請檢查在過去 24 小時內是否有事件 2056 或事件 1296。 在 CMD 執行個體中執行下列命令： 
 
 ```cmd
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Windows-TerminalServices-SessionBroker '] and EventID=2056 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more

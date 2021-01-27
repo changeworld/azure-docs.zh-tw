@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 01/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: b50c942d2e05d7f5234a17f1cf36137309c7ce97
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 24640254f32270b8c96c790dca7db31e285cc27f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973706"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895283"
 ---
 # <a name="blocking-legacy-authentication"></a>封鎖舊版驗證
  
@@ -37,6 +37,7 @@ ms.locfileid: "95973706"
 1. 依 **用戶端應用程式** 篩選 > 檢查顯示的所有 **舊版驗證用戶端** 選項。
 1. 依 **狀態**  >  **成功** 篩選。 
 1. 如有必要，請使用 **日期** 篩選來展開您的日期範圍。
+1. 如果您已啟用新的登 [入活動報告預覽](../reports-monitoring/concept-all-sign-ins.md)，請在 **使用者登入 (非互動式)** 索引標籤上重複上述步驟。
 
 篩選只會顯示所選舊版驗證通訊協定所做的成功登入嘗試。 按一下各項登入嘗試，即會顯示更多詳細資料。 選取個別資料列之後，[基本資訊] 索引標籤下的 [用戶端應用程式] 資料行或 [用戶端應用程式] 欄位，將會指出使用的是舊版驗證通訊協定 這些記錄會顯示哪些使用者仍依賴舊式驗證，以及哪些應用程式目前會使用舊式通訊協定提出驗證要求。 針對未出現在這些記錄中且已確認不使用舊版驗證的使用者，請執行條件式存取原則或啟用基準原則：僅封鎖這些使用者的舊版驗證。
 

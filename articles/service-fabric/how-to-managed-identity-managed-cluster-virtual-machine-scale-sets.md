@@ -4,19 +4,19 @@ description: 本文說明如何將受控識別新增至 Service Fabric 受控叢
 ms.topic: how-to
 ms.date: 11/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 00e679b07a44b799b6ac6677201bb59eeddcd6cf
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 9edcf75451f43f2a00cd01d5ca7f385704b1ea7f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96841415"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878421"
 ---
 # <a name="add-a-managed-identity-to-a-service-fabric-managed-cluster-node-type-preview"></a>將受控識別新增至 Service Fabric 受控叢集節點類型 (preview) 
 
-Service Fabric 受控叢集中的每個節點類型都是由虛擬機器擴展集支援。 若要允許受控識別搭配受控叢集節點類型使用，則會將屬性 `vmManagedIdentity` 新增至節點類型定義，其中包含可能使用的身分識別清單 `userAssignedIdentities` 。 功能會反映受控識別如何在非受控叢集中使用，例如使用受控識別搭配 [Azure Key Vault 的虛擬機器擴展集擴充](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows)功能。
+Service Fabric 受控叢集中的每個節點類型都是由虛擬機器擴展集支援。 若要允許受控識別搭配受控叢集節點類型使用，則會將屬性 `vmManagedIdentity` 新增至節點類型定義，其中包含可能使用的身分識別清單 `userAssignedIdentities` 。 功能會反映受控識別如何在非受控叢集中使用，例如使用受控識別搭配 [Azure Key Vault 的虛擬機器擴展集擴充](../virtual-machines/extensions/key-vault-windows.md)功能。
 
 
-如需在節點類型上使用受控識別的 Service Fabric 受控叢集部署範例，請參閱 [此範本](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-1-NT-MI)。 如需支援的區域清單，請參閱 [受控叢集常見問題](https://docs.microsoft.com/azure/service-fabric/faq-managed-cluster#what-regions-are-supported-in-the-preview)。
+如需在節點類型上使用受控識別的 Service Fabric 受控叢集部署範例，請參閱 [此範本](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-1-NT-MI)。 如需支援的區域清單，請參閱 [受控叢集常見問題](./faq-managed-cluster.md#what-regions-are-supported-in-the-preview)。
 
 > [!NOTE]
 > 這項功能目前僅支援使用者指派的身分識別。
@@ -26,7 +26,7 @@ Service Fabric 受控叢集中的每個節點類型都是由虛擬機器擴展�
 開始之前：
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
-* 如果您打算使用 PowerShell，請 [安裝](https://docs.microsoft.com/cli/azure/install-azure-cli) Azure CLI 以執行 CLI 參考命令。
+* 如果您打算使用 PowerShell，請 [安裝](/cli/azure/install-azure-cli) Azure CLI 以執行 CLI 參考命令。
 
 ## <a name="create-a-user-assigned-managed-identity"></a>建立使用者指派的受控識別 
 
@@ -131,4 +131,4 @@ New-AzRoleAssignment -PrincipalId fbc587f2-66f5-4459-a027-bcd908b9d278 -RoleDefi
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [將應用程式部署到 Service Fabric 受控叢集](https://docs.microsoft.com/azure/service-fabric/tutorial-managed-cluster-deploy-app) 
+> [將應用程式部署到 Service Fabric 受控叢集](./tutorial-managed-cluster-deploy-app.md)

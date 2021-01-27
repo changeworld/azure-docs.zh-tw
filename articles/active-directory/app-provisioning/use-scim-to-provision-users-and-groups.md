@@ -12,18 +12,19 @@ ms.date: 01/12/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 63bd44140ea5c355c3bb1a891a21e6c2e73ab041
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bf1057276a543c18b746bb60b7e7a54bf28dec6f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98679495"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98892555"
 ---
-# <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>教學課程 - 建置 SCIM 端點並設定使用 Azure AD 的使用者佈建
+# <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>教學課程：開發和規劃 SCIM 端點的布建
 
 身為應用程式開發人員，您可以使用跨網域身分識別管理系統 (SCIM) 使用者管理 API，在您的應用程式與 Azure AD 之間啟用使用者和群組的自動佈建。 本文說明如何建置 SCIM 端點，並與 Azure AD 佈建服務整合。 SCIM 規格提供一般的使用者佈建結構描述。 與 SAML 或 OpenID Connect 等同盟標準搭配使用時，SCIM 可為管理員提供端對端、以標準為基礎的存取管理解決方案。
 
-SCIM 是兩個端點的標準化定義：/Users 端點和 /Groups 端點。 它會使用一般 REST 動詞來建立、更新和刪除物件，以及針對一般屬性 (例如群組名稱、使用者名稱、名字、姓氏和電子郵件) 預先定義的結構描述。 提供 SCIM 2.0 REST API 的應用程式，可減輕或消除使用專屬使用者管理 API 的麻煩。 例如，任何符合規範的 SCIM 用戶端都知道如何對 /Users 端點進行 JSON 物件的 HTTP POST，以建立新的使用者項目。 符合 SCIM 標準的應用程式可以立即運用既有的用戶端、工具和程式碼，而無須使用略為不同的 API 來執行相同的基本動作。 
+SCIM 是兩個端點的標準化定義： `/Users` 端點和 `/Groups` 端點。 它會使用一般 REST 動詞來建立、更新和刪除物件，以及針對一般屬性 (例如群組名稱、使用者名稱、名字、姓氏和電子郵件) 預先定義的結構描述。 提供 SCIM 2.0 REST API 的應用程式，可減輕或消除使用專屬使用者管理 API 的麻煩。 例如，任何符合規範的 SCIM 用戶端都知道如何將 JSON 物件的 HTTP POST 建立至 `/Users` 端點，以建立新的使用者專案。 符合 SCIM 標準的應用程式可以立即運用既有的用戶端、工具和程式碼，而無須使用略為不同的 API 來執行相同的基本動作。 
 
 ![使用 SCIM 從 Azure AD 佈建至應用程式](media/use-scim-to-provision-users-and-groups/scim-provisioning-overview.png)
 
@@ -748,7 +749,9 @@ Azure AD 佈建服務目前可在 AzureActiveDirectory 的 IP 範圍下運作，
 
 現在，您已設計結構描述並了解 Azure AD SCIM 實作，接著即可開始開發您的 SCIM 端點。 您可以利用 SCIM 社群所發佈的一些開放原始碼 SCIM 程式庫，而不要從頭開始完全靠自己建置實作。
 
-開放原始碼 .NET Core [參考程式碼](https://aka.ms/SCIMReferenceCode)由 Azure AD 佈建小組所發佈，這項資源可讓您立即開始進行開發。 建置 SCIM 端點後，您會想要加以測試。您可以使用在參考程式碼中提供的 [postman 測試](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint)集合，或透過[上方](#user-operations)提供的範例要求/回應來執行。  
+如需有關如何建立 SCIM 端點（包括範例）的指引，請參閱 [開發範例 SCIM 端點](use-scim-to-build-users-and-groups-endpoints.md)。
+
+Azure AD 布建小組所發佈的開放原始碼 .NET Core [參考程式碼範例](https://aka.ms/SCIMReferenceCode) ，是可讓您開始進行開發的其中一個資源。 建置 SCIM 端點後，您會想要加以測試。您可以使用在參考程式碼中提供的 [postman 測試](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint)集合，或透過[上方](#user-operations)提供的範例要求/回應來執行。  
 
    > [!Note]
    > 參考程式碼以「原狀」提供，目的是要協助您開始建置 SCIM 端點。 歡迎社群供稿，以協助建置和維護程式碼。
@@ -1127,11 +1130,17 @@ Azure AD 可設定為將已指派的使用者和群組自動佈建至實作 [SCI
 
 1. 登入 [Azure Active Directory 入口網站](https://aad.portal.azure.com)。 請注意，您可以註冊[開發人員計劃](https://developer.microsoft.com/office/dev-program)，以取得具有 P2 授權的 Azure Active Directory 免費試用版
 2. 在左側窗格中，選取 [企業應用程式]。 此時會顯示所有已設定的應用程式清單，包括已從資源庫新增的應用程式。
-3. 選取 [+ 新增應用程式] > [全部] > [非資源庫應用程式]。
-4. 輸入您的應用程式名稱，然後選取 [新增] 以建立應用程式物件。 新的應用程式會新增至企業應用程式清單，並在開啟後進入其應用程式管理畫面。
+3. 選取 [ **+ 新增應用程式**  >  **+ 建立您自己的應用程式**]。
+4. 輸入應用程式的名稱，選擇 [*整合您在資源庫中找不到的任何其他應用程式*] 選項，然後選取 [ **新增** ] 以建立應用程式物件。 新的應用程式會新增至企業應用程式清單，並在開啟後進入其應用程式管理畫面。
 
-   ![顯示 Azure AD 應用程式庫的螢幕擷取畫面](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)<br/>
-   *Azure AD 應用程式庫*
+   ![螢幕擷取畫面顯示 Azure AD 應用程式庫 ](media/use-scim-to-provision-users-and-groups/scim-figure-2b-1.png)
+    *Azure AD 應用程式資源庫*
+
+   > [!NOTE]
+   > 如果您使用舊的應用程式資源庫體驗，請遵循以下的螢幕指南。
+   
+   ![螢幕擷取畫面顯示 ](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)
+    *Azure AD 舊有應用程式資源庫* 的 Azure AD 舊有應用程式資源庫體驗
 
 5. 在應用程式管理畫面中，選取左側面板中的 [佈建]。
 6. 在 [佈建模式] 功能表上，選取 [自動]。
@@ -1235,6 +1244,7 @@ OAuth 驗證碼授與流程中的步驟：
 
 ## <a name="related-articles"></a>相關文章
 
+* [開發範例 SCIM 端點](use-scim-to-build-users-and-groups-endpoints.md)
 * [SaaS 應用程式的自動化使用者佈建和解除佈建](user-provisioning.md)
 * [自訂使用者佈建的屬性對應](customize-application-attributes.md)
 * [撰寫屬性對應的運算式](functions-for-customizing-application-data.md)

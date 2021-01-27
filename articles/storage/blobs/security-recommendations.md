@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: e3cfede444b65ee6990afd006d3b174d65f9cfad
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 05fdf681b7cdc3b8145a30041e261eece420e560
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179158"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878082"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Blob 儲存體的安全性建議
 
@@ -30,8 +30,8 @@ Azure 資訊安全中心會定期分析 Azure 資源的安全性狀態，以找�
 | 建議 | 註解 | 資訊安全中心 |
 |-|----|--|
 | 使用 Azure Resource Manager 部署模型 | 使用 Azure Resource Manager 部署模型來建立新的儲存體帳戶，以進行重要的安全性增強功能，包括絕佳的 Azure 角色型存取控制 (Azure RBAC) 和審核、Resource Manager 型部署和治理、受控識別的存取、秘密的 Azure Key Vault 存取，以及 Azure AD 資料和資源的存取 Azure 儲存體型驗證和授權。 可能的話，請將使用傳統部署模型的現有儲存體帳戶遷移為使用 Azure Resource Manager。 如需 Azure Resource Manager 的詳細資訊，請參閱 [Azure Resource Manager 總覽](../../azure-resource-manager/management/overview.md)。 | - |
-| 為您的所有儲存體帳戶啟用 Azure Defender | 適用于 Azure 儲存體的 Azure Defender 提供額外一層的安全性情報，可偵測不尋常且可能有害的存取或惡意探索儲存體帳戶嘗試。 當活動中發生異常狀況，而且也透過電子郵件傳送給訂用帳戶管理員時，會在 Azure 資訊安全中心中觸發安全性警示，並提供可疑活動的詳細資料，以及如何調查和修復威脅的建議。 如需詳細資訊，請參閱 [設定 Azure Defender 的 Azure 儲存體](../common/azure-defender-storage-configure.md)。 | [是](../../security-center/security-center-sql-service-recommendations.md) |
-| 開啟 blob 的虛刪除 | Blob 的虛刪除可讓您復原已刪除的 blob 資料。 如需有關虛刪除 blob 的詳細資訊，請參閱 [Azure 儲存體 blob 的虛刪除](./soft-delete-blob-overview.md)。 | - |
+| 為您的所有儲存體帳戶啟用 Azure Defender | 適用于 Azure 儲存體的 Azure Defender 提供額外一層的安全性情報，可偵測不尋常且可能有害的存取或惡意探索儲存體帳戶嘗試。 當活動中發生異常狀況，而且也透過電子郵件傳送給訂用帳戶管理員時，會在 Azure 資訊安全中心中觸發安全性警示，並提供可疑活動的詳細資料，以及如何調查和修復威脅的建議。 如需詳細資訊，請參閱 [設定 Azure Defender 的 Azure 儲存體](../common/azure-defender-storage-configure.md)。 | [是](../../security-center/security-center-remediate-recommendations.md) |
+| 為 Blob 開啟虛刪除 | Blob 的虛刪除可讓您復原已刪除的 blob 資料。 如需有關虛刪除 blob 的詳細資訊，請參閱 [Azure 儲存體 blob 的虛刪除](./soft-delete-blob-overview.md)。 | - |
 | 開啟容器的虛刪除 | 適用于容器的虛刪除可讓您在容器刪除之後復原容器。 如需有關容器虛刪除的詳細資訊，請參閱 [容器的虛刪除 (預覽) ](./soft-delete-container-overview.md)。 | - |
 | 鎖定儲存體帳戶以防止意外刪除帳戶 | 您可以鎖定 Azure Resource Manager 資源（例如訂用帳戶、資源群組或儲存體帳戶），以防止組織中的其他使用者不小心刪除或修改它。 鎖定儲存體帳戶不會防止該帳戶中的資料遭到刪除。 它只會防止帳戶本身遭到刪除。 如需詳細資訊，請參閱 [鎖定資源以防止非預期的變更](../../azure-resource-manager/management/lock-resources.md)。
 | 在不可變的 blob 中儲存商務關鍵資料 | 設定合法保存和以時間為基礎的保留原則，將 blob 資料儲存在 WORM (寫入一次，讀取許多) 狀態。 Blob 儲存的, 可以讀取，但無法在保留間隔的持續期間內修改或刪除。 如需詳細資訊，請參閱 [使用不可變的儲存體儲存商務關鍵 blob 資料](storage-blob-immutable-storage.md)。 | - |
@@ -63,7 +63,7 @@ Azure 資訊安全中心會定期分析 Azure 資源的安全性狀態，以找�
 | 允許信任的 Microsoft 服務存取儲存體帳戶 | 開啟儲存體帳戶的防火牆規則會預設封鎖傳入的資料要求，除非要求源自 Azure 虛擬網路 (VNet) 內運作的服務或源自允許的公用 IP位址。 封鎖的要求包括來自其他 Azure 服務、Azure 入口網站及記錄與計量服務等等的要求。 您可以藉由新增例外狀況來允許受信任的 Microsoft 服務存取儲存體帳戶，以允許來自其他 Azure 服務的要求。 如需為信任的 Microsoft 服務新增例外狀況的詳細資訊，請參閱 [設定 Azure 儲存體防火牆和虛擬網路](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。| - |
 | 使用私人端點 | 私人端點會從您的 Azure 虛擬網路將私人 IP 位址指派給儲存體帳戶 (VNet) 。 它會透過私人連結保護您的 VNet 與儲存體帳戶之間的所有流量。 如需私人端點的詳細資訊，請參閱 [使用 Azure 私人端點私下連接至儲存體帳戶](../../private-link/tutorial-private-endpoint-storage-portal.md)。 | - |
 | 使用 VNet 服務標記 | 服務標籤代表來自指定 Azure 服務的一組 IP 位址前置詞。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤。 如需 Azure 儲存體所支援服務標籤的詳細資訊，請參閱 [Azure 服務標記總覽](../../virtual-network/service-tags-overview.md)。 如需示範如何使用服務標記來建立輸出網路規則的教學課程，請參閱 [限制對 PaaS 資源的存取](../../virtual-network/tutorial-restrict-network-access-to-resources.md)。 | - |
-| 限制對特定網路的網路存取 | 限制網路存取需要存取的用戶端需要存取，可減少您的資源暴露在網路攻擊的風險。 | [是](../../security-center/security-center-sql-service-recommendations.md) |
+| 限制對特定網路的網路存取 | 限制網路存取需要存取的用戶端需要存取，可減少您的資源暴露在網路攻擊的風險。 | [是](../../security-center/security-center-remediate-recommendations.md) |
 | 設定網路路由喜好設定 | 您可以設定 Azure 儲存體帳戶的網路路由喜好設定，以指定如何使用 Microsoft 全球網路或網際網路路由，透過網際網路從用戶端將網路流量路由傳送至您的帳戶。 如需詳細資訊，請參閱 [設定 Azure 儲存體的網路路由喜好設定](../common/network-routing-preference.md)。 | - |
 
 ## <a name="loggingmonitoring"></a>記錄/監視
@@ -73,7 +73,7 @@ Azure 資訊安全中心會定期分析 Azure 資源的安全性狀態，以找�
 | 追蹤要求的授權方式 | 啟用 Azure 儲存體記錄，以追蹤針對 Azure 儲存體所提出的每個要求如何獲得授權。 這些記錄會指出是以匿名方式、使用 OAuth 2.0 權杖、使用共用金鑰，或使用共用存取簽章 (SAS) 來進行要求。 如需詳細資訊，請參閱使用 [Azure 監視器的監視 Azure Blob 儲存體](monitor-blob-storage.md) ，或 [使用傳統監視 Azure 儲存體分析記錄](../common/storage-analytics-logging.md)。 | - |
 | 在 Azure 監視器中設定警示 | 設定記錄警示，以設定的頻率評估資源記錄，並根據結果引發警示。 如需詳細資訊，請參閱 [Azure 監視器中的記錄警示](../../azure-monitor/platform/alerts-unified-log.md)。 | - |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [Azure 安全性文件](../../security/index.yml)
 - [安全開發檔](../../security/develop/index.yml)。

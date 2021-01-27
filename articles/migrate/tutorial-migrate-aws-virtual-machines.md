@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: cab7bc7f79cccb1704d7046f79a2000028ffb729
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 430ece58bd3dc1651ac391ba0e29515085ee507b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233248"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878184"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>探索、評估 Amazon Web Services (AWS) VM，並將其遷移至 Azure
 
@@ -80,7 +80,7 @@ ms.locfileid: "98233248"
 
 **Task** | **詳細資料**
 --- | ---
-**建立 Azure Migrate 專案** | 您的 Azure 帳戶需要參與者或擁有者權限，才能[建立新專案](https://docs.microsoft.com/azure/migrate/create-manage-projects)。
+**建立 Azure Migrate 專案** | 您的 Azure 帳戶需要參與者或擁有者權限，才能[建立新專案](./create-manage-projects.md)。
 **驗證您 Azure 帳戶的權限** | 您的 Azure 帳戶必須有建立 VM 以及寫入至 Azure 受控磁碟的權限。
 
 ### <a name="assign-permissions-to-create-project"></a>指派建立專案的權限
@@ -256,7 +256,7 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
     - 使用平台管理和客戶管理的金鑰進行雙重加密
 
    > [!NOTE]
-   > 若要使用 CMK 複寫 VM，您必須在目標資源群組下[建立磁碟加密集](https://go.microsoft.com/fwlink/?linkid=2151800)。 磁碟加密設定物件會將受控磁碟對應至包含要用於 SSE 之 CMK 的 Key Vault。
+   > 若要使用 CMK 複寫 VM，您必須在目標資源群組下[建立磁碟加密集](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set)。 磁碟加密設定物件會將受控磁碟對應至包含要用於 SSE 之 CMK 的 Key Vault。
   
 12. 在 [Azure Hybrid Benefit] 中：
 

@@ -2,15 +2,15 @@
 title: 部署範本 - Azure 入口網站
 description: 了解如何使用 Azure 入口網站建立您的第一個 Azure Resource Manager 範本 (ARM 範本)，以及如何加以部署。
 author: mumian
-ms.date: 06/29/2020
+ms.date: 01/26/2021
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: bdbcecc247a4b5318ba44b92befa7e90ac47aa8c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: HT
+ms.openlocfilehash: 946156caa7252a89cab006d604eb6b441e09c643
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349617"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98892488"
 ---
 # <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立及部署 ARM 範本
 
@@ -33,9 +33,11 @@ ms.locfileid: "96349617"
 
     ![從 Azure 入口網站功能表選取 [建立資源]](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-a-resource.png)
 
-1. 選取 [儲存體] > [儲存體帳戶]。
+1. 在搜尋方塊中，輸入 **儲存體帳戶**，然後按 **[enter]**。
+1. 選取 [建立]  。
 
     ![建立 Azure 儲存體帳戶](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
+
 1. 輸入以下資訊：
 
     |名稱|值|
@@ -168,7 +170,7 @@ Azure 會要求每個 Azure 服務都必須有唯一名稱。 如果您輸入已
     |**帳戶類型**|在本快速入門中請輸入 **Standard_LRS**。 |
     |**種類**|在本快速入門中請輸入 **StorageV2**。 |
     |**存取層**|在本快速入門中請輸入 **Hot**。 |
-    |**最低的 TLS 版本**|輸入 **TLS1_0**。 |
+    |**最小 TLS 版本**|輸入 **TLS1_0**。 |
     |**僅支援 HTTPS 流量**| 在本快速入門中請選取 **true**。 |
     |**允許 Blob 公開存取**| 在本快速入門中請選取 **false**。 |
 

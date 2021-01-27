@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: bed5373cbb9967bd1d86bb80bb3a449430c3b6ae
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 2a37e716b7804b11ab396909f746af84294bb4e3
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044776"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895266"
 ---
 # <a name="drawing-package-requirements"></a>繪圖套件需求
 
@@ -106,7 +106,7 @@ DWG 圖層也必須遵循下列準則：
 * Exteriors 必須繪製為多邊形、聚合線條 (封閉的) 、圓形或橢圓形 (封閉的) 。
 * Exteriors 可能會重迭，但會被解除為一個幾何。
 * 結果層級功能至少必須有4個正方形計量。
-* 產生的層級功能不能大於400正方形計量。
+* 產生的層級功能不能大於400000正方形計量。
 
 如果圖層包含多個重迭的多個線條，則會將多線條解析成單一層級功能。 或者，如果圖層包含多個非重迭的多個線條，則產生的層級功能會有多多邊形標記法。
 
@@ -412,7 +412,7 @@ zip 資料夾必須在目錄的根樓層中包含資訊清單檔，而且該檔�
 }
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 當您的繪圖套件符合需求時，您可以使用 [Azure 地圖服務轉換服務](/rest/api/maps/conversion) 將封裝轉換成地圖資料集。 然後，您可以使用「室內地圖」模組，使用資料集來產生室內地圖。
 

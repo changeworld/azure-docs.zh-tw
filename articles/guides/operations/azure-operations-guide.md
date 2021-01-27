@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: 7b9e95c06dd48e78e42244d27d27d063bf5f0be7
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
-ms.translationtype: HT
+ms.openlocfilehash: c0269464352fa333c6447834a56c25348ecb71a3
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327768"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895249"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT 操作員快速入門
 
@@ -54,7 +54,7 @@ Azure 會根據對客戶所提供的服務類別來使用雲端運算模型。 �
 
 IaaS 雲端廠商會執行及管理所有實體計算資源和必要軟體，以啟用電腦虛擬化。 此服務的客戶會將虛擬機器部署於這些裝載的資料中心。 雖然虛擬機器位於異地資料中心，但 IaaS 取用者可控制作業系統的設定和管理，基礎結構則交由雲端廠商處理。
 
-Azure 包含數個 IaaS 解決方案，其中包括虛擬機器、虛擬機器擴展集，以及相關的網路基礎結構。 一開始將服務移轉至 Azure 時，虛擬機器是個熱門選擇，因為它允許「隨即轉移」移轉模型。 您可以設定一部 VM (例如目前在您的資料中心執行服務的基礎結構)，然後將軟體移轉至新的 VM。 您可能需要進行組態更新，例如其他服務或儲存體的 URL，但您可以用這種方式移轉許多應用程式。
+Azure 包含數個 IaaS 解決方案，其中包括虛擬機器、虛擬機器擴展集，以及相關的網路基礎結構。 虛擬機器是一種常用的選項，可將服務初始遷移至 Azure，因為它會啟用「隨即轉移」的遷移模型。 您可以設定一部 VM (例如目前在您的資料中心執行服務的基礎結構)，然後將軟體移轉至新的 VM。 您可能需要進行組態更新，例如其他服務或儲存體的 URL，但您可以用這種方式移轉許多應用程式。
 
 虛擬機器擴展集是以 Azure 虛擬機器為建置基礎，可提供簡單的方式來部署相同 VM 的叢集。 虛擬機器擴展集也支援自動調整，以便視需要自動部署新的 VM。 這讓虛擬機器擴展集成為裝載較高層級微服務計算叢集 (例如 Azure Service Fabric 和 Azure 容器服務) 的理想平台。
 
@@ -62,11 +62,11 @@ Azure 包含數個 IaaS 解決方案，其中包括虛擬機器、虛擬機器�
 
 採用 PaaS，您可將應用程式部署到雲端服務廠商所提供的環境。 廠商會進行所有的基礎結構管理工作，以便您專注於應用程式開發和資料管理。
 
-Azure 提供數個 PaaS 計算供應項目，包括 Azure App Service 與 Azure 雲端服務的 Web Apps 功能 (Web 和背景工作角色)。 在任一情況下，開發人員可使用多種方法來部署其應用程式，而不需要知道任何有關支援它的具體細節。 開發人員不必建立虛擬機器 (VM)，可使用遠端桌面通訊協定 (RDP) 來登入或安裝應用程式。 他們只需按下按鈕 (或接近它)，Microsoft 所提供的工具就會佈建 VM，然後在其上部署並安裝應用程式。
+Azure 提供數個 PaaS 計算供應項目，包括 Azure App Service 與 Azure 雲端服務的 Web Apps 功能 (Web 和背景工作角色)。 在任一情況下，開發人員可使用多種方法來部署其應用程式，而不需要知道任何有關支援它的具體細節。 開發人員不需要 (Vm 建立虛擬機器) 、使用遠端桌面通訊協定 (RDP) 登入每個 Vm，或安裝應用程式。 他們只需按下按鈕 (或接近它)，Microsoft 所提供的工具就會佈建 VM，然後在其上部署並安裝應用程式。
 
 #### <a name="saas-software-as-a-service"></a>SaaS：軟體即服務
 
-SaaS 是集中裝載和管理的軟體。 它通常以多租用戶架構為基礎 — 單一應用程式版本用於所有客戶。 它可以相應放大為多個執行個體，以確保所有位置的最佳效能。 SaaS 軟體通常透過每月或每年訂用帳戶授權。 SaaS 軟體廠商會負責軟體堆疊的所有元件，因此，您只需要管理所提供的服務。
+SaaS 是集中裝載和管理的軟體。 它通常是以多租使用者架構為基礎，所有客戶都使用單一版本的應用程式。 它可以相應放大為多個執行個體，以確保所有位置的最佳效能。 SaaS 軟體通常透過每月或每年訂用帳戶授權。 SaaS 軟體廠商會負責軟體堆疊的所有元件，因此，您只需要管理所提供的服務。
 
 Microsoft 365 是良好的 SaaS 供應項目範例。 訂閱者需每月或每年支付訂閱費用，他們可取得 Microsoft Exchange、Microsoft OneDrive 和 Microsoft Office 套件即服務的其餘部分。 訂閱者一律可取得最新版本，而系統會為您管理 Exchange 伺服器。 相較於每年安裝及升級 Office，這種作法比較經濟實惠。
 
@@ -136,9 +136,9 @@ Azure 在其雲端運算平台中提供許多服務。 這些服務包括下列�
 
 ### <a name="datacenters-and-regions"></a>資料中心和區域
 
-Azure 是在全球各地許多地區正式推出的全域雲端平台。 當您在 Azure 中佈建服務、應用程式或 VM 時，系統會要求您選取區域。 選取的區域代表您應用程式執行所在的特定資料中心。 如需詳細資訊，請參閱 [Azure 區域](https://azure.microsoft.com/regions/)。
+Azure 是在全球各地許多地區正式推出的全域雲端平台。 當您在 Azure 中佈建服務、應用程式或 VM 時，系統會要求您選取區域。 選取的區域代表您的應用程式執行所在的特定資料中心。 如需詳細資訊，請參閱 [Azure 區域](https://azure.microsoft.com/regions/)。
 
-使用 Azure 的其中一個優點是您可以將應用程式部署至全球各地的各種資料中心。 您選擇的區域可能會影響應用程式的效能。 最好選擇較接近大多數客戶的區域，以減少網路要求延遲。 您也可以選取區域來滿足在特定國家/地區散發應用程式的法律需求。
+使用 Azure 的其中一個優點是您可以將應用程式部署到全球各地的各種資料中心。 您選擇的區域可能會影響應用程式的效能。 最好選擇接近大部分客戶的區域，以降低網路要求的延遲。 您也可以選取區域來滿足在特定國家/地區散發應用程式的法律需求。
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
@@ -174,7 +174,7 @@ Azure 是以支援 Azure 入口網站 UI 的一組 REST API 所建置。 也支�
 
 ### <a name="azure-cloud-shell"></a>Azure Cloud Shell
 
-系統管理員可以透過稱為 Azure Cloud Shell 的可供瀏覽器存取體驗，來存取 Azure PowerShell 和 Azure CLI。 這個互動式介面會提供彈性的工具，讓 Linux 和 Windows 的系統管理員使用其選擇的命令列介面 (Bash 或 PowerShell)。 若要存取 Azure Cloud Shell，您可以透過入口網站存取、以獨立 Web 介面的形式在 [shell.azure.com](https://shell.azure.com) 存取，或從數個其他存取點來存取。 如需詳細資訊，請參閱 [Azure Cloud Shell 概觀](../../cloud-shell/overview.md)。
+系統管理員可以透過稱為 Azure Cloud Shell 的可供瀏覽器存取體驗，來存取 Azure PowerShell 和 Azure CLI。 這個互動式介面會提供彈性的工具，讓 Linux 和 Windows 的系統管理員使用其選擇的命令列介面 (Bash 或 PowerShell)。 Azure Cloud Shell 可以透過入口網站、 [shell.azure.com](https://shell.azure.com)的獨立 web 介面，或從數個其他存取點來存取。 如需詳細資訊，請參閱 [Azure Cloud Shell 概觀](../../cloud-shell/overview.md)。
 
 ## <a name="azure-subscriptions"></a>Azure 訂用帳戶
 
@@ -184,17 +184,17 @@ Azure 是以支援 Azure 入口網站 UI 的一組 REST API 所建置。 也支�
 
 您必須先有訂用帳戶，才能使用 Azure 服務。 可用的訂用帳戶類型有好幾種。
 
-**免費帳戶** ： [Azure 網站](https://azure.microsoft.com/)上有註冊免費帳戶的連結。 這提供給您 30 天的課程點數，可以試用 Azure 中的任何資源組合。 如果超過點數金額，您的帳戶就會暫止。 在試用結束時，您的服務會解除委任，將無法再運作。 您可以隨時升級至隨用隨付的訂用帳戶。
+**免費帳戶**：[Azure 網站](https://azure.microsoft.com/)上有註冊免費帳戶的連結。 這提供給您 30 天的課程點數，可以試用 Azure 中的任何資源組合。 如果超過點數金額，您的帳戶就會暫止。 在試用結束時，您的服務會解除委任，將無法再運作。 您可以隨時升級至隨用隨付的訂用帳戶。
 
-**MSDN 訂用帳戶** ：如果您有 MSDN 訂用帳戶，您每個月可取得特定數量的 Azure 點數。 例如，如果您有 Microsoft Visual Studio Enterprise 與 MSDN 訂用帳戶，您每個月可取得\$150 的 Azure 點數。
+**MSDN 訂用帳戶**：如果您有 MSDN 訂用帳戶，您每個月可取得特定數量的 Azure 點數。 例如，如果您有 Microsoft Visual Studio Enterprise 與 MSDN 訂用帳戶，您每個月可取得\$150 的 Azure 點數。
 
-如果超過點數金額，您的服務會停用到下個月開始。 您可以關閉消費限制，並新增要扣繳額外費用的信用卡。 其中有些費用會針對 MSDN 帳戶打折。 例如，您需針對執行 Windows Server 的 VM 支付 Linux 價格，而 Microsoft 伺服器 (例如 Microsoft SQL Server) 不另外收費。 這使得 MSDN 帳戶適合用於開發和測試案例。
+如果超過點數金額，您的服務將會停用，直到下個月開始。 您可以關閉消費限制，並新增要扣繳額外費用的信用卡。 其中有些費用會針對 MSDN 帳戶打折。 例如，您需針對執行 Windows Server 的 VM 支付 Linux 價格，而 Microsoft 伺服器 (例如 Microsoft SQL Server) 不另外收費。 這使得 MSDN 帳戶適合用於開發和測試案例。
 
-**BizSpark 帳戶** ：Microsoft BizSpark 程式為新創公司帶來許多好處。 其中一個好處是可存取開發和測試環境的所有 Microsoft 軟體 (最多五個 MSDN 帳戶)。 這五個 MSDN 帳戶各可取得 150 美元的 Azure 點數，而有數項 Azure 服務 (例如虛擬機器) 是以減價費率支付。
+**BizSpark 帳戶**：Microsoft BizSpark 程式為新創公司帶來許多好處。 其中一個好處是可存取開發和測試環境的所有 Microsoft 軟體 (最多五個 MSDN 帳戶)。 這五個 MSDN 帳戶各可取得 150 美元的 Azure 點數，而有數項 Azure 服務 (例如虛擬機器) 是以減價費率支付。
 
-**隨用隨付** ：透過此訂用帳戶，您可將信用卡或金融卡附加至帳戶，以需支付您所用的服務。 如果您是組織，也可獲准開立發票。
+**隨用隨付**：透過此訂用帳戶，您可將信用卡或金融卡附加至帳戶，以需支付您所用的服務。 如果您是組織，也可獲准開立發票。
 
-**企業合約** ：依照企業合約，您承諾在下一個年度使用 Azure 中特定數目的服務，以及事先支付該金額。 您所做的承諾可整年取用。 如果超過承諾金額，您可以事後支付超額部分。 所視承諾金額而定，您可享有 Azure 服務的折扣。
+**企業合約**：依照企業合約，您承諾在下一個年度使用 Azure 中特定數目的服務，以及事先支付該金額。 您所做的承諾可整年取用。 如果超過承諾金額，您可以事後支付超額部分。 所視承諾金額而定，您可享有 Azure 服務的折扣。
 
 ### <a name="grant-administrative-access-to-an-azure-subscription"></a>將系統管理存取權授予 Azure 訂用帳戶
 
@@ -214,9 +214,7 @@ Azure RBAC 包含數個可供您用來指派權限的內建角色。 若要將�
 
 - 您可以使用 Azure 使用量 API 來擷取您的使用量資料。 您可以藉由標記相關的 Azure 資源來微調使用量計費資訊。 例如，您可以使用部門名稱或專案名稱來標記資源群組中的每個資源，然後特別追蹤該標記的成本。
 
-- 您可以使用 Azure Rate Card API 來列出所有可用的資源，以及每項資源的中繼資料和價格資訊。
-
-如需詳細資訊，請參閱[深入瞭解 Microsoft Azure 資源耗用量](../../cost-management-billing/manage/usage-rate-card-overview.md)。
+- 您可以使用 [Azure 使用量 API 總覽](../../cost-management-billing/manage/consumption-api-overview.md) 來列出所有可用的資源和中繼資料。 如需價格的詳細資訊，請參閱 [Azure 零售價格總覽](/rest/api/cost-management/retail-prices/azure-retail-prices)。
 
 ### <a name="forecast-cost-with-the-pricing-calculator"></a>使用價格計算機預測成本
 
@@ -242,11 +240,11 @@ Resource Manager 會提供數個優點：
 
 - 您可以將標籤套用至資源，以邏輯方式組織訂用帳戶中的所有資源。
 
-- 您可以檢視共用相同標籤之資源群組的成本，以釐清您的組織的計費方式。
+- 您可以藉由為共用相同標記的資源群組查看成本，來闡明組織的計費方式。
 
 ### <a name="tips-for-creating-resource-groups"></a>建立資源群組的祕訣
 
-當您正在進行資源群組的決策時，請考慮下列秘訣：
+當您要對資源群組進行決策時，請考慮下列秘訣：
 
 - 資源群組中的所有資源應具有相同的存留期。
 
@@ -266,25 +264,25 @@ Resource Manager 範本會以宣告方式定義會部署到單一資源群組的
 
 Resource Manager 範本包含四個區段：
 
-- **參數** ：這些是部署的輸入。 參數值可由人為或自動程序提供。 Windows VM 的系統管理員使用者名稱和密碼是一個參數範例。 指定的參數值會使用於整個部署。
+- **參數**：這些是部署的輸入。 參數值可由人為或自動程序提供。 Windows VM 的系統管理員使用者名稱和密碼是一個參數範例。 當您指定參數值時，會在整個部署中使用這些值。
 
-- **變數** ：這些用來保存整個部署使用的值。 不同於參數，部署期間不會提供變數值。 相反地，它是硬式編碼或動態產生。
+- **變數**：這些用來保存整個部署使用的值。 不同於參數，部署期間不會提供變數值。 相反地，它是硬式編碼或動態產生的。
 
-- **資源** ：範本的這個區段會定義所要部署的資源，例如虛擬機器、儲存體帳戶和虛擬網路。
+- **資源**：範本的這個區段會定義所要部署的資源，例如虛擬機器、儲存體帳戶和虛擬網路。
 
-- **輸出** ：部署完成後，Resource Manager 可以傳回資料，例如動態產生的連接字串。
+- **輸出**：部署完成後，Resource Manager 可以傳回資料，例如動態產生的連接字串。
 
 下列機制可供部署自動化：
 
-- **功能** ：您可以在 Resource Manager 範本中使用數個功能。 這些包括以下作業：將字串轉換為小寫、部署已定義資源的多個執行個體，並以動態方式傳回目標資源群組。 Resource Manager 功能可協助您建立動態部署。
+- **功能**：您可以在 Resource Manager 範本中使用數個功能。 這些包括以下作業：將字串轉換為小寫、部署已定義資源的多個執行個體，並以動態方式傳回目標資源群組。 Resource Manager 功能可協助您建立動態部署。
 
-- **資源相依性** ：當您部署多個資源時，某些資源將會相依於其他資源。 若要加快部署，您可以使用相依性宣告，讓相依資源在其他資源之前部署。
+- **資源** 相依性：當您部署多個資源時，某些資源將會相依于其他資源。 若要加快部署，您可以使用相依性宣告，讓相依資源在其他資源之前部署。
 
-- **範本連結** ：在一個 Resource Manager 範本中，您可以連結至另一個範本。 這可讓部署分解成一組有目標、特定用途的範本。
+- **範本連結**：在一個 Resource Manager 範本中，您可以連結至另一個範本。 這可讓部署分解成一組有目標、特定用途的範本。
 
 您可以在任何文字編輯器中建立 Resource Manager 範本。 不過，Azure SDK for Visual Studio 包含可協助您的工具。 使用 Visual Studio，即可透過精靈將資源新增至範本，然後直接在 Visual Studio 中部署範本和進行偵錯。 如需詳細資訊，請參閱[編寫 Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)。
 
-最後，您可以從 Azure 入口網站將現有資源群組轉換成可重複使用的範本。 如果您想要建立現有資源群組的可部署範本，或只是想要檢查基礎 JSON，這可能很有幫助。 若要匯出資源群組，請從資源群組的設定中選取 [自動化指令碼] 按鈕。
+最後，您可以從 Azure 入口網站將現有資源群組轉換成可重複使用的範本。 如果您想要建立現有資源群組的可部署範本，或只是想要檢查基礎 JSON，這可能很有幫助。 若要匯出資源群組，請從資源群組的設定中選取 [ **自動化腳本** ] 按鈕。
 
 ## <a name="security-of-azure-resources-azure-rbac"></a>Azure 資源的安全性 (Azure RBAC)
 
@@ -292,19 +290,19 @@ Resource Manager 範本包含四個區段：
 
 若要授與存取權，請將角色指派給使用者或使用者群組。 有許多預先定義的角色。 您也可以定義自己的自訂角色。
 
-以下是一些範例 [Azure 內建角色](../../role-based-access-control/built-in-roles.md)：
+以下是 [Azure 中內建角色](../../role-based-access-control/built-in-roles.md)的一些範例：
 
-- **擁有者** ：擁有此角色的使用者可以管理所有項目，包括存取權。
+- **擁有者**：擁有此角色的使用者可以管理所有項目，包括存取權。
 
-- **讀者** ：擁有此角色的使用者可以讀取所有類型的資源 (祕密除外)，但無法進行變更。
+- **讀者**：擁有此角色的使用者可以讀取所有類型的資源 (但秘密) 但無法進行變更。
 
-- **虛擬機器參與者** ：擁有此角色的使用者可以管理虛擬機器，但無法管理其連線的虛擬網路或 VHD 檔案所在的儲存體帳戶。
+- **虛擬機器參與者**：具備此角色的使用者可以管理虛擬機器，但無法管理其連線的虛擬網路或 VHD 檔案所在的儲存體帳戶。
 
-- **SQL DB 參與者** ：擁有此角色的使用者可以管理 SQL 資料庫，但是無法管理其安全性相關原則。
+- **SQL DB 參與者**：擁有此角色的使用者可以管理 SQL 資料庫，但是無法管理其安全性相關原則。
 
-- **SQL 安全性管理員** ：擁有此角色的使用者可以管理 SQL Server 和資料庫的安全性相關原則。
+- **SQL 安全性管理員**：擁有此角色的使用者可以管理 SQL Server 和資料庫的安全性相關原則。
 
-- **儲存體帳戶參與者** ：擁有此角色的使用者可以管理儲存體帳戶，但是無法管理對儲存體帳戶的存取權。
+- **儲存體帳戶參與者**：擁有此角色的使用者可以管理儲存體帳戶，但是無法管理對儲存體帳戶的存取權。
 
 如需詳細資訊，請參閱[使用 Azure 入口網站新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-portal.md)。
 
@@ -312,9 +310,9 @@ Resource Manager 範本包含四個區段：
 
 Azure 虛擬機器是 Azure 的其中一個中央 IaaS 服務。 Azure 虛擬機器支援在 Microsoft Azure 資料中心部署 Windows 或 Linux 虛擬機器。 使用 Azure 虛擬機器，您可以完全控制 VM 組態，且負責所有軟體安裝、設定和維護。
 
-當您部署 Azure VM 時，您可以從 Azure Marketplace 中選取一個映像，也可以提供自己的一般化映像。 此映像用於套用作業系統和初始設定。 在部署期間，Resource Manager 會處理一些組態設定，例如指派電腦名稱、系統管理認證和網路組態。 您可以使用 Azure 虛擬機器擴充功能，進一步自動進行設定，例如軟體安裝、防毒設定以及監視解決方案。
+當您部署 Azure VM 時，您可以從 Azure Marketplace 選取映射，也可以提供您自己的一般化映射。 此映像用於套用作業系統和初始設定。 在部署期間，Resource Manager 會處理一些組態設定，例如指派電腦名稱、系統管理認證和網路組態。 您可以使用 Azure 虛擬機器擴充功能，進一步自動進行設定，例如軟體安裝、防毒設定以及監視解決方案。
 
-您可以建立許多不同大小的虛擬機器。 虛擬機器的大小會決定資源配置，例如處理、記憶體和儲存體容量。 在某些情況下，特定功能 (例如已啟用 RDMA 的網路介面卡和 SSD 磁碟) 只適用於特定 VM 大小。 如需完整的 VM 大小和功能清單，請參閱適用於 [Windows](../../virtual-machines/sizes.md) 和 [Linux](../../virtual-machines/sizes.md) 的「Azure 虛擬機器大小」。
+您可以建立許多不同大小的虛擬機器。 虛擬機器的大小會決定資源配置，例如處理、記憶體和儲存體容量。 在某些情況下，特定功能 (例如已啟用 RDMA 的網路介面卡和 SSD 磁碟) 只適用於特定 VM 大小。 如需完整的 VM 大小和功能清單，請參閱適用于 [Windows](../../virtual-machines/sizes.md) 和 [Linux](../../virtual-machines/sizes.md)的「適用于 Azure 中的虛擬機器大小」。
 
 ### <a name="use-cases"></a>使用案例
 
@@ -326,7 +324,7 @@ Azure 虛擬機器是 Azure 的其中一個中央 IaaS 服務。 Azure 虛擬機
 
 #### <a name="portal"></a>入口網站
 
-使用 Azure 入口網站部署虛擬機器時，只需要有作用中的 Azure 訂用帳戶和網頁瀏覽器存取權。 您可以選取許多具有各種組態的不同作業系統映像。 在部署期間會設定所有的儲存體和網路需求。 如需詳細資訊，請參閱適用於 [Windows](../../virtual-machines/windows/quick-create-portal.md) 和 [Linux](../../virtual-machines/linux/quick-create-portal.md) 的「在 Azure 入口網站中建立虛擬機器」。
+使用 Azure 入口網站部署虛擬機器時，只需要有作用中的 Azure 訂用帳戶和網頁瀏覽器存取權。 您可以選取許多具有各種組態的不同作業系統映像。 在部署期間會設定所有的儲存體和網路需求。 如需詳細資訊，請參閱適用于 [Windows](../../virtual-machines/windows/quick-create-portal.md) 和 [Linux](../../virtual-machines/linux/quick-create-portal.md)的「在 Azure 入口網站中建立虛擬機器」。
 
 除了從 Azure 入口網站部署虛擬機器，您也可以從入口網站部署 Azure Resource Manager 範本。 這會部署和設定如範本中定義的所有資源。 如需詳細資訊，請參閱[使用 Resource Manager 範本與 Azure 入口網站來部署資源](../../azure-resource-manager/templates/deploy-portal.md)。
 
@@ -338,7 +336,7 @@ Azure 虛擬機器是 Azure 的其中一個中央 IaaS 服務。 Azure 虛擬機
 
 #### <a name="command-line-interface-cli"></a>命令列介面 (CLI)
 
-如同 PowerShell 模組，Azure 命令列介面提供部署自動化功能，並可使用於 Windows、OS X 或 Linux 系統。 當您使用 Azure CLI **vm quick-create** 命令時，會在部署所有相關的虛擬機器資源 (包括儲存體和網路) 和虛擬機器本身。 如需詳細資訊，請參閱 [使用 CLI 在 Azure 中建立 Linux VM](../../virtual-machines/linux/quick-create-cli.md)。
+如同 PowerShell 模組，Azure 命令列介面提供部署自動化功能，並可使用於 Windows、OS X 或 Linux 系統。 當您使用 Azure CLI **vm 快速建立** 命令時，會部署所有相關的虛擬機器資源 (包括存放裝置和網路) 以及虛擬機器本身。 如需詳細資訊，請參閱 [使用 CLI 在 Azure 中建立 Linux VM](../../virtual-machines/linux/quick-create-cli.md)。
 
 同樣地，您可以使用 Azure CLI 來部署 Azure Resource Manager 範本。 如需詳細資訊，請參閱[使用 Resource Manager 範本與 Azure CLI 來部署資源](../../azure-resource-manager/templates/deploy-cli.md)。
 
@@ -356,11 +354,11 @@ Azure 儲存體是 Microsoft 管理的服務，可提供持久、可擴充和備
 
 Azure 儲存體帳戶可以設定不同層級的備援性：
 
-- **本機備援儲存體** 確保在認定寫入成功之前，以同步方式為所有資料製作三個複本，進而提供高可用性。 這些複本會儲存在單一區域內的單一設備中。 這些複本會位於不同的容錯網域和升級網域中。 這表示即使保留資料的儲存體節點失敗，或已離線進行更新，資料仍可使用。
+- **本機備援儲存體** 確保在認定寫入成功之前，以同步方式為所有資料製作三個複本，進而提供高可用性。 這些複本會儲存在單一區域內的單一設備中。 這些複本會位於不同的容錯網域和升級網域中。 這表示即使保留資料的儲存體節點失敗或離線進行更新，仍可使用資料。
 
 - **異地備援儲存體** 會在主要區域中為資料製作三份同步副本，以提供高可用性，然後在配對區域中以非同步方式製作三個複本，以便進行災害復原。
 
-- **讀取權限的異地備援儲存體** 是異地備援儲存體，加上在次要區域中讀取資料的能力。 這項功能適合用於部分災害復原。 如果主要區域發生問題，您可以將應用程式變更為具有配對區域的唯讀存取權。
+- **讀取權限的異地備援儲存體** 是異地備援儲存體，加上在次要區域中讀取資料的能力。 這項功能適合用於部分災害復原。 如果主要區域發生問題，您可以變更應用程式，使其具有配對區域的唯讀存取權。
 
 ### <a name="use-cases"></a>使用案例
 
@@ -376,7 +374,7 @@ Azure 儲存體支援三種 blob 類型：
 
 - **分頁 blob** 用來保存隨機存取檔案 (大小上限為 1 TB)。 分頁 blob 主要作為 VHD (Azure 中的IaaS 計算服務) 的支援儲存體使用，而 VHD 可為 Azure 虛擬機器提供持久的磁碟。 因為它們提供 512 位元組頁面的隨機讀取/寫入存取權，所以稱為分頁 blob。
 
-- **附加 Blob** 和區塊 Blob 相似，由區塊所組成，但已針對附加作業最佳化。 這類 Blob 經常用於將一或多個來源的資訊記錄至相同 blob。 例如，對於在多個 VM 上執行的應用程式，您可以將所有追蹤記錄寫入至相同的附加 blob。 單一附加 Blob 可以多達 195 GB。
+- **附加 Blob** 和區塊 Blob 相似，由區塊所組成，但已針對附加作業最佳化。 這類 Blob 經常用於將一或多個來源的資訊記錄至相同 blob。 例如，您可以將所有追蹤記錄寫入至在多個 Vm 上執行之應用程式的相同附加 blob。 單一附加 Blob 可以多達 195 GB。
 
 如需詳細資訊，請參閱 [以 .NET 開始使用 Azure Blob 儲存體](../../storage/blobs/storage-quickstart-blobs-dotnet.md)。
 
@@ -408,7 +406,7 @@ Azure 佇列儲存體可提供應用程式元件之間的雲端傳訊。 設計�
 
 #### <a name="portal"></a>入口網站
 
-使用 Azure 入口網站部署儲存體帳戶時，只需要有作用中的 Azure 訂用帳戶和網頁瀏覽器存取權。 您可以將新的儲存體帳戶部署到新的或現有的資源群組。 建立儲存體帳戶後，您可以使用入口網站來建立 blob 容器或檔案共用。 您可以用程式設計方式建立資料表和佇列儲存體實體。 如需詳細資訊，請參閱[建立儲存體帳戶](../../storage/common/storage-account-create.md)。
+使用 Azure 入口網站部署儲存體帳戶時，只需要有作用中的 Azure 訂用帳戶和網頁瀏覽器存取權。 您可以將新的儲存體帳戶部署到新的或現有的資源群組。 建立儲存體帳戶之後，您可以使用入口網站來建立 blob 容器或檔案共用。 您可以用程式設計方式建立資料表和佇列儲存體實體。 如需詳細資訊，請參閱[建立儲存體帳戶](../../storage/common/storage-account-create.md)。
 
 除了從 Azure 入口網站部署儲存體帳戶，您也可以從入口網站部署 Azure Resource Manager 範本。 這會部署和設定如範本中定義的所有資源，包括任何儲存體帳戶。 如需詳細資訊，請參閱[使用 Resource Manager 範本與 Azure 入口網站來部署資源](../../azure-resource-manager/templates/deploy-portal.md)。
 
@@ -430,7 +428,7 @@ Azure 儲存體可以不同的方式存取，包括透過 Azure 入口網站、�
 
 #### <a name="virtual-machine-disks"></a>虛擬機器磁碟
 
-當您部署虛擬機器時，您也需要建立儲存體帳戶來保存虛擬機器作業系統磁碟和任何其他資料磁碟。 您可以選取現有的儲存體帳戶或建立一個新的。 因為 Blob 的大小上限是 1,024 GB，所以單一 VM 磁碟的大小上限為 1,023 GB。 若要設定較大的資料磁碟，您可以對虛擬機器呈現多個資料磁碟，並將它們集合為單一邏輯磁碟。 如需詳細資訊，請參閱適用於 [Windows](../../virtual-machines/windows/tutorial-manage-data-disk.md) 和 [Linux](../../virtual-machines/linux/tutorial-manage-disks.md) 的「管理 Azure 磁碟」。
+當您要部署虛擬機器時，您也需要建立儲存體帳戶來保存虛擬機器作業系統磁片和任何其他資料磁片。 您可以選取現有的儲存體帳戶或建立一個新的。 因為 Blob 的大小上限是 1,024 GB，所以單一 VM 磁碟的大小上限為 1,023 GB。 若要設定較大的資料磁碟，您可以對虛擬機器呈現多個資料磁碟，並將它們集合為單一邏輯磁碟。 如需詳細資訊，請參閱適用于 [Windows](../../virtual-machines/windows/tutorial-manage-data-disk.md) 和 [Linux](../../virtual-machines/linux/tutorial-manage-disks.md)的「管理 Azure 磁片」。
 
 #### <a name="storage-tools"></a>儲存體工具
 
@@ -438,7 +436,7 @@ Azure 儲存體帳戶可以透過許多不同的儲存體總管存取，例如 V
 
 #### <a name="storage-api"></a>儲存體 API
 
-任何可提出 HTTP/HTTPS 要求的語言皆可存取儲存體資源。 另外，Azure 儲存體還提供了幾種熱門語言的程式設計程式庫。 這些程式庫可透過處理詳細資料 (例如同步和非同步叫用、進行批次作業、例外狀況管理和自動重試) 來簡化 Azure 儲存體使用方式。 如需詳細資訊，請參閱 [Azure 儲存體服務 REST API 參考](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference)。
+任何可提出 HTTP/HTTPS 要求的語言皆可存取儲存體資源。 另外，Azure 儲存體還提供了幾種熱門語言的程式設計程式庫。 這些程式庫透過處理詳細資料（例如同步和非同步叫用、作業批次處理、例外狀況管理和自動重試），簡化了 Azure 儲存體的處理。 如需詳細資訊，請參閱 [Azure 儲存體服務 REST API 參考](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference)。
 
 #### <a name="storage-access-keys"></a>儲存體存取金鑰
 
@@ -446,7 +444,7 @@ Azure 儲存體帳戶可以透過許多不同的儲存體總管存取，例如 V
 
 #### <a name="shared-access-signatures"></a>共用存取簽章
 
-如果您需要允許使用者對儲存體資源進行控管存取，則您可以建立共用存取簽章。 共用存取簽章是指可附加在 URL 後面的權杖，可提供儲存體資源的委派存取。 在權杖有效的期限內，擁有權杖的任何人都可以存取它在指定權限中所指向的資源。 如需詳細資訊，請參閱[使用共用存取簽章](../../storage/common/storage-sas-overview.md)。
+如果您需要允許使用者對儲存體資源進行控管存取，則您可以建立共用存取簽章。 共用存取簽章是指可附加在 URL 後面的權杖，可提供儲存體資源的委派存取。 擁有權杖的任何人都可以存取它所指的資源，以及它所指定的許可權，在這段時間內是有效的。 如需詳細資訊，請參閱[使用共用存取簽章](../../storage/common/storage-sas-overview.md)。
 
 ## <a name="azure-virtual-network"></a>Azure 虛擬網路
 
@@ -473,9 +471,9 @@ Azure 儲存體帳戶可以透過許多不同的儲存體總管存取，例如 V
 
 - Azure Resource Manager 範本
 
-> **使用時機** ：每當您在 Azure 中使用 VM 時，您就會使用虛擬網路。 這可允許將 VM 分割成公開面向和類似私人子網路的內部部署資料中心。
+> **使用時機**：每當您在 Azure 中使用 VM 時，您就會使用虛擬網路。 這可允許將 VM 分割成公開面向和類似私人子網路的內部部署資料中心。
 >
-> **開始使用** ：使用 Azure 入口網站部署 Azure 虛擬網路時，只需要有作用中的 Azure 訂用帳戶和網頁瀏覽器存取權。 您可以將新的虛擬網路部署到新的或現有的資源群組。 當您要從入口網站建立新的虛擬機器時，您可以選取現有的虛擬網路或建立一個新的。 開始使用並[使用 Azure 入口網站建立虛擬網路](../../virtual-network/quick-create-portal.md)。
+> **開始使用**：使用 Azure 入口網站部署 Azure 虛擬網路時，只需要有作用中的 Azure 訂用帳戶和網頁瀏覽器存取權。 您可以將新的虛擬網路部署到新的或現有的資源群組。 當您從入口網站建立新的虛擬機器時，您可以選取現有的虛擬網路，或建立一個新的虛擬網路。 開始使用並[使用 Azure 入口網站建立虛擬網路](../../virtual-network/quick-create-portal.md)。
 
 ### <a name="access-and-security-for-virtual-networks"></a>虛擬網路的存取權與安全性
 

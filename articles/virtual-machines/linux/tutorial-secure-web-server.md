@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4a790c51cd0caa2c81275e7eafdd663f2f2f0116
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
-ms.translationtype: HT
+ms.openlocfilehash: e4e80990b32175842556059d005563a220d14688
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740196"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878455"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>教學課程：在 Azure 中使用 Key Vault 內儲存的 TLS/SSL 憑證，來保護 Linux 虛擬機器上的網頁伺服器
 若要保護 Web 伺服器，您可以使用傳輸層安全性 (TLS) (先前稱為安全通訊端層 (SSL)) 憑證來加密網路流量。 這些 TLS/SSL 憑證可儲存在 Azure Key Vault，並且能夠讓您將憑證安全地部署到 Azure 中的 Linux 虛擬機器 (VM)。 在本教學課程中，您將了解如何：
@@ -157,4 +157,4 @@ az vm open-port \
 用以下連結查看預先建立的虛擬機器指令碼範例。
 
 > [!div class="nextstepaction"]
-> [Linux 虛擬機器指令碼範例](./cli-samples.md)
+> [Linux 虛擬機器指令碼範例](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

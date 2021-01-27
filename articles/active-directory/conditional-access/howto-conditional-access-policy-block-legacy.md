@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2499a89907eb63f01adbc80a6d206911c09c1259
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 982c33c5c55e32ce48131a4b2f0911e4f23dd408
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265947"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98877283"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>條件式存取：封鎖舊式驗證
 
@@ -36,8 +36,8 @@ ms.locfileid: "91265947"
    1. 選取 [完成] 。
 1. 在 [雲端應用程式或動作] 下，選取 [所有雲端應用程式]。
    1. 選取 [完成] 。
-1. 在 [**條件**  >  **用戶端應用程式**] 底下，將 [設定為**是]**。 **Configure**
-   1. 只檢查 **Exchange ActiveSync 用戶端** 和 **其他用戶端**的方塊。
+1. 在 [**條件**  >  **用戶端應用程式**] 底下，將 [設定為 **是]**。 
+   1. 只檢查 **Exchange ActiveSync 用戶端** 和 **其他用戶端** 的方塊。
    1. 選取 [完成] 。
 1. 在 [存取控制] > [授與] 下，選取 [封鎖存取]。
    1. 選取 [選取] 。
@@ -52,4 +52,4 @@ ms.locfileid: "91265947"
 
 [使用條件式存取 What If 工具模擬登入行為](troubleshoot-conditional-access-what-if.md)
 
-[如何使用 Microsoft 365 設定多功能裝置或應用程式以傳送電子郵件](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)
+[如何使用 Microsoft 365 設定多功能裝置或應用程式以傳送電子郵件](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)

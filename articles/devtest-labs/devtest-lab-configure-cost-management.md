@@ -3,12 +3,12 @@ title: 檢視 Azure DevTest Labs 中的每月估計實驗室成本趨勢
 description: 本文提供的資訊說明如何在 Azure DevTest Labs 中追蹤實驗室 (每月估計成本趨勢圖表) 的成本。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 220cbd1bc793e4bcfdf03a184d7463114506e6e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a2a9bef9e54ef7deda123aad34cf0c576fd158f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87283821"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98892332"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中追蹤與實驗室相關聯的成本
 本文提供如何追蹤實驗室成本的相關資訊。 它會示範如何查看實驗室目前行事曆月份的預估成本趨勢。 本文也會說明如何在實驗室中查看每個資源的月對日成本。
@@ -19,7 +19,7 @@ ms.locfileid: "87283821"
 若要檢視「每月估計成本趨勢」圖表，請遵循下列步驟︰ 
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 選取 [所有服務]****，然後從清單中選取 [DevTest Labs]****。
+2. 選取 [所有服務]，然後從清單中選取 [DevTest Labs]。
 3. 從實驗室清單中選取您的實驗室。  
 4. 選取左側功能表上的 [設定 **與原則** ]。  
 4. 在左側功能表的 [**成本追蹤**] 區段中，選取 [**成本趨勢**]。 下列螢幕擷取畫面顯示成本圖表的範例。 
@@ -34,11 +34,11 @@ ms.locfileid: "87283821"
    * 5.50 會無條件進位到 6
    * 5.99 會無條件進位到 6
 
-     如圖表上方所述，您在圖表中看到的成本預設是使用[隨用隨付](https://azure.microsoft.com/offers/ms-azr-0003p/)供應項目費率的估計** 成本。 您也可以[管理實驗室的成本目標](#managing-cost-targets-for-your-lab)，來設定在圖表中顯示您自己的費用目標。
+     如圖表上方所述，您在圖表中看到的成本預設是使用[隨用隨付](https://azure.microsoft.com/offers/ms-azr-0003p/)供應項目費率的估計成本。 您也可以[管理實驗室的成本目標](#managing-cost-targets-for-your-lab)，來設定在圖表中顯示您自己的費用目標。
 
      成本計算 *不* 包含下列成本：
 
-   * 目前不支援 CSP 和 Dreamspark 訂用帳戶，因為 Azure DevTest Labs 使用 [Azure 計費 API](../cost-management-billing/manage/usage-rate-card-overview.md) 來計算實驗室成本，而 Azure 計費 API 並不支援 CSP 或 Dreamspark 訂用帳戶。
+   * 目前不支援 CSP 和 Dreamspark 訂用帳戶，因為 Azure DevTest Labs 使用 Azure 計費 API 來計算實驗室成本，而 Azure 計費 API 並不支援 CSP 或 Dreamspark 訂用帳戶。
    * 您的供應項目費率。 目前，您無法使用您與 Microsoft 或 Microsoft 合作夥伴協議的供應項目費率 (顯示於您的訂用帳戶下方)。 只會使用隨用隨付費率。
    * 您的稅率
    * 您的折扣
@@ -56,17 +56,17 @@ DevTest Labs 可讓您更輕鬆地管理您實驗室中的成本，方法是設�
 
    - 選擇您需要追蹤成本目標的時間週期。
       - **每月**：會追蹤每個月的成本目標。
-      - 已**修正**：系統會針對您在開始和結束日期中指定的日期範圍追蹤成本目標。 一般而言，這些值代表您的專案排程執行的時間長度。
-   - 指定**目標成本**。 例如，您計畫在您定義的時間週期內，花費在此實驗室的程度。
-   - 選取要啟用還是停用您需要報告的任何閾值 – 以 25% 增量計算 – 最高為您指定之**目標成本**的 125%。
+      - 已 **修正**：系統會針對您在開始和結束日期中指定的日期範圍追蹤成本目標。 一般而言，這些值代表您的專案排程執行的時間長度。
+   - 指定 **目標成本**。 例如，您計畫在您定義的時間週期內，花費在此實驗室的程度。
+   - 選取要啟用還是停用您需要報告的任何閾值 – 以 25% 增量計算 – 最高為您指定之 **目標成本** 的 125%。
       - **通知**：當符合此閾值時，您指定的 webhook URL 就會通知您。
-      - **圖表**圖：當符合此閾值時，會在您可以查看的成本趨勢圖上繪製結果，如查看每月估計成本趨勢圖所述。
-   - 如果您選擇在符合閾值時 [通知]****，就必須指定 webhook URL。 在成本整合區域中，選取 [按一下這裡可新增整合]****。 在 [設定通知] 窗格中輸入 **WEBHOOK URL** ，然後選取 **[確定]**。
+      - **圖表** 圖：當符合此閾值時，會在您可以查看的成本趨勢圖上繪製結果，如查看每月估計成本趨勢圖所述。
+   - 如果您選擇在符合閾值時 [通知]，就必須指定 webhook URL。 在成本整合區域中，選取 [按一下這裡可新增整合]。 在 [設定通知] 窗格中輸入 **WEBHOOK URL** ，然後選取 **[確定]**。
 
        ![[設定通知] 窗格](./media/devtest-lab-configure-cost-management/configure-notification-new.png)
 
-     - 如果您指定 [通知]****，就必須定義 webhook URL。
-     - 同樣地，如果您定義 webhook URL，就必須將 [成本閾值] 窗格中的 [通知]**** 設定為 [開啟]****。
+     - 如果您指定 [通知]，就必須定義 webhook URL。
+     - 同樣地，如果您定義 webhook URL，就必須將 [成本閾值] 窗格中的 [通知] 設定為 [開啟]。
      - 在這裡輸入 webhook 之前，您必須先建立 webhook。  
 
        如需 webhook 的詳細資訊，請參閱[建立 webhook 或 API Azure 函式](../azure-functions/functions-bindings-http-webhook.md)。 
@@ -75,7 +75,7 @@ DevTest Labs 可讓您更輕鬆地管理您實驗室中的成本，方法是設�
 實驗室中的每月成本趨勢功能可讓您查看目前行事曆月份花費多少時間。 它也會根據您在過去七天內的費用，顯示在月底之前的消費預測。 為了協助您瞭解實驗室中的消費為何提早達成閾值，您可以使用 [ **依資源** 區分的成本] 功能，以顯示資料表中 **每個資源的每** 個月迄今成本。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 選取 [所有服務]****，然後從清單中選取 [DevTest Labs]****。
+2. 選取 [所有服務]，然後從清單中選取 [DevTest Labs]。
 3. 從實驗室清單中，選取所需的實驗室。  
 4. 選取左側功能表上的 [設定 **與原則** ]。
 5. 在左側功能表的 [**成本追蹤**] 區段中，選取 [**依資源的成本**]。 您會看到與實驗室相關聯之每個資源的相關成本。 
@@ -86,7 +86,7 @@ DevTest Labs 可讓您更輕鬆地管理您實驗室中的成本，方法是設�
 
 [自動關機原則](devtest-lab-set-lab-policy.md?#set-auto-shutdown-policy) 可協助您在一天的特定時間關閉實驗室 vm，以降低成本。 不過，實驗室使用者可以退出宣告關閉原則，這會增加執行 VM 的成本。 您可以選取資料表中的 VM，以查看它是否已退出宣告自動關機原則。 如果是這種情況，您可以與 VM 擁有者討論，以找出 VM 退出宣告原則的原因。
  
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 以下是接下來要嘗試的一些事項：
 
 * [定義實驗室原則](devtest-lab-set-lab-policy.md) - 了解如何設定用來管理您實驗室及其 VM 使用方式的各種原則。 

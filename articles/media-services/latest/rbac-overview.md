@@ -1,5 +1,5 @@
 ---
-title: 適用于媒體服務帳戶的 azure 角色型存取控制-Azure |Microsoft Docs
+title: 適用于媒體服務帳戶的 azure 角色型存取控制-Azure
 description: 本文討論 Azure 角色型存取控制 (適用于 Azure 媒體服務帳戶的 Azure RBAC) 。
 services: media-services
 documentationcenter: ''
@@ -12,22 +12,22 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 8fba3db14c2a950dd230a4721841b4baa9f64636
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1fab743c647c3628a79fffb3bf1060983c34d0aa
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426802"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895181"
 ---
 # <a name="azure-role-based-access-control-azure-rbac-for-media-services-accounts"></a>Azure 角色型存取控制 (適用于媒體服務帳戶的 Azure RBAC) 
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-目前，Azure 媒體服務不會定義服務特定的任何自訂角色。 若要取得媒體服務帳戶的完整存取權，客戶可以使用 **擁有** 者或 **參與者**的內建角色。 這些角色之間的主要差異在於： **擁有** 者可以控制誰可以存取資源，而 **參與者** 無法存取。 您也可以使用內建的「 **讀取** 者」角色，但使用者或應用程式只會有媒體服務 api 的讀取權限。 
+目前，Azure 媒體服務不會定義服務特定的任何自訂角色。 若要取得媒體服務帳戶的完整存取權，客戶可以使用 **擁有** 者或 **參與者** 的內建角色。 這些角色之間的主要差異在於： **擁有** 者可以控制誰可以存取資源，而 **參與者** 無法存取。 您也可以使用內建的「 **讀取** 者」角色，但使用者或應用程式只會有媒體服務 api 的讀取權限。 
 
 ## <a name="design-principles"></a>設計原則
 
-v3 API 的金鑰設計原則之一，是讓 API 更為安全。 v3 Api 不會傳回 **取得** 或 **列出** 作業的秘密或認證。 回應中的金鑰一律為 Null、空白或處理過的。 使用者必須呼叫個別的動作方法，才能取得秘密或認證。 **讀者**角色無法呼叫 ListContainerSas、StreamingLocator、ListContentKeys、ContentKeyPolicies 等作業。 擁有不同的動作可讓您視需要在自訂角色中設定更細微的 Azure RBAC 安全性許可權。
+v3 API 的金鑰設計原則之一，是讓 API 更為安全。 v3 Api 不會傳回 **取得** 或 **列出** 作業的秘密或認證。 回應中的金鑰一律為 Null、空白或處理過的。 使用者必須呼叫個別的動作方法，才能取得秘密或認證。 **讀者** 角色無法呼叫 ListContainerSas、StreamingLocator、ListContentKeys、ContentKeyPolicies 等作業。 擁有不同的動作可讓您視需要在自訂角色中設定更細微的 Azure RBAC 安全性許可權。
 
 若要列出媒體服務支援的作業，請執行：
 

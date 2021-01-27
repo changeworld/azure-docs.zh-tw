@@ -1,6 +1,5 @@
 ---
-title: 媒體服務架構
-titleSuffix: Azure Media Services
+title: Media Services 架構
 description: 本文說明媒體服務的架構。
 services: media-services
 documentationcenter: ''
@@ -12,14 +11,14 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: inhenkel
-ms.openlocfilehash: c14dbe4253696e01e99111a24319e455c1d551e9
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: ad464eb1c0b6dec694c7c40868a0f95fcfeaf6e8
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533990"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98891483"
 ---
-# <a name="media-services-architectures"></a>媒體服務架構
+# <a name="media-services-architectures"></a>Media Services 架構
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -29,7 +28,7 @@ ms.locfileid: "96533990"
 
 此解決方案建基於 Azure 受控服務：媒體服務和內容傳遞網路。 這些服務是在高可用性環境中執行（經過修補和支援），可讓您專注于解決方案，而不是其執行所在的環境。
 
-請參閱 Azure 架構中心內的 [即時串流數位媒體](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/digital-media-live-stream) 。
+請參閱 Azure 架構中心內的 [即時串流數位媒體](/azure/architecture/solution-ideas/articles/digital-media-live-stream) 。
 
 ## <a name="video-on-demand-digital-media"></a>點播視訊數位媒體
 
@@ -37,13 +36,13 @@ ms.locfileid: "96533990"
 
 此解決方案建基於 Azure 受控服務： Blob 儲存體、內容傳遞網路及 Azure 媒體播放機。 這些服務是在高可用性環境中執行（經過修補和支援），可讓您專注于解決方案，而不是其執行所在的環境。
 
-查看 Azure 架構中心內 [隨選影片的數位媒體](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/digital-media-video) 。
+查看 Azure 架構中心內 [隨選影片的數位媒體](/azure/architecture/solution-ideas/articles/digital-media-video) 。
 
 ## <a name="gridwich-media-processing-system"></a>Gridwich 媒體處理系統
 
 Gridwich 系統是在 Azure 上處理和傳遞媒體資產的最佳作法。 雖然 Gridwich 系統是媒體專屬的，但訊息處理和事件架構可以套用至任何無狀態事件處理工作流程。
 
-請參閱 Azure 架構中心的 [Gridwich 媒體處理系統](https://docs.microsoft.com/azure/architecture/reference-architectures/media-services/gridwich-architecture) 。
+請參閱 Azure 架構中心的 [Gridwich 媒體處理系統](/azure/architecture/reference-architectures/media-services/gridwich-architecture) 。
 
 ## <a name="next-steps"></a>後續步驟
 

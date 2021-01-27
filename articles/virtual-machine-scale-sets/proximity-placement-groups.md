@@ -9,16 +9,16 @@ ms.subservice: availability
 ms.date: 07/01/2019
 ms.reviewer: zivr
 ms.custom: mimckitt
-ms.openlocfilehash: 1525ef7c1e19aa9821df3f111fdce3518d37afd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3a7b50c82b3deffa7526bfcfe799972c3b02762
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87011051"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98877861"
 ---
 # <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>預覽：使用 PowerShell 建立及使用鄰近放置群組
 
-若要盡可能使 VM 彼此接近以達成最低的延遲，您應該將擴展集部署到[鄰近放置群組](co-location.md#preview-proximity-placement-groups)內。
+若要盡可能使 VM 彼此接近以達成最低的延遲，您應該將擴展集部署到[鄰近放置群組](../virtual-machines/co-location.md#proximity-placement-groups)內。
 
 鄰近放置群組是邏輯群組，可用來確保 Azure 計算資源實際位於彼此接近的位置。 鄰近放置群組很適合用於具備低延遲需求的工作負載。
 
@@ -26,7 +26,7 @@ ms.locfileid: "87011051"
 > 鄰近放置群組目前處於公開預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 >
-> 鄰近放置群組在預覽期間無法在這些區域中使用：**日本東部**、**澳大利亞東部**與**印度中部**。
+> 鄰近放置群組在預覽期間無法在這些區域中使用：**日本東部**、**澳大利亞東部** 與 **印度中部**。
 
 
 ## <a name="create-a-proximity-placement-group"></a>建立鄰近放置群組

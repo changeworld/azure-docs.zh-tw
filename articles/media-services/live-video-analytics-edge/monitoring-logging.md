@@ -3,12 +3,12 @@ title: 監視和記錄-Azure
 description: 本文概述 IoT Edge 的即時影片分析中的監視和記錄。
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 6a7251b62421642ad9f5dba4f4c2a15ce74cd5cf
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 6dc0a6d499d06c95bdccbc9e386d7f9288971ee8
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900870"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878099"
 ---
 # <a name="monitoring-and-logging"></a>監視和記錄
 
@@ -177,7 +177,7 @@ Fragments(video=143039375031270,format=m3u8-aapl)
 |`body`|body    |物件 (object)|    特定的事件資料。|
 |`dataVersion`  |applicationProperty|   字串  |{主要}。微小|
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>屬性
 
 #### <a name="message-id"></a>message-id
 
@@ -269,7 +269,7 @@ Fragments(video=143039375031270,format=m3u8-aapl)
 
 1. 使用 Docker CLI 命令來建立 Docker 檔案，並將映射發佈至您的 Azure container registry。
     
-   如需使用 Docker CLI 推送至容器登錄的詳細資訊，請參閱 [推送和提取 Docker 映射](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli)。 如需 Azure Container Registry 的其他資訊，請參閱 [檔](https://docs.microsoft.com/azure/container-registry/)。
+   如需使用 Docker CLI 推送至容器登錄的詳細資訊，請參閱 [推送和提取 Docker 映射](../../container-registry/container-registry-get-started-docker-cli.md)。 如需 Azure Container Registry 的其他資訊，請參閱 [檔](../../container-registry/index.yml)。
 
 
 1. 在推送至 Azure Container Registry 完成之後，將下列節點新增至您的部署資訊清單檔案：

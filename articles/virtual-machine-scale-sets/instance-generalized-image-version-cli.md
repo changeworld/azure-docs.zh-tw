@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 841247c03d9f3b151a0c75430715c03b009d831a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e360ae3cf0c463add9e6445a96c118d9f40ce9cb
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287061"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878031"
 ---
 # <a name="create-a-scale-set-from-a-generalized-image-with-azure-cli"></a>使用 Azure CLI 從一般化映射建立擴展集
 
-使用 Azure CLI，從 [共用映射庫](shared-image-galleries.md) 中儲存的一般化映射版本建立擴展集。 如果想要使用特製化映射版本建立擴展集，請參閱 [從特殊化映射建立擴展集實例](instance-specialized-image-version-cli.md)。
+使用 Azure CLI，從 [共用映射庫](../virtual-machines/shared-image-galleries.md) 中儲存的一般化映射版本建立擴展集。 如果想要使用特製化映射版本建立擴展集，請參閱 [從特殊化映射建立擴展集實例](instance-specialized-image-version-cli.md)。
 
 如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.4.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
@@ -55,7 +55,7 @@ az vmss create \
 建立及設定所有擴展集資源和 VM 需要幾分鐘的時間。
 
 ## <a name="next-steps"></a>後續步驟
-[Azure 映射產生器 (預覽版) ](../virtual-machines/linux/image-builder-overview.md) 可協助自動建立映射版本，您甚至可以使用它來更新和 [建立現有映射版本的新映射版本](../virtual-machines/linux/image-builder-gallery-update-image-version.md)。 
+[Azure 映射產生器 (預覽版) ](../virtual-machines/image-builder-overview.md) 可協助自動建立映射版本，您甚至可以使用它來更新和 [建立現有映射版本的新映射版本](../virtual-machines/linux/image-builder-gallery-update-image-version.md)。 
 
 您也可以使用範本建立共用映像庫資源。 有數個 Azure 快速入門範本可以使用： 
 
@@ -63,4 +63,4 @@ az vmss create \
 - [在共用映像資源庫中建立映像定義](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [在共用映像資源庫中建立映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 
-如需共用映像資源庫的詳細資訊，請參閱[概觀](shared-image-galleries.md)。 若遇到任何問題，請參閱[針對共用映像資源庫問題進行疑難排解](../virtual-machines/troubleshooting-shared-images.md)。
+如需共用映像資源庫的詳細資訊，請參閱[概觀](../virtual-machines/shared-image-galleries.md)。 若遇到任何問題，請參閱[針對共用映像資源庫問題進行疑難排解](../virtual-machines/troubleshooting-shared-images.md)。

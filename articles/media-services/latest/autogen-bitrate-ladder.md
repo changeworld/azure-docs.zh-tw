@@ -1,5 +1,5 @@
 ---
-title: 使用媒體服務中的標準編碼器為影片編碼 - Azure | Microsoft Docs
+title: 使用媒體服務中的標準編碼器編碼影片
 description: 本主題說明如何使用媒體服務的標準編碼器，根據輸入解析度和位元速率，以自動產生的位元速率階梯，進行視訊的編碼。
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 05accd69f1868b8b0e0f6dbd4fb5c21ee843ec5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b973d17e10f3dbb75f5208d9003b4f8118b37c7
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297709"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98891398"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>使用自動產生的位元速率階梯進行編碼
 
@@ -31,7 +31,7 @@ ms.locfileid: "89297709"
 
 ### <a name="encoding-for-streaming"></a>只針對串流處理進行編碼
 
-當您在 [轉換]**** 中使用預設 [AdaptiveStreaming]**** 時，您所得到的輸出很適合透過 HLS 和 DASH 等串流通訊協定進行傳遞。 當使用這項預設時，服務會自行決定應該產生多少層的視訊，以及應當採用的位元速率和解析度。 輸出內容包含 MP4 檔案，其中的 AAC 編碼音訊和 H.264 編碼視訊為非交錯格式。
+當您在 [轉換] 中使用預設 [AdaptiveStreaming] 時，您所得到的輸出很適合透過 HLS 和 DASH 等串流通訊協定進行傳遞。 當使用這項預設時，服務會自行決定應該產生多少層的視訊，以及應當採用的位元速率和解析度。 輸出內容包含 MP4 檔案，其中的 AAC 編碼音訊和 H.264 編碼視訊為非交錯格式。
 
 如需此預設的應用範例，請參閱[串流處理檔案](stream-files-dotnet-quickstart.md)。
 

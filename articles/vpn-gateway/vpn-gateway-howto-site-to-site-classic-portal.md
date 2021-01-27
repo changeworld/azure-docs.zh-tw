@@ -7,19 +7,19 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 346536f5797841a850ef97dc4667110eafa721a4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 4ad05281f13885327c855a261a3101388f38af83
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656951"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878048"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>使用 Azure 入口網站建立站對站連線 (傳統)
 
 本文說明如何使用 Azure 入口網站來建立從內部部署網路到 VNet 的站對站 VPN 閘道連線。 本文中的步驟適用于傳統部署模型，不適用於目前的部署模型，Resource Manager。 您也可從下列清單中選取不同的選項，以使用不同的部署工具或部署模型來建立此組態：
 
 > [!div class="op_single_selector"]
-> * [Azure 入口網站](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [Azure 入口網站](./tutorial-site-to-site-portal.md)
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Azure 入口網站 (傳統)](vpn-gateway-howto-site-to-site-classic-portal.md)
@@ -33,7 +33,7 @@ ms.locfileid: "94656951"
 
 在開始設定之前，請確認您已符合下列條件：
 
-* 確認您想要使用傳統部署模型。 如果您想要使用 Resource Manager 部署模型，請參閱[建立站對站連線 (Resource Manager)](vpn-gateway-howto-site-to-site-resource-manager-portal.md)。 建議您使用 Resource Manager 部署模型，因為傳統模型是舊版模型。
+* 確認您想要使用傳統部署模型。 如果您想要使用 Resource Manager 部署模型，請參閱[建立站對站連線 (Resource Manager)](./tutorial-site-to-site-portal.md)。 建議您使用 Resource Manager 部署模型，因為傳統模型是舊版模型。
 * 確定您有相容的 VPN 裝置以及能夠對其進行設定的人員。 如需相容 VPN 裝置和裝置組態的詳細資訊，請參閱[關於 VPN 裝置](vpn-gateway-about-vpn-devices.md)。
 * 確認您的 VPN 裝置有對外開放的公用 IPv4 位址。
 * 如果您不熟悉位於內部部署網路組態的 IP 位址範圍，您需要與能夠提供那些詳細資料的人協調。 當您建立此組態時，您必須指定 IP 位址範圍的首碼，以供 Azure 路由傳送至您的內部部署位置。 內部部署網路的子網路皆不得與您所要連線的虛擬網路子網路重疊。
@@ -94,7 +94,7 @@ ms.locfileid: "94656951"
 
 1. 選取頁面底部的 [ **審核 + 建立** ] 以驗證您的設定。 選取 [ **建立** ] 以部署。 建立虛擬網路閘道最多可能需要45分鐘的時間，視您選取的閘道 SKU 而定。
 
-## <a name="configure-your-vpn-device"></a><a name="vpndevice"></a>設定您的 VPN 裝置
+## <a name="configure-your-vpn-device"></a><a name="vpndevice"></a>設定 VPN 裝置
 
 內部部署網路的站對站連線需要 VPN 裝置。 在此步驟中，設定 VPN 裝置。 設定 VPN 裝置時，您需要下列值：
 

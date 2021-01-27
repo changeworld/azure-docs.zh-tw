@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒體服務串流視訊檔案 - Node.js | Microsoft Docs
+title: 使用 Azure 媒體服務 Node.js 串流影片檔案
 description: 按照本教學課程的步驟建立新的 Azure 媒體服務帳戶、對檔案進行編碼，然後將它串流到 Azure 媒體播放器。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-js
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 38207ac47d2e58c689f1933a6ade6d5c86cd44ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
+ms.openlocfilehash: 711db5135345fd9b69da9aaea5bc4dbb929d27c9
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268667"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895131"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---nodejs"></a>教學課程：編碼以 URL 為基礎的遠端檔案及串流處理影片 - Node.js
 
@@ -54,18 +54,18 @@ ms.locfileid: "91268667"
 
 此範例會執行下列動作：
 
-1. 建立**轉換** (首先，檢查指定的轉換是否存在)。 
-2. 建立輸出**資產**，以作為編碼**作業**的輸出。
-3. 建立以 HTTPS URL 為基礎的**作業**輸入。
-4. 使用稍早建立的輸入和輸出提交編碼**作業**。
+1. 建立 **轉換** (首先，檢查指定的轉換是否存在)。 
+2. 建立輸出 **資產**，以作為編碼 **作業** 的輸出。
+3. 建立以 HTTPS URL 為基礎的 **作業** 輸入。
+4. 使用稍早建立的輸入和輸出提交編碼 **作業**。
 5. 檢查作業的狀態。
-6. 建立**串流定位器**。
+6. 建立 **串流定位器**。
 7. 建置串流 URL。
 
 ## <a name="run-the-sample-app"></a>執行範例應用程式
 
 1. 應用程式會下載已編碼的檔案。 建立資料夾供您存放輸出檔案，並更新 [index.js](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/master/AMSv3Samples/StreamFilesSample/index.js#L39)檔案中 **outputFolder** 變數的值。
-1. 開啟**命令提示字元**、瀏覽至範例的目錄，然後執行下列命令。
+1. 開啟 **命令提示字元**、瀏覽至範例的目錄，然後執行下列命令。
 
     ```
     npm install 

@@ -1,5 +1,5 @@
 ---
-title: 如何使用 CLI 調整媒體保留單元 (Mru) -Azure |Microsoft Docs
+title: 如何使用 CLI 調整媒體保留單元 (Mru) -Azure
 description: 本主題顯示如何使用 CLI 搭配 Azure 媒體服務調整媒體處理。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: bcbe5fe71e5a4d4d39a29d4a6828c104f6891c0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41026a64d6f7549c5a268493cfb5975838002df2
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617140"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895300"
 ---
 # <a name="how-to-scale-media-reserved-units"></a>如何調整媒體保留單元
 
@@ -38,7 +38,7 @@ ms.locfileid: "91617140"
 
 執行 `mru` 命令。
 
-下列 [az ams account mru](/cli/azure/ams/account/mru?view=azure-cli-latest) 命令會使用**計數**和**類型**參數在 "amsaccount" 帳戶上設定媒體保留單元。
+下列 [az ams account mru](/cli/azure/ams/account/mru?view=azure-cli-latest) 命令會使用 **計數** 和 **類型** 參數在 "amsaccount" 帳戶上設定媒體保留單元。
 
 ```azurecli
 az ams account mru set -n amsaccount -g amsResourceGroup --count 10 --type S3

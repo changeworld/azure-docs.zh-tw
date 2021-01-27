@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 8e657386c417ce3407aea9b3765419e1d2b70bb9
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 242c0819e916f3ea7912d4d57b7d3e338152e4d9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962443"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878505"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>針對 Windows (SMB) 中的 Azure 檔案儲存體問題進行疑難排解
 
@@ -263,7 +263,7 @@ $leaseClient.Break() | Out-Null
 -   如果您知道擴充寫入檔案的最終大小，而且當檔案上未寫入的結尾中有零時您的軟體不會產生相容性問題，則請事先設定檔案大小，而不是將每次寫入設為擴充寫入。
 -   使用正確的複製方法：
     -   針對兩個檔案共用之間的任何傳輸使用 [AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) 。
-    -   在內部部署電腦上的檔案共用之間，使用 [Robocopy](./storage-files-deployment-guide.md#robocopy) \(英文\)。
+    -   在內部部署電腦上的檔案共用之間，使用 [Robocopy](./storage-how-to-create-file-share.md) \(英文\)。
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>針對 Windows 8.1 或 Windows Server 2012 R2 的考量
 
@@ -406,8 +406,8 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 5. CheckSidHasAadUser：檢查登入的 AD 使用者是否已同步處理至 Azure AD。 如果您想要查閱特定 AD 使用者是否同步處理至 Azure AD，您可以在輸入參數中指定-UserName 和-Domain。 
 6. CheckGetKerberosTicket：嘗試取得 Kerberos 票證以連接至儲存體帳戶。 如果沒有有效的 Kerberos 權杖，請執行 klist 取得 cifs/儲存體---------net.tcp Cmdlet，並檢查錯誤碼的根本原因，使票證抓取失敗。
 7. CheckStorageAccountDomainJoined：檢查是否已啟用 AD 驗證，並已填入帳戶的 AD 屬性。 如果沒有，請參閱 [此處](./storage-files-identity-ad-ds-enable.md) 的指示，在 Azure 檔案儲存體上啟用 AD DS 驗證。 
-8. CheckUserRbacAssignment：檢查 AD 使用者是否具有適當的 RBAC 角色指派，以提供共用層級許可權來存取 Azure 檔案儲存體。 如果沒有，請參閱 [此處](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions) 的指示來設定共用層級許可權。 AzFilesHybrid v 0.2.3 + version) 支援 (
-9. CheckUserFileAccess：檢查 AD 使用者是否具有適當的目錄/檔案許可權 (Windows Acl) 存取 Azure 檔案儲存體。 如果沒有，請參閱 [此處](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-configure-permissions) 的指示，以設定目錄/檔案層級許可權。 AzFilesHybrid v 0.2.3 + version) 支援 (
+8. CheckUserRbacAssignment：檢查 AD 使用者是否具有適當的 RBAC 角色指派，以提供共用層級許可權來存取 Azure 檔案儲存體。 如果沒有，請參閱 [此處](./storage-files-identity-ad-ds-assign-permissions.md) 的指示來設定共用層級許可權。 AzFilesHybrid v 0.2.3 + version) 支援 (
+9. CheckUserFileAccess：檢查 AD 使用者是否具有適當的目錄/檔案許可權 (Windows Acl) 存取 Azure 檔案儲存體。 如果沒有，請參閱 [此處](./storage-files-identity-ad-ds-configure-permissions.md) 的指示，以設定目錄/檔案層級許可權。 AzFilesHybrid v 0.2.3 + version) 支援 (
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>無法設定目錄/檔案層級許可權 (windows Acl) Windows 檔案總管
 

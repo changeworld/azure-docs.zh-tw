@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 68dc7c36159523bcc46e93a4784e9d038037a919
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b5ce8e3d6482c13a8ba02065f2a97074610c25bb
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201207"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98877709"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>虛擬機器擴展集的 Azure 安全性基準
 
@@ -582,7 +582,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 * [Azure RBAC](../role-based-access-control/overview.md)
 
-* [Azure 內建角色](../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
+* [Azure 內建角色](../role-based-access-control/built-in-roles.md#virtual-machine-contributor) (機器翻譯)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -848,7 +848,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 * [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-* [如何下載 VM 範本的資訊](../virtual-machines/windows/download-template.md)
+* [如何下載 VM 範本的資訊](/previous-versions/azure/virtual-machines/windows/download-template)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -892,7 +892,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 在大部分的情況下，與 Azure 自動化 Desired State Configuration 結合的 Microsoft 基底 VM 範本，可協助滿足和維護安全性需求。
 
-* [如何下載 VM 範本的資訊](../virtual-machines/windows/download-template.md)
+* [如何下載 VM 範本的資訊](/previous-versions/azure/virtual-machines/windows/download-template)
 
 * [建立 ARM 範本的資訊](../virtual-machines/windows/ps-template.md)
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 01/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 769460d5dab7311eb2940d101df6f4996a3ad355
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 09f98e3d6c7997d9cae2737b25f4323021e29bfb
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98876574"
+ms.locfileid: "98892434"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：使用條件式存取封鎖對 Azure AD 的舊式驗證   
 
@@ -83,6 +83,7 @@ Azure AD 支援數個最常用的驗證和授權通訊協定，包括舊式驗�
 1. 瀏覽至 [Azure 入口網站]  >  [Azure Active Directory]  >  [登入]。
 1. 如果未顯示 [用戶端應用程式] 欄，請按一下 [欄]  >  [用戶端應用程式] 來新增此欄。
 1. **新增篩選**  > **用戶端應用程式**> 選取所有舊版驗證通訊協定。 選取 [篩選] 對話方塊以外的範圍，以套用您的選取專案並關閉對話方塊。
+1. 如果您已啟用新的登 [入活動報告預覽](../reports-monitoring/concept-all-sign-ins.md)，請在 **使用者登入 (非互動式)** 索引標籤上重複上述步驟。
 
 篩選後，只會顯示您使用舊式驗證通訊協定的登入嘗試。 按一下各項登入嘗試，即會顯示更多詳細資料。 [基本資訊] 索引標籤下方的 [用戶端應用程式] 欄位，會標明使用的舊式驗證通訊協定。
 

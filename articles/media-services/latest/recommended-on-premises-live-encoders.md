@@ -1,5 +1,5 @@
 ---
-title: 媒體服務建議的即時串流編碼器 -  Azure | Microsoft Docs
+title: 媒體服務建議的即時串流編碼器-Azure
 description: 深入了解 Azure 媒體服務所建議的即時串流處理內部部署編碼器
 services: media-services
 keywords: encoding;encoders;media;編碼;編碼器;媒體
@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 11/10/2020
 ms.topic: conceptual
 ms.service: media-services
-ms.openlocfilehash: 88de41ae62e3a81fdb51981afe42135649bf34b4
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 6d54a4167739775d3c09740f25a883314e048c65
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734305"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895164"
 ---
 # <a name="verified-on-premises-live-streaming-encoders"></a>已驗證內部部署即時串流編碼器
 
