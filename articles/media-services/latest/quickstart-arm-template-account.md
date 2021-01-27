@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 11/24/2020
 ms.author: inhenkel
 ms.custom: subject-armqs
-ms.openlocfilehash: 6a23c3a20e79fe6fff7de8faccf4e4ef78f02585
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
-ms.translationtype: HT
+ms.openlocfilehash: 541a4c17a3212f711be7e2cf096ce3a2d632ee64
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185026"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879641"
 ---
 # <a name="quickstart-media-services-account-arm-template"></a>快速入門：媒體服務帳戶 ARM 範本
 
@@ -41,7 +41,7 @@ ms.locfileid: "96185026"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-如果您之前從未部署過 ARM 範本，請參閱 [Azure ARM 範本](https://docs.microsoft.com/azure/azure-resource-manager/templates/)再繼續進行 [教學課程](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template?tabs=azure-powershell)，會很有幫助。
+如果您之前從未部署過 ARM 範本，請參閱 [Azure ARM 範本](../../azure-resource-manager/templates/index.yml)再繼續進行 [教學課程](../../azure-resource-manager/templates/template-tutorial-create-first-template.md?tabs=azure-powershell)，會很有幫助。
 
 ## <a name="review-the-template"></a>檢閱範本
 
@@ -118,8 +118,8 @@ The syntax for the JSON code fence is:
 
 範本中定義了三個 Azure 資源類型：
 
-- [Microsoft Media/windowsazure.mediaservices.extensions](https://docs.microsoft.com/azure/templates/microsoft.media/mediaservices)：建立媒體服務帳戶
-- [Microsoft Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts)：建立儲存體帳戶
+- [Microsoft Media/windowsazure.mediaservices.extensions](/azure/templates/microsoft.media/mediaservices)：建立媒體服務帳戶
+- [Microsoft Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)：建立儲存體帳戶
 
 ## <a name="set-the-account"></a>設定帳戶
 
@@ -277,4 +277,4 @@ az group delete --name {name of the resource group}
 若要深入了解如何使用 ARM 範本，請遵循建立具有參數、變數等的範本流程，嘗試
 
 > [!div class="nextstepaction"]
-> [教學課程：建立及部署您的第一個 ARM 範本](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [教學課程：建立及部署您的第一個 ARM 範本](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)

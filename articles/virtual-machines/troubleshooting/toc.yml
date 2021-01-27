@@ -39,8 +39,6 @@
       href: restart-resize-error-troubleshooting.md
     - name: 重新啟動、關閉或停止服務
       href: boot-error-troubleshoot-windows.md
-    - name: Linux 虛擬機器上完整 OS 磁碟的問題
-      href: os-disk-full-linux.md
 - name: 非預期的重新啟動
   items:
     - name: 包含連結 VHD 的 VM 非預期重新開機
@@ -153,7 +151,7 @@
         - name: 針對一般錯誤進行疑難排解
           href: troubleshoot-rdp-general-error.md
         - name: 針對驗證錯誤進行疑難排解
-          href: troubleshoot-authentication-error-rdp-vm.md
+          href: /troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm
         - name: 依事件識別碼對 Azure VM 的 RDP 連線問題進行疑難排解
           href: event-id-troubleshoot-vm-rdp-connecton.md
         - name: 針對靜態 IP 而在 VM 中導致的 RDP 錯誤進行疑難排解

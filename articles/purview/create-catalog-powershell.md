@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 11/23/2020
-ms.openlocfilehash: 7db546ec9038403bd9e34f637e9d9de368277d52
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
-ms.translationtype: HT
+ms.openlocfilehash: 0698295688a4587a704e8cdba0a4796e8d1e6fcd
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400297"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879994"
 ---
 # <a name="quickstart-create-an-azure-purview-account-using-azure-powershellazure-cli"></a>快速入門：使用 Azure PowerShell/Azure CLI 建立 Azure Purview 帳戶
 
@@ -27,9 +27,9 @@ ms.locfileid: "97400297"
 
 * 您用來登入 Azure 的使用者帳戶必須為參與者或擁有者角色，或是 Azure 訂用帳戶的管理員。
 
-* 您擁有 [Azure Active Directory 租用戶](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)。
+* 您擁有 [Azure Active Directory 租用戶](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)。
 
-* 在用戶端電腦中安裝 Azure PowerShell 或 Azure CLI 來部署範本：[命令列部署](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template?tabs=azure-cli#command-line-deployment)
+* 在用戶端電腦中安裝 Azure PowerShell 或 Azure CLI 來部署範本：[命令列部署](../azure-resource-manager/templates/template-tutorial-create-first-template.md?tabs=azure-cli#command-line-deployment)
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 

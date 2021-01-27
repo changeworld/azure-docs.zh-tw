@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
-ms.openlocfilehash: 2fd2efa9de3deff1fcf983ac0fa45e412357d312
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 512130928c8e18aad90bce351e3be85d6fbe03f0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71057278"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878641"
 ---
 # <a name="troubleshoot-rdp-issues"></a>疑難排解 RDP 問題
 
@@ -36,7 +36,7 @@ ms.locfileid: "71057278"
 - [針對內部錯誤進行疑難排解](Troubleshoot-rdp-internal-error.md)
 - [針對連線經常中斷的問題進行疑難排解](troubleshoot-rdp-intermittent-connectivity.md)
 - [針對一般錯誤進行疑難排解](troubleshoot-rdp-general-error.md)
-- [針對驗證錯誤進行疑難排解](troubleshoot-authentication-error-rdp-vm.md)
+- [針對驗證錯誤進行疑難排解](/troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm)
 - [依事件識別碼對 Azure VM 的 RDP 連線問題進行疑難排解](event-id-troubleshoot-vm-rdp-connecton.md)
 - [針對靜態 IP 而在 VM 中導致的 RDP 錯誤進行疑難排解](troubleshoot-rdp-static-ip.md)
 - [針對停用 NIC 而在 VM 中導致的 RDP 錯誤進行疑難排解](troubleshoot-rdp-nic-disabled.md)
@@ -46,4 +46,3 @@ ms.locfileid: "71057278"
 - [客體 OS 防火牆封鎖輸入流量](guest-os-firewall-blocking-inbound-traffic.md)
 - [客體 OS 防火牆設定不正確](guest-os-firewall-misconfigured.md) 
 - [針對由 netvsc.sys所造成的 RDP 錯誤進行疑難排解](troubleshoot-rdp-driver-netvsc.md)
-

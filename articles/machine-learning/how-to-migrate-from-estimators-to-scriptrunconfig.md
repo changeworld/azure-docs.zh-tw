@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/14/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 64c03b1c9fc18a4e78af9914b893599683069ced
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: d603a12f851dac5b7cefc5bad728d42967bb27dc
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632655"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878590"
 ---
 # <a name="migrating-from-estimators-to-scriptrunconfig"></a>從估算器遷移至 ScriptRunConfig
 
@@ -30,7 +30,7 @@ ms.locfileid: "97632655"
 > 若要從估算器遷移至 ScriptRunConfig，請確定您使用的是 Python SDK 的 >= 1.15.0。
 
 ## <a name="scriptrunconfig-documentation-and-samples"></a>ScriptRunConfig 檔和範例
-Azure Machine Learning 的檔和範例已更新為使用 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py&preserve-view=true) 進行作業設定和提交。
+Azure Machine Learning 的檔和範例已更新為使用 [ScriptRunConfig](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?preserve-view=true&view=azure-ml-py) 進行作業設定和提交。
 
 如需使用 ScriptRunConfig 的詳細資訊，請參閱下列檔：
 * [設定和提交定型執行](how-to-set-up-training-targets.md)
@@ -104,10 +104,10 @@ src.run_config.data_references = {data_ref.data_reference_name: data_ref.to_conf
 ```
 
 如需使用資料進行定型的詳細資訊，請參閱：
-* [使用 Azure ML 中的資料集進行定型](https://docs.microsoft.com/azure/machine-learning/how-to-train-with-datasets)
+* [使用 Azure ML 中的資料集進行定型](./how-to-train-with-datasets.md)
 
 ## <a name="distributed-training"></a>分散式定型
-如果您需要設定用於定型的分散式工作，請在 ScriptRunConfig 函式中指定參數來進行 `distributed_job_config` 。 針對個別類型的分散式作業傳入 [MpiConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true)、 [PyTorchConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?view=azure-ml-py&preserve-view=true)或 [TensorflowConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py&preserve-view=true) 。
+如果您需要設定用於定型的分散式工作，請在 ScriptRunConfig 函式中指定參數來進行 `distributed_job_config` 。 針對個別類型的分散式作業傳入 [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py)、 [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py)或 [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?preserve-view=true&view=azure-ml-py) 。
 
 下列範例會設定 PyTorch 訓練作業，以搭配 MPI/Horovod 使用分散式訓練：
 ```python
@@ -130,6 +130,6 @@ src = ScriptRunConfig(source_directory='.',
 src.run_config
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [設定和提交定型執行](how-to-set-up-training-targets.md)

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 255b34fc683628846d2776d9db7a0fbe8fe32a45
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: dd19729f8b119946a12220d4b0c434f0b039989a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202074"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879658"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-powershell"></a>使用入口網站或 PowerShell 建立快照集
 
@@ -33,7 +33,7 @@ ms.locfileid: "98202074"
 6. 選取 Azure 資料中心的 [位置]。  
 7. 在 [來源磁碟] 中，選取要建立快照集的受控磁碟。
 8. 選取用來儲存快照集的 [帳戶類型]。 除非需要將快照集存放在高效能磁碟上，否則選取 [Standard_HDD]。
-9. 選取 [建立]。
+9. 選取 [建立]  。
 
 ## <a name="use-powershell"></a>使用 PowerShell
 
@@ -82,4 +82,4 @@ ms.locfileid: "98202074"
 
 ## <a name="next-steps"></a>後續步驟
 
-從快照集建立受控磁碟，然後連結新的受控磁碟作為 OS 磁碟，以從快照集建立虛擬機器。 如需詳細資訊，請參閱[使用 PowerShell 從快照集建立 VM](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md)。
+從快照集建立受控磁碟，然後連結新的受控磁碟作為 OS 磁碟，以從快照集建立虛擬機器。 如需詳細資訊，請參閱[使用 PowerShell 從快照集建立 VM](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot)。

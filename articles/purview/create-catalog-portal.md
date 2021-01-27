@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: 6aeb4e29390b5b456d3aa820e4b3b8be762dbddd
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
-ms.translationtype: HT
+ms.openlocfilehash: dea881acc4cec90c4a8ad6169d94734f24d5b759
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98115781"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880028"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立 Azure Purview 帳戶
 
@@ -25,7 +25,7 @@ ms.locfileid: "98115781"
 
 * 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* 您自己的 [Azure Active Directory 租用戶](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)。
+* 您自己的 [Azure Active Directory 租用戶](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)。
 
 * 您的帳戶必須擁有在訂用帳戶中建立資源的權限
 
@@ -35,7 +35,7 @@ ms.locfileid: "98115781"
     > 如果您沒有 Azure 原則或現有的 Azure 原則不會封鎖 **儲存體帳戶** 和 **EventHub 命名空間** 的建立，則不需要遵循此步驟。
 
     1. 瀏覽至 Azure 入口網站並搜尋 **原則**
-    1. 遵循[建立自訂原則定義](https://docs.microsoft.com/azure/governance/policy/tutorials/create-custom-policy-definition)或修改現有的原則，以新增兩個具有 `not` 運算子和 `resourceBypass` 標籤的例外狀況：
+    1. 遵循[建立自訂原則定義](../governance/policy/tutorials/create-custom-policy-definition.md)或修改現有的原則，以新增兩個具有 `not` 運算子和 `resourceBypass` 標籤的例外狀況：
 
         ```json
         {
@@ -83,7 +83,7 @@ ms.locfileid: "98115781"
 
         :::image type="content" source="./media/create-catalog-portal/policy-definition.png" alt-text="螢幕擷取畫面，顯示如何建立原則定義。":::
 
-    1. 使用所建立的自訂原則[建立原則指派](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal)。
+    1. 使用所建立的自訂原則[建立原則指派](../governance/policy/assign-policy-portal.md)。
 
         [ ![螢幕擷取畫面，顯示如何建立原則指派](./media/create-catalog-portal/policy-assignment.png)](./media/create-catalog-portal/policy-assignment.png#lightbox)
 
@@ -155,7 +155,7 @@ ms.locfileid: "98115781"
 
 1. 選取 [新增角色指派]。
 
-1. 針對 **Purview 資料保存者角色** 或 **Purview 資料來源管理員角色** 中的角色類型，請依服務主體的用途而定 (如需詳細資訊，請參閱 [目錄權限](catalog-permissions.md)和 [ Azure Active Directory 中的應用程式和服務主體物件](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals))。
+1. 針對 **Purview 資料保存者角色** 或 **Purview 資料來源管理員角色** 中的角色類型，請依服務主體的用途而定 (如需詳細資訊，請參閱 [目錄權限](catalog-permissions.md)和 [ Azure Active Directory 中的應用程式和服務主體物件](../active-directory/develop/app-objects-and-service-principals.md))。
 
 1. 保留 [存取權指派對象] 中的預設值 **使用者、群組或服務主體**。
 
