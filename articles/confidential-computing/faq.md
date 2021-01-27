@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: 9df3d9771029e6d72e9d0092a129cddc27be6cd7
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 38bf12b46002e767bba50cf833637e2c8ace078f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564101"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872327"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Azure 機密運算的常見問題集
 
@@ -37,13 +37,21 @@ ms.locfileid: "94564101"
 **DCsv2 虛擬機器在入口網站中呈現灰色，我無法選取其中一個**
 
 根據 VM 旁的資訊泡泡，需要採取不同的動作：
-   -    **UnsupportedGeneration** ：將虛擬機器映像的世代變更為 “Gen2”。
-   -    **NotAvailableForSubscription** ：您的訂用帳戶尚無法使用此區域。 選取可用的區域。
-   -    **InsufficientQuota** ： [建立支援要求以提高您的配額](../azure-portal/supportability/per-vm-quota-requests.md)。 免費試用訂用帳戶沒有機密運算 VM 的配額。 
+   -    **UnsupportedGeneration**：將虛擬機器映像的世代變更為 “Gen2”。
+   -    **NotAvailableForSubscription**：您的訂用帳戶尚無法使用此區域。 選取可用的區域。
+   -    **InsufficientQuota**：[建立支援要求以提高您的配額](../azure-portal/supportability/per-vm-quota-requests.md)。 免費試用訂用帳戶沒有機密運算 VM 的配額。 
 
 **當我嘗試在入口網站大小選取器中搜尋時，未顯示 DCsv2 虛擬機器**
 
 請確定您已選取[可用的區域](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)。 此外，也請確定您在大小選取器中選取 [清除所有篩選]。 
+
+**我可以使用 Azure 機密運算來啟用加速網路嗎？**
+
+ 否。 DC-Series 或 DCsv2-Series 虛擬機器不支援加速網路。 無法針對機密運算上執行的任何機密計算虛擬機器部署或 Azure Kubernetes Service 叢集部署啟用加速網路。
+
+**我可以搭配這些電腦使用 Azure 專用主機嗎？**
+
+是。 Azure 專用主機支援 DCsv2 系列的虛擬機器。 Azure 專用主機提供單一租使用者實體伺服器來執行您的虛擬機器。 使用者通常會使用 Azure 專用主機來解決實體安全性、資料完整性和監視的合規性需求。 
 
 **我收到 Azure Resource Manager 範本部署失敗錯誤：「無法完成作業，因為作業導致超過已核准的標準 DcsV2 系列核心配額」**
 

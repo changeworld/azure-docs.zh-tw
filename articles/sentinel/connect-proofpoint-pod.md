@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: 0e256f2fe4b8d4275e331e0fe1fadd67e1d96655
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: bdc9cbf942b88af93befa34f73eb3a90469cfcef
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567902"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873496"
 ---
 # <a name="connect-your-proofpoint-on-demand-email-security-pod-solution-to-azure-sentinel"></a>將您的 Proofpoint on demand 隨選電子郵件安全性 (POD) 解決方案連線至 Azure Sentinel
 
@@ -31,13 +31,13 @@ ms.locfileid: "98567902"
 > [!NOTE]
 > 資料會儲存在您執行 Azure Sentinel 之工作區的地理位置。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - 您必須擁有 Azure Sentinel 工作區的 [讀取] 和 [寫入] 許可權。
 
 - 您必須具有工作區共用金鑰的讀取權限。 [深入瞭解工作區金鑰](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)。
 
-- 您必須具備 Azure Functions 的讀取和寫入權限，才能建立函數應用程式。 [深入瞭解 Azure Functions](/azure/azure-functions/)。
+- 您必須具備 Azure Functions 的讀取和寫入權限，才能建立函數應用程式。 [深入瞭解 Azure Functions](../azure-functions/index.yml)。
 
 - 您必須具有下列 Websocket API 認證： ProofpointClusterID、ProofpointToken。 [深入瞭解 WEBSOCKET API](https://proofpointcommunities.force.com/community/s/article/Proofpoint-on-Demand-Pod-Log-API)。
 

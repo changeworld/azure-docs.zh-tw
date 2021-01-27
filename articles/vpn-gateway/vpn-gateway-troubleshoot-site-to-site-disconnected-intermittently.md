@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 82054099a5a496e99c49135ab98ee1163af19784
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63c9bd93e75533e54c42c2041cb9f55a1f0036b6
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75862555"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872140"
 ---
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>疑難排解：Azure 站對站 VPN 間歇性中斷
 
@@ -28,7 +28,7 @@ ms.locfileid: "75862555"
 檢查 Azure 虛擬網路閘道的類型：
 
 1. 移至 [Azure 入口網站](https://portal.azure.com)。
-2. 檢查虛擬網路閘道的 [概觀]**** 頁面來取得類型資訊。
+2. 檢查虛擬網路閘道的 [概觀] 頁面來取得類型資訊。
     
     ![閘道概觀](media/vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently/gatewayoverview.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "75862555"
 
 ### <a name="step-2-check-the-security-association-settingsfor-policy-based-azure-virtual-network-gateways"></a>步驟 2：檢查安全性關聯設定 (適用於原則式 Azure 虛擬網路閘道)
 
-1. 確定 Microsoft Azure 中的「區域網路閘道」**** 定義中的虛擬網路、子網路和範圍皆與內部部署 VPN 裝置上的設定相同。
+1. 確定 Microsoft Azure 中的「區域網路閘道」定義中的虛擬網路、子網路和範圍皆與內部部署 VPN 裝置上的設定相同。
 2. 確認安全性關聯設定相符合。
 
 ### <a name="step-3-check-for-user-defined-routes-or-network-security-groups-on-gateway-subnet"></a>步驟 3：檢查閘道子網路上使用者定義的路由或網路安全性群組
@@ -48,7 +48,7 @@ ms.locfileid: "75862555"
 
 ### <a name="step-4-check-the-one-vpn-tunnel-per-subnet-pair-setting-for-policy-based-virtual-network-gateways"></a>步驟 4：檢查「每個子網路配一個 VPN 通道」設定 (適用於原則式虛擬網路閘道)
 
-確定已針對原則式虛擬網路閘道將內部部署 VPN 裝置設定為「每個子網路配一個 VPN 通道」****。
+確定已針對原則式虛擬網路閘道將內部部署 VPN 裝置設定為「每個子網路配一個 VPN 通道」。
 
 ### <a name="step-5-check-for-security-association-limitation-for-policy-based-virtual-network-gateways"></a>步驟 5：檢查安全性關聯限制 (適用於原則式虛擬網路閘道)
 
@@ -56,16 +56,15 @@ ms.locfileid: "75862555"
 
 ### <a name="step-6-check-on-premises-vpn-device-external-interface-address"></a>步驟 6：檢查內部部署 VPN 裝置外部介面位址
 
-- 如果 Azure 的「區域網路閘道」**** 定義中包含 VPN 裝置對網際網路的 IP 位址，則您可能會遇到偶爾連線中斷的情況。
+- 如果 Azure 的「區域網路閘道」定義中包含 VPN 裝置對網際網路的 IP 位址，則您可能會遇到偶爾連線中斷的情況。
 - 裝置的外部介面必須直接位在網際網路上。 網際網路與裝置之間不應該有網路位址轉譯 (NAT) 或防火牆。
 -  如果您將防火牆叢集設定為具有虛擬 IP，則您必須解散叢集，並直接將 VPN 設備公開給閘道可介接的公用介面。
 
 ### <a name="step-7-check-whether-the-on-premises-vpn-device-has-perfect-forward-secrecy-enabled"></a>步驟 7：檢查內部部署 VPN 裝置是否已啟用「完整轉寄密碼」
 
-「完整轉寄密碼」**** 功能可能會造成連線中斷的問題。 如果 VPN 裝置已啟用「完整 **轉寄** 密碼」，請停用此功能。 然後[更新虛擬網路閘道 IPsec 原則](vpn-gateway-ipsecikepolicy-rm-powershell.md#managepolicy)。
+「完整轉寄密碼」功能可能會造成連線中斷的問題。 如果 VPN 裝置已啟用「完整 **轉寄** 密碼」，請停用此功能。 然後[更新虛擬網路閘道 IPsec 原則](vpn-gateway-ipsecikepolicy-rm-powershell.md#managepolicy)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [設定對虛擬網路的站對站連線](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+- [設定對虛擬網路的站對站連線](./tutorial-site-to-site-portal.md)
 - [設定站對站 VPN 連線的 IPsec/IKE 原則](vpn-gateway-ipsecikepolicy-rm-powershell.md)
-

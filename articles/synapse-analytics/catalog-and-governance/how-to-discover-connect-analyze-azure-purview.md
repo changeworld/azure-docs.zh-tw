@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/16/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 817f9a88bd3536e9c0ec8a1057098e6b4a96716e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: a3ed7979584787627c97cfec3bb2e19c147f7152
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676352"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872652"
 ---
 # <a name="discover-connect-and-explore-data-in-synapse-using-azure-purview"></a>使用 Azure 範疇探索、連接及探索 Synapse 中的資料 
 
@@ -32,6 +32,8 @@ ms.locfileid: "98676352"
 ### <a name="data-discovery-search-datasets"></a>資料探索：搜尋資料集 
 
 若要探索 Azure 範疇註冊和掃描的資料，您可以使用 Synapse 工作區頂端中央的搜尋列。 請確定您選取 Azure 範疇來搜尋所有組織資料。 
+
+[![搜尋 Azure 範疇資產](./media/purview-access.png)](./media/purview-access.png#lightbox)
 
 ## <a name="azure-purview-actions"></a>Azure 範疇動作 
 

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: fe0280e302882fd5e50830950b531ea9ca169618
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 465d877da48e0d7027dbba6615302af32c6bb154
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660537"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872395"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>使用 Azure 入口網站設定 VNet 對 VNet 的 VPN 閘道連線
 
@@ -44,7 +44,7 @@ ms.locfileid: "94660537"
 
 ### <a name="site-to-site-ipsec"></a>站對站 (IPsec)
 
-如果您使用複雜的網路組態，您可能偏好使用[站對站連線](vpn-gateway-howto-site-to-site-resource-manager-portal.md)來連線 VNet。 當您遵循站對站 IPsec 步驟時，您會以手動方式建立及設定區域網路閘道。 每個 VNet 的區域網路閘道都會將其他 VNet 視為本機網站。 這些步驟可讓您為區域網路閘道指定其他位址空間，以便路由傳送流量。 如果 VNet 的位址空間變更，您必須手動更新對應的區域網路閘道。
+如果您使用複雜的網路組態，您可能偏好使用[站對站連線](./tutorial-site-to-site-portal.md)來連線 VNet。 當您遵循站對站 IPsec 步驟時，您會以手動方式建立及設定區域網路閘道。 每個 VNet 的區域網路閘道都會將其他 VNet 視為本機網站。 這些步驟可讓您為區域網路閘道指定其他位址空間，以便路由傳送流量。 如果 VNet 的位址空間變更，您必須手動更新對應的區域網路閘道。
 
 ### <a name="vnet-peering"></a>VNet 對等互連
 
@@ -76,7 +76,7 @@ ms.locfileid: "94660537"
 * **虛擬網路設定**
   * **名稱**： VNet1
   * **位址空間**：10.1.0.0/16
-  * **訂** 用帳戶：選取您想要使用的訂用帳戶。
+  * **訂用帳戶**：選取您要使用的訂用帳戶。
   * **資源群組**： TestRG1
   * **位置**：美國東部
   * **子網路**
@@ -95,7 +95,7 @@ ms.locfileid: "94660537"
   * **公用 IP 位址**：建立新的
   * **公用 IP 位址名稱**： VNet1GWpip
 
-* **連線**
+* **[連接]**
   * **名稱**： VNet1toVNet4
   * **共用金鑰**：您可以自行建立共用金鑰。 當您建立 VNet 之間的連線時，值必須相符。 針對此練習，請使用 abc123。
 
@@ -104,7 +104,7 @@ ms.locfileid: "94660537"
 * **虛擬網路設定**
   * **名稱**： VNet4
   * **位址空間**： 10.41.0.0/16
-  * **訂** 用帳戶：選取您想要使用的訂用帳戶。
+  * **訂用帳戶**：選取您要使用的訂用帳戶。
   * **資源群組**： TestRG4
   * **位置**：美國西部
   * **子網路**
@@ -123,7 +123,7 @@ ms.locfileid: "94660537"
   * **公用 IP 位址**：建立新的
   * **公用 IP 位址名稱**： VNet4GWpip
 
-* **連線**
+* **[連接]**
   * **名稱**： VNet4toVNet1
   * **共用金鑰**：您可以自行建立共用金鑰。 當您建立 VNet 之間的連線時，值必須相符。 針對此練習，請使用 abc123。
 
@@ -182,7 +182,7 @@ ms.locfileid: "94660537"
      * 選取您想要連線的虛擬網路閘道。
 
    * **共用金鑰 (PSK)**：在此欄位中，輸入連線的共用金鑰。 您可以產生此金鑰，或自行建立此金鑰。 在站對站連線中，您用於內部部署裝置與虛擬網路閘道連線的金鑰完全相同。 此處的概念類似，差別在於是連線到另一個虛擬網路閘道，而不是連線到 VPN 裝置。
-1. 按一下 [確定]  以儲存您的變更。
+1. 按一下 [確定] 以儲存您的變更。
 
 ## <a name="configure-the-vnet4-gateway-connection"></a>設定 VNet4 閘道連線
 
@@ -200,7 +200,7 @@ ms.locfileid: "94660537"
 
 ## <a name="add-additional-connections"></a>新增其他連線
 
-如果您需要新增其他連線，請瀏覽至您想建立連線的虛擬網路閘道，然後選取 [連線]。 您可以建立另一個 VNet 對 VNet 連線，或建立 IPsec 站對站連線到內部部署位置。 請務必調整 [連線類型] 來符合您需要建立的連線類型。 建立其他連線之前，請確認您虛擬網路的位址空間與任何您需要連線的位址空間不重疊。 如需建立站對站連線的步驟，請參閱[建立站對站連線](vpn-gateway-howto-site-to-site-resource-manager-portal.md)。
+如果您需要新增其他連線，請瀏覽至您想建立連線的虛擬網路閘道，然後選取 [連線]。 您可以建立另一個 VNet 對 VNet 連線，或建立 IPsec 站對站連線到內部部署位置。 請務必調整 [連線類型] 來符合您需要建立的連線類型。 建立其他連線之前，請確認您虛擬網路的位址空間與任何您需要連線的位址空間不重疊。 如需建立站對站連線的步驟，請參閱[建立站對站連線](./tutorial-site-to-site-portal.md)。
 
 ## <a name="vnet-to-vnet-faq"></a>VNet 對 VNet 常見問題集
 

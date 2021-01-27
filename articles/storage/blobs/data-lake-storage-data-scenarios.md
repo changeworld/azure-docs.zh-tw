@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: eea7fb073cdf99ee1f4257f6824375a6502a4fad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bffa7894f7603f95c4840019be5e5670797881df
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913618"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873241"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>使用 Azure Data Lake Storage Gen2 處理巨量資料需求
 
@@ -142,4 +142,4 @@ Azure ExpressRoute 可讓您在 Azure 資料中心與內部部署的基礎結構
 |Azure Data Factory | [Azure Data Factory 中的複製活動](../../data-factory/copy-activity-overview.md) |
 |Apache DistCp | [使用 DistCp 在 Azure 儲存體 Blob 與 Azure Data Lake Storage Gen2 之間複製資料](./data-lake-storage-use-distcp.md) |
 |Azure 儲存體總管|[使用 Azure 儲存體總管來管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 ACL](data-lake-storage-explorer.md) (機器翻譯)|
-|AzCopy 工具|[使用 AzCopy 和 Blob 儲存體傳輸資料](../common/storage-use-azcopy-blobs.md)|
+|AzCopy 工具|[使用 AzCopy 和 Blob 儲存體傳輸資料](../common/storage-use-azcopy-v10.md#transfer-data)|

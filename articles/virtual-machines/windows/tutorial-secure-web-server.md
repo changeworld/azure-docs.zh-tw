@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f2987e5b09bb3582b68a8165aa853b5e41a8c677
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 4e5bbe179c43508033e0747bc2c03089f283b6e2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736554"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873074"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>教學課程：在 Azure 中使用 Key Vault 內儲存的 TLS/SSL 憑證，來保護 Windows 虛擬機器上的網頁伺服器
 
@@ -177,4 +177,4 @@ Get-AzPublicIPAddress -ResourceGroupName $resourceGroup -Name "myPublicIPAddress
 用以下連結查看預先建立的虛擬機器指令碼範例。
 
 > [!div class="nextstepaction"]
-> [Windows 虛擬機器指令碼範例](./powershell-samples.md)
+> [Windows 虛擬機器指令碼範例](https://github.com/Azure/azure-docs-powershell-samples/tree/master/virtual-machine)

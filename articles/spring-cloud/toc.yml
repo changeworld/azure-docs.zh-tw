@@ -33,8 +33,6 @@
       href: spring-cloud-tutorial-custom-domain.md
     - name: 使用受控識別將 Key Vault 連線至 Azure Spring Cloud 應用程式
       href: spring-cloud-tutorial-managed-identities-key-vault.md
-    - name: 在虛擬網路中部署 Azure Spring Cloud
-      href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
     - name: 使用受控識別從 Azure Spring Cloud 應用程式叫用 Azure Functions
       href: spring-cloud-tutorial-managed-identities-functions.md
 - name: 概念
@@ -101,6 +99,18 @@
           href: spring-cloud-howto-application-insights.md
         - name: Resilience4J 斷路器計量
           href: spring-cloud-howto-circuit-breaker-metrics.md
+    - name: 網路
+      items:
+        - name: 在虛擬網路中部署 Azure 春季 Cloud
+          href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
+        - name: 在私人網路中存取您的應用程式
+          href: spring-cloud-access-app-virtual-network.md
+        - name: 將應用程式公開到網際網路
+          href: spring-cloud-expose-apps-gateway-azure-firewall.md
+        - name: 在 VNET 中執行 Azure 春季 Cloud 的客戶責任
+          href: spring-cloud-vnet-customer-responsibilities.md
+        - name: 針對虛擬網路中的 Azure 春季 Cloud 進行疑難排解
+          href: spring-cloud-troubleshooting-vnet.md
     - name: 安全
       items:
         - name: 啟用系統指派的受控識別
@@ -140,7 +150,7 @@
         - name: Spring Boot
           href: /azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud
         - name: Tomcat
-          href: 'https://docs.microsoft.com/azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud'
+          href: /azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud
 - name: DevOps 部署
   items:
     - name: 使用 Azure DevOps 的 CI/CD

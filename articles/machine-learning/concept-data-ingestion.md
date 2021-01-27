@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 60cf97c4cb650120a4b6e2989b93d96ea120d040
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: a096375e32e3d8a6760da88fe5ec86a70d364aff
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360117"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872090"
 ---
 # <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Azure Machine Learning 工作流程的資料內嵌選項
 
@@ -60,7 +60,7 @@ Azure Data Factory 資料流程的內嵌資料歷程功能|
 
 ## <a name="azure-machine-learning-python-sdk"></a>Azure Machine Learning Python SDK 
 
-使用 [PYTHON SDK](/python/api/overview/azure/ml)，您可以將資料內嵌工作併入 [Azure Machine Learning 管線](how-to-create-your-first-pipeline.md) 步驟中。
+使用 [PYTHON SDK](/python/api/overview/azure/ml)，您可以將資料內嵌工作併入 [Azure Machine Learning 管線](./how-to-create-machine-learning-pipelines.md) 步驟中。
 
 下表摘要說明使用 SDK 的優缺點，以及用於資料內嵌工作的 ML 管線步驟。
 

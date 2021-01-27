@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 9a53eb1004d68045781903b71d02c3416f494be2
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 7006096154d8958e13e7a86783bd07067b95d293
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803811"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872887"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux Azure 中的自備訂用帳戶黃金映射
 
@@ -194,7 +194,7 @@ Red Hat Enterprise Linux BYOS 黃金映射可透過使用 [Azure 磁碟加密](.
 
     在此情況下，請聯絡 Microsoft 或 Red Hat 來啟用您的訂用帳戶。
 
-- 如果您從 RHEL BYOS 映射修改快照集，並嘗試將該自訂映射發佈至 [共用映射庫](../../linux/shared-image-galleries.md)，您必須提供符合快照集原始來源的方案資訊。 例如，命令看起來可能像這樣：
+- 如果您從 RHEL BYOS 映射修改快照集，並嘗試將該自訂映射發佈至 [共用映射庫](../../shared-image-galleries.md)，您必須提供符合快照集原始來源的方案資訊。 例如，命令看起來可能像這樣：
 
     ```azurecli
     az vm create –image \

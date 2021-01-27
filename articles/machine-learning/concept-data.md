@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 8b73676adbb9aa12e6f3b42dd26bed94b22780a8
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 9e4722933ec224712c8d649c0d9d850a9ee3e322
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539897"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872004"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning 中的安全資料存取
 
@@ -101,8 +101,8 @@ Azure Machine Learning 資料集不是您的資料複本。 藉由建立資料�
      + [自動化 ML 實驗](how-to-use-automated-ml-for-ml-models.md)
      + [設計](tutorial-designer-automobile-price-train-score.md#import-data)工具
      + [筆記本](how-to-train-with-datasets.md)
-     + [Azure Machine Learning 管線](how-to-create-your-first-pipeline.md)
-+ 存取資料集以在[機器學習管線](how-to-create-your-first-pipeline.md)中使用[批次推斷](./tutorial-pipeline-batch-scoring-classification.md)進行評分。
+     + [Azure Machine Learning 管線](./how-to-create-machine-learning-pipelines.md)
++ 存取資料集以在[機器學習管線](./how-to-create-machine-learning-pipelines.md)中使用[批次推斷](./tutorial-pipeline-batch-scoring-classification.md)進行評分。
 + 設定 [資料漂移](#drift) 偵測的資料集監視。
 
 <a name="label"></a>

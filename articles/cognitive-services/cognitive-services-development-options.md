@@ -8,12 +8,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: a952bfa45515b9d35549d03d18fd94103679344d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 975f7eec31839aefcb1782f573d0210df29a4d00
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349464"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873564"
 ---
 # <a name="cognitive-services-development-options"></a>認知服務開發選項
 
@@ -125,7 +125,7 @@ Power 自動化是 [Power Platform](/power-platform/) 中的一項服務，可�
 | 要素 | 服務 | 自訂 UI | 快速入門 |
 |--------|---------|------------------|------------|
 | 視覺 | 自訂視覺 | https://www.customvision.ai/ | [快速入門](./custom-vision-service/quickstarts/image-classification.md?pivots=programming-language-csharp) | 
-| 視覺 | 表單辨識器 | 範例標籤工具 | [快速入門](./form-recognizer/quickstarts/label-tool.md?tabs=v2-0) |
+| 視覺 | 表單辨識器 | [範例標籤工具](https://fott-preview.azurewebsites.net/) | [快速入門](./form-recognizer/quickstarts/label-tool.md?tabs=v2-0) |
 | 決策 | 內容仲裁者 | https://contentmoderator.cognitive.microsoft.com/dashboard | [快速入門](./content-moderator/review-tool-user-guide/human-in-the-loop.md) |
 | 決策 | Metrics Advisor | https://metricsadvisor.azurewebsites.net/  | [快速入門](./metrics-advisor/quickstarts/web-portal.md) |
 | 決策 | 個人化工具 | UI 可在個人化工具資源下的 Azure 入口網站中取得。 | [快速入門](./personalizer/quickstart-personalizer-sdk.md) |
