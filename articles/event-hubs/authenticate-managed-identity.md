@@ -2,14 +2,14 @@
 title: 使用 Azure Active Directory 驗證受控識別
 description: 本文提供的資訊會說明如何使用 Azure Active Directory 來驗證受控識別，以存取 Azure 事件中樞資源
 ms.topic: conceptual
-ms.date: 06/23/2020
+ms.date: 01/25/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c6b43cc48663be28d12fa788d92286be6f47ef08
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2070cfd94b39a08afb86ffd3579f1116faac72d5
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993528"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805263"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>使用 Azure Active Directory 來驗證受控識別，以存取事件中樞資源
 Azure 事件中樞支援使用 [適用于 Azure 資源的受控](../active-directory/managed-identities-azure-resources/overview.md)識別 Azure Active Directory (Azure AD) 驗證。 適用于 Azure 資源的受控識別可以從 Azure 虛擬機器中執行的應用程式（ (Vm) 、函式應用程式、虛擬機器擴展集和其他服務），使用 Azure AD 認證來授權存取事件中樞資源。 藉由使用適用于 Azure 資源的受控識別搭配 Azure AD authentication，您可以避免將認證儲存在雲端中執行的應用程式。
@@ -41,11 +41,12 @@ Azure 事件中樞支援使用 [適用于 Azure 資源的受控](../active-direc
 1. 選取要 **開啟** 的 **狀態**。 
 1. 選取 [儲存]  以儲存設定。 
 
-    ![Web 應用程式的受控識別](./media/authenticate-managed-identity/identity-web-app.png)
+    :::image type="content" source="./media/authenticate-managed-identity/identity-web-app.png" alt-text="Web 應用程式的受控識別":::
+4. 在資訊訊息上選取 **[是]** 。 
 
-一旦您啟用此設定，就會在 Azure Active Directory (Azure AD) 中建立新的服務識別，並將其設定為 App Service 主機。
+    一旦您啟用此設定，就會在 Azure Active Directory (Azure AD) 中建立新的服務識別，並將其設定為 App Service 主機。
 
-現在，將此服務識別指派給事件中樞資源中所需範圍內的角色。
+    現在，將此服務識別指派給事件中樞資源中所需範圍內的角色。
 
 ### <a name="to-assign-azure-roles-using-the-azure-portal"></a>使用 Azure 入口網站指派 Azure 角色
 若要將角色指派給事件中樞資源，請流覽至 Azure 入口網站中的該資源。 顯示資源的存取控制 (IAM) 設定，並遵循下列指示來管理角色指派：
@@ -56,15 +57,20 @@ Azure 事件中樞支援使用 [適用于 Azure 資源的受控](../active-direc
 1. 在 Azure 入口網站中，流覽至您的事件中樞命名空間，並顯示命名空間的 **總覽** 。 
 1. 選取左側功能表上的 [ **存取控制] (IAM)** ，以顯示事件中樞的存取控制設定。
 1.  選取 [角色指派] 索引標籤，以查看角色指派的清單。
-3.  選取 **[新增]** 以加入新的角色。
-4.  在 [ **新增角色指派** ] 頁面上，選取您要指派的事件中樞角色。 然後搜尋以找出您已註冊的服務身分識別，以指派角色。
+3.  選取 [ **新增**]，然後選取 [ **新增角色指派** _]。
+4.  在 [_ *新增角色指派*] 頁面上，依照下列步驟執行：
+    1. 針對 [ **角色**]，選取您要指派的事件中樞角色。 在此範例中，它是 **Azure 事件中樞資料擁有** 者。
+    1. 在 [**將存取權指派給**] 欄位中，選取 [**系統指派的受控識別**] 下的 **App Service** 。 
+    1. 選取 web 應用程式的受控識別建立所在的 **訂** 用帳戶。
+    1. 選取您所建立 web 應用程式的 **受控識別** 。 身分識別的預設名稱與 web 應用程式的名稱相同。 
+    1. 然後選取 [儲存]。 
     
-    ![[新增角色指派] 頁面](./media/authenticate-managed-identity/add-role-assignment-page.png)
-5.  選取 [儲存]。 您對其指派角色的身分識別會出現在該角色下方。 例如，下圖顯示服務識別有事件中樞資料擁有者。
-    
-    ![指派給角色的身分識別](./media/authenticate-managed-identity/role-assigned.png)
+        ![[新增角色指派] 頁面](./media/authenticate-managed-identity/add-role-assignment-page.png)
 
-一旦您指派角色之後，web 應用程式就可以存取定義範圍下的事件中樞資源。 
+    一旦您指派角色之後，web 應用程式就可以存取定義範圍下的事件中樞資源。 
+
+    > [!NOTE]
+    > 如需支援受控識別的服務清單，請參閱 [支援 Azure 資源受控](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)識別的服務。
 
 ### <a name="test-the-web-application"></a>測試 Web 應用程式
 1. 建立事件中樞命名空間和事件中樞。 

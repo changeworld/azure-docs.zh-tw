@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: d601c6191da9d555e54c1d58c122420510d288fc
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 8b233211f47250d4742d35cd0782cdd241839496
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955547"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804867"
 ---
 # <a name="deploy-custom-script-extension-on-vms-running-on-your-azure-stack-edge-pro-device"></a>在 Azure Stack Edge Pro 裝置上執行的 Vm 上部署自訂腳本擴充功能
 
@@ -62,13 +62,13 @@ If your script is on a local server, then you may still need additional firewall
 
 ## <a name="prerequisites"></a>先決條件
 
-1. 將[VM 範本和參數檔案下載](https://aka.ms/ase-vm-templates)至您的用戶端電腦。 將它解壓縮至您將作為工作目錄的目錄。
+1. 將[VM 範本和參數檔案下載](https://aka.ms/ase-vm-templates)至您的用戶端電腦。 將下載內容解壓縮到您將用作工作目錄的目錄。
 
 1. 您應在您的裝置上建立並部署 VM。 若要建立 Vm，請遵循 [使用範本在您的 Azure Stack Edge Pro 上部署 VM](azure-stack-edge-gpu-deploy-virtual-machine-templates.md)中的所有步驟。
 
-    如果您需要從外部下載腳本（例如從 GitHub 或 Azure 儲存體），則在設定計算網路時，請啟用連線到網際網路的埠以進行計算。 這可讓您下載腳本。
+    如果您需要從 GitHub 下載腳本，或從外部 Azure 儲存體，則在設定計算網路時，請啟用連線到網際網路的埠以進行計算。 這可讓您下載腳本。
 
-    以下是埠2連線至網際網路，並用來啟用計算網路的範例。 如果您已識別出在先前的步驟中不需要 Kubernetes，您可以略過 Kubernetes 節點 IP 和外部服務 IP 指派。    
+    在下列範例中，埠2已連線到網際網路，且用來啟用計算網路。 如果您發現在先前的步驟中不需要 Kubernetes，您可以略過 Kubernetes 節點 IP 和外部服務 IP 指派。
 
     ![在連線到網際網路的埠上啟用計算設定](media/azure-stack-edge-gpu-deploy-gpu-virtual-machine/enable-compute-network-1.png)
 
@@ -115,7 +115,7 @@ If your script is on a local server, then you may still need additional firewall
 ```
 提供 VM 名稱、擴充功能名稱和您想要執行的命令。
 
-以下是本文中使用的範例參數檔案。 
+以下是本文中使用的範例參數檔案。
 
 ```powershell
 {
@@ -396,4 +396,4 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 
 ## <a name="next-steps"></a>後續步驟
 
-[Azure Resource Manager Cmdlet](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure Resource Manager Cmdlet](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

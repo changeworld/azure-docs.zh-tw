@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 81a52b26c5291f788ac81caeb2ca5416a2f58d36
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e009369f6223e171984d1142419101fdd82879b0
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448869"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804921"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-storageclass-on-your-azure-stack-edge-pro-gpu-device"></a>使用 kubectl 在 Azure Stack Edge Pro GPU 裝置上執行具有 StorageClass 的 Kubernetes 具狀態應用程式
 
@@ -22,9 +22,9 @@ ms.locfileid: "96448869"
 此程式適用于已 [在 Azure Stack Edge Pro 裝置上審核 Kubernetes 儲存體](azure-stack-edge-gpu-kubernetes-storage.md) 並熟悉 [Kubernetes 儲存體](https://kubernetes.io/docs/concepts/storage/)概念的人。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-部署可設定狀態的應用程式之前，請確定您已在裝置和您將用來存取裝置的用戶端上完成下列必要條件：
+在您可以部署具狀態應用程式之前，請先在您的裝置和用戶端上完成下列必要條件，以供您用來存取裝置：
 
 ### <a name="for-device"></a>針對裝置
 
@@ -35,7 +35,7 @@ ms.locfileid: "96448869"
 ### <a name="for-client-accessing-the-device"></a>適用于存取裝置的用戶端
 
 - 您有將用來存取 Azure Stack Edge Pro 裝置的 Windows 用戶端系統。
-    - 用戶端正在執行 Windows PowerShell 5.0 或更新版本。 若要下載 Windows PowerShell 的最新版本，請移至 [ [安裝 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)。
+    - 用戶端正在執行 Windows PowerShell 5.0 或更新版本。 若要下載 Windows PowerShell 的最新版本，請移至 [ [安裝 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view=true)。
     
     - 您也可以讓任何其他用戶端使用 [支援的作業系統](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) 。 本文說明使用 Windows 用戶端的程式。 
     
@@ -66,7 +66,7 @@ ms.locfileid: "96448869"
    kubectl get pods -n <your-namespace>
    ```
     
-   以下是命令使用方式的範例：
+   命令使用方式的範例如下：
     
    ```powershell
     C:\Users\user>kubectl get pods -n "userns1"
@@ -157,7 +157,7 @@ ms.locfileid: "96448869"
     persistentvolumeclaim/mysql-pv-claim-sc created
     C:\Users\user>
     ```
-   請注意建立的 PVC 名稱，如下所示 `mysql-pv-claim-sc` 。 您將在稍後的步驟中使用它。 
+   請注意建立的 PVC 名稱-在此範例中為 `mysql-pv-claim-sc` 。 您將在稍後的步驟中使用它。
 
 4. 部署檔案的內容 `mysql-deployment.yml` 。
 

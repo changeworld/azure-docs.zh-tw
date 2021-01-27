@@ -1,5 +1,5 @@
 ---
-title: 增強埠和 VLAN 名稱解析
+title: 增強連接埠和 VLAN 名稱解析
 description: 自訂您感應器上的埠和 VLAN 名稱，以擴充裝置解析度。
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/13/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 1747af77468ebe41f59892dea4bb49ce24757f37
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9c976671bccb420ae24d8def7a6574098d86ce6d
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838923"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98803583"
 ---
-# <a name="enhance-port-and-vlan-name-resolution"></a>增強埠和 VLAN 名稱解析
+# <a name="enhance-port-and-vlan-name-resolution"></a>增強連接埠和 VLAN 名稱解析
 
 您可以自訂感應器上的埠和 VLAN 名稱，以擴充裝置解析度。
 
@@ -84,7 +84,8 @@ VLAN 名稱最多可包含50個 ASCII 字元。
 
 ## <a name="next-steps"></a>後續步驟
 
-在報告中查看裝置清查和資料採礦的擴充裝置資訊：
+查看各種報表中的擴充裝置資訊：
 
 - [調查裝置清查中的感應器偵測](how-to-investigate-sensor-detections-in-a-device-inventory.md)
-- [產生報表](how-to-generate-reports.md)
+- [感應器趨勢和統計資料包表](how-to-create-trends-and-statistics-reports.md)
+- [感應器資料採礦查詢](how-to-create-data-mining-queries.md)

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/05/2020
 ms.author: kenwith
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 462f60bbae9fd7b61993a2ccccd40fa5ca4ccc28
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: e87211789280c3439d71d8fa63da09416eaaf18e
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012962"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805128"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-ad"></a>在 Azure AD 中撰寫屬性對應之運算式的參考
 
@@ -41,7 +41,7 @@ ms.locfileid: "98012962"
 [](#append) &nbsp; &nbsp; 附加 &nbsp; &nbsp;[](#bitand) &nbsp; &nbsp; BitAnd &nbsp; &nbsp;[](#cbool) &nbsp; &nbsp; CBool &nbsp; &nbsp;[](#coalesce) &nbsp; &nbsp; 聯合 &nbsp; &nbsp;[](#converttobase64) &nbsp; &nbsp; ConvertToBase64 &nbsp; &nbsp;[](#converttoutf8hex) &nbsp; &nbsp; ConvertToUTF8Hex &nbsp; &nbsp;[](#count) &nbsp; &nbsp; 計數 &nbsp; &nbsp;[](#cstr) &nbsp; &nbsp; CStr &nbsp; &nbsp;[DateFromNum](#datefromnum) &nbsp;[](#formatdatetime) &nbsp; &nbsp; FormatDateTime &nbsp; &nbsp;[](#guid) &nbsp; &nbsp; Guid &nbsp; &nbsp;[](#iif) &nbsp; &nbsp; IIF &nbsp; &nbsp;[](#instr) &nbsp; &nbsp; InStr &nbsp; &nbsp;[](#isnull) &nbsp; &nbsp; IsNull &nbsp; &nbsp;[](#isnullorempty) &nbsp; &nbsp; IsNullOrEmpty &nbsp; &nbsp;[](#ispresent) &nbsp; &nbsp; IsPresent &nbsp; &nbsp;[](#isstring) &nbsp; &nbsp; IsString &nbsp; &nbsp;[](#item) &nbsp; &nbsp; 專案 &nbsp; &nbsp;[](#join) &nbsp; &nbsp; 聯結 &nbsp; &nbsp;[](#left) &nbsp; &nbsp; 左方 &nbsp; &nbsp;[Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp; &nbsp; &nbsp; &nbsp; [RemoveDuplicates](#removeduplicates) &nbsp; &nbsp; &nbsp; &nbsp; [Replace](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [Split](#split) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Switch](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper) &nbsp; &nbsp; &nbsp; &nbsp; [Word](#word)
 
 ---
-### <a name="append"></a>附加
+### <a name="append"></a>Append
 
 **函數：** 附加 (來源，尾碼) 
 
@@ -143,7 +143,7 @@ ms.locfileid: "98012962"
  傳回 48656C6C6F20776F726C6421
 
 ---
-### <a name="count"></a>計數
+### <a name="count"></a>Count
 **函數：** Count (屬性) 
 
 **描述：** Count 函數會傳回多重值屬性中的元素數目。
@@ -314,7 +314,7 @@ ms.locfileid: "98012962"
 | **expression** |必要 |運算式 |要評估的運算式 |
 
 ---
-### <a name="item"></a>Item
+### <a name="item"></a>項目
 **函數：** 專案 (屬性，索引) 
 
 **描述：** Item 函數會從多重值字串/屬性傳回一個專案。
@@ -376,8 +376,8 @@ ms.locfileid: "98012962"
 | 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **source** |必要 |String |通常為屬性的名稱。 |
-| **開始** |必要 |integer |**來源** 字串中的索引，代表子字串的開頭。 字串第一個字元的索引為 1，第二個字元的索引為 2，依此類推。 |
-| **length** (長度) |必要 |integer |子字串的長度。 如果長度超出 **source** 字串結尾，函式會傳回從 **start** 索引一直到 **source** 字串結尾的子字串。 |
+| **開始** |必要 |整數 |**來源** 字串中的索引，代表子字串的開頭。 字串第一個字元的索引為 1，第二個字元的索引為 2，依此類推。 |
+| **length** (長度) |必要 |整數 |子字串的長度。 如果長度超出 **source** 字串結尾，函式會傳回從 **start** 索引一直到 **source** 字串結尾的子字串。 |
 
 ---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
@@ -483,7 +483,7 @@ ms.locfileid: "98012962"
  - 這是最上層函式，無法巢狀處理。
  - 此函式無法套用至具有相符優先順序的屬性。   
  - 此函式只能用於建立項目。 搭配屬性使用此函式時，請將 [套用對應] 屬性設定為 [僅限物件建立期間]。
- - 此函式目前僅支援「Workday 到 Active Directory 的使用者佈建」。 您無法將其與其他佈建應用程式搭配使用。 
+ - 目前只有「Workday 到 Active Directory 使用者布建」和「SuccessFactors 到 Active Directory 使用者布建」支援此函式。 您無法將其與其他佈建應用程式搭配使用。 
 
 
 **參數：** 

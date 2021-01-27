@@ -4,12 +4,12 @@ description: 在本文中，您可以找到 Azure 備份監視警示和 Azure �
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: cf6929b9b926a6e6469f3fa789a19e60d5883d21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e2585009b531512e54ffa889a05ec50038dd619
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89181488"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805868"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure 備份監視警示-常見問題
 
@@ -70,5 +70,5 @@ Azure 備份失敗的20分鐘內會引發警示。
 
 閱讀其他常見問題集：
 
-* Azure VM 的相關[常見問題](backup-azure-vm-backup-faq.md)。
+* Azure VM 的相關[常見問題](backup-azure-vm-backup-faq.yml)。
 * 「Azure 備份」代理程式的相關[常見問題](backup-azure-file-folder-backup-faq.md)

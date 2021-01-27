@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 883a06bdffcd0afcbc1be6f2c761d6a1c2c2ea2a
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2529c6c3b0f9d188e1ce8062c05f62f3e980ef50
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681870"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805227"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a> (預覽版設定權杖存留期原則) 
 您可以指定 Microsoft 身分識別平臺所發出的存取、SAML 或識別碼權杖的存留期。 不論是針對組織中所有的應用程式、針對多租用戶 (多組織) 應用程式，還是針對組織中特定的服務主體，都可以設定權杖存留期。 如需詳細資訊，請參閱可設定的 [權杖存留期](active-directory-configurable-token-lifetimes.md)。
@@ -210,5 +210,5 @@ ms.locfileid: "98681870"
 
     現在，原始原則已連結至您的服務主體，且新原則已設定為您的組織預設原則。 請務必記住，套用至服務主體的原則優先順序會高於組織預設原則。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 瞭解 Azure AD 條件式存取中的 [驗證會話管理功能](../conditional-access/howto-conditional-access-session-lifetime.md) 。

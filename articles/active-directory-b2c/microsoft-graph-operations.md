@@ -12,18 +12,18 @@ ms.date: 01/21/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1dc5b8dc8930d75456f307324ef97bd60e78eca9
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 96772020e70aeb32fa1a8ae18bf3818396887877
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660152"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805245"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C
 
 Microsoft Graph 可讓您管理 Azure AD B2C 目錄中的資源。 下列 Microsoft Graph API 作業支援管理 Azure AD B2C 資源，包括使用者、身分識別提供者、使用者流程、自訂原則和原則金鑰。 下列各節中的每個連結都會以該作業的 Microsoft Graph API 參考中的對應頁面為目標。 
 
-## <a name="perquisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要使用 MS 圖形 API，並與您 Azure AD B2C 租使用者中的資源互動，您需要可授與許可權以執行這項操作的應用程式註冊。 遵循《 [管理 Azure AD B2C 與 Microsoft Graph](microsoft-graph-get-started.md) 文章中的步驟，建立管理應用程式可使用的應用程式註冊。 
 

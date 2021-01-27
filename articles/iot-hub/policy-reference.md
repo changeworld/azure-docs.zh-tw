@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure IoT 中樞的內建原則定義
 description: 列出適用於 Azure IoT 中樞的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.topic: reference
 author: robinsh
 ms.author: robinsh
 ms.service: iot-hub
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 772d50ad4e8ba5b1df4e94c3146a7582f746c012
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: b6e62898826f685e15433097548a37c076c9299c
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703137"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98803340"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-iot-hub"></a>適用於 Azure IoT 中樞的 Azure 原則內建定義
 

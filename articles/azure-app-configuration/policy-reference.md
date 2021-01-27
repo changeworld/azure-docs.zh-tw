@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure 應用程式組態的內建原則定義
 description: 列出適用於 Azure 應用程式組態的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.topic: reference
 author: AlexandraKemperMS
 ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 19007968591e704e762028162007b7a70ffc8490
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 903a5d012d4a0ba35914e5fae6aea0b7f4eda884
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704790"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804980"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-app-configuration"></a>適用於 Azure 應用程式組態的 Azure 原則內建定義
 

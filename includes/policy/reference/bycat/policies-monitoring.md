@@ -2,18 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 8ad7f54b3e031dfc57bedbec3d7e54a6b07f50a4
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 27c3eb0cce273f3cfe06c1987968d6b52443a937
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704233"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806114"
 ---
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
+|[\[ASC 私人預覽 \] 部署-設定系統指派的受控識別，以啟用 vm 上的 Azure 監視器指派](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17b3de92-f710-4cf4-aa55-0e7859f1ed7b) |[ASC 私人預覽]將系統指派的受控識別設定為裝載于 Azure 中的虛擬機器，Azure 監視器沒有系統指派的受控識別。 系統指派的受控識別是所有 Azure 監視器指派的必要條件，必須先新增至電腦，才能使用任何 Azure 監視器擴充功能。 目標虛擬機器必須位於支援的位置。 |修改 |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/AzureMonitoring_AddSystemIdentity_Prerequisite.json) |
 |[\[預覽\]：稽核記錄分析代理程式部署 - 未列出的 VM 映像 (OS)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F32133ab0-ee4b-4b44-98d6-042180979d50) |若 VM 映像 (OS) 不在所定義清單中且未安裝代理程式，請將 VM 報告為不相容。 更新支援之後，OS 映像的清單會隨之更新。 |auditIfNotExists |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalytics_OSImage_Audit.json) |
 |[活動記錄至少應保留一年](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb02aacc0-b073-424e-8298-42b22829ee0a) |若保留期未設為 365 天或永久 (保留期設為 0)，此原則就會稽核活動記錄。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLogRetention_365orGreater.json) |
 |[特定系統管理作業應有活動記錄警示](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb954148f-4c11-4c38-8221-be76711e194a) |此原則會稽核未設定活動記錄警示的特定系統管理作業。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_AdministrativeOperations_Audit.json) |
@@ -28,6 +29,8 @@ ms.locfileid: "98704233"
 |[Azure 監視器應從所有區域收集活動記錄](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F41388f1c-2db0-4c25-95b2-35d7f5ccbfa9) |此原則會稽核不從所有 Azure 支援區域 (包括全球) 匯出活動的 Azure 監視器記錄設定檔。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_CaptureAllRegions.json) |
 |[必須部署 Azure 監視器解決方案「安全性與稽核」](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3e596b57-105f-48a6-be97-03e9243bad6e) |此原則可確保已部署安全性與稽核。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Security_Audit_MustBeDeployed.json) |
 |[Azure 訂用帳戶應具有用於活動記錄的記錄設定檔](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7796937f-307b-4598-941c-67d3a05ebfe7) |此原則可確保記錄設定檔已啟用，可用於匯出活動記錄。 如果沒有建立記錄檔設定檔來將記錄匯出至儲存體帳戶或事件中樞，則會進行稽核。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Logprofile_activityLogs_Audit.json) |
+|[部署-設定 Linux Azure 監視器代理程式，以在 Linux 虛擬機器上啟用 Azure 監視器指派](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa4034bc6-ae50-406d-bf76-50f4ee5a7811) |將 Linux Azure 監視器代理程式設定為在 Azure 中裝載的 Linux 虛擬機器（由 Azure 監視器所支援）。 Azure 監視器代理程式會從虛擬機器收集可用於提供建議的事件。 目標虛擬機器必須位於支援的位置。 |deployIfNotExists |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/AzureMonitoring_DeployExtensionLinux_Prerequisite.json) |
+|[部署-設定 Windows Azure 監視器代理程式，以在 Windows 虛擬機器上啟用 Azure 監視器指派](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fca817e41-e85a-4783-bc7f-dc532d36235e) |設定 Windows Azure 監視器代理程式至裝載于 Azure 中的 Windows 虛擬機器（由 Azure 監視器所支援）。 Azure 監視器代理程式會從虛擬機器收集可用於提供建議的事件。 目標虛擬機器必須位於支援的位置。 |deployIfNotExists |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/AzureMonitoring_DeployExtensionWindows_Prerequisite.json) |
 |[為 Linux 虛擬機器擴展集部署 Dependency Agent](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F765266ab-e40e-4c61-bcb2-5a5275d0b7c0) |若 VM 映像 (OS) 在所定義清單中且未安裝代理程式，請部署 Linux 虛擬機器擴展集的 Dependency Agent。 注意：如果您的擴展集 upgradePolicy 設為「手動」，您必須透過呼叫升級，將擴充功能套用至集合中的所有虛擬機器。 在 CLI 中，這會是 az vmss update-instances。 |deployIfNotExists |[1.3.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgentExtension_Linux_VMSS_Deploy.json) |
 |[為 Linux 虛擬機器部署 Dependency Agent](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4da21710-ce6f-4e06-8cdb-5cc4c93ffbee) |若 VM 映像 (OS) 位於定義的清單中，而且未安裝代理程式，請為 Linux 虛擬機器部署 Dependency Agent。 |deployIfNotExists |[1.3.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgentExtension_Linux_VM_Deploy.json) |
 |[為 Windows 虛擬機器擴展集部署 Dependency Agent](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3be22e3b-d919-47aa-805e-8985dbeb0ad9) |若 VM 映像 (OS) 在所定義清單中且未安裝代理程式，請部署 Windows 虛擬機器擴展集的 Dependency Agent。 更新支援之後，OS 映像的清單會隨之更新。 注意：如果您的擴展集 upgradePolicy 設為「手動」，您必須透過呼叫升級，將擴充功能套用至集合中的所有虛擬機器。 在 CLI 中，這會是 az vmss update-instances。 |deployIfNotExists |[1.3.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgentExtension_Windows_VMSS_Deploy.json) |

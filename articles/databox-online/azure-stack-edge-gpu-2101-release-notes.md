@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 01/19/2021
 ms.author: alkohli
-ms.openlocfilehash: d0b7f871b2ea62c810a6d20f6e20a5e8d3f6306e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 8158868a39bf8a1fe03a620f37e4dcb1c9adc14e
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791908"
+ms.locfileid: "98805190"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Azure Stack Edge 2101 版本資訊
 
@@ -46,10 +46,10 @@ Azure Stack Edge 2101 版提供下列新功能。
 |**2.**|Kubernetes 儀表板 | 不支援具有 SSL 憑證之 Kubernetes 儀表板的 *Https* 端點。 | |
 |**3.**|Kubernetes |啟用 web proxy 時，Edge container registry 無法運作。|未來的版本將提供此功能。 |
 |**4.**|Kubernetes |Edge container registry 無法搭配 IoT Edge 模組使用。| |
-|**5.**|Kubernetes |Kubernetes 不支援 .NET 應用程式所使用之環境變數名稱中的 "："。 事件方格 IoT Edge 模組也需要在 Azure Stack Edge 裝置和其他應用程式上運作。 如需詳細資訊，請參閱 [ASP.NET core 檔](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration&view=aspnetcore-3.1&preserve-view=true#environment-variables)。|以雙底線取代 "："。 如需詳細資訊，請參閱 [Kubernetes 問題](https://github.com/kubernetes/kubernetes/issues/53201)|
-|**6.** |Azure Arc + Kubernetes 叢集 |根據預設，當資源 `yamls` 從 Git 儲存機制中刪除時，不會從 Kubernetes 叢集刪除對應的資源。  |您必須設定 `--sync-garbage-collection` 弧線 OperatorParams，以便在從 git 儲存機制中刪除資源時，允許刪除這些資源。 如需詳細資訊，請參閱 [刪除](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters)設定。 |
-|**7.**|NFS |在您的裝置上使用 NFS 共用掛接來寫入資料的應用程式應該使用獨佔寫入。 使用獨佔寫入可確保寫入磁片。| |
-|**8.**|計算設定 |網路設定中的計算設定失敗，閘道或交換器或路由器會針對網路上不存在的系統，回應位址解析通訊協定 (ARP) 要求。| |
+|**5.**|Kubernetes |Kubernetes 不支援 .NET 應用程式所使用之環境變數名稱中的 "："。 事件方格 IoT Edge 模組也需要這項功能，才能在 Azure Stack Edge 裝置和其他應用程式上運作。 如需詳細資訊，請參閱 [ASP.NET core 檔](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration&view=aspnetcore-3.1&preserve-view=true#environment-variables)。|以雙底線取代 "："。 如需詳細資訊，請參閱 [Kubernetes 問題](https://github.com/kubernetes/kubernetes/issues/53201)|
+|**6.** |Azure Arc + Kubernetes 叢集 |根據預設， `yamls` 從 Git 存放庫中刪除資源時，不會從 Kubernetes 叢集刪除對應的資源。  |您必須 `--sync-garbage-collection`  在 Arc OperatorParams 中設定，以允許在從 git 儲存機制刪除資源時予以刪除。 如需詳細資訊，請參閱 [刪除](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters)設定。 |
+|**7.**|NFS |在您的裝置上使用 NFS 共用掛接來寫入資料的應用程式應該使用獨佔寫入。 這可確保寫入寫入磁片。| |
+|**8.**|計算設定 |網路設定中的計算設定失敗，因為閘道或交換器或路由器會回應位址解析通訊協定 (ARP) 不存在於網路上的系統要求。| |
 |**9.**|計算和 Kubernetes |如果在您的裝置上先設定 Kubernetes，它會宣告所有可用的 Gpu。 因此，在設定 Kubernetes 之後，就無法使用 Gpu 建立 Azure Resource Manager Vm。 |如果您的裝置有2個 Gpu，則您可以建立1個使用 GPU 的 VM，然後設定 Kubernetes。 在此情況下，Kubernetes 會使用其餘可用的 1 GPU。 |
 
 

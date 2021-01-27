@@ -79,7 +79,7 @@
         - name: 常見問題 - 備份中心
           href: backup-center-faq.yml
         - name: 常見問題集 - Azure VM 備份
-          href: backup-azure-vm-backup-faq.md
+          href: backup-azure-vm-backup-faq.yml
         - name: 常見問題集 - MARS 代理程式
           href: backup-azure-file-folder-backup-faq.md
         - name: 常見問題集 - 備份 Azure 檔案儲存體

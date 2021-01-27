@@ -601,24 +601,24 @@
           href: dedicated-hosts-portal.md
         - name: PowerShell
           href: ./windows/dedicated-hosts-powershell.md
+    - name: 找出虛擬機器
+      displayName: 'pre-empt, preempt, spot'
+      items:
+        - name: 概觀
+          href: spot-vms.md
+        - name: CLI
+          href: ./linux/spot-cli.md
+        - name: 入口網站
+          href: spot-portal.md
+        - name: PowerShell
+          href: ./windows/spot-powershell.md
+        - name: ARM 範本
+          displayName: template ARM
+          href: ./linux/spot-template.md
+        - name: 錯誤碼
+          href: error-codes-spot.md
     - name: 購買選項
       items:
-        - name: Spot VM
-          displayName: 'pre-empt, preempt, spot'
-          items:
-            - name: 概觀
-              href: spot-vms.md
-            - name: CLI
-              href: ./linux/spot-cli.md
-            - name: 入口網站
-              href: spot-portal.md
-            - name: PowerShell
-              href: ./windows/spot-powershell.md
-            - name: ARM 範本
-              displayName: template ARM
-              href: ./linux/spot-template.md
-            - name: 錯誤碼
-              href: error-codes-spot.md
         - name: Azure Hybrid Benefit
           items:
             - name: Linux
@@ -1747,7 +1747,7 @@
         - name: 定價
           href: ../backup/azure-backup-pricing.md
         - name: 常見問題集
-          href: ../backup/backup-azure-vm-backup-faq.md
+          href: ../backup/backup-azure-vm-backup-faq.yml
     - name: 災害復原
       items:
         - name: 概觀

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 0a7f54d991d31594a6ab522dbf9e73958cde3023
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 7534052412c2bee0f31e352fc577d376c11215c3
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900139"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804924"
 ---
 # <a name="gpu-vms-for-your-azure-stack-edge-pro-device"></a>適用于您 Azure Stack Edge Pro 裝置的 GPU Vm
 
@@ -39,8 +39,8 @@ Nvidia GPU 驅動程式擴充功能會安裝適當的 Nvidia CUDA 或 GRID 驅�
 
 | 散發 | 版本 |
 |---|---|
-| Windows Server 2019 | 核心版 |
-| Windows Server 2016 | 核心版 |
+| Windows Server 2019 | 核心 |
+| Windows Server 2016 | 核心 |
 
 ### <a name="supported-os-for-gpu-extension-for-linux"></a>適用于 Linux 的 GPU 擴充功能支援的 OS
 
@@ -640,4 +640,4 @@ Requestld IsSuccessStatusCode StatusCode ReasonPhrase
 
 ## <a name="next-steps"></a>後續步驟
 
-[Azure Resource Manager Cmdlet](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure Resource Manager Cmdlet](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 69d5a0a69bcd820fd59da0a18b3838b65a6a0460
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 66d537b79819aecab4ce88a56ed465679363f421
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763419"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805211"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>透過範本在您的 Azure Stack Edge Pro GPU 裝置上部署 Vm
 
@@ -29,7 +29,7 @@ ms.locfileid: "97763419"
 
 使用範本的部署工作流程高層級摘要如下所示：
 
-1. **設定必要條件** -有3種類型的必要條件;裝置、用戶端和 VM。
+1. **設定必要條件** -有三種類型的必要條件：裝置、用戶端和 VM。
 
     1. **裝置必要條件**
 
@@ -71,7 +71,7 @@ ms.locfileid: "97763419"
 
 ## <a name="vm-prerequisites"></a>VM 必要條件
 
-設定這些必要條件，以建立 VM 建立所需的資源。 
+設定這些必要條件，以建立建立 VM 所需的資源。 
 
     
 ### <a name="create-a-resource-group"></a>建立資源群組
@@ -101,7 +101,7 @@ PS C:\windows\system32>
 
 ### <a name="create-a-storage-account"></a>建立儲存體帳戶
 
-使用上一個步驟中建立的資源群組來建立新的儲存體帳戶。 這是 **本機儲存體帳戶** ，將用來上傳 VM 的虛擬磁片映射。
+使用上一個步驟中建立的資源群組來建立新的儲存體帳戶。 此帳戶是 **本機儲存體帳戶** ，將用來上傳 VM 的虛擬磁片映射。
 
 ```powershell
 New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resource group name> -Location DBELocal -SkuName Standard_LRS
@@ -185,17 +185,17 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
 
     ![連接到 Azure 儲存體1](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-1.png)
 
-5. 選取 [使用儲存體帳戶名稱和金鑰]。 選取 [下一步]  。
+5. 選取 [使用儲存體帳戶名稱和金鑰]。 選取 [下一步] 。
 
     ![連接到 Azure 儲存體2](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-2.png)
 
-6. 在 [ **使用名稱和金鑰連接]** 中，提供 **顯示名稱**、 **儲存體帳戶名稱** Azure 儲存體 **帳戶金鑰**。 選取 **其他** 儲存體網域，然後提供 `<device name>.<DNS domain>` 連接字串。 如果您未在儲存體總管中安裝憑證，請核取 [ **使用 HTTP** ] 選項。 選取 [下一步]  。
+6. 在 [ **使用名稱和金鑰連接]** 中，提供 **顯示名稱**、 **儲存體帳戶名稱** Azure 儲存體 **帳戶金鑰**。 選取 **其他** 儲存體網域，然後提供 `<device name>.<DNS domain>` 連接字串。 如果您未在儲存體總管中安裝憑證，請核取 [ **使用 HTTP** ] 選項。 選取 [下一步] 。
 
     ![使用名稱和金鑰連接](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-name-key-1.png)
 
 7. 檢查 **連接摘要** ，然後選取 **[連接]**。
 
-8. 儲存體帳戶會出現在左窗格中。 選取並展開儲存體帳戶。 選取 [ **blob 容器**]，以滑鼠右鍵按一下並選取 [ **建立 blob 容器**]。 提供 blob 容器的名稱。
+8. 儲存體帳戶會出現在左窗格中。 選取並展開儲存體帳戶。 選取 [ **blob 容器**]，按一下滑鼠右鍵，然後選取 [ **建立 blob 容器**]。 提供 blob 容器的名稱。
 
 9. 選取您剛才建立的容器，並在右窗格中選取 [ **上傳] > 上傳** 檔案。 
 
@@ -209,7 +209,7 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
 
     ![上傳 VHD 檔案3](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/upload-vhd-file-3.png)
 
-12. 複製並儲存 Uri，因為您將在稍後的步驟中使用此 **Uri** 。
+12. 複製並儲存 Uri，您將在稍後的步驟中使用此 **Uri**。
 
     ![複製 URI](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/copy-uri-1.png)
 
@@ -237,7 +237,7 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
     }
 ```
 
-編輯檔案 `CreateImage.parameters.json` ，以針對您的 Azure Stack Edge Pro 裝置包含下列內容：
+編輯檔案 `CreateImage.parameters.json` ，以針對您的 Azure Stack Edge Pro 裝置包含下列值：
 
 1. 提供與您將上傳的 VHD 對應的作業系統類型。 OS 類型可以是 Windows 或 Linux。
 
@@ -250,16 +250,17 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
 
 2. 將映射 URI 變更為您在先前的步驟中上傳的映射 URI：
 
-    ```json
-    "imageUri": {
-        "value": "https://myasegpusavm.blob.myasegpu1.wdshcsso.com/windows/WindowsServer2016Datacenter.vhd"
-        },
-    ```
-    如果您使用 *HTTP* 搭配儲存體總管，請將此變更為 *HTTP* URI。
+   ```json
+   "imageUri": {
+       "value": "https://myasegpusavm.blob.myasegpu1.wdshcsso.com/windows/WindowsServer2016Datacenter.vhd"
+       },
+   ```
+
+   如果您要使用 *HTTP* 搭配儲存體總管，請將 URI 變更為 *HTTP* uri。
 
 3. 提供唯一的映射名稱。 此映射可用來在稍後的步驟中建立 VM。 
 
-    以下是本文中使用的範例 json。
+   以下是本文中使用的範例 json。
 
     ```json
     {
@@ -278,6 +279,7 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
       }
     }
     ```
+
 5. 儲存參數檔案。
 
 
@@ -588,4 +590,4 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
 
 ## <a name="next-steps"></a>後續步驟
 
-[Azure Resource Manager Cmdlet](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure Resource Manager Cmdlet](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

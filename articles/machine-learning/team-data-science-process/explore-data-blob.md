@@ -1,5 +1,5 @@
 ---
-title: 使用 Pandas 來探索 Azure Blob 儲存體中的資料 - Team Data Science Process
+title: 使用 pandas 探索 Azure Blob 儲存體中的資料-Team Data 科學流程
 description: 如何使用 Pandas Python 封裝來探索儲存在 Azure Blob 容器中的資料。
 services: machine-learning
 author: marktab
@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3d80ff9f5f96bbc642aed6598c86cb682d606695
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 855998b887f1d446ee8d196ff4628e066cb5d675
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410669"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805681"
 ---
-# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>使用 Pandas 瀏覽 Azure blob 儲存體中的資料
+# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>使用 pandas 探索 Azure Blob 儲存體中的資料
 
 本文涵蓋如何使用 [Pandas](https://pandas.pydata.org/) Python 封裝瀏覽儲存在 Azure blob 容器的資料。
 
@@ -28,7 +28,7 @@ ms.locfileid: "94410669"
 本文假設您已經：
 
 * 建立 Azure 儲存體帳戶。 如需指示，請參閱[建立 Azure 儲存體帳戶](../../storage/common/storage-account-create.md)
-* 將您的資料儲存在 Azure blob 儲存體帳戶。 如需指示，請參閱 [從 Azure 儲存體來回移動資料](../../storage/common/storage-choose-data-transfer-solution.md)
+* 將您的資料儲存在 Azure Blob 儲存體帳戶中。 如需指示，請參閱 [從 Azure 儲存體來回移動資料](../../storage/common/storage-choose-data-transfer-solution.md)
 
 ## <a name="load-the-data-into-a-pandas-dataframe"></a>將資料載入 Pandas 資料框架
 若要探索和操作資料集，必須先從 Blob 來源將資料集下載至本機檔案，然後將其載入 Pandas 資料框架。 以下是此程序的遵循步驟：
@@ -72,7 +72,7 @@ ms.locfileid: "94410669"
     print('the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape)
     ```
 
-1. **檢查** 資料集中的前幾個或最後幾個 **資料列** ：
+1. **檢查** 資料集中的前幾個或最後幾個 **資料列**：
 
     ```python
     dataframe_blobdata.head(10)

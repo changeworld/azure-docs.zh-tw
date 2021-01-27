@@ -2,13 +2,13 @@
 title: Azure Site Recovery 的新功能
 description: 提供新功能的摘要，以及 Azure Site Recovery 服務中的最新更新。
 ms.topic: conceptual
-ms.date: 01/20/2021
-ms.openlocfilehash: 2778f1af99512c4594d2d688eea7e04b3b81ae47
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.date: 01/26/2021
+ms.openlocfilehash: 51d54ca4d46af3b9e0746f36114fadc47edd5b1f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621755"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805042"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 最新功能
 
@@ -22,7 +22,7 @@ ms.locfileid: "98621755"
 
 **更新** |  **統一安裝** | **設定伺服器 ova** | **行動服務代理程式** | **站台復原提供者** | **復原服務代理程式**
 --- | --- | --- | --- | --- | ---
-[匯總套件53](https://support.microsoft.com/help/4602881/)  | 9.40.5850.1 | 5.1.6537.0 | 9.40.5850.1 | 5.1.6537.0  | 2.0.9202.0
+[匯總套件53](https://support.microsoft.com/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)  | 9.40.5850.1 | 5.1.6537.0 | 9.40.5850.1 | 5.1.6537.0  | 2.0.9202.0
 [匯總套件52](https://support.microsoft.com/help/4597409/)  | 9.39.5796.1 | 5.1.6458.0 | 9.39.5796.1 | 5.1.6458.0  | 2.0.9196.0
 [匯總套件51](https://support.microsoft.com/help/4590304)  | 9.38.5761.1 | 5.1.6400.0 | 9.38.5761.1 | 5.1.6400.0  | 2.0.9193.0
 [匯總套件50](https://support.microsoft.com/help/4582666/) | 9.37.5724.1 | 5.1.6347.0 | 9.37.5724.1 | 5.1.6347.0  | 2.0.9192.0
@@ -35,7 +35,7 @@ ms.locfileid: "98621755"
 
 ### <a name="update-rollup-53"></a>更新彙總套件53
 
-[更新彙總套件 53](https://support.microsoft.com/help/4602881/update-rollup-53-for-azure-site-recovery) 提供下列更新：
+[更新彙總套件 53](https://support.microsoft.com/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) 提供下列更新：
 
 **更新** | **詳細資料**
 --- | ---

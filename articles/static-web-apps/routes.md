@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 8abbe575e855347714c19c40155d890af484d5d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0cece3f531d50356fdefb81a598109d7c067c5ed
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822320"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805946"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Azure 靜態 Web Apps 預覽版中的路由
 
@@ -21,7 +21,7 @@ Azure 靜態 Web Apps 中的路由會定義靜態內容和 Api<sup>1</sup>的後
 - _routes.json_ 檔案必須存在於應用程式組建成品資料夾的根目錄。
 - 規則會依其在 `routes` 陣列中出現的順序來執行。
 - 規則評估會在最初相符停止。 路由規則不會鏈結在一起。
-- 角色會在 _routes.json_ 檔案中定義，而使用者會透過[邀請](authentication-authorization.md)與角色相關聯。
+- 角色會在 _routes.json_ 檔案中定義，而使用者會透過 [邀請](authentication-authorization.md)與角色相關聯。
 - 您可以完全控制角色名稱。
 
 路由的主題與驗證和授權概念明顯重疊。 請務必閱讀[驗證和授權](authentication-authorization.md)指南以及這篇文章。
@@ -131,7 +131,7 @@ _routes.json_ 檔案必須存在於應用程式組建成品資料夾的根目錄
 
 您可以使用 [301](https://en.wikipedia.org/wiki/HTTP_301) 和 [302](https://en.wikipedia.org/wiki/HTTP_302) HTTP 狀態碼，將要求從一個路由重新導向至另一個路由。
 
-例如，下列規則會建立從 _old-page.html_ 至 _new-page.html_的 301 重新導向。
+例如，下列規則會建立從 _old-page.html_ 至 _new-page.html_ 的 301 重新導向。
 
 ```json
 {
@@ -153,7 +153,7 @@ _routes.json_ 檔案必須存在於應用程式組建成品資料夾的根目錄
 
 ## <a name="custom-error-pages"></a>自訂錯誤頁面
 
-使用者可能會遇到一些可能導致錯誤的不同情況。 使用 `platformErrorOverrides` 陣列，您可以提供自訂的體驗，以回應這些錯誤。 請參閱[範例路由檔案](#example-route-file)，以在 _routes.json_ 檔案中放置陣列。
+使用者可能會遇到一些可能導致錯誤的不同情況。 使用 `platformErrorOverrides` 陣列，您可以提供自訂的體驗，以回應這些錯誤。 請參閱 [範例路由檔案](#example-route-file)，以在 _routes.json_ 檔案中放置陣列。
 
 > [!NOTE]
 > 一旦要求使其進入平臺覆寫層級，就不會再次執行路由規則。
@@ -210,7 +210,7 @@ _routes.json_ 檔案必須存在於應用程式組建成品資料夾的根目錄
 }
 ```
 
-在上述範例中， `content-security-policy` 會加入新的標頭、 `cache-control` 修改伺服器預設值，並 `x-dns-prefectch-control` 移除標頭。
+在上述範例中， `content-security-policy` 會加入新的標頭、 `cache-control` 修改伺服器預設值，並 `x-dns-prefetch-control` 移除標頭。
 
 當您使用標頭時，下列考慮很重要：
 
@@ -290,9 +290,9 @@ _routes.json_ 檔案必須存在於應用程式組建成品資料夾的根目錄
 | 要求... | 結果... |
 |--|--|--|
 | _/profile_ | 已驗證的使用者會提供 _/profile/index.html_ 檔案。 未驗證的使用者已重新導向至 _/login_。 |
-| _/admin/reports_ | _administrators_角色中的已驗證使用者，會提供 _/admin/reports/index.html_ 檔案。 不在系統 _管理員_ 角色中的已驗證使用者會提供401錯誤<sup>2</sup>。 未驗證的使用者已重新導向至 _/login_。 |
+| _/admin/reports_ | _administrators_ 角色中的已驗證使用者，會提供 _/admin/reports/index.html_ 檔案。 不在系統 _管理員_ 角色中的已驗證使用者會提供401錯誤 <sup>2</sup>。 未驗證的使用者已重新導向至 _/login_。 |
 | _/api/admin_ | 來自 _administrators_ 角色中已驗證使用者的要求會傳送至 API。 不在 _administrators_ 角色中的已驗證使用者和未驗證的使用者，會提供 401 錯誤。 |
-| _/customers/contoso_ | 屬於系統 _管理員_ 或 _客戶 \_ contoso_ 角色的已驗證使用者，會提供 _/customers/contoso/index.html_ 檔<sup>2</sup>。 不在 _administrators_ 或 _customers\_contoso_ 角色中的已驗證使用者，會提供 401 錯誤。 未驗證的使用者已重新導向至 _/login_。 |
+| _/customers/contoso_ | 屬於系統 _管理員_ 或 _客戶 \_ contoso_ 角色的已驗證使用者，會提供 _/customers/contoso/index.html_ 檔 <sup>2</sup>。 不在 _administrators_ 或 _customers\_contoso_ 角色中的已驗證使用者，會提供 401 錯誤。 未驗證的使用者已重新導向至 _/login_。 |
 | _/login_ | 未經驗證的使用者會受到向 GitHub 驗證的查問。 |
 | _/.auth/login/twitter_ | 已停用 Twitter 的授權。 伺服器回應 404 錯誤。 |
 | _/logout_ | 使用者已登出任何驗證提供者。 |

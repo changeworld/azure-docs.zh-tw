@@ -3,12 +3,12 @@ title: 升級您的 Azure Service Fabric 叢集版本
 description: 瞭解 Azure Service Fabric 中的叢集版本，包括 Service Fabric team blog 中最新版本的連結。
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: b7234a60c98c42716e5b294c356062ec7001aef7
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: c9a29a97238164b9f6daf9dda66a1f314a7673ce
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762638"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804246"
 ---
 # <a name="upgrade-your-azure-service-fabric-cluster-version"></a>升級您的 Azure Service Fabric 叢集版本
 
@@ -60,13 +60,14 @@ ms.locfileid: "98762638"
 #### <a name="if-you-dont-upgrade-to-a-supported-version"></a>如果您未升級至支援的版本
 
 如果 Azure Service Fabric 叢集在6.3 年1月 2021 19 日未升級為支援的版本，則在以後版本上執行的叢集將會遇到功能或服務中斷的遺失。
-
-服務中斷可能包括下列各項：
-
-- *未* 使用 **開放式** 模式的版本：叢集將會保持啟動，但 **開放式** 模式將會停止運作，這可能會導致工作負載的服務中斷。
-
-- 使用 **開放式***模式的版本*：叢集可能會變成無法使用，而且會停止運作，這可能會導致您的工作負載服務中斷。
   
+  - 如果叢集 **執行的 Service Fabric 大於6.3 但未使用開放網路功能功能**，叢集將會保持運作。
+
+ - 如果叢集 **執行的 Service Fabric 大於6.3，並使用 [適用于容器的開放網路功能功能](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)** ，叢集可能會變成無法使用，而且將會停止運作，而導致工作負載的服務中斷。
+ 
+ -   若是 **[在7.0.457 和7.0.466 之間執行 Windows 版本的叢集 () 包含的兩個版本](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-version-names)，且 windows 作業系統已啟用 windows 容器功能。注意： Linux 版本7.0.457、7.0.464 和7.0.465 不會受到影響**。
+    - **影響**：叢集將會停止運作，而導致您的工作負載服務中斷。
+    
 #### <a name="required-action"></a>必要動作
 
 若要避免停機或功能遺失，請確定您的叢集正在執行下列其中一個版本。

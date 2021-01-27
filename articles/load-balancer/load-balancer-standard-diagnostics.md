@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/14/2019
+ms.date: 01/25/2021
 ms.author: allensu
-ms.openlocfilehash: 90443a898ffdebf33a0c967719ba25a2ccc6f9a7
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 43d83d994c9a4ee3cf89b584f6c3835a62fa2cfe
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/26/2021
-ms.locfileid: "98792094"
+ms.locfileid: "98806005"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>包含計量、警示和資源健康情況的 Standard Load Balancer 診斷
 
@@ -26,7 +26,6 @@ Azure Standard Load Balancer 會公開下列診斷功能：
 * **多維度計量和警示**：透過適用于標準負載平衡器設定的 [Azure 監視器](../azure-monitor/overview.md) ，提供多維度的診斷功能。 您可以監視、管理標準負載平衡器資源，並對其進行疑難排解。
 
 * **資源健康狀態**：您 Load Balancer 的資源健康狀態狀態可在 [監視] 底下的 [資源健康狀態] 頁面中取得。 這項自動檢查會通知您 Load Balancer 資源目前的可用性。
-
 本文會簡要介紹這些功能，以及如何將這些功能使用於標準 Load Balancer。 
 
 ## <a name="multi-dimensional-metrics"></a><a name = "MultiDimensionalMetrics"></a>多維度計量
@@ -73,7 +72,7 @@ Azure 入口網站會透過 [計量] 頁面公開負載平衡器計量，此頁�
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>透過 API 以程式設計方式擷取多維度計量
 
-如需可供擷取多維度計量定義和值的 API 指導方針，請參閱 [Azure 監視 REST API 逐步解說](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api)。 這些計量只能透過 [所有度量] 選項寫入至儲存體帳戶。 
+如需可供擷取多維度計量定義和值的 API 指導方針，請參閱 [Azure 監視 REST API 逐步解說](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api)。 您可以藉由新增 [所有計量] 類別的 [診斷設定](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) ，將這些計量寫入至儲存體帳戶。 
 
 ### <a name="configure-alerts-for-multi-dimensional-metrics"></a>設定多維度計量的警示 ###
 
@@ -85,9 +84,6 @@ Azure Standard Load Balancer 支援可輕鬆設定多維度計量的警示。 �
     1.  設定警示條件
     1.   (選擇性) 新增自動修復的動作群組
     1.  指派警示嚴重性、名稱和描述，以啟用直覺反應
-
-  >[!NOTE]
-  >警示條件設定視窗會顯示信號歷程記錄的時間序列。 有一個選項可依維度（例如後端 IP）來篩選此時間序列。 這會篩選時間序列圖形，而 **不** 是警示本身。 您無法設定特定後端 IP 位址的警示。
 
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>常見診斷案例與建議的檢視
 
@@ -147,7 +143,7 @@ Azure Standard Load Balancer 支援可輕鬆設定多維度計量的警示。 �
 
 若要取得 SNAT 連線統計資料：
 1. 選取 [SNAT 連線] 計量類型，並選取 [總和] 作為彙總。 
-2. 針對成功和失敗的 SNAT 連線計數 (以不同線條表示) 依 [連線狀態] 進行分組。 
+2. 依連線 **狀態** 分組，以使成功和失敗的 SNAT 連線計數以不同的行表示。 
 
 ![SNAT 連線](./media/load-balancer-standard-diagnostics/LBMetrics-SNATConnection.png)
 
@@ -186,7 +182,7 @@ Azure Standard Load Balancer 支援可輕鬆設定多維度計量的警示。 �
   <summary>展開</summary>
 「SYN 封包」計量會描述 TCP SYN 封包的數量，涵括與特定前端相關聯的已抵達或已傳送 (針對[輸出流程](./load-balancer-outbound-connections.md)) 封包。 您可以使用此計量來了解服務的 TCP 連線嘗試。
 
-在大部分的情況下，請使用 **總計** 彙總。
+使用 **Sum** 作為大部分案例的匯總。
 
 ![SYN 連線](./media/load-balancer-standard-diagnostics/LBMetrics-SYNCount.png)
 
@@ -199,10 +195,10 @@ Azure Standard Load Balancer 支援可輕鬆設定多維度計量的警示。 �
   <summary>展開</summary>
 「位元組和封包計數器」計量會描述您的服務在每個前端上所傳送或接收的位元組和封包數量。
 
-在大部分的情況下，請使用 **總計** 彙總。
+使用 **Sum** 作為大部分案例的匯總。
 
 若要取得位元組或封包計數統計資料：
-1. 選取 [位元組計數] 和/或 [封包計數] 計量類型，並選取 [平均] 作為彙總。 
+1. 選取 [ **位元組計數** ] 和/或 [封 **包計數** ] 計量類型，並以 **Sum** 作為匯總。 
 2. 請執行下列其中一個動作：
    * 對特定前端 IP、前端連接埠或後端 IP 或後端連接埠套用篩選器。
    * 取得負載平衡器資源的整體統計資料 (不使用任何篩選)。
@@ -239,8 +235,8 @@ Azure Standard Load Balancer 支援可輕鬆設定多維度計量的警示。 �
 | 資源健康情況狀態 | 描述 |
 | --- | --- |
 | 可用 | 您的標準負載平衡器資源狀況良好且可供使用。 |
-| 已降級 | 您的標準負載平衡器有影響效能的平臺或使用者起始事件。 資料路徑可用性計量在至少兩分鐘內回報了小於 90% 但大於 25% 的健康情況。 您將體驗到嚴重的效能影響。 [遵循疑難排解 RHC 指南](./troubleshoot-rhc.md) ，判斷是否有使用者起始的事件造成影響您的可用性。
-| 無法使用 | 您的標準負載平衡器資源狀況不良。 資料路徑可用性計量回報的健康情況低於至少兩分鐘的25% 健全狀況。 您將會遇到對輸入連線能力造成顯著的效能影響或缺乏可用性。 可能是使用者或平臺事件造成無法使用的情形。 [遵循疑難排解 RHC 指南](./troubleshoot-rhc.md) ，判斷是否有使用者起始的事件影響您的可用性。 |
+| 已降級 | 您的標準負載平衡器有影響效能的平臺或使用者起始事件。 資料路徑可用性計量在至少兩分鐘內回報了小於 90% 但大於 25% 的健康情況。 您將體驗到嚴重的效能影響。 [遵循疑難排解 RHC 指南](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) ，判斷是否有使用者起始的事件造成影響您的可用性。
+| 無法使用 | 您的標準負載平衡器資源狀況不良。 資料路徑可用性計量回報的健康情況低於至少兩分鐘的25% 健全狀況。 您將會遇到對輸入連線能力造成顯著的效能影響或缺乏可用性。 可能是使用者或平臺事件造成無法使用的情形。 [遵循疑難排解 RHC 指南](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) ，判斷是否有使用者起始的事件影響您的可用性。 |
 | Unknown | 標準負載平衡器資源的資源健康狀態尚未更新，或尚未收到過去10分鐘的資料路徑可用性資訊。 此狀態應該是暫時性的，系統會在收到資料後立即反/映正確的狀態。 |
 
 若要檢視公用標準 Load Balancer 資源的健康情況：
@@ -267,6 +263,7 @@ Azure Standard Load Balancer 支援可輕鬆設定多維度計量的警示。 �
 
 ## <a name="next-steps"></a>後續步驟
 
+- 瞭解如何使用 [深入](https://docs.microsoft.com/azure/load-balancer/load-balancer-insights) 解析來查看針對您的 Load Balancer 預先設定的計量
 - 深入了解[標準負載平衡器](./load-balancer-overview.md)。
 - 深入了解 [Load Balancer 輸出連線能力](./load-balancer-outbound-connections.md)。
 - 了解 [Azure 監視器](../azure-monitor/overview.md)。

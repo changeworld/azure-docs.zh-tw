@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: c2a14c12baac29d73754bb17e3ca386cc48e1ba0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5704f88d8099966eedcb7143085130ad1376d742
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449237"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804890"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>使用 kubectl 搭配 Azure Stack Edge Pro 裝置上的 PersistentVolume 來執行 Kubernetes 具狀態應用程式
 
@@ -24,9 +24,9 @@ ms.locfileid: "96449237"
 Azure Stack Edge Pro 也支援執行 Azure SQL Edge 容器，而這些容器的部署方式類似于 MySQL 的詳細說明。 如需詳細資訊，請參閱 [AZURE SQL Edge](../azure-sql-edge/overview.md)。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-部署可設定狀態的應用程式之前，請確定您已在裝置和您將用來存取裝置的用戶端上完成下列必要條件：
+在您可以部署具狀態應用程式之前，請先在您的裝置和用戶端上完成下列必要條件，以供您用來存取裝置：
 
 ### <a name="for-device"></a>針對裝置
 
@@ -37,7 +37,7 @@ Azure Stack Edge Pro 也支援執行 Azure SQL Edge 容器，而這些容器的�
 ### <a name="for-client-accessing-the-device"></a>適用于存取裝置的用戶端
 
 - 您有將用來存取 Azure Stack Edge Pro 裝置的 Windows 用戶端系統。
-    - 用戶端正在執行 Windows PowerShell 5.0 或更新版本。 若要下載 Windows PowerShell 的最新版本，請移至 [ [安裝 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)。
+    - 用戶端正在執行 Windows PowerShell 5.0 或更新版本。 若要下載 Windows PowerShell 的最新版本，請移至 [ [安裝 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view=true)。
     
     - 您也可以讓任何其他用戶端使用 [支援的作業系統](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) 。 本文說明使用 Windows 用戶端的程式。 
     
@@ -50,7 +50,7 @@ Azure Stack Edge Pro 也支援執行 Azure SQL Edge 容器，而這些容器的�
     - 請確定 `kubectl` 用戶端版本的 Azure Stack Edge Pro 裝置上執行的 Kubernetes 主要版本，不會有多個版本的扭曲。 
         - 用 `kubectl version` 來檢查用戶端上執行的 kubectl 版本。 請記下完整版。
         - 在 Azure Stack Edge Pro 裝置的本機 UI 中，移至 **[總覽** ] 並記下 Kubernetes 軟體號碼。 
-        - 確認這兩個版本是否相容于支援的 Kubernetes 版本中提供的對應 <!-- insert link-->. 
+        - 確認這兩個版本是否相容于支援的 Kubernetes 版本中提供的對應。<!-- insert link--> 
 
 
 您已經準備好在 Azure Stack Edge Pro 裝置上部署可設定狀態的應用程式。 
@@ -90,7 +90,7 @@ Azure Stack Edge Pro 也支援執行 Azure SQL Edge 容器，而這些容器的�
    kubectl get pods -n <your-namespace>
    ```
     
-   以下是命令使用方式的範例：
+   命令使用方式的範例如下：
     
    ```powershell
     C:\Users\user>kubectl get pods -n "userns1"
@@ -341,7 +341,7 @@ C:\Users\user>
 C:\Users\user>kubectl delete pvc mysql-pv-claim -n userns1
 persistentvolumeclaim "mysql-pv-claim" deleted
 C:\Users\user>
-```                                                                                         
+```
 
 當 PVC 被刪除時，PV 不再系結至 PVC。 當建立共用時布建了 PV，您將需要刪除該共用。 請遵循下列步驟：
 

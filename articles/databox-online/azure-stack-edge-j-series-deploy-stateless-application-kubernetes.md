@@ -6,26 +6,26 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 6356089daed02270a14903639afee8001153b195
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b199fdbac4aca7637e07a18383cc7e254f702019
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447384"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804846"
 ---
 # <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 裝置上透過 kubectl 部署 Kubernetes 無狀態應用程式
 
 本文說明如何在現有的 Kubernetes 叢集上使用 kubectl 命令部署無狀態應用程式。 本文也會逐步引導您完成在無狀態應用程式中建立及設定 pod 的流程。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 您必須先確定下列事項，才能建立 Kubernetes 叢集並使用 `kubectl` 命令列工具：
 
 - 您有1個節點 Azure Stack Edge Pro 裝置的登入認證。
 
-- Windows PowerShell 5.0 或更新版本已安裝在 Windows 用戶端系統上，以存取 Azure Stack Edge Pro 裝置。 您也可以讓任何其他用戶端使用支援的作業系統。 本文說明使用 Windows 用戶端的程式。 若要下載 Windows PowerShell 的最新版本，請移至 [安裝 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)。
+- Windows PowerShell 5.0 或更新版本已安裝在 Windows 用戶端系統上，以存取 Azure Stack Edge Pro 裝置。 您也可以讓任何其他用戶端使用支援的作業系統。 本文說明使用 Windows 用戶端的程式。 若要下載 Windows PowerShell 的最新版本，請移至 [安裝 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view=true)。
 
 - Azure Stack Edge Pro 裝置上會啟用計算。 若要啟用計算，請移至裝置本機 UI 中的 [ **計算** ] 頁面。 然後選取您想要為計算啟用的網路介面。 選取 [啟用]。 在該網路介面上的裝置上建立虛擬交換器時，啟用計算結果。 如需詳細資訊，請參閱在 [您的 Azure Stack Edge Pro 上啟用計算網路](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)。
 
@@ -55,7 +55,7 @@ ms.locfileid: "96447384"
    kubectl version
    ```
     
-   以下是輸出的範例：
+   輸出的範例如下所示：
     
    ```powershell
    PS C:\WINDOWS\system32> C:\windows\system32\kubectl.exe version
@@ -63,7 +63,7 @@ ms.locfileid: "96447384"
    Server Version: version.Info{Major:"1", Minor:"15", GitVersion:"v1.15.1", GitCommit:"4485c6f18cee9a5d3c3b4e523bd27972b1b53892", GitTreeState:"clean", BuildDate:"2019-07-18T09:09:21Z", GoVersion:"go1.12.5", Compiler:"gc", Platform:"linux/amd64"}
    ```
 
-   在此情況下，kubectl 的用戶端版本為 v 1.15.2 且相容于繼續。
+   在此情況下，kubectl 的用戶端版本為 v 1.15.2 且相容于 continue。
 
 2. 取得 Kubernetes 叢集中執行的 pod 清單。 Pod 是在您的 Kubernetes 叢集上執行的應用程式容器或進程。
 
@@ -71,7 +71,7 @@ ms.locfileid: "96447384"
    kubectl get pods -n <namespace-string>
    ```
     
-   以下是命令使用方式的範例：
+   命令使用方式的範例如下所示：
     
    ```powershell
    PS C:\WINDOWS\system32> kubectl get pods -n "test1"
@@ -103,7 +103,7 @@ ms.locfileid: "96447384"
 
 ### <a name="create-a-stateless-application-using-a-deployment"></a>使用部署建立無狀態應用程式
 
-現在您已驗證 kubectl 命令列版本是否正確，並擁有必要的設定檔案，您可以建立無狀態的應用程式部署。
+現在您已確認 kubectl 命令列版本正確無誤，而且您有必要的設定檔案，您可以建立無狀態的應用程式部署。
 
 Pod 是 Kubernetes 應用程式的基本執行單位，這是您建立或部署之 Kubernetes 物件模型中最小且最簡單的單位。 Pod 也會封裝儲存體資源、唯一的網路 IP，以及管理容器 () 應該如何執行的選項。
 
@@ -123,7 +123,7 @@ Pod 是 Kubernetes 應用程式的基本執行單位，這是您建立或部署�
 
    在此範例中，應用程式 YAML 檔的路徑是外部來源。
 
-   以下是命令和輸出的範例使用方式：
+   以下是命令和其輸出的範例用法：
 
    ```powershell
    PS C:\WINDOWS\system32> kubectl apply -f https://k8s.io/examples/application/deployment.yaml -n "test1"
@@ -131,7 +131,7 @@ Pod 是 Kubernetes 應用程式的基本執行單位，這是您建立或部署�
    deployment.apps/nginx-deployment created
    ```
 
-   或者，您可以將下列 markdown 儲存至本機電腦，並取代 *-f* 參數中的路徑和檔案名。 例如，"C:\Kubernetes\deployment.yaml"。 以下是應用程式部署的設定：
+   或者，您可以將下列 markdown 儲存至本機電腦，並取代 *-f* 參數中的路徑和檔案名。 例如，"C:\Kubernetes\deployment.yaml"。 應用程式部署的設定如下：
 
    ```markdown
    apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
@@ -163,7 +163,7 @@ Pod 是 Kubernetes 應用程式的基本執行單位，這是您建立或部署�
    kubectl describe deployment nginx-deployment -n <namespace-string>
    ```
 
-   以下是命令和輸出的範例使用方式：
+   命令的範例用法（含輸出）如下所示：
     
    ```powershell
    PS C:\Users\user> kubectl describe deployment nginx-deployment -n "test1"
@@ -203,13 +203,13 @@ Pod 是 Kubernetes 應用程式的基本執行單位，這是您建立或部署�
      Normal  ScalingReplicaSet  2m22s  deployment-controller  Scaled up replica set nginx-deployment-5754944d6c to 2
    ```
 
-   如果您仔細查看 [ *複本* ] 設定，您將會看到：
+   針對 [ *複本* ] 設定，您將會看到：
     
    ```powershell
    Replicas:               2 desired | 2 updated | 2 total | 2 available | 0 unavailable
    ```
 
-   [ *複本* ] 設定表示您的部署規格需要兩個 pod，也就是建立和更新的 pod，以及它們已準備好供您使用。
+   [ *複本* ] 設定表示您的部署規格需要兩個 pod，而且這些 pod 已建立及更新，並可供您使用。
 
    > [!NOTE]
    > 複本集會取代因為任何原因而刪除或終止的 pod，例如裝置節點失敗或干擾裝置升級的情況。 基於這個理由，即使您的應用程式只需要單一 pod，仍建議您使用複本集。
@@ -220,7 +220,7 @@ Pod 是 Kubernetes 應用程式的基本執行單位，這是您建立或部署�
    kubectl get pods -l app=nginx -n <namespace-string>
    ```
     
-   以下是命令和輸出的範例使用方式：
+   命令的範例用法（含輸出）如下所示：
     
    ```powershell
    PS C:\Users\user> kubectl get pods -l app=nginx -n "test1"
@@ -238,7 +238,7 @@ Pod 是 Kubernetes 應用程式的基本執行單位，這是您建立或部署�
    kubectl describe pod <podname-string> -n <namespace-string>
    ```
 
-   以下是命令和輸出的範例使用方式：
+  命令的範例用法（含輸出）如下所示：
 
    ```powershell
    PS C:\Users\user> kubectl describe pod "nginx-deployment-5754944d6c-7wqjd" -n "test1"
@@ -295,14 +295,14 @@ Pod 是 Kubernetes 應用程式的基本執行單位，這是您建立或部署�
 
 ### <a name="rescale-the-application-deployment-by-increasing-the-replica-count"></a>藉由增加複本計數來調整應用程式部署的寬度
 
-每個 pod 都是為了執行特定應用程式的單一實例。 如果您想要以水準方式調整您的應用程式以執行多個實例，您可以增加 pod 數目，每個實例各一個。 在 Kubernetes 中，這稱為「複寫」。
+每個 pod 都是為了執行特定應用程式的單一實例。 如果您想要以水準方式調整應用程式以執行多個實例，您可以將每個實例的 pod 數目增加到一個。 在 Kubernetes 中，這稱為「複寫」。
 您可以套用新的 YAML 檔案，以增加應用程式部署中的 pod 數目。 YAML 檔案會將複本設定變更為4，這會將部署中的 pod 數目增加至四個 pod。 將 pod 數目從2增加到4：
 
 ```powershell
 PS C:\WINDOWS\system32> kubectl apply -f https://k8s.io/examples/application/deployment-scale.yaml -n "test1"
 ```
 
-或者，您可以將下列 markdown 儲存在本機電腦上，並以的 *-f* 參數的路徑和檔案名取代 `kubectl apply` 。 例如，"C:\Kubernetes\deployment-scale.yaml"。 以下是應用程式部署規模的設定：
+或者，您可以將下列 markdown 儲存在本機電腦上，並以的 *-f* 參數的路徑和檔案名取代 `kubectl apply` 。 例如，"C:\Kubernetes\deployment-scale.yaml"。 應用程式部署規模的設定如下：
 
 ```markdown
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
@@ -332,7 +332,7 @@ spec:
 kubectl get pods -l app=nginx
 ```
 
-以下是從二到四個 pod 進行重新調整部署的範例輸出：
+從二到四個 pod 重新調整部署的範例輸出如下所示：
 
 ```powershell
 PS C:\WINDOWS\system32> kubectl get pods -l app=nginx
@@ -354,7 +354,7 @@ nginx-deployment-148880595-rwovn   1/1       Running   0          2m
    kubectl delete deployment nginx-deployment -n <namespace-string>
    ```
 
-以下是命令使用方式和輸出的範例：
+命令使用方式的範例有輸出，如下所示：
 
 ```powershell
 PS C:\Users\user> kubectl delete deployment nginx-deployment -n "test1"
