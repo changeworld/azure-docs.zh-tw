@@ -10,12 +10,12 @@ ms.author: laobri
 author: lobrien
 ms.date: 01/12/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: a6ee4c08a7ecf9bcfcbc9cf6f630efe126248e9f
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: e3f92f445068b98c12069577ddf61a71568e403b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185701"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871548"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>什麼是 Azure Machine Learning 管線？
 
@@ -26,7 +26,7 @@ ms.locfileid: "98185701"
 
 Azure 雲端提供數種類型的管線，各有不同的用途。 下表列出不同的管線，以及它們的用途：
 
-| 案例 | 主要角色 | Azure 供應專案 | OSS 供應專案 | 標準管道 | 優勢 | 
+| 狀況 | 主要角色 | Azure 供應專案 | OSS 供應專案 | 標準管道 | 優勢 | 
 | -------- | --------------- | -------------- | ------------ | -------------- | --------- | 
 |  (Machine learning) 的模型協調流程 | 資料科學家 | Azure Machine Learning 管線 | Kubeflow 管線 | 資料 > 模型 | 散發、快取、程式碼優先、重複使用 | 
 | 資料協調 (資料準備)  | 資料工程師 | [Azure Data Factory 管線](../data-factory/concepts-pipelines-activities.md) | Apache Airflow | 資料 > 資料 | 強型別移動、以資料為中心的活動 |
@@ -118,7 +118,7 @@ pipeline_run = experiment.submit(pipeline)
 pipeline_run.wait_for_completion()
 ```
 
-此程式碼片段以 common Azure Machine Learning objects、a `Workspace` 、a `Datastore` 、 [ComputeTarget](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py)和 `Experiment` 。 然後，程式碼會建立物件來保存 `input_data` 和 `output_data` 。 `input_data`是[FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py&preserve-view=true)的實例，而且 `output_data` 是[OutputFileDatasetConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true)的實例。 針對 `OutputFileDatasetConfig` 預設行為，請將輸出複製到路徑底下的 `workspaceblobstore` 資料存放區 `/dataset/{run-id}/{output-name}` ，其中 `run-id` 是執行的識別碼，而 `output-name` 如果開發人員未指定，則是自動產生的值。
+此程式碼片段以 common Azure Machine Learning objects、a `Workspace` 、a `Datastore` 、 [ComputeTarget](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py)和 `Experiment` 。 然後，程式碼會建立物件來保存 `input_data` 和 `output_data` 。 `input_data`是[FileDataset](/python/api/azureml-core/azureml.data.filedataset?preserve-view=true&view=azure-ml-py)的實例，而且 `output_data` 是[OutputFileDatasetConfig](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py)的實例。 針對 `OutputFileDatasetConfig` 預設行為，請將輸出複製到路徑底下的 `workspaceblobstore` 資料存放區 `/dataset/{run-id}/{output-name}` ，其中 `run-id` 是執行的識別碼，而 `output-name` 如果開發人員未指定，則是自動產生的值。
 
 陣列 `steps` 會保存單一元素， `PythonScriptStep` 這會使用資料物件並在上執行 `compute_target` 。 然後，程式碼會將 `Pipeline` 物件本身具現化，並在工作區和步驟陣列中傳遞。 `experiment.submit(pipeline)`開始執行 AZURE ML 管線的呼叫。 呼叫 `wait_for_completion()` 會封鎖，直到管線完成為止。 
 
@@ -136,7 +136,7 @@ pipeline_run.wait_for_completion()
 
 針對您的機器學習工作流程使用管線的主要優點如下：
 
-|主要優點|Description|
+|主要優點|描述|
 |:-------:|-----------|
 |**自動&nbsp;執行**|排程以平行方式或依序以可靠且自動的方式執行的步驟。 資料準備和模型化可能會在過去幾天或幾周，而管線可讓您在處理常式執行時專注于其他工作。 |
 |**異類計算**|使用多個在異類和可調整的計算資源和儲存位置之間可靠協調的管線。 在不同的計算目標上執行個別的管線步驟（例如 HDInsight、GPU 資料科學 Vm 和 Databricks），以有效率地使用可用的計算資源。|
@@ -149,7 +149,7 @@ pipeline_run.wait_for_completion()
 
 Azure Machine Learning 管線是一項功能強大的工具，可在早期開發階段開始提供價值。 當小組和專案成長時，此值會增加。 本文說明如何使用 Azure Machine Learning Python SDK 來指定管線，並在 Azure 上進行協調。 您已看過一些簡單的原始程式碼，並引進一些 `PipelineStep` 可用的類別。 您應該可以瞭解何時使用 Azure Machine Learning 管線，以及 Azure 如何執行它們。 
 
-+ 瞭解如何 [建立您的第一個管線](how-to-create-your-first-pipeline.md)。
++ 瞭解如何 [建立您的第一個管線](./how-to-create-machine-learning-pipelines.md)。
 
 + 瞭解如何 [針對大型資料執行批次預測](tutorial-pipeline-batch-scoring-classification.md )。
 

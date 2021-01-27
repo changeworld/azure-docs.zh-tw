@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 12/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7418e5578450367e9fa37a87adb6e7036619877b
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: e098256a43add6df026ab136bcd6a6b549c147e7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827443"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871310"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>使用 Azure 可用性區域的 SAP 工作負載設定
 除了在 Azure 可用性設定組中部署不同的 SAP 架構層之外，最近引進的 [Azure 可用性區域](../../../availability-zones/az-overview.md) 也可用於 SAP 工作負載部署。 Azure 可用性區域的定義如下：「區域內的唯一實體位置。 每個區域都是由一或多個配備獨立電源、冷卻和網路的資料中心所組成。 Azure 可用性區域不適用於所有區域。 針對提供可用性區域的 Azure 區域，請檢查 [azure 區域對應](https://azure.microsoft.com/global-infrastructure/geographies/)。 這項地圖將為您示範哪些區域提供或已宣佈提供可用性區域。 
@@ -56,7 +56,7 @@ ms.locfileid: "97827443"
 
 - 部署至 Azure 可用性區域時，必須使用 [Azure 受控磁碟](https://azure.microsoft.com/services/managed-disks/)。 
 - 針對實體區域的區域列舉對應是依 Azure 訂用帳戶來決定。 如果您使用不同的訂用帳戶來部署 SAP 系統，則必須為每個訂用帳戶定義理想的區域。
-- 除非您使用 [Azure 鄰近放置群組](../../linux/co-location.md)，否則無法在 Azure 可用性區域內部署 azure 可用性設定組。 如何跨區域部署 SAP DBMS 層和中央服務的方式，同時使用可用性設定組部署 SAP 應用層，並仍能達到 Vm 的近近距離，請參閱 [Azure 鄰近放置群組以取得 SAP 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)。 如果您不是使用 Azure 鄰近放置群組，則需要選擇其中一個，作為虛擬機器的部署架構。
+- 除非您使用 [Azure 鄰近放置群組](../../co-location.md)，否則無法在 Azure 可用性區域內部署 azure 可用性設定組。 如何跨區域部署 SAP DBMS 層和中央服務的方式，同時使用可用性設定組部署 SAP 應用層，並仍能達到 Vm 的近近距離，請參閱 [Azure 鄰近放置群組以取得 SAP 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)。 如果您不是使用 Azure 鄰近放置群組，則需要選擇其中一個，作為虛擬機器的部署架構。
 - 您無法使用 [Azure 基本 Load Balancer](../../../load-balancer/load-balancer-overview.md) 來建立以 Windows Server 容錯移轉叢集或 Linux Pacemaker 為基礎的容錯移轉叢集解決方案。 相反地，您必須使用 [Azure STANDARD LOAD BALANCER SKU](../../../load-balancer/load-balancer-standard-availability-zones.md)。
 
 
@@ -130,7 +130,7 @@ SAP 架構的本質是，除非您以不同的方式進行設定，否則使用�
 
 此設定需要考慮下列事項：
 
-- 若未使用 [Azure 鄰近放置群組](../../linux/co-location.md)，則會將 Azure 可用性區域視為所有 vm 的容錯和更新網域，因為可用性設定組無法在 Azure 可用性區域中部署。
+- 若未使用 [Azure 鄰近放置群組](../../co-location.md)，則會將 Azure 可用性區域視為所有 vm 的容錯和更新網域，因為可用性設定組無法在 Azure 可用性區域中部署。
 - 如果您想要合併 DBMS 層和中央服務的區域部署，但想要使用應用層的 Azure 可用性設定組，您必須使用 azure 鄰近放置群組一文中所述的 Azure 相近群組， [以獲得 SAP 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)。
 - 針對 SAP 中央服務和 DBMS 層的容錯移轉叢集所使用的負載平衡器，必須是[標準 SKU Azure 負載平衡器](../../../load-balancer/load-balancer-standard-availability-zones.md)。 基本負載平衡器將無法跨區域運作。
 - 您部署用以裝載 SAP 系統的 Azure 虛擬網路，會連同其子網路擴展至各個區域。 您的每個區域不需要個別的虛擬網路。

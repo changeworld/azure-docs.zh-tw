@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 01/11/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 7285ab338e978f0de467f79bbce1d41409683b1e
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 80a995b488f335ac2eb60ae18621acb2b1df58e2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132948"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871531"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>將資料匯入 ML 管線步驟並在其中來回移動 (Python)
 
@@ -53,7 +53,7 @@ ms.locfileid: "98132948"
 
 - 某些預先存在的資料。 本文簡要說明如何使用 [Azure blob 容器](../storage/blobs/storage-blobs-overview.md)。
 
-- 選擇性：現有的機器學習管線，例如 [使用 AZURE MACHINE LEARNING SDK 來建立及執行機器學習管線](how-to-create-your-first-pipeline.md)中所述的管線。
+- 選擇性：現有的機器學習管線，例如 [使用 AZURE MACHINE LEARNING SDK 來建立及執行機器學習管線](./how-to-create-machine-learning-pipelines.md)中所述的管線。
 
 ## <a name="use-dataset-objects-for-pre-existing-data"></a>`Dataset`針對預先存在的資料使用物件 
 
@@ -154,7 +154,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-outputfiledatasetconfig-for-intermediate-data"></a>用於 `OutputFileDatasetConfig` 中繼資料
 
-雖然 `Dataset` 物件只代表持續性資料，但 [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) 物件 (s) 可用於管線步驟 **和** 持續性輸出資料的暫存資料輸出。 `OutputFileDatasetConfig` 支援將資料寫入 blob 儲存體、檔案共用、adlsgen1 或 adlsgen2。 它支援掛接模式和上傳模式。 在掛接模式中，寫入至掛接目錄的檔案會在檔案關閉時永久儲存。 在上傳模式中，寫入至輸出目錄的檔案會在作業結束時上傳。 如果作業失敗或已取消，將不會上傳輸出目錄。
+雖然 `Dataset` 物件只代表持續性資料，但 [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) 物件 (s) 可用於管線步驟 **和** 持續性輸出資料的暫存資料輸出。 `OutputFileDatasetConfig` 支援將資料寫入 blob 儲存體、檔案共用、adlsgen1 或 adlsgen2。 它支援掛接模式和上傳模式。 在掛接模式中，寫入至掛接目錄的檔案會在檔案關閉時永久儲存。 在上傳模式中，寫入至輸出目錄的檔案會在作業結束時上傳。 如果作業失敗或已取消，將不會上傳輸出目錄。
 
  `OutputFileDatasetConfig` 物件的預設行為是寫入工作區的預設資料存放區。 `OutputFileDatasetConfig`使用參數將物件傳遞給 `PythonScriptStep` `arguments` 。
 
@@ -184,7 +184,7 @@ OutputFileDatasetConfig(name="clean_data", destination=blob_store).as_upload(ove
 
 ### <a name="use-outputfiledatasetconfig-as-outputs-of-a-training-step"></a>用作 `OutputFileDatasetConfig` 定型步驟的輸出
 
-在您的管線中 `PythonScriptStep` ，您可以使用程式的引數來取得可用的輸出路徑。 如果此步驟是第一個步驟，將會初始化輸出資料，您必須在指定的路徑建立目錄。 然後您可以撰寫任何您想要包含在中的檔案 `OutputFileDatasetConfig` 。
+在管線的 `PythonScriptStep` 中，您可以使用程式的引數來擷取可用的輸出路徑。 如果這是第一個步驟，而且這個步驟將初始化輸出資料，則必須在指定的路徑中建立目錄。 然後您可以撰寫任何您想要包含在中的檔案 `OutputFileDatasetConfig` 。
 
 ```python
 parser = argparse.ArgumentParser()
@@ -244,4 +244,4 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
 ## <a name="next-steps"></a>後續步驟
 
 * [建立 Azure Machine Learning 資料集](how-to-create-register-datasets.md)
-* [使用 Azure Machine Learning SDK 來建立及執行機器學習管線](how-to-create-your-first-pipeline.md)
+* [使用 Azure Machine Learning SDK 來建立及執行機器學習管線](./how-to-create-machine-learning-pipelines.md)

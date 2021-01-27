@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ca2a844364d11dbb5ac2a244945e07d8ca725c1c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 944e687c27d46a9cf3250cb21024b4e5a52dc62c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728435"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871514"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作負載：規劃和部署檢查清單
 
@@ -137,7 +137,7 @@ ms.locfileid: "98728435"
         - 根據 SAP 支援附注 [#500235](https://launchpad.support.sap.com/#/notes/500235) 和 [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)，測試和評估 sap 應用層 vm 與 DBMS vm 之間的網路延遲。 針對 [SAP 支援附注 #1100926](https://launchpad.support.sap.com/#/notes/1100926/E)中的網路延遲指引評估結果。 網路延遲應為適中或良好的範圍。 例外狀況適用于 Vm 與 HANA 大型實例單位之間的流量，如 [本文中所](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)述。
         - 請確定 ILB 部署已設定為使用伺服器直接回傳。 當 Azure Ilb 用於 DBMS 層的高可用性設定時，此設定將會降低延遲。
         - 如果您搭配使用 Azure Load Balancer 與 Linux 客體作業系統，請確認 Linux 網路參數 **net.ipv4.tcp_timestamps** 設定為 **0**。 這項建議與舊版 [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421)中的建議相衝突。 SAP note 現在已更新，以指出此參數必須設定為 **0** ，才能與 Azure 負載平衡器搭配運作。
-        - 請考慮使用 [Azure 鄰近放置群組](../../linux/co-location.md) 來取得最佳的網路延遲。 如需詳細資訊，請參閱 [Azure 鄰近放置群組，以取得 SAP 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)。
+        - 請考慮使用 [Azure 鄰近放置群組](../../co-location.md) 來取得最佳的網路延遲。 如需詳細資訊，請參閱 [Azure 鄰近放置群組，以取得 SAP 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)。
    4. 高可用性和嚴重損壞修復部署。
         - 如果您部署 SAP 應用層，但未定義特定的 Azure 可用性區域，請確定執行 SAP 對話實例的所有 Vm 或單一 SAP 系統的中介軟體實例都部署在 [可用性設定組](../../manage-availability.md)中。
         - 如果您不需要 SAP Central Services 和 DBMS 的高可用性，您可以將這些 Vm 部署到與 SAP 應用層相同的可用性設定組中。
@@ -209,7 +209,7 @@ ms.locfileid: "98728435"
 8.  請在 Azure 中檢查 [SAP 網站](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) 是否有新的 HANA 認證 sku。 將新 Sku 的價格與您計畫使用的 Sku 做比較。 最後，進行必要的變更，以使用具有最佳價格/效能比例的變更。
 9.  調整您的部署腳本以使用新的 VM 類型，並納入您要使用的新 Azure 功能。
 10. 在部署基礎結構之後，請根據 SAP 支援附注 [#500235](https://launchpad.support.sap.com/#/notes/500235) 和 [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)，測試和評估 sap 應用層 vm 與 DBMS vm 之間的網路延遲。 針對 [SAP 支援附注 #1100926](https://launchpad.support.sap.com/#/notes/1100926/E)中的網路延遲指引評估結果。 網路延遲應為適中或良好的範圍。 例外狀況適用于 Vm 與 HANA 大型實例單位之間的流量，如 [本文中所](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)述。 請確定適用于 [SAP 工作負載的 Azure 虛擬機器 DBMS 部署](./dbms_guide_general.md#azure-network-considerations) 和 [azure 上的 SAP Hana 基礎結構設定和作業](./hana-vm-operations.md) 所述的任何限制適用于您的部署。
-11. 確定您的 Vm 已部署到正確的 [azure 鄰近放置群組](../../linux/co-location.md)（如 azure 鄰近放置群組所述），以 [提供 SAP 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)。
+11. 確定您的 Vm 已部署到正確的 [azure 鄰近放置群組](../../co-location.md)（如 azure 鄰近放置群組所述），以 [提供 SAP 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)。
 11. 在套用工作負載之前，請先執行針對概念證明階段所列出的所有其他檢查。
 12. 當工作負載適用時，請記錄 Azure 中系統的資源耗用量。 將此耗用量與您舊平臺的記錄進行比較。 如果您發現有很大的差異，請調整未來部署的 VM 大小。 請記住，當您縮減、儲存和 Vm 的網路頻寬也會降低時。
     - [Azure 中的 Windows 虛擬機器大小](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -251,7 +251,7 @@ ms.locfileid: "98728435"
     - Sap 應用程式與 sap 系統的 DBMS 層之間的通訊路徑中沒有任何 [Azure 網路虛擬裝置](https://azure.microsoft.com/solutions/network-appliances/) （以 sap NetWeaver、Hybris 或 S/4HANA 為基礎）。
     - 應用程式安全性群組和網路安全性群組規則允許視需要進行通訊和規劃，並在必要時封鎖通訊。
     - 如先前所述，已正確設定 Timeout 設定。
-    - Vm 會部署到正確的 [azure 鄰近放置群組](../../linux/co-location.md)（如 azure 鄰近放置群組所述），以 [提供 SAP 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)。
+    - Vm 會部署到正確的 [azure 鄰近放置群組](../../co-location.md)（如 azure 鄰近放置群組所述），以 [提供 SAP 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)。
     - SAP 應用層 Vm 與 DBMS Vm 之間的網路延遲會如 SAP 支援附注 [#500235](https://launchpad.support.sap.com/#/notes/500235) 和 [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)中所述進行測試和驗證。 針對 [SAP 支援附注 #1100926](https://launchpad.support.sap.com/#/notes/1100926/E)中的網路延遲指引評估結果。 網路延遲應為適中或良好的範圍。 例外狀況適用于 Vm 與 HANA 大型實例單位之間的流量，如 [本文中所](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)述。
     - 加密是在必要時和適當的加密方法所執行。
     - 介面和其他應用程式可以連線至新部署的基礎結構。

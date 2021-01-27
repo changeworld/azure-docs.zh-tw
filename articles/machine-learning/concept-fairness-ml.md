@@ -1,5 +1,5 @@
 ---
-title: '降低機器學習模型中的公平 (預覽) '
+title: " (預覽) 減輕機器學習模型中的不公平性"
 titleSuffix: Azure Machine Learning
 description: 了解機器學習模型中的公平性，以及 Fairlearn Python 套件如何協助您建置更公平的模型。
 services: machine-learning
@@ -8,18 +8,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 08/05/2020
+ms.date: 01/26/2021
 ms.custom: responsible-ml
-ms.openlocfilehash: 29e29e73aa1094a2941592655af78a24d95c53b5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 6daa03728a5f323f6f8b749975d31fbca24d5602
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223086"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871497"
 ---
-# <a name="mitigate-fairness-in-machine-learning-models-preview"></a>降低機器學習模型中的公平 (預覽) 
+# <a name="mitigate-unfairness-in-machine-learning-models-preview"></a> (預覽) 減輕機器學習模型中的不公平性
 
-瞭解機器學習服務的公平，以及 [Fairlearn](https://fairlearn.github.io/) 開放原始碼 Python 套件如何協助您減輕機器學習模型中的公平問題。 如果您不想要瞭解公平問題，以及在建立機器學習模型時評估公平，您可能會建立產生不公平結果的模型。
+瞭解機器學習服務的公平，以及 [Fairlearn](https://fairlearn.github.io/) 開放原始碼 Python 套件如何協助您緩和機器學習模型中的不公平性問題。 如果您不想要瞭解公平問題，以及在建立機器學習模型時評估公平，您可能會建立產生不公平結果的模型。
 
 下列 Fairlearn 開放原始碼套件的 [使用者指南](https://fairlearn.github.io/master/user_guide/index.html) 摘要說明如何使用它來評定您所建立之 AI 系統的公平。  Fairlearn 開放原始碼套件也可提供選項，以協助降低或減少您觀察到的任何公平問題。  請參閱操作 [說明](how-to-machine-learning-fairness-aml.md) 和 [範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) ，以在 Azure Machine Learning 定型期間，啟用 AI 系統的公平評量。
 
@@ -41,7 +41,7 @@ AI 造成的損害有兩種常見的類型：
 
 ## <a name="fairness-assessment-and-mitigation-with-fairlearn"></a>Fairlearn 的公平性評量和緩解
 
-Fairlearn 是一個開放原始碼 Python 套件，可讓機器學習系統開發人員評估其系統的公平性，並緩解觀察到的公平性問題。
+Fairlearn 是開放原始碼的 Python 套件，可讓機器學習系統開發人員評估其系統的公平並減輕不公平性。
 
 Fairlearn 開放原始碼套件有兩個元件：
 

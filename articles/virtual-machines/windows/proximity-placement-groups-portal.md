@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: cynthn
-ms.openlocfilehash: 6a14e2bd7385430c3d0fbec06259a876af556e38
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 45d7977dda4870be9a087b3277dd1db828c91178
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010719"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871429"
 ---
 # <a name="create-a-proximity-placement-group-using-the-portal"></a>使用入口網站建立鄰近放置群組
 
-若要盡可能關閉 Vm，請達到最低可能的延遲，您應該將它們部署在 [鄰近放置群組](co-location.md#proximity-placement-groups)內。
+若要盡可能關閉 Vm，請達到最低可能的延遲，您應該將它們部署在 [鄰近放置群組](../co-location.md#proximity-placement-groups)內。
 
 鄰近放置群組是邏輯群組，可用來確保 Azure 計算資源實際位於彼此接近的位置。 鄰近放置群組很適合用於具備低延遲需求的工作負載。
 
@@ -77,4 +77,3 @@ ms.locfileid: "96010719"
 ## <a name="next-steps"></a>後續步驟
 
 您也可以使用 [Azure PowerShell](proximity-placement-groups.md) 來建立鄰近位置群組。
-

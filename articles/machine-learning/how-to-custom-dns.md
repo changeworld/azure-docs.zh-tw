@@ -11,12 +11,12 @@ author: jhirono
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 8d3145639d2d4fb64bdb374f1dea0a7b70e4151c
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 2215c47fcd250a9ac1d6621f7e4b434bd33b3832
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724709"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871090"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>如何搭配自訂 DNS 伺服器來使用工作區
 
@@ -25,7 +25,7 @@ ms.locfileid: "97724709"
 > [!IMPORTANT]
 > 本文僅說明如何尋找 (FQDN 的完整功能變數名稱) 以及這些專案的 IP 位址，而不會提供設定這些專案之 DNS 記錄的相關資訊。 如需有關如何新增記錄的詳細資訊，請參閱您的 DNS 軟體檔。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 使用 [您自己的 DNS 伺服器](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)的 Azure 虛擬網路。
 
@@ -116,4 +116,4 @@ $workspaceDns.CustomDnsConfigs | format-table
 
 如需搭配虛擬網路使用 Azure Machine Learning 的詳細資訊，請參閱 [虛擬網路總覽](how-to-network-security-overview.md)。
 
-如需將私人端點整合至 DNS 設定的詳細資訊，請參閱 [Azure 私人端點 DNS](https://docs.microsoft.com/azure/private-link/private-endpoint-dns)設定。
+如需將私人端點整合至 DNS 設定的詳細資訊，請參閱 [Azure 私人端點 DNS](../private-link/private-endpoint-dns.md)設定。
