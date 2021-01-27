@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 3370215e9a69e62596f214ba4330fc4914a2837f
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 5f42b5f2b2a7660ee0de975068f64572c470503a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539687"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874901"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>註冊並掃描 Power BI 租使用者 (preview) 
 
@@ -26,7 +26,7 @@ ms.locfileid: "98539687"
 若要設定驗證，請建立安全性群組，並將目錄的受控識別新增至該群組。
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，搜尋 **Azure Active Directory**。
-1. 在您的 Azure Active Directory 中建立新的安全性群組，方法如下： [建立基本的群組，並使用 Azure Active Directory 來新增成員](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)。
+1. 在您的 Azure Active Directory 中建立新的安全性群組，方法如下： [建立基本的群組，並使用 Azure Active Directory 來新增成員](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
     > [!Tip]
     > 如果您已經有想要使用的安全性群組，可以略過此步驟。

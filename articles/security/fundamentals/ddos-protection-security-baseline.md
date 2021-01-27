@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: cbc22f9b55f8d20880b43516a2a5bc8f55d389f5
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: b4b2a3bf8c9a3a2e2ec7f1b22785a037f8dedc60
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814494"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873955"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>適用于 Azure DDoS 保護 Standard 的 Azure 安全性基準
 
@@ -38,7 +38,7 @@ ms.locfileid: "97814494"
 
 啟用 Azure 活動記錄診斷設定，並將記錄傳送至 Log Analytics 工作區、Azure 事件中樞或 Azure 儲存體帳戶進行封存。 活動記錄可讓您深入瞭解在控制平面層級的 Azure Cache for Redis 實例上所執行的作業。 您可以使用 Azure 活動記錄資料來判斷任何寫入作業的「內容、物件和時間」 (PUT、POST、DELETE) 在 Azure DDoS 保護實例的控制平面層級執行。
 
-- [查看及設定 DDoS 診斷記錄](../../ddos-protection/diagnostic-logging.md)
+- [檢視和設定 DDoS 診斷記錄](../../ddos-protection/diagnostic-logging.md)
 
 - [如何啟用 Azure 活動記錄的診斷設定](../../azure-monitor/platform/activity-log.md)
 
@@ -164,7 +164,7 @@ ms.locfileid: "97814494"
 
 **指導** 方針：使用安全且受 azure 管理的工作站搭配 Azure AD MULTI-FACTOR AUTHENTICATION (MFA) 啟用，以登入並設定您的 Azure 客戶加密箱要求。
 
-- [部署安全的 Azure 管理工作站](../../active-directory/devices/howto-azure-managed-workstation.md)
+- [部署安全的 Azure 管理工作站](/security/compass/privileged-access-deployment)
 
 - [規劃雲端式 Azure AD Multi-Factor Authentication 部署](../../active-directory/authentication/howto-mfa-getstarted.md) (機器翻譯)
 

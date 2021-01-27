@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 4db6abeb3e6f4a07780268a6455177e0ca237205
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 5080d16a7b14506b24e07e2ee4ba862c645f83a8
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598477"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875444"
 ---
 # <a name="manage-your-function-app"></a>管理您的函數應用程式 
 
@@ -37,6 +37,8 @@ ms.locfileid: "98598477"
 這些設定會以加密的儲存。 若要深入瞭解，請參閱 [應用程式設定安全性](security-concepts.md#application-settings)。
 
 # <a name="portal"></a>[入口網站](#tab/portal)
+
+若要尋找應用程式設定，請參閱 [Azure 入口網站開始使用](#get-started-in-the-azure-portal)。 
 
 [ **應用程式設定** ] 索引標籤會維護函數應用程式所使用的設定。 您必須選取 [ **顯示值** ]，才能在入口網站中查看值。 若要在入口網站中新增設定，請選取 [ **新增應用程式設定** ]，並新增新的機碼值組。
 
@@ -92,7 +94,7 @@ Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOUR
 
 | 方案類型 | 入口網站 | Azure CLI/PowerShell |
 | --- | --- | --- |
-| [取用量](consumption-plan.md) | **取用量** | `Dynamic` |
+| [耗用量](consumption-plan.md) | **耗用量** | `Dynamic` |
 | [高級](functions-premium-plan.md) | **ElasticPremium** | `ElasticPremium` |
 | [專用 (App Service) ](dedicated-plan.md) | 各種類型 | 各種類型 |
 

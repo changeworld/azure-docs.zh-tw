@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/26/2018
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1b29cdda66186587c43471d6d6e819dfbde658e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dacf34d7098472e98c7f68f7f60fa9bac1a4e5ec
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89075015"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875766"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>如何連接和登入執行 Windows 的 Azure 虛擬機器
 您會使用 Azure 入口網站中的 [連線] 按鈕，從 Windows 桌面啟動遠端桌面 (RDP) 工作階段。 首先您必須連線到虛擬機器，然後登入。
@@ -41,7 +41,7 @@ ms.locfileid: "89075015"
 
 
    > [!TIP]
-   > 如果入口網站中的 [連線] 按鈕呈現灰色，而且您未透過 [Express Route](../../expressroute/expressroute-introduction.md) 或[站台對站台 VPN](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) 連線來連線到 Azure，您必須先建立 VM 並為它指派公用 IP 位址，才能使用 RDP。 如需詳細資訊，請參閱 [Azure 中的公用 IP 位址](../../virtual-network/public-ip-addresses.md)。
+   > 如果入口網站中的 [連線] 按鈕呈現灰色，而且您未透過 [Express Route](../../expressroute/expressroute-introduction.md) 或[站台對站台 VPN](../../vpn-gateway/tutorial-site-to-site-portal.md) 連線來連線到 Azure，您必須先建立 VM 並為它指派公用 IP 位址，才能使用 RDP。 如需詳細資訊，請參閱 [Azure 中的公用 IP 位址](../../virtual-network/public-ip-addresses.md)。
    > 
    > 
 
@@ -64,4 +64,4 @@ Get-AzRemoteDesktopFile -ResourceGroupName "RgName" -Name "VmName" -LocalPath "C
 ```
 
 ## <a name="next-steps"></a>後續步驟
-如果您無法連線，請參閱[針對遠端桌面連線進行疑難排解](../troubleshooting/troubleshoot-rdp-connection.md?toc=/azure/virtual-machines/windows/toc.json)。 
+如果您無法連線，請參閱[針對遠端桌面連線進行疑難排解](../troubleshooting/troubleshoot-rdp-connection.md?toc=/azure/virtual-machines/windows/toc.json)。

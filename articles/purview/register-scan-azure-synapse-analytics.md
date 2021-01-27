@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: 3ba43b83166b5548dee4ea4e52c7411db48d23f5
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 62ca32ab4e348e1488fbb87672e582436b91d05d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567271"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875004"
 ---
 # <a name="register-and-scan-azure-synapse-analytics"></a>註冊並掃描 Azure Synapse Analytics
 
@@ -26,7 +26,7 @@ Azure Synapse Analytics (先前的 SQL DW) 支援完整和增量掃描，以捕�
 
 Azure 範疇不支援在 Azure Synapse Analytics 中掃描[視圖](/sql/relational-databases/views/views?view=azure-sqldw-latest&preserve-view=true)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - 註冊資料來源之前，請先建立 Azure 範疇帳戶。 如需有關建立範疇帳戶的詳細資訊，請參閱 [快速入門：建立 Azure 範疇帳戶](create-catalog-portal.md)。
 - 您必須是 Azure 範疇資料來源管理員
@@ -45,7 +45,7 @@ Azure 範疇不支援在 Azure Synapse Analytics 中掃描[視圖](/sql/relation
 
 ### <a name="managed-identity-recommended"></a> (建議的受控識別)  
    
-您的範疇帳戶有自己的受控識別，基本上是您在建立時的範疇名稱。 您必須遵循 [使用 Azure AD 應用程式建立 Azure AD 使用者](/azure/azure-sql/database/authentication-aad-service-principal-tutorial)的必要條件和教學課程，在 Azure Synapse Analytics (先前為 SQL DW) 的範疇中建立 Azure AD 使用者。
+您的範疇帳戶有自己的受控識別，基本上是您在建立時的範疇名稱。 您必須遵循 [使用 Azure AD 應用程式建立 Azure AD 使用者](../azure-sql/database/authentication-aad-service-principal-tutorial.md)的必要條件和教學課程，在 Azure Synapse Analytics (先前為 SQL DW) 的範疇中建立 Azure AD 使用者。
 
 建立使用者並授與權限的範例 SQL 語法：
 
@@ -87,7 +87,7 @@ GO
 
 #### <a name="granting-the-service-principal-access-to-your-azure-synapse-analytics-formerly-sql-dw"></a>將 Azure Synapse Analytics 的服務主體存取權授與 (先前為 SQL DW) 
 
-此外，您也必須遵循 [使用 Azure AD 應用程式建立 Azure AD 使用者](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial)的必要條件和教學課程，在 Azure Synapse Analytics 中建立 Azure AD 使用者。 建立使用者並授與權限的範例 SQL 語法：
+此外，您也必須遵循 [使用 Azure AD 應用程式建立 Azure AD 使用者](../azure-sql/database/authentication-aad-service-principal-tutorial.md)的必要條件和教學課程，在 Azure Synapse Analytics 中建立 Azure AD 使用者。 建立使用者並授與權限的範例 SQL 語法：
 
 ```sql
 CREATE USER [ServicePrincipalName] FROM EXTERNAL PROVIDER
@@ -140,4 +140,3 @@ GO
 
 - [瀏覽 Azure Purview 資料目錄](how-to-browse-catalog.md)
 - [搜尋 Azure Purview 資料目錄](how-to-search-catalog.md)
-

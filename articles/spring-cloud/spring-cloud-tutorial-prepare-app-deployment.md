@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 37753265afa7e76e87dbcdc5893595bea66798f4
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 4e9c84efe7b96cf61a69c54e3f5ecbc469ac7d8d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610245"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874137"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>準備要在 Azure 中部署的應用程式（春季雲端）
 
@@ -151,7 +151,7 @@ Spring Boot 版本 | Spring Cloud 版本
 2.4.1 + | 2020.0.0
 
 > [!NOTE]
-> 我們已識別出您的應用程式與 Eureka 之間的 TLS 驗證的 Boot Boot 2.4.0 問題，請使用2.4.1 或更新版本。 如果您堅持使用2.4.0，請參閱我們的 [常見問題](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development) 以取得因應措施。
+> 我們已識別出您的應用程式與 Eureka 之間的 TLS 驗證的 Boot Boot 2.4.0 問題，請使用2.4.1 或更新版本。 如果您堅持使用2.4.0，請參閱我們的 [常見問題](./spring-cloud-faq.md?pivots=programming-language-java#development) 以取得因應措施。
 
 ### <a name="dependencies-for-spring-boot-version-2223"></a>春季 Boot 2.2/2.3 版的相依性
 

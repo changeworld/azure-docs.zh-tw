@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 8a82fd6e6dc1bea0804c429f3af46884f004de69
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 17d48b6093d88a926569d5cfe84475fc0c306a0d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489763"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874378"
 ---
 # <a name="azure-network-security-overview"></a>Azure 網路安全性概觀
 
@@ -178,7 +178,7 @@ Azure 網路支援下列安全遠端存取案例︰
 
 深入了解：
 
-* [使用 Azure 入口網站建立具有站對站 VPN 連線的 Resource Manager VNet](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [使用 Azure 入口網站建立具有站對站 VPN 連線的 Resource Manager VNet](../../vpn-gateway/tutorial-site-to-site-portal.md)
 * [關於 VPN 閘道](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
 ### <a name="connect-your-on-premises-network-to-a-virtual-network-with-a-dedicated-wan-link"></a>使用專用的 WAN 連結將內部部署網路連線到虛擬網路

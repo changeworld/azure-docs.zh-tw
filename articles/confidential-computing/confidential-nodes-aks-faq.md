@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: amgowda
-ms.openlocfilehash: b4b6c04a1e35031387a006b6350ebf6cbe502fee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51e2095b0df8fdc965926c6c612c45f582c9b9d2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90994873"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874479"
 ---
 # <a name="frequently-asked-questions-about-confidential-computing-nodes-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS 上有關機密運算節點的常見問題) 
 
@@ -24,6 +24,10 @@ ms.locfileid: "90994873"
 ## <a name="what-is-attestation-and-how-can-we-do-attestation-of-apps-running-in-enclaves"></a>何謂證明，以及我們如何證明在記憶體保護區中執行的應用程式？ 
 
 證明是示範和驗證軟體是否已在特定硬體平臺上正確具現化的程式。 它也可確保其辨識項可以驗證，以保證它是在安全的平臺上執行，而且尚未遭到篡改。 [深入](attestation.md) 瞭解記憶體保護區 apps 的證明如何完成。
+
+## <a name="can-i-enable-accelerated-networking-with-azure-confidential-computing-aks-clusters"></a>我可以使用 Azure 機密計算 AKS 叢集來啟用加速網路嗎？ 
+
+否。 AKS 上的機密計算節點不支援加速網路。 確定您的部署中已停用加速網路。 
 
 ## <a name="can-i-bring-my-existing-containerized-applications-and-run-it-on-aks-with-azure-confidential-computing"></a>我可以將現有的容器化應用程式，並使用 Azure 機密運算在 AKS 上執行嗎？ 
 

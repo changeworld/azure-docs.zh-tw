@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 4e87e99f16a89cab95f9bd07b75b80f1c13d47f1
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 9a20db58846ca48afb4fb256adae58e1fccdff3a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900649"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875731"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 儲存體總管疑難排解指南
 
@@ -70,13 +70,13 @@ Azure 角色可授與您管理或資料層存取權的許可權。 例如，讀�
 ### <a name="recommended-azure-built-in-roles"></a>建議的 Azure 內建角色
 
 有數個 Azure 內建角色可提供使用儲存體總管所需的許可權。 其中一些角色包括：
-- [擁有](/azure/role-based-access-control/built-in-roles#owner)者：管理所有專案，包括對資源的存取權。
-- [參與者](/azure/role-based-access-control/built-in-roles#contributor)：管理所有專案，但不包括對資源的存取權。
-- [讀取器](/azure/role-based-access-control/built-in-roles#reader)：讀取和列出資源。
-- [儲存體帳戶參與者](/azure/role-based-access-control/built-in-roles#storage-account-contributor)：儲存體帳戶的完整管理。
-- [儲存體 Blob 資料擁有](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)者： Azure 儲存體 Blob 容器和資料的完整存取權。
-- [儲存體 Blob 資料參與者](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)：讀取、寫入和刪除 Azure 儲存體的容器和 blob。
-- [儲存體 Blob 資料讀取器](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)：讀取和列出 Azure 儲存體的容器和 blob。
+- [擁有](../../role-based-access-control/built-in-roles.md#owner)者：管理所有專案，包括對資源的存取權。
+- [參與者](../../role-based-access-control/built-in-roles.md#contributor)：管理所有專案，但不包括對資源的存取權。
+- [讀取器](../../role-based-access-control/built-in-roles.md#reader)：讀取和列出資源。
+- [儲存體帳戶參與者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)：儲存體帳戶的完整管理。
+- [儲存體 Blob 資料擁有](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)者： Azure 儲存體 Blob 容器和資料的完整存取權。
+- [儲存體 Blob 資料參與者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)：讀取、寫入和刪除 Azure 儲存體的容器和 blob。
+- [儲存體 Blob 資料讀取器](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader)：讀取和列出 Azure 儲存體的容器和 blob。
 
 > [!NOTE]
 > 擁有者、參與者和儲存體帳戶參與者角色會授與帳戶金鑰存取權。
