@@ -3,16 +3,16 @@ title: 使用備份中心取得見解
 description: 瞭解如何使用備份中心來分析歷程趨勢，並取得備份的更深入見解。
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: c0f687ee123abe2f95ad0d23a6fe302f4a5c22e1
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: c5f707ce3bc8d1172805ac14958a50bf59d1412d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173745"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893688"
 ---
-# <a name="obtain-insights-using-backup-center"></a>使用備份中心取得見解
+# <a name="obtain-insights-using-backup-center-preview"></a>使用備份中心 (預覽) 取得見解
 
-為了分析歷史趨勢並取得更深入的備份見解，「備份中心」提供了用來 [備份報表](configure-reports.md)的介面，其使用 [Azure 監視器記錄](../azure-monitor/platform/data-platform-logs.md) 和 [Azure 活頁簿](../azure-monitor/platform/workbooks-overview.md)。 備份報表提供下列功能：
+為了分析歷程趨勢，並取得更深入的備份見解，「備份中心」提供了一個介面，可 [ (預覽) ](configure-reports.md)（使用 [Azure 監視器記錄](../azure-monitor/platform/data-platform-logs.md) 和 [Azure 活頁簿](../azure-monitor/platform/workbooks-overview.md)）來備份報表。 備份報表提供下列功能：
 
 - 配置和預測已取用的雲端儲存體。
 
@@ -24,7 +24,7 @@ ms.locfileid: "92173745"
 
 ## <a name="supported-scenarios"></a>支援的案例
 
-- 適用於 PostgreSQL 的 Azure 資料庫 server 備份目前無法使用備份報告。
+-  (預覽) 的備份報告目前不適用於適用於 PostgreSQL 的 Azure 資料庫 server 備份。
 
 - 如需支援和不支援案例的詳細清單，請參閱 [支援矩陣](backup-center-support-matrix.md) 。
 

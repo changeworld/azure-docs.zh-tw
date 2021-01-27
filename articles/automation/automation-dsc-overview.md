@@ -7,15 +7,15 @@ ms.service: automation
 ms.subservice: dsc
 author: mgoedtel
 ms.author: magoedte
-ms.date: 06/22/2020
+ms.date: 01/26/2021
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 437a917e0f9b6e7a7370e828c8e3ee95218cea3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 752d7f86941967c218b3a57fa163698b9f502057
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079735"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897015"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration 概觀
 
@@ -31,13 +31,13 @@ Azure Automation State Configuration 是一種 Azure 組態管理服務，可讓
 如果您不準備從雲端管理機器組態，則可以使用 Azure Automation State Configuration 當作報告專用端點。 這項功能可讓您透過 DSC 設定 (推送) 組態，並在 Azure 自動化中檢視報告詳細資料。
 
 > [!NOTE]
-> 如果已安裝的 Azure VM Desired State Configuration 延伸模組版本大於 2.70，則可以使用 Azure Automation State Configuration 管理 Azure VM，不需要額外付費。 如需詳細資訊，請參閱[**自動化定價頁面**](https://azure.microsoft.com/pricing/details/automation/)。
+> 如果已安裝的 Azure VM Desired State Configuration 延伸模組版本大於 2.70，則可以使用 Azure Automation State Configuration 管理 Azure VM，不需要額外付費。 如需詳細資訊，請參閱 [**自動化定價頁面**](https://azure.microsoft.com/pricing/details/automation/)。
 
 ## <a name="why-use-azure-automation-state-configuration"></a>為何使用 Azure Automation State Configuration
 
 Azure Automation State Configuration 提供在 Azure 外部使用 DSC 的數個優點。 此服務可讓您從中央、安全的位置快速且輕鬆地延展到數千部電腦。 您可以輕鬆地啟用機器、將宣告式組態指派給這些機器，以及檢視報告，其中顯示每部機器是否符合您指定的所需狀態。
 
-Azure Automation State Configuration 服務之於 DSC 如同 Azure 自動化 Runbook 之於 PowerShell 指令碼。 換句話說，「Azure 自動化」會以協助您管理 Powershell 指令碼的相同方式，同樣協助您管理 DSC 組態。 
+Azure Automation State Configuration 服務之於 DSC 如同 Azure 自動化 Runbook 之於 PowerShell 指令碼。 換句話說，「Azure 自動化」會以協助您管理 Powershell 指令碼的相同方式，同樣協助您管理 DSC 組態。
 
 ### <a name="built-in-pull-server"></a>內建提取伺服器
 
@@ -53,7 +53,7 @@ Azure Automation State Configuration 為 [PowerShell Desired State Configuration
 
 使用 Azure Automation State Configuration 所管理的節點會將詳細報告狀態資料傳送至內建提取伺服器。 您可以設定 Azure Automation State Configuration，將此資料傳送至 Log Analytics 工作區。 請參閱[將 Azure Automation State Configuration 報告資料轉送至 Azure 監視器記錄](automation-dsc-diagnostics.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 使用 Azure Automation State Configuration 時，請考慮本節中的需求。
 
@@ -83,20 +83,11 @@ Azure Automation State Configuration 為 [PowerShell Desired State Configuration
 
 ### <a name="configuration-of-private-networks"></a><a name="network-planning"></a>私人網路的組態
 
-如果您的節點位於私人網路中，則需要下列連接埠和 URL。 這些資源會為受控節點提供網路連線能力，並允許 DSC 與 Azure 自動化進行通訊。
-
-* 連接埠︰只需要 TCP 443，即可存取輸出網際網路
-* 全域 URL： ***.azure-automation.net**
-* US Gov 維吉尼亞州的全域 URL： ***.azure automation.us**
-* Agent 服務： **HTTPs:// \<workspaceId\> . agentsvc.azure-automation.net**
-
-如果您使用在節點之間進行通訊的 DSC 資源 (例如 [WaitFor* 資源](/powershell/scripting/dsc/reference/resources/windows/waitForAllResource))，則也必須允許節點之間的流量。 請參閱每個 DSC 資源的文件，以了解這些網路需求。
-
-若要瞭解 TLS 1.2 的用戶端需求，請參閱 [Azure 自動化的 tls 1.2 強制](automation-managing-data.md#tls-12-enforcement-for-azure-automation)。
+檢查 [Azure 自動化的網路](automation-network-configuration.md#hybrid-runbook-worker-and-state-configuration) 設定，以取得私人網路上節點所需之埠、url 和其他網路功能詳細資料的詳細資訊。
 
 #### <a name="proxy-support"></a>Proxy 支援
 
-DSC 代理程式的 Proxy 支援適用於 Windows 版本 1809 和更新版本。 若要啟用此選項，您可以在用來註冊節點的[中繼組態指令碼](automation-dsc-onboarding.md#generate-dsc-metaconfigurations)中設定 `ProxyURL` 和 `ProxyCredential` 屬性的值。 
+DSC 代理程式的 Proxy 支援適用於 Windows 版本 1809 和更新版本。 若要啟用此選項，您可以在用來註冊節點的[中繼組態指令碼](automation-dsc-onboarding.md#generate-dsc-metaconfigurations)中設定 `ProxyURL` 和 `ProxyCredential` 屬性的值。
 
 >[!NOTE]
 >Azure Automation State Configuration 不會為舊版 Windows 提供 DSC Proxy 支援。
@@ -114,4 +105,4 @@ DSC 代理程式的 Proxy 支援適用於 Windows 版本 1809 和更新版本。
 - 若要了解如何編譯 DSC 組態，以便可將其指派給目標節點，請參閱[編譯 Azure Automation State Configuration 中的 DSC 組態](automation-dsc-compile.md)。
 - 如需在持續部署管道中使用 Azure Automation State Configuration 的範例，請參閱[使用 Chocolatey 設定持續部署](automation-dsc-cd-chocolatey.md)。
 - 如需定價資訊，請參閱 [Azure Automation State Configuration 定價](https://azure.microsoft.com/pricing/details/automation/)。
-- 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。
+- 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation)。

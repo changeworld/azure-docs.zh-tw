@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/31/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5adb8edbeafa4d77e24bf865338e111c455cb80
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: b03f3f93e8f829c6ab7dec965850117895a8b52d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827507"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882479"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>透過 Azure 入口網站控制 Azure HANA Large Instances
 
@@ -94,7 +94,7 @@ az provider register --namespace Microsoft.HanaOnAzure
 - 修訂4
 
 修訂4是最新發行的 HANA 大型實例，其中包含 Azure Vm 與部署在修訂4戳記或資料列中的 HANA 大型實例單位之間的網路延遲大幅改進。
-另一個非常重要的資訊是在總覽的右下角，以針對每個已部署的 HANA 大型實例單位自動建立的 Azure 鄰近放置群組的名稱來尋找。 部署裝載 SAP 應用層的 Azure Vm 時，必須參考此鄰近放置群組。 藉由使用與「HANA 大型實例」單位相關聯的 [azure 鄰近位置群組](../../linux/co-location.md) ，您可確保 azure vm 會部署在與「Hana 大型實例」單位接近的位置。 使用鄰近位置群組的方式，在相同的 Azure 資料中心內找出與修訂4裝載的 HANA 大型實例單位相同的 Azure 資料中心中的 SAP 應用層，以 [獲得最佳的 sap 應用程式網路延遲](sap-proximity-placement-scenarios.md)。
+另一個非常重要的資訊是在總覽的右下角，以針對每個已部署的 HANA 大型實例單位自動建立的 Azure 鄰近放置群組的名稱來尋找。 部署裝載 SAP 應用層的 Azure Vm 時，必須參考此鄰近放置群組。 藉由使用與「HANA 大型實例」單位相關聯的 [azure 鄰近位置群組](../../co-location.md) ，您可確保 azure vm 會部署在與「Hana 大型實例」單位接近的位置。 使用鄰近位置群組的方式，在相同的 Azure 資料中心內找出與修訂4裝載的 HANA 大型實例單位相同的 Azure 資料中心中的 SAP 應用層，以 [獲得最佳的 sap 應用程式網路延遲](sap-proximity-placement-scenarios.md)。
 
 標頭右側資料行中的額外欄位會告知 HANA 大型實例單位的電源狀態。
 

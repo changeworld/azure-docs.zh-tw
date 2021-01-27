@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1403c514f5a278fd406769f1d5271cc95a5c1df
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 5ed932488551918bb0bfeb7dc9ffcb2f59b6d152
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195733"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878896"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (大型執行個體) 網路架構
 
@@ -76,7 +76,7 @@ Azure ExpressRoute 閘道可搭配 ExpressRoute 使用於 Azure 外部的基礎�
 
 使用「HANA 大型實例」戳記的修訂3，Vm 與「HANA 大型實例」單位之間經歷的網路延遲，可能會高於一般 VM 對 VM 網路來回延遲。 相依於 Azure 區域，測量到的值可超過 0.7 毫秒的來回延遲，這在 [SAP 附註 #1100926 - 常見問題集：網路效能](https://launchpad.support.sap.com/#/notes/1100926/E)中已歸類為低於平均值。 根據測量 Azure VM 與 HANA 大型執行個體單位之間的網路來回延遲時所使用的 Azure 區域和工具，測量的延遲最高可達 2 毫秒左右。 不過，客戶可順利在 SAP HANA 大型執行個體上部署以 SAP HANA 為基礎的生產環境 SAP 應用程式。 請務必在 Azure HANA 大型執行個體中徹底測試您的商務程序。 稱為 ExpressRoute Fast Path 的新功能，能夠減少 HANA 大型實例與 Azure 中應用層 Vm 之間的網路延遲，並大幅 (查看以下) 。 
 
-在「HANA 大型實例」戳記的修訂4中，相較于「HANA 大型實例」戳記中部署的 Azure Vm 之間的網路延遲，可符合 SAP 附注中所述的平均或更高的平均分類 [#1100926-常見問題：](https://launchpad.support.sap.com/#/notes/1100926/E) 如果已設定 Azure ExpressRoute 快速路徑，則網路效能 (請參閱以下) 。 若要將 Azure Vm 緊密地部署到修訂4的 HANA 大型實例單位，您需要利用 [Azure 鄰近放置群組](../../linux/co-location.md)。 使用鄰近位置群組的方式，在相同的 Azure 資料中心內找出與修訂4裝載的 HANA 大型實例單位相同的 Azure 資料中心中的 SAP 應用層，以 [獲得最佳的 sap 應用程式網路延遲](sap-proximity-placement-scenarios.md)。
+在「HANA 大型實例」戳記的修訂4中，相較于「HANA 大型實例」戳記中部署的 Azure Vm 之間的網路延遲，可符合 SAP 附注中所述的平均或更高的平均分類 [#1100926-常見問題：](https://launchpad.support.sap.com/#/notes/1100926/E) 如果已設定 Azure ExpressRoute 快速路徑，則網路效能 (請參閱以下) 。 若要將 Azure Vm 緊密地部署到修訂4的 HANA 大型實例單位，您需要利用 [Azure 鄰近放置群組](../../co-location.md)。 使用鄰近位置群組的方式，在相同的 Azure 資料中心內找出與修訂4裝載的 HANA 大型實例單位相同的 Azure 資料中心中的 SAP 應用層，以 [獲得最佳的 sap 應用程式網路延遲](sap-proximity-placement-scenarios.md)。
 
 若要在 Vm 和 HANA 大型實例之間提供決定性的網路延遲，您必須選擇 ExpressRoute 閘道 SKU。 不同於內部部署與 VM 之間的流量模式，VM 和 HANA 大型執行個體之間的流量模式可以開發很小但高載的要求和資料磁碟區來進行傳輸。 為了妥善處理這類高載，強烈建議您使用 UltraPerformance 閘道 SKU。 針對類型 II 類別的 HANA 大型實例 Sku，使用 UltraPerformance 閘道 SKU 作為 ExpressRoute 閘道是必要的。
 

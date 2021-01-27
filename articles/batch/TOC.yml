@@ -101,13 +101,11 @@
   items:
     - name: 管理 Batch 帳戶
       items:
-        - name: 管理您的帳戶
-          href: batch-manage-account-basics.md
-        - name: 透過入口網站管理 Batch 帳戶
+        - name: 在 Azure 入口網站中管理 Batch 帳戶
           href: batch-account-create-portal.md
         - name: 使用 Batch Management .NET 管理 Batch 帳戶
           href: batch-management-dotnet.md
-        - name: 成本分析和預算
+        - name: 取得成本分析和設定預算
           href: budget.md
         - name: 使用私人端點搭配 Batch 帳戶
           href: private-connectivity.md

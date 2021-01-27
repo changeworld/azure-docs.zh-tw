@@ -8,12 +8,12 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: cfeb124aeb614906cef1dc710eb8485e63806539
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 28b7419dfc889d1149765b884f1a5990a1e28f03
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880570"
+ms.locfileid: "98898099"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>規劃 Azure 檔案同步部署
 
@@ -186,7 +186,7 @@ Azure 檔案同步的 [一般用途的檔案伺服器] 部署選項支援 Window
 
 ### <a name="data-deduplication"></a>重複資料刪除
 **Windows Server 2016 與 Windows Server 2019**   
-重複資料刪除會在 Windows Server 2016 和 Windows Server 2019 中，已啟用雲端階層處理的磁碟區上受到支援。 在已啟用雲端階層處理的磁碟區上啟用重複資料刪除，可讓您在內部部署中快取更多檔案，而不需佈建更多儲存空間。 
+無論 Windows Server 2016 和 Windows Server 2019 的磁片區上的一或多個伺服器端點上是否啟用或停用雲端階層處理，都支援重復資料刪除。 在已啟用雲端階層處理的磁碟區上啟用重複資料刪除，可讓您在內部部署中快取更多檔案，而不需佈建更多儲存空間。 
 
 在啟用雲端階層處理的磁碟區上啟用重復資料刪除時，伺服器端點位置內的重復資料刪除最佳化檔案將會根據雲端階層處理原則設定進行階層處理，與一般檔案類似。 當重復資料刪除最佳化檔案已進行階層處理，重復資料刪除垃圾收集工作將會自動執行，藉由移除磁碟區上其他檔案不再需要參考的區塊來回收磁碟空間。
 

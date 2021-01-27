@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒體服務 v3 來為描述性音訊曲目提供信號 |Microsoft Docs
+title: 使用 Azure 媒體服務 v3 來為描述性音訊曲目提供信號
 description: 遵循本教學課程的步驟來上傳檔案、編碼影片、新增描述性音訊播放軌，並使用媒體服務 v3 串流您的內容。
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 0bd2002e8f6f233361dd85cc08cfbd97ca23ed60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 155e79f8d42988d8498c52c0f930bc03bc599cf0
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291257"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898213"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>指示描述性音訊曲目
 
@@ -36,7 +36,7 @@ ms.locfileid: "89291257"
 
 ## <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>建立輸入資產並將本機檔案上傳到其中 
 
-**CreateInputAsset** 函式會建立新的輸入[資產](/rest/api/media/assets)，並將指定的本機影片檔案上傳到其中。 此 **資產** 會用來作為編碼作業的輸入。 在媒體服務 v3 中， **作業** 的輸入可以是 **資產**，也可以是您透過 HTTPS url 讓媒體服務帳戶可使用的內容。 
+**CreateInputAsset** 函式會建立新的輸入 [資產](/rest/api/media/assets)，並將指定的本機影片檔案上傳到其中。 此 **資產** 會用來作為編碼作業的輸入。 在媒體服務 v3 中， **作業** 的輸入可以是 **資產**，也可以是您透過 HTTPS url 讓媒體服務帳戶可使用的內容。 
 
 如果您想要瞭解如何從 HTTPS URL 進行編碼，請參閱 [這篇文章](job-input-from-http-how-to.md) 。  
 
@@ -64,7 +64,7 @@ ms.locfileid: "89291257"
 
 ## <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>建立轉換和作業以將已上傳的檔案編碼
 
-在媒體服務中編碼或處理內容時，將編碼設定設為配方 (recipe) 是很常見的模式。 然後您可以透過提交**作業**，將該配方套用到影片。 藉由為每部新影片提交新的作業，您可以將該配方套用到媒體櫃中的所有影片。 配方在媒體服務中稱為「**轉換 (Transform)**」。 如需詳細資訊，請參閱[轉換和作業](./transforms-jobs-concept.md)。 本教學課程中所述的範例會定義編碼影片的配方，以便將影片串流到各種 iOS 和 Android 裝置。 
+在媒體服務中編碼或處理內容時，將編碼設定設為配方 (recipe) 是很常見的模式。 然後您可以透過提交 **作業**，將該配方套用到影片。 藉由為每部新影片提交新的作業，您可以將該配方套用到媒體櫃中的所有影片。 配方在媒體服務中稱為「**轉換 (Transform)**」。 如需詳細資訊，請參閱[轉換和作業](./transforms-jobs-concept.md)。 本教學課程中所述的範例會定義編碼影片的配方，以便將影片串流到各種 iOS 和 Android 裝置。 
 
 下列範例會建立一個轉換 (如果) 不存在的話。
 
@@ -78,7 +78,7 @@ ms.locfileid: "89291257"
 
 此作業需要一些時間來完成，而您可以選擇在完成時收到通知。 我們建議使用事件方格來等候工作完成。
 
-作業通常會經歷下列狀態：已 **排程**、已 **排入佇列**、 **處理**、 **完成** (最終狀態) 。 如果作業發生錯誤，您會收到**錯誤**狀態。 如果正在取消作業，您會收到**正在取消**的狀態，以及完成時的**已取消**狀態。
+作業通常會經歷下列狀態：已 **排程**、已 **排入佇列**、 **處理**、 **完成** (最終狀態) 。 如果作業發生錯誤，您會收到 **錯誤** 狀態。 如果正在取消作業，您會收到 **正在取消** 的狀態，以及完成時的 **已取消** 狀態。
 
 如需詳細資訊，請參閱 [處理事件方格事件](reacting-to-media-services-events.md)。
 
@@ -221,10 +221,10 @@ await UpoadAudioIntoOutputAsset(client, config.ResourceGroup, config.AccountName
 
 ### <a name="get-streaming-urls"></a>取得串流 URL
 
-建立了[串流定位器](/rest/api/media/streaminglocators)之後，現在您可以取得串流 URL，如 **GetStreamingURLs** 中所示。 若要建置 URL，您需要串連[串流端點](/rest/api/media/streamingendpoints)主機名稱和**串流定位器**路徑。 此範例會使用預設的**串流端點**。 初次建立媒體服務帳戶時，此預設的**串流端點**會處於停止狀態，因此您需要呼叫 **Start**。
+建立了 [串流定位器](/rest/api/media/streaminglocators)之後，現在您可以取得串流 URL，如 **GetStreamingURLs** 中所示。 若要建置 URL，您需要串連 [串流端點](/rest/api/media/streamingendpoints)主機名稱和 **串流定位器** 路徑。 此範例會使用預設的 **串流端點**。 初次建立媒體服務帳戶時，此預設的 **串流端點** 會處於停止狀態，因此您需要呼叫 **Start**。
 
 > [!NOTE]
-> 在此方法中，您需要 locatorName，也就是為輸出資產建立**串流定位器**時所使用的項目。
+> 在此方法中，您需要 locatorName，也就是為輸出資產建立 **串流定位器** 時所使用的項目。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#GetStreamingURLs)]
 

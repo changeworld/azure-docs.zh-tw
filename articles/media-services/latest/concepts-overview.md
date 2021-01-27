@@ -1,6 +1,5 @@
 ---
 title: 媒體服務術語和概念
-titleSuffix: Azure Media Services
 description: 瞭解 Azure 媒體服務的術語和概念。
 services: media-servicesgit
 documentationcenter: ''
@@ -13,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 5564051ae11a1237cc924ee6bf557e3c85d8866a
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: b425cd9268b336a8926e4fad9cb1f288f4fe3e87
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696408"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897912"
 ---
 # <a name="media-services-terminology-and-concepts"></a>媒體服務術語和概念
 

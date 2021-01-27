@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 279a00a6146d756e6a518dbf86b88f471d170b3a
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 1ce983ee739a4a124a93c7913f092b23dfec3cbd
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97805646"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98900817"
 ---
 ## <a name="what-is-a-replication-task"></a>什麼是複寫工作？
 
@@ -22,30 +22,30 @@ ms.locfileid: "97805646"
 
 複寫工作通常是無狀態的，這表示它們不會在一或多個工作的連續或平行執行之間共用狀態或其他副作用。 這也適用于批次處理和連結，這兩者都可以在資料流程的現有狀態之上執行。 
 
-這會讓複寫工作與匯總工作不同，這些工作通常是具狀態的，而且是分析架構和服務（例如 [Azure 串流分析](/azure/stream-analytics/stream-analytics-introduction)）的網域。
+這會讓複寫工作與匯總工作不同，這些工作通常是具狀態的，而且是分析架構和服務（例如 [Azure 串流分析](../articles/stream-analytics/stream-analytics-introduction.md)）的網域。
 
 ## <a name="replication-applications-and-tasks-in-azure-functions"></a>Azure Functions 中的複寫應用程式和工作
 
-在 Azure Functions 中，會使用會從已設定來源取得一或多個輸入訊息的 [觸發](/azure/azure-functions/functions-triggers-bindings) 程式來執行複寫工作，並使用 [輸出](/azure/azure-functions/functions-triggers-bindings#binding-direction) 系結將從來源複製的訊息轉送至設定的目標。 
+在 Azure Functions 中，會使用會從已設定來源取得一或多個輸入訊息的 [觸發](../articles/azure-functions/functions-triggers-bindings.md) 程式來執行複寫工作，並使用 [輸出](../articles/azure-functions/functions-triggers-bindings.md#binding-direction) 系結將從來源複製的訊息轉送至設定的目標。 
 
 | 觸發程序  | 輸出 |
 |----------|--------|
-| [Azure 事件中樞觸發程式](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-hubs-trigger?tabs=csharp) | [Azure 事件中樞輸出系結](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-hubs-output?tabs=csharp) |
-| [Azure 服務匯流排觸發程式](https://docs.microsoft.com/azure/azure-functions/functions-bindings-service-bus-trigger?tabs=csharp) | [Azure 服務匯流排輸出系結](https://docs.microsoft.com/azure/azure-functions/functions-bindings-service-bus-output?tabs=csharp)
-| [Azure IoT 中樞觸發程式](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-iot-trigger?tabs=csharp) | [Azure IoT 中樞輸出系結](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-iot-output?tabs=csharp)
-| [Azure 事件方格觸發程式](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-grid-trigger?tabs=csharp) | [Azure 事件方格輸出系結](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-grid-output?tabs=csharp)
-| [Azure 佇列儲存體觸發程序](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp) | [Azure 佇列儲存體輸出系結](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-queue-output?tabs=csharp)
+| [Azure 事件中樞觸發程式](../articles/azure-functions/functions-bindings-event-hubs-trigger.md?tabs=csharp) | [Azure 事件中樞輸出系結](../articles/azure-functions/functions-bindings-event-hubs-output.md?tabs=csharp) |
+| [Azure 服務匯流排觸發程式](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=csharp) | [Azure 服務匯流排輸出系結](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=csharp)
+| [Azure IoT 中樞觸發程式](../articles/azure-functions/functions-bindings-event-iot-trigger.md?tabs=csharp) | [Azure IoT 中樞輸出系結](../articles/azure-functions/functions-bindings-event-iot-output.md?tabs=csharp)
+| [Azure 事件方格觸發程式](../articles/azure-functions/functions-bindings-event-grid-trigger.md?tabs=csharp) | [Azure 事件方格輸出系結](../articles/azure-functions/functions-bindings-event-grid-output.md?tabs=csharp)
+| [Azure 佇列儲存體觸發程序](../articles/azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp) | [Azure 佇列儲存體輸出系結](../articles/azure-functions/functions-bindings-storage-queue-output.md?tabs=csharp)
 | [Apache Kafka 觸發程式](https://github.com/azure/azure-functions-kafka-extension) | [Apache Kafka 輸出系結](https://github.com/azure/azure-functions-kafka-extension)
 | [RabbitMQ 觸發程式](https://github.com/azure/azure-functions-rabbitmq-extension) | [RabbitMQ 輸出系結](https://github.com/azure/azure-functions-rabbitmq-extension) 
-| | [Azure 通知中樞輸出系結](https://docs.microsoft.com/azure/azure-functions/functions-bindings-notification-hubs)
-||[Azure SignalR 服務輸出系結](https://docs.microsoft.com/azure/azure-functions/functions-bindings-signalr-service-output?tabs=csharp)
-||[Twilio SendGrid 輸出系結](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid?tabs=csharp)
+| | [Azure 通知中樞輸出系結](../articles/azure-functions/functions-bindings-notification-hubs.md)
+||[Azure SignalR 服務輸出系結](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=csharp)
+||[Twilio SendGrid 輸出系結](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=csharp)
 
 複寫工作會透過與任何其他 Azure Functions 應用程式相同的部署方法，部署至複寫應用程式。 您可以將多個工作設定為相同的應用程式。 
 
 使用 Azure Functions Premium 時，多個複寫應用程式可以共用相同的基礎資源集區，稱為 App Service 方案。 這表示您可以輕鬆地使用以 JAVA 撰寫的複寫工作，來共置以 .NET 撰寫的複寫工作。 如果您想要利用僅適用于 JAVA 的特定程式庫，以及這些程式庫是否是特定整合路徑的最佳選項，雖然您通常偏好針對其他複寫工作使用不同的語言和執行時間，這會是很重要的。 
 
-如果有的話，您應該偏好透過觸發程式的批次導向觸發程式來傳遞個別事件或訊息，您應該一律取得完整事件或訊息結構，而不是依賴 Azure 函數的參數系結 [運算式](https://docs.microsoft.com/azure/azure-functions/functions-bindings-expressions-patterns)。
+如果有的話，您應該偏好透過觸發程式的批次導向觸發程式來傳遞個別事件或訊息，您應該一律取得完整事件或訊息結構，而不是依賴 Azure 函數的參數系結 [運算式](../articles/azure-functions/functions-bindings-expressions-patterns.md)。
 
 函式的名稱應該反映您所連接的來源和目標的配對，而您應該在應用程式佈建檔中使用該名稱的連接字串或其他設定專案的參考前置詞。 
 
@@ -57,17 +57,17 @@ ms.locfileid: "97805646"
 
 ### <a name="retry-policy"></a>重試原則
 
-若要避免在複寫函數的任一邊的可用性事件期間遺失資料，您必須將重試原則設定為健全。 請參閱 [Azure Functions 檔](/azure/azure-functions/functions-bindings-error-pages) ，以重試設定重試原則的相關資訊。 
+若要避免在複寫函數的任一邊的可用性事件期間遺失資料，您必須將重試原則設定為健全。 請參閱 [Azure Functions 檔](../articles/azure-functions/functions-bindings-error-pages.md) ，以重試設定重試原則的相關資訊。 
 
 針對 [範例存放庫](https://github.com/Azure-Samples/azure-messaging-replication-dotnet) 中的範例專案所選擇的原則設定，會將重試間隔的指數輪詢策略設定為5秒到15分鐘，並且無限次重試以避免資料遺失。 
 
-針對服務匯流排，請參閱「 [在觸發程式恢復功能之上使用重試支援](/azure/azure-functions/functions-bindings-error-pages#using-retry-support-on-top-of-trigger-resilience) 」一節，以瞭解觸發程式的互動和為佇列定義的最大傳遞計數。
+針對服務匯流排，請參閱「 [在觸發程式恢復功能之上使用重試支援](../articles/azure-functions/functions-bindings-error-pages.md#using-retry-support-on-top-of-trigger-resilience) 」一節，以瞭解觸發程式的互動和為佇列定義的最大傳遞計數。
 
 ### <a name="setting-up-a-replication-application-host"></a>設定複寫應用程式主機
 
 複寫應用程式是一或多個複寫工作的執行主機。 
 
-它是一種 Azure Functions 的應用程式，設定為在取用方案上執行，或 (Azure Functions 高階方案的建議) 。 所有複寫應用程式都必須以 [系統或使用者指派的受控識別](/azure/app-service/overview-managed-identity)來執行。 
+它是一種 Azure Functions 的應用程式，設定為在取用方案上執行，或 (Azure Functions 高階方案的建議) 。 所有複寫應用程式都必須以 [系統或使用者指派的受控識別](../articles/app-service/overview-managed-identity.md)來執行。 
 
 連結的 Azure Resource Manager (ARM) 範本會使用下列方式建立和設定複寫應用程式：
 
@@ -129,15 +129,15 @@ Helper 方法可讓您輕鬆地在事件中樞和服務匯流排之間進行複�
 
 ### <a name="monitoring"></a>監視
 
-若要瞭解如何監視您的複寫應用程式，請參閱 Azure Functions 檔的 [ [監視] 區段](https://docs.microsoft.com/azure/azure-functions/configure-monitoring) 。
+若要瞭解如何監視您的複寫應用程式，請參閱 Azure Functions 檔的 [ [監視] 區段](../articles/azure-functions/configure-monitoring.md) 。
 
-監視複寫工作的一個特別有用的視覺化檢視是 Application Insights 的 [應用程式對應](https://docs.microsoft.com/azure/azure-monitor/app/app-map)，它會從已捕捉的監視資訊自動產生，並可讓您探索複寫工作來源和目標傳輸的可靠性和效能。
+監視複寫工作的一個特別有用的視覺化檢視是 Application Insights 的 [應用程式對應](../articles/azure-monitor/app/app-map.md)，它會從已捕捉的監視資訊自動產生，並可讓您探索複寫工作來源和目標傳輸的可靠性和效能。
 
-如需立即診斷見解，您可以使用 [即時計量](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) 入口網站工具，以提供記錄詳細資料的低延遲視覺效果。
+如需立即診斷見解，您可以使用 [即時計量](../articles/azure-monitor/app/live-stream.md) 入口網站工具，以提供記錄詳細資料的低延遲視覺效果。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [Azure Functions 部署](/azure/azure-functions/functions-deployment-technologies)
-* [Azure Functions 診斷](/azure/azure-functions/functions-diagnostics)
-* [Azure Functions 網路功能選項](/azure/azure-functions/functions-networking-options)
-* [Azure Application Insights](/azure/azure-monitor/app/app-insights-overview)
+* [Azure Functions 部署](../articles/azure-functions/functions-deployment-technologies.md)
+* [Azure Functions 診斷](../articles/azure-functions/functions-diagnostics.md)
+* [Azure Functions 網路功能選項](../articles/azure-functions/functions-networking-options.md)
+* [Azure Application Insights](../articles/azure-monitor/app/app-insights-overview.md)

@@ -1,26 +1,9 @@
 ---
-title: 即時轉譯
-titleSuffix: Azure Media Services
-description: 瞭解 Azure 媒體服務即時轉譯。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: ne
-ms.topic: how-to
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: c3465e294af104c4d9c3b34960f5e95cf41e7cb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291410"
+標題：即時轉譯： Azure 媒體服務描述：瞭解 Azure 媒體服務即時轉譯。  
+服務： media services documentationcenter： ' ' author： IngridAtMicrosoft manager： femila editor： ' ' ms. service： media-services ms. 工作負載： media ms.tgt_pltfrm： na ms. ms.devlang： ne ms. 主題： how to ms. date： 08/31/2020 ms. author： inhenkel
+
 ---
+
 # <a name="live-transcription-preview"></a>即時轉譯 (預覽) 
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

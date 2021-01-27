@@ -1,5 +1,5 @@
 ---
-title: 媒體服務 v2 至 v3 遷移以案例為基礎的即時串流指引 |Microsoft Docs
+title: 媒體服務 v2 至 v3 遷移以案例為基礎的即時串流指導方針
 description: 本文提供以即時串流案例為基礎的指導方針，可協助您將從 Azure 媒體服務 v2 遷移至 v3 的時間最小。
 services: media-services
 author: IngridAtMicrosoft
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 89fcf85b20d11664d5d1caa3fbe142fa5bbdbebc
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 65b1c8906463002e144ee520855121ce18693e03
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690279"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898268"
 ---
 # <a name="live-streaming-scenario-based-migration-guidance"></a>即時串流以案例為基礎的遷移指導方針
 

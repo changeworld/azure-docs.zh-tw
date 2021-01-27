@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0e98078fe2799d1c524190c8ced36588f35498b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25f5e92aa8aa211782bc238781c59b9ca0511173
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186430"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897236"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>開始使用 Azure Automation State Configuration
 
@@ -61,7 +61,7 @@ ms.locfileid: "86186430"
     ```
 1. 將檔案儲存為 **TestConfig.ps1**。
 
-此組態會在每個節點區塊中呼叫一個資源，即 [WindowsFeature 資源](/powershell/scripting/dsc/reference/resources/windows/windowsfeatureresource)。 此資源可確保 **Web 伺服器**功能是否存在。
+此組態會在每個節點區塊中呼叫一個資源，即 [WindowsFeature 資源](/powershell/scripting/dsc/reference/resources/windows/windowsfeatureresource)。 此資源可確保 **Web 伺服器** 功能是否存在。
 
 ## <a name="import-a-configuration-into-azure-automation"></a>將組態匯入至 Azure 自動化
 
@@ -155,7 +155,7 @@ ms.locfileid: "86186430"
 
    ![[註冊] 刀鋒視窗的螢幕擷取畫面](./media/automation-dsc-getting-started/RegisterVM.png)
 
-   您指定的節點組態會依指定的間隔套用至 VM，而此間隔是由提供給**組態模式頻率**的值所指定。 VM 會依**重新整理頻率** 值所指定的間隔，檢查節點組態是否有更新。 如需有關如何使用這些值的詳細資訊，請參閱 [設定本機設定管理員](/powershell/scripting/dsc/managing-nodes/metaConfig)。
+   您指定的節點組態會依指定的間隔套用至 VM，而此間隔是由提供給 **組態模式頻率** 的值所指定。 VM 會依 **重新整理頻率** 值所指定的間隔，檢查節點組態是否有更新。 如需有關如何使用這些值的詳細資訊，請參閱 [設定本機設定管理員](/powershell/scripting/dsc/managing-nodes/metaConfig)。
 
 Azure 會啟動 VM 的啟用程序。 完成時，VM 會顯示在自動化帳戶中 [State Configuration (DSC)] 頁面的 [節點] 索引標籤中。
 
@@ -237,4 +237,4 @@ Azure 會啟動 VM 的啟用程序。 完成時，VM 會顯示在自動化帳戶
 - 若要在您的環境中啟用 VＭ 的功能，請參閱[啟用 Azure Automation State Configuration](automation-dsc-onboarding.md)。
 - 若要了解 PowerShell DSC，請參閱 [Windows PowerShell Desired State Configuration 概觀](/powershell/scripting/dsc/overview/overview)。
 - 如需定價資訊，請參閱 [Azure Automation State Configuration 定價](https://azure.microsoft.com/pricing/details/automation/)。
-- 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。
+- 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation)。

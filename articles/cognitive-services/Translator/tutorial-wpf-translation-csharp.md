@@ -3,20 +3,20 @@ title: 教學課程：使用 WPF 建立翻譯應用程式 (C#) - 翻譯工具
 titleSuffix: Azure Cognitive Services
 description: 在本教學課程中，您將建立以單一訂用帳戶金鑰來執行文字翻譯、語言偵測和拼字檢查的 WPF 應用程式。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 05/26/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d239b89aaf0bc140916d38583f4263f7bf660f1a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
-ms.translationtype: HT
+ms.openlocfilehash: 9ebcbadbc8b502121b25393c7761794bcd3f07e8
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023611"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897100"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>教學課程：使用 WPF 建立翻譯應用程式
 

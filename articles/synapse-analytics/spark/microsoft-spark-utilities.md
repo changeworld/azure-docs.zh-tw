@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: d2e9e306e979f569819568650b25d49278997ede
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 262177d8cde3a5eee2721f2af8a0511c205da9b9
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878522"
+ms.locfileid: "98890524"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Microsoft Spark 公用程式簡介
 
@@ -122,13 +122,45 @@ spark.conf.set(f"fs.azure.sas.$blob_container_name.$blob_account_name.blob.core.
 
 ::: zone-end
 
-<!-- :::zone pivot = "programming-language-csharp"
+:::zone pivot = "programming-language-csharp"
+
+
+### <a name="configure-access-to-azure-blob-storage"></a>設定 Azure Blob 儲存體的存取權  
+
+Synapse 利用 **(SAS) 的共用存取** 簽章來存取 Azure Blob 儲存體。 為了避免在程式碼中公開 SAS 金鑰，建議您在 Synapse 工作區中建立新的連結服務，以存取您想要存取的 Azure Blob 儲存體帳戶。
+
+請遵循下列步驟，為 Azure Blob 儲存體帳戶新增連結服務：
+
+1. 開啟 [Azure Synapse Studio](https://web.azuresynapse.net/)。
+2. 從左側面板中選取 [**管理**]，然後選取 [**外部連接**] 底下的 [**連結服務**]。
+3. 在右側的 [**新增連結服務**] 面板中搜尋 **Azure Blob 儲存體**。
+4. 選取 [繼續]。
+5. 選取要存取的 Azure Blob 儲存體帳戶，並設定連結的服務名稱。 建議使用 **驗證方法** 的 **帳戶金鑰**。
+6. 選取 [ **測試連接** ] 以驗證設定是否正確。
+7. 選取 [先 **建立** ]，然後按一下 [ **全部發佈** ] 儲存變更。 
+
+您可以透過下列 URL，透過 Synapse Spark 存取 Azure Blob 儲存體上的資料：
+
+<code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
+
+以下是程式碼範例：
 
 ```csharp
+var blob_account_name = "";  // replace with your blob name
+var blob_container_name = "";     // replace with your container name
+var blob_relative_path = "";  // replace with your relative folder path
+var linked_service_name = "";    // replace with your linked service name
+var blob_sas_token = Credentials.GetConnectionStringOrCreds(linked_service_name);
+
+spark.SparkContext.GetConf().Set($"fs.azure.sas.{blob_container_name}.{blob_account_name}.blob.core.windows.net", blob_sas_token);
+
+var wasbs_path = $"wasbs://{blob_container_name}@{blob_account_name}.blob.core.windows.net/{blob_relative_path}";
+
+Console.WriteLine(wasbs_path);
 
 ```
 
-::: zone-end -->
+::: zone-end 
  
 ###  <a name="configure-access-to-azure-key-vault"></a>設定 Azure Key Vault 的存取權
 

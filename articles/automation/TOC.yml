@@ -43,6 +43,8 @@
       href: automation-runbook-types.md
     - name: PowerShell DSC
       href: /powershell/scripting/dsc/overview/overview
+    - name: 自動化網路設定詳細資料
+      href: automation-network-configuration.md
     - name: 安全性
       items:
         - name: Azure 原則的安全性控制

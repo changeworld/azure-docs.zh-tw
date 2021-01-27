@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: bc229974cf14ba364e5e7111dc1d2704e03c3635
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 2ca8a814fbaf2d8c257d094f81d17a5c871793b0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746793"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878930"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure 監視器常見問題集
 
@@ -380,6 +380,12 @@ WireData
 * 如果沒有任何用戶端指令碼，則您可以[在伺服器設定 Cookie](https://apmtips.com/posts/2016-07-09-tracking-users-in-api-apps/)。
 * 如果有一個真實的使用者以不同的瀏覽器使用您的站台，或是使用 InPrivate/Incognito 瀏覽，或透過不同的電腦，則系統會將其計算多次。
 * 若要跨電腦和瀏覽器識別登入的使用者，請新增對 [setAuthenticatedUserContext()](app/api-custom-events-metrics.md#authenticated-users) 的呼叫。
+
+### <a name="how-does-application-insights-generate-device-information-browser-os-language-model"></a>Application Insights 如何 (瀏覽器、OS、語言、模型) 產生裝置資訊？
+
+瀏覽器會在要求的 HTTP 標頭中傳遞使用者代理字串，而 Application Insights 內嵌服務會使用 [UA](https://github.com/ua-parser/uap-core) 剖析器來產生您在資料表和經驗中看到的欄位。 因此，Application Insights 使用者無法變更這些欄位。
+
+如果使用者或企業停用瀏覽器設定中的傳送使用者代理程式，則偶爾會遺失或不正確的資料。 此外，UA 剖析器 [RegEx](https://github.com/ua-parser/uap-core/blob/master/regexes.yaml) 可能不會包含所有裝置資訊，或 Application Insights 可能不會採用最新的更新。
 
 ### <a name="have-i-enabled-everything-in-application-insights"></a><a name="q17"></a> 我是否已啟用 Application Insights 中的所有項目？
 | 您應該會看到 | 如何取得 | 取得原因 |

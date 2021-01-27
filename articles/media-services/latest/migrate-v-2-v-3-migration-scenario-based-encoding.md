@@ -1,5 +1,5 @@
 ---
-title: 編碼以案例為基礎的遷移指引 |Microsoft Docs
+title: 編碼以案例為基礎的遷移指導方針
 description: 本文提供編碼案例指導方針，可協助您從 Azure 媒體服務 v2 遷移至 v3。
 services: media-services
 author: IngridAtMicrosoft
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2d122bdeb98de624d9053852b9bee4595b0ef8c8
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f8d25a14593c3c4a26ecafa33f7cc9fe6c4d580a
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690297"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898353"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>編碼以案例為基礎的遷移指導方針
 
@@ -26,7 +26,7 @@ ms.locfileid: "98690297"
 
 本文提供編碼案例指導方針，可協助您從 Azure 媒體服務 v2 遷移至 v3。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在您變更編碼工作流程之前，建議您先瞭解存放裝置管理方式的差異。  在 AMS V3 中，Azure 儲存體 API 是用來管理與您的媒體服務帳戶相關聯 () 的儲存體帳戶。
 

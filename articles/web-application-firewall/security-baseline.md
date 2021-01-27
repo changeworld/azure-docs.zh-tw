@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b44ea6f55717712cfba4045205e02bd9f2b851df
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 4bda3622c1bb1cb66e83b82df0d13cbfee9e20a3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202652"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878116"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>適用于 Azure Web 應用程式防火牆的 azure 安全性基準
 
@@ -406,7 +406,7 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 
 在預防模式中，Azure WAF 會封鎖規則偵測到的入侵和攻擊。 攻擊者會收到「403 未經授權存取」例外狀況，且連線會關閉。 預防模式會將這類攻擊記錄在 WAF 記錄中。
 
-- [應用程式閘道與 Azure 資訊安全中心整合概觀](../application-gateway/application-gateway-integration-security-center.md#overview)
+- [應用程式閘道與 Azure 資訊安全中心整合概觀](../security-center/security-center-partner-integration.md)
 
 - [應用程式閘道上的 WAF 模式](ag/ag-overview.md#waf-modes)
 

@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 01/26/2021
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: e174a0539a75945cc0a2595e28a60d928e10acf4
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
-ms.translationtype: HT
+ms.openlocfilehash: 23e3adad12a726b03f6efe309dde0ec4a93bcd5b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166211"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897420"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>管理對 Azure 帳單資訊的存取
 
@@ -38,7 +38,7 @@ ms.locfileid: "92166211"
 - 讀取者
 - 帳單讀者
 
-這些角色可以在 [Azure 入口網站](https://portal.azure.com/)中存取計費資訊。 獲指派這些角色的人員也可以使用[計費 API](usage-rate-card-overview.md)，以程式設計方式取得發票和使用量詳細資料。
+這些角色可以在 [Azure 入口網站](https://portal.azure.com/)中存取計費資訊。 獲指派這些角色的人員也可以使用[計費 API](consumption-api-overview.md#usage-details-api)，以程式設計方式取得發票和使用量詳細資料。
 
 若要指派角色，請參閱[使用 Azure 入口網站新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-portal.md)。
 

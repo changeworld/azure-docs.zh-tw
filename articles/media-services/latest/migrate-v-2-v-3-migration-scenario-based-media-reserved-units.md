@@ -1,5 +1,5 @@
 ---
-title: 媒體保留單元 (Mru) 以案例為基礎的遷移指導方針 |Microsoft Docs
+title: 媒體保留單元 (Mru) 以案例為基礎的遷移指導方針
 description: 本文提供以 MRU 案例為基礎的指導方針，可協助您從 Azure 媒體服務 V2 遷移至 V3。
 services: media-services
 author: IngridAtMicrosoft
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 1a6bcf5d75d5331875e38e473f115f32737e42a4
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 375b4ecdc6153162b3a819b831af152ce390a5dc
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690275"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898319"
 ---
 # <a name="media-reserved-units-mrus-scenario-based-migration-guidance"></a>媒體保留單元 (Mru) 以案例為基礎的遷移指導方針
 

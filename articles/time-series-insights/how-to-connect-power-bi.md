@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: 07e79dbde142400677901ee02903144f9a42cd6b
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: b4ed5a419df97f98b883a07825184122945e092e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740706"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879556"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>從 Power BI 中的 Azure 時間序列深入解析將資料視覺化
 
@@ -26,7 +26,7 @@ Azure 時間序列深入解析是在雲端儲存、管理、查詢和視覺化�
 * 將報表發行至 Power BI，並與您的組織其餘部分共用
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 如果您沒有帳戶，請註冊[免費 Azure 訂用帳戶](https://azure.microsoft.com/free/)。
 * 下載並安裝最新版本的 [Power BI Desktop](https://powerbi.microsoft.com/downloads/)
@@ -112,10 +112,10 @@ Azure 時間序列深入解析是在雲端儲存、管理、查詢和視覺化�
 建立報表之後，您可以將其發佈至 Power BI Reporting Services，並與組織中的其他人共用。
 
 ## <a name="advanced-editing"></a>Advanced 編輯
-如果您已經在 Power BI 中載入資料集，但想要修改查詢 (例如) 的日期/時間或環境識別碼參數，您可以透過 Power BI 的進階編輯器功能來完成這項作業。 請參閱 [Power BI 檔](https://docs.microsoft.com/power-bi/desktop-query-overview) ，以深入瞭解如何使用 **Power Query 編輯器** 進行變更。 
+如果您已經在 Power BI 中載入資料集，但想要修改查詢 (例如) 的日期/時間或環境識別碼參數，您可以透過 Power BI 的進階編輯器功能來完成這項作業。 請參閱 [Power BI 檔](/power-bi/desktop-query-overview) ，以深入瞭解如何使用 **Power Query 編輯器** 進行變更。 
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解 [Power BI desktop](https://docs.microsoft.com/power-bi/desktop-query-overview)。
+* 深入瞭解 [Power BI desktop](/power-bi/desktop-query-overview)。
 
 * 深入瞭解如何查詢 Azure 時間序列深入解析 Gen2 中的 [資料](concepts-query-overview.md) 。

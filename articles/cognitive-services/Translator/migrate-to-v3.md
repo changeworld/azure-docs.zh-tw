@@ -3,19 +3,19 @@ title: 遷移至 V3-Translator
 titleSuffix: Azure Cognitive Services
 description: 本文提供的步驟可協助您從 V2 遷移至 Azure 認知服務 Translator 的 V3。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.author: swmachan
-ms.openlocfilehash: baaf907d2fafe23805e6b49582ecc7592ee05e0b
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.author: lajanuar
+ms.openlocfilehash: 13c4d39284fad293c945f8b7e31076dccee84fda
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028228"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896828"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Translator V2 至 V3 的遷移
 
@@ -84,7 +84,7 @@ Microsoft Translator V3 的定價方式與 V2 相同，即依字元計價，包�
 
 ## <a name="v3-end-points"></a>V3 結束點
 
-全域
+全球
 
 * api.cognitive.microsofttranslator.com
 

@@ -1,24 +1,9 @@
 ---
-title: Azure 儲存體帳戶
-titleSuffix: Azure Media Services
-description: 瞭解如何建立與 Azure 媒體服務搭配使用的 Azure 儲存體帳戶。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: conceptual
-ms.date: 01/05/2021
-ms.author: inhenkel
-ms.openlocfilehash: 55a49d48af95c103d2a28d5106af5f3166605514
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882241"
+# <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>必要欄位。 查看更多有關 aka.ms/skyeye/meta 的資訊。
+標題： Azure 儲存體帳戶： Azure 媒體服務描述：瞭解如何建立與 Azure 媒體服務搭配使用的 Azure 儲存體帳戶。
+服務： media services documentationcenter： ' ' author： IngridAtMicrosoft manager： femila editor： ' ' manager： editor： ' ' ms. service： media-services ms. 主題：概念 ms. 日期： 01/05/2021 ms. 作者： inhenkel
 ---
+
 # <a name="azure-storage-accounts"></a>Azure 儲存體帳戶
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

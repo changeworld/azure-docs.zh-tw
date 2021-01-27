@@ -1,5 +1,5 @@
 ---
-title: Azure 媒體服務中的串流定位器 | Microsoft Docs
+title: Azure 媒體服務中的串流定位器
 description: 本文解釋串流定位器是什麼，以及 Azure 媒體服務用它們來做什麼。
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 68df5256949db44b2b347002570c64d1aa0d55ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b711b9a6923a1923562a282dcaffe7cecb0c58b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297955"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898133"
 ---
 # <a name="streaming-locators"></a>串流定位器
 
@@ -25,7 +25,7 @@ ms.locfileid: "89297955"
 
 建立 [串流定位器] 的程序稱為發佈。 根據預設， **串流定位器** 會在您進行 API 呼叫後立即生效，並持續到刪除為止，除非您設定選擇性的開始和結束時間。 
 
-建立 **串流定位器**時，您必須指定 **資產** 名稱和 **串流原則** 名稱。 如需詳細資訊，請參閱下列主題：
+建立 **串流定位器** 時，您必須指定 **資產** 名稱和 **串流原則** 名稱。 如需詳細資訊，請參閱下列主題：
 
 * [資產](assets-concept.md)
 * [串流原則](streaming-policy-concept.md)
@@ -36,7 +36,7 @@ ms.locfileid: "89297955"
 ## <a name="considerations"></a>考量
 
 * **串流定位器** 不是可更新的。 
-* 屬於日期時間類型的**串流定位器**屬性一律為 UTC 格式。
+* 屬於日期時間類型的 **串流定位器** 屬性一律為 UTC 格式。
 * 您應該為媒體服務帳戶設計一組受限的原則，並且在需要相同的選項時，對串流定位器重新使用這些原則。 如需詳細資訊，請參閱 [配額和限制](limits-quotas-constraints.md)。
 
 ## <a name="create-streaming-locators"></a>建立串流定位器  

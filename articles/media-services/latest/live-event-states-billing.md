@@ -1,5 +1,5 @@
 ---
-title: Azure 媒體服務中的實況活動狀態和計費 |Microsoft Docs
+title: Azure 媒體服務中的實況活動狀態和計費
 description: 本主題提供 Azure 媒體服務實況活動狀態和計費的總覽。
 services: media-services
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2d3d3f5c56bd42aeb148c19fefebc0e7d364cd1c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c9fa12e1ee3778d0865c75662064bd4067e56d89
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782360"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897810"
 ---
 # <a name="live-event-states-and-billing"></a>實況活動狀態和計費
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-在 Azure 媒體服務中，實況活動會在其狀態轉換為「 **執行中」或「** **待命** 」時立即開始計費。 即使沒有任何影片流經服務，也會向您收費。 若要停止計費的實況活動，您必須停止實況活動。 即時轉譯的計費方式與實況活動相同。
+在 Azure 媒體服務中，實況活動會在其狀態轉換為「 **執行中」或「** **待命**」時立即開始計費。 即使沒有任何影片流經服務，也會向您收費。 若要停止計費的實況活動，您必須停止實況活動。 即時轉譯的計費方式與實況活動相同。
 
 當 [實況活動](/rest/api/media/liveevents)上的 **LiveEventEncodingType** 設定為 [標準] 或 [Premium1080p] 時，媒體服務會在輸入摘要遺失且沒有執行中的即時 **輸出** 時，自動關閉仍處於執行中 **狀態的任何** 實況活動。 不過，當實況活動處於執行 **中狀態時** ，仍會向您收取費用。
 
@@ -35,7 +35,7 @@ ms.locfileid: "92782360"
 
 實況活動可以是下列其中一種狀態。
 
-|State|描述|
+|州|描述|
 |---|---|
 |**已停止**| 這是在建立 (的實況活動初始狀態，除非自動啟動已設為 true。 ) 不會在此狀態下進行計費。 即時事件無法接收任何輸入。 |
 |**啟動中**| 正在啟動實況活動，並配置資源。 此狀態中不會計費。  如果發生錯誤，實況活動會回到 [已停止] 狀態。|

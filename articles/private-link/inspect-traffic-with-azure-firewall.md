@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: 5cbfd90ca65a1fb75c9cbe5602ac2a69741e378f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 7812d0f2e42dfed6cdd661244b77969297093a5d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96017231"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879168"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>使用 Azure 防火牆來檢查以私人端點為目的地的流量
 
@@ -92,7 +92,7 @@ Azure 防火牆會使用下列其中一種方式來篩選流量：
 如果您已使用下列任一項設定與內部部署網路的連線，則可執行此架構： 
 
 * [ExpressRoute](..\expressroute\expressroute-introduction.md)
-* [站對站 VPN](..\vpn-gateway\vpn-gateway-howto-site-to-site-resource-manager-portal.md) 
+* [站對站 VPN](../vpn-gateway/tutorial-site-to-site-portal.md) 
 
 如果您的安全性需求要求用戶端流量通過私人端點公開的服務，以透過安全性應用裝置路由傳送，請部署此案例。
 
@@ -101,7 +101,7 @@ Azure 防火牆會使用下列其中一種方式來篩選流量：
 >[!NOTE]
 > 如果您想要使用協力廠商 NVA 或 Azure 防火牆來執行此案例，則需要網路規則，而不是應用程式規則，以將目標設為私人端點的 SNAT 流量。 否則，虛擬機器和私人端點之間的通訊將會失敗。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * Azure 訂用帳戶。
 * Log Analytics 工作區。  
@@ -333,13 +333,13 @@ Azure 防火牆會使用下列其中一種方式來篩選流量：
     | 虛擬網路 | 選取 [ **myPEVnet**]。 |
     | 子網路 | 選取 [ **PrivateEndpointSubnet**]。 |
     | **私人 DNS 整合** | |
-    | 與私人 DNS 區域整合 | 選取 [是]。 |
+    | 與私人 DNS 區域整合 | 選取 [是]  。 |
     | 訂用帳戶 | 選取您的訂用帳戶。 |
     | 私人 DNS 區域 | 保留預設 **privatelink.database.windows.net**。 |
 
 10. 選取頁面底部的 [ **審核 + 建立** ] 索引標籤或選取 [ **審核 + 建立** ]。
 
-11. 選取 [建立]。
+11. 選取 [建立]  。
 
 12. 建立端點之後，請選取 [**安全性**] 下的 [**防火牆和虛擬網路**]。
 
@@ -371,15 +371,15 @@ Azure 防火牆會使用下列其中一種方式來篩選流量：
     | 允許從 myAzFwVNet 到遠端虛擬網路的虛擬網路存取 | 保留預設值 [啟用]。    |
     | 允許從遠端虛擬網路到 myAzFwVNet 的虛擬網路存取    | 保留預設值 [啟用]。    |
     | **設定轉送的流量設定** | |
-    | 允許從遠端虛擬網路轉送到 myAzFwVNet 的流量    | 選取 [啟用]。 |
-    | 允許從 myAzFwVNet 轉送到遠端虛擬網路的流量 | 選取 [啟用]。 |
+    | 允許從遠端虛擬網路轉送到 myAzFwVNet 的流量    | 選取 [啟用] 。 |
+    | 允許從 myAzFwVNet 轉送到遠端虛擬網路的流量 | 選取 [啟用] 。 |
     | **設定閘道傳輸設定** | |
     | 允許閘道傳輸 | 保持未核取狀態 |
     |||
 
 4. 選取 [確定]。
 
-5. 選取 [+ 新增]  。
+5. 選取 [+ 新增]。
 
 6. 在 [ **新增對等互連** ] 中，輸入或選取下列資訊：
 
@@ -397,8 +397,8 @@ Azure 防火牆會使用下列其中一種方式來篩選流量：
     | 允許從 myAzFwVNet 到遠端虛擬網路的虛擬網路存取 | 保留預設值 [啟用]。    |
     | 允許從遠端虛擬網路到 myAzFwVNet 的虛擬網路存取    | 保留預設值 [啟用]。    |
     | **設定轉送的流量設定** | |
-    | 允許從遠端虛擬網路轉送到 myAzFwVNet 的流量    | 選取 [啟用]。 |
-    | 允許從 myAzFwVNet 轉送到遠端虛擬網路的流量 | 選取 [啟用]。 |
+    | 允許從遠端虛擬網路轉送到 myAzFwVNet 的流量    | 選取 [啟用] 。 |
+    | 允許從 myAzFwVNet 轉送到遠端虛擬網路的流量 | 選取 [啟用] 。 |
     | **設定閘道傳輸設定** | |
     | 允許閘道傳輸 | 保持未核取狀態 |
 
@@ -473,7 +473,7 @@ VM 和防火牆需要有連結，才能將資料庫的 FQDN 解析為其私人�
     | 目標 Fqdn | 輸入 **mydbserver.database.windows.net**。 |
     |||
 
-7. 選取 [新增]  。
+7. 選取 [新增]。
 
 ## <a name="route-traffic-between-the-virtual-machine-and-private-endpoint-through-azure-firewall"></a>透過 Azure 防火牆在虛擬機器和私人端點之間路由傳送流量
 
@@ -483,7 +483,7 @@ VM 和防火牆需要有連結，才能將資料庫的 FQDN 解析為其私人�
 
 此路由會透過 Azure 防火牆，將流量從 **myVM** 子網傳送到虛擬網路 **myPEVNet** 的位址空間。
 
-1. 在 Azure 入口網站功能表上，或從 [首頁] 頁面，選取 [建立資源]。
+1. 從 Azure 入口網站功能表或 **[首頁]** 頁面，選取 [建立資源]。
 
 2. 在搜尋方塊中輸入 **路由表** ，然後按 **enter** 鍵。
 
@@ -509,7 +509,7 @@ VM 和防火牆需要有連結，才能將資料庫的 FQDN 解析為其私人�
 
 8. 在 [**設定**] 底下選取 [**路由**]。
 
-9. 選取 [+ 新增]  。
+9. 選取 [+ 新增]。
 
 10. 在 [ **新增路由** ] 頁面上，輸入或選取下列資訊：
 

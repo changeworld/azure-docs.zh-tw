@@ -1,6 +1,5 @@
 ---
 title: Azure 媒體服務 v3 中的動態封裝
-titleSuffix: Azure Media Services
 description: 本文能提供 Azure 媒體服務中動態封裝的概觀。
 author: myoungerman
 manager: femila
@@ -14,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: 7941d542ca2cab1637b9edaef057f740a9a1b7ef
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
-ms.translationtype: HT
+ms.openlocfilehash: ed2c5b4175745fa14864b2d360bcbf5e5237a495
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016820"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897640"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>媒體服務 v3 中的動態封裝
 
@@ -110,7 +109,7 @@ Azure 媒體服務動態封裝僅支援 MP4 容器格式的影片和音訊檔案
 
 ## <a name="live-streaming-workflow"></a>即時串流工作流程
 
-即時事件可設定為*傳遞* (內部部署即時編碼器會傳送多重位元速率串流) 或*即時編碼* (內部部署即時編碼器會傳送單一位元速率串流)。 
+即時事件可設定為 *傳遞* (內部部署即時編碼器會傳送多重位元速率串流) 或 *即時編碼* (內部部署即時編碼器會傳送單一位元速率串流)。 
 
 以下是適用於「動態封裝」搭配即時串流的常見工作流程：
 

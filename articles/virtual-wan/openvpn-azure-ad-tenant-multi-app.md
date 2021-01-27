@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: alzam
-ms.openlocfilehash: 8fcc79991918aecfc26933f2ef5b6e80ea7fa88c
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: e25ef7f55492be4ee491b9ebbbef4aa1eb03c80b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043431"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898082"
 ---
 # <a name="create-an-azure-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>為 P2S OpenVPN 通訊協定連線建立 Azure Active Directory (AD) 租使用者
 
@@ -99,43 +99,51 @@ P2S 設定會定義用於連線遠端用戶端的參數。
 
 #### <a name="to-import-a-client-profile"></a><a name="import"></a>匯入用戶端設定檔
 
-1. 在頁面上，選取 [匯入]  。
+1. 在頁面上，選取 [匯入]。
 
     ![螢幕擷取畫面：顯示從加號功能表選取的匯入。](./media/openvpn-azure-ad-tenant-multi-app/import/import1.jpg)
 
-2. 瀏覽至設定檔 xml 檔案，並加以選取。 選取檔案後，請選取 [開啟]  。
+2. 瀏覽至設定檔 xml 檔案，並加以選取。 選取檔案後，請選取 [開啟]。
 
     ![螢幕擷取畫面顯示開啟的對話方塊，您可以在其中選取檔案。](./media/openvpn-azure-ad-tenant-multi-app/import/import2.jpg)
 
-3. 指定設定檔的名稱，然後選取 [儲存]  。
+3. 指定設定檔的名稱，然後選取 [儲存]。
 
     ![螢幕擷取畫面會顯示已新增的連接名稱，並已選取 [儲存] 按鈕。](./media/openvpn-azure-ad-tenant-multi-app/import/import3.jpg)
 
-4. 選取 [連線]  以連線至 VPN。
+4. 選取 [連線] 以連線至 VPN。
 
     ![螢幕擷取畫面顯示您剛才建立之連接的 [連線] 按鈕。](./media/openvpn-azure-ad-tenant-multi-app/import/import4.jpg)
 
-5. 連線之後，圖示將會變成綠色，並顯示為 [已連線]  。
+5. 連線之後，圖示將會變成綠色，並顯示為 [已連線]。
 
     ![螢幕擷取畫面顯示連接狀態中的連線，以及中斷連線的選項。](./media/openvpn-azure-ad-tenant-multi-app/import/import5.jpg)
 
 #### <a name="to-delete-a-client-profile"></a><a name="delete"></a>刪除用戶端設定檔
 
-1. 選取要刪除的用戶端設定檔旁的省略符號 (...)。 然後，選取 [移除]  。
+1. 選取要刪除的用戶端設定檔旁的省略符號 (...)。 然後，選取 [移除]。
 
     ![螢幕擷取畫面：顯示從功能表選取 [移除]。](./media/openvpn-azure-ad-tenant-multi-app/delete/delete1.jpg)
 
-2. 選取 [移除]  以刪除。
+2. 選取 [移除] 以刪除。
 
     ![螢幕擷取畫面顯示確認對話方塊，其中包含移除或取消的選項。](./media/openvpn-azure-ad-tenant-multi-app/delete/delete2.jpg)
 
 #### <a name="to-diagnose-connection-issues"></a><a name="diagnose"></a>診斷連接問題
 
-1. 若要診斷連線問題，您可以使用 **診斷** 工具。 選取要診斷的 VPN 連線旁的省略符號 (...)，以顯示功能表。 然後，選取 [診斷]  。
+1. 若要診斷連線問題，您可以使用 **診斷** 工具。 選取要診斷的 VPN 連線旁的省略符號 (...)，以顯示功能表。 然後，選取 [診斷]。
 
     ![螢幕擷取畫面顯示從功能表選取診斷。](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose1.jpg)
 
-2. 在 [連線屬性]  頁面上，選取 [執行診斷]  。
+2. 在 [連線屬性] 頁面上，選取 [執行診斷]。
+
+    ![螢幕擷取畫面：顯示連接的 [執行診斷] 按鈕。](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose2.jpg)
+
+3. 使用您的認證登入。
+
+    ![診斷3](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose3.jpg)
+
+4. 檢視診斷結果。
 
     ![螢幕擷取畫面：顯示連接的 [執行診斷] 按鈕。](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose2.jpg)
 

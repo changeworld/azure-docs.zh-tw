@@ -4,19 +4,19 @@ description: 如何使用 Azure 入網站尋找未連結的 Azure 受控和非�
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 06/01/2020
+ms.date: 01/26/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 6632d65fa07788e35b24c2f957e713f824f6b091
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d31ce4b6086c44de913afd1083bae25fa3d44cd
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87542733"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898150"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>尋找及刪除未連結的 Azure 受控和非受控磁碟 - Azure 入口網站
 
-當您在 Azure 中刪除虛擬機器 (VM) 時，不會刪除任何連結至 VM 的磁碟。 這項功能有助於預防因為不小心刪除 VM 所造成的資料遺失。 刪除 VM 之後，您將繼續支付未連結的磁碟。 本文示範如何使用 Azure 入口網站尋找及刪除任何未連結的磁碟，並減少不必要的成本。
+當您在 Azure 中刪除虛擬機器 (VM) 時，不會刪除任何連結至 VM 的磁碟。 這項功能有助於預防因為不小心刪除 VM 所造成的資料遺失。 刪除 VM 之後，您將繼續支付未連結的磁碟。 本文示範如何使用 Azure 入口網站尋找及刪除任何未連結的磁碟，並減少不必要的成本。 刪除是永久性的，一旦刪除磁片之後，您就無法復原資料。
 
 ## <a name="managed-disks-find-and-delete-unattached-disks"></a>受控磁碟：尋找及刪除未連結的磁碟
 
@@ -45,17 +45,17 @@ ms.locfileid: "87542733"
 
     您會看到所有非受控磁碟的清單。 [連結至] 資料行中任何具有「 **-** 」的磁碟都是未連結的磁碟。
 
-    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-attached-to.png" alt-text="個別受控磁碟刀鋒視窗的螢幕擷取畫面。如果未連結，此刀鋒視窗會顯示磁碟狀態為未連結。如果不需要再保留磁碟上的資料，可以刪除此磁碟":::
+    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-attached-to.png" alt-text="非受控磁碟刀鋒視窗的螢幕擷取畫面。此刀鋒視窗中 [已連結至] 資料行的磁碟是未連結的磁碟。":::
 
 1. 選取您想要刪除的未附加磁碟，這會開啟磁碟的分頁。
 
 1. 在磁碟的刀鋒視窗上，您可以確認它並未連結，因為 [已連結至] 仍顯示為 **-** 。
 
-    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-select-blade.png" alt-text="個別受控磁碟刀鋒視窗的螢幕擷取畫面。如果未連結，此刀鋒視窗會顯示磁碟狀態為未連結。如果不需要再保留磁碟上的資料，可以刪除此磁碟":::
+    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-select-blade.png" alt-text="個別非受控磁碟刀鋒的螢幕擷取畫面。如果未連結，它會以「-」作為 [已連結至] 的值。如果您不再需要此磁碟資料，可以將它刪除。":::
 
 1. 選取 [刪除] 。
 
-    :::image type="content" source="media/disks-find-unattached-portal/delete-unmanaged-disk-unattached.png" alt-text="個別受控磁碟刀鋒視窗的螢幕擷取畫面。如果未連結，此刀鋒視窗會顯示磁碟狀態為未連結。如果不需要再保留磁碟上的資料，可以刪除此磁碟":::
+    :::image type="content" source="media/disks-find-unattached-portal/delete-unmanaged-disk-unattached.png" alt-text="個別非受控磁碟刀鋒視窗的螢幕擷取畫面，其中反白顯示「刪除」。":::
 
 ## <a name="next-steps"></a>後續步驟
 

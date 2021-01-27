@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: eb10001436d3184b89aa064ec82fcd1f56bea931
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 7c3bca9e5ad87c681fc38a5c618331a3f7a97ae1
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98566921"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897505"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>教學課程：使用伺服器評量來探索 Hyper-V VM
 
@@ -83,7 +83,7 @@ ms.locfileid: "98566921"
 
 **Step** | **指令碼** | **手動**
 --- | --- | ---
-驗證主機需求 | 檢查主機是否正在執行支援的 Hyper-V 版本和 Hyper-V 角色。<br/><br/>啟用 WinRM 服務，並在主機上開啟埠 5985 (HTTP) 和 5986 (HTTPS) (用於收集中繼資料)。 | 主機必須執行 Windows Server 2019、Windows Server 2016 或 Windows Server 2012 R2。<br/><br/> 確認 WinRM 連接埠 5985 上允許輸入連線 (HTTP)，讓設備可使用通用訊息模型 (CIM) 工作階段連線以提取 VM 中繼資料和效能資料。
+驗證主機需求 | 檢查主機是否正在執行支援的 Hyper-V 版本和 Hyper-V 角色。<br/><br/>啟用 WinRM 服務，並在主機上開啟埠 5985 (HTTP) 和 5986 (HTTPS) (用於收集中繼資料)。 | 主機必須執行 Windows Server 2019、Windows Server 2016 或 Windows Server 2012 R2。<br/><br/> 確認 WinRM 連接埠 5985 上允許輸入連線 (HTTP)，讓設備可使用通用訊息模型 (CIM) 工作階段連線以提取 VM 中繼資料和效能資料。<br/><br/> 在非英文地區設定的主機上，目前不支援此腳本。  
 確認 PowerShell 版本 | 檢查您是否在支援的 PowerShell 版本上執行指令碼。 | 檢查您是否在 Hyper-V 主機上執行 PowerShell 4.0 版或更新版本。
 建立帳戶 | 確認您在 Hyper-v 主機上擁有正確的許可權。<br/><br/> 可讓您使用正確的許可權建立本機使用者帳戶。 | 選項 1：準備對 Hyper-V 機器具有管理員存取權的帳戶。<br/><br/> 選項 2：準備本機管理員帳戶或網域管理員帳戶，並將帳戶新增至下列群組：遠端管理使用者、Hyper-V 管理員和效能監視器使用者。
 啟用 PowerShell 遠端 | 在主機上啟用 PowerShell 遠端功能，讓 Azure Migrate 設備可以透過 WinRM 連線在主機上執行 PowerShell 命令。 | 若要設定，請在每部主機上以系統管理員身分開啟 PowerShell 主控台，然後執行此命令： ``` powershell Enable-PSRemoting -force ```

@@ -1,24 +1,16 @@
 ---
 title: 開立 Microsoft Azure 自動化案例時要收集的資料 | Microsoft Docs
 description: 本文將說明向 Microsoft Azure 支援開立 Azure 自動化案例之前要先收集的資訊。
-services: virtual-machines-windows, azure-resource-manager
-documentationcenter: ''
-author: v-miegge
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue, azure-resource-manager
-ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
+services: automation
+ms.subservice: ''
 ms.topic: troubleshooting
 ms.date: 09/23/2019
-ms.author: v-miegge
-ms.openlocfilehash: d2f97d0b889186324aef9613847e3eddbfe1eb02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d2c0cf780b992d7bb464969c50d60ffa5093e8f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83684854"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896557"
 ---
 # <a name="data-to-collect-when-opening-a-case-for-microsoft-azure-automation"></a>開啟 Microsoft Azure 自動化案例時要收集的資料
 
@@ -58,11 +50,11 @@ ms.locfileid: "83684854"
 
 2. 收集問題作業的作業識別碼：
 
-   1. 在 Azure 入口網站中，前往**自動化帳戶**。
+   1. 在 Azure 入口網站中，前往 **自動化帳戶**。
    2. 選取您要進行疑難排解的自動化帳戶，並記下該名稱。
    3. 選取 [作業]。
    4. 選擇要進行疑難排解的作業。
-   5. 在 [作業摘要] 窗格中，尋找**作業識別碼**中的 GUID 值。
+   5. 在 [作業摘要] 窗格中，尋找 **作業識別碼** 中的 GUID 值。
 
    ![作業摘要窗格中的作業識別碼](media/collect-data-microsoft-azure-automation-case/job-summary-job-id.png)
 
@@ -70,7 +62,7 @@ ms.locfileid: "83684854"
 
 4. 收集記錄檔：
 
-   1. 在 Azure 入口網站中，前往**自動化帳戶**。
+   1. 在 Azure 入口網站中，前往 **自動化帳戶**。
    2. 選取您要進行疑難排解的自動化帳戶。
    3. 選取 [作業]。
    4. 選擇要進行疑難排解的作業。

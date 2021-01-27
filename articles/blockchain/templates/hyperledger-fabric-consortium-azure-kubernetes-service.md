@@ -4,12 +4,12 @@ description: 如何在 Azure Kubernetes Service 上部署和設定 Hyperledger F
 ms.date: 01/08/2021
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 1ab5b9fadfbb0f1c9c1cdf25ee319c7775a593ed
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: c0e7f3e7ab83f64cebd990de57d48c97891edb7f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060311"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897253"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>在 Azure Kubernetes Service 上部署 Hyperledger Fabric 聯盟
 
@@ -317,7 +317,7 @@ CC_VERSION=<chaincodeVersion>
 # Language in which chaincode is written. Supported languages are 'node', 'golang', and 'java'  
 # Default value is 'golang'  
 CC_LANG=<chaincodeLanguage>  
-# CC_PATH contains the path where your chaincode is placed.
+# CC_PATH contains the path where your chaincode is placed. This is the absolute path to the chaincode project root directory.
 # If you are using chaincode_example02 to validate then CC_PATH=“/home/<username>/azhlfTool/samples/chaincode/src/chaincode_example02/go”
 CC_PATH=<chaincodePath>  
 # Channel on which chaincode will be instantiated/invoked/queried  
@@ -359,7 +359,7 @@ CHANNEL_NAME=<channelName>
 ```
 
 `<collectionConfigJSONFilePath>`元件是 JSON 檔案的路徑，其中包含為私用資料鏈碼具現化所定義的集合。 您可以在下列路徑找到相對於 *azhlfTool* 目錄的範例集合設定 JSON 檔案： `./samples/chaincode/src/private_marbles/collections_config.json` 。
-以 `<transientArgs>` 字串格式傳遞有效的 JSON。 Escape 任何特殊字元。 例如： `'{\\\"asset\":{\\\"name\\\":\\\"asset1\\\",\\\"price\\\":99}}'`
+以 `<transientArgs>` 字串格式傳遞有效的 JSON。 Escape 任何特殊字元。 例如：`'{\\\"asset\":{\\\"name\\\":\\\"asset1\\\",\\\"price\\\":99}}'`
 
 > [!NOTE]
 > 從通道中的任何一個對等組織執行一次命令。 將交易成功提交至排序者之後，排序者會將此交易散發給通道中的所有對等組織。 然後，鏈碼會在通道中所有對等組織上的所有對等節點上具現化。  
@@ -385,7 +385,7 @@ CHANNEL_NAME=<channelName>
 ```bash
 ./azhlf chaincode query -o $ORGNAME -p <endorsingPeers> -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs> 
 ```
-簽署對等是安裝鏈碼，並呼叫以執行交易的對等。 您必須將設定 `<endorsingPeers>` 為包含來自目前對等組織的對等節點名稱。 列出指定之鏈碼和頻道組合（以空格分隔）的簽署對等。 例如： `-p "peer1" "peer3"` 。
+簽署對等是安裝鏈碼，並呼叫以執行交易的對等。 您必須將設定 `<endorsingPeers>` 為包含來自目前對等組織的對等節點名稱。 列出指定之鏈碼和頻道組合（以空格分隔）的簽署對等。 例如：`-p "peer1" "peer3"`。
 
 如果您使用 *azhlfTool* 來安裝鏈碼，請將任何對等節點名稱做為值傳遞給簽署對等引數。 鏈碼會安裝在該組織的每個對等節點上。 
 

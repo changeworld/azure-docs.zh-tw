@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a1732f42ea95c16cdec7a1d7569c954667e52cb4
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
-ms.translationtype: HT
+ms.openlocfilehash: 416f997475e35f8e784679ca0826f7af38d756c7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750895"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880299"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>快速入門：部署您的第一個 Azure Spring Cloud 應用程式
 
@@ -351,9 +351,6 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4
 ```
 
   ![Initializr 頁面](media/spring-cloud-quickstart-java/initializr-page.png)
-
-> [!NOTE]
-> 我們已識別出您的應用程式與 Eureka 間在 TLS 驗證上發生 Spring Boot 2.4 問題，而且目前正在與 Spring 社群合作解決。 如需因應措施，請參閱我們的[常見問題](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development)。
 
 1. 當所有相依性都已設定後，按一下 [產生]。 下載並解壓縮套件，然後藉由新增 `src/main/java/com/example/hellospring/HelloController.java` 來建立簡易 Web 應用程式的 Web 控制器，如下所示：
 

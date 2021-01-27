@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: a47f720344a16d0f77559d6aabfb2b0245e62976
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ee4a09df0f95cb809db0e5c0e63d195ee5cfdff
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426328"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896930"
 ---
 # <a name="migrate-from-orchestrator-to-azure-automation-beta"></a>從 Orchestrator 移轉到 Azure 自動化 (Beta)
 
@@ -24,7 +24,7 @@ ms.locfileid: "89426328"
 
 ## <a name="import-the-standard-activities-module"></a>匯入標準活動模組
 
-將[標準活動模組](/system-center/orchestrator/standard-activities?view=sc-orch-2019)匯入 Azure 自動化。 這包括轉換後的圖形化 Runbook 可使用的標準 Orchestrator 活動的轉換後版本。
+將[標準活動模組](/system-center/orchestrator/standard-activities)匯入 Azure 自動化。 這包括轉換後的圖形化 Runbook 可使用的標準 Orchestrator 活動的轉換後版本。
 
 ## <a name="import-orchestrator-integration-modules"></a>匯入 Orchestrator 整合模組
 
@@ -32,7 +32,7 @@ Microsoft 提供 [整合套件](/previous-versions/system-center/packs/hh295851(
 
 ## <a name="convert-integration-packs"></a>轉換整合套件
 
-使用[整合套件轉換器](/system-center/orchestrator/orch-integration-toolkit/integration-pack-wizard?view=sc-orch-2019)將使用 [Orchestrator 整合工具組 (OIT)](/previous-versions/system-center/developer/hh855853(v=msdn.10)) 所建立的整合套件轉換為 PowerShell 型的整合模組，以便匯入 Azure 自動化或 Service Management Automation。 執行整合套件轉換器時，您會看到一個精靈，可讓您選取整合套件 (.oip) 檔案。 然後精靈會列出該整合套件所包含的活動，並可讓您選取要移轉的活動。 完成精靈時，它會建立整合模組，其中包含針對原始整合套件中的每個活動相對應的 Cmdlet。
+使用[整合套件轉換器](/system-center/orchestrator/orch-integration-toolkit/integration-pack-wizard)將使用 [Orchestrator 整合工具組 (OIT)](/previous-versions/system-center/developer/hh855853(v=msdn.10)) 所建立的整合套件轉換為 PowerShell 型的整合模組，以便匯入 Azure 自動化或 Service Management Automation。 執行整合套件轉換器時，您會看到一個精靈，可讓您選取整合套件 (.oip) 檔案。 然後精靈會列出該整合套件所包含的活動，並可讓您選取要移轉的活動。 完成精靈時，它會建立整合模組，其中包含針對原始整合套件中的每個活動相對應的 Cmdlet。
 
 > [!NOTE]
 > 未使用 OIT 建立的整合套件，無法使用整合套件轉換器來進行轉換。 另外還有一些 Microsoft 提供的整合套件目前無法使用此工具轉換。 這些整合套件的轉換後版本已提供下載，供您可以將它們安裝在 Azure 自動化或 Service Management Automation 中。
@@ -118,7 +118,7 @@ Orchestrator 中的 Runbook 會接受具有 `Initialize Data` 活動的輸入參
 
 ### <a name="invoke-runbook-activity"></a>叫用 Runbook 活動
 
-Orchestrator 中的 Runbook 會使用 `Invoke Runbook` 活動來啟動其他 Runbook。 如果要轉換的 Runbook 包含此活動，並且設定了 `Wait for completion` 選項，則會為它在轉換後的 Runbook 中建立 Runbook 活動。  如果未設定 `Wait for completion` 選項，則會建立使用 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) 來啟動 Runbook 的工作流程指令碼活動。 將轉換的 Runbook 匯入 Azure 自動化之後，您必須以活動中指定的資訊修改此活動。
+Orchestrator 中的 Runbook 會使用 `Invoke Runbook` 活動來啟動其他 Runbook。 如果要轉換的 Runbook 包含此活動，並且設定了 `Wait for completion` 選項，則會為它在轉換後的 Runbook 中建立 Runbook 活動。  如果未設定 `Wait for completion` 選項，則會建立使用 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) 來啟動 Runbook 的工作流程指令碼活動。 將轉換的 Runbook 匯入 Azure 自動化之後，您必須以活動中指定的資訊修改此活動。
 
 ## <a name="create-orchestrator-assets"></a>建立 Orchestrator 資產
 

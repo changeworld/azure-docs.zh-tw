@@ -6,14 +6,14 @@ ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 01/08/2020
+ms.date: 01/26/2021
 ms.author: cynthn
-ms.openlocfilehash: cae75c88b4803912565e010f744a7757a3b98f04
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 95f6ce2fefacd20102abe9bbe818f228139ca33d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201547"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898506"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>如何從 Windows 虛擬機器卸離資料磁碟
 
@@ -60,4 +60,6 @@ Update-AzVM `
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您想要重複使用該資料磁碟，只要 [將它連結至另一個 VM](attach-managed-disk-portal.md)
+如果您想要重複使用該資料磁碟，只要[將它連結至另一個 VM](attach-managed-disk-portal.md)。
+
+如果您想要刪除磁片，使您不再產生儲存體成本，請參閱 [尋找及刪除未連結的 Azure 受控和非受控磁片-Azure 入口網站](../disks-find-unattached-portal.md)。

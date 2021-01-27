@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 7bb0b9b4645be7e548fe116d9e9a2c92fae7dc96
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 57999ce53e536d422e6502a77aaccdc66b4c5077
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120949"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898489"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中建立、開發及維護 Synapse Studio 筆記本
 
@@ -303,6 +303,8 @@ IntelliSense 功能在不同語言的成熟度層級不同。 使用下表來查
 # <a name="preview-notebook"></a>[預覽筆記本](#tab/preview)
 
 您可以使用 ```%run <notebook path>``` 魔術命令參考目前筆記本內容中的另一個筆記本。 參考筆記本中定義的所有變數都可以在目前的筆記本中使用。 ```%run``` 魔術命令支援嵌套呼叫，但不支援遞迴呼叫。 如果語句深度大於五，您將會收到例外狀況。 ```%run``` 命令目前僅支援將筆記本路徑傳遞為參數。 
+
+範例： ``` %run /path/notebookA ```.
 
 ---
 

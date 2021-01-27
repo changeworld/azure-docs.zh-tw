@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒體播放器播放 - Azure | Microsoft Docs
+title: 使用 Azure 媒體播放機來播放-Azure
 description: Azure 媒體播放器是一款網頁視訊播放器，可以在各種瀏覽器和裝置上播放 Microsoft Azure 媒體服務的媒體內容。
 services: media-services
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: inhenkel
-ms.openlocfilehash: a3b32110a7236d47946c3a1f901aaedf51b47775
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cf4916341a97868de757804b570212f1cc1105b2
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022212"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898116"
 ---
 # <a name="playback-with-azure-media-player"></a>使用 Azure 媒體播放機播放
 

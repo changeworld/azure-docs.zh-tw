@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40269f6b1553d73af43b4cf86127eaa97524dd57
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 535b49cb20d60bd9ab294543b82bdb24b040eb7b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740902"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879472"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -429,7 +429,7 @@ Windows Defender ATP 和 EDR | 指派角色<br>管理電腦群組<br>設定端�
 在 | 可以執行
 --- | ---
 [Microsoft 365 資訊安全中心](https://protection.office.com) | 「安全性讀取者」角色的所有權限<br>檢視、調查及回應安全性威脅警示
-身分識別防護中心 | 「安全性讀取者」角色的所有權限<br>此外，還能夠執行除了重設密碼以外的所有身分識別防護中心作業
+Azure AD Identity Protection | 「安全性讀取者」角色的所有權限<br>此外，除了重設密碼及設定警示電子郵件之外，還能夠執行所有 Identity Protection Center 作業。
 [Privileged Identity Management](../privileged-identity-management/pim-configure.md) | 「安全性讀取者」角色的所有權限
 [Office 365 安全性與合規性中心](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | 「安全性讀取者」角色的所有權限<br>檢視、調查及回應安全性警示
 Windows Defender ATP 和 EDR | 「安全性讀取者」角色的所有權限<br>檢視、調查及回應安全性警示

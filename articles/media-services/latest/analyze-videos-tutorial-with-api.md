@@ -1,6 +1,5 @@
 ---
 title: 透過媒體服務 v3 分析影片
-titleSuffix: Azure Media Services
 description: 了解如何使用 Azure 媒體服務分析影片。
 services: media-services
 documentationcenter: ''
@@ -13,12 +12,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 7bdc658ab5db9a3ffb27f3c155272f8928bbfb04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
+ms.openlocfilehash: c3ca3197e786bbfac20bec2370d2aa920ad2c4df
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89265859"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98891517"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>教學課程：透過媒體服務 v3 分析影片
 
@@ -68,8 +67,8 @@ ms.locfileid: "89265859"
 
 此範例會完成下列動作：
 
-1. 建立用來分析視訊的**轉換**和**作業**。
-2. 建立輸入**資產**，並將視訊上傳到其中。 此資產會作為作業的輸入。
+1. 建立用來分析視訊的 **轉換** 和 **作業**。
+2. 建立輸入 **資產**，並將視訊上傳到其中。 此資產會作為作業的輸入。
 3. 建立輸出資產，用以儲存作業的輸出。
 4. 提交作業。
 5. 檢查作業的狀態。
@@ -86,7 +85,7 @@ ms.locfileid: "89265859"
 
 ### <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>建立輸入資產並將本機檔案上傳到其中 
 
-**CreateInputAsset** 函式會建立新的輸入[資產](/rest/api/media/assets)，並將指定的本機影片檔案上傳到其中。 這項資產會用來作為編碼作業的輸入。 在媒體服務 v3 中，作業的輸入可以是資產，或是您透過 HTTPS URL 讓媒體服務帳戶可存取的內容。 若要了解如何從 HTTPS URL 進行編碼，請參閱[這篇](job-input-from-http-how-to.md)文章。  
+**CreateInputAsset** 函式會建立新的輸入 [資產](/rest/api/media/assets)，並將指定的本機影片檔案上傳到其中。 這項資產會用來作為編碼作業的輸入。 在媒體服務 v3 中，作業的輸入可以是資產，或是您透過 HTTPS URL 讓媒體服務帳戶可存取的內容。 若要了解如何從 HTTPS URL 進行編碼，請參閱[這篇](job-input-from-http-how-to.md)文章。  
 
 在媒體服務 v3 中，您會使用 Azure 儲存體 API 來上傳檔案。 下列 .NET 程式碼片段將說明執行方式。
 
@@ -108,19 +107,19 @@ ms.locfileid: "89265859"
 
 ### <a name="create-a-transform-and-a-job-that-analyzes-videos"></a>建立分析影片的轉換和作業
 
-在媒體服務中編碼或處理內容時，將編碼設定設為配方 (recipe) 是很常見的模式。 然後您可以透過提交**作業**，將該配方套用到影片。 藉由為每部新影片提交新的作業，您可以將該配方套用到媒體櫃中的所有影片。 配方在媒體服務中稱為**轉換**。 如需詳細資訊，請參閱[轉換和作業](./transforms-jobs-concept.md)。 本教學課程中所述的範例會定義用來分析指定影片的配方。
+在媒體服務中編碼或處理內容時，將編碼設定設為配方 (recipe) 是很常見的模式。 然後您可以透過提交 **作業**，將該配方套用到影片。 藉由為每部新影片提交新的作業，您可以將該配方套用到媒體櫃中的所有影片。 配方在媒體服務中稱為 **轉換**。 如需詳細資訊，請參閱[轉換和作業](./transforms-jobs-concept.md)。 本教學課程中所述的範例會定義用來分析指定影片的配方。
 
 #### <a name="transform"></a>轉換
 
 建立新的[轉換](/rest/api/media/transforms)執行個體時，您需要指定想要其產生的輸出是什麼。 **TransformOutput** 是必要參數。 每個 **TransformOutput** 都會包含 **Preset (預設)** 。 **Preset** 會描述影片和/或音訊處理作業的逐步指示，以產生所需的 **TransformOutput**。 此範例中會使用 **VideoAnalyzerPreset** 預設，以及將語言 ("en-US") 傳遞至其建構函式 (`new VideoAnalyzerPreset("en-US")`)。 此預設可讓您從影片擷取多個音訊和影片見解。 如果您需要從影片擷取多個音訊見解，可以使用 **AudioAnalyzerPreset** 預設。
 
-建立**轉換**時，請先使用 **Get** 方法檢查是否已有轉換存在，如下列程式碼所示。 在媒體服務 v3 中，如果實體不存在，對實體執行的 **Get** 方法會傳回 **null** (檢查名稱時不區分大小寫)。
+建立 **轉換** 時，請先使用 **Get** 方法檢查是否已有轉換存在，如下列程式碼所示。 在媒體服務 v3 中，如果實體不存在，對實體執行的 **Get** 方法會傳回 **null** (檢查名稱時不區分大小寫)。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#EnsureTransformExists)]
 
 #### <a name="job"></a>工作 (Job)
 
-如同前面所述，[轉換](/rest/api/media/transforms)物件是配方，而[作業](/rest/api/media/jobs)則是實際要求媒體服務，將**轉換**套用至指定的輸入影片或音訊內容。 **作業**會指定輸入影片的位置、輸出的位置等資訊。 您可以使用下列項目指定影片的位置：HTTPS URL、SAS URL 或媒體服務帳戶的資產。
+如同前面所述，[轉換](/rest/api/media/transforms)物件是配方，而 [作業](/rest/api/media/jobs)則是實際要求媒體服務，將 **轉換** 套用至指定的輸入影片或音訊內容。 **作業** 會指定輸入影片的位置、輸出的位置等資訊。 您可以使用下列項目指定影片的位置：HTTPS URL、SAS URL 或媒體服務帳戶的資產。
 
 在此範例中，工作輸入是本機影片。  
 
@@ -134,7 +133,7 @@ ms.locfileid: "89265859"
 
 事件方格專為高可用性、一致效能及動態調整而設計。 透過事件方格，您的應用程式幾乎可以從所有 Azure 服務和自訂來源接聽及回應事件。 以 HTTP 為基礎的簡單回應式事件處理，可協助您透過智慧型事件篩選和路由來建置有效率的解決方案。 如需詳細資訊，請參閱[將事件路由至自訂 Web 端點](job-state-events-cli-how-to.md)。
 
-**作業**通常會經歷下列狀態：**已排程**、**已排入佇列**、**正在處理**、**已完成** (最後一個狀態)。 如果作業發生錯誤，您會收到**錯誤**狀態。 正在取消作業時會顯示**正在取消**的狀態，而完成時則會顯示**已取消**狀態。
+**作業** 通常會經歷下列狀態：**已排程**、**已排入佇列**、**正在處理**、**已完成** (最後一個狀態)。 如果作業發生錯誤，您會收到 **錯誤** 狀態。 正在取消作業時會顯示 **正在取消** 的狀態，而完成時則會顯示 **已取消** 狀態。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#WaitForJobToFinish)]
 

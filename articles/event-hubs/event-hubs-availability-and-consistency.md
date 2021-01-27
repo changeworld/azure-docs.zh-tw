@@ -4,48 +4,36 @@ description: 如何使用分割區，以便透過 Azure 事件中樞提供最大
 ms.topic: article
 ms.date: 01/25/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 884fe878b9524dcf8d97d1123dce35e02af34a24
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 2fdb62e953230a38a26d22e136789fea52c8ee8c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790744"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882190"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>事件中樞的可用性和一致性
-
-## <a name="overview"></a>概觀
-「Azure 事件中樞」會使用[資料分割模型](event-hubs-scalability.md#partitions)，來提升單一事件中樞內的可用性與平行處理。 例如，如果事件中樞有四個分割區，而其中一個分割區在負載平衡作業中從一部伺服器移到另一部伺服器，則您仍可從其他三個分割區進行傳送及接收。 此外，擁有更多分割區可讓您使用更多並行讀取器來處理資料，進而改善您的彙總輸送量。 了解分散式系統中分割和排序的含意是解決方案設計的重要層面。
-
-若要協助說明訂購和可用性之間的取捨，請參閱 [CAP 定理](https://en.wikipedia.org/wiki/CAP_theorem)，也稱為 Brewer 的定理。 這個理論討論一致性、可用性及分割區容錯之間的選擇。 它指出對於由網路分割的系統，一定會在一致性和可用性之間有所取捨。
-
-Brewer 的理論會定義一致性和可用性，如下所示：
-* 分割區容錯：即使發生分割區失敗，資料處理系統還是能夠繼續處理資料。
-* 可用性：非失敗節點會在合理的時間 (不含錯誤或逾時) 內傳回合理的回應。
-* 一致性：保證讀取會傳回指定用戶端的最新寫入。
-
-> [!NOTE]
-> 「 **磁碟分割** 」一詞是用於事件中樞和 CAP 定理中的不同內容。 
-> - **事件中樞** 會將事件組織成一或多個資料分割。 分割區是獨立的，而且包含自己的資料序列，它們通常會以不同的速率成長。 如需詳細資訊，請參閱[分割區](event-hubs-features.md#partitions)。
-> - 在 **CAP 定理** 中，資料分割是分散式系統中節點之間的通訊中斷。
-
-## <a name="partition-tolerance"></a>分割區容錯
-「事件中樞」是建置在已分割的資料模型上。 您可以在安裝時設定事件中樞中的分割區數目，但之後即無法變更此值。 由於您必須將分割區與事件中樞搭配使用，因此必須決定應用程式相關的可用性和一致性。
+本文提供 Azure 事件中樞所支援的可用性和一致性的相關資訊。 
 
 ## <a name="availability"></a>可用性
-開始使用事件中樞的最簡單方式是使用預設行為。 
+Azure 事件中樞將個別機器的災難性失敗風險，或甚至是跨資料中心內的多個失敗網域的整個叢集中的整個機架。 它會實行透明的失敗偵測和容錯移轉機制，讓服務繼續在保證的服務層級內運作，而且通常不會在發生這類失敗時明顯中斷。 如果已使用 [可用性區域](../availability-zones/az-overview.md)的啟用選項來建立事件中樞命名空間，則中斷風險會進一步分配至三個實體分隔的設備，而且服務會有足夠的容量保留，以立即處理整個設備的完整、重大損失。 如需詳細資訊，請參閱 [Azure 事件中樞-異地災難](event-hubs-geo-dr.md)復原。
 
-#### <a name="azuremessagingeventhubs-500-or-later"></a>[EventHubs (5.0.0 或更新版本) ](#tab/latest)
-如果您建立新的 **[EventHubProducerClient](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient)** 物件並使用 **[SendAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.sendasync)** 方法，則會在事件中樞的分割區之間自動散發您的事件。 此行為可讓運作時間達到最長。
-
-#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[EventHubs (4.1.0 或更早的版本) ](#tab/old)
-如果您建立新的 **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** 物件並使用 **[Send](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** 方法，系統就會在事件中樞的分割區之間自動分配事件。 此行為可讓運作時間達到最長。
-
----
-
-針對需要最長運作時間的使用案例，建議使用此模型。
+當用戶端應用程式將事件傳送至事件中樞時，事件會自動分散到事件中樞的資料分割之間。 如果某個分割區因為某些原因而無法使用，則會在其餘的分割區之間散發事件。 此行為可讓運作時間達到最長。 如果是需要最長時間的使用案例，則建議使用此模型，而不是將事件傳送到特定的資料分割。 如需詳細資訊，請參閱[分割區](event-hubs-scalability.md#partitions)。
 
 ## <a name="consistency"></a>一致性
-在某些案例中，事件的順序可能相當重要。 例如，您可能想要讓後端系統在刪除命令之前先處理更新命令。 在此情況下，您可以在事件上設定分割區索引鍵，或使用 `PartitionSender` 物件 (如果您使用的是舊版的 Microsoft Azure 訊息程式庫) 只將事件傳送到特定的分割區。 這麼做可確保在從分割區讀取這些事件時，會依序讀取它們。 
+在某些案例中，事件的順序可能相當重要。 例如，您可能想要讓後端系統在刪除命令之前先處理更新命令。 在此案例中，用戶端應用程式會將事件傳送至特定的資料分割，以便保留順序。 當取用者應用程式從分割區取用這些事件時，會依序讀取它們。 
+
+使用這個組態時，請記住，如果作為您傳送目的地的特定分割區無法使用，您將會收到錯誤回應。 相較之下，如果您沒有單一分割區的親和性，事件中樞服務會將您的事件傳送至下一個可用的磁碟分割。
+
+有一個既可確保排序又可讓運作時間達到最長的可能解決方案，就是在您的事件處理應用程式中彙總事件。 完成此動作最簡單的方式，就是使用自訂序號屬性來為您的事件加上戳記。
+
+在此案例中，生產者用戶端會將事件傳送至事件中樞的其中一個可用分割區，並從您的應用程式設定對應的序號。 這個解決方案會要求您的處理應用程式保留狀態，但會為您的傳送者提供一個更可能可供使用的端點。
+
+## <a name="appendix"></a>附錄
+
+### <a name="net-examples"></a>.NET 範例
+
+#### <a name="send-events-to-a-specific-partition"></a>將事件傳送到特定的分割區
+請在事件上設定分割區索引鍵，或使用 `PartitionSender` 物件 (如果您使用的是舊版的 Microsoft Azure 訊息庫) 只將事件傳送到特定的資料分割。 這麼做可確保在從分割區讀取這些事件時，會依序讀取它們。 
 
 如果您使用較新的 **EventHubs** 程式庫，請參閱將 [程式碼從 PartitionSender 遷移至 EventHubProducerClient，以將事件發佈至分割](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition)區。
 
@@ -92,9 +80,8 @@ finally
 
 ---
 
-使用這個組態時，請記住，如果作為您傳送目的地的特定分割區無法使用，您將會收到錯誤回應。 相較之下，如果您不傾向使用單一分割區，「事件中樞」服務就會將事件傳送至下一個可用的分割區。
-
-有一個既可確保排序又可讓運作時間達到最長的可能解決方案，就是在您的事件處理應用程式中彙總事件。 達到此目的的最簡單方式，就是為您的事件標上自訂序號屬性戳記。 下列程式碼顯示一個範例：
+### <a name="set-a-sequence-number"></a>設定序號
+下列範例會使用自訂序號屬性來為您的事件加上戳記。 
 
 #### <a name="azuremessagingeventhubs-500-or-later"></a>[EventHubs (5.0.0 或更新版本) ](#tab/latest)
 
