@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: jushiman
-ms.openlocfilehash: 3d0735b99de3e0c68b48747d69e4720a9cbb3416
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d38b395ec4e4a3e9f3550e6a891ad4785dae8597
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500694"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919743"
 ---
 # <a name="dv3-and-dsv3-series"></a>Dv3 和 Dsv3 系列
 
@@ -34,6 +34,7 @@ Dv3 系列 Vm 具備 Intel® Hyper-Threading 技術的功能。
 [即時移轉](maintenance-and-updates.md)：支援<br>
 [記憶體保留更新](maintenance-and-updates.md)：支援<br>
 [VM 世代支援](generation-2.md)：第1代<br>
+[加速網路](../virtual-network/create-vm-accelerated-networking-cli.md)：支援<br>
 <br>
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大暫存儲存體輸送量： IOPS/讀取 MBps/寫入 MBps | 最大 Nic/網路頻寬 |
@@ -58,6 +59,7 @@ Dsv3 系列 Vm 具備 Intel® Hyper-Threading 技術的功能。
 [即時移轉](maintenance-and-updates.md)：支援<br>
 [記憶體保留更新](maintenance-and-updates.md)：支援<br>
 [VM 世代支援](generation-2.md)：第1代和第2代<br>
+[加速網路](../virtual-network/create-vm-accelerated-networking-cli.md)：支援<br>
 <br>
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps (GiB 中的快取大小)  | 最大高載快取和暫存儲存體輸送量： IOPS/MBps<sup>1</sup> | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大高載未快取磁片輸送量： IOPS/MBps<sup>1</sup> | 最大 Nic/預期的網路頻寬 (Mbps)  |

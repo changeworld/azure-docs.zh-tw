@@ -1,14 +1,14 @@
 ---
 title: 使用 PowerShell 匯入和匯出藍圖
 description: 瞭解如何以程式碼的形式使用您的藍圖定義。 共用、原始檔控制，並使用 [匯出] 和 [匯入] 命令來管理它們。
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 87e8f00013fec3abb8132f92c1c717f152d1e264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5b1adda0b02e2e2490441c5958ca9334febc24c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051435"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919981"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>使用 PowerShell 匯入和匯出藍圖定義
 
@@ -23,7 +23,7 @@ Azure 藍圖可以透過 Azure 入口網站完全管理。 當組織開始使用
 
 無論您的原因為何，以程式碼的形式管理您的藍圖定義都有其優點。 本文說明如何 `Import-AzBlueprintWithArtifact` `Export-AzBlueprintWithArtifact` 在 [Az. 藍圖](https://powershellgallery.com/packages/Az.Blueprint/) 模組中使用和命令。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 本文假設 Azure 藍圖的工作知識適中。 如果您還沒這麼做，請流覽下列文章：
 
@@ -31,7 +31,7 @@ Azure 藍圖可以透過 Azure 入口網站完全管理。 當組織開始使用
 - 瞭解 [部署階段](../concepts/deployment-stages.md) 和 [藍圖生命週期](../concepts/lifecycle.md)
 - 使用 PowerShell[建立](../create-blueprint-powershell.md)和[管理](./manage-assignments-ps.md)藍圖定義和指派
 
-如果尚未安裝 **Az.Blueprint** 模組，請依照[新增 Az.Blueprint 模組](./manage-assignments-ps.md#add-the-azblueprint-module)中的指示，從 PowerShell 資源庫安裝並驗證它。
+如果尚未安裝 **Az.Blueprint** 模組，請依照 [新增 Az.Blueprint 模組](./manage-assignments-ps.md#add-the-azblueprint-module)中的指示，從 PowerShell 資源庫安裝並驗證它。
 
 ## <a name="folder-structure-of-a-blueprint-definition"></a>藍圖定義的資料夾結構
 
@@ -97,10 +97,10 @@ Azure 藍圖可以透過 Azure 入口網站完全管理。 當組織開始使用
   - 必須符合 [所需的資料夾結構](#folder-structure-of-a-blueprint-definition)
 - **ManagementGroupId** (選用) 
   - 要儲存藍圖定義的管理群組識別碼（如果不是目前的內容預設值）
-  - 必須指定**ManagementGroupId**或**SubscriptionId**
+  - 必須指定 **ManagementGroupId** 或 **SubscriptionId**
 - **SubscriptionId** (選擇性) 
   - 要儲存藍圖定義的訂用帳戶識別碼（如果不是目前的內容預設值）
-  - 必須指定**ManagementGroupId**或**SubscriptionId**
+  - 必須指定 **ManagementGroupId** 或 **SubscriptionId**
 
 1. 使用 `Import-AzBlueprintWithArtifact` Cmdlet 匯入指定的藍圖定義：
 

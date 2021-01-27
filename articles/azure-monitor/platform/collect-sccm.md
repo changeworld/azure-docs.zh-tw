@@ -1,50 +1,53 @@
 ---
-title: 將 Configuration Manager 連接到 Azure 監視器 |Microsoft Docs
-description: 本文說明將 Configuration Manager 連接到 Azure 監視器中的工作區，並開始分析資料的步驟。
+title: 將設定管理員連接到 Azure 監視器 |Microsoft Docs
+description: 本文說明將設定管理員連接到 Azure 監視器中的工作區，並開始分析資料的步驟。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/28/2019
-ms.openlocfilehash: 20d55de7ef0f7b7f49b922409f8cb61874fae0f6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 11/30/2020
+ms.openlocfilehash: ec19396d782bf34e85001892159c0ce785487f09
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008968"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918884"
 ---
-# <a name="connect-configuration-manager-to-azure-monitor"></a>將 Configuration Manager 連接到 Azure 監視器
+# <a name="connect-configuration-manager-to-azure-monitor"></a>將設定管理員連接到 Azure 監視器
 您可以將 Microsoft Endpoint Configuration Manager 環境連線到 Azure 監視器，以同步處理裝置集合資料，並在 Azure 監視器和 Azure 自動化中參考這些集合。  
 
-## <a name="prerequisites"></a>Prerequisites
+> [!IMPORTANT]
+> 從設定管理員版本2010開始，此功能已被取代。<!-- 8269855 --> 如需詳細資訊，請參閱[已移除且淘汰的設定管理員功能](/mem/configmgr/core/plan-design/changes/deprecated/removed-and-deprecated-cmfeatures)。
 
-Azure 監視器支援 Configuration Manager 最新分支1606版和更高版本。
+## <a name="prerequisites"></a>先決條件
+
+Azure 監視器支援設定管理員最新分支1606版和更高版本。
 
 >[!NOTE]
->將 Configuration Manager 與 Log Analytics 工作區連線的功能是選擇性的，預設不會啟用。 您必須先先啟用這項功能才能使用它。 如需詳細資訊，請參閱[從更新啟用選擇性功能](/configmgr/core/servers/manage/install-in-console-updates#bkmk_options)。
+>將設定管理員與 Log Analytics 工作區連線的功能是選擇性的，預設不會啟用。 您必須先先啟用這項功能才能使用它。 如需詳細資訊，請參閱[從更新啟用選擇性功能](/configmgr/core/servers/manage/install-in-console-updates#bkmk_options)。
 
 ## <a name="configuration-overview"></a>組態概觀
 
-下列步驟摘要說明設定 Configuration Manager 與 Azure 監視器整合的步驟。  
+下列步驟摘要說明設定設定管理員與 Azure 監視器整合的步驟。  
 
-1. 在 Azure Active Directory 中，將 Configuration Manager 註冊為 Web 應用程式和/或 Web API 應用程式，並確保您擁有來自 Azure Active Directory 註冊的用戶端識別碼和用戶端秘密金鑰。 如需如何完成此步驟的詳細資訊，請參閱[使用入口網站來建立可存取資源的 Active Directory 應用程式和服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)。
+1. 在 Azure Active Directory 中，將設定管理員註冊為 Web 應用程式和/或 Web API 應用程式，並確保您擁有來自 Azure Active Directory 註冊的用戶端識別碼和用戶端秘密金鑰。 如需如何完成此步驟的詳細資訊，請參閱[使用入口網站來建立可存取資源的 Active Directory 應用程式和服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
-2. 在 Azure Active Directory 中， [授與 Configuration Manager (註冊的 web 應用程式) 具有存取 Azure 監視器的許可權](#grant-configuration-manager-with-permissions-to-log-analytics)。
+2. 在 Azure Active Directory 中， [授與設定管理員 (註冊的 web 應用程式) 具有存取 Azure 監視器的許可權](#grant-configuration-manager-with-permissions-to-log-analytics)。
 
-3. 在 Configuration Manager 中，使用 **Azure 服務** 嚮導來新增連接。
+3. 在設定管理員中，使用 **Azure 服務** 嚮導來新增連接。
 
-4. 在執行 Configuration Manager 服務連接點網站系統角色的電腦上[，下載並安裝適用于 Windows 的 Log Analytics 代理程式](#download-and-install-the-agent)。 代理程式會將 Configuration Manager 資料傳送至 Azure 監視器中的 Log Analytics 工作區。
+4. 在執行設定管理員服務連接點網站系統角色的電腦上[，下載並安裝適用于 Windows 的 Log Analytics 代理程式](#download-and-install-the-agent)。 代理程式會將設定管理員資料傳送至 Azure 監視器中的 Log Analytics 工作區。
 
-5. 在 Azure 監視器中， [從 Configuration Manager 將集合匯入](#import-collections) 為電腦群組。
+5. 在 Azure 監視器中， [從設定管理員將集合匯入](#import-collections) 為電腦群組。
 
-6. 在 Azure 監視器中，以 [電腦群組](computer-groups.md)的形式來查看 Configuration Manager 的資料。
+6. 在 Azure 監視器中，以 [電腦群組](computer-groups.md)的形式來查看設定管理員的資料。
 
 ## <a name="grant-configuration-manager-with-permissions-to-log-analytics"></a>對 Configuration Manager 授與 Log Analytics 的權限
 
 在下列程序中，您會將 Log Analytics 工作區中的「參與者」角色授與給您稍早為 Configuration Manager 建立的 AD 應用程式和服務主體。 如果您還沒有工作區，請參閱 [在 Azure 監視器中建立工作區](../learn/quick-create-workspace.md) ，然後再繼續進行。 這可讓 Configuration Manager 進行驗證並連線到 Log Analytics 工作區。  
 
 > [!NOTE]
-> 您必須在 Log Analytics 工作區中指定 Configuration Manager 的許可權。 否則，當您在 Configuration Manager 中使用組態精靈時，將會收到錯誤訊息。
+> 您必須在 Log Analytics 工作區中指定設定管理員的許可權。 否則，當您在 Configuration Manager 中使用組態精靈時，將會收到錯誤訊息。
 >
 
 1. 在 Azure 入口網站中，按一下左上角的 [所有服務]。 在資源清單中輸入 **Log Analytics**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [Log Analytics]。
@@ -61,17 +64,17 @@ Azure 監視器支援 Configuration Manager 最新分支1606版和更高版本�
 
 ## <a name="download-and-install-the-agent"></a>下載並安裝代理程式
 
-請參閱將 [Windows 電腦連線到 Azure 中的 Azure 監視器](agent-windows.md) 一文，以瞭解在裝載 Configuration Manager 服務連接點網站系統角色的電腦上安裝適用于 Windows 的 Log Analytics 代理程式的方法。  
+請參閱將 [Windows 電腦連線到 Azure 中的 Azure 監視器](agent-windows.md) 一文，以瞭解在裝載設定管理員服務連接點網站系統角色的電腦上安裝適用于 Windows 的 Log Analytics 代理程式的方法。  
 
-## <a name="connect-configuration-manager-to-log-analytics-workspace"></a>將 Configuration Manager 連線到 Log Analytics 工作區
+## <a name="connect-configuration-manager-to-log-analytics-workspace"></a>將設定管理員連線到 Log Analytics 工作區
 
 >[!NOTE]
-> 為了新增 Log Analytics 連線，您的 Configuration Manager 環境必須有設定為線上模式的 [服務連接點](/configmgr/core/servers/deploy/configure/about-the-service-connection-point) 。
+> 為了新增 Log Analytics 連線，您的設定管理員環境必須有設定為線上模式的 [服務連接點](/configmgr/core/servers/deploy/configure/about-the-service-connection-point) 。
 
 > [!NOTE]
 > 您必須將階層中的頂層網站連線到 Azure 監視器。 如果您將獨立主要網站連接到 Azure 監視器，然後將管理中心網站新增至您的環境，您必須刪除並重新建立新階層內的連線。
 
-1. 在 Configuration Manager 的 [系統 **管理** ] 工作區中，選取 [雲端 **服務** ]，然後選取 [ **Azure 服務**]。 
+1. 在設定管理員的 [系統 **管理** ] 工作區中，選取 [雲端 **服務** ]，然後選取 [ **Azure 服務**]。 
 
 2. 以滑鼠右鍵按一下 [ **Azure 服務** ]，然後選取 [ **設定 azure 服務**]。 [ **設定 Azure 服務** ] 頁面隨即出現。 
    
@@ -114,18 +117,18 @@ Azure 監視器支援 Configuration Manager 最新分支1606版和更高版本�
 
 10. 設定完成時，[ **完成** ] 頁面隨即出現。 選取 [關閉]。 
 
-將 Configuration Manager 連結至 Azure 監視器之後，您可以新增或移除集合，並查看連接的屬性。
+將設定管理員連結至 Azure 監視器之後，您可以新增或移除集合，並查看連接的屬性。
 
 ## <a name="update-log-analytics-workspace-connection-properties"></a>更新 Log Analytics 工作區連接屬性
 
 如果密碼或用戶端秘密金鑰過期或遺失，您必須手動更新 Log Analytics 連接屬性。
 
-1. 在 Configuration Manager 的 [系統 **管理** ] 工作區中，選取 [ **雲端服務** ]，然後選取 [ **oms 連接器** ] 以開啟 [ **oms 連線屬性** ] 頁面。
+1. 在設定管理員的 [系統 **管理** ] 工作區中，選取 [ **雲端服務** ]，然後選取 [ **oms 連接器** ] 以開啟 [ **oms 連線屬性** ] 頁面。
 2. 在此頁面上按一下 [Azure Active Directory] 索引標籤，檢視 [租用戶]、[用戶端識別碼] 和 [用戶端秘密金鑰到期]。 **確認****用戶端秘密金鑰** 是否已過期。
 
 ## <a name="import-collections"></a>匯入集合
 
-將 Log Analytics 連線新增至 Configuration Manager，並在執行 Configuration Manager 服務連接點網站系統角色的電腦上安裝代理程式之後，下一個步驟是從 Azure 監視器中的 Configuration Manager 將集合匯入為電腦群組。
+將 Log Analytics 連線新增至設定管理員，並在執行設定管理員服務連接點網站系統角色的電腦上安裝代理程式之後，下一個步驟是從 Azure 監視器中的設定管理員將集合匯入為電腦群組。
 
 在您完成初始設定以從階層匯入裝置集合之後，系統會每3小時取出一次集合資訊，以保持成員資格的最新。 您可以隨時選擇停用此功能。
 
@@ -135,15 +138,15 @@ Azure 監視器支援 Configuration Manager 最新分支1606版和更高版本�
 4. 依序選取 [電腦群組] 和 [SCCM]。  
 5. 選取 [匯入 Configuration Manager 集合成員資格]，然後按一下 [儲存]。  
    
-    ![C # M 電腦群組 advanced 設定的螢幕擷取畫面，其中包含匯入 Configuration Manager 集合成員資格的選項。](./media/collect-sccm/sccm-computer-groups01.png)
+    ![C # M 電腦群組 advanced 設定的螢幕擷取畫面，其中包含匯入設定管理員集合成員資格的選項。](./media/collect-sccm/sccm-computer-groups01.png)
 
 ## <a name="view-data-from-configuration-manager"></a>從 Configuration Manager 檢視資料
 
-將 Log Analytics 連線新增至 Configuration Manager，並在執行 Configuration Manager 服務連接點網站系統角色的電腦上安裝代理程式之後，代理程式的資料會傳送至 Azure 監視器中的 Log Analytics 工作區。 在 Azure 監視器中，您的 Configuration Manager 集合會顯示為 [ [電腦群組](./computer-groups.md)]。 您可以從 [設定\電腦群組] 下的 [Configuration Manager] 頁面檢視群組。
+將 Log Analytics 連線新增至設定管理員，並在執行設定管理員服務連接點網站系統角色的電腦上安裝代理程式之後，代理程式的資料會傳送至 Azure 監視器中的 Log Analytics 工作區。 在 Azure 監視器中，您的設定管理員集合會顯示為 [ [電腦群組](./computer-groups.md)]。 您可以從 [設定\電腦群組] 下的 [Configuration Manager] 頁面檢視群組。
 
 匯入集合之後，您可以看到已偵測到多少部具有集合成員資格的電腦。 您也可以看到已匯入的集合數目。
 
-![[電腦群組的 advanced settings] 的螢幕擷取畫面，顯示已選取 [匯入 Configuration Manager 集合成員資格] 的選項。](./media/collect-sccm/sccm-computer-groups02.png)
+![[電腦群組的 advanced settings] 的螢幕擷取畫面，顯示已選取 [匯入設定管理員集合成員資格] 的選項。](./media/collect-sccm/sccm-computer-groups02.png)
 
 當您按一下其中一個時，[記錄查詢編輯器] 就會開啟，其中顯示所有已匯入的群組，或屬於每個群組的所有電腦。 您可以使用 [ [記錄搜尋](../log-query/log-query-overview.md)]，進一步對集合成員資格資料進行深入分析。
 

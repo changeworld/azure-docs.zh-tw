@@ -1,14 +1,14 @@
 ---
 title: 了解資源鎖定
 description: 瞭解 Azure 藍圖中的鎖定選項，以在指派藍圖時保護資源。
-ms.date: 10/05/2020
+ms.date: 01/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: 01f69cbfebe203407287392c2433181396b541b2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b2004ad294ae0eec1b4f2fc6f49308efd32d652e
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996095"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920185"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>了解 Azure 藍圖中的資源鎖定
 
@@ -24,7 +24,7 @@ ms.locfileid: "95996095"
 
 藍圖指派中成品所建立的資源有四種狀態： [ **未鎖定**]、[ **唯讀**]、[ **無法編輯/刪除**] 或 [ **無法刪除**]。 每個成品類型都可以處於 **未鎖定** 狀態。 下表可用來判斷資源的狀態：
 
-|[模式]|成品資源類型|州|描述|
+|模式|成品資源類型|州|描述|
 |-|-|-|-|
 |不要鎖定|*|未鎖定|資源不受 Azure 藍圖保護。 此狀態也可用於從藍圖指派外部新增至 **唯讀** 或 **不要刪除** 資源群組成品的資源。|
 |唯讀|資源群組|無法編輯/刪除|此資源群組是唯讀的，而且無法修改資源群組上的標記。 **未鎖定** 資源可以在這個資源群組中新增、移動、變更或刪除。|
@@ -107,7 +107,7 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 
 每個模式的 [拒絕指派屬性](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) 如下所示：
 
-|[模式] |許可權。動作 |許可權。 NotActions |主體 [i]。類型 |ExcludePrincipals [i]。Id | DoNotApplyToChildScopes |
+|模式 |許可權。動作 |許可權。 NotActions |主體 [i]。類型 |ExcludePrincipals [i]。Id | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
 |唯讀 |**\** _ |_ *\* /read **<br />** microsoft. 授權/鎖定/刪除 **<br />** Microsoft. Network/virtualNetwork/subnet/join/action** |SystemDefined (每個人)  |**excludedPrincipals** 中的藍圖指派和使用者定義 |資源群組- _true_;資源- _false_ |
 |不要刪除 |**\*/delete** | **Microsoft.Authorization/locks/delete**<br />**Microsoft. Network/virtualNetwork/subnet/join/action** |SystemDefined (每個人)  |**excludedPrincipals** 中的藍圖指派和使用者定義 |資源群組- _true_;資源- _false_ |

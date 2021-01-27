@@ -225,7 +225,7 @@
           href: livestream.md
     - name: 移除 Azure Sentinel
       href: offboard.md
-- name: 參考 (新增！)
+- name: 參考
   items:
     - name: Azure RBAC 角色
       items:
@@ -241,10 +241,20 @@
           href: hunting-with-rest-api.md
         - name: 使用 REST 管理 watchlists-API
           href: watchlist-with-rest-api.md
+    - name: Azure 監視器資料參考
+      href: /azure/azure-monitor/reference/
     - name: Azure Sentinel Logic Apps 連接器
       href: /connectors/azuresentinel/
     - name: 網路正規化結構描述
       href: normalization-schema.md
+    - name: 資料來源架構參考
+      href: data-source-schema-reference.md
+    - name: Kusto 查詢語言
+      items:
+        - name: Kusto 查詢總覽
+          href: /azure/data-explorer/kusto/query/
+        - name: Kusto 查詢語言快速參考
+          href: /azure/data-explorer/kql-quick-reference
     - name: UEBA 擴充
       href: ueba-enrichments.md
 - name: 資源

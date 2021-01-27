@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 656113df50936acf6f9a6b7e9cc8cb01a8aec2a8
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 8ba3311a67098ac04cc62161935b067e465fed57
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931745"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920132"
 ---
 # <a name="h-series"></a>H 系列
 
@@ -25,6 +25,7 @@ H 系列 Vm 已針對依核心需求高 CPU 頻率或大型記憶體驅動的應
 [即時移轉](maintenance-and-updates.md)：不支援<br>
 [記憶體保留更新](maintenance-and-updates.md)：不支援<br>
 [VM 世代支援](generation-2.md)：第1代<br>
+[加速網路](../virtual-network/create-vm-accelerated-networking-cli.md)：不支援<br>
 <br>
 
 | 大小 | vCPU | 處理器 | 記憶體 (GiB) | 記憶體頻寬 GB/秒 | 基礎 CPU 頻率 (GHz)  | 所有核心頻率 (GHz，尖峰)  | 單一核心頻率 (GHz，尖峰)  | RDMA 效能 (Gb/秒)  | MPI 支援 | 暫存儲存體 (GiB) | 最大資料磁碟 | 最大磁碟輸送量︰IOPS | 最大 Ethernet Vnic |

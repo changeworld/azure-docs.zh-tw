@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: ba971919037230cb6c09e627fde448647063b5b9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: a08b5db19aab19402aa3c93cfa23ce7b39a0a838
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498416"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918683"
 ---
 # <a name="lsv2-series"></a>Lsv2 系列
 
@@ -32,6 +32,7 @@ Lsv2 系列以在全核心加速為 2.55GHz 且最大加速為 3.0GHz 之 [AMD E
 [記憶體保留更新](maintenance-and-updates.md)：不支援<br>
 [VM 世代支援](generation-2.md)：第1代和第2代<br>
 高載：支援<br>
+[加速網路](../virtual-network/create-vm-accelerated-networking-cli.md)：支援<br>
 <br>
 
 | 大小 | vCPU | 記憶體 (GiB) | 暫存磁碟<sup>1</sup> (GiB) | NVMe 磁碟<sup>2</sup> | NVMe 磁片輸送量<sup>3</sup> (讀取 IOPS/MBps)  | 未快取的資料磁片輸送量 (IOPs/MBps) <sup>4</sup> | 最大高載未快取的資料磁片輸送量 (IOPs/MBps) <sup>5</sup>| 資料磁碟數上限 | 最大 NIC | 預期的網路頻寬 (Mbps)  |

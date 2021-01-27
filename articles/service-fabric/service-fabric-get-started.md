@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: sfrev, devx-track-azurepowershell
-ms.openlocfilehash: c252a1dc86c50327e32816abd99bc206f3b74608
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 07482fe41cdf7700fddd516c1a71eca5beebb4c6
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902879"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920168"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>在 Windows 上準備您的開發環境
 
@@ -23,7 +23,7 @@ ms.locfileid: "96902879"
 
 若要在您的 Windows 開發機器上建置並執行 [Azure Service Fabric 應用程式][1]，請安裝 Service Fabric 執行階段、SDK 和工具。 您也必須啟用 SDK 中 [所含 Windows PowerShell 腳本的執行](#enable-powershell-script-execution) 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 ### <a name="supported-operating-system-versions"></a>支援的作業系統版本
 
@@ -62,8 +62,8 @@ Service Fabric 工具是 Visual Studio 2017 和2019中的 Azure 開發工作負�
 
 目前的版本如下︰
 
-* Service Fabric SDK 和工具4.2.445
-* Service Fabric 執行時間7.2.445
+* Service Fabric SDK 和工具4.2.452
+* Service Fabric 執行時間7.2.452
 
 如需支援版本的清單，請參閱[Service Fabric 版本](service-fabric-versions.md)
 

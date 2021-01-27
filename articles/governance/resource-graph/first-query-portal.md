@@ -1,14 +1,14 @@
 ---
 title: 快速入門：您的第一個入口網站查詢
 description: 遵循此快速入門中的步驟，以使用 Azure Resource Graph Explorer 從 Azure 入口網站執行您的第一個查詢。
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: b5f5203b3842ebc3edbd97bca1ca3c101f47e397
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
-ms.translationtype: HT
+ms.openlocfilehash: cb62a1ae3a29a7aae793fcee6fd896fe0260dc10
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057377"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920091"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>快速入門：使用 Azure Resource Graph Explorer 執行您的第一個 Resource Graph 查詢
 
@@ -33,14 +33,14 @@ Azure Resource Graph 的功能可直接透過 Azure Resource Graph Explorer 在 
 
 1. 在 [結果] 索引標籤中檢閱查詢回應。選取 [訊息] 索引標籤以查看查詢的詳細資料，包括結果計數和查詢的持續時間。 此索引標籤下會顯示錯誤 (如果有的話)。
 
-1. 將查詢更新為依**名稱**屬性排序 (`order by` name)：`Resources | project name, type | limit 5 | order by name asc`。 然後，選取 [執行查詢]。
+1. 將查詢更新為依 **名稱** 屬性排序 (`order by` name)：`Resources | project name, type | limit 5 | order by name asc`。 然後，選取 [執行查詢]。
 
    > [!NOTE]
    > 如同第一個查詢一樣，多次執行此查詢可能會為每個要求產生不同的資源集。 查詢命令的順序很重要。 在此範例中，`order by` 會出現在 `limit` 之後。 此命令順序會先限制查詢結果，然後再加以排序。
 
-1. 將查詢更新為第一個依**名稱**屬性排序 (`order by`)，然後限制 (`limit`) 為只顯示前五個結果：`Resources | project name, type | order by name asc | limit 5`。 然後，選取 [執行查詢]。
+1. 將查詢更新為第一個依 **名稱** 屬性排序 (`order by`)，然後限制 (`limit`) 為只顯示前五個結果：`Resources | project name, type | order by name asc | limit 5`。 然後，選取 [執行查詢]。
 
-執行最終查詢數次後，假設您的環境中未變更任何內容，傳回的結果將會一致，且依**名稱**屬性排序，但仍限制為只顯示前五個結果。
+執行最終查詢數次後，假設您的環境中未變更任何內容，傳回的結果將會一致，且依 **名稱** 屬性排序，但仍限制為只顯示前五個結果。
 
 ### <a name="schema-browser"></a>結構描述瀏覽器
 
@@ -94,7 +94,7 @@ Azure Resource Graph 的功能可直接透過 Azure Resource Graph Explorer 在 
 
 - [Resource Graph Explorer - 儀表板範例 #2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
 
-  :::image type="content" source="./media/arge-sample2-small.png" alt-text="儀表板範例的影像範例 #1" lightbox="./media/arge-sample2-large.png":::
+  :::image type="content" source="./media/arge-sample2-small.png" alt-text="儀表板範例的影像範例 #2" lightbox="./media/arge-sample2-large.png":::
 
 > [!NOTE]
 > 上述儀表板範例螢幕擷取畫面中的計數和圖表會隨著 Azure 環境而有所不同。

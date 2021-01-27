@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 01/27/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3e64b0af455ab1f84653093b26654530ee3dfab
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 95fe70c774b933113c94125d227976e32a9e353f
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232772"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919624"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory 使用規定
 
@@ -26,11 +26,11 @@ Azure AD 使用規定原則提供了一種簡單的方法，讓組織可用來�
 
 ## <a name="overview-videos"></a>概觀影片
 
-下列影片提供使用規定原則的快速總覽。
+下列影片提供 ToU 原則的快速總覽。
 
 >[!VIDEO https://www.youtube.com/embed/tj-LK0abNao]
 
-如需其他影片，請參閱：
+如需更多影片，請參閱：
 - [如何在 Azure Active Directory 中部署使用規定原則](https://www.youtube.com/embed/N4vgqHO2tgY)
 - [如何在 Azure Active Directory 中推出使用規定原則](https://www.youtube.com/embed/t_hA4y9luCY)
 
@@ -52,7 +52,7 @@ Azure AD 使用規定原則具有下列功能：
 - 顯示適用于合規性和 audit 的使用規定原則活動記錄。
 - 使用 [Microsoft Graph api](/graph/api/resources/agreement?view=graph-rest-beta) (目前為預覽) 來建立和管理使用規定原則。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要使用及設定 Azure AD 的使用規定原則，您必須具備下列條件：
 
@@ -129,7 +129,7 @@ Azure AD 使用規定原則會使用 PDF 格式來呈現內容。 此 PDF 檔案
 
     自訂條件式存取原則可對特定雲端應用程式或使用者群組啟用細微的使用規定原則。 如需詳細資訊，請參閱 [快速入門：在存取雲端應用程式之前，必須先接受使用](require-tou.md)規定。
 
-1. 按一下頁面底部的 [新增] 。
+1. 按一下頁面底部的 [新增]  。
 
     如果您已選取自訂的條件式存取範本，則會出現新的畫面，讓您建立自訂的條件式存取原則。
 
@@ -183,7 +183,7 @@ Azure AD 使用規定原則會使用 PDF 格式來呈現內容。 此 PDF 檔案
 
 ## <a name="what-terms-of-use-looks-like-for-users"></a>使用者的使用規定如下
 
-一旦建立並強制執行使用規定原則之後，使用者（範圍內的使用者）在登入期間將會看到下列畫面。
+一旦建立並強制執行 ToU 原則之後，在範圍內的使用者將會在登入時看到下列畫面。
 
 ![使用者登入時顯示的範例使用規定](./media/terms-of-use/user-tou.png)
 
@@ -191,7 +191,7 @@ Azure AD 使用規定原則會使用 PDF 格式來呈現內容。 此 PDF 檔案
 
 ![使用縮放按鈕來查看使用規定](./media/terms-of-use/zoom-buttons.png)
 
-下列畫面顯示如何在行動裝置上查看使用條款原則。
+下列畫面顯示 ToU 原則在行動裝置上的外觀。
 
 ![使用者登入行動裝置時所顯示的範例使用規定](./media/terms-of-use/mobile-tou.png)
 
@@ -226,7 +226,7 @@ Azure AD 使用規定原則會使用 PDF 格式來呈現內容。 此 PDF 檔案
     -  (Preview) 您可以 **更新現有的使用** 規定檔
     - 您可以將語言新增至現有的 ToU
 
-   如果有您想要變更的其他設定（例如 PDF 檔），要求使用者在每部裝置上同意、讓同意到期、在 reacceptance 之前的期間或條件式存取原則，您必須建立新的使用規定原則。
+   如果有您想要變更的其他設定（例如 PDF 檔），要求使用者在每部裝置上同意、讓同意、在 reacceptance 之前的期間過期或條件式存取原則，您必須建立新的 ToU 原則。
 
     ![編輯顯示不同的語言選項 ](./media/terms-of-use/edit-terms-use.png)
 
@@ -249,7 +249,7 @@ Azure AD 使用規定原則會使用 PDF 格式來呈現內容。 此 PDF 檔案
 7.  當您上傳新的 pdf 並決定重新接受之後，請按一下窗格底部的 [新增]。
 8.  您現在會在 [檔] 資料行底下看到最新版本。
 
-## <a name="view-previous-versions-of-a-terms-of-use"></a>查看使用中的舊版使用條款
+## <a name="view-previous-versions-of-a-tou"></a>查看 ToU 的先前版本
 
 1.  登入 Azure 並瀏覽至 https://aka.ms/catou 上的 [使用規定]。
 2.  選取您要查看其版本歷程記錄的使用條款原則。
@@ -269,9 +269,9 @@ Azure AD 使用規定原則會使用 PDF 格式來呈現內容。 此 PDF 檔案
 5.  或者，您可以從 [ **版本**  ] 下拉式清單中選取特定版本，以查看誰已接受該特定版本。
 
 
-## <a name="add-a-terms-of-use-language"></a>新增使用規定語言
+## <a name="add-a-tou-language"></a>新增 ToU 語言
 
-下列程式說明如何新增使用規定語言。
+下列程式說明如何新增 ToU 語言。
 
 1. 登入 Azure 並瀏覽至 [https://aka.ms/catou](https://aka.ms/catou) 上的 [使用規定]。
 1. 選取您要編輯的使用條款原則。
@@ -282,7 +282,7 @@ Azure AD 使用規定原則會使用 PDF 格式來呈現內容。 此 PDF 檔案
     ![使用規定選取並顯示 [詳細資料] 窗格中的 [語言] 索引標籤](./media/terms-of-use/select-language.png)
 
 1. 按一下 [新增語言]。
-1. 按一下 [儲存]
+1. 按一下 [儲存] 
 
 1. 按一下 [新增] 來新增語言。
 
@@ -344,9 +344,13 @@ Azure AD 使用規定原則會使用 PDF 格式來呈現內容。 此 PDF 檔案
 
    您應該不會再看到使用規定原則。
 
-## <a name="deleted-users-and-active-terms-of-use"></a>已刪除的使用者和使用中的使用條款
+## <a name="user-acceptance-record-deletion"></a>刪除使用者驗收記錄
 
-根據預設，已刪除的使用者會在 Azure AD 中以已刪除的狀態保留 30 天，在這段期間內，系統管理員可以視需要加以還原。 經過 30 天後，該使用者將永久刪除。 此外，全域管理員可以使用 Azure Active Directory 入口網站，在該時段結束之前明確地[永久刪除最近刪除的使用者](../fundamentals/active-directory-users-restore.md)。 已永久刪除使用者，將會從使用中的使用條款原則中移除該使用者的後續資料。 與已刪除的使用者有關的稽核資訊仍會保留在稽核記錄中。
+刪除使用者驗收記錄：
+
+- 當系統管理員明確地刪除 ToU 時。 當這種情況發生時，也會一併刪除與該特定 ToU 相關聯的所有驗收記錄。
+- 當租使用者失去其 Azure Active Directory Premium 授權時。
+- 刪除租使用者時。
 
 ## <a name="policy-changes"></a>原則變更
 

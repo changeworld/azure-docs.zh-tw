@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 5b91d6e58f4ae93bbf020f202991f878e7773114
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 643a52c9be04fb325b8e1d088faeb68e473aa673
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222950"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919947"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>使用 Azure CLI 建立具有加速網路的 Linux 虛擬機器
 
@@ -56,11 +56,9 @@ ms.locfileid: "98222950"
 ## <a name="limitations-and-constraints"></a>限制和條件約束
 
 ### <a name="supported-vm-instances"></a>支援的 VM 執行個體
-大多數一般用途和具有 2 個以上 vCPU 的計算最佳化執行個體大小，皆支援加速網路。  這些支援的系列為：D/DSv2 和 F/Fs
+大多數一般用途和具有 2 個以上 vCPU 的計算最佳化執行個體大小，皆支援加速網路。 在支援超執行緒的執行個體中，加速網路可在具有 4 個以上 vCPU 的 VM 執行個體上進行支援作業。 
 
-在支援超執行緒的執行個體中，加速網路可在具有 4 個以上 vCPU 的 VM 執行個體上進行支援作業。 支援的系列為： D/Dsv3、D/Dsv4、Dd/Ddv4、Da/Dasv4、E/Esv3、E/Esv4、Ed/Edsv4、Ea/Easv4、Fsv2、Lsv2、Ms/Mms 和 Ms/Mmsv2。
-
-如需 VM 執行個體的詳細資訊，請參閱 [Linux VM 大小](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+您可以在個別的 [虛擬機器大小](../virtual-machines/sizes.md) 檔中找到加速網路的支援。 
 
 ### <a name="custom-images"></a>自訂映像
 如果您使用自訂映射，而且您的映射支援加速網路，請務必具有必要的驅動程式，才能在 Azure 上搭配 Mellanox ConnectX-3 和 ConnectX-4 Lx Nic 使用。

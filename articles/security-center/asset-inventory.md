@@ -8,14 +8,14 @@ ms.author: memildin
 ms.date: 12/22/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: d5820af1efd91efd79fb2a860d6aad8d2eeed80d
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 5b8d167992e57cd0fae35c57212ea700cd677afa
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740873"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920421"
 ---
-# <a name="explore-and-manage-your-resources-with-asset-inventory"></a>使用資產清查探索及管理您的資源
+# <a name="explore-and-manage-your-resources-with-asset-inventory"></a>利用資產清查來探索和管理您的資源
 
 Azure 資訊安全中心的資產清查頁面會提供單一頁面，讓您檢視已連線至資訊安全中心的資源有何安全性狀態。 
 
@@ -40,7 +40,7 @@ Azure 資訊安全中心的資產清查頁面會提供單一頁面，讓您檢�
 
 |層面|詳細資料|
 |----|:----|
-|版本狀態：|正式上市 (GA)|
+|版本狀態：|公開上市 (GA) |
 |定價：|免費|
 |必要的角色和權限：|所有使用者|
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|

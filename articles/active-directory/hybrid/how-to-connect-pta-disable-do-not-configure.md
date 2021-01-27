@@ -11,16 +11,21 @@ ms.date: 04/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5db99f5e8ed2ea5844acba5500bc94d8fb0db2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26112b1e799cbde3145e7137c686b4b336db4bab
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85358339"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919930"
 ---
-# <a name="disable-pta-when-using-azure-ad-connect-do-not-configure"></a>使用 Azure AD Connect 「請勿設定」時停用 PTA
+# <a name="disable-pta-when-using-azure-ad-connect"></a>使用 Azure AD Connect 時停用 PTA
 
-如果您搭配 Azure AD Connect 使用傳遞驗證，且您已將它設定為「不要設定」，則可以將它停用。 您可以使用下列 Cmdlet 來停用 PTA。 
+如果您搭配 Azure AD Connect 使用傳遞驗證，且您已將它設定為「 **不要** 設定」，則可以將它停用。 
+
+>[!NOTE]
+>如果您已啟用 PHS，則停用 PTA 將會導致租使用者回復至 PHS。
+
+您可以使用下列 Cmdlet 來停用 PTA。 
 
 ## <a name="prerequisites"></a>必要條件
 需要下列必要條件：
@@ -34,7 +39,7 @@ ms.locfileid: "85358339"
 > [!IMPORTANT]
 > 如果您使用 Azure Government 雲端，則必須以下列值傳入 ENVIRONMENTNAME 參數。 
 >
->| 環境名稱 | 雲端 |
+>| 環境名稱 | Cloud |
 >| - | - |
 >| AzureUSGovernment | US Gov|
 

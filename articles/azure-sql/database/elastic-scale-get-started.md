@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 423fd0f91de3e936e2920d57e5bc606bb86a2437
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 74343b2f05bb4a59e475449c87524ff66cdd605d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786712"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919539"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>開始使用彈性資料庫工具
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "92786712"
 
 ## <a name="elastic-database-tools-for-java"></a>適用於 Java 的彈性資料庫工具
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
 * Java Developer Kit (JDK) 1.8 版或更新版本
 * [Maven](https://maven.apache.org/download.cgi)
@@ -72,7 +72,7 @@ ms.locfileid: "92786712"
 
 ## <a name="elastic-database-tools-for-net"></a>適用於 .NET 的彈性資料庫工具
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
 * 含 C# 的 Visual Studio 2012 或更新版本。 請在 [Visual Studio 下載](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)上下載免費版本。
 * NuGet 2.7 或更新版本。 若要取得最新版本，請參閱[安裝 NuGet](https://docs.nuget.org/docs/start-here/installing-nuget)。
@@ -83,15 +83,17 @@ ms.locfileid: "92786712"
 
 若要下載及執行範例，請遵循下列步驟：
 
-1. 下載 [適用于 AZURE SQL 的彈性 DB 工具-消費者入門範例](https://github.com/Azure/elastic-db-tools)。 將範例解壓縮至您選擇的位置。
+1. 下載 [適用于 AZURE SQL 的彈性 DB 工具-開始使用範例](https://github.com/Azure/elastic-db-tools)。 將範例解壓縮至您選擇的位置。
 
-2. 若要建立專案，從 *C#* 目錄開啟 *ElasticScaleStarterKit.sln* 方案。
+2. 若要建立專案，請從 *彈性-* -----master 目錄開啟 *ElasticDatabaseTools .sln* 方案。 
 
-3. 在範例專案的方案中，開啟 *app.config* 檔案。 然後依照檔案中的指示，將您的伺服器名稱和登入資訊 (使用者名稱和密碼) 。
+3. 將 *>elasticscalestarterkit.sln* 專案設定為啟始專案。
 
-4. 建置並執行應用程式。 出現提示時，允許 Visual Studio 還原解決方案的 NuGet 套件。 此動作會從 NuGet 下載最新版的彈性資料庫用戶端程式庫。
+4. 在 *>elasticscalestarterkit.sln* 專案中，開啟 *App.config* 檔案。 然後依照檔案中的指示，將您的伺服器名稱和登入資訊 (使用者名稱和密碼) 。
 
-5. 若要深入了解用戶端程式庫功能，請利用各種選項進行實驗。 請記下應用程式在主控台輸出中採用的步驟，並盡情探索其後的程式碼。
+5. 建置並執行應用程式。 出現提示時，允許 Visual Studio 還原解決方案的 NuGet 套件。 此動作會從 NuGet 下載最新版的彈性資料庫用戶端程式庫。
+
+6. 若要深入了解用戶端程式庫功能，請利用各種選項進行實驗。 請記下應用程式在主控台輸出中採用的步驟，並盡情探索其後的程式碼。
 
    ![進度][4]
 
@@ -102,19 +104,19 @@ ms.locfileid: "92786712"
 
 ## <a name="key-pieces-of-the-code-sample"></a>程式碼範例的主要部分
 
-* **管理分區和分區對應** ：此程式碼會解說如何使用 *ShardManagementUtils.cs* 檔案中的分區、範圍和對應。 如需詳細資訊，請參閱[使用分區對應管理員相應放大資料庫](https://go.microsoft.com/?linkid=9862595)。  
+* **管理分區和分區對應**：此程式碼會解說如何使用 *ShardManagementUtils.cs* 檔案中的分區、範圍和對應。 如需詳細資訊，請參閱[使用分區對應管理員相應放大資料庫](https://go.microsoft.com/?linkid=9862595)。  
 
-* **資料相依路由** ： *DataDependentRoutingSample.cs* 檔案中示範如何將交易路由傳送至正確的分區。 如需詳細資訊，請參閱[資料相依路由](https://go.microsoft.com/?linkid=9862596)。
+* **資料相依路由**：*DataDependentRoutingSample.cs* 檔案中示範如何將交易路由傳送至正確的分區。 如需詳細資訊，請參閱[資料相依路由](https://go.microsoft.com/?linkid=9862596)。
 
-* **查詢多個分區** ： *MultiShardQuerySample.cs* 檔案中說明如何在各個分區間進行查詢。 如需詳細資訊，請參閱[多分區查詢](https://go.microsoft.com/?linkid=9862597)。
+* **查詢多個分區**：*MultiShardQuerySample.cs* 檔案中說明如何在各個分區間進行查詢。 如需詳細資訊，請參閱[多分區查詢](https://go.microsoft.com/?linkid=9862597)。
 
-* **新增空的分區** ：反覆新增空分區的作業，是由 *CreateShardSample.cs* 檔案中的程式碼所執行。 如需詳細資訊，請參閱[使用分區對應管理員相應放大資料庫](https://go.microsoft.com/?linkid=9862595)。
+* **新增空的分區**：反覆新增空分區的作業，是由 *CreateShardSample.cs* 檔案中的程式碼所執行。 如需詳細資訊，請參閱[使用分區對應管理員相應放大資料庫](https://go.microsoft.com/?linkid=9862595)。
 
 ## <a name="other-elastic-scale-operations"></a>其他 Elastic Scale 作業
 
-* **分割現有的分區** ：分割分區的功能是透過分割合併工具來提供。 如需詳細資訊，請參閱[在向外延展的雲端資料庫之間移動資料](elastic-scale-overview-split-and-merge.md)。
+* **分割現有的分區**：分割分區的功能是透過分割合併工具來提供。 如需詳細資訊，請參閱[在向外延展的雲端資料庫之間移動資料](elastic-scale-overview-split-and-merge.md)。
 
-* **合併現有的分區** ：分區合併也可使用分割合併工具來執行。 如需詳細資訊，請參閱[在向外延展的雲端資料庫之間移動資料](elastic-scale-overview-split-and-merge.md)。
+* **合併現有的分區**：分區合併也可使用分割合併工具來執行。 如需詳細資訊，請參閱[在向外延展的雲端資料庫之間移動資料](elastic-scale-overview-split-and-merge.md)。
 
 ## <a name="cost"></a>成本
 

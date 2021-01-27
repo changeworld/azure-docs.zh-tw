@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/02/2019
+ms.date: 01/27/2021
 ms.author: yelevin
-ms.openlocfilehash: 2465cf74dbf4fbf074aed8f8e4097a236e628425
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 11c5c77623fcc693210d5a42bf94c968e884fec3
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660639"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920015"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>使用 Azure Sentinel 的實用資源
 
@@ -28,7 +28,7 @@ ms.locfileid: "94660639"
 
 本文列出的資源可協助您取得有關使用 Azure Sentinel 的詳細資訊。
 
-Azure Logic Apps 連接器： <https://docs.microsoft.com/connectors/>
+- **Azure Logic Apps 連接器**： <https://docs.microsoft.com/connectors/>
 
 
 ## <a name="auditing-and-reporting"></a>稽核與報告
@@ -86,10 +86,25 @@ Azure Sentinel 的 Audit 記錄會保留在 [Azure 活動記錄](../azure-monito
 
 ## <a name="blogs-and-forums"></a>Blog 和論壇
 
-在 [>techcommunity 空間](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel) 張貼您的問題以進行 Azure Sentinel。
+我們愛聽取使用者的意見！
 
-從 [>techcommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) 和 [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/)觀看 Azure Sentinel 的 blog 文章。
+- 在 [>techcommunity 空間](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel)**張貼您的問題** 以進行 Azure Sentinel。 
+
+- 透過我們的 [使用者心聲](https://feedback.azure.com/forums/920458-azure-sentinel)程式 **傳送建議的改進**。
+
+- **查看並批註** Azure Sentinel 的 blog 文章：
+
+    - [>techcommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) 
+    - [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/)
+
+如需有關 Azure 安全性與合規性的詳細資訊，請參閱 [Microsoft Azure 安全性與合規性 blog](https://techcommunity.microsoft.com/t5/microsoft-security-and/bg-p/MicrosoftSecurityandCompliance)。
 
 
 ## <a name="next-steps"></a>後續步驟
-在本檔中，您會看到一份資源清單，當您使用 Azure Sentinel 時很有用。 您可以在 [Microsoft Azure 的安全性與合規性 blog](/archive/blogs/azuresecurity/)中找到有關 Azure 安全性與合規性的其他資訊。
+
+> [!div class="nextstepaction"]
+> [取得認證！](/learn/paths/security-ops-sentinel/)
+
+> [!div class="nextstepaction"]
+> [閱讀客戶使用案例案例](https://customers.microsoft.com/en-us/search?sq=%22Azure%20Sentinel%20%22&ff=&p=0&so=story_publish_date%20desc)
+

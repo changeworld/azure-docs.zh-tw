@@ -1,14 +1,14 @@
 ---
 title: 如何使用 PowerShell 管理指派
 description: 瞭解如何使用官方 Azure 藍圖 PowerShell 模組 Az. 藍圖來管理藍圖指派。
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 3bcb3731bd1270497945fa86406d08b2f9750c85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d60fb887e07b4697b8e86a4e2fd74a735ac0bb58
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051401"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919371"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>如何使用 PowerShell 管理指派
 
@@ -29,7 +29,7 @@ Azure 藍圖模組需要下列軟體：
 
 適用于 PowerShell 的 Azure 藍圖模組是 **Az. 藍圖**。
 
-1. 從**系統管理** PowerShell 提示字元中，執行下列命令：
+1. 從 **系統管理** PowerShell 提示字元中，執行下列命令：
 
    ```azurepowershell-interactive
    # Install the Azure Blueprints module from PowerShell Gallery
@@ -49,7 +49,7 @@ Azure 藍圖模組需要下列軟體：
 ## <a name="get-blueprint-definitions"></a>取得藍圖定義
 
 使用指派的第一個步驟通常是取得藍圖定義的參考。
-`Get-AzBlueprint`Cmdlet 會取得一或多個藍圖定義。 Cmdlet 可以從管理群組取得藍圖定義，或使用 `-ManagementGroupId {mgId}` 訂閱 `-SubscriptionId {subId}` 。 **Name**參數會取得藍圖定義，但必須與**ManagementGroupId**或**SubscriptionId**一起使用。 **版本** 可以搭配 **名稱** 使用，以便更明確地瞭解所傳回的藍圖定義。 切換參數**Version**會 `-LatestPublished` 抓取最新發行的版本，而不是版本。
+`Get-AzBlueprint`Cmdlet 會取得一或多個藍圖定義。 Cmdlet 可以從管理群組取得藍圖定義，或使用 `-ManagementGroupId {mgId}` 訂閱 `-SubscriptionId {subId}` 。 **Name** 參數會取得藍圖定義，但必須與 **ManagementGroupId** 或 **SubscriptionId** 一起使用。 **版本** 可以搭配 **名稱** 使用，以便更明確地瞭解所傳回的藍圖定義。 切換參數會 `-LatestPublished` 抓取最新發行的版本，而不是版本。
 
 下列範例會使用 `Get-AzBlueprint` ，從表示為的特定訂用帳戶中，取得名稱為 ' 101-藍圖-定義-訂用帳戶 ' 之藍圖定義的所有版本 `{subId}` ：
 
@@ -129,7 +129,7 @@ ResourceGroups    : ResourceGroup
 
 - **名稱** [必要]
   - 指定藍圖指派的名稱
-  - 必須是唯一的，且不存在於**SubscriptionId**中
+  - 必須是唯一的，且不存在於 **SubscriptionId** 中
 - **藍圖** [必要]
   - 指定要指派的藍圖定義
   - 用 `Get-AzBlueprint` 來取得參考物件
@@ -145,14 +145,14 @@ ResourceGroups    : ResourceGroup
 - **SystemAssignedIdentity** (選用) 
   - 選取即可針對指派建立系統指派的受控識別，並部署資源
   - "Identity" 參數集的預設值
-  - 無法與**UserAssignedIdentity**搭配使用
+  - 無法與 **UserAssignedIdentity** 搭配使用
 - **UserAssignedIdentity** (選用) 
   - 指定要用於指派和部署資源的使用者指派受控識別
   - 部分的 "identity" 參數集
-  - 無法與**SystemAssignedIdentity**搭配使用
+  - 無法與 **SystemAssignedIdentity** 搭配使用
 - **參數** (選擇性) 
   - 針對藍圖指派設定[動態參數](../concepts/parameters.md#dynamic-parameters)的索引鍵/值組[雜湊表](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
-  - 動態參數的預設值是定義中的**defaultValue**
+  - 動態參數的預設值是定義中的 **defaultValue**
   - 如果未提供參數且沒有 **defaultValue**，則參數不是選擇性的
 
     > [!NOTE]
@@ -164,11 +164,11 @@ ResourceGroups    : ResourceGroup
   - 如果未提供資源群組參數，且沒有 **defaultValue**，則資源群組參數不是選擇性的
 - **>assignmentfile** (選用) 
   - 藍圖指派的 JSON 檔案表示路徑
-  - 此參數是 PowerShell 參數集的一部分，其中只包含 **名稱**、 **藍圖**和 **SubscriptionId**，以及一般參數。
+  - 此參數是 PowerShell 參數集的一部分，其中只包含 **名稱**、 **藍圖** 和 **SubscriptionId**，以及一般參數。
 
 ### <a name="example-1-provide-parameters"></a>範例1：提供參數
 
-下列範例會為使用提取的「我的藍圖」藍圖定義建立 ' 1.1 ' 版的新指派 `Get-AzBlueprint` ，將受控識別和指派物件位置設定為 ' westus2 '，使用 _AllResourcesReadOnly_鎖定資源，並在以下清單示的特定訂用帳戶上，設定 **參數** 和 **ResourceGroupParameter** 的雜湊表 `{subId}` ：
+下列範例會為使用提取的「我的藍圖」藍圖定義建立 ' 1.1 ' 版的新指派 `Get-AzBlueprint` ，將受控識別和指派物件位置設定為 ' westus2 '，使用 _AllResourcesReadOnly_ 鎖定資源，並在以下清單示的特定訂用帳戶上，設定 **參數** 和 **ResourceGroupParameter** 的雜湊表 `{subId}` ：
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -205,7 +205,7 @@ ResourceGroups    : ResourceGroup
 
 ### <a name="example-2-use-a-json-assignment-definition-file"></a>範例2：使用 JSON 指派定義檔
 
-下列範例會建立與 [範例 1](#example-1-provide-parameters)幾乎相同的指派。 此範例會示範如何使用 JSON 指派定義檔和 **>assignmentfile** 參數，而不是將參數傳遞給 Cmdlet。 此外， **excludedPrincipals** 屬性會設定為 **鎖定**的一部分。 沒有適用于 **excludedPrincipals** 的 PowerShell 參數，而且只能透過 JSON 指派定義檔設定屬性來設定屬性。
+下列範例會建立與 [範例 1](#example-1-provide-parameters)幾乎相同的指派。 此範例會示範如何使用 JSON 指派定義檔和 **>assignmentfile** 參數，而不是將參數傳遞給 Cmdlet。 此外， **excludedPrincipals** 屬性會設定為 **鎖定** 的一部分。 沒有適用于 **excludedPrincipals** 的 PowerShell 參數，而且只能透過 JSON 指派定義檔設定屬性來設定屬性。
 
 ```json
 {
@@ -250,7 +250,7 @@ $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Subsc
 
 ## <a name="update-blueprint-assignments"></a>更新藍圖指派
 
-有時必須更新已建立的藍圖指派。 `Set-AzBlueprintAssignment`Cmdlet 會處理此動作。 此 Cmdlet 會採用 Cmdlet 所執行的大部分相同參數 `New-AzBlueprintAssignment` ，以允許更新在指派上設定的任何設定。 例外狀況為 _名稱_、 _藍圖_和 _SubscriptionId_。 只會更新提供的值。
+有時必須更新已建立的藍圖指派。 `Set-AzBlueprintAssignment`Cmdlet 會處理此動作。 此 Cmdlet 會採用 Cmdlet 所執行的大部分相同參數 `New-AzBlueprintAssignment` ，以允許更新在指派上設定的任何設定。 例外狀況為 _名稱_、 _藍圖_ 和 _SubscriptionId_。 只會更新提供的值。
 
 若要瞭解更新藍圖指派時所發生的情況，請參閱 [更新指派的規則](./update-existing-assignments.md#rules-for-updating-assignments)。
 
@@ -273,14 +273,14 @@ $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Subsc
 - **SystemAssignedIdentity** (選用) 
   - 選取即可針對指派建立系統指派的受控識別，並部署資源
   - "Identity" 參數集的預設值
-  - 無法與**UserAssignedIdentity**搭配使用
+  - 無法與 **UserAssignedIdentity** 搭配使用
 - **UserAssignedIdentity** (選用) 
   - 指定要用於指派和部署資源的使用者指派受控識別
   - 部分的 "identity" 參數集
-  - 無法與**SystemAssignedIdentity**搭配使用
+  - 無法與 **SystemAssignedIdentity** 搭配使用
 - **參數** (選擇性) 
   - 針對藍圖指派設定[動態參數](../concepts/parameters.md#dynamic-parameters)的索引鍵/值組[雜湊表](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
-  - 動態參數的預設值是定義中的**defaultValue**
+  - 動態參數的預設值是定義中的 **defaultValue**
   - 如果未提供參數且沒有 **defaultValue**，則參數不是選擇性的
 
     > [!NOTE]

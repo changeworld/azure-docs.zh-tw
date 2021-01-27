@@ -4,12 +4,12 @@ description: 在本教學課程中，您將了解如何設定 Azure Container Re
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 342f7fc37edb3a1623b72c57e8766b1a484d0e8d
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
-ms.translationtype: HT
+ms.openlocfilehash: 8ec3dbb5019e6bb3947c6d3aec50fd308d99e0fb
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96559145"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919501"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>教學課程：在 Azure Container Registry 中更新基底映像時自動執行容器映像建置 
 
@@ -89,7 +89,7 @@ az acr task create \
     --name baseexample1 \
     --image helloworld:{{.Run.ID}} \
     --arg REGISTRY_NAME=$ACR_NAME.azurecr.io \
-    --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
+    --context https://github.com/$GIT_USER/acr-build-helloworld-node.git#main \
     --file Dockerfile-app \
     --git-access-token $GIT_PAT
 ```

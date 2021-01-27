@@ -3,12 +3,12 @@ title: 變更 Azure Service Fabric 叢集設定
 description: 本文說明您可以自訂的網狀架構設定和網狀架構升級原則。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: c055ad1dad8b9574c8d811284a34619ee3648a10
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 34a63a86bc10a787ef077b9067c3fba5a9e4da25
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095265"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919777"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自訂 Service Fabric 叢集設定
 本文說明您可以為 Service Fabric 叢集自訂的各種網狀架構設定。 針對裝載於 Azure 中的叢集，您可以透過 [Azure 入口網站](https://portal.azure.com)或使用 Azure Resource Manager 範本來自訂設定。 如需詳細資訊，請參閱[升級 Azure 叢集的設定](service-fabric-cluster-config-upgrade-azure.md)。 針對獨立叢集，您會透過更新 *ClusterConfig.json* 檔案並在叢集上執行設定升級來自訂設定。 如需詳細資訊，請參閱[升級獨立叢集的設定](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -521,7 +521,7 @@ ms.locfileid: "97095265"
 |AutoDetectAvailableResources|布林值，預設值為 TRUE|靜態|此組態會觸發自動偵測節點上可用資源 (CPU 和記憶體) 的作業。當此組態設定為 true 時，我們會讀取實際的容量，並在使用者指定的節點容量錯誤或完全未定義容量時加以更正。如果此組態設定為 false，我們會追蹤使用者指定的節點容量錯誤的警告，但不會加以更正，這表示使用者想要將容量指定為大於節點實際擁有的容量，如果並未定義容量，則會採用無限容量 |
 |BalancingDelayAfterNewNode | 時間 (秒)，預設值為 120 |動態|以秒為單位指定時間範圍。 在新增節點之後，不要在此期間啟動平衡活動。 |
 |BalancingDelayAfterNodeDown | 時間 (秒)，預設值為 120 |動態|以秒為單位指定時間範圍。 在節點關閉事件之後，不要在此期間啟動平衡活動。 |
-|BlockNodeInUpgradeConstraintPriority | 整數，預設值為 0 |動態|決定容量條件約束的優先順序：0：硬性;1：軟;負數：忽略  |
+|BlockNodeInUpgradeConstraintPriority | 整數，預設值為-1 |動態|決定容量條件約束的優先順序：0：硬性;1：軟;負數：忽略  |
 |CapacityConstraintPriority | 整數，預設值為 0 | 動態|決定容量條件約束的優先順序︰0：硬式、1︰軟式、負數︰忽略。 |
 |ConsecutiveDroppedMovementsHealthReportLimit | 整數，預設值為 20 | 動態|定義在執行診斷和發出健康狀態警告之前，ResourceBalancer 所發出之移動遭到捨棄的連續次數。 負數︰不會在此狀況下發出任何警告。 |
 |ConstraintFixPartialDelayAfterNewNode | 時間 (秒)，預設值為 120 |動態| 以秒為單位指定時間範圍。 在新增節點之後，不要在此期間修正 FaultDomain 和 UpgradeDomain 條件約束違規。 |

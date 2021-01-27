@@ -1,14 +1,14 @@
 ---
 title: Azure 藍圖函式
 description: 描述可用於 Azure 藍圖定義和指派中藍圖成品的函式。
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: reference
-ms.openlocfilehash: fe984ee7664b0d50fb891d946f9f40a200ccce09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92cb906e87179073b7a69aa0bd4eab22c77087f9
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89050755"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919269"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>搭配 Azure 藍圖使用的函式
 
@@ -40,7 +40,7 @@ Azure 藍圖會提供讓藍圖定義更具動態性的函式。 這些函式可�
 
 ### <a name="return-value"></a>傳回值
 
-輸出屬性的物件。 **輸出**屬性取決於所參考的藍圖成品類型。 所有類型都會遵循以下格式：
+輸出屬性的物件。 **輸出** 屬性取決於所參考的藍圖成品類型。 所有類型都會遵循以下格式：
 
 ```json
 {

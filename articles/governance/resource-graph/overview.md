@@ -1,14 +1,14 @@
 ---
 title: Azure Resource Graph 概觀
 description: 了解 Azure Resource Graph 服務如何能夠在訂用帳戶和租用戶之間，大規模地進行複雜的資源查詢。
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: overview
-ms.openlocfilehash: 8e61dadc44a2b07066f7bac761c366c746cef1f1
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
-ms.translationtype: HT
+ms.openlocfilehash: b5df124d07b8ecfb20f5dec08830d8156e8df2cd
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057768"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919136"
 ---
 # <a name="what-is-azure-resource-graph"></a>什麼是 Azure Resource Graph？
 
@@ -39,7 +39,7 @@ Resource Manager 目前支援查詢基本資源欄位 (尤其是資源名稱、�
 - 檢視過去 14 天中資源上的變更記錄，以查看變更的屬性和變更的時間。 (預覽)
 
 > [!NOTE]
-> 作為_預覽_功能，某些 `type` 物件會有額外的非 Resource Manager 屬性可用。 如需詳細資訊，請參閱[擴充屬性 (預覽)](./concepts/query-language.md#extended-properties)。
+> 作為 _預覽_ 功能，某些 `type` 物件會有額外的非 Resource Manager 屬性可用。 如需詳細資訊，請參閱[擴充屬性 (預覽)](./concepts/query-language.md#extended-properties)。
 
 ## <a name="how-resource-graph-is-kept-current"></a>Resource Graph 保持最新狀態的方式
 
@@ -67,7 +67,7 @@ Resource Graph 接著會更新其資料庫。 Resource Graph 也會執行標準�
 Azure CLI 和 Azure PowerShell 會使用使用者可存取的訂用帳戶。 直接使用 REST API 時，訂用帳戶清單會由使用者提供。 如果使用者可存取清單中的任何訂用帳戶，則系統會傳回使用者可存取訂用帳戶的查詢結果。 這種行為與呼叫[資源群組 - 清單](/rest/api/resources/resourcegroups/list)時相同 \- 您會取得您可以存取的資源群組，而且沒有任何跡象表明結果可能是部分的。 如果使用者具有適當權限的訂用帳戶清單中沒有任何訂用帳戶，則回應為 403 (禁止)。
 
 > [!NOTE]
-> 在**預覽** REST API 版本 `2020-04-01-preview` 中，可能會省略訂用帳戶清單的步驟。
+> 在 **預覽** REST API 版本 `2020-04-01-preview` 中，可能會省略訂用帳戶清單的步驟。
 > 當 `subscriptions` 和 `managementGroupId` 屬性未在要求中定義時，「範圍」 會設定為租用戶。 如需詳細資訊，請參閱[查詢範圍](./concepts/query-language.md#query-scope)。
 
 ## <a name="throttling"></a>節流

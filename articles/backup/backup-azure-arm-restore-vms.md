@@ -4,12 +4,12 @@ description: 使用 Azure 入口網站從復原點還原 Azure 虛擬機器，�
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: a82e8031f118f48f7c19cfc283c1be13d5d6f89d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 56bd41aaa607a3bc0f319f46ce5d0c3f8c78d27a
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757588"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919592"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 入口網站中還原 Azure VM 資料
 
@@ -25,6 +25,7 @@ Azure 備份提供數種方式來還原 VM。
 **還原磁碟** | 還原 VM 磁碟，以便後續用於建立新 VM。<br/><br/> Azure 備份提供一個範本，協助您自訂和建立 VM。 <br/><br> 還原作業會產生範本，您可以下載並使用該範本來指定自訂 VM 設定，並建立 VM。<br/><br/> 磁碟會複製到所指定的資源群組。<br/><br/> 或者，您可以將磁碟連結至現有 VM，或使用 PowerShell 建立新的 VM。<br/><br/> 此選項十分適用於自訂 VM、新增備份時沒有的組態設定，或新增必須使用範本或 PowerShell 來配置的設定。
 **取代現有的** | 您可以還原磁碟，然後使用該磁碟來取代現有 VM 上的磁碟。<br/><br/> 目前的 VM 必須存在。 如果已刪除，則無法使用此選項。<br/><br/> Azure 備份會在取代磁碟前，取得現有 VM 的快照集，並儲存於所指定的暫存位置， 然後使用所選還原點來取代連線到 VM 的現有磁碟。<br/><br/> 快照集會複製到保存庫，並根據保留原則加以保留。 <br/><br/> 完成取代磁碟作業之後，原始磁碟會保留在資源群組中。 如果不需要，您可以選擇手動刪除原始磁片。 <br/><br/>未加密的受控 Vm （包括 [使用自訂映射建立](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/)的 vm）支援取代現有的。 傳統 Vm 不支援。<br/><br/> 如果還原點中的磁碟數目多於或少於目前的 VM，則還原點中的磁碟數目只會反映該 VM 組態。<br><br> 具有連結資源的 Vm （例如 [使用者指派的受控識別](../active-directory/managed-identities-azure-resources/overview.md) 或 [Key Vault](../key-vault/general/overview.md)）也支援「取代現有」。
 **跨區域 (次要區域)** | 跨區域還原可用來還原次要區域 (即 [Azure 配對區域](../best-practices-availability-paired-regions.md#what-are-paired-regions) (機器翻譯)) 中的 Azure VM。<br><br> 如果備份是在次要區域中完成，即可將所有 Azure VM 還原至選取的復原點。<br><br> 在備份期間，不會將快照集複寫至次要區域。 只會複寫儲存在保存庫中的資料。 因此次要區域還原只是保存 [庫層](about-azure-vm-restore.md#concepts) 的還原。 次要區域的還原時間幾乎會與主要區域的保存庫層還原時間相同。  <br><br> 下列選項可使用此功能：<br> <li> [建立 VM](#create-a-vm) <br> <li> [還原磁碟](#restore-disks) (機器翻譯) <br><br> 目前不支援[取代現有磁碟](#replace-existing-disks) (機器翻譯) 選項。<br><br> 權限<br> 次要地區的還原作業可由備份管理員和應用程式管理員執行。
+**跨區域還原** | 跨區域還原可以用來在相同區域的任何[可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview)中還原[Azure 區域固定的 vm](https://docs.microsoft.com/azure/virtual-machines/windows/create-portal-availability-zone) 。 <br> <br> 您可以針對選取的復原點，將此功能發行之後備份的所有 Azure 區域固定 Vm 還原至您選擇的區域。 依預設，它會在備份所在的相同區域中還原。 <br> <br> 如果 VM 的固定區域變得無法使用，則可在嚴重損壞修復案例中使用。
 
 > [!NOTE]
 > 您也可以復原 Azure VM 上的特定檔案和資料夾。 [深入了解](backup-azure-restore-files-from-vm.md)。
@@ -138,7 +139,7 @@ Azure 備份提供數種方式來還原 VM。
 
 作為其中一個 [還原選項](#restore-options)，跨區域還原 (CRR) 可讓您在次要區域（也就是 Azure 配對的區域）中還原 azure vm。
 
-若要在預覽期間登入功能，請閱讀 [ [開始之前] 區段](./backup-create-rs-vault.md#set-cross-region-restore)。
+若要開始使用此功能，請閱讀 [ [開始之前] 區段](./backup-create-rs-vault.md#set-cross-region-restore)。
 
 若要查看是否已啟用 CRR，請依照「 [設定跨區域還原](backup-create-rs-vault.md#configure-cross-region-restore)」中的指示進行。
 
@@ -160,6 +161,8 @@ Azure 備份提供數種方式來還原 VM。
 
 次要區域還原使用者體驗將類似于主要區域還原使用者體驗。 在 [還原設定] 窗格中設定詳細資料來設定您的還原時，系統會提示您只提供次要區域參數。
 
+目前，次要區域 [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) 的主要區域最多12小時，即使 [讀取權限異地冗余儲存體 (GRS) ](https://docs.microsoft.com/azure/storage/common/storage-redundancy#redundancy-in-a-secondary-region) 複寫是15分鐘。
+
 ![選擇要還原的 VM](./media/backup-azure-arm-restore-vms/sec-restore.png)
 
 ![選取還原點](./media/backup-azure-arm-restore-vms/sec-rp.png)
@@ -176,6 +179,14 @@ Azure 備份提供數種方式來還原 VM。
 >- 在觸發還原並且在資料傳輸階段中，無法取消還原作業。
 >- 跨區域還原功能可還原 CMK (客戶管理的金鑰) 啟用的 Azure Vm，這些 Vm 不會備份到啟用 CMK 的復原服務保存庫中，而是在次要區域中以非 CMK 啟用的 Vm 進行備份。
 >- 在次要區域中還原所需的 Azure 角色與主要區域中的角色相同。
+
+## <a name="cross-zonal-restore"></a>跨區域還原
+
+跨區域還原可以用來在相同區域的任何[可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview)中還原[Azure 區域固定的 vm](https://docs.microsoft.com/azure/virtual-machines/windows/create-portal-availability-zone) 。
+
+在還原程式中，您會看到 [**可用性區域**] 選項。 您會先看到您的預設區域。 若要選擇不同的區域，請選擇您選擇的區域數目。 如果預設可用性區域因為中斷，或您選擇在不同區域中還原的任何其他原因而無法使用，請選擇不同的區域。
+
+![選擇可用性區域](./media/backup-azure-arm-restore-vms/cross-zonal-restore.png)
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>監視次要區域還原作業
 

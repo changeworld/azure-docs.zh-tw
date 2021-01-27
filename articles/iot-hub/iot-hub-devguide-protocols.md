@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 1792535fab79ed20bdf77f96b4fc39f13b0c7bbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2578b47d27ef062d83ba8621a49e9a8f439897c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90015990"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919020"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>參考 - 選擇通訊協定
 
@@ -42,7 +42,7 @@ ms.locfileid: "90015990"
 
 當您選擇裝置端通訊的通訊協定時，考慮下列幾點：
 
-* **雲端到裝置的模式**。 HTTPS 沒有可實作伺服器推送的有效方式。 因此，當您使用 HTTPS 時，裝置會輪詢「IoT 中樞」來了解是否有雲端到裝置的訊息。 這對於裝置和 IoT 中樞而言都沒有效率。 在目前的 HTTPS 指導方針中，每個裝置應該每隔 25 分鐘 (或更久) 進行一次訊息輪詢。 MQTT 和 AMQP 則支援在收到雲端到裝置訊息時進行伺服器推送。 它們能夠將訊息立即從 IoT 中樞推送到裝置。 如果傳遞延遲是一大考量，最好是使用 MQTT 或 AMQP 通訊協定。 針對很少連接的裝置，也適用 HTTPS。
+* **雲端到裝置的模式**。 HTTPS 沒有可實作伺服器推送的有效方式。 因此，當您使用 HTTPS 時，裝置會輪詢「IoT 中樞」來了解是否有雲端到裝置的訊息。 這對於裝置和 IoT 中樞而言都沒有效率。 在目前的 HTTPS 指導方針中，每個裝置應該每隔 25 分鐘 (或更久) 進行一次訊息輪詢。 發出更多 HTTPS 接收會導致「IoT 中樞」對要求進行節流。 MQTT 和 AMQP 則支援在收到雲端到裝置訊息時進行伺服器推送。 它們能夠將訊息立即從 IoT 中樞推送到裝置。 如果傳遞延遲是一大考量，最好是使用 MQTT 或 AMQP 通訊協定。 針對很少連接的裝置，也適用 HTTPS。
 
 * **現場閘道**。 MQTT 和 HTTPS 僅支援單一裝置身分識別 (裝置識別碼，以及每個 TLS 連接) 的認證。 基於這個理由，需要使用多個裝置身分識別的 [欄位閘道案例](iot-hub-devguide-endpoints.md#field-gateways) 不支援這些通訊協定，而在單一或共用 IoT 中樞的上游連線集區中使用多個裝置身分識別。 這類閘道可針對其上游流量，使用針對每個連線支援多個裝置身分識別的通訊協定（例如 AMQP）。
 
@@ -61,7 +61,7 @@ ms.locfileid: "90015990"
 
 裝置可以在 Azure 中使用各種通訊協定來與 IoT 中樞通訊。 一般而言，選擇的通訊協定是根據方案的特定需求而定。 下表列出必須要為裝置開啟的輸出連接埠，以使用特定的通訊協定：
 
-| 通訊協定 | 連接埠 |
+| 通訊協定 | Port |
 | --- | --- |
 | MQTT |8883 |
 | 透過 WebSocket 的 MQTT |443 |

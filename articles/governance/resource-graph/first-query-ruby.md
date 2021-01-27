@@ -1,14 +1,14 @@
 ---
 title: 快速入門：您的第一個 Ruby 查詢
 description: 在此快速入門中，您將遵循步驟以啟用 Ruby 的 Resource Graph gem，並執行第一個查詢。
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: 4ffd7f33fb83b7a1f247f687b77dd2ef9c8e5bc9
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
-ms.translationtype: HT
+ms.openlocfilehash: 41769359eaa1f930d34b0a182f35da38a6f5109d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057258"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920032"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-ruby"></a>快速入門：使用 Ruby 執行您的第一個 Resource Graph 查詢
 
@@ -85,7 +85,7 @@ ms.locfileid: "92057258"
 
 ## <a name="run-your-first-resource-graph-query"></a>執行第一個 Resource Graph 查詢
 
-儲存 Ruby 指令碼並準備好使用之後，就可以開始試用簡單的 Resource Graph 查詢。 查詢會傳回前五個 Azure 資源，以及每個資源的**名稱**與**資源類型**。
+儲存 Ruby 指令碼並準備好使用之後，就可以開始試用簡單的 Resource Graph 查詢。 查詢會傳回前五個 Azure 資源，以及每個資源的 **名稱** 與 **資源類型**。
 
 在 `argQuery` 的每個呼叫中都有一些變數，需要您以自己的值取代這些變數：
 
@@ -105,7 +105,7 @@ ms.locfileid: "92057258"
    > [!NOTE]
    > 當此查詢範例未提供排序修飾詞，例如 `order by`，多次執行此查詢可能會為每個要求產生不同的資源集。
 
-1. 將最後一個參數變更為 `argQuery.rb`，並變更查詢，以 `order by` **名稱**屬性：
+1. 將最後一個參數變更為 `argQuery.rb`，並變更查詢，以 `order by` **名稱** 屬性：
 
    ```bash
    ruby argQuery.rb "{tenantId}" "{clientId}" "{clientSecret}" "{subscriptionId}" "Resources | project name, type | limit 5 | order by name asc"
@@ -114,13 +114,13 @@ ms.locfileid: "92057258"
    > [!NOTE]
    > 如同第一個查詢一樣，多次執行此查詢可能會為每個要求產生不同的資源集。 查詢命令的順序很重要。 在此範例中，`order by` 會出現在 `limit` 之後。 此命令順序會先限制查詢結果，然後再加以排序。
 
-1. 將最後一個參數變更為 `argQuery.rb`，並變更查詢，以先 `order by` **名稱**屬性，然後 `limit` 為只顯示前五個結果：
+1. 將最後一個參數變更為 `argQuery.rb`，並變更查詢，以先 `order by` **名稱** 屬性，然後 `limit` 為只顯示前五個結果：
 
    ```bash
    ruby argQuery.rb "{tenantId}" "{clientId}" "{clientSecret}" "{subscriptionId}" "Resources | project name, type | order by name asc | limit 5"
    ```
 
-執行最終查詢數次後，假設您的環境中未變更任何內容，傳回的結果將會一致，且依**名稱**屬性排序，但仍限制為只顯示前五個結果。
+執行最終查詢數次後，假設您的環境中未變更任何內容，傳回的結果將會一致，且依 **名稱** 屬性排序，但仍限制為只顯示前五個結果。
 
 ## <a name="clean-up-resources"></a>清除資源
 

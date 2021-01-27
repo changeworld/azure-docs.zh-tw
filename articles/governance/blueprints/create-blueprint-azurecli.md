@@ -1,14 +1,14 @@
 ---
 title: 快速入門：使用 Azure CLI 建立藍圖
 description: 在此快速入門中，您將在 Azure CLI 中使用 Azure 藍圖建立、定義及部署成品。
-ms.date: 01/26/2021
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: a0e44925bdec78b8b02a50c8b3f91db0bb764976
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 6ce3031c93f973c2efb251fad371a6f3750ae0fd
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98875189"
+ms.locfileid: "98920235"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>快速入門：使用 Azure CLI 定義及指派 Azure 藍圖
 
@@ -167,6 +167,9 @@ ms.locfileid: "98875189"
         --parameters artifacts\policyTags.json
      ```
 
+     > [!NOTE]
+     > `az blueprint`在 Mac 上使用時，請將取代 `\` `/` 為包含路徑的參數值。 在此情況下， **參數** 值會變成 `artifacts/policyTags.json` 。
+
 1. 在訂用帳戶為儲存標記新增另一個儲存體標記 (重複使用 _storageAccountType_ 參數)。 這個新增的原則指派成品示範藍圖上定義的參數可供多個成品使用。 在此範例中，會使用 **storageAccountType** 來設定資源群組的標記。 此值會提供在下一個步驟中建立的儲存體帳戶的相關資訊。 此範例使用 [將標籤及其預設值套用至資源群組] 內建原則，GUID 為 `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`。
 
    - JSON 檔案 - artifacts\policyStorageTags.json
@@ -193,6 +196,9 @@ ms.locfileid: "98875189"
         --description 'Apply storage tag and the parameter also used by the template to resource groups' \
         --parameters artifacts\policyStorageTags.json
      ```
+
+     > [!NOTE]
+     > `az blueprint`在 Mac 上使用時，請將取代 `\` `/` 為包含路徑的參數值。 在此情況下， **參數** 值會變成 `artifacts/policyStorageTags.json` 。
 
 1. 在資源群組下新增範本。 ARM 範本的 **template** 參數包含範本的一般 JSON 元件。 此範本也會將 **storageAccountType**、**tagName** 和 **tagValue** 藍圖參數傳至範本，以重複使用這些參數。 藍圖參數可透過使用 **parameters** 參數提供給範本使用，而且可在使用機碼值組來插入值的 JSON 範本內使用。 藍圖和範本參數名稱可能相同。
 
@@ -276,6 +282,9 @@ ms.locfileid: "98875189"
         --parameters artifacts\templateStorageParams.json \
         --resource-group-art 'storageRG'
      ```
+
+     > [!NOTE]
+     > `az blueprint`在 Mac 上使用時，請將取代 `\` `/` 為包含路徑的參數值。 在此情況下， **範本** 的值會變成 `artifacts/templateStorage.json` ，而 **參數** 則會變成 `artifacts/templateStorageParams.json` 。
 
 1. 在資源群組下新增角色指派。 類似於先前的角色指派項目，下列範例為 **擁有者** 角色使用定義識別碼，並為它提供藍圖的不同參數。 此範例使用 GUID 為 `8e3af657-a8ff-443c-a75c-2fe8c4bcb635` 的 _擁有者_ 內建角色。
 

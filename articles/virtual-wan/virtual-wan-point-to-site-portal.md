@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 11/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: e7e65d5d2941765df98b3bf3b7fb8ff2e89b7e9f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
-ms.translationtype: HT
+ms.openlocfilehash: 1876ab86e6f4c46edc23361dd884d8b32328f36c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411196"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919056"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>教學課程：使用 Azure 虛擬 WAN 建立使用者 VPN 連線
 
@@ -24,6 +24,7 @@ ms.locfileid: "94411196"
 > * 建立虛擬 WAN
 > * 建立 P2S 設定
 > * 建立虛擬中樞
+> * 選擇用戶端位址集區
 > * 指定 DNS 伺服器
 > * 產生 VPN 用戶端設定檔組態套件
 > * 設定 VPN 用戶端
@@ -49,6 +50,11 @@ ms.locfileid: "94411196"
 
 [!INCLUDE [Create hub](../../includes/virtual-wan-p2s-hub-include.md)]
 
+
+## <a name="choose-p2s-client-address-pools"></a><a name="chooseclientpools"></a> 選擇 P2S 用戶端位址集區
+
+[!INCLUDE [Choose pools](../../includes/virtual-wan-allocating-p2s-pools.md)]
+
 ## <a name="specify-dns-server"></a><a name="dns"></a>指定 DNS 伺服器
 
 您可以在建立中樞時進行此設定，或在稍後修改。 若要修改，請找出虛擬中樞。 在 [使用者 VPN (點對站)] 上選取 [設定]，然後在 [自訂 DNS 伺服器] 文字方塊中輸入 DNS 伺服器 IP 位址。 您可以指定最多 5 部 DNS 伺服器。
@@ -73,6 +79,8 @@ ms.locfileid: "94411196"
 1. 瀏覽至虛擬 WAN。
 1. 在 [概觀] 頁面中，地圖上的每個點都代表著中樞。
 1. 在 **中樞與連線** 區段中，您可以檢視中樞狀態、網站、區域、VPN 連線狀態和輸入與輸出位元組。
+
+
 
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>清除資源
 

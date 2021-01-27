@@ -6,16 +6,16 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 161e3e7fbc5b343ee73142f0e968367c3cbfaa6b
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 7245b0c0fb1e96959ef5dca4992cf52a38accb58
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927408"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920285"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions 系結運算式模式
 
-[觸發程式和](./functions-triggers-bindings.md)系結最強大的功能之一就是系結 *運算式* 。 在 function.json  檔案以及函式參數與程式碼中，您可以使用多個運算式，這些運算式會將各種來源解析為相對應的多個值。
+[觸發程式和](./functions-triggers-bindings.md)系結最強大的功能之一就是系結 *運算式*。 在 function.json 檔案以及函式參數與程式碼中，您可以使用多個運算式，這些運算式會將各種來源解析為相對應的多個值。
 
 大多數運算式會藉由以大括號括住以供您識別。 例如，在佇列觸發程序函式中，`{queueTrigger}` 會解析為佇列訊息文字。 如果 Blob 輸出繫結的 `path` 屬性是 `container/{queueTrigger}`，且函式是由佇列訊息 `HelloWorld` 所觸發，則系統會建立名為 `HelloWorld` 的 Blob。
 
@@ -30,13 +30,13 @@ ms.locfileid: "92927408"
 
 ## <a name="binding-expressions---app-settings"></a>繫結運算式 - 應用程式設定
 
-為了遵循最佳做法，祕密和連接字串應使用應用程式設定來管理，而不是使用組態檔。 這會限制對這些祕密的存取，並保護儲存在公用原始檔控制存放庫的檔案，例如 function.json  。
+為了遵循最佳做法，祕密和連接字串應使用應用程式設定來管理，而不是使用組態檔。 這會限制對這些祕密的存取，並保護儲存在公用原始檔控制存放庫的檔案，例如 function.json。
 
 當您想要根據環境來變更設定時，應用程式設定也很有用。 例如，在測試環境中，您可能會想要監視不同佇列或 Blob 儲存體容器。
 
 應用程式設定繫結運算式可藉由不同於其他繫結運算式的方式來識別：它們會以百分比符號裹住，而不是以大括號裹住。 例如，如果 Blob 輸出繫結路徑是 `%Environment%/newblob.txt` 而 `Environment` 應用程式設定值是 `Development`，則系統會在 `Development` 容器中建立 Blob。
 
-在本機執行函式時，應用程式設定值來自 local.settings.json  檔案。
+在本機執行函式時，應用程式設定值來自 local.settings.json 檔案。
 
 > [!NOTE]
 > `connection`觸發程式和系結的屬性是特殊案例，會自動將值解析為應用程式設定，而不使用百分比符號。 
@@ -117,7 +117,7 @@ public static void Run(Stream image, string filename, Stream imageSmall, ILogger
 <!--TODO: add JavaScript example -->
 <!-- Blocked by bug https://github.com/Azure/Azure-Functions/issues/248 -->
 
-類別庫中的所有屬性都可以使用繫結運算式和模式。 在下列範例中，屬性建構函式參數是與上述 function.json  範例相同的 `path` 值： 
+類別庫中的所有屬性都可以使用繫結運算式和模式。 在下列範例中，屬性建構函式參數是與上述 function.json 範例相同的 `path` 值： 
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -156,7 +156,7 @@ public static void Run(
 * QueueTrigger - 如果是有效字串，便觸發訊息內容
 * DequeueCount
 * ExpirationTime
-* Id
+* 識別碼
 * InsertionTime
 * NextVisibleTime
 * PopReceipt
@@ -164,6 +164,7 @@ public static void Run(
 您可以在 *function.json* 檔案屬性中存取這些中繼資料值。 例如，假設您使用佇列觸發程序，且佇列訊息包含您想要讀取的 Blob 名稱。 在 *function.json* 檔案中，您可以使用 Blob `path` 屬性中的 `queueTrigger` 中繼資料屬性，如下列範例所示：
 
 ```json
+{
   "bindings": [
     {
       "name": "myQueueItem",
@@ -179,15 +180,16 @@ public static void Run(
       "connection": "MyStorageConnection"
     }
   ]
+}
 ```
 
-在對應的參考文章中，會描述每個觸發程序之中繼資料屬性的詳細資料。 如需範例，請參閱[佇列觸發程序中繼資料](functions-bindings-storage-queue-trigger.md#message-metadata)。 您也可以在入口網站的 [整合]  索引標籤中，繫結設定區域之下的 [文件]  區段取得文件。  
+在對應的參考文章中，會描述每個觸發程序之中繼資料屬性的詳細資料。 如需範例，請參閱[佇列觸發程序中繼資料](functions-bindings-storage-queue-trigger.md#message-metadata)。 您也可以在入口網站的 [整合] 索引標籤中，繫結設定區域之下的 [文件] 區段取得文件。  
 
 ## <a name="json-payloads"></a>JSON 承載
 
 當觸發程序承載為 JSON 時，您可以在相同函式與函式程式碼內之其他繫結的設定中參考其屬性。
 
-下列範例針對接收 JSON 中 Blob 名稱的 Webhook 函式顯示 function.json  檔案：`{"BlobName":"HelloWorld.txt"}`。 Blob 輸入繫結會讀取 Blob，HTTP 輸出繫結則會在 HTTP 回應中傳回 Blob 內容。 請注意，Blob 輸入繫結會藉由直接參考 `BlobName` 屬性 (`"path": "strings/{BlobName}"`) 來取得 Blob 名稱
+下列範例針對接收 JSON 中 Blob 名稱的 Webhook 函式顯示 function.json 檔案：`{"BlobName":"HelloWorld.txt"}`。 Blob 輸入繫結會讀取 Blob，HTTP 輸出繫結則會在 HTTP 回應中傳回 Blob 內容。 請注意，Blob 輸入繫結會藉由直接參考 `BlobName` 屬性 (`"path": "strings/{BlobName}"`) 來取得 Blob 名稱
 
 ```json
 {
@@ -292,7 +294,7 @@ public class BlobName
 
 ## <a name="create-guids"></a>建立 GUID
 
-`{rand-guid}` 繫結運算式可建立 GUID。 `function.json` 檔案中的下列 Blob 路徑會建立具有如 50710cb5-84b9-4d87-9d83-a03d6976a682.txt  之名稱的 Blob。
+`{rand-guid}` 繫結運算式可建立 GUID。 `function.json` 檔案中的下列 Blob 路徑會建立具有如 50710cb5-84b9-4d87-9d83-a03d6976a682.txt 之名稱的 Blob。
 
 ```json
 {
@@ -305,7 +307,7 @@ public class BlobName
 
 ## <a name="current-time"></a>目前時間
 
-繫結運算式 `DateTime` 會解析成 `DateTime.UtcNow`。 `function.json` 檔案中的下列 Blob 路徑會建立具有如 2018-02-16T17-59-55Z.txt  之名稱的 Blob。
+繫結運算式 `DateTime` 會解析成 `DateTime.UtcNow`。 `function.json` 檔案中的下列 Blob 路徑會建立具有如 2018-02-16T17-59-55Z.txt 之名稱的 Blob。
 
 ```json
 {

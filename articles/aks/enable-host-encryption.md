@@ -3,13 +3,13 @@ title: 在 Azure Kubernetes Service (AKS) 上啟用主機型加密
 description: 瞭解如何在 Azure Kubernetes Service (AKS) 叢集設定以主機為基礎的加密
 services: container-service
 ms.topic: article
-ms.date: 07/10/2020
-ms.openlocfilehash: 531d1dc4169b5f4adecfb29c3e116049cb99c3c9
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.date: 01/27/2021
+ms.openlocfilehash: 1d071305b457cddde56a11982e08c9331e1d5463
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787819"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919643"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS)  (preview) 上的主機型加密
 
@@ -25,7 +25,7 @@ ms.locfileid: "98787819"
 
 ### <a name="prerequisites"></a>先決條件
 
-- 確定您已 `aks-preview` 安裝 CLI 擴充功能 v 0.4.55 或更高版本
+- 確定您已 `aks-preview` 安裝 CLI 擴充功能 v 0.4.73 或更高版本
 - 確定您在 [ `EnableEncryptionAtHostPreview` 已啟用] 下有功能旗標 `Microsoft.ContainerService` 。
 
 若要能夠針對您的 Vm 或虛擬機器擴展集使用主機加密，您必須在訂用帳戶上啟用此功能。 使用您的訂用帳戶識別碼，將電子郵件傳送至 encryptionAtHost@microsoft，以啟用訂用帳戶的功能。
@@ -35,18 +35,18 @@ ms.locfileid: "98787819"
 > [!IMPORTANT]
 > 您必須 encryptionAtHost@microsoft 使用您的訂用帳戶 id 來傳送電子郵件，以取得針對計算資源啟用的功能。 您無法自行為這些資源啟用。 您可以自行在 container service 上啟用它。
 
-若要建立使用以主機為基礎之加密的 AKS 叢集，您必須 `EnableEncryptionAtHostPreview` 在訂用帳戶上啟用和 `EncryptionAtHost` 功能旗標。
+若要建立使用以主機為基礎之加密的 AKS 叢集，您必須 `EncryptionAtHost` 在訂用帳戶上啟用功能旗標。
 
 `EncryptionAtHost`使用[az feature register][az-feature-register]命令註冊功能旗標，如下列範例所示：
 
 ```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService"  --name "EnableEncryptionAtHostPreview"
+az feature register --namespace "Microsoft.ContainerService"  --name "EnableEncryptionAtHost"
 ```
 
 狀態需要幾分鐘的時間才會顯示「已註冊」。 您可以使用 [az feature list][az-feature-list] 命令檢查註冊狀態：
 
 ```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEncryptionAtHostPreview')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEncryptionAtHost')].{Name:name,State:properties.state}"
 ```
 
 準備好時，請 `Microsoft.ContainerService` `Microsoft.Compute` 使用 [az provider register][az-provider-register] 命令重新整理和資源提供者的註冊：
@@ -80,7 +80,7 @@ az extension update --name aks-preview
 設定叢集代理程式節點，以在建立叢集時使用以主機為基礎的加密。 使用 `--aks-custom-headers` 旗標來設定 `EnableEncryptionAtHost` 標頭。
 
 ```azurecli-interactive
-az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --aks-custom-headers EnableEncryptionAtHost=true
+az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --aks-custom-headers --enable-encryption-at-host
 ```
 
 如果您想要建立沒有以主機為基礎之加密的叢集，您可以省略自訂參數來這麼做 `--aks-custom-headers` 。
@@ -90,7 +90,7 @@ az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_D
 您可以藉由將新的節點集區新增至您的叢集，在現有的叢集上啟用主機型加密。 使用旗標，將新的節點集區設定為使用主機型加密 `--aks-custom-headers` 。
 
 ```azurecli
-az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --aks-custom-headers EnableEncryptionAtHost=true
+az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --aks-custom-headers --enable-encryption-at-host
 ```
 
 如果您想要在沒有以主機為基礎的加密功能的情況下建立新的節點集區，您可以省略自訂參數來建立新的節點集區 `--aks-custom-headers` 。

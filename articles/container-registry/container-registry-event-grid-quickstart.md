@@ -4,12 +4,12 @@ description: 在本快速入門中，您可以針對容器登錄啟用事件方�
 ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 2d13dd0ec5e50086e674b215d93917d6173d5af9
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: b4038bb232c14278e838f2c34706dcc103def7e4
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694397"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919658"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>快速入門：將事件從私用容器登錄傳送至事件方格
 
@@ -144,7 +144,7 @@ az eventgrid event-subscription create \
 執行下列 Azure CLI 命令，從 GitHub 存放庫的內容建置容器映像。 根據預設，ACR 工作會將已成功建置的映像自動推送至您的登錄，其會產生 `ImagePushed` 事件。
 
 ```azurecli-interactive
-az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
+az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git#main
 ```
 
 當 ACR 工作建置您的映像，接著加以推送時，您應該會看到類似下列的輸出。 為了簡潔起見，已將下列範例輸出截斷。

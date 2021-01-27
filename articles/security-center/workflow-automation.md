@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: a7341362183aee4a23556a164677bc320babdfec
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 674ba1cf03f48eb1c746b115d981740b5b938aab
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900837"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919522"
 ---
 # <a name="automate-responses-to-security-center-triggers"></a>自動回應安全性中心觸發程式
 
@@ -26,7 +26,7 @@ ms.locfileid: "92900837"
 
 |層面|詳細資料|
 |----|:----|
-|版本狀態：|正式上市 (GA)|
+|版本狀態：|公開上市 (GA) |
 |定價：|免費|
 |必要的角色和權限：|資源群組的 **安全性系統管理員角色** 或 **擁有** 者<br>也必須具有目標資源的寫入權限<br><br>若要使用 Azure Logic Apps 工作流程，您也必須具有下列 Logic Apps 角色/許可權：<br> - [邏輯應用程式操作員](../role-based-access-control/built-in-roles.md#logic-app-operator) 許可權是必要的或邏輯應用程式讀取/觸發存取 (此角色無法建立或編輯邏輯應用程式;只 *執行* 現有的) <br> - 邏輯應用程式建立和修改需要[邏輯應用程式參與者](../role-based-access-control/built-in-roles.md#logic-app-contributor)許可權<br>如果您想要使用邏輯應用程式連接器，您可能需要額外的認證來登入其各自的服務 (例如，您的 Outlook/團隊/時差實例) |
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|
@@ -36,32 +36,24 @@ ms.locfileid: "92900837"
 
 ## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>建立邏輯應用程式，並定義應自動執行的時機 
 
-1. 從 [安全性中心] 提要欄位，選取 [ **工作流程自動化** ]。
+1. 從 [安全性中心] 提要欄位，選取 [ **工作流程自動化**]。
 
-    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="工作流程自動化清單&quot;:::
+    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="工作流程自動化清單":::
 
     從這個頁面，您可以建立新的自動化規則，以及啟用、停用或刪除現有的規則。
 
-1. 若要定義新的工作流程，請按一下 [ **新增工作流程自動化** ]。 
+1. 若要定義新的工作流程，請按一下 [ **新增工作流程自動化**]。 
 
     窗格隨即出現，並提供新自動化的選項。 您可以在這裡輸入：
     1. 自動化的名稱和描述。
-    1. 將起始此自動工作流程的觸發程式。 例如，您可能想要在產生包含 &quot;SQL" 的安全性警示時執行邏輯應用程式。
+    1. 將起始此自動工作流程的觸發程式。 例如，您可能想要在產生包含 "SQL" 的安全性警示時執行邏輯應用程式。
 
         > [!NOTE]
-        > 如果您的觸發程式是具有「子建議」的建議，例如， **應補救您 SQL 資料庫上的弱點評估結果** ，則邏輯應用程式不會針對每個新的安全性尋找而觸發。只有在父建議的狀態變更時才會變更。
+        > 如果您的觸發程式是具有「子建議」的建議，例如， **應補救您 SQL 資料庫上的弱點評估結果**，則邏輯應用程式不會針對每個新的安全性尋找而觸發。只有在父建議的狀態變更時才會變更。
 
     1. 符合觸發條件時將執行的邏輯應用程式。 
 
-        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="工作流程自動化清單&quot;:::
-
-    從這個頁面，您可以建立新的自動化規則，以及啟用、停用或刪除現有的規則。
-
-1. 若要定義新的工作流程，請按一下 [ **新增工作流程自動化** ]。 
-
-    窗格隨即出現，並提供新自動化的選項。 您可以在這裡輸入：
-    1. 自動化的名稱和描述。
-    1. 將起始此自動工作流程的觸發程式。 例如，您可能想要在產生包含 &quot;SQL":::
+        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="[新增工作流程自動化] 窗格":::
 
 1. 從 [動作] 區段中，按一下 [ **建立新** 的] 以開始建立邏輯應用程式。
 
@@ -69,7 +61,7 @@ ms.locfileid: "92900837"
 
     [![建立新的邏輯應用程式](media/workflow-automation/logic-apps-create-new.png)](media/workflow-automation/logic-apps-create-new.png#lightbox)
 
-1. 輸入名稱、資源群組和位置，然後按一下 [ **建立** ]。
+1. 輸入名稱、資源群組和位置，然後按一下 [ **建立**]。
 
 1. 在新的邏輯應用程式中，您可以從 [安全性] 類別中的內建預先定義範本中進行選擇。 或者，您可以定義觸發此進程時，所要發生的自訂事件流程。
 
@@ -98,7 +90,7 @@ ms.locfileid: "92900837"
 
 您也可以在流覽任何安全性警示或建議時，手動執行 Logic Apps。
 
-若要手動執行邏輯應用程式，請開啟警示或建議，然後按一下 [ **觸發邏輯應用程式** ：
+若要手動執行邏輯應用程式，請開啟警示或建議，然後按一下 [ **觸發邏輯應用程式**：
 
 [![手動觸發邏輯應用程式](media/workflow-automation/manually-trigger-logic-app.png)](media/workflow-automation/manually-trigger-logic-app.png#lightbox)
 
@@ -124,27 +116,11 @@ ms.locfileid: "92900837"
     > [!TIP]
     > 您也可以藉由搜尋 Azure 原則來找到這些內容：
     > 1. 開啟 Azure 原則。
-    > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="工作流程自動化清單&quot;:::
-
-    從這個頁面，您可以建立新的自動化規則，以及啟用、停用或刪除現有的規則。
-
-1. 若要定義新的工作流程，請按一下 [ **新增工作流程自動化** ]。 
-
-    窗格隨即出現，並提供新自動化的選項。 您可以在這裡輸入：
-    1. 自動化的名稱和描述。
-    1. 將起始此自動工作流程的觸發程式。 例如，您可能想要在產生包含 &quot;SQL":::
+    > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="存取 Azure 原則":::
     > 2. 在 [Azure 原則] 功能表中，選取 [ **定義** ] 並依名稱搜尋。 
 
-1. 從相關的 Azure 原則] 頁面中，選取 [ **指派** ]。
-    :::image type="content" source="./media/workflow-automation/export-policy-assign.png" alt-text="工作流程自動化清單&quot;:::
-
-    從這個頁面，您可以建立新的自動化規則，以及啟用、停用或刪除現有的規則。
-
-1. 若要定義新的工作流程，請按一下 [ **新增工作流程自動化** ]。 
-
-    窗格隨即出現，並提供新自動化的選項。 您可以在這裡輸入：
-    1. 自動化的名稱和描述。
-    1. 將起始此自動工作流程的觸發程式。 例如，您可能想要在產生包含 &quot;SQL":::
+1. 從相關的 Azure 原則] 頁面中，選取 [ **指派**]。
+    :::image type="content" source="./media/workflow-automation/export-policy-assign.png" alt-text="指派 Azure 原則":::
 
 1. 開啟每個索引標籤，並視需要設定參數：
     1. 在 [ **基本** ] 索引標籤中，設定原則的範圍。 若要使用集中式管理，請將原則指派給包含要使用工作流程自動化設定之訂用帳戶的管理群組。 
@@ -153,19 +129,11 @@ ms.locfileid: "92900837"
         > 每個參數都有工具提示，說明您可以使用的選項。
         >
         > Azure 原則的 [參數] 索引標籤 (1) 可存取與安全性中心的工作流程自動化頁面 (2) 類似的設定選項。
-        > :::image type="content" source="./media/workflow-automation/azure-policy-next-to-workflow-automation.png" alt-text="工作流程自動化清單&quot;:::
-
-    從這個頁面，您可以建立新的自動化規則，以及啟用、停用或刪除現有的規則。
-
-1. 若要定義新的工作流程，請按一下 [ **新增工作流程自動化** ]。 
-
-    窗格隨即出現，並提供新自動化的選項。 您可以在這裡輸入：
-    1. 自動化的名稱和描述。
-    1. 將起始此自動工作流程的觸發程式。 例如，您可能想要在產生包含 &quot;SQL" lightbox="./media/workflow-automation/azure-policy-next-to-workflow-automation.png":::
+        > :::image type="content" source="./media/workflow-automation/azure-policy-next-to-workflow-automation.png" alt-text="比較工作流程自動化中的參數與 Azure 原則" lightbox="./media/workflow-automation/azure-policy-next-to-workflow-automation.png":::
 
     1. （選擇性）若要將此指派套用至現有的訂用帳戶，請開啟 [ **補救** ] 索引標籤，然後選取建立補救工作的選項。
 
-1. 查看 [摘要] 頁面，然後選取 [ **建立** ]。
+1. 查看 [摘要] 頁面，然後選取 [ **建立**]。
 
 
 ## <a name="data-types-schemas"></a>資料類型架構
@@ -187,7 +155,7 @@ ms.locfileid: "92900837"
 
 在本文中，您已瞭解如何建立 Logic Apps、在資訊安全中心自動執行，以及手動執行它們。 
 
-如需相關材質，請參閱： 
+如需相關內容，請參閱： 
 
 - [如何使用工作流程自動化將安全性回應自動化的 Microsoft Learn 課程模組](/learn/modules/resolve-threats-with-azure-security-center/)
 - [Azure 資訊安全中心的安全性建議](security-center-recommendations.md)

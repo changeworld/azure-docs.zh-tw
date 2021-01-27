@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/21/2021
 ms.author: cavoeg
-ms.openlocfilehash: 48dbd0892c9ec02f203edba55d1104f1ab0118a8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 8ad5ee78a525b3798bbf613168ff74a9e21fe99b
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737603"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920252"
 ---
 # <a name="how-to-export-fhir-data"></a>如何匯出 FHIR 資料
 
@@ -46,6 +46,7 @@ $Export 作業必須設定兩個必要的標頭參數。 這些值是由目前�
 
 ### <a name="query-parameters"></a>查詢參數
 Azure API for FHIR 支援下列查詢參數。 這些參數都是選擇性的：
+
 |查詢參數        | 由 FHIR 規格定義？    |  描述|
 |------------------------|---|------------|
 | \_>outputformat | 是 | 目前支援三個值以配合 FHIR 規格： application/FHIR + ndjson、application/ndjson 或單純 ndjson。 所有匯出作業都會 `ndjson` 傳回，而且傳遞的值不會影響程式程式碼為。 |
