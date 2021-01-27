@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 05b9df2c5083d24ae6a78212bdd29cd1c740e1d1
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: a45efd90043ecb4d457db7ed39651f1a9b5bbd4d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746487"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98890602"
 ---
 # <a name="iot-plug-and-play-bridge"></a>IoT 隨插即用橋接器
 
@@ -150,5 +150,5 @@ IoT 隨插即用橋接器使用以 JSON 為基礎的設定檔，其指定：
 
 - [如何將在 Linux 或 Windows 上執行的 IoT 隨插即用 bridge 範例連線到 IoT 中樞](./howto-use-iot-pnp-bridge.md)
 - [組建和部署 IoT 隨插即用橋接器](howto-build-deploy-extend-pnp-bridge.md)
-- [擴充 IoT 隨插即用橋接器](howto-build-deploy-extend-pnp-bridge.md)
+- [擴充 IoT 隨插即用橋接器](howto-author-pnp-bridge-adapter.md)
 - [在 GitHub 上 IoT 隨插即用 bridge](https://github.com/Azure/iot-plug-and-play-bridge)

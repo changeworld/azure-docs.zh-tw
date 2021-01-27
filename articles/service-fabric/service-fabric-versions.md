@@ -3,12 +3,12 @@ title: 升級您的 Azure Service Fabric 叢集版本
 description: 瞭解 Azure Service Fabric 中的叢集版本，包括 Service Fabric team blog 中最新版本的連結。
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: c9a29a97238164b9f6daf9dda66a1f314a7673ce
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: cd9c4be285c68e5482f7276429dd5514c72ae135
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804246"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881545"
 ---
 # <a name="upgrade-your-azure-service-fabric-cluster-version"></a>升級您的 Azure Service Fabric 叢集版本
 
@@ -55,7 +55,7 @@ ms.locfileid: "98804246"
 
 ### <a name="upgrade-alert-for-versions-later-than-63"></a>6.3 以後版本的升級警示
 
-為了改進安全性和可用性，Azure 基礎結構已進行變更，可能會影響 Service Fabric 客戶。 這種變更將會影響使用 [容器開放網路模式](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) 的所有 Service Fabric 叢集，並執行6.3 至7.0 或更新版本不相容的支援版本（7.0）。 所有區域中所有支援的 Service Fabric 版本都可使用 Service Fabric 執行時間的更新。
+為了改進安全性和可用性，Azure 基礎結構已進行變更，可能會影響 Service Fabric 客戶。 這種變更將會影響使用 [容器開放網路模式](./service-fabric-networking-modes.md#set-up-open-networking-mode) 的所有 Service Fabric 叢集，並執行6.3 至7.0 或更新版本不相容的支援版本（7.0）。 所有區域中所有支援的 Service Fabric 版本都可使用 Service Fabric 執行時間的更新。
 
 #### <a name="if-you-dont-upgrade-to-a-supported-version"></a>如果您未升級至支援的版本
 

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/15/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 77a32872726e3c67f0d3c542ca699271846a193b
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e44e7c5d04695d5bd65d2eedc5474889a707c8bd
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680665"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882139"
 ---
 # <a name="collect-spring-cloud-resilience4j-circuit-breaker-metrics-preview"></a>收集春季 Cloud Resilience4J 斷路器計量 (預覽) 
 
@@ -20,11 +20,11 @@ ms.locfileid: "98680665"
 
 我們會使用「 [雲端電路斷路](https://github.com/spring-cloud-samples/spring-cloud-circuitbreaker-demo) 器」示範來示範其運作方式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-* 從 [適用于 Application Insights 指南的 java In-Process 代理程式](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-application-insights#enable-java-in-process-agent-for-application-insights)啟用 java In-Process 代理程式。 
+* 從 [適用于 Application Insights 指南的 java In-Process 代理程式](./spring-cloud-howto-application-insights.md#enable-java-in-process-agent-for-application-insights)啟用 java In-Process 代理程式。 
 
-* 從 [Application Insights 指南](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation)啟用 resilience4j 計量的維度集合。
+* 從 [Application Insights 指南](../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)啟用 resilience4j 計量的維度集合。
 
 * 如果開發電腦尚未使用 git、Maven 和 JAVA，請加以安裝。
 
@@ -125,6 +125,6 @@ az spring-cloud app deploy -n reactive-resilience4j \
 
 ## <a name="see-also"></a>另請參閱
 
-* [Application insights](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-application-insights)
+* [Application insights](./spring-cloud-howto-application-insights.md)
 * [分散式追蹤](spring-cloud-tutorial-distributed-tracing.md)
 * [斷路器儀表板](spring-cloud-tutorial-circuit-breaker.md)

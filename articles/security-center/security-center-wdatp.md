@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 4b8141d99d654705450a14767b04ae6265766af9
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 519285f2bad352aa16bdc8d9a1db7a63c2eb04e5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98807090"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876388"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>使用安全中心的整合式 EDR 解決方案來保護您的端點： Microsoft Defender for Endpoint
 
@@ -62,7 +62,7 @@ Microsoft Defender for Endpoint 是全方位的雲端提供端點安全性解決
 
 藉由整合 Defender for Endpoint 與 Security Center，您將可受益于下列額外功能：
 
-- **自動** 上線。 針對由安全性中心監視的所有 Windows 伺服器，「安全性中心」會自動啟用「Microsoft Defender for Endpoint 感應器」。 除了執行 Windows Server 2019 的 Windows Server （必須透過本機腳本上線）之外，群組原則物件 (GPO) ，或 [Microsoft Endpoint Configuration Manager](https://docs.microsoft.com/mem/configmgr/) (先前的 SCCM) 。
+- **自動** 上線。 針對由安全性中心監視的所有 Windows 伺服器，「安全性中心」會自動啟用「Microsoft Defender for Endpoint 感應器」。 除了執行 Windows Server 2019 的 Windows Server （必須透過本機腳本上線）之外，群組原則物件 (GPO) ，或 [Microsoft Endpoint Configuration Manager](/mem/configmgr/) (先前的 SCCM) 。
 
 - **單一窗格**。 安全性中心主控台會顯示 Microsoft Defender 的端點警示。 若要進一步調查，請使用 Microsoft Defender 作為端點自己的入口網站頁面，您可以在其中看到警示流程樹狀結構和事件圖表等其他資訊。 您也可以查看詳細的機器時間軸，其中會顯示最多六個月歷程記錄期間的每項行為。
 

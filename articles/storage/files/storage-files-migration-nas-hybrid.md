@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 0d8d19256dfca21cc805c2689557099a6785f76b
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 2d531edeeae9e0dd7e392cae66d9e4d41c68dfa2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629201"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882258"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>使用 Azure 檔案同步從網路連接的儲存體 (NAS) 遷移至混合式雲端部署
 
@@ -151,7 +151,7 @@ Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
       /MIR
    :::column-end:::
    :::column span="1":::
-      允許在相同的目標/目的地上，依序執行此 RoboCopy 命令數次。 它會識別之前複製的內容，並將其省略。 只有在上次執行之後，才會處理變更、新增和「 *刪除* 」。 如果之前未執行命令，則不會省略任何內容。 */MIR* 旗標是仍在主動使用和變更之來源位置的絕佳選項。
+      允許在相同的目標/目的地上，依序執行此 RoboCopy 命令數次。 它會識別之前複製的內容，並將其省略。 只有在上次執行之後，才會處理變更、新增和「*刪除*」。 如果之前未執行命令，則不會省略任何內容。 */MIR* 旗標是仍在主動使用和變更之來源位置的絕佳選項。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -208,7 +208,7 @@ Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
 您可以嘗試平行執行一些這些複本。 建議您一次處理一個 Azure 檔案共用的範圍。
 
 > [!WARNING]
-> 當您將所有資料從 NAS 移到 Windows Server，且您的遷移完成後：請回到 Azure 入口網站中的 * **all** * 同步群組，並將 [雲端階層處理磁片區可用空間百分比] 值調整為更適合快取使用率的內容，例如20%。 
+> 當您將所有資料從 NAS 移到 Windows Server，且您的遷移完成後：請回到 Azure 入口網站中的 ***all*** 同步群組，並將 [雲端階層處理磁片區可用空間百分比] 值調整為更適合快取使用率的內容，例如20%。 
 
 雲端階層處理磁片區可用空間原則會在磁片區層級上運作，而且可能會有多個伺服器端點與其同步。 如果您忘記調整偶數伺服器端點上的可用空間，同步處理將繼續套用最嚴格的規則，並嘗試保留99% 的可用磁碟空間，使本機快取不會如您預期般執行。 除非您的目標只有一個磁片區的命名空間只包含很少存取的封存資料，而且您要為另一個案例保留其餘的儲存空間。
 
@@ -227,5 +227,5 @@ Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
 深入瞭解 Azure 檔案共用及 Azure 檔案同步。下列文章可協助您瞭解先進的選項、最佳作法，也包含疑難排解的協助。 這些文章會適當地連結到 [Azure 檔案共用檔](storage-files-introduction.md) 。
 
 * [AFS 總覽](./storage-sync-files-planning.md)
-* [AFS 部署指南](storage-files-deployment-guide.md)
+* [AFS 部署指南](./storage-how-to-create-file-share.md)
 * [AFS 疑難排解](storage-sync-files-troubleshoot.md)

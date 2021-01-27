@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 12/02/2020
 ms.author: brendm
 ms.custom: devx-track-java, contperf-fy21q2
-ms.openlocfilehash: fc3f78131518b4d8740c25ab37c48d4444deef10
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
-ms.translationtype: HT
+ms.openlocfilehash: b7f5d4206140bf2101c10b1cd4ac46d80bdd3342
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563138"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881698"
 ---
 # <a name="what-is-azure-spring-cloud"></a>什麼是 Azure Spring Cloud？
 
@@ -27,7 +27,7 @@ Azure Spring Cloud 可讓您在不需要變更程式碼的情況下，輕鬆地�
 * 快速開發及部署，而不需要容器化相依性。
 * 有效率且輕鬆地監視生產工作負載。
 
-Azure Spring Cloud 可支援 Java [Spring Boot](https://spring.io/projects/spring-boot) 和 ASP.NET Core [Steeltoe](https://steeltoe.io/) 應用程式。 Steeltoe 支援目前以公開預覽的形式提供。 公開預覽版供應項目可讓您在其正式發行前，先試驗新功能。 公開預覽功能和服務不適用於生產環境。 如需詳細資訊，請參閱[常見問題集](https://azure.microsoft.com/support/faq/)或提出[支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
+Azure Spring Cloud 可支援 Java [Spring Boot](https://spring.io/projects/spring-boot) 和 ASP.NET Core [Steeltoe](https://steeltoe.io/) 應用程式。 Steeltoe 支援目前以公開預覽的形式提供。 公開預覽版供應項目可讓您在其正式發行前，先試驗新功能。 公開預覽功能和服務不適用於生產環境。 如需詳細資訊，請參閱[常見問題集](https://azure.microsoft.com/support/faq/)或提出[支援要求](../azure-portal/supportability/how-to-create-azure-support-request.md)。
 
 ## <a name="service-overview"></a>服務概觀
 
@@ -64,7 +64,7 @@ Azure Spring Cloud 作為 Azure 生態系統的一部分，可讓您輕鬆繫結
     * [與其他 Azure 服務整合](spring-cloud-tutorial-bind-cosmos.md)：您可以將精選的 Azure 服務自動繫結至應用程式 (例如將應用程式繫結至 Azure Cosmos DB 資料庫)，而不必手動設定 Spring Boot 應用程式。
     * [自動化](spring-cloud-howto-cicd.md)：持續整合與持續傳遞工具可讓您以最輕鬆的方式，快速將更新部署至現有的應用程式，同時將風險降至最低。 Azure DevOps 有助於組織和控制這些主要工作。 
     * [疑難排解](spring-cloud-howto-self-diagnose-solve.md)：Azure Spring Cloud 診斷提供互動式體驗，可協助您針對應用程式進行疑難排解。 不需要組態。 當您發現問題時，Azure Spring Cloud 診斷會找出問題，並引導您取得有助於疑難排解及解決問題的資訊。
-    * [移轉](https://docs.microsoft.com/azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud)：如何遷移現有的 Spring Cloud 應用程式或 Spring Boot 應用程式以在 Azure Spring Cloud 上執行。
+    * [移轉](/azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud)：如何遷移現有的 Spring Cloud 應用程式或 Spring Boot 應用程式以在 Azure Spring Cloud 上執行。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: d06dc03a016f057a9a3407a82a114f8df6757599
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 9b63ec5b8a5d0684a0e144de7dfe4114af9777e2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200680"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881884"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>在 Azure 中建立一般化 VM 的受控映像
 
 您可以從在儲存體帳戶中儲存為受控磁碟或非受控磁碟的一般化虛擬機器 (VM)，建立受控映像資源。 映像接著便可用來建立多個 VM。 如需受控映像計費方式的相關資訊，請參閱[受控磁碟定價](https://azure.microsoft.com/pricing/details/managed-disks/)。 
 
-一個受控映像最多可支援 20 個同時部署。 嘗試從相同的受控映像同時建立 20 個以上的 VM 時，因為單一 VHD 的儲存體效能限制之故，可能會導致佈建逾時。 若要同時建立 20 個以上的 VM，請使用[共用映像資源庫](shared-image-galleries.md)中設定為每 20 個並行虛擬機器部署 1 個複本的映像。
+一個受控映像最多可支援 20 個同時部署。 嘗試從相同的受控映像同時建立 20 個以上的 VM 時，因為單一 VHD 的儲存體效能限制之故，可能會導致佈建逾時。 若要同時建立 20 個以上的 VM，請使用[共用映像資源庫](../shared-image-galleries.md)中設定為每 20 個並行虛擬機器部署 1 個複本的映像。
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>使用 Sysprep 將 Windows VM 一般化
 

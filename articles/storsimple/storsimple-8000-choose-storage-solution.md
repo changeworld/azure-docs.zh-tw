@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: f2de6dbba2548f0c281df35edf2883d0c00af667
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 4fc92146d6f076287fe37f64734bb07e8250792b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571908"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882207"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>比較 StorSimple、Azure 檔案同步及 Data Box Edge 資料傳輸選項 
 
@@ -33,11 +33,11 @@ ms.locfileid: "96571908"
 |**Edge 計算** |無法使用 |無法使用 |支援使用 Azure IoT Edge 執行容器    |
 |**板型規格**  |實體裝置   |安裝在 Windows Server 上的代理程式 |實體裝置   |
 |**硬體**     |由 Microsoft 作為服務的一部分提供的實體裝置 | 由客戶提供 |由 Microsoft 作為服務的一部分提供的實體裝置  |
-|**資料格式**  |自訂格式   |檔案儲存體         |Blob 或檔案    |
+|**資料格式**  |自訂格式   |檔案         |Blob 或檔案    |
 |**通訊協定支援** |iSCSI          |SMB、NFS    | SMB 或 NFS      |
 |**定價**      |[StorSimple](https://azure.microsoft.com/pricing/details/storsimple/) |[Azure 檔案同步](https://azure.microsoft.com/pricing/details/storage/files/)  |[資料箱邊緣](https://azure.microsoft.com/pricing/details/storage/databox/edge/)  |
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解 [Azure Data Box Edge](../databox-online/azure-stack-edge-overview.md) 和 [Azure 資料箱閘道](../databox-online/data-box-gateway-overview.md)
+- 了解 [Azure Data Box Edge](../databox-online/azure-stack-edge-overview.md) 和 [Azure 資料箱閘道](../databox-gateway/data-box-gateway-overview.md)
 - 了解 [Azure 檔案同步](../storage/files/storage-sync-files-deployment-guide.md)

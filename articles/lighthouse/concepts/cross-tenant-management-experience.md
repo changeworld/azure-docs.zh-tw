@@ -1,14 +1,14 @@
 ---
 title: 跨租用戶管理體驗
 description: Azure 委派的資源管理能提供跨租用戶管理體驗。
-ms.date: 01/20/2021
+ms.date: 01/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0e380b49f122e63113e790f4e866fed40aa9beac
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 9af90e10d889c3d30375e001891ce0dc70767ab4
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98662707"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881396"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租用戶管理體驗
 
@@ -97,7 +97,7 @@ Azure PowerShell [>select-azsubscription 指令程式](/powershell/module/Az.Acc
 
 - 查看委派訂用帳戶的警示，並能夠在所有訂用帳戶之間查看並重新整理警示
 - 檢視委派之訂用帳戶的活動記錄詳細資料
-- Log analytics：從多個租使用者中的遠端工作區查詢資料 (請注意，您必須在相同的租使用者中建立用來從客戶租使用者中的工作區存取資料的自動化帳戶) 
+- [Log analytics](../../azure-monitor/platform/service-providers.md)：從多個租使用者中的遠端工作區查詢資料 (請注意，您必須在相同的租使用者中建立用來從客戶租使用者中的工作區存取資料的自動化帳戶) 
 - 在客戶租使用者中建立警示，以透過 webhook 在管理租使用者中觸發自動化（例如 Azure 自動化 runbook 或 Azure Functions）
 - 在客戶租使用者中建立 [診斷設定](../..//azure-monitor/platform/diagnostic-settings.md) ，以將資源記錄傳送至管理租使用者中的工作區
 - 針對 SAP 工作負載， [使用跨客戶租使用者的匯總視圖來監視 Sap 解決方案計量](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)
@@ -175,7 +175,7 @@ Azure PowerShell [>select-azsubscription 指令程式](/powershell/module/Az.Acc
 - 雖然您可以讓具有資源鎖定的訂用帳戶和資源群組上線，但這些鎖定不會防止使用者在管理租使用者中執行動作。 [拒絕指派](../../role-based-access-control/deny-assignments.md)可保護系統管理的資源，例如由 Azure 管理的應用程式或 Azure 藍圖所建立的資源 (系統指派的拒絕指派)，因此可防止管理租用戶中的使用者在這些資源上執行動作；不過，目前客戶租用戶中的使用者無法建立自己的拒絕指派 (使用者指派的拒絕指派)。
 - 不支援跨 [國家雲端](../../active-directory/develop/authentication-national-cloud.md) 、Azure 公用雲端或跨兩個不同國家雲端的訂用帳戶委派。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [使用 Azure Resource Manager 範本](../how-to/onboard-customer.md)或將[私人或公用受控服務供應專案發佈至 Azure Marketplace](../how-to/publish-managed-services-offers.md)，讓您的客戶上線 Azure Lighthouse。
 - 前往 Azure 入口網站中的 [我的客戶]，以[檢視及管理客戶](../how-to/view-manage-customers.md)。

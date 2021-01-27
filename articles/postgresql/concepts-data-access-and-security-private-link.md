@@ -6,16 +6,16 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: a864ce42888aace385cf60a4122f204c8f76831d
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: e0d1789d61bbe57c735f4dd2a70a1c2a8f183d90
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240421"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881056"
 ---
 # <a name="private-link-for-azure-database-for-postgresql-single-server"></a>適用于 PostgreSQL-Single 伺服器的 Azure 資料庫 Private Link
 
-Private Link 可讓您為適用於 PostgreSQL 的 Azure 資料庫單一伺服器建立私人端點，因此會將 Azure 服務放在您的私人虛擬網路內 (VNet) 。 私人端點會公開您可以用來連線到資料庫伺服器的私人 IP，就像 VNet 中的任何其他資源一樣。
+Private Link 可讓您為適用於 PostgreSQL 的 Azure 資料庫單一伺服器建立私人端點，以將它帶入虛擬網路 (VNet) 。 私人端點會公開子網內的私人 IP，您可用來連線到您的資料庫伺服器，就像 VNet 中的任何其他資源一樣。
 
 如需支援 Private Link 功能的 PaaS 服務清單，請參閱 Private Link [檔](../private-link/index.yml)。 私人端點是特定 [VNet](../virtual-network/virtual-networks-overview.md) 和子網內的私人 IP 位址。
 
@@ -72,21 +72,21 @@ Private Link 可讓您為適用於 PostgreSQL 的 Azure 資料庫單一伺服器
 
 * 從清單中選取個別的 PEC。
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link.png" alt-text="選取私人端點入口網站":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link.png" alt-text="選取要等待核准的私人端點":::
 
 * 于 postgresql 伺服器系統管理員可以選擇核准或拒絕 PEC，並選擇性地新增簡短的文字回應。
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link-message.png" alt-text="選取私人端點入口網站":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link-message.png" alt-text="選取私人端點訊息":::
 
 * 核准或拒絕之後，清單會反映適當的狀態以及回應文字
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-approved-connection.png" alt-text="選取私人端點入口網站":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-approved-connection.png" alt-text="選取私人端點的最終狀態":::
 
 ## <a name="use-cases-of-private-link-for-azure-database-for-postgresql"></a>適用於 PostgreSQL 的 Azure 資料庫 Private Link 的使用案例
 
 用戶端可以從相同的 VNet 連線到私人端點、在相同區域中對等互連 VNet，或透過跨區域的 VNet 對 VNet 連線來連接。 此外，用戶端可以使用 ExpressRoute、私人對等互連或 VPN 通道從內部部署環境進行連線。 以下是一個簡化的圖表，其中顯示常見的使用案例。
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="選取私人端點入口網站":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="選取私人端點總覽":::
 
 ### <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>從對等互連虛擬網路 (VNet) 中的 Azure VM 進行連線
 設定 [VNet 對等互連](../virtual-network/tutorial-connect-virtual-networks-powershell.md) ，以從對等互連 VNet 中的 Azure VM 建立適用於 PostgreSQL 的 Azure 資料庫單一伺服器的連線能力。
@@ -124,7 +124,7 @@ Private Link 可讓您為適用於 PostgreSQL 的 Azure 資料庫單一伺服器
 
 若要瞭解如何從 Azure 入口網站設定適用於 PostgreSQL 的 Azure 資料庫單一伺服器的 **拒絕公用網路存取** ，請參閱如何設定 [拒絕公用網路存取](howto-deny-public-network-access.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解適用於 PostgreSQL 的 Azure 資料庫單一伺服器安全性功能，請參閱下列文章：
 

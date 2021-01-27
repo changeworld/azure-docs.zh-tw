@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: b3ca4f11b02f32e65cf80adc65ec12d25e6e7905
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 974631f9cba66404a3881caed1382be7ff3c00d1
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573168"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881328"
 ---
 # <a name="what-is-azure-private-link"></a>什麼是 Azure Private Link？ 
 Azure Private Link 可讓您存取各項 Azure PaaS 服務 (例如 Azure 儲存體和 SQL Database)，並透過虛擬網路中的[私人端點](private-endpoint-overview.md)裝載 Azure 的客戶擁有/合作夥伴服務。
@@ -72,7 +72,7 @@ Azure Private Link 提供下列優點：
 | Azure 監視器 <br/>(Log Analytics 與 Application Insights) | 所有公用區域      |  | GA   <br/> [了解如何建立 Azure 監視器的私人端點。](../azure-monitor/platform/private-link-security.md)   | 
 | Azure Batch | 所有公用區域，但下列區域除外：德國中部、德國東北部 <br/> 所有政府區域  | | GA <br/> [了解如何建立 Azure Batch 的私人端點。](../batch/private-connectivity.md) |
 |Azure Data Factory | 所有公用區域<br/> 所有政府區域<br/>所有中國區域    | 認證必須儲存在 Azure 金鑰保存庫中| GA   <br/> [了解如何建立 Azure Data Factory 的私人端點。](../data-factory/data-factory-private-link.md)   |
-|Azure 受控磁碟 | 所有公用區域<br/> 所有政府區域<br/>所有中國區域    | [按一下這裡了解已知的限制](https://docs.microsoft.com/azure/virtual-machines/disks-enable-private-links-for-import-export-portal#limitations) | GA   <br/> [了解如何建立 Azure 受控磁碟的私人端點。](https://docs.microsoft.com/azure/virtual-machines/disks-enable-private-links-for-import-export-portal)   |
+|Azure 受控磁碟 | 所有公用區域<br/> 所有政府區域<br/>所有中國區域    | [按一下這裡了解已知的限制](../virtual-machines/disks-enable-private-links-for-import-export-portal.md#limitations) | GA   <br/> [了解如何建立 Azure 受控磁碟的私人端點。](../virtual-machines/disks-enable-private-links-for-import-export-portal.md)   |
 
 
 
@@ -110,5 +110,3 @@ Azure Private Link 可與 Azure 監視器整合。 此組合可讓您：
 
 - [快速入門：使用 Azure 入口網站建立私人端點](create-private-endpoint-portal.md)
 - [快速入門：使用 Azure 入口網站建立 Private Link 服務](create-private-link-service-portal.md)
-
-

@@ -10,18 +10,18 @@ ms.author: sagopal
 ms.date: 12/3/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python
-ms.openlocfilehash: 71061c056b499f79727f70fb855db7a81a65f3bd
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 7ddd5dec87a122a0b36fee17b5434c8a49dcf434
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572165"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881630"
 ---
 # <a name="troubleshoot-environment-image-builds"></a>針對環境映射組建進行疑難排解
 
 瞭解如何針對 Docker 環境映射組建和套件安裝的問題進行疑難排解。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Azure 訂用帳戶。 試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 * [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
@@ -153,12 +153,12 @@ Pip 子流程錯誤：
 
 可能的問題：
 - 可能無法正確解析容器登錄的路徑名稱。 檢查映射名稱是否使用雙斜線，以及 Linux 與 Windows 主機上的斜線方向是否正確。
-- 如果在虛擬網路後方的容器登錄使用 [不受支援區域](https://docs.microsoft.com/azure/private-link/private-link-overview#availability)中的私人端點，請從入口網站使用服務端點 (公用存取) 來設定容器登錄，然後再試一次。
-- 將容器登錄放在虛擬網路後方之後，請執行 [Azure Resource Manager 範本](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry) ，讓工作區能夠與容器登錄實例進行通訊。
+- 如果在虛擬網路後方的容器登錄使用 [不受支援區域](/azure/private-link/private-link-overview#availability)中的私人端點，請從入口網站使用服務端點 (公用存取) 來設定容器登錄，然後再試一次。
+- 將容器登錄放在虛擬網路後方之後，請執行 [Azure Resource Manager 範本](/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry) ，讓工作區能夠與容器登錄實例進行通訊。
 
 ### <a name="you-get-a-401-error-from-a-workspace-container-registry"></a>您從工作區容器登錄收到401錯誤
 
-使用 [ws.sync_keys ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#sync-keys--)重新同步處理儲存體金鑰。
+使用 [ws.sync_keys ( # B1 ](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#sync-keys--)重新同步處理儲存體金鑰。
 
 ### <a name="the-environment-keeps-throwing-a-waiting-for-other-conda-operations-to-finish-error"></a>環境持續擲回「正在等候其他 conda 作業完成 ...」錯誤
 
@@ -166,7 +166,7 @@ Pip 子流程錯誤：
 
 ### <a name="your-custom-docker-image-isnt-in-the-registry"></a>您的自訂 Docker 映射不在登錄中
 
-檢查是否使用 [正確的標記](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments#create-an-environment) ，以及是否使用 `user_managed_dependencies = True` 。 `Environment.python.user_managed_dependencies = True` 停用 conda 並使用使用者的已安裝套件。
+檢查是否使用 [正確的標記](/azure/machine-learning/how-to-use-environments#create-an-environment) ，以及是否使用 `user_managed_dependencies = True` 。 `Environment.python.user_managed_dependencies = True` 停用 conda 並使用使用者的已安裝套件。
 
 ### <a name="you-get-one-of-the-following-common-virtual-network-issues"></a>您會看到下列其中一個常見的虛擬網路問題
 
@@ -184,9 +184,9 @@ Pip 子流程錯誤：
 
 ### <a name="you-cant-run-experiments-when-storage-has-network-security-enabled"></a>當存放裝置啟用網路安全性時，無法執行實驗
 
-如果您使用預設的 Docker 映射，並啟用使用者管理的相依性，請使用 MicrosoftContainerRegistry 和 AzureFrontDoor FirstParty [服務](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network) 標籤來允許清單 Azure Container Registry 及其相依性。
+如果您使用預設的 Docker 映射，並啟用使用者管理的相依性，請使用 MicrosoftContainerRegistry 和 AzureFrontDoor FirstParty [服務](/azure/machine-learning/how-to-enable-virtual-network) 標籤來允許清單 Azure Container Registry 及其相依性。
 
- 如需詳細資訊，請參閱 [啟用虛擬網路](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry)。
+ 如需詳細資訊，請參閱 [啟用虛擬網路](/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry)。
 
 ### <a name="you-need-to-create-an-icm"></a>您必須建立 ICM
 

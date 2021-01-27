@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/17/2020
-ms.openlocfilehash: f9f95a5e85ec4eebf82cca707476750595331d73
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.date: 01/25/2021
+ms.openlocfilehash: bc59c639856de6a5ce5adda1f78266eb7e4d5dd3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522663"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881226"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>將來自 Azure 監視器的資料視覺化
 本文會概要介紹用以將儲存在 Azure 監視器中的記錄和計量資料視覺化的可用方法。
@@ -46,9 +46,9 @@ ms.locfileid: "95522663"
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AslH]
 
 ### <a name="advantages"></a>優點
-- 深入整合至 Azure。 可將各種視覺效果釘選到多個 Azure 頁面的儀表板，包括計量瀏覽器、Log Analytics 和 Application Insights。
+- 深入整合至 Azure。 視覺效果可以釘選到多個 Azure 頁面的儀表板，包括 [計量瀏覽器](platform/metrics-charts.md)、 [Log Analytics](log-query/log-analytics-overview.md)和 [Application Insights](app/app-insights-overview.md)。
 - 支援計量和記錄。
-- 合併來自多個來源的資料，包括來自[計量瀏覽器](platform/metrics-charts.md)、[記錄查詢](log-query/log-query-overview.md)，以及 Application Insights 中[對應](app/app-map.md)和可用性的輸出。
+- 結合多個來源的資料，包括[Application Insights](app/app-insights-overview.md)中[計量瀏覽器](platform/metrics-charts.md)、[記錄查詢](log-query/log-query-overview.md)和[對應](app/app-map.md)和可用性的輸出。
 - 個人或共用儀表板的選項。 [ (AZURE RBAC) 與 azure 角色型存取控制](../role-based-access-control/overview.md)整合。
 - 自動重新整理。 計量的重新整理端看時間範圍而定，最少五分鐘。 記錄每小時都會重新整理一次，並藉由在指定的視覺效果上按一下 [重新整理] 圖示，或重新整理整個儀表板，依需求提供手動重新整理的選項。
 - 使用時間戳記和自訂參數以參數化計量儀表板。
@@ -57,7 +57,7 @@ ms.locfileid: "95522663"
 
 
 ### <a name="limitations"></a>限制
-- 對記錄分析視覺效果的控制有限，不支援資料表。 資料數列的總數上限為 10，包含分組在 _其他_ 貯體下的進階資料數列。
+- 對記錄分析視覺效果的控制有限，不支援資料表。 資料數列的總數限制為50，並在 _其他_ 值區下分組進一步的資料序列。
 - 未提供對記錄圖表的自訂參數支援。
 - 記錄圖表僅限於過去 30 天。
 - 記錄圖表只能釘選到共用儀表板。
@@ -140,8 +140,9 @@ ms.locfileid: "95522663"
 ## <a name="next-steps"></a>後續步驟
 - 了解 [ Azure 監視器收集的資料](platform/data-platform.md)。
 - 了解 [Azure 儀表板](../azure-portal/azure-portal-dashboards.md)。
-- 了解 [Azure 監視器中的檢視](platform/view-designer.md)。
+- 瞭解 [計量瀏覽器](platform/metrics-getting-started.md)
 - 了解[活頁簿](./platform/workbooks-overview.md)。
 - 了解[將記錄資料匯入 Power BI](./platform/powerbi.md)。
 - 了解 [Grafana Azure 監視器資料來源外掛程式](./platform/grafana-plugin.md)。
+- 了解 [Azure 監視器中的檢視](platform/view-designer.md)。
 

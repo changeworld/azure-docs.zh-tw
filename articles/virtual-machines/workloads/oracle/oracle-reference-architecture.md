@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: bbaf34c977546891c6ac05fbd4b5feb15f333e04
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 27a1c57c234d3450cee606c4ffb7484f7b63e732
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737807"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882292"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 上 Oracle Database Enterprise Edition 的參考架構
 
@@ -216,7 +216,7 @@ Oracle Data Guard 可以用來分區化具有系統管理、使用者定義和�
 - 使用可用性區域以達到區域內的高可用性。
 - 如果您的 Oracle 資料庫可用) 或 premium 磁片，請考慮使用 ultra 磁片 (。
 - 請考慮在另一個 Azure 區域中使用 Oracle Data Guard 設定待命 Oracle 資料庫。
-- 請考慮使用 [鄰近放置群組](../../../virtual-machines/linux/co-location.md#proximity-placement-groups) ，以減少應用程式與資料庫層之間的延遲。
+- 請考慮使用 [鄰近放置群組](../../co-location.md#proximity-placement-groups) ，以減少應用程式與資料庫層之間的延遲。
 - 設定 [Oracle Enterprise Manager](https://docs.oracle.com/en/enterprise-manager/) 以進行管理、監視和記錄。
 - 請考慮使用 Oracle 自動儲存體管理 (ASM) ，以簡化資料庫的儲存管理。
 - 使用 [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) 來管理資料庫的修補和更新，而不需要停機。

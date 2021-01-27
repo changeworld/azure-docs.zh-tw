@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.author: b-juche
-ms.openlocfilehash: 41e0f996bcd75ba1663bb8eb3880d550bed01f94
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 5984727f123da6e1d35d862c3f396bd85ce9e7f2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703431"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881447"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>使用 Azure NetApp Files 的方案架構
 本文提供最佳作法的參考，可協助您瞭解使用 Azure NetApp Files 的解決方案架構。  
@@ -96,7 +96,7 @@ ms.locfileid: "98703431"
 
 ## <a name="azure-vmware-solutions"></a>Azure VMware 解決方案
 
-* [使用 Azure VMware 解決方案的 azure NetApp Files-來賓 OS 裝載](../azure-vmware/net-app-files-with-azure-vmware-solution.md)
+* [使用 Azure VMware 解決方案的 azure NetApp Files-來賓 OS 裝載](../azure-vmware/netapp-files-with-azure-vmware-solution.md)
 
 ## <a name="virtual-desktop-infrastructure-solutions"></a>虛擬桌面基礎結構解決方案
 

@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: ab3cb403a8757f424a141206f99f9c29bf3e0b49
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 87cc8af9206daa1f1e959b8abd8beb3e7f8ff2f2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108143"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880989"
 ---
 # <a name="get-started-with-azcopy"></a>開始使用 AzCopy
 
@@ -79,7 +79,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 此選項僅適用于 blob 儲存體。 藉由使用 Azure Active Directory，您可以提供一次認證，而不需要將 SAS 權杖附加至每個命令。  
 
 > [!NOTE]
-> 在目前的版本中，如果您打算在儲存體帳戶之間複製 blob，則必須將 SAS 權杖附加至每個來源 URL。 您只能從目的地 URL 中省略 SAS 權杖。 如需範例，請參閱 [在儲存體帳戶之間複製 blob](storage-use-azcopy-blobs.md)。
+> 在目前的版本中，如果您打算在儲存體帳戶之間複製 blob，則必須將 SAS 權杖附加至每個來源 URL。 您只能從目的地 URL 中省略 SAS 權杖。 如需範例，請參閱 [在儲存體帳戶之間複製 blob](#transfer-data)。
 
 若要使用 Azure AD 來授與存取權，請參閱使用 [AzCopy 和 Azure Active Directory (Azure AD) 來授權存取 blob ](storage-use-azcopy-authorize-azure-active-directory.md)。
 

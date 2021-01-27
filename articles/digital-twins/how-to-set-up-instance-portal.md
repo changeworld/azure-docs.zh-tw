@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: aa6429e27faf92f047c580986d5b434c9a418730
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: d38e631a5a12381b407dca4dd9e2f2ae63365453
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044368"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882432"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>設定 Azure 數位 Twins 實例和驗證 (入口網站) 
 
@@ -71,13 +71,13 @@ ms.locfileid: "98044368"
 
 [!INCLUDE [digital-twins-setup-role-assignment.md](../../includes/digital-twins-setup-role-assignment.md)]
 
-首先，在 Azure 入口網站中開啟 Azure 數位 Twins 實例的頁面。 從實例的功能表中，選取 [ *存取控制] (IAM)*。 選取 [*新增角色指派*] 底下的 [*新增*] 按鈕。
+首先，在 Azure 入口網站中開啟 Azure 數位 Twins 實例的頁面。 從實例的功能表中，選取 [ *存取控制] (IAM)*。 選取 [  **+ 新增** ] 按鈕以新增角色指派。
 
 :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="從 [存取控制 (IAM) ] 頁面中選取要新增角色指派":::
 
 在 [ *新增角色指派* ] 頁面上，填入 [Azure 訂用帳戶) 中具有 [足夠許可權](#prerequisites-permission-requirements) 的使用者必須完成的值 (：
 * **角色**：從下拉式功能表中選取 *Azure 數位 Twins 資料擁有* 者
-* **指派存取權給**：從下拉式功能表選取 *Azure AD 使用者、群組或服務主體*
+* **指派存取權給**：使用 *使用者、群組或服務主體*
 * **選取**：搜尋要指派之使用者的名稱或電子郵件地址。 當您選取結果時，使用者將會顯示在 [ *選取的成員* ] 區段中。
 
 :::row:::
@@ -98,7 +98,7 @@ ms.locfileid: "98044368"
 
 您現在已準備好開始使用 Azure 數位 Twins 實例，並已獲指派管理該實例的許可權。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 使用 Azure 數位 Twins CLI 命令，在您的實例上測試個別 REST API 呼叫： 
 * [az dt 參考](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)

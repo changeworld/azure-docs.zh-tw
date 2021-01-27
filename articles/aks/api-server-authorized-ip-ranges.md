@@ -4,12 +4,12 @@ description: '瞭解如何使用 IP 位址範圍保護您的叢集，以存取 A
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: 9828682fa71d023356b174d528c2137ed29f368d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ca6e1c06b3ad90ef12c9bf375bae50d46c5f7c37
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682497"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98890626"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes Service (AKS) 的授權 IP 位址範圍，安全地存取 API 伺服器
 
@@ -130,11 +130,28 @@ az aks update \
     --api-server-authorized-ip-ranges ""
 ```
 
+## <a name="find-existing-authorized-ip-ranges"></a>尋找現有的授權 IP 範圍
+
+若要尋找已獲得授權的 IP 範圍，請使用 [az aks show][az-aks-show] 並指定叢集的名稱和資源群組。 例如：
+
+```azurecli-interactive
+az aks show \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --query apiServerAccessProfile.authorizedIpRanges'
+```
+
+## <a name="update-disable-and-find-authorized-ip-ranges-using-azure-portal"></a>使用 Azure 入口網站來更新、停用及尋找已授權的 IP 範圍
+
+您也可以在 Azure 入口網站中，執行新增、更新、尋找和停用授權 IP 範圍的上述作業。 若要存取，請在叢集資源的功能表分頁中，流覽至 [**設定**] 下的 [**網路**]。
+
+:::image type="content" source="media/api-server-authorized-ip-ranges/ip-ranges-specified.PNG" alt-text="在瀏覽器中，Azure 入口網站頁面顯示叢集資源的網路設定。已反白顯示 [設定指定的 IP 範圍] 和 [指定的 IP 範圍] 選項。":::
+
 ## <a name="how-to-find-my-ip-to-include-in---api-server-authorized-ip-ranges"></a>如何尋找我的 IP 以納入 `--api-server-authorized-ip-ranges` ？
 
 您必須將您的開發電腦、工具或自動化 IP 位址新增至已核准 IP 範圍的 AKS 叢集清單，才能從該處存取 API 伺服器。 
 
-另一個選項是在防火牆虛擬網路中的個別子網路內，使用所需的工具來設定 Jumpbox。 這假設您的環境具有個別網路的防火牆，且您已將防火牆 Ip 新增至授權的範圍。 同樣地，如果您已強制從 AKS 子網到防火牆子網的隧道，則在叢集子網中的 jumpbox 也不會有任何問題。
+另一個選項是在防火牆虛擬網路中的個別子網路內，使用所需的工具來設定 Jumpbox。 這假設您的環境具有個別網路的防火牆，且您已將防火牆 Ip 新增至授權的範圍。 同樣地，如果您有從 AKS 子網到防火牆子網的強制通道，則不是讓叢集子網中的 jumpbox 也有問題。
 
 使用下列命令，將另一個 IP 位址新增至核准的範圍。
 
@@ -170,6 +187,7 @@ Invoke-RestMethod http://ipinfo.io/json | Select -exp ip
 <!-- LINKS - internal -->
 [az-aks-update]: /cli/azure/ext/aks-preview/aks#ext-aks-preview-az-aks-update
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-show]: /cli/azure/aks#az_aks_show
 [az-network-public-ip-list]: /cli/azure/network/public-ip#az-network-public-ip-list
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
 [concepts-security]: concepts-security.md

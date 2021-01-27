@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: sandeo
-ms.openlocfilehash: b4fc6b9facc79db109c5ce5be09576b16a2abdc7
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 3e50b6209c7790853158a1d2be2f42d625b6753b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510884"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882122"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>預覽：使用 Azure Active Directory authentication 登入 Azure 中的 Linux 虛擬機器
 
@@ -201,7 +201,7 @@ Access denied:  to sign-in you be assigned a role with action 'Microsoft.Compute
 Access denied
 ```
 > [!NOTE]
-> 如果您遇到 Azure 角色指派的問題，請參閱 [疑難排解 AZURE RBAC](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#azure-role-assignments-limit)。
+> 如果您遇到 Azure 角色指派的問題，請參閱 [疑難排解 AZURE RBAC](../../role-based-access-control/troubleshooting.md#azure-role-assignments-limit)。
 
 ### <a name="continued-ssh-sign-in-prompts"></a>持續出現 SSH 登入提示
 

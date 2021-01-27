@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 12/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 9038d6bc9cd061200ef4553242889776f30d2dc1
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: a006dfd4f78f90ed323e5780b173cffb6daeac4a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964553"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881732"
 ---
 # <a name="trigger-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>使用適用于 Python 的 Azure Machine Learning SDK 來觸發機器學習管線
 
@@ -27,7 +27,7 @@ ms.locfileid: "97964553"
 
 * 安裝適用于 Python 之 Azure Machine Learning SDK 的 Python 環境。 如需詳細資訊，請參閱 [使用 Azure Machine Learning 建立和管理可重複使用的環境，以進行定型和部署。](how-to-use-environments.md)
 
-* 具有已發佈管線的 Machine Learning 工作區。 您可以使用內建的 [AZURE MACHINE LEARNING SDK 來建立及執行機器學習管線](how-to-create-your-first-pipeline.md)。
+* 具有已發佈管線的 Machine Learning 工作區。 您可以使用內建的 [AZURE MACHINE LEARNING SDK 來建立及執行機器學習管線](./how-to-create-machine-learning-pipelines.md)。
 
 ## <a name="initialize-the-workspace--get-data"></a>& 取得資料來初始化工作區
 
@@ -142,7 +142,7 @@ stop_by_schedule_id(ws, schedule_id)
 
 您可以使用 [Azure 邏輯應用程式](../logic-apps/logic-apps-overview.md)來建立更複雜的觸發程式規則或行為。
 
-若要使用 Azure 邏輯應用程式來觸發 Machine Learning 管線，您將需要已發佈 Machine Learning 管線的 REST 端點。 [建立併發布您的管線](how-to-create-your-first-pipeline.md)。 然後 `PublishedPipeline` 使用管線識別碼來尋找的 REST 端點：
+若要使用 Azure 邏輯應用程式來觸發 Machine Learning 管線，您將需要已發佈 Machine Learning 管線的 REST 端點。 [建立併發布您的管線](./how-to-create-machine-learning-pipelines.md)。 然後 `PublishedPipeline` 使用管線識別碼來尋找的 REST 端點：
 
 ```python
 # You can find the pipeline ID in Azure Machine Learning studio

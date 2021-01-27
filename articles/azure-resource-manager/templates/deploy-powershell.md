@@ -2,19 +2,19 @@
 title: 使用 PowerShell 和範本部署資源
 description: 使用 Azure Resource Manager 和 Azure PowerShell 將資源部署到 Azure。 資源會定義在 Resource Manager 範本中。
 ms.topic: conceptual
-ms.date: 01/15/2021
-ms.openlocfilehash: d895c6e029b0b4a70333dde987706549609c8bd3
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/26/2021
+ms.openlocfilehash: efefb6706794bc2488aa4d4fef6c4ecc082b41a7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251007"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881260"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>使用 ARM 範本與 Azure PowerShell 來部署資源
 
 本文說明如何搭配使用 Azure PowerShell 與 Azure Resource Manager 範本 (ARM 範本) 將您的資源部署到 Azure。 如果您不熟悉部署和管理 Azure 解決方案的概念，請參閱 [範本部署總覽](overview.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 您需要部署範本。 如果您還沒有，請從 Azure 快速入門範本存放庫下載並儲存 [範例範本](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) 。 本文中使用的本機檔案名 _C:\MyTemplates\azuredeploy.js在上_。
 
@@ -61,48 +61,6 @@ ms.locfileid: "98251007"
 
 針對每個範圍，部署範本的使用者必須擁有建立資源的必要許可權。
 
-## <a name="deploy-local-template"></a>部署本機範本
-
-您可以從本機電腦或儲存在外部的範本部署範本。 本節說明如何部署本機範本。
-
-如果您要部署到不存在的資源群組，請建立資源群組。 資源群組的名稱只能包含英數字元、句點 (.)、底線、連字號及括弧。 最多可有 90 個字元。 名稱不能以句點結尾。
-
-```azurepowershell
-New-AzResourceGroup -Name ExampleGroup -Location "Central US"
-```
-
-若要部署本機範本，請 `-TemplateFile` 在部署命令中使用參數。 下列範例也會顯示如何設定來自範本的參數值。
-
-```azurepowershell
-New-AzResourceGroupDeployment `
-  -Name ExampleDeployment `
-  -ResourceGroupName ExampleGroup `
-  -TemplateFile c:\MyTemplates\azuredeploy.json
-```
-
-部署需要幾分鐘的時間才能完成。
-
-## <a name="deploy-remote-template"></a>部署遠端範本
-
-您可能會想要將 ARM 範本儲存在您的本機電腦上，而不是在本機電腦上儲存它們。 您可以將範本儲存在原始檔控制存放庫 (例如 GitHub) 中。 或者，您可以將它們儲存在 Azure 儲存體帳戶中，以在組織內共用存取。
-
-如果您要部署到不存在的資源群組，請建立資源群組。 資源群組的名稱只能包含英數字元、句點 (.)、底線、連字號及括弧。 最多可有 90 個字元。 名稱不能以句點結尾。
-
-```azurepowershell
-New-AzResourceGroup -Name ExampleGroup -Location "Central US"
-```
-
-使用 `-TemplateUri` 參數部署外部範本。
-
-```azurepowershell
-New-AzResourceGroupDeployment `
-  -Name ExampleDeployment `
-  -ResourceGroupName ExampleGroup `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
-```
-
-上述範例針對範本需要可公開存取 URI，這適用於大部分的案例，因為您的範本不應該包含機密資料。 如果您需要指定機密資料 (例如系統管理員密碼)，請將該值以安全參數傳遞。 但是，如果您想要管理範本的存取權，請考慮使用 [範本規格](#deploy-template-spec)。
-
 ## <a name="deployment-name"></a>部署名稱
 
 部署 ARM 範本時，您可以為部署提供名稱。 此名稱可協助您從部署歷程記錄中取出部署。 如果您未提供部署的名稱，則會使用範本檔案的名稱。 例如，如果您部署名為 `azuredeploy.json` 且未指定部署名稱的範本，則會將部署命名為 `azuredeploy` 。
@@ -130,6 +88,60 @@ $deploymentName="ExampleDeployment"+"$today"
 當您為每個部署指定唯一的名稱時，您可以同時執行它們，而不會發生衝突。 如果您執行名為的部署， `newStorage1` 並部署名為的儲存體帳戶 `storage1` ，同時執行另一個名為 `newStorage2` 的部署，並部署名為的儲存體帳戶 `storage2` ，則您在部署歷程記錄中會有兩個儲存體帳戶和兩個專案。
 
 為了避免與並行部署發生衝突，並確保部署歷程記錄中的唯一專案，請為每個部署提供一個唯一的名稱。
+
+## <a name="deploy-local-template"></a>部署本機範本
+
+您可以從本機電腦或儲存在外部的範本部署範本。 本節說明如何部署本機範本。
+
+如果您要部署到不存在的資源群組，請建立資源群組。 資源群組的名稱只能包含英數字元、句點 (.)、底線、連字號及括弧。 最多可有 90 個字元。 名稱不能以句點結尾。
+
+```azurepowershell
+New-AzResourceGroup -Name ExampleGroup -Location "Central US"
+```
+
+若要部署本機範本，請 `-TemplateFile` 在部署命令中使用參數。 下列範例也會顯示如何設定來自範本的參數值。
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name ExampleDeployment `
+  -ResourceGroupName ExampleGroup `
+  -TemplateFile c:\MyTemplates\azuredeploy.json
+```
+
+部署可能需要幾分鐘的時間才能完成。
+
+## <a name="deploy-remote-template"></a>部署遠端範本
+
+您可能會想要將 ARM 範本儲存在您的本機電腦上，而不是在本機電腦上儲存它們。 您可以將範本儲存在原始檔控制存放庫 (例如 GitHub) 中。 或者，您可以將它們儲存在 Azure 儲存體帳戶中，以在組織內共用存取。
+
+如果您要部署到不存在的資源群組，請建立資源群組。 資源群組的名稱只能包含英數字元、句點 (.)、底線、連字號及括弧。 最多可有 90 個字元。 名稱不能以句點結尾。
+
+```azurepowershell
+New-AzResourceGroup -Name ExampleGroup -Location "Central US"
+```
+
+使用 `-TemplateUri` 參數部署外部範本。
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name remoteTemplateDeployment `
+  -ResourceGroupName ExampleGroup `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
+```
+
+上述範例針對範本需要可公開存取 URI，這適用於大部分的案例，因為您的範本不應該包含機密資料。 如果您需要指定機密資料 (例如系統管理員密碼)，請將該值以安全參數傳遞。 但是，如果您想要管理範本的存取權，請考慮使用 [範本規格](#deploy-template-spec)。
+
+若要使用儲存在儲存體帳戶中的相對路徑來部署遠端連結的範本，請使用 `QueryString` 來指定 SAS 權杖：
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name linkedTemplateWithRelativePath `
+  -ResourceGroupName "myResourceGroup" `
+  -TemplateUri "https://stage20210126.blob.core.windows.net/template-staging/mainTemplate.json" `
+  -QueryString $sasToken
+```
+
+如需詳細資訊，請參閱 [使用連結的範本的相對路徑](./linked-templates.md#linked-template)。
 
 ## <a name="deploy-template-spec"></a>部署範本規格
 

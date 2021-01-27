@@ -6,35 +6,33 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 08c0d05ac10d9e61497d36793740c8e827fbeca1
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: ba353cf41cf3876a681f8f18d4121401260ff4ff
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903678"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98877165"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的防火牆規則-單一伺服器
-除非您指定哪些電腦擁有許可權，否則適用於 PostgreSQL 的 Azure 資料庫伺服器防火牆會防止對您資料庫伺服器的所有存取。 此防火牆會根據每一個要求的來源 IP 位址來授與伺服器存取權。
+適用於 PostgreSQL 的 Azure 資料庫伺服器預設是安全的，除非您指定允許哪些 IP 主機存取資料庫伺服器，否則它會防止對您資料庫伺服器的所有存取。 此防火牆會根據每一個要求的來源 IP 位址來授與伺服器存取權。
 若要設定您的防火牆，您可以建立防火牆規則，指定可接受的 IP 位址範圍。 您可以在伺服器層級建立防火牆規則。
 
 **防火牆規則：** 這些規則可讓用戶端完整存取適用於 PostgreSQL 的 Azure 資料庫伺服器，也就是相同邏輯伺服器內的所有資料庫。 使用 Azure 入口網站或使用 Azure CLI 命令，即可設定伺服器層級的防火牆規則。 若要建立伺服器層級的防火牆規則，您必須是訂用帳戶擁有者或訂用帳戶參與者。
 
 ## <a name="firewall-overview"></a>防火牆概觀
-根據預設，防火牆會封鎖對適用於 PostgreSQL 之 Azure 資料庫伺服器的所有資料庫存取。 若要從其他電腦開始使用您的伺服器，請指定一或多個伺服器層級的防火牆規則，以便啟用對伺服器的存取。 使用防火牆規則，來指定允許從網際網路存取的 IP 位址範圍。 存取 Azure 入口網站本身，並不會受到防火牆規則所影響。
-來自網際網路和 Azure 的連接嘗試必須先通過防火牆，才能到達您的 PostgreSQL 資料庫，如下圖所示：
+依預設，防火牆會封鎖對您適用於 PostgreSQL 的 Azure 資料庫伺服器的所有存取。 若要從另一部電腦/用戶端或應用程式存取您的伺服器，您必須指定一或多個伺服器層級防火牆規則，以啟用對伺服器的存取。 使用防火牆規則來指定允許的公用 IP 位址範圍。 存取 Azure 入口網站本身，並不會受到防火牆規則所影響。
+來自網際網路和 Azure 的連線嘗試必須先通過防火牆，才能到達您的于 postgresql 資料庫，如下圖所示：
 
 :::image type="content" source="media/concepts-firewall-rules/1-firewall-concept.png" alt-text="防火牆運作方式的範例流程":::
 
 ## <a name="connecting-from-the-internet"></a>從網際網路連線
-伺服器層級的防火牆規則可套用至相同「適用於 PostgreSQL 的 Azure 資料庫」伺服器上的所有資料庫。 如果要求的 IP 位址在伺服器層級防火牆規則中指定的其中一個範圍內，就會允許連線。
-如果要求的 IP 位址不在任何伺服器層級防火牆規則中指定的範圍內，連線要求就會失敗。
-例如，如果您的應用程式透過適用於 PostgreSQL 的 JDBC 驅動程式來連接，若您在防火牆封鎖連接期間嘗試進行連接，則可能會遇到此錯誤。
+伺服器層級的防火牆規則可套用至相同「適用於 PostgreSQL 的 Azure 資料庫」伺服器上的所有資料庫。 如果要求的來源 IP 位址是在伺服器層級防火牆規則中指定的其中一個範圍內，則會授與連線，否則會拒絕該連接。 例如，如果您的應用程式透過適用於 PostgreSQL 的 JDBC 驅動程式來連接，若您在防火牆封鎖連接期間嘗試進行連接，則可能會遇到此錯誤。
 > java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException: FATAL: no pg\_hba.conf entry for host "123.45.67.890", user "adminuser", database "postgresql", SSL
 
 ## <a name="connecting-from-azure"></a>從 Azure 連線
 建議您尋找任何應用程式或服務的連出 IP 位址，並明確地允許存取這些個別的 IP 位址或範圍。 例如，您可以找到 Azure App Service 的連出 IP 位址，或使用系結至虛擬機器或其他資源的公用 IP (請參閱以下資訊，以取得透過服務端點) 的虛擬機器私人 IP 連接的相關資訊。 
 
-如果您的 Azure 服務無法使用固定的連出 IP 位址，您可以考慮啟用來自所有 Azure 資料中心 IP 位址的連線。 您可以從 [連線 **安全性**] 窗格中，將 [**允許存取 Azure 服務**] 選項設定為 [**開啟**]，以從 Azure 入口網站啟用此設定，然後按 [**儲存**]。 從 Azure CLI 中，啟動和結束位址等於0.0.0.0 的防火牆規則設定會執行相同的設定。 如果不允許連線嘗試，要求就不會到達適用於 PostgreSQL 的 Azure 資料庫伺服器。
+如果您的 Azure 服務無法使用固定的連出 IP 位址，您可以考慮啟用來自所有 Azure 資料中心 IP 位址的連線。 您可以從 [連線 **安全性**] 窗格中，將 [**允許存取 Azure 服務**] 選項設定為 [**開啟**]，以從 Azure 入口網站啟用此設定，然後按 [**儲存**]。 從 Azure CLI 中，啟動和結束位址等於0.0.0.0 的防火牆規則設定會執行相同的設定。 如果防火牆規則拒絕連線嘗試，它就不會到達適用於 PostgreSQL 的 Azure 資料庫的伺服器。
 
 > [!IMPORTANT]
 > [ **允許存取 azure 服務** ] 選項會設定防火牆，以允許所有來自 Azure 的連線，包括來自其他客戶訂用帳戶的連接。 選取這個選項時，請確定您的登入和使用者權限會限制為只有授權的使用者才能存取。
@@ -42,7 +40,7 @@ ms.locfileid: "96903678"
 
 :::image type="content" source="media/concepts-firewall-rules/allow-azure-services.png" alt-text="在入口網站中設定 [允許存取 Azure 服務]":::
 
-### <a name="connecting-from-a-vnet"></a>從 VNet 連接
+## <a name="connecting-from-a-vnet"></a>從 VNet 連接
 若要從 VNet 安全地連接到您的適用於 PostgreSQL 的 Azure 資料庫伺服器，請考慮使用 [vnet 服務端點](./concepts-data-access-and-security-vnet.md)。 
 
 ## <a name="programmatically-managing-firewall-rules"></a>以程式設計方式管理防火牆規則

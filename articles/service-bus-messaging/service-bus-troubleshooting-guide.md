@@ -3,12 +3,12 @@ title: Azure 服務匯流排的疑難排解指南 |Microsoft Docs
 description: 深入瞭解使用 Azure 服務匯流排時，您可能會看到的一些問題的疑難排解秘訣和建議。
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: 8c31d252d75a2ba75528cd12d3a94bad5bd9f677
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: c5813f901f31f96633e11c2ed8162338bdd9bbf7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98126864"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881209"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Azure 服務匯流排的疑難排解指南
 本文提供使用 Azure 服務匯流排時，您可能會看到的一些問題的疑難排解秘訣和建議。 
@@ -80,7 +80,7 @@ Service Bus Error: Unauthorized access. 'Send' claim\(s\) are required to perfor
 身分識別沒有存取服務匯流排主題的許可權。 
 
 ### <a name="resolution"></a>解決方案
-若要解決此錯誤，請安裝 [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) 程式庫。  如需詳細資訊，請參閱 [本機開發驗證](../key-vault/general/service-to-service-authentication.md#local-development-authentication)。 
+若要解決此錯誤，請安裝 [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) 程式庫。  如需詳細資訊，請參閱 [本機開發驗證](/dotnet/api/overview/azure/service-to-service-authentication#local-development-authentication)。 
 
 若要瞭解如何將許可權指派給角色，請參閱 [使用 Azure Active Directory 驗證受控識別，以存取 Azure 服務匯流排資源](service-bus-managed-service-identity.md)。
 

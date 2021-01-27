@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 01/05/2021
 ms.author: inhenkel
-ms.openlocfilehash: 36593efd4f2583f28dffbb4f5b491fbeec7ba21d
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 55a49d48af95c103d2a28d5106af5f3166605514
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916315"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882241"
 ---
 # <a name="azure-storage-accounts"></a>Azure 儲存體帳戶
 
@@ -56,7 +56,7 @@ ms.locfileid: "97916315"
 <sup>1</sup> 在媒體服務 v3 中，只有當您的資產是以媒體服務 v2 建立時，才支援儲存體加密 (AES-256 加密) ，這表示 v3 適用于現有的儲存體加密資產，但不允許建立新的資產。
 
 ## <a name="double-encryption"></a>雙重加密
-媒體服務支援雙重加密。  若要深入瞭解雙重加密，請參閱 [Azure 雙重加密](https://docs.microsoft.com/azure/security/fundamentals/double-encryption)。
+媒體服務支援雙重加密。  若要深入瞭解雙重加密，請參閱 [Azure 雙重加密](../../security/fundamentals/double-encryption.md)。
 
 ## <a name="storage-account-errors"></a>儲存體帳戶錯誤
 

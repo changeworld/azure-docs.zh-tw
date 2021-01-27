@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 55c7522ad1dc6c7f91fae608a777dab3cd67d2ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e09607dde118ce25e5d2e5311e7614f2f18a590
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86183165"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98890725"
 ---
 # <a name="configure-machines-to-a-desired-state"></a>將機器設定為預期狀態
 
@@ -42,7 +42,7 @@ Azure 自動化狀態設定支援使用[部分設定](/powershell/scripting/dsc/
 
 ## <a name="log-in-to-azure"></a>登入 Azure
 
-使用 [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) Cmdlet 登入 Azure 訂用帳戶，並遵循畫面上的指示操作。
+使用 [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) Cmdlet 登入 Azure 訂用帳戶，並遵循畫面上的指示操作。
 
 ```powershell
 Connect-AzAccount
@@ -68,7 +68,7 @@ configuration TestConfig {
 > [!NOTE]
 > 在需要匯入多個模組以提供 DSC 資源的更進階案例中，請確定每個模組在設定中都有唯一的 `Import-DscResource` 行。
 
-呼叫 [Import-AzAutomationDscConfiguration](/powershell/module/Az.Automation/Import-AzAutomationDscConfiguration?view=azps-3.7.0) Cmdlet，以將設定上傳至自動化帳戶中。
+呼叫 [Import-AzAutomationDscConfiguration](/powershell/module/Az.Automation/Import-AzAutomationDscConfiguration) Cmdlet，以將設定上傳至自動化帳戶中。
 
 ```powershell
  Import-AzAutomationDscConfiguration -SourcePath 'C:\DscConfigs\TestConfig.ps1' -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -Published
@@ -78,7 +78,7 @@ configuration TestConfig {
 
 DSC 設定必須編譯成節點設定，才可以指派至節點。 請參閱 [DSC 設定](/powershell/scripting/dsc/configurations/configurations)。
 
-呼叫 [Start-AzAutomationDscCompilationJob](/powershell/module/Az.Automation/Start-AzAutomationDscCompilationJob?view=azps-3.7.0) Cmdlet，以將 `TestConfig` 設定編譯成自動化帳戶中名為 `TestConfig.WebServer` 的節點設定。
+呼叫 [Start-AzAutomationDscCompilationJob](/powershell/module/Az.Automation/Start-AzAutomationDscCompilationJob) Cmdlet，以將 `TestConfig` 設定編譯成自動化帳戶中名為 `TestConfig.WebServer` 的節點設定。
 
 ```powershell
 Start-AzAutomationDscCompilationJob -ConfigurationName 'TestConfig' -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount'
@@ -88,7 +88,7 @@ Start-AzAutomationDscCompilationJob -ConfigurationName 'TestConfig' -ResourceGro
 
 您可以使用 Azure Automation State Configuration 來管理 Azure VM (傳統和 Resource Manager)、內部部署 VM、Linux 機器、AWS VM 和內部部署實體機器。 在本主題中，我們將討論如何只註冊 Azure Resource Manager VM。 如需將其他類型的機器註冊的詳細資訊，請參閱 [將機器上架以供 Azure Automation State Configuration 管理](automation-dsc-onboarding.md)。
 
-呼叫 [Register-AzAutomationDscNode](/powershell/module/Az.Automation/Register-AzAutomationDscNode?view=azps-3.7.0) Cmdlet，以使用 Azure 自動化狀態設定作為受控節點來註冊 VM。 
+呼叫 [Register-AzAutomationDscNode](/powershell/module/Az.Automation/Register-AzAutomationDscNode) Cmdlet，以使用 Azure 自動化狀態設定作為受控節點來註冊 VM。 
 
 ```powershell
 Register-AzAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -AzureVMName 'DscVm'
@@ -125,7 +125,7 @@ Set-AzAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountN
 
 ## <a name="check-the-compliance-status-of-a-managed-node"></a>檢查受控節點的合規性狀態
 
-您可使用 [Get-AzAutomationDscNodeReport](/powershell/module/Az.Automation/Get-AzAutomationDscNodeReport?view=azps-3.7.0) Cmdlet，以取得受控節點合規性狀態的報告。
+您可使用 [Get-AzAutomationDscNodeReport](/powershell/module/Az.Automation/Get-AzAutomationDscNodeReport) Cmdlet，以取得受控節點合規性狀態的報告。
 
 ```powershell
 # Get the ID of the DSC node
@@ -146,7 +146,7 @@ $reports[0]
 > [!NOTE]
 > 從服務取消註冊節點時，只會設定本機設定管理員設定，讓節點不再連線至服務。
 > 這不會影響目前套用至節點的設定。
-> 若要移除目前的設定，請使用 [PowerShell](/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) 或刪除本機設定檔 (此為 Linux 節點的唯一選項)。
+> 若要移除目前的設定，請使用 [PowerShell](/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument) 或刪除本機設定檔 (此為 Linux 節點的唯一選項)。
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
@@ -157,7 +157,7 @@ $reports[0]
 
 ### <a name="powershell"></a>PowerShell
 
-若要使用 PowerShell 從 Azure 自動化狀態設定服務取消註冊節點，請參閱下列文件中的 [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0) Cmdlet。
+若要使用 PowerShell 從 Azure 自動化狀態設定服務取消註冊節點，請參閱下列文件中的 [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode) Cmdlet。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -166,4 +166,4 @@ $reports[0]
 - 若要了解如何編譯 DSC 設定，以便可將其指派給目標節點，請參閱[編譯 Azure 自動化狀態設定中的 DSC 設定](automation-dsc-compile.md)。
 - 如需在持續部署管道中使用 Azure 自動化狀態設定的範例，請參閱[使用 Chocolatey 設定持續部署](automation-dsc-cd-chocolatey.md)。
 - 如需定價資訊，請參閱 [Azure 自動化狀態設定定價](https://azure.microsoft.com/pricing/details/automation/)。
-- 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。
+- 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation)。

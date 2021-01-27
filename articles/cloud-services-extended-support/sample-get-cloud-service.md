@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: cd272e0c6ce76ff69e3e58417845836fe2f55b39
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 522ba95a5d6d97a8fde242274b1b0af969af20a5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744957"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881496"
 ---
 # <a name="retrieve-information-about-your-azure-cloud-service-extended-support-deployments"></a>取得您的 Azure 雲端服務 (延伸支援) 部署的相關資訊
 
@@ -99,4 +99,5 @@ Statuses                    : {{
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure 雲端服務 (延伸支援) 的詳細資訊，請參閱 [Azure 雲端服務 (延伸支援) 總覽](overview.md)。
+- 如需有關 Azure 雲端服務 (延伸支援) 的詳細資訊，請參閱 [Azure 雲端服務 (延伸支援) 總覽](overview.md)。
+- 造訪[雲端服務 (延伸支援) 範例儲存](https://github.com/Azure-Samples/cloud-services-extended-support)機制

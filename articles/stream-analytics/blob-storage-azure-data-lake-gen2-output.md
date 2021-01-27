@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 8f8fa524a69d0431fe98cdcd4d1f12addc576e86
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 5484d13a70d8eaf905d3c8a51d575f177427019b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019579"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882156"
 ---
 # <a name="blob-storage-and-azure-data-lake-gen2-output-from-azure-stream-analytics"></a>Azure 串流分析的 Blob 儲存體和 Azure Data Lake Gen2 輸出
 
@@ -29,7 +29,7 @@ Data Lake Storage Gen2 讓 Azure 儲存體成為在 Azure 上打造企業 Data L
 | 儲存體帳戶     | 您傳送輸出的儲存體帳戶名稱。               |
 | 儲存體帳戶金鑰 | 與儲存體帳戶相關聯的密碼金鑰。                              |
 | 儲存體容器   | 針對儲存在 Azure Blob 服務中 Blob 的邏輯群組。 當您將 blob 上傳至 Blob 服務時，您必須指定該 blob 的容器。 |
-| 路徑模式 | 選擇性。 用來在指定容器中寫入 Blob 的檔案路徑模式。 <br /><br /> 在路徑模式中，您可以選擇使用日期時間變數的一或多個執行個體，來指定 blob 的寫入頻率： <br /> {date}、{time} <br /><br />您可以使用自訂 Blob 資料分割，指定事件資料中的一個自訂 {field} 名稱來分割 Blob。 欄位名稱是英數字元，可以包含空格、連字號和底線。 自訂欄位的限制包含下列各項： <ul><li>欄位名稱不區分大小寫。 例如，服務無法分辨資料行 "ID" 和資料行 "id"。</li><li>不允許使用巢狀欄位。 改為在作業查詢中使用別名來「壓平」欄位。</li><li>運算式不能作為欄位名稱使用。</li></ul> <br />這項功能允許在路徑中使用自訂日期/時間格式的指定名稱設定。 自訂日期和時間格式必須一次指定一個，並以 {datetime： \<specifier> } 關鍵字括住。 允許的輸入為 \<specifier> yyyy、MM、M、dd、d、HH、H、MM、M、ss 或 s。 {Datetime： \<specifier> } 關鍵字可以在路徑中多次使用，以形成自訂日期/時間設定。 <br /><br />範例： <ul><li>範例 1：cluster1/logs/{date}/{time}</li><li>範例 2：cluster1/logs/{date}</li><li>範例 3：cluster1/{client_id}/{date}/{time}</li><li>範例 4：cluster1/{datetime:ss}/{myField}，其中查詢為：SELECT data.myField AS myField FROM Input;</li><li>範例 5：cluster1/year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}</ul><br />所建立資料夾結構的時間戳記遵循 UTC 而非當地時間。 System.string 是所有以時間為基礎的資料分割所使用的[時間。](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-time-handling#choose-the-best-starting-time)<br /><br />檔案命名會使用下列慣例： <br /><br />{路徑前置詞模式}/schemaHashcode_Guid_Number.extension<br /><br /> 這裡的 Guid 代表指派給建立來寫入 blob 檔案之內部寫入器的唯一識別碼。 此數位代表 blob 區塊的索引。 <br /><br /> 範例輸出檔案︰<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> <br />如需有關這項功能的詳細資訊，請參閱 [Azure 串流分析自訂 Blob 輸出資料分割](stream-analytics-custom-path-patterns-blob-storage-output.md)。 |
+| 路徑模式 | 選擇性。 用來在指定容器中寫入 Blob 的檔案路徑模式。 <br /><br /> 在路徑模式中，您可以選擇使用日期時間變數的一或多個執行個體，來指定 blob 的寫入頻率： <br /> {date}、{time} <br /><br />您可以使用自訂 Blob 資料分割，指定事件資料中的一個自訂 {field} 名稱來分割 Blob。 欄位名稱是英數字元，可以包含空格、連字號和底線。 自訂欄位的限制包含下列各項： <ul><li>欄位名稱不區分大小寫。 例如，服務無法分辨資料行 "ID" 和資料行 "id"。</li><li>不允許使用巢狀欄位。 改為在作業查詢中使用別名來「壓平」欄位。</li><li>運算式不能作為欄位名稱使用。</li></ul> <br />這項功能允許在路徑中使用自訂日期/時間格式的指定名稱設定。 自訂日期和時間格式必須一次指定一個，並以 {datetime： \<specifier> } 關鍵字括住。 允許的輸入為 \<specifier> yyyy、MM、M、dd、d、HH、H、MM、M、ss 或 s。 {Datetime： \<specifier> } 關鍵字可以在路徑中多次使用，以形成自訂日期/時間設定。 <br /><br />範例： <ul><li>範例 1：cluster1/logs/{date}/{time}</li><li>範例 2：cluster1/logs/{date}</li><li>範例 3：cluster1/{client_id}/{date}/{time}</li><li>範例 4：cluster1/{datetime:ss}/{myField}，其中查詢為：SELECT data.myField AS myField FROM Input;</li><li>範例 5：cluster1/year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}</ul><br />所建立資料夾結構的時間戳記遵循 UTC 而非當地時間。 System.string 是所有以時間為基礎的資料分割所使用的[時間。](./stream-analytics-time-handling.md#choose-the-best-starting-time)<br /><br />檔案命名會使用下列慣例： <br /><br />{路徑前置詞模式}/schemaHashcode_Guid_Number.extension<br /><br /> 這裡的 Guid 代表指派給建立來寫入 blob 檔案之內部寫入器的唯一識別碼。 此數位代表 blob 區塊的索引。 <br /><br /> 範例輸出檔案︰<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> <br />如需有關這項功能的詳細資訊，請參閱 [Azure 串流分析自訂 Blob 輸出資料分割](stream-analytics-custom-path-patterns-blob-storage-output.md)。 |
 | 日期格式 | 選擇性。 如果前置詞路徑中使用日期權杖，您可以選取組織檔案要用的日期格式。 範例：YYYY/MM/DD |
 | 時間格式 | 選擇性。 如果前置詞路徑中使用時間權杖，請指定組織檔案要用的時間格式。 目前唯一支援的值為 HH。 |
 | 事件序列化格式 | 輸出資料的序列化格式。 支援 JSON、CSV、Avro 和 Parquet。 |

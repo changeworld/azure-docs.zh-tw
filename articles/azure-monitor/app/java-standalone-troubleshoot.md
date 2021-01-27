@@ -4,12 +4,12 @@ description: 瞭解如何針對 Azure 監視器 Application Insights 的 JAVA �
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 788eea17cabbea46578d0f59919ae95a59f2223f
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 90e0ceb6ba9d696eb446d607ed2f2f134733618e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625342"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881117"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>疑難排解指南：適用于 JAVA 的 Azure 監視器 Application Insights
 
@@ -49,36 +49,66 @@ ms.locfileid: "98625342"
 
 ## <a name="import-ssl-certificates"></a>匯入 SSL 憑證
 
-如果您使用預設的 JAVA 金鑰儲存區，它將已擁有所有 CA 根憑證。 您不應該需要匯入更多 SSL 憑證。
+本節可協助您進行疑難排解，並可能在使用 JAVA 代理程式時修正與 SSL 憑證相關的例外狀況。
 
-如果您使用自訂 JAVA 金鑰儲存區，您可能需要將 Application Insights 的端點 SSL 憑證匯入其中。
+有兩個不同的路徑可針對此問題進行疑難排解。
 
-### <a name="key-terminology"></a>重要術語
-*金鑰* 儲存區是憑證、公開金鑰和私密金鑰的儲存機制。 JAVA 開發工具組散發套件通常具有可執行檔來管理它們： `keytool` 。
+### <a name="if-using-a-default-java-keystore"></a>如果使用預設的 JAVA 金鑰儲存區：
 
-下列範例是將 SSL 憑證匯入金鑰儲存區的簡單命令：
+一般而言，預設的 JAVA 金鑰儲存區將已擁有所有 CA 根憑證。 不過，可能會有一些例外狀況，例如內嵌端點憑證可能會由不同的根憑證簽署。 因此，我們建議您執行下列三個步驟來解決此問題：
 
-`keytool -importcert -alias your_ssl_certificate -file "your downloaded SSL certificate name".cer -keystore "Your KeyStore name" -storepass "Your keystore password" -noprompt`
+1.  檢查用來簽署 Application Insights 端點的根憑證是否已存在於預設金鑰儲存區中。 受信任的 CA 憑證預設會儲存在中 `$JAVA_HOME/jre/lib/security/cacerts` 。 若要列出 JAVA 金鑰儲存區中的憑證，請使用下列命令：
+    > `keytool -list -v -keystore $PATH_TO_KEYSTORE_FILE`
+ 
+    您可以將輸出重新導向至暫存檔，如下所示 (稍後會很容易搜尋) 
+    > `keytool -list -v -keystore $JAVA_HOME/jre/lib/security/cacerts > temp.txt`
 
-### <a name="steps-to-download-and-add-an-ssl-certificate"></a>下載和新增 SSL 憑證的步驟
+2. 一旦有憑證清單之後，請遵循下列 [步驟](#steps-to-download-ssl-certificate) 來下載用來簽署 Application Insights 端點的根憑證。
+
+    下載憑證之後，請使用下列命令在憑證上產生 SHA-1 雜湊：
+    > `keytool -printcert -v -file "your_downloaded_root_certificate.cer"`
+ 
+    複製 SHA-1 值，並檢查此值是否存在於您先前儲存的 "temp.txt" 檔案中。  如果您找不到暫存檔案中的 SHA-1 值，則表示預設的 JAVA 金鑰儲存區中缺少下載的根憑證。
+
+
+3. 使用下列命令，將根憑證匯入至預設的 JAVA 金鑰儲存區：
+    >   `keytool -import -file "the cert file" -alias "some meaningful name" -keystore "path to cacerts file"`
+ 
+    在此情況下，它將會是
+ 
+    > `keytool -import -file "your downloaded root cert file" -alias "some meaningful name" $JAVA_HOME/jre/lib/security/cacerts`
+
+
+### <a name="if-using-a-custom-java-keystore"></a>如果使用自訂 JAVA 金鑰儲存區：
+
+如果您使用的是自訂 JAVA 金鑰儲存區，您可能需要將 Application Insights 端點 (s) 根 SSL 憑證 () s 匯入其中。
+建議您執行下列兩個步驟來解決此問題：
+1. 請遵循下列 [步驟](#steps-to-download-ssl-certificate) ，從 Application Insights 端點下載根憑證。
+2. 使用下列命令，將根 SSL 憑證匯入至自訂 JAVA 金鑰儲存區：
+    > `keytool -importcert -alias your_ssl_certificate -file "your downloaded SSL certificate name.cer" -keystore "Your KeyStore name" -storepass "Your keystore password" -noprompt`
+
+### <a name="steps-to-download-ssl-certificate"></a>下載 SSL 憑證的步驟
 
 1.  開啟您慣用的瀏覽器，並移至 `IngestionEndpoint` 用來檢測應用程式的連接字串中出現的 URL。
 
-    :::image type="content" source="media/java-ipa/troubleshooting/ingestion-endpoint-url.png" alt-text="顯示 Application Insights 連接字串的螢幕擷取畫面。":::
+    :::image type="content" source="media/java-ipa/troubleshooting/ingestion-endpoint-snippet.png" alt-text="顯示 Application Insights 連接字串的螢幕擷取畫面。" lightbox="media/java-ipa/troubleshooting/ingestion-endpoint-snippet.png":::
 
 2.  在瀏覽器中選取 [ **查看網站資訊** (鎖定) ] 圖示，然後選取 [ **憑證** ] 選項。
 
-    :::image type="content" source="media/java-ipa/troubleshooting/certificate-icon-capture.png" alt-text="[網站資訊] 中 [憑證] 選項的螢幕擷取畫面。":::
+    :::image type="content" source="media/java-ipa/troubleshooting/certificate-icon-capture.png" alt-text="[網站資訊] 中 [憑證] 選項的螢幕擷取畫面。" lightbox="media/java-ipa/troubleshooting/certificate-icon-capture.png":::
 
-3.  移至 [ **詳細資料** ] 索引標籤，然後選取 [ **複製到** 檔案]。
-4.  選取 [ **下一步]** 按鈕，選取 [ **Base-64 編碼的 x.509] (。CER)** 格式，然後再選取 **[下一步]** 。
+3.  您應該下載「根」憑證，而不是下載「分葉」憑證，如下所示。 稍後，您必須按一下 [憑證路徑]-> 選取根憑證 > 按一下 [View Certificate]。 這會顯示新的憑證功能表，您可以從 [新增] 功能表下載憑證。
 
-    :::image type="content" source="media/java-ipa/troubleshooting/certificate-export-wizard.png" alt-text="憑證匯出嚮導的螢幕擷取畫面，其中已選取格式。":::
+    :::image type="content" source="media/java-ipa/troubleshooting/root-certificate-selection.png" alt-text="如何選取根憑證的螢幕擷取畫面。" lightbox="media/java-ipa/troubleshooting/root-certificate-selection.png":::
 
-5.  指定您要儲存 SSL 憑證的檔案。 然後選取 **[下一步**  >  **]**。 您應該會看到「匯出成功」訊息。
-6.  擁有憑證之後，就可以將憑證匯入至 JAVA 金鑰儲存區。 使用 [上述命令](#key-terminology) 匯入憑證。
+4.  移至 [ **詳細資料** ] 索引標籤，然後選取 [ **複製到** 檔案]。
+5.  選取 [ **下一步]** 按鈕，選取 [ **Base-64 編碼的 x.509] (。CER)** 格式，然後再選取 **[下一步]** 。
+
+    :::image type="content" source="media/java-ipa/troubleshooting/certificate-export-wizard.png" alt-text="憑證匯出嚮導的螢幕擷取畫面，其中已選取格式。" lightbox="media/java-ipa/troubleshooting/certificate-export-wizard.png":::
+
+6.  指定您要儲存 SSL 憑證的檔案。 然後選取 **[下一步**  >  **]**。 您應該會看到「匯出成功」訊息。
 
 > [!WARNING]
 > 您必須重複這些步驟，才能在目前的憑證到期之前取得新憑證。 您可以在 [**憑證**] 對話方塊的 [**詳細資料**] 索引標籤上找到到期資訊。
 >
-> :::image type="content" source="media/java-ipa/troubleshooting/certificate-details.png" alt-text="顯示 SSL 憑證詳細資料的螢幕擷取畫面。":::
+> :::image type="content" source="media/java-ipa/troubleshooting/certificate-details.png" alt-text="顯示 SSL 憑證詳細資料的螢幕擷取畫面。" lightbox="media/java-ipa/troubleshooting/certificate-details.png":::

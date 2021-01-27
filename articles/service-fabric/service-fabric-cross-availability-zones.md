@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 82161a8f66dd717a9dc448a743b818a9ab9938db
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 3db31431c24edd3377f6299046cc31067310b2ef
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250973"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876205"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>跨可用性區域部署 Azure Service Fabric 叢集
 Azure 中的可用性區域是高可用性供應專案，可保護您的應用程式和資料不受資料中心失敗的影響。 可用性區域是唯一的實體位置，可在 Azure 區域內配備獨立的電源、冷卻和網路功能。
@@ -345,7 +345,7 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 
 * 第一個值是 **zone** 屬性，它會指定虛擬機器擴展集中存在的可用性區域。
 * 第二個值是 "singlePlacementGroup" 屬性，必須設定為 true。 **橫跨3個 AZ 的擴展集可以擴充到最多300的 Vm，甚至是 "singlePlacementGroup = true"。**
-* 第三個值為 ">zonebalance"，如果設定為 true，則可確保嚴格的區域平衡。 建議您將此設定為 true，以避免跨區域分散不對稱的 Vm。 閱讀有關 [zoneBalancing](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing)的資訊。
+* 第三個值為 ">zonebalance"，如果設定為 true，則可確保嚴格的區域平衡。 建議您將此設定為 true，以避免跨區域分散不對稱的 Vm。 閱讀有關 [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing)的資訊。
 * 不需要設定 FaultDomain 和 UpgradeDomain 覆寫。
 
 ```json
@@ -416,9 +416,9 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 
 ### <a name="migration-to-the-node-type-with-multiple-availability-zones"></a>使用多個可用性區域遷移至節點類型
 在所有的遷移案例中，必須加入新的 nodeType，以支援多個可用性區域。 無法遷移現有的 nodeType 以支援多個區域。
-[這裡](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-primary-node-type )的文章會取得新增 nodetype 的詳細步驟，也會新增新的 nodetype （例如 IP 和 LB 資源）所需的其他資源。 相同的文章也會說明在將具有多個可用性區域的 nodeType 新增至叢集之後，立即淘汰現有的 nodeType。
+[這裡](./service-fabric-scale-up-primary-node-type.md)的文章會取得新增 nodetype 的詳細步驟，也會新增新的 nodetype （例如 IP 和 LB 資源）所需的其他資源。 相同的文章也會說明在將具有多個可用性區域的 nodeType 新增至叢集之後，立即淘汰現有的 nodeType。
 
-* 從使用基本 LB 和 IP 資源的 nodeType 進行遷移：這已針對每個 AZ 有一個節點類型的[解決方案描述。](https://docs.microsoft.com/azure/service-fabric/service-fabric-cross-availability-zones#migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip) 
+* 從使用基本 LB 和 IP 資源的 nodeType 進行遷移：這已針對每個 AZ 有一個節點類型的[解決方案描述。](#migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip) 
     針對新的節點類型，唯一的差別在於每個 AZ 只有1個虛擬機器擴展集和1個 nodetype，而不是每個 az 的1個節點。
 * 從使用標準 SKU LB 和 IP 資源和 NSG 的 nodeType 進行遷移：遵循上述的相同程式，但不需要新增 LB、IP 和 NSG 資源，而且可以在新的 nodeType 中重複使用相同的資源。
 

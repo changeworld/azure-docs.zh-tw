@@ -1,6 +1,6 @@
 ---
-title: 建立 Azure 雲端服務 (延伸支援) -範本
-description: '使用 ARM 範本來建立 Azure 雲端服務 (延伸支援) '
+title: 部署 Azure 雲端服務 (延伸支援) -範本
+description: '使用 ARM 範本來部署 Azure 雲端服務 (延伸支援) '
 ms.topic: tutorial
 ms.service: cloud-services-extended-support
 author: gachandw
@@ -8,14 +8,14 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 3b28bc96703fa48e598bfb6f9622237e769119f2
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: f86b2a50040704aac2827c463a362a04f78ba34f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757148"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881817"
 ---
-# <a name="create-a-cloud-service-extended-support-using-arm-templates"></a>使用 ARM 範本建立雲端服務 (延伸支援) 
+# <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>使用 ARM 範本部署雲端服務 (延伸支援) 
 
 本教學課程說明如何使用 [ARM 範本](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)建立雲端服務 (延伸支援) 部署。 
 
@@ -39,7 +39,7 @@ ms.locfileid: "98757148"
     - 的關聯 Key Vault 必須啟用適當的許可權，讓雲端服務 (延伸支援) 資源可以從 Key Vault 取得憑證。 如需詳細資訊，請參閱 [憑證和 Key Vault](certificates-and-key-vault.md)
     - 您必須在下列步驟所示的 ARM 範本的 OsProfile 區段中參考金鑰保存庫。
 
-## <a name="create-a-cloud-service-extended-support"></a> (延伸支援) 建立雲端服務 
+## <a name="deploy-a-cloud-service-extended-support"></a> (延伸支援) 部署雲端服務 
 1. 建立虛擬網路。 虛擬網路的名稱必須符合服務設定 ( .cscfg) 檔案中的參考。 如果使用現有的虛擬網路，請從 ARM 範本省略此區段。
 
     ```json
@@ -454,3 +454,4 @@ ms.locfileid: "98757148"
 ## <a name="next-steps"></a>後續步驟 
 - 請 [參閱雲端服務的常見問題，](faq.md) (延伸支援) 。
 - 使用 [Azure 入口網站](deploy-portal.md)、 [PowerShell](deploy-powershell.md)、 [範本](deploy-template.md) 或 [Visual Studio](deploy-visual-studio.md)，將雲端服務部署 (延伸支援) 。
+- 造訪[雲端服務 (延伸支援) 範例儲存](https://github.com/Azure-Samples/cloud-services-extended-support)機制

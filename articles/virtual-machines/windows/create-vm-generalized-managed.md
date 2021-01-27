@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: cefe427a7a6f7a46c838147f3d699423c9f19c7b
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: edcaf3fb92b78f2d1fab54cf4db21aaaff0e3d59
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201887"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881850"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>從受控映像建立 VM
 
@@ -20,7 +20,7 @@ ms.locfileid: "98201887"
 
 在建立新的 VM 之前，您必須[建立受控 VM 映像](capture-image-resource.md) 做為來源映像，並將映像的讀取權限授與任何應該有權存取映像的使用者。 
 
-一個受控映像最多可支援 20 個同時部署。 嘗試從相同的受控映像同時建立 20 個以上的 VM 時，因為單一 VHD 的儲存體效能限制之故，可能會導致佈建逾時。 若要同時建立 20 個以上的 VM，請使用[共用映像資源庫](shared-image-galleries.md)中設定為每 20 個並行虛擬機器部署 1 個複本的映像。
+一個受控映像最多可支援 20 個同時部署。 嘗試從相同的受控映像同時建立 20 個以上的 VM 時，因為單一 VHD 的儲存體效能限制之故，可能會導致佈建逾時。 若要同時建立 20 個以上的 VM，請使用[共用映像資源庫](../shared-image-galleries.md)中設定為每 20 個並行虛擬機器部署 1 個複本的映像。
 
 ## <a name="use-the-portal"></a>使用入口網站
 

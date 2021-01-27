@@ -3,12 +3,12 @@ title: 適用于 Azure 的受控識別
 description: 瞭解如何使用適用于 Azure 的受控識別搭配 Service Fabric。
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 28c992792d4572a43e12f5d32855f8411b0f4c6f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 71fa9ef4da8081a167b68553e2e3eac8477e8aee
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574746"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881715"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric"></a>使用適用于 Azure 的受控識別搭配 Service Fabric
 
@@ -56,7 +56,7 @@ ms.locfileid: "96574746"
 
 - 移除或變更指派給應用程式的身分識別;如果您必須進行變更，請提交個別的部署，以先新增身分識別指派，然後再移除先前指派的身分識別。 從現有的應用程式移除身分識別可能會產生非預期的結果，包括讓您的應用程式處於無法升級的狀態。 如果需要移除身分識別，則可以安全地刪除應用程式;請注意，這將會刪除系統指派的身分識別 (如果有定義) 與應用程式相關聯，而且將會移除任何與指派給應用程式的使用者指派身分識別相關聯的關聯。
 
-- 目前未將受控識別的 Service Fabric 支援整合到 [azureservicetokenprovider 會](../key-vault/general/service-to-service-authentication.md)中。
+- 目前未將受控識別的 Service Fabric 支援整合到 [azureservicetokenprovider 會](/dotnet/api/overview/azure/service-to-service-authentication)中。
 
 ## <a name="next-steps"></a>後續步驟
 

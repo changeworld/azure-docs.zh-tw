@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 380aa826030df14b4b88b86ac2962c988796c0f9
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 025a94cf7d163d41486ef218e70d9eb48e93d31c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202635"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881311"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>適用于 Azure Machine Learning 的 Azure 安全性基準
 
@@ -603,7 +603,7 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 
 ### <a name="53-deploy-an-automated-patch-management-solution-for-third-party-software-titles"></a>5.3：為協力廠商軟體專案部署自動化的修補程式管理解決方案
 
-**指導** 方針： Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資源之間有不同的支援。 針對您的組織所擁有的計算資源，請使用協力廠商修補管理解決方案。 已在環境中使用 Configuration Manager 的客戶也可以使用 System Center Updates Publisher，讓他們能夠將自訂更新發佈到 Windows Server Update 服務。 這可讓更新管理修補使用 Configuration Manager 作為其更新存放庫（具有協力廠商軟體）的機器。
+**指導** 方針： Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資源之間有不同的支援。 針對您的組織所擁有的計算資源，請使用協力廠商修補管理解決方案。 已在環境中使用設定管理員的客戶也可以使用 System Center Updates Publisher，讓他們能夠將自訂更新發佈到 Windows Server Update 服務。 這可讓更新管理修補使用設定管理員作為其更新存放庫（具有協力廠商軟體）的機器。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -879,9 +879,9 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 
 - [在 Azure 入口網站中建立 Windows 虛擬機器 ](../virtual-machines/windows/quick-create-portal.md)
 
-- [如何下載 VM 範本的資訊](../virtual-machines/windows/download-template.md)
+- [如何下載 VM 範本的資訊](/previous-versions/azure/virtual-machines/windows/download-template)
 
-- [將 VHD 上傳至 Azure 並新建 VM 的範例指令碼](../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [將 VHD 上傳至 Azure 並新建 VM 的範例指令碼](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -911,7 +911,7 @@ Azure Machine Learning 完全支援用於追蹤工作的 Git 存放庫;您可以
 
 - [如何設定 Azure RBAC](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
-- [共用映射庫總覽](../virtual-machines/windows/shared-image-galleries.md)
+- [共用映射庫總覽](../virtual-machines/shared-image-galleries.md)
 
 - [使用 Azure RBAC 進行 Kubernetes 授權](../aks/manage-azure-rbac.md)
 

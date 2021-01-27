@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: 31398a49de871ad44499a796adfef1be618ccab9
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: ae07f51a91745acdaf2601d3a50bf282129dac71
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685169"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881800"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure 時間序列深入解析 Gen2 事件來源
 
@@ -59,7 +59,7 @@ ms.locfileid: "98685169"
 
 - 將您的 IoT 中樞或事件中樞資料保留時間增加到最多7天。
 
-- 在 Azure 入口網站中建立環境警示。 以平臺 [計量](https://docs.microsoft.com/azure/time-series-insights/how-to-monitor-tsi-reference#metrics) 為基礎的警示可讓您驗證端對端管線行為。 [此處](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts)提供建立和管理警示的指示。 建議的警示條件：
+- 在 Azure 入口網站中建立環境警示。 以平臺 [計量](./how-to-monitor-tsi-reference.md#metrics) 為基礎的警示可讓您驗證端對端管線行為。 [此處](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts)提供建立和管理警示的指示。 建議的警示條件：
 
   - IngressReceivedMessagesTimeLag 超過5分鐘
   - IngressReceivedBytes 為0
@@ -92,7 +92,7 @@ Azure 時間序列深入解析的 Gen2 目前不支援使用串流管線來匯�
 ± HH： MM</br>
 ± HH： MMZ</br>
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 閱讀 JSON 簡維 [和轉義規則](./concepts-json-flattening-escaping-rules.md) ，以瞭解事件的儲存方式。
 

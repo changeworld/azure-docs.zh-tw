@@ -3,12 +3,12 @@ title: Azure Functions 的應用程式設定參考
 description: Azure Functions 應用程式設定或環境變數的參考文件。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 80b2daebbd64f08dd4f5d728b2a9a4ee04b8952f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a28530fd4e4731065c4ddcc2f39e9a4660529921
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728987"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881918"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的應用程式設定參考
 
@@ -131,7 +131,7 @@ Application Insights 的連接字串。 `APPLICATIONINSIGHTS_CONNECTION_STRING` 
 
 |Key|範例值|
 |---|------------|
-|AzureWebJobsSecretStorageType|檔案儲存體|
+|AzureWebJobsSecretStorageType|檔案|
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
@@ -239,7 +239,7 @@ _此設定目前為預覽狀態。_
 
 ## <a name="website_contentovervnet"></a>網站 \_ CONTENTOVERVNET
 
-僅適用于 Premium 方案。 的值可讓您的函式 `1` 應用程式在您的儲存體帳戶限制為虛擬網路時進行調整。 將您的儲存體帳戶限制為虛擬網路時，您應該啟用此設定。 若要深入瞭解，請參閱將 [您的儲存體帳戶限制為虛擬網路](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network-preview)。 
+僅適用于 Premium 方案。 的值可讓您的函式 `1` 應用程式在您的儲存體帳戶限制為虛擬網路時進行調整。 將您的儲存體帳戶限制為虛擬網路時，您應該啟用此設定。 若要深入瞭解，請參閱將 [您的儲存體帳戶限制為虛擬網路](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network)。
 
 |Key|範例值|
 |---|------------|

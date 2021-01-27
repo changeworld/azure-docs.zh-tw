@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: b23b5d516479cb28948a601c6bd71309500e73f1
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
-ms.translationtype: HT
+ms.openlocfilehash: 56644ab6cacfd811a23fb89b9bf6a10c87542db3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825784"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876778"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>快速入門：設定 Azure Spring Cloud 設定伺服器
 
@@ -84,7 +84,7 @@ az spring-cloud config-server git set -n <service instance name> --uri https://g
 ::: zone-end
 
 > [!TIP]
-> 如果您使用私人存放庫存放組態伺服器，請參閱我們的[設定驗證教學課程](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-config-server)。
+> 如果您使用私人存放庫存放組態伺服器，請參閱我們的[設定驗證教學課程](./spring-cloud-tutorial-config-server.md)。
 
 ## <a name="troubleshooting-of-azure-spring-cloud-config-server"></a>Azure Spring Cloud Config Server 的疑難排解
 

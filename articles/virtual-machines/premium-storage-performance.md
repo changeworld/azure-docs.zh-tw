@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 26ef07269c9451c2e9d05d42e2247fbfcdae4844
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 7e93c659ad58db8d82e68380ab6a0855af27e1bf
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201955"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882377"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure 進階儲存體：專為高效能而設計
 
@@ -35,8 +35,8 @@ ms.locfileid: "98201955"
 >
 > 如果您想要對磁片進行基準測試，請參閱有關將磁片效能評定的文章：
 >
-> * 針對 Linux： [在 Azure 磁碟儲存體上進行應用程式基準測試](linux/disks-benchmarks.md)
-> * 針對 Windows：評定 [磁片](windows/disks-benchmarks.md)的效能。
+> * 針對 Linux： [在 Azure 磁碟儲存體上進行應用程式基準測試](./disks-benchmarks.md)
+> * 針對 Windows：評定 [磁片](./disks-benchmarks.md)的效能。
 >
 > 如果您的 VM 支援加速網路，您應確實加以啟用。 如果未啟用，您可以對 [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) 和 [Linux](../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms) 上已部署的 VM 加以啟用。
 
@@ -380,8 +380,8 @@ Azure 進階儲存體會根據您選擇的 VM 大小和磁碟大小，佈建指�
 
 如果您想要對磁片進行基準測試，請參閱有關將磁片效能評定的文章：
 
-* 針對 Linux： [在 Azure 磁碟儲存體上進行應用程式基準測試](linux/disks-benchmarks.md)
-* 針對 Windows：評定 [磁片](windows/disks-benchmarks.md)的效能。
+* 針對 Linux： [在 Azure 磁碟儲存體上進行應用程式基準測試](./disks-benchmarks.md)
+* 針對 Windows：評定 [磁片](./disks-benchmarks.md)的效能。
 
 深入了解可用的磁碟類型：
 

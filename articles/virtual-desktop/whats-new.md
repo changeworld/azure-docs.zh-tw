@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: df3dd8b5b18ec2997ee20ad4955ffd7bc1dc573d
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
-ms.translationtype: HT
+ms.openlocfilehash: 2f49ec0fef5aa79c602e561746eb0f6dba16cb33
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955003"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876592"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows 虛擬桌面的新增功能？
 
@@ -232,7 +232,7 @@ Windows 虛擬桌面現在整合至 Azure Resource Manager。 在最新的更新
 
 - 在此更新中，您不再需要重複執行 Azure Marketplace 或 GitHub 範本來展開主機集區。 您只需要展開主機集區，就可以移至 Azure 入口網站中的主機集區，然後選取 [+ 新增] 來部署額外的工作階段主機。
 
-- 主機集區部署現在已與 [Azure 共用映像庫](../virtual-machines/windows/shared-image-galleries.md)完全整合。 共用映像庫是個別的 Azure 服務，可儲存虛擬機器 (VM) 映像定義，包括映像版本控制。 您也可以使用全域複寫，將您的映像複製並傳送到其他 Azure 區域，以進行本機部署。
+- 主機集區部署現在已與 [Azure 共用映像庫](../virtual-machines/shared-image-galleries.md)完全整合。 共用映像庫是個別的 Azure 服務，可儲存虛擬機器 (VM) 映像定義，包括映像版本控制。 您也可以使用全域複寫，將您的映像複製並傳送到其他 Azure 區域，以進行本機部署。
 
 - 透過 PowerShell 或診斷服務 Web 應用程式完成的監視功能現在已移至 Azure 入口網站中的 Log Analytics。 您現在也有兩個選項可將報告視覺化。 您可以執行 Kusto 查詢，並使用活頁簿來建立視覺效果報告。
 

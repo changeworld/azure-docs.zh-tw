@@ -5,29 +5,30 @@ author: dbakevlar
 ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.topic: article
-ms.date: 08/02/2018
+ms.date: 12/17/2020
 ms.author: kegorman
-ms.reviewer: cynthn
-ms.openlocfilehash: 5e9ddecd694a9051e746d07cbc1bee4d98bf5829
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.reviewer: tigorman
+ms.openlocfilehash: 0b6f4e652ca8fef7bee4165bcd0673be2fa11eac
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484425"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98890759"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中設計和實作 Oracle 資料庫
 
 ## <a name="assumptions"></a>假設
 
 - 您打算將 Oracle 資料庫從內部部署環境移轉至 Azure。
-- 您的 [診斷套件](https://docs.oracle.com/cd/E11857_01/license.111/e11987/database_management.htm) 適用于您想要遷移的 Oracle Database
-- 您已了解 Oracle AWR 報表中的各種計量。
+- 您的 [診斷套件](https://docs.oracle.com/cd/E11857_01/license.111/e11987/database_management.htm) 或 [自動工作負載存放庫](https://www.oracle.com/technetwork/database/manageability/info/other-manageability/wp-self-managing-database18c-4412450.pdf) 適用于您想要遷移的 Oracle Database
+- 您已瞭解 Oracle 中的各種計量。
 - 您已基本了解應用程式效能和平台使用量。
 
 ## <a name="goals"></a>目標
 
 - 了解如何將 Azure 中的 Oracle 部署最佳化。
 - 探索 Azure 環境中 Oracle 資料庫的效能調整選項。
+- 透過架構和優點，以及資料庫程式碼的邏輯微調、 (SQL) 和整體資料庫設計，清楚瞭解實體微調的限制。
 
 ## <a name="the-differences-between-an-on-premises-and-azure-implementation"></a>內部部署和 Azure 實作之間的差異 
 
@@ -46,14 +47,15 @@ ms.locfileid: "96484425"
 | **預定的維修** |修補/升級|[可用性設定組](/previous-versions/azure/virtual-machines/windows/infrastructure-example) (Azure 所管理的修補/升級) |
 | **Resource** |專用  |與其他用戶端共用|
 | **區域** |資料中心 |[區域配對](../../regions.md#region-pairs)|
-| **Storage** |SAN/實體磁碟 |[Azure 受控儲存體](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
+| **儲存體** |SAN/實體磁碟 |[Azure 受控儲存體](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
 | **縮放** |垂直調整 |水平調整|
 
 
-### <a name="requirements"></a>規格需求
+### <a name="requirements"></a>需求
 
-- 決定資料庫大小和成長率。
-- 決定 IOPS 需求，您可以根據 Oracle AWR 報表或其他網路監視工具進行評估。
+- 判斷實際的 CPU 使用率，因為 Oracle 是由核心授權，所以調整 vCPU 需求的大小可能是節省成本的必要做法。 
+- 決定資料庫大小、備份儲存體和成長率。
+- 判斷您可以根據 Oracle Statspack 和 AWR 報表或作業系統層級儲存體監視工具來預估的 IO 需求。
 
 ## <a name="configuration-options"></a>設定選項
 
@@ -66,33 +68,44 @@ ms.locfileid: "96484425"
 
 ### <a name="generate-an-awr-report"></a>產生 AWR 報表
 
-如果您目前已有 Oracle 資料庫，且打算移轉至 Azure，您會有數個選項。 如果您有 Oracle 實例的 [診斷套件](https://www.oracle.com/technetwork/oem/pdf/511880.pdf) ，您可以執行 oracle AWR 報表，以取得度量 (IOPS、Mbps、gib 等) 。 然後根據收集到的計量選擇 VM。 或者，連絡基礎結構小組，取得類似的資訊。
+如果您有現有的 Oracle Enterprise Edition 資料庫，而且打算遷移至 Azure，您有數個選項。 如果您有 Oracle 實例的 [診斷套件](https://www.oracle.com/technetwork/oem/pdf/511880.pdf) ，您可以執行 oracle AWR 報表，以取得度量 (IOPS、Mbps、gib 等) 。 針對沒有診斷套件授權或 Standard Edition 資料庫的資料庫，在收集手動快照集之後，可以使用 Statspack 報告來收集相同的重要計量。  這兩種報告方法的主要差異在於，AWR 會自動收集並提供有關資料庫的詳細資訊，而不是 Statspack 的前置報告選項。
 
-您可以考慮在一般和尖峰工作負載期間執行 AWR 報表，以進行比較。 根據這些報表，您可以根據平均工作負載或最大工作負載來調整 VM 大小。
+您可以考慮在一般和尖峰工作負載期間執行 AWR 報表，以進行比較。 若要收集更精確的工作負載，請考慮為期一周的延伸視窗報表（與24小時的執行時間），並瞭解 AWR 確實會在報表的計算過程中提供平均值。  對於資料中心的遷移，建議您收集報告以在生產系統上調整規模，並預估用於使用者測試、測試、開發等的剩餘資料庫複本， (UAT 等於生產、測試和開發50% 的生產大小調整等 ) 
 
-以下是如何產生 AWR 報表 (使用 Oracle Enterprise Manager 產生 AWR 報表的範例，如果您目前的安裝有一個) ：
+根據預設，AWR 存放庫會保留8天的資料，並依每小時的間隔拍攝快照集。  若要從命令列執行 AWR 報表，您可以從終端機執行下列動作：
 
 ```bash
 $ sqlplus / as sysdba
-SQL> EXEC DBMS_WORKLOAD_REPOSITORY.CREATE_SNAPSHOT;
-SQL> @?/rdbms/admin/awrrpt.sql
+SQL> @$ORACLE_HOME/rdbms/admin/awrrpt.sql;
 ```
 
 ### <a name="key-metrics"></a>重要計量
 
+報表會提示您輸入下列資訊：
+- 報表類型： HTML 或文字，在12.1 中 (HTML，並提供比文字格式更多的資訊。 ) 
+- 要顯示的快照的天數， (一小時的間隔內，一周的報表在快照集識別碼中會是168不同的值) 
+- 報表視窗的起始 SnapshotID。
+- 報表視窗的結束 SnapshotId。
+- AWR 腳本所要建立的報表名稱。
+
+如果在實際的應用程式叢集上執行 AWR， (RAC) 命令列報告為 awrgrpt，而不是 awrrpt .sql。  "G" 報表將會在單一報表中建立 RAC 資料庫中所有節點的報告，而不需要在每個 RAC 節點上執行一個報告。
+
 以下是您可以從 AWR 報表取得的計量：
 
-- 核心總數
-- CPU 時脈速度
+- 資料庫名稱、實例名稱和主機名稱
+- Oracle) 的資料庫版本， (的可支援性
+- CPU/核心
+- SGA/PGA、 (和顧問，讓您知道是否有太小的) 
 - 記憶體總計 (GB)
-- CPU 使用率
-- 尖峰資料傳送速率
-- I/O 變更率 (讀/寫)
-- 重做記錄速率 (MBPs)
+- CPU% 忙碌
+- 資料庫 Cpu
+- IOPs (讀取/寫入) 
+- MBPs (讀取/寫入) 
 - 網路輸送量
 - 網路延遲速率 (低/高)
-- 資料庫大小 (GB)
-- 透過 SQL*Net 從/至用戶端收到的位元組
+- 前幾名等候事件 
+- 資料庫的參數設定
+- 是資料庫 RAC、Exadata、使用 advanced 功能或設定
 
 ### <a name="virtual-machine-size"></a>虛擬機器大小
 
@@ -146,25 +159,19 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 - 預設的 OS 磁碟：這些磁碟類型可提供持續性資料和快取。 它們最適合用在啟動時的 OS 存取，但其設計目的並非用於交易式或資料倉儲 (分析) 工作負載。
 
-- 非受控磁碟：您可以使用這些磁碟類型來管理用來儲存虛擬硬碟 (VHD) 檔案 (對應至您的 VM 磁碟) 的儲存體帳戶。 VHD 檔案會以分頁 Blob 的形式儲存在 Azure 儲存體帳戶中。
-
-- 受控磁碟：Azure 會管理您用於 VM 磁碟的儲存體帳戶。 您可以指定需要的磁碟類型 (進階或標準) 和磁碟大小。 Azure 會為您建立並管理該磁碟。
-
-- 進階儲存體磁碟：這些磁碟類型最適合生產工作負載使用。 進階儲存體支援可連結至特定大小系列 VM (例如 DS、DSv2、GS 和 F 系列 VM) 的 VM 磁碟。 進階磁碟會隨附不同的大小，而且您可以選擇範圍從 32 GB 到 4096 GB 的磁碟。 每個磁碟大小都有自己的效能規格。 端視您的應用程式需求而定，您可以將一或多個磁碟連結至您的 VM。
-
-當您從入口網站建立新的受控磁碟時，可以選擇您想要使用之磁碟類型的 [帳戶類型]。 請記住，並非所有可用的磁碟都會顯示在下拉式功能表中。 在選擇特定的 VM 大小之後，功能表只會根據該 VM 大小顯示可用的進階儲存體 SKU。
+- 受控磁碟：Azure 會管理您用於 VM 磁碟的儲存體帳戶。 您可以針對 Oracle 工作負載) 和您需要的磁片大小，指定最常 (premium SSD 的磁片類型。 Azure 會為您建立並管理該磁碟。  進階 SSD 受控磁片僅適用于經記憶體優化且特別設計的 VM 系列。 在選擇特定的 VM 大小之後，功能表只會根據該 VM 大小顯示可用的進階儲存體 SKU。
 
 ![受控磁碟頁面的螢幕擷取畫面](./media/oracle-design/premium_disk01.png)
 
 在 VM 上設定儲存體之後，您可能會想要在建立資料庫之前對磁碟進行負載測試。 知道延遲和輸送量方面的 I/O 速率可以協助您判斷 VM 是否支援具有延遲目標的預期輸送量。
 
-有數種工具可以進行應用程式負載測試，例如 Oracle Orion、Sysbench 和 Fio。
+有一些工具可用來進行應用程式負載測試，例如 Oracle Orion、Sysbench、SLOB 和 Fio。
 
-在部署好 Oracle 資料庫之後，請再次執行負載測試。 啟動您的一般和尖峰工作負載，其結果會顯示您環境的基準數據。
+在部署好 Oracle 資料庫之後，請再次執行負載測試。 啟動您的一般和尖峰工作負載，其結果會顯示您環境的基準數據。  在工作負載測試中很實際-執行的工作負載不像您將在 VM 上執行的工作負載，是不合理的。
 
-根據 IOPS 速率而非儲存體大小來調整儲存體大小可能更為重要。 例如，如果所需的 IOPS 是 5000，但您只需要 200 GB，則您可能仍會得到 P30 等級的進階磁碟，即使它隨附 200 GB 以上的儲存體。
+由於 Oracle 是許多需要大量 IO 的資料庫，因此請務必根據 IOPS 速率（而非儲存體大小）調整儲存體大小。 例如，如果所需的 IOPS 是 5000，但您只需要 200 GB，則您可能仍會得到 P30 等級的進階磁碟，即使它隨附 200 GB 以上的儲存體。
 
-IOPS 速率可以從 AWR 報表取得。 此速率是由重做記錄、實體讀取和寫入速率所決定。
+IOPS 速率可以從 AWR 報表取得。 此速率是由重做記錄、實體讀取和寫入速率所決定。  務必確認所選的 VM 系列也能夠處理工作負載的 IO 需求。  如果 VM 的 IO 限制低於儲存體，則 VM 會設定最大限制。
 
 ![AWR 報表頁面的螢幕擷取畫面](./media/oracle-design/awr_report.png)
 
@@ -176,34 +183,28 @@ IOPS 是 12,200,000 / 2,358 = 5,174。
 **建議**
 
 - 針對資料的資料表空間，使用受控儲存體或 Oracle ASM，將 I/O 工作負載分散到一些磁碟。
-- 隨著 I/O 區塊大小的增加，針對讀取密集和寫入密集作業，新增更多資料磁碟。
-- 增加大型循序處理序的區塊大小。
-- 使用資料壓縮來減少 I/O (適用於資料和索引)。
-- 區隔不同資料磁碟上的重做記錄、系統、暫時和重做 TS。
+- 使用 Oracle advanced 壓縮來減少資料和索引) 的 i/o (。
+- 分隔不同資料磁片上的重做記錄、暫存和復原資料表空間。
 - 不要將任何應用程式檔案放在預設 OS 磁碟 (/dev/sda)。 這些磁碟不適合用於快速 VM 啟動階段，因此可能不會為您的應用程式提供良好的效能。
 - 在 Premium 儲存體上使用 M 系列 Vm 時，請啟用 [重做記錄磁片] [寫入加速器](../../how-to-enable-write-accelerator.md) 。
+- 請考慮將具有高延遲的重做記錄移至 ultra 磁片。
 
 ### <a name="disk-cache-settings"></a>磁碟快取設定
 
-有三個主機快取選項：
+主機快取有三個選項，但針對 Oracle 資料庫，建議您只針對資料庫工作負載使用唯讀快取。  ReadWrite 可能會對資料檔案帶來重大弱點，其中資料庫寫入的目標是要將資料記錄到資料檔案，而不是快取資訊。
 
-- *ReadOnly*：快取所有要求，以供未來讀取。 所有寫入會直接保存到 Azure Blob 儲存體。
-
-- *ReadWrite*：這是「預先讀取」演算法。 快取讀取和寫入，以供未來讀取。 非直接寫入式寫入會先保存到本機快取。 它也會為輕量工作負載提供最低的磁碟延遲。 對於不負責保存必要資料的應用程式，如果使用「讀寫」快取，一旦 VM 損毀，可能會導致資料遺失。
-
-- 無 (停用)：使用此選項即可略過快取。 所有資料都會傳輸至磁碟，並保存到 Azure 儲存體。 這種方法可提供您最高 I/O 速率來進行 I/O 密集式工作負載。 您也需要考量「交易成本」。
+與檔案系統或應用程式不同的是，對於資料庫而言，主機快取的建議是 *ReadOnly*：系統會快取所有要求，以供未來讀取。 所有寫入都會繼續寫入磁片。
 
 **建議**
 
-若要將輸送量最大化，我們建議您從「 **無** 」進行主機快取。 針對進階儲存體，請記住您必須在使用 [唯讀] 或 [無] 選項掛接檔案系統時停用「屏障」。 將具有 UUID 的 /etc/fstab 檔案更新到磁碟。
+若要將輸送量最大化，建議您盡可能從 **ReadOnly** 開始進行主機快取。 針對進階儲存體，請記住，當您使用 **ReadOnly** 選項掛接檔案系統時，必須停用「阻礙」。 將具有 UUID 的 /etc/fstab 檔案更新到磁碟。
 
 ![[受控磁片] 頁面的螢幕擷取畫面，其中顯示 [ReadOnly] 和 [無] 選項。](./media/oracle-design/premium_disk02.png)
 
-- 針對 OS 磁碟，使用預設的 [讀取/寫入] 快取。
-- 針對 SYSTEM、TEMP 和 UNDO，對快取功能使用 [無]。
-- 針對 DATA，對快取功能使用 [無]。 但是，如果您的資料庫是唯讀或讀取密集，請使用 [唯讀] 快取。
+- 針對 OS 磁片，使用預設的 **讀取/寫入** 快取，並針對 Oracle 工作負載 vm 使用 premium SSD。  此外，也請確定用於交換的磁片區也是在 premium SSD 上。
+- 針對所有資料檔案，請使用 **ReadOnly** 進行快取。 唯讀快取僅適用于高階受控磁片（P30 和更新版本）。  可以搭配 ReadOnly 快取使用的4095GiB 磁片區有限制。  任何較大配置都會預設停用主機快取。
 
-除非您卸載 OS 層級的磁碟機，然後在進行變更後重新予以掛接，否則在儲存資料磁碟設定之後，就無法變更主機快取設定。
+如果您的工作負載在 day 和晚上之間有很大的差異，而且 IO 工作負載可以支援它，則具有高載的 P1 P20 進階 SSD 可能會提供在夜間批次載入或有限 IO 要求期間所需的效能。  
 
 ## <a name="security"></a>安全性
 
@@ -229,4 +230,4 @@ IOPS 是 12,200,000 / 2,358 = 5,174。
 ## <a name="next-steps"></a>後續步驟
 
 - [教學課程︰建立高可用性 VM](../../linux/create-cli-complete.md)
-- [瀏覽 VM 部署 Azure CLI 範例](../../linux/cli-samples.md)
+- [瀏覽 VM 部署 Azure CLI 範例](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: f5192176a6a0e174d5878c51defce70d949c1eb1
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
-ms.translationtype: HT
+ms.openlocfilehash: d6b5bab1c1b6c8db4821fdf84728eb66eb55b899
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922361"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882224"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>教學課程：設定 Azure SQL Database 與 SQL Server 中資料庫之間的 SQL 資料同步
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -178,10 +178,6 @@ ms.locfileid: "96922361"
     ![手動同步](./media/sql-data-sync-sql-server-configure/datasync-sync.png)
 
 ## <a name="faq"></a>常見問題集
-
-**資料同步多久會同步我的資料一次？**
-
-同步處理之間的最短間隔時間為 5 分鐘。
 
 **SQL 資料同步是否會完整地建立資料表？**
 

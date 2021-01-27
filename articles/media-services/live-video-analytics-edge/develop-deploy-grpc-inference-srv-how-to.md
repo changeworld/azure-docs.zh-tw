@@ -3,12 +3,12 @@ title: 開發和部署 gRPC 推斷伺服器-Azure
 description: 本文提供如何開發和部署 gRPC 推斷伺服器的指引。
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.openlocfilehash: 3f732a7432dacebeeefddd1822fec7d95dfbaa97
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 6184a369e73c26d3a8a716f9daf1c0420a5239fe
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97425797"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881647"
 ---
 # <a name="how-to-guide--develop-and-deploy-a-grpc-inference-server"></a>操作指南–開發和部署 gRPC 推斷伺服器
 
@@ -24,11 +24,11 @@ ms.locfileid: "97425797"
 * [GRPC 簡介](https://www.grpc.io/docs/what-is-grpc/introduction/)
 * [proto3 語言指南](https://developers.google.com/protocol-buffers/docs/proto3)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-* 執行其中一個 [受支援 Linux 作業系統](https://docs.microsoft.com/azure/iot-edge/support#operating-systems) 或 Windows 電腦的 x86-64 或 ARM64 裝置。
+* 執行其中一個 [受支援 Linux 作業系統](../../iot-edge/support.md#operating-systems) 或 Windows 電腦的 x86-64 或 ARM64 裝置。
 * 在您的電腦上[安裝 Docker](https://docs.docker.com/desktop/#download-and-install) 。
-* 安裝 [IoT Edge 運行](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge?tabs=linux)時間。
+* 安裝 [IoT Edge 運行](../../iot-edge/how-to-install-iot-edge.md?tabs=linux)時間。
 
 ## <a name="grpc-implementation-steps"></a>gRPC 的執行步驟
 
@@ -197,7 +197,7 @@ gRPC 延伸模組：
         1. 轉換位元組陣列中的影像以進行處理。 請參閱方法： `GetBytes(Bitmap image)`
         
             我們所使用的範例處理器僅支援 JPG 編碼的影像框架，而不支援以像素格式。 如果您的自訂處理器支援不同的編碼和/或格式，請更新 `IsMediaFormatSupported` processor 類別的方法。
-        1. 使用 [ColorMatrix 類別](https://docs.microsoft.com/dotnet/api/system.drawing.imaging.colormatrix?redirectedfrom=MSDN&view=dotnet-plat-ext-3.1&preserve-view=true)，將影像轉換成灰色縮放。 請參閱方法： `ToGrayScale(Image source)` 。
+        1. 使用 [ColorMatrix 類別](/dotnet/api/system.drawing.imaging.colormatrix?preserve-view=true&view=dotnet-plat-ext-3.1)，將影像轉換成灰色縮放。 請參閱方法： `ToGrayScale(Image source)` 。
         1. 當我們取得灰色縮放影像之後，就會計算灰色尺規位元組的平均值。
         1. 如果平均值 < 127，則會將影像分類為 "深色"，否則我們會將其分類為 "light"，並將信賴價值視為1.0。 請參閱方法： `ProcessImage(List<Image> images)` 。
 
@@ -213,7 +213,7 @@ gRPC 延伸模組：
 
 現在您已建立 gRPC 延伸模組，我們現在會建立並部署 media graph 拓撲。
 
-1. 使用 Visual Studio Code，依照[這些指示](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux#build-and-push-your-solution) 來登入 Docker。
+1. 使用 Visual Studio Code，依照[這些指示](../../iot-edge/tutorial-develop-for-linux.md#build-and-push-your-solution) 來登入 Docker。
 1. 在 Visual Studio Code 中，移至 src/edge。 您會看到 .env 檔案和一些部署範本檔案。
 
     部署範本會參考邊緣裝置的部署資訊清單。 其包含一些預留位置值。 .env 檔案包含這些變數的值。
@@ -309,4 +309,3 @@ gRPC 延伸模組：
 ## <a name="next-steps"></a>後續步驟
 
 遵循 [使用模型快速入門分析即時影片](use-your-model-quickstart.md)中所述的「**準備」監視事件** 步驟，以執行範例並解讀結果。 此外，請查看我們的範例 gRPC 拓撲： [gRPCExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtension/topology.json)、 [CVRWithGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/cvr-with-grpcExtension/topology.json)、[EVRtoAssetsByGrpcExtension 和 [EVROnMotionPlusGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/motion-with-grpcExtension/topology.json)。
-

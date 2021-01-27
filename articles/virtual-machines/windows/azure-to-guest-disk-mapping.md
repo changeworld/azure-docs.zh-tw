@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: tibasham
-ms.openlocfilehash: f16e34f372016f284d4af79443e84d9d5cdea957
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 373fd26c36bf2f77de6a376f738bd3caaf735f00
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523475"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881867"
 ---
 # <a name="how-to-map-azure-disks-to-windows-vm-guest-disks"></a>如何將 Azure 磁片對應至 Windows VM 來賓磁片
 
@@ -29,11 +29,11 @@ ms.locfileid: "96523475"
 
 ## <a name="finding-the-lun"></a>尋找 LUN
 
-有兩種方法可以尋找 LUN，如果您使用的是 [儲存空間](https://docs.microsoft.com/windows-server/storage/storage-spaces/overview) ，您選擇哪一種方法會取決於您所選擇的 LUN。
+有兩種方法可以尋找 LUN，如果您使用的是 [儲存空間](/windows-server/storage/storage-spaces/overview) ，您選擇哪一種方法會取決於您所選擇的 LUN。
 
 ### <a name="disk-management"></a>磁碟管理
 
-如果您不是使用儲存集區，則可以使用 [ [磁片管理](https://docs.microsoft.com/windows-server/storage/disk-management/overview-of-disk-management) ] 來尋找 LUN。
+如果您不是使用儲存集區，則可以使用 [ [磁片管理](/windows-server/storage/disk-management/overview-of-disk-management) ] 來尋找 LUN。
 
 1. 連接至 VM，並開啟磁片管理。 以滑鼠右鍵按一下 [開始] 按鈕，然後選擇 [磁片管理]。 您也可以在 `diskmgmt.msc` [開始搜尋] 方塊中輸入
 1. 在下方窗格中，以滑鼠右鍵按一下任何磁片，然後選擇 [屬性]
