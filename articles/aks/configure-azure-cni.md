@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes Service (AKS) 中設定 Azure CNI 
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: 58c2c597c7a75c801af91cd735561071250bda2c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0a6ea45156477c0d0e95b9d345cffe1a75c773b6
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000567"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917802"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中設定 Azure CNI 網路
 
@@ -19,7 +19,7 @@ ms.locfileid: "96000567"
 
 本文示範如何使用 *Azure CNI* 網路，針對 AKS 叢集建立和使用虛擬網路子網路。 如需網路選項與考量的詳細資訊，請參閱 [Kubernetes 和 AKS 的網路概念][aks-network-concepts]。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * 適用於 AKS 叢集的虛擬網路必須允許輸出網際網路連線.
 * AKS 叢集可能不會 `169.254.0.0/16` `172.30.0.0/16` `172.31.0.0/16` `192.0.2.0/24` 針對 Kubernetes 服務位址範圍、pod 位址範圍或叢集虛擬網路位址範圍使用、、或。 
@@ -73,7 +73,7 @@ AKS 叢集中每個節點的最大 pod 數目是250。 每個節點「預設」�
 
 系統會強制執行每個節點的最大 pod 數目的最小值，以保證叢集健全狀況的重要系統 pod 空間。 只有在每個節點集區的設定至少有30個 pod 的空間時，可為每個節點的最大 pod 設定的最小值為10。 例如，將每個節點的最大 pod 數設定為最小值10，需要每個個別節點集區至少有3個節點。 這項需求也適用于每個建立的新節點集區，因此，如果將10定義為每個節點的最大 pod 數目，每個新增的節點集區都必須至少有3個節點。
 
-| 網路 | 最小值 | 最大值 |
+| 網路功能 | 最小值 | 最大值 |
 | -- | :--: | :--: |
 | Azure CNI | 10 | 250 |
 | Kubenet | 10 | 110 |
@@ -96,6 +96,8 @@ AKS 叢集中每個節點的最大 pod 數目是250。 每個節點「預設」�
 **虛擬網路**：要作為 Kubernetes 叢集部署目的地的虛擬網路。 如果您要為叢集建立新的虛擬網路，請選取 [新建] 並遵循＜建立虛擬網路＞一節中的步驟。 如需有關 Azure 虛擬網路限制和配額的資訊，請參閱 [Azure 訂用帳戶和服務限制、配額及條件約束](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)。
 
 **子網路**：虛擬網路內要用來部署叢集的子網路。 如果您要在虛擬網路中為叢集建立新的子網路，請選取 [新建] 並遵循＜建立子網路＞一節中的步驟。 混合式連線的位址範圍不應該與您環境中的任何其他虛擬網路重疊。
+
+**Azure 網路外掛程式**：使用 azure 網路外掛程式時，無法從 clusterCIDR 中不屬於 AKS 叢集之 IP 的 vm 存取具有 "ExternalTrafficPolicy = Local" 的內部 LoadBalancer 服務。
 
 **Kubernetes 服務位址範圍**：這是 Kubernetes 指派給您叢集中內部 [服務][services] 的一組虛擬 ip。 您可以使用任何符合下列需求的私人位址範圍：
 

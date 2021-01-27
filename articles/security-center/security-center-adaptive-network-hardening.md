@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: e2b17e15c5548b4c9b93a62a7d4dfe62ff44404c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: ca60d5afa38a560492c8574aadd43d6170eca253
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341748"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916179"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure 資訊安全中心中的適應性網路強化
 瞭解如何在安全中心設定自動調整網路強化功能。
@@ -26,7 +26,7 @@ ms.locfileid: "92341748"
 ## <a name="availability"></a>可用性
 |層面|詳細資料|
 |----|:----|
-|版本狀態：|正式上市 (GA)|
+|版本狀態：|公開上市 (GA) |
 |定價：|需要[適用於伺服器的 Azure Defender](defender-for-servers-introduction.md)|
 |必要的角色和權限：|機器 NSG 的寫入權限|
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|
@@ -55,12 +55,12 @@ ms.locfileid: "92341748"
 1. 彈性網路強化建議的詳細資料頁面 **應該套用在網際網路對應的虛擬機器建議上** ，並將您的網路 vm 分組為三個索引標籤：
    * **狀況不良的資源**：目前有執行彈性網路強化演算法所觸發的建議和警示的 vm。 
    * **狀況良好的資源**：沒有警示和建議的 vm。
-   * 未**掃描的資源**：因為下列其中一個原因，所以無法執行調適型網路強化演算法的 vm：
+   * 未 **掃描的資源**：因為下列其中一個原因，所以無法執行調適型網路強化演算法的 vm：
       * **Vm 是傳統 vm**：僅支援 Azure Resource Manager vm。
       * **沒有足夠的資料可供使用**：為了產生精確的流量強化建議，「安全性中心」至少需要30天的流量資料。
       * **VM 未受 Azure defender 保護**：只有使用 [適用于伺服器的 Azure Defender](defender-for-servers-introduction.md) 保護的 vm 符合這項功能的資格。
 
-    :::image type="content" source="./media/security-center-adaptive-network-hardening/recommendation-details-page.png" alt-text="存取適應性網路強化工具":::
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/recommendation-details-page.png" alt-text="建議彈性網路強化建議的詳細資料頁面應該套用在網際網路對應的虛擬機器上":::
 
 1. 從 [ **狀況不良的資源** ] 索引標籤中，選取要查看其警示的 VM，以及適用的建議強化規則。
 
@@ -78,12 +78,12 @@ ms.locfileid: "92341748"
     > [!TIP]
     > 如果允許的來源 IP 範圍顯示為 [無]，表示建議的規則是 *拒絕* 規則，否則為 *允許* 規則。
 
-    :::image type="content" source="./media/security-center-adaptive-network-hardening/hardening-alerts.png" alt-text="存取適應性網路強化工具":::
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/hardening-alerts.png" alt-text="管理適應性網路強化規則":::
 
       > [!NOTE]
       > 強制執行的規則會新增至 NSG (s) 保護 VM。  (VM 可以受到與其 NIC 相關聯的 NSG，或 VM 所在的子網，或兩者) 
 
-### <a name="modify-a-rule"></a>修改規則<a name ="modify-rule"> </a>
+### <a name="modify-a-rule"></a>修改規則<a name ="modify-rule"></a>
 
 您可能會想要修改建議之規則的參數。 例如，您可能想要變更建議的 IP 範圍。
 
@@ -95,7 +95,7 @@ ms.locfileid: "92341748"
   > [!NOTE]
   > 建立和修改「拒絕」規則會直接在 NSG 上完成。 如需詳細資訊，請參閱 [建立、變更或刪除網路安全性群組](../virtual-network/manage-network-security-group.md)。
 
-* **拒絕所有流量**規則是唯一會在此列出的「拒絕」規則類型，而且無法修改。 不過，您可以刪除它 (請參閱 [刪除規則](#delete-rule)) 。
+* **拒絕所有流量** 規則是唯一會在此列出的「拒絕」規則類型，而且無法修改。 不過，您可以刪除它 (請參閱 [刪除規則](#delete-rule)) 。
   > [!NOTE]
   > 基於執行演算法的結果，資訊安全中心不會根據現有的 NSG 設定來識別應允許的流量，因此建議使用「 **拒絕所有流量** 」規則。 因此，建議的規則是拒絕指定埠的所有流量。 此類型規則的名稱會顯示為「*系統產生*」。 在強制執行此規則之後，在 NSG 中的實際名稱將會是由通訊協定、流量方向、「拒絕」和亂數字組成的字串。
 
@@ -116,7 +116,7 @@ ms.locfileid: "92341748"
 
     ![強制執行規則](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
-### <a name="add-a-new-rule"></a>新增規則<a name ="add-rule"> </a>
+### <a name="add-a-new-rule"></a>新增規則<a name ="add-rule"></a>
 
 您可以新增安全性中心不建議的「允許」規則。
 
@@ -139,7 +139,7 @@ ms.locfileid: "92341748"
     ![強制執行規則](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
 
-### <a name="delete-a-rule"></a>刪除規則<a name ="delete-rule"> </a>
+### <a name="delete-a-rule"></a>刪除規則<a name ="delete-rule"></a>
 
 如有必要，您可以刪除目前會話的建議規則。 例如，您可能會判斷套用建議的規則可能會封鎖合法的流量。
 

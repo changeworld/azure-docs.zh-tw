@@ -12,12 +12,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 01/25/2021
 tags: azure-synpase
-ms.openlocfilehash: 0f92d8dbfe423efa58231831fe012a27e45f9208
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: b10b00e724324779eb753bfefccce77a5eb2a39d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787683"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918072"
 ---
 # <a name="dynamic-data-masking"></a>動態資料遮罩 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -26,7 +26,7 @@ Azure SQL Database、Azure SQL 受控執行個體和 Azure Synapse Analytics 支
 
 動態資料遮罩可讓客戶在應用程式層級受到最小影響的情況下指定要顯示多少機密資料，而協助防止未經授權者存取機密資料。 這項原則式安全性功能會將機密資料隱藏在指定資料庫欄位的查詢結果集內，而資料庫中的資料則不會變更。
 
-例如，在撥打電話中心的服務代表可能會透過電子郵件地址的數個數字來識別來電者，但這些資料項目不應完全公開給服務代表。 可以定義遮罩規則，以遮罩任何查詢結果集中的所有電子郵件地址。 另一個範例是可以定義適當的資料遮罩來保護個人資料，讓開發人員可以查詢生產環境以進行疑難排解，而不違反合規性法規。
+例如，在撥打電話中心的服務代表可能會藉由確認電子郵件地址的數個字元來識別來電者，但不應該對服務代表顯示完整的電子郵件地址。 可以定義遮罩規則，以遮罩任何查詢結果集中的所有電子郵件地址。 另一個範例是可以定義適當的資料遮罩來保護個人資料，讓開發人員可以查詢生產環境以進行疑難排解，而不違反合規性法規。
 
 ## <a name="dynamic-data-masking-basics"></a>動態資料遮罩基本概念
 

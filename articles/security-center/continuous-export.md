@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: 823992ba6d3b175c8d20a001f8298a5c4af9a1ae
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 845ff6f0905b232b9ec68dbe127ef7f47a6ad898
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832704"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916774"
 ---
 # <a name="continuously-export-security-center-data"></a>持續匯出資訊安全中心資料
 
@@ -25,6 +25,8 @@ Azure 資訊安全中心會產生詳細的安全性警示和建議。 您可以�
 - 從 SQL 伺服器的弱點評定掃描中，所有的中度或更高嚴重性結果都會傳送至特定的 Log Analytics 工作區
 - 特定建議會在每次產生時傳遞至事件中樞或 Log Analytics 工作區 
 - 當控制項的分數變更0.01 或更多時，就會將訂用帳戶的安全分數傳送至 Log Analytics 工作區 
+
+雖然此功能稱為 *連續*，但也有一個選項可匯出安全分數或法規合規性資料的每週快照集。
 
 本文說明如何設定對 Log Analytics 工作區或 Azure 事件中樞的連續匯出。
 
@@ -39,7 +41,7 @@ Azure 資訊安全中心會產生詳細的安全性警示和建議。 您可以�
 
 |層面|詳細資料|
 |----|:----|
-|版本狀態：|正式上市 (GA)|
+|版本狀態：|公開上市 (GA) |
 |定價：|免費|
 |必要的角色和權限：|<ul><li>資源群組的 **安全性系統管理員** 或 **擁有** 者</li><li>目標資源的寫入權限</li><li>如果您使用下面所述的 Azure 原則 ' DeployIfNotExist ' 原則，您也需要指派原則的許可權</li></ul>|
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) 美國 Gov、其他 Gov<br>![是](./media/icons/yes-icon.png) Gov 至事件中樞) 的中國 (|
@@ -78,6 +80,10 @@ Azure 資訊安全中心會產生詳細的安全性警示和建議。 您可以�
     您會在這裡看到匯出選項。 每個可用的匯出目標都有一個索引標籤。 
 
 1. 選取您要匯出的資料類型，然後從每種類型的篩選中選擇 (例如，[僅匯出高嚴重性警示]) 。
+1. 選取適當的匯出頻率：
+    - **串流** –系統會在資源的健康狀態更新時，即時傳送評量 (如果沒有任何更新，將不會傳送任何資料) 。
+    - **快照** 集：所有法規合規性評估目前狀態的快照集將每週傳送 (這是適用于每週的安全分數和法規合規性資料) 的預覽功能。
+
 1. （選擇性）如果您的選擇包含其中一個建議，您可以將弱點評定結果與它們一起包含：
     - 應補救 SQL 資料庫的弱點評定結果
     - 您應補救電腦上 SQL server 的弱點評定結果 (預覽版) 

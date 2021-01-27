@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 473353c3f61d1096beb11c521c08ac723d54b780
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 103f2c87cf9d14f81462fed145ff8df3d69bfca0
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071592"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916128"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>使用適應性應用程式控制來減少電腦的攻擊面
 
@@ -50,7 +50,7 @@ ms.locfileid: "98071592"
 
 |層面|詳細資料|
 |----|:----|
-|版本狀態：|正式上市 (GA)|
+|版本狀態：|公開上市 (GA) |
 |定價：|需要[適用於伺服器的 Azure Defender](defender-for-servers-introduction.md)|
 |支援的電腦：|![是 ](./media/icons/yes-icon.png) azure 和不是執行 Windows 和 Linux 的非 azure 機器<br>![是 ](./media/icons/yes-icon.png) [Azure Arc](../azure-arc/index.yml) 電腦|
 |必要的角色和權限：|**安全性讀取** 者和 **讀取** 者角色可以同時查看群組和已知安全的應用程式清單<br>**參與者** 和 **安全性系統管理員** 角色可以編輯群組和已知安全的應用程式清單|
@@ -209,7 +209,7 @@ ms.locfileid: "98071592"
 
 1. 選取目的地群組，然後選取 [ **移動電腦**]。
 
-1. 若要儲存變更，請選取 [ **儲存**]。
+1. 若要儲存變更，請選取 [儲存]。
 
 
 

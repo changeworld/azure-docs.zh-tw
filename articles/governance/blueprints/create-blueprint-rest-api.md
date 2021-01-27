@@ -1,14 +1,14 @@
 ---
 title: 快速入門：使用 REST API 建立藍圖
 description: 在本快速入門中，您將在 REST API 中使用 Azure 藍圖建立、定義和部署成品。
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: aa25a65b20b295045b52a49c8c47fb8849c3cba3
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
-ms.translationtype: HT
+ms.openlocfilehash: eaf6dbb2ff14106ba8d2798d86a8f093855de85e
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056969"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915619"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>快速入門：使用 REST API 定義和指派 Azure 藍圖
 
@@ -29,7 +29,7 @@ ms.locfileid: "92056969"
 
 ### <a name="rest-api-and-powershell"></a>REST API 和 PowerShell
 
-如果您還沒有發出 REST API 呼叫的工具，請考慮使用 PowerShell 取得這些指示。 以下是向 Azure 進行驗證的範例標頭。 產生驗證標頭 (有時也稱為**持有人權杖**)，並提供 REST API URI 以連接到任何參數或**要求本文**:
+如果您還沒有發出 REST API 呼叫的工具，請考慮使用 PowerShell 取得這些指示。 以下是向 Azure 進行驗證的範例標頭。 產生驗證標頭 (有時也稱為 **持有人權杖**)，並提供 REST API URI 以連接到任何參數或 **要求本文**:
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if not using Cloud Shell
@@ -48,14 +48,14 @@ $restUri = 'https://management.azure.com/subscriptions/{subscriptionId}?api-vers
 $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 ```
 
-取代上面 **$restUri** 變數中的 `{subscriptionId}`，以取得您訂用帳戶的相關資訊。 $Response 變數會保存 `Invoke-RestMethod` Cmdlet 的結果，它可使用 [Convertfrom-json](/powershell/module/microsoft.powershell.utility/convertfrom-json) 這類的 Cmdlet 加以剖析。 如果 REST API 服務端點應該有**要求本文**，請提供一個 JSON 格式的變數給 `Invoke-RestMethod` 的 `-Body` 參數。
+取代上面 **$restUri** 變數中的 `{subscriptionId}`，以取得您訂用帳戶的相關資訊。 $Response 變數會保存 `Invoke-RestMethod` Cmdlet 的結果，它可使用 [Convertfrom-json](/powershell/module/microsoft.powershell.utility/convertfrom-json) 這類的 Cmdlet 加以剖析。 如果 REST API 服務端點應該有 **要求本文**，請提供一個 JSON 格式的變數給 `Invoke-RestMethod` 的 `-Body` 參數。
 
 ## <a name="create-a-blueprint"></a>建立藍圖
 
 定義合規性標準模式的第一個步驟，即是以可用的資源規劃藍圖。 我們將建立名為 'MyBlueprint' 的藍圖，以設定訂用帳戶的角色和原則指派。 然後，我們將新增資源群組、ARM 範本，以及資源群組的角色指派。
 
 > [!NOTE]
-> 使用 REST API 時，會先建立_藍圖_物件。 對於要新增的具有參數的每個_成品_，需要在初始_藍圖_上預先定義參數。
+> 使用 REST API 時，會先建立 _藍圖_ 物件。 對於要新增的具有參數的每個 _成品_，需要在初始 _藍圖_ 上預先定義參數。
 
 在每個 REST API URI 中有一些變數，需要您以自己的值取代它們：
 
@@ -65,7 +65,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 > [!NOTE]
 > 藍圖也可能在訂用帳戶層級建立。 若要查看範例，請參閱[在訂用帳戶建立藍圖範例](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint)。
 
-1. 建立初始_藍圖_物件。 **要求本文**包含藍圖的屬性、要建立的任何資源群組，以及所有藍圖層級參數。 這些參數會在指派期間設定，並且供後續步驟中新增的成品使用。
+1. 建立初始 _藍圖_ 物件。 **要求本文** 包含藍圖的屬性、要建立的任何資源群組，以及所有藍圖層級參數。 這些參數會在指派期間設定，並且供後續步驟中新增的成品使用。
 
    - REST API URI
 
@@ -124,7 +124,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      }
      ```
 
-1. 在訂用帳戶中新增角色指派。 **要求本文**定義成品的_種類_，屬性對應至角色定義識別碼，而且主體身分識別當作值的陣列傳遞。 在下列範例中，授與指定角色的主體身分識別是設定給藍圖指派期間設定的參數。 此範例使用 GUID 為 `b24988ac-6180-42a0-ab88-20f7382dd24c` 的_參與者_內建角色。
+1. 在訂用帳戶中新增角色指派。 **要求本文** 定義成品的 _種類_，屬性對應至角色定義識別碼，而且主體身分識別當作值的陣列傳遞。 在下列範例中，授與指定角色的主體身分識別是設定給藍圖指派期間設定的參數。 此範例使用 GUID 為 `b24988ac-6180-42a0-ab88-20f7382dd24c` 的 _參與者_ 內建角色。
 
    - REST API URI
 
@@ -144,7 +144,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      }
      ```
 
-1. 在訂用帳戶中新增原則指派。 **要求本文**會定義成品的_種類_、對應至原則或方案定義的屬性，以及設定用來定義藍圖參數 (藍圖指派期間設定) 的原則指派。 此範例使用 [將標籤及其預設值套用至資源群組] 內建原則，GUID 為 `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`。
+1. 在訂用帳戶中新增原則指派。 **要求本文** 會定義成品的 _種類_、對應至原則或方案定義的屬性，以及設定用來定義藍圖參數 (藍圖指派期間設定) 的原則指派。 此範例使用 [將標籤及其預設值套用至資源群組] 內建原則，GUID 為 `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`。
 
    - REST API URI
 
@@ -200,7 +200,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      }
      ```
 
-1. 在資源群組下新增範本。 ARM 範本的**要求本文**包含範本的一般 JSON 元件，且會使用 **properties.resourceGroup** 定義目標資源群組。 此範本也會將 **storageAccountType**、**tagName** 和 **tagValue** 藍圖參數傳至範本，以重複使用這些參數。 藍圖參數可藉由定義 **properties.parameters** 提供給範本使用，並且可在使用索引鍵/值配對來插入值的 JSON 範本內使用。 藍圖和範本參數的名稱可以相同，但是用不同的名字是為了說明每個物件是如何從藍圖傳遞到範本成品。
+1. 在資源群組下新增範本。 ARM 範本的 **要求本文** 包含範本的一般 JSON 元件，且會使用 **properties.resourceGroup** 定義目標資源群組。 此範本也會將 **storageAccountType**、**tagName** 和 **tagValue** 藍圖參數傳至範本，以重複使用這些參數。 藍圖參數可藉由定義 **properties.parameters** 提供給範本使用，並且可在使用索引鍵/值配對來插入值的 JSON 範本內使用。 藍圖和範本參數的名稱可以相同，但是用不同的名字是為了說明每個物件是如何從藍圖傳遞到範本成品。
 
    - REST API URI
 
@@ -286,7 +286,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      }
      ```
 
-1. 在資源群組下新增角色指派。 類似於先前的角色指派項目，下列範例為**擁有者**角色使用定義識別碼，並為它提供藍圖的不同參數。 此範例使用 GUID 為 `8e3af657-a8ff-443c-a75c-2fe8c4bcb635` 的_擁有者_內建角色。
+1. 在資源群組下新增角色指派。 類似於先前的角色指派項目，下列範例為 **擁有者** 角色使用定義識別碼，並為它提供藍圖的不同參數。 此範例使用 GUID 為 `8e3af657-a8ff-443c-a75c-2fe8c4bcb635` 的 _擁有者_ 內建角色。
 
    - REST API URI
 
@@ -321,7 +321,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 
 ## <a name="assign-a-blueprint"></a>指派藍圖
 
-使用 REST API 發佈藍圖後，即可將藍圖指派給訂用帳戶。 將您建立的藍圖指派給管理群組階層下的其中一個訂用帳戶。 如果將藍圖儲存到某訂用帳戶，則只能將其指派給該訂用帳戶。 **要求本文**指定要指派的藍圖，提供名稱和位置給藍圖定義中的任何資源群組，以及提供在藍圖中定義且用於一或多個連接成品的所有參數。
+使用 REST API 發佈藍圖後，即可將藍圖指派給訂用帳戶。 將您建立的藍圖指派給管理群組階層下的其中一個訂用帳戶。 如果將藍圖儲存到某訂用帳戶，則只能將其指派給該訂用帳戶。 **要求本文** 指定要指派的藍圖，提供名稱和位置給藍圖定義中的任何資源群組，以及提供在藍圖中定義且用於一或多個連接成品的所有參數。
 
 在每個 REST API URI 中有一些變數，需要您以自己的值取代它們：
 
@@ -329,7 +329,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 - `{YourMG}` - 取代為您的管理群組識別碼
 - `{subscriptionId}` - 以您的訂用帳戶識別碼取代
 
-1. 在目標訂用帳戶上提供 Azure 藍圖服務主題**擁有者**角色。 AppId 是靜態的 (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`)，但服務主體識別碼則依租用戶而各為不同。 使用下列 REST API 可要求租用戶的詳細資料。 它使用具有不同授權的 [Azure Active Directory 圖形 API](../../active-directory/develop/active-directory-graph-api.md)。
+1. 在目標訂用帳戶上提供 Azure 藍圖服務主題 **擁有者** 角色。 AppId 是靜態的 (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`)，但服務主體識別碼則依租用戶而各為不同。 使用下列 REST API 可要求租用戶的詳細資料。 它使用具有不同授權的 [Azure Active Directory 圖形 API](../../active-directory/develop/active-directory-graph-api.md)。
 
    - REST API URI
 
@@ -337,7 +337,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      GET https://graph.windows.net/{tenantId}/servicePrincipals?api-version=1.6&$filter=appId eq 'f71766dc-90d9-4b7d-bd9d-4499c4331c3f'
      ```
 
-1. 將藍圖部署指派給訂用帳戶以執行它。 因為**參與者**和**擁有者**參數需要主體的 objectId 陣列被授與角色指派，所以請使用 [Azure Active Directory 圖形 API](../../active-directory/develop/active-directory-graph-api.md) 收集 objectId 以用於您自己的使用者、群組或服務主題的**要求本文**中。
+1. 將藍圖部署指派給訂用帳戶以執行它。 因為 **參與者** 和 **擁有者** 參數需要主體的 objectId 陣列被授與角色指派，所以請使用 [Azure Active Directory 圖形 API](../../active-directory/develop/active-directory-graph-api.md) 收集 objectId 以用於您自己的使用者、群組或服務主題的 **要求本文** 中。
 
    - REST API URI
 
@@ -391,7 +391,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
    - 使用者指派的受控識別
 
      藍圖指派也可以使用[指派使用者的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。
-     在此情況下，要求主體部份的**識別**會變更，如下所示。 分別以您的資源群組名稱取代 `{yourRG}`，並以使用者指派的受控識別名稱取代 `{userIdentity}`。
+     在此情況下，要求主體部份的 **識別** 會變更，如下所示。 分別以您的資源群組名稱取代 `{yourRG}`，並以使用者指派的受控識別名稱取代 `{userIdentity}`。
 
      ```json
      "identity": {
@@ -403,7 +403,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      },
      ```
 
-     **使用者指派的受控識別**可位於使用者指派藍圖具有權限的任何訂用帳戶和資源群組中。
+     **使用者指派的受控識別** 可位於使用者指派藍圖具有權限的任何訂用帳戶和資源群組中。
 
      > [!IMPORTANT]
      > Azure 藍圖不會管理使用者指派的受控識別。 使用者需負責指派足夠的角色和權限，否則藍圖指派將會失敗。

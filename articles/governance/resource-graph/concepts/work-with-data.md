@@ -1,15 +1,15 @@
 ---
 title: 使用大型資料集
 description: 了解如何在使用 Azure Resource Graph 時取得、格式化、分頁及略過大型資料集中的記錄。
-ms.date: 09/30/2020
+ms.date: 01/27/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 59f69738bf9fe25cb739539b7a1f93e4499d781a
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 1eaabfdd78712966f3b21d869259a312db31b7bc
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826031"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917685"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>使用大型 Azure 資源資料集
 
@@ -65,7 +65,7 @@ Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 ## <a name="paging-results"></a>分頁結果
 
 如果需要將結果集分解為較小的記錄集以進行處理，或者因為結果集可能超過 _1000_ 筆傳回記錄的允許值上限，請使用分頁。 [REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources)的 
- **QueryResponse** 會提供值，以指出結果集已中斷： **>resulttruncated** 和 **$skipToken**。 **resultTruncated** 是一個布林值，如果回應中有其他未傳回的記錄，則會通知取用者。 在 **count** 屬性小於 **totalRecords** 屬性時，也可識別出此條件。 **totalRecords** 會定義符合查詢的記錄筆數。
+ **QueryResponse** 會提供值，以指出結果集已中斷： **>resulttruncated** 和 **$skipToken**。 **>resulttruncated** 是一個布林值，如果回應中沒有傳回更多記錄，就會通知取用者。 在 **count** 屬性小於 **totalRecords** 屬性時，也可識別出此條件。 **totalRecords** 會定義符合查詢的記錄筆數。
 
  當已停用或無法使用任何分頁時， **>resulttruncated** 為 **true** ，因為沒有任何資料 `id` 行，或當查詢所要求的資源不足時。 當 **>resulttruncated** 為 **true** 時，不會設定 **$skipToken** 屬性。
 
@@ -94,7 +94,7 @@ Resource Graph 查詢的結果會以兩種格式提供：_Table_ 和 _ObjectArra
 
 預設格式 _Table_ 會以 JSON 格式傳回結果，其設計訴求是要醒目提示查詢所傳回屬性的資料行設計和資料列值。 此格式與結構化資料表或試算表中定義的資料非常類似，其中先列出已識別的資料行，接著是代表與這些資料行一致之資料的每個資料列。
 
-以下是 _Table_ 格式的查詢結果範例：
+以下是具有 _資料表_ 格式的查詢結果範例：
 
 ```json
 {
@@ -136,7 +136,7 @@ Resource Graph 查詢的結果會以兩種格式提供：_Table_ 和 _ObjectArra
 
 _ObjectArray_ 格式也會以 JSON 格式傳回結果。 不過，此設計會與 JSON 中常見的索引鍵/值組關聯性保持一致，其中資料行和資料列資料會在陣列群組中相符。
 
-以下是 _ObjectArray_ 格式的查詢結果範例：
+以下是具有 _ObjectArray_ 格式的查詢結果範例：
 
 ```json
 {

@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: bff15cbc8827f4a0eb09a243e01b2cdb95ba5f2f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 7882fc6a6823a93d09c04a8ae2c19005df4843d8
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681348"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917088"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>什麼是 Azure Synapse Analytics？
 
@@ -26,8 +26,7 @@ ms.locfileid: "98681348"
 
 ### <a name="industry-leading-sql"></a>領先業界的 SQL
 
-* **Synapse SQL** 是一種分散式查詢系統，可讓企業使用標準和熟悉的 T-SQL 體驗來實作資料倉儲和資料虛擬化案例。 此系統也可擴充 SQL 的功能，進而處理串流和機器學習案例。
-
+* **SYNAPSE SQL** 是適用于 t-sql 的分散式查詢系統，可啟用資料倉儲和資料虛擬化案例，並擴充 t-sql 以解決串流和機器學習案例。
 * Synapse SQL 提供 **無伺服器** 和 **專用** 的資源模型，能根據您的需求提供耗用量和計費選項。 針對可預測的效能和成本，請建立專用 SQL 集區來為 SQL 資料表中所儲存的資料保留處理效能。 針對非計畫或暴增的工作負載，請使用永遠可用的無伺服器 SQL 端點。
 * 請使用內建的 **串流** 功能，將雲端資料來源中的資料放入 SQL 資料表
 * 若要整合 AI 與 SQL，請使用 **機器學習** 模型，以利用 [T-SQL PREDICT 函式來為資料評分](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)

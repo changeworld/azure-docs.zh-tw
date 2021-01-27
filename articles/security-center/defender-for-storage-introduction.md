@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 675751433657a7d630d0c42482716702f520ff82
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 42e8a1f4ff06f6ca6af4afd428008ca174823c5f
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881379"
+ms.locfileid: "98916416"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>適用於儲存體的 Azure Defender 簡介
 
@@ -25,7 +25,7 @@ ms.locfileid: "98881379"
 
 |層面|詳細資料|
 |----|:----|
-|版本狀態：|正式上市 (GA)|
+|版本狀態：|公開上市 (GA) |
 |定價：|**適用於儲存體的 Azure Defender** 的計費方式如 [定價頁面](security-center-pricing.md)所示|
 |受保護的儲存體類型：|[Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure 檔案](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) \(部分機器翻譯\)|
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov、其他 Gov|

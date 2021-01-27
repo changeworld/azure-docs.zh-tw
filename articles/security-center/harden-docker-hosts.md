@@ -7,18 +7,18 @@ ms.date: 9/12/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 500fa45db7e0e6bffb587d9d352ee1ab49f14703
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b30e08a2739000d2a7ec14a95742f2654e1d2ea1
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91712267"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916229"
 ---
 # <a name="harden-your-docker-hosts"></a>強化 Docker 主機
 
 Azure 資訊安全中心可識別 IaaS Linux VM 上裝載的非受控容器，或其他執行 Docker 容器的 Linux 機器。 資訊安全中心會持續評估這些容器的設定。 然後與[網際網路安全性 (CIS) Docker 基準測試中心](https://www.cisecurity.org/benchmark/docker/)進行比較。
 
-資訊安全中心包含 CIS Docker 基準測試的整個規則集，並會在您的容器無法滿足任何控制項時發出警示。 資訊安全中心會在找到錯誤的設定時，產生安全性建議。 使用資訊安全中心的**建議頁面**來檢視建議並補救問題。
+資訊安全中心包含 CIS Docker 基準測試的整個規則集，並會在您的容器無法滿足任何控制項時發出警示。 資訊安全中心會在找到錯誤的設定時，產生安全性建議。 使用資訊安全中心的 **建議頁面** 來檢視建議並補救問題。
 
 當發現弱點時，就會在單一建議中分組。
 
@@ -29,9 +29,9 @@ Azure 資訊安全中心可識別 IaaS Linux VM 上裝載的非受控容器，�
 
 |層面|詳細資料|
 |----|:----|
-|版本狀態：|正式上市 (GA)|
+|版本狀態：|公開上市 (GA) |
 |定價：|需要[適用於伺服器的 Azure Defender](defender-for-servers-introduction.md)|
-|必要的角色和權限：|主機所連接之工作區的**讀取器**|
+|必要的角色和權限：|主機所連接之工作區的 **讀取器**|
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|
 |||
 
@@ -50,11 +50,11 @@ Azure 資訊安全中心可識別 IaaS Linux VM 上裝載的非受控容器，�
     > [!TIP]
     > 如果您在 [資產清查] 頁面上啟動，並從該處到達此建議，請 select 建議頁面上的 [ **採取動作** ] 按鈕。
     >
-    > :::image type="content" source="./media/monitor-container-security/host-security-take-action-button.png" alt-text="補救容器安全性設定中弱點的建議 ":::
+    > :::image type="content" source="./media/monitor-container-security/host-security-take-action-button.png" alt-text="[採取動作] 按鈕以啟動 Log Analytics":::
 
     Log Analytics 隨即開啟，並已準備好執行自訂作業。 預設的自訂查詢包含已評估之所有失敗規則的清單，以及協助您解決問題的指導方針。
 
-    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-in-query.png" alt-text="補救容器安全性設定中弱點的建議 ":::
+    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-in-query.png" alt-text="具有查詢的 Log Analytics 頁面，其中顯示所有失敗的 CIS 控制項":::
 
 1. 必要時，請調整查詢參數。
 

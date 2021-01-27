@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: danlep
-ms.openlocfilehash: f3294698f6973437a23fab798e8daf5642cc9b49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f2749a18a5ac6aed0822553d59beaacc9060228
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77111776"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915942"
 ---
 # <a name="use-an-azure-managed-identity-in-acr-tasks"></a>在 ACR 工作中使用 Azure 受控識別 
 
@@ -32,9 +32,9 @@ ms.locfileid: "77111776"
 
 受控身分識別有兩種：
 
-* *使用者指派*的身分識別，您可以將其指派給多個資源，而且只要您需要，就能保存。 使用者指派的身分識別目前處於預覽狀態。
+* *使用者指派* 的身分識別，您可以將其指派給多個資源，而且只要您需要，就能保存。 使用者指派的身分識別目前處於預覽狀態。
 
-* *系統指派*的身分識別，這對特定資源（例如 ACR 工作）是唯一的，而且會在該資源的存留期間持續。
+* *系統指派* 的身分識別，這對特定資源（例如 ACR 工作）是唯一的，而且會在該資源的存留期間持續。
 
 您可以在 ACR 工作中啟用其中一種或兩種類型的身分識別。 將身分識別存取權授與另一個資源，就像任何安全性主體一樣。 當工作執行時，它會使用身分識別來存取任何需要存取之工作步驟中的資源。
 
@@ -58,7 +58,7 @@ ms.locfileid: "77111776"
 az acr task create \
     --image hello-world:{{.Run.ID}} \
     --name hello-world --registry MyRegistry \
-    --context https://github.com/Azure-Samples/acr-build-helloworld-node.git \
+    --context https://github.com/Azure-Samples/acr-build-helloworld-node.git#main \
     --file Dockerfile \
     --commit-trigger-enabled false \
     --assign-identity
@@ -70,13 +70,13 @@ az acr task create \
 az acr task create \
     --image hello-world:{{.Run.ID}} \
     --name hello-world --registry MyRegistry \
-    --context https://github.com/Azure-Samples/acr-build-helloworld-node.git \
+    --context https://github.com/Azure-Samples/acr-build-helloworld-node.git#main \
     --file Dockerfile \
     --commit-trigger-enabled false
     --assign-identity <resourceID>
 ```
 
-您可以執行 [az identity show][az-identity-show] 命令以取得身分識別的資源識別碼。 資源群組*myResourceGroup*中識別碼*MYUSERASSIGNEDIDENTITY*的資源識別碼格式如下： 
+您可以執行 [az identity show][az-identity-show] 命令以取得身分識別的資源識別碼。 資源群組 *myResourceGroup* 中識別碼 *MYUSERASSIGNEDIDENTITY* 的資源識別碼格式如下： 
 
 ```
 "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
@@ -105,7 +105,7 @@ az role assignment create \
 
 如果您的工作需要認證才能將映射提取或推送至另一個自訂登錄，或要存取其他資源，請將認證新增至工作。 執行 [az acr task credential add][az-acr-task-credential-add] 命令以新增認證，然後傳遞 `--use-identity` 參數以表示身分識別可以存取認證。 
 
-例如，若要為系統指派的身分識別新增認證，以使用 Azure container registry *targetregistry*進行驗證，請傳遞 `use-identity [system]` ：
+例如，若要為系統指派的身分識別新增認證，以使用 Azure container registry *targetregistry* 進行驗證，請傳遞 `use-identity [system]` ：
 
 ```azurecli
 az acr task credential add \
@@ -115,7 +115,7 @@ az acr task credential add \
     --use-identity [system]
 ```
 
-若要為使用者指派的身分識別新增認證，以便向登錄 *targetregistry*進行驗證，請傳遞身分 `use-identity` 識別的 *用戶端識別碼* 值。 例如：
+若要為使用者指派的身分識別新增認證，以便向登錄 *targetregistry* 進行驗證，請傳遞身分 `use-identity` 識別的 *用戶端識別碼* 值。 例如：
 
 ```azurecli
 az acr task credential add \

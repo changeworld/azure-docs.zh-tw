@@ -7,12 +7,12 @@ ms.date: 01/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 200e1fd7bfffef403fa459d3de13dc31145b8a33
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 99da711038e1fcea3e14584fde09ccd1f79feffa
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98796622"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916691"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>適用於 App Service 的 Azure Defender 簡介
 
@@ -25,7 +25,7 @@ Azure App Service 是完全受控的平臺，可用於建立和裝載您的 web 
 
 |層面|詳細資料|
 |----|:----|
-|版本狀態：|正式上市 (GA)|
+|版本狀態：|公開上市 (GA) |
 |定價：|[適用於 App Service 的 Azure Defender](azure-defender.md) 的計費方式如[定價頁面](security-center-pricing.md)所示<br>[定價和設定] 頁面會列出您 **資源數量** 的實例數目。 該數位是此訂用帳戶上所有 App Service 方案中的計算實例總數，在您開啟 [定價層] 頁面時執行。<br>若要驗證計數，請在 Azure 入口網站中開啟 **App Service 方案** ，並檢查每個方案所使用的計算實例數目。|
 |支援的 App Service 方案：|![是](./media/icons/yes-icon.png) 基本、標準、進階、隔離式或 Linux<br>![無](./media/icons/no-icon.png) 免費、共用或使用量<br>[深入了解 App Service 方案](https://azure.microsoft.com/pricing/details/app-service/plans/)|
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|

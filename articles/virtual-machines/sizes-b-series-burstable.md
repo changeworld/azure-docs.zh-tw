@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 14c8584699ddc981fc24cc29b78c187288c6fb57
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 31a65cab7dfdd478560b7babba156cec7645cf33
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203383"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917246"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列高載虛擬機器大小
 
@@ -27,8 +27,12 @@ B 系列有下列 VM 大小：
 [即時移轉](maintenance-and-updates.md)：支援<br>
 [記憶體保留更新](maintenance-and-updates.md)：支援<br>
 [VM 世代支援](generation-2.md)：第1代和第2代<br>
+[加速網路](../virtual-network/create-vm-accelerated-networking-cli.md)：支援的 * *<br>
+
+* B 系列 Vm 是高載的，因此 ACU 數位會隨著工作負載和核心使用量而有所不同。<br>
+* * 只有 *Standard_B12ms*、 *Standard_B16ms* 和 *Standard_B20ms* 才支援加速網路。
 <br>
-* B 系列 Vm 是高載的，因此 ACU 數位會隨著工作負載和核心使用量而有所不同。
+<br>
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | VM 的基礎 CPU 效能 | VM 的最大 CPU 效能 | 初始點數 | 信用額度存款/小時 | 最大累積點數 | 最大資料磁碟 | 最大快取和暫存儲存體輸送量IOPS/MBps | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -59,7 +63,7 @@ B16 特性：
 
 ![每小時流量資料的圖表](./media/b-series-burstable/office-workload.png)
 
-| 案例 | Time | CPU 使用量 (% )  | 累積的點數<sup>1</sup> | 可用的點數 |
+| 狀況 | Time | CPU 使用量 (% )  | 累積的點數<sup>1</sup> | 可用的點數 |
 | --- | --- | --- | --- | --- |
 | B16ms 部署 | 部署 | 部署  | 480 (初始點數)  | 480 |
 | 沒有流量 | 0:00 | 0 | 162 | 642 |

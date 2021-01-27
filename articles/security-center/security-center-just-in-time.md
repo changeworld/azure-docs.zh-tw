@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 55e9d2d1af863084b080c2de7833712413221050
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 60ae36d80e34f27ed68c679f47edacf3e402417c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445640"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916145"
 ---
-# <a name="secure-your-management-ports-with-just-in-time-access"></a>使用 Just-In-Time 存取來保護管理連接埠
+# <a name="secure-your-management-ports-with-just-in-time-access"></a>使用即時存取保護您的管理埠
 
 使用 Azure 資訊安全中心的即時 (JIT) 虛擬機器 (VM) 存取功能，鎖定 Azure 虛擬機器的輸入流量。 這可減少暴露于攻擊的風險，同時在您需要連線至 VM 時提供簡單的存取。
 
@@ -33,7 +33,7 @@ ms.locfileid: "96445640"
 
 |層面|詳細資料|
 |----|:----|
-|版本狀態：|正式上市 (GA)|
+|版本狀態：|公開上市 (GA) |
 |定價：|需要[適用於伺服器的 Azure Defender](defender-for-servers-introduction.md)|
 |支援的 Vm：|![是 ](./media/icons/yes-icon.png) 透過 Azure Resource Manager 部署的 vm。<br>![沒有 ](./media/icons/no-icon.png) 使用傳統部署模型部署的 vm。 [深入瞭解這些部署模型](../azure-resource-manager/management/deployment-models.md)。<br>![未 ](./media/icons/no-icon.png) 受[Azure 防火牆管理員](../firewall-manager/overview.md)控制的 Azure 防火牆保護 vm|
 |必要的角色和權限：|**讀取器** 和 **SecurityReader** 角色可以同時查看 JIT 狀態和參數。<br>若要建立可以使用 JIT 的自訂角色，請參閱 [設定和使用 jit 需要哪些許可權？](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit)。<br>若要為需要要求對 VM 進行 JIT 存取的使用者建立最低許可權的角色，並不執行任何其他 JIT 作業，請使用來自「安全性中心」 GitHub 頁面的 [設定 JitLeastPrivilegedRole 腳本](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) 。|
@@ -95,7 +95,7 @@ ms.locfileid: "96445640"
 
      1. 設定埠安全性以滿足您的需求。
 
-     1. 選取 [確定]  。
+     1. 選取 [確定]。
 
 1. 選取 [儲存]。
 

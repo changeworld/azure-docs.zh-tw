@@ -4,14 +4,13 @@ description: 本文說明如何使用更新管理來管理 Azure 和非 Azure Vm
 services: automation
 ms.subservice: update-management
 ms.topic: conceptual
-ms.date: 07/28/2020
-ms.custom: mvc
-ms.openlocfilehash: 24dcb501872aabf9fac3da0cccc2a1af9c9b06ff
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.date: 01/27/2021
+ms.openlocfilehash: c86c9049bc0afc81f5dfd8553d2aa98cfd4b1a46
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222368"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915977"
 ---
 # <a name="manage-updates-and-patches-for-your-vms"></a>管理 Vm 的更新和修補程式
 
@@ -35,11 +34,13 @@ Azure 自動化更新管理中的軟體更新提供一組工具和資源，可�
 
 在您將軟體更新部署到電腦之前，請先檢查已啟用電腦的更新相容性評估結果。 針對每個軟體更新，會記錄其合規性狀態，然後在評估完成後，大量收集和轉送到 Azure 監視器記錄。
 
-在 Windows 機器上，合規性掃描預設每 12 小時執行一次。 除了排定的掃描之外，更新合規性的掃描會在重新開機的 Log Analytics 代理程式15分鐘內起始，在更新安裝之前，以及在更新安裝之後。 此外，請務必瞭解如何使用更新管理來 [設定 Windows Update 用戶端](configure-wuagent.md) 的建議，以避免任何導致無法正確管理的問題。
+在 Windows 電腦上，合規性掃描預設會每12小時執行一次，並于 Windows 的 Log Analytics 代理程式重新開機後的15分鐘內啟動。 評量資料接著會轉送到工作區，並重新整理 **更新** 資料表。 在更新安裝之前和之後，會執行更新合規性掃描以找出遺漏的更新，但不會使用這些結果來更新資料表中的評定資料。
+
+請務必參閱我們有關如何使用更新管理 [設定 Windows Update 用戶端](configure-wuagent.md) 的建議，以避免任何導致無法正確管理的問題。
 
 針對 Linux 機器，合規性掃描預設每小時執行一次。 如果已重新開機 Log Analytics Linux 代理程式，則會在15分鐘內起始合規性掃描。
 
-相容性結果會在每個評估的機器的更新管理中顯示。 針對已啟用管理的新電腦，最多可能需要30分鐘的時間，儀表板才會顯示其更新的資料。
+相容性結果會在每個評估的機器的更新管理中顯示。 儀表板可能需要30分鐘的時間，才會顯示已啟用管理的新機器的更新資料。
 
 請參閱 [監視軟體更新](view-update-assessments.md) ，以瞭解如何查看合規性結果。
 

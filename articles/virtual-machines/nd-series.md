@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: f37341233eec45a22fe92450e69d486e61f26eb4
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 6428f3eafc9d19060fb065082ea3cbe06bb74d81
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585304"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916996"
 ---
 # <a name="nd-series"></a>ND 系列
 
@@ -23,6 +23,7 @@ ND 系列的虛擬機器是 GPU 系列的新成員，專為 AI 和深度學習�
 [即時移轉](maintenance-and-updates.md)：不支援<br>
 [記憶體保留更新](maintenance-and-updates.md)：不支援<br>
 [VM 世代支援](generation-2.md)：第1代和第2代<br>
+[加速網路](../virtual-network/create-vm-accelerated-networking-cli.md)：不支援<br>
 Nvidia NVLink 互連：不支援<br>
 
 > [!IMPORTANT]

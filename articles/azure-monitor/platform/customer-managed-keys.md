@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: b6836eee7e0e6ccbfa2628e0e371152f31ddf9d2
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 9d8d37e1b161dfc8344d7ff03bc0093d23f86101
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757537"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917827"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure 監視器客戶管理的金鑰 
 
@@ -30,9 +30,6 @@ Azure 監視器使用 Microsoft 管理的金鑰 (MMK) ，確保所有資料和�
 過去 14 天內擷取的資料也會保留在經常性快取 (支援 SSD) 中，以進行有效率的查詢引擎作業。 無論客戶管理的金鑰設定為何，此資料仍會以 Microsoft 金鑰加密，但您對 SSD 資料的控制會遵守 [金鑰撤銷](#key-revocation)。 我們正在努力將 SSD 資料以客戶管理的金鑰加密，在2021的前半部。
 
 Log Analytics 專用叢集會使用每日 1000 GB 起的容量保留 [定價模型](../log-query/logs-dedicated-clusters.md#cluster-pricing-model) 。
-
-> [!IMPORTANT]
-> 由於有暫時性的容量限制，我們要求您在建立叢集之前預先註冊。 使用您的連絡人進入 Microsoft，或開啟支援要求以註冊您的訂用帳戶識別碼。
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>客戶管理的金鑰在 Azure 監視器中的運作方式
 
@@ -68,7 +65,6 @@ Azure 監視器使用受控識別將存取權授與您的 Azure Key Vault。 叢
 
 ### <a name="customer-managed-key-provisioning-steps"></a>Customer-Managed 金鑰布建步驟
 
-1. 註冊您的訂用帳戶以允許叢集建立
 1. 建立 Azure Key Vault 並儲存金鑰
 1. 正在建立叢集
 1. 授與 Key Vault 的權限
@@ -107,10 +103,6 @@ Authorization: Bearer <token>
 ```
 
 ---
-
-### <a name="allowing-subscription"></a>允許訂用帳戶
-
-使用您的連絡人進入 Microsoft，或在 Log Analytics 中開啟支援要求，以提供您的訂用帳戶識別碼。
 
 ## <a name="storing-encryption-key-kek"></a>儲存加密金鑰 (KEK)
 

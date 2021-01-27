@@ -1,14 +1,14 @@
 ---
 title: 藍圖範例索引
 description: 使用 Azure 藍圖部署環境、原則和雲端採用架構基礎的合規性和標準範例索引。
-ms.date: 09/14/2020
+ms.date: 01/27/2021
 ms.topic: sample
-ms.openlocfilehash: def5e51a3db7e0733e0d7e1ef5c6895aedb7128d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
+ms.openlocfilehash: 7865a3ea5be374f36de70e62c7bc215fc88d04a5
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530976"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915687"
 ---
 # <a name="azure-blueprints-samples"></a>Azure 藍圖範例
 
@@ -18,22 +18,22 @@ ms.locfileid: "90530976"
 
 | 範例 | 描述 |
 |---------|---------|
-| [澳大利亞政府受保護的 ISM](./ism-protected/index.md) | 針對澳大利亞政府受保護的 ISM 合規性提供防護措施。 |
-| [Azure 安全性效能評定](./azure-security-benchmark.md) | 提供符合 [Azure 安全性效能評定](../../../security/benchmarks/overview.md)的防護措施。 |
-| [加拿大聯邦 PBMM](./canada-federal-pbmm/index.md) | 提供符合加拿大聯邦受保護分類 B、中度完整性、中度可用性之保護機制 (PBMM)。 |
+| [澳大利亞政府受保護的 ISM](./ism-protected/index.md) | 提供與澳大利亞政府受保護的相容性護欄。 |
+| [Azure 安全性效能評定 v1](./azure-security-benchmark.md) | 提供護欄以符合 [Azure 安全性基準測試 v1](../../../security/benchmarks/overview.md)的規範。 |
+| [加拿大聯邦 PBMM](./canada-federal-pbmm/index.md) | 提供符合加拿大聯邦受保護 B、中度完整性、中度可用性 (PBMM) 的護欄。 |
 | [CIS Microsoft Azure 基礎基準測試](./cis-azure-1-1-0.md)| 提供一組原則，以協助您遵循 CIS Microsoft Azure 基礎的基準測試建議。 |
 | [DoD 影響等級 4](./dod-impact-level-4/index.md) | 提供一組原則，以協助符合 DoD 影響等級 4 的規範。 |
 | [DoD 影響等級 5](./dod-impact-level-5/index.md) | 提供一組原則，以協助符合 DoD 影響等級 5 的規範。 |
 | [FedRAMP 適中等級](./fedramp-m/index.md) | 提供一組原則，以協助符合 FedRAMP 適中等級的規範。 |
 | [FedRAMP 高等級](./fedramp-h/index.md) | 提供一組原則，以協助符合 FedRAMP 高等級的規範。 |
 | [HIPAA HITRUST 9.2](./hipaa-hitrust-9-2.md) | 提供一組原則，以協助符合 HIPAA HITRUST。 |
-| [IRS 1075](./irs-1075/index.md) | 提供成立條件以符合 IRS 1075。|
+| [IRS 1075](./irs-1075/index.md) | 提供與 IRS 1075 相容的護欄。|
 | [ISO 27001](./iso27001/index.md) | 提供成立條件以符合 ISO 27001。 |
 | [ISO 27001 共用服務](./iso27001-shared/index.md) | 提供一組符合規範的基礎結構模式和原則防護措施，可協助您取得 ISO 27001 證明。 |
-| [ISO 27001 App Service 環境/SQL Database 工作負載](./iso27001-ase-sql-workload/index.md) | 提供 [ISO 27001 共用服務](./iso27001-shared/index.md)藍圖範例的其他基礎結構。 |
+| [ISO 27001 App Service 環境/SQL Database 工作負載](./iso27001-ase-sql-workload/index.md) | 提供更多的基礎結構給 [ISO 27001 共用服務](./iso27001-shared/index.md) 藍圖範例。 |
 | [媒體](./media/index.md) | 提供一組原則，以協助符合 Media MPAA。 |
-| [NIST SP 800-53 R4](./nist-sp-800-53-r4.md) | 提供成立條件以符合 NIST SP 800-53 R4。 |
-| [NIST SP 800-171 R2](./nist-sp-800-171-r2.md) | 提供成立條件以符合 NIST SP 800-171 R2。 |
+| [NIST SP 800-53 R4](./nist-sp-800-53-r4.md) | 提供符合 NIST SP 800-53 R4 的護欄。 |
+| [NIST SP 800-171 R2](./nist-sp-800-171-r2.md) | 提供護欄以符合 NIST SP 800-171 R2 的規範。 |
 | [PCI-DSS v3.2.1](./pci-dss-3.2.1/index.md) | 提供一組原則以協助符合 PCI-DSS v3.2.1 規範。 |
 | [SWIFT CSP-CSCF v2020](./swift-2020/index.md) | 協助達成 SWIFT CSP-CSCF v2020 中的合規性。 |
 | [UK OFFICIAL 與 UK NHS Governance](./ukofficial/index.md) | 提供一組符合規範的基礎結構模式和原則防護措施，可協助您取得 UK OFFICIAL 與 UK NHS 證明。 |
@@ -43,14 +43,14 @@ ms.locfileid: "90530976"
 ## <a name="samples-strategy"></a>範例策略
 
 :::image type="complex" source="../media/blueprint-samples-strategy.png" alt-text="藍圖範例在架構複雜度與合規性需求方面適用的圖表。" border="false":::
-   描述結構複雜度在 X 軸上，且合規性需求在 Y 軸上的座標系統。  隨著架構複雜度和合規性需求的增加，請從入口網站中指定的地區 E 來採用標準藍圖範例。對於開始使用 Azure 的客戶，您可以利用區域 A 和 B 所指定的雲端採用架構 (C A F) 基礎和登陸區域藍圖。其餘的空間則是由客戶所建立的自訂藍圖所歸屬，而這些是區域 C、D 和 F 的夥伴。:::image-end:::
+   描述結構複雜度在 X 軸上，且合規性需求在 Y 軸上的座標系統。  隨著架構複雜性和合規性需求的增加，請從以區域 E 指定的入口網站採用標準藍圖範例。 若客戶開始使用 Azure，請使用雲端採用架構 (C 以 F) 基礎，以及由區域 A 和 B 指定的登陸區域藍圖。 其餘的空間則是由客戶所建立的自訂藍圖所建立，是區域 C、D 和 F 的夥伴。 :::image-end:::
 
 CAF 基礎和 CAF 移轉登陸區域藍圖會假設客戶正在準備現有的全新單一訂用帳戶，以便將內部部署資產及工作負載遷移至 Azure。
 (圖中的區域 A 和 B)。  
 
 您有機會逐一查看範例藍圖，並尋找客戶所套用的自訂模式。 也有機會主動處理產業專屬的藍圖，像是金融服務和電子商務 (區域 B 的頂端)。 同樣地，我們已預想到要為複雜的架構考量建立藍圖，例如多個訂用帳戶、高可用性、跨區域資源，以及對現有訂用帳戶和資源實作控制項的客戶 (區域 C 和 D)。
 
-有一些範例藍圖可用於合規性需求及架構複雜性都很高的客戶案例 (圖中的區域 E)。 圖中的區域 F 就是由客戶和合作夥伴處理的區域，他們運用範例藍圖並根據其獨特需求進行自訂。
+有一些範例藍圖可用於合規性需求及架構複雜性都很高的客戶案例 (圖中的區域 E)。 圖中的區域 F 就是由客戶和合作夥伴處理的區域，這些藍圖會套用範例藍圖並根據其獨特需求進行自訂。
 
 ## <a name="next-steps"></a>後續步驟
 

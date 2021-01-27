@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 0e3aa70a1a40e3878aea7b4f42f5aa167e4204c5
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: aae2c8b51fabf22419028a17f5bbce6c97530ed5
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585375"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917297"
 ---
 # <a name="ncv3-series"></a>NCv3 系列
 
@@ -23,6 +23,7 @@ NCv3 系列 VM 是由 NVIDIA Tesla V100 GPU 提供技術支援。 這些 GPU 可
 [即時移轉](maintenance-and-updates.md)：不支援<br>
 [記憶體保留更新](maintenance-and-updates.md)：不支援<br>
 [VM 世代支援](generation-2.md)：第1代和第2代<br>
+[加速網路](../virtual-network/create-vm-accelerated-networking-cli.md)：不支援<br>
 Nvidia NVLink 互連：不支援<br>
 
 > [!IMPORTANT]

@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 01/17/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 80e6dbdc02b68c279452127933532106b0f78ab8
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 96a72dbc0e45ebd50a49000ae66e3713cb28aa9a
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654654"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916911"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中註冊 SAML 應用程式
 
@@ -71,28 +71,9 @@ Azure AD B2C 利用下列兩種方式的其中一種來達到 SAML 互通性：
 
 您可以使用公開憑證授權單位單位所發行的憑證，或如本教學課程使用自我簽署憑證。
 
-### <a name="11-prepare-a-self-signed-certificate"></a>1.1 準備自我簽署憑證
+### <a name="11-create-a-self-signed-certificate"></a>1.1 建立自我簽署憑證
 
-如果您還沒有憑證，可以在本教學課程中使用自我簽署憑證。 在 Windows 上，您可以使用 PowerShell 的 [SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) Cmdlet 來產生憑證。
-
-1. 執行此 PowerShell 命令來產生自我簽署憑證。 針對您的應用程式和 Azure AD B2C 租用戶名稱，適當地修改 `-Subject` 引數。 您也可以調整 `-NotAfter` 日期，為憑證指定不同的到期日。
-
-    ```PowerShell
-    New-SelfSignedCertificate `
-        -KeyExportPolicy Exportable `
-        -Subject "CN=yourappname.yourtenant.onmicrosoft.com" `
-        -KeyAlgorithm RSA `
-        -KeyLength 2048 `
-        -KeyUsage DigitalSignature `
-        -NotAfter (Get-Date).AddMonths(12) `
-        -CertStoreLocation "Cert:\CurrentUser\My"
-    ```
-
-1. 開啟 [管理使用者憑證] > [目前使用者] > [個人] > [憑證] > [yourappname.yourtenant.onmicrosoft.com]
-1. 選取憑證 > [動作] > [所有工作] > [匯出]
-1. 選取 [是] > [下一步] > [是，匯出私密金鑰] > [下一步]
-1. 接受 [匯出檔案格式] 的預設值
-1. 提供憑證的密碼
+[!INCLUDE [active-directory-b2c-create-self-signed-certificate](../../includes/active-directory-b2c-create-self-signed-certificate.md)]
 
 ### <a name="12-upload-the-certificate"></a>1.2 上傳憑證
 

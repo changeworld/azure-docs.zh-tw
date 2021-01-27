@@ -1,15 +1,15 @@
 ---
 title: 節流要求指引
 description: 了解如何以平行方式分組、錯開、編頁和查詢，以避免要求受到 Azure Resource Graph 的節流。
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4a8ba991d13b9be221e67f2ff1e393fb01f8a2d4
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: ddd3cf4d411733e831c94039c3bc9aeaf0e95271
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056169"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917702"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Azure Resource Graph 中的節流要求指導方針
 
@@ -156,7 +156,7 @@ while (/* Need to query more? */)
 
 ### <a name="query-in-parallel"></a>以平行方式查詢
 
-雖然建議在平行處理時使用群組，但有時候查詢無法輕鬆地分組。 在這些情況下，您可能會想要以平行方式傳送多個查詢來查詢 Azure Resource Graph。 以下是 _如何根據這_ 類案例中的節流標頭進行輪詢的範例：
+雖然建議在平行處理時使用群組，但有時候查詢無法輕鬆地分組。 在這些情況下，您可能會想要以平行方式傳送多個查詢來查詢 Azure Resource Graph。 以下是如何根據這類案例中的節流標 _頭進行輪詢_ 的範例：
 
 ```csharp
 IEnumerable<IEnumerable<string>> queryGroup = /* Groups of queries  */

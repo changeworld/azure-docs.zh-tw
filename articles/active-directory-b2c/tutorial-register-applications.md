@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/10/2020
+ms.date: 01/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84a3ef7b41b17e85c594213246211d45911ac56a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: HT
+ms.openlocfilehash: a39230cc65db6ef12b6fa4364454aeb434efddf6
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953044"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918207"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>教學課程：在 Azure Active Directory B2C 中註冊 Web 應用程式
 
@@ -98,6 +98,14 @@ ms.locfileid: "94953044"
 1. 選取 [儲存] 以檢視金鑰。 請記下 [應用程式金鑰] 值。 您可以使用此值，作為應用程式程式碼中的應用程式密碼。
 
 * * *
+
+## <a name="enable-id-token-implicit-grant"></a>啟用識別碼權杖隱含授與
+
+隱含授與的定義特性是，權杖（例如識別碼和存取權杖）會直接從 Azure AD B2C 傳回給應用程式。 針對 web 應用程式，例如 ASP.NET Core 的 web 應用程式，以及 [https://jwt.ms](https://jwt.ms) 直接向授權端點要求識別碼權杖的，請在應用程式註冊中啟用隱含授與流程。
+
+1. 在左側功能表的 [管理]下，選取 [驗證]。
+1. 在 [隱含授與] 下，選取 [ **存取權杖** 和 **識別碼權杖** ] 核取方塊。
+1. 選取 [儲存]。
 
 ## <a name="next-steps"></a>後續步驟
 

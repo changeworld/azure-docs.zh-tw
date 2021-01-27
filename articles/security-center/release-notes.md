@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/25/2021
+ms.date: 01/27/2021
 ms.author: memildin
-ms.openlocfilehash: ee9a20d3e5bb6974676d6d7a8285a56247756f64
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 5dd58dd5f43481184b17ca4bdd694a1df76697db
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784934"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916453"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 資訊安全中心的新功能
 
@@ -46,6 +46,7 @@ ms.locfileid: "98784934"
 - [已新增 35 個預覽建議，以增加 Azure 安全性效能評定的涵蓋範圍](#35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
 - [已篩選建議清單的 CSV 匯出](#csv-export-of-filtered-list-of-recommendations)
 - [「不適用」資源現在在 Azure 原則評量中回報為「符合規範」](#not-applicable-resources-now-reported-as-compliant-in-azure-policy-assessments)
+- [使用連續匯出 (預覽) ，匯出安全分數和法規合規性資料的每週快照集 ](#export-weekly-snapshots-of-secure-score-and-regulatory-compliance-data-with-continuous-export-preview)
 
 
 ### <a name="azure-security-benchmark-is-now-the-default-policy-initiative-for-azure-security-center"></a>Azure 安全性基準測試現在是 Azure 資訊安全中心的預設原則方案
@@ -224,6 +225,18 @@ Azure 安全性基準測試是 Azure 資訊安全中心中的預設原則方案�
 唯一的影響將會出現在 Azure 原則，其中符合規範的資源數目將會增加。 並不會對 Azure 資訊安全中心的安全分數產生影響。
 
 
+### <a name="export-weekly-snapshots-of-secure-score-and-regulatory-compliance-data-with-continuous-export-preview"></a>使用連續匯出 (預覽) ，匯出安全分數和法規合規性資料的每週快照集
+
+我們已將新的預覽功能新增至 [連續匯出](continuous-export.md) 工具，以匯出安全分數和法規合規性資料的每週快照。
+
+當您定義連續匯出時，請設定匯出頻率：
+
+:::image type="content" source="media/release-notes/export-frequency.png" alt-text="選擇連續匯出的頻率":::
+
+- **串流** –系統會在資源的健康狀態更新時，即時傳送評量 (如果沒有任何更新，將不會傳送任何資料) 。
+- **快照** 集：所有法規合規性評估目前狀態的快照集將每週傳送 (這是適用于每週的安全分數和法規合規性資料) 的預覽功能。
+
+深入瞭解這項功能在[連續匯出資訊安全中心資料](continuous-export.md)中的完整功能
 
 ## <a name="december-2020"></a>2020 年 12 月
 

@@ -3,12 +3,12 @@ title: 使用範本執行快速工作
 description: 使用 Azure Resource Manager 範本將 ACR 工作執行排入佇列以建立映射
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: 7ad40d2e925d5e1443af9bce4115d45b0e8c06e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e8023c088ac328c2b6e95fccd0230c4d40325c1
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82927763"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916060"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>使用 Resource Manager 範本執行 ACR 工作
 
@@ -26,7 +26,7 @@ ms.locfileid: "82927763"
 * 您必須指定遠端內容（例如 GitHub 存放庫）作為工作執行的 [來源位置](container-registry-tasks-overview.md#context-locations) 。 您無法使用本機來源內容。
 * 針對使用受控識別的工作執行，只允許 *使用者指派* 的受控識別。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * **GitHub 帳戶** -如果您還沒有帳戶，請建立一個帳戶 https://github.com 。 
 * **分支範例存放庫** -如需此處所示的工作範例，請使用 github UI 將下列範例存放庫派生至您的 GitHub 帳戶： https://github.com/Azure-Samples/acr-build-helloworld-node 。 此存放庫包含用來建立小型容器映射的範例 Dockerfile 和原始程式碼。
@@ -48,7 +48,7 @@ ms.locfileid: "82927763"
 
 ### <a name="deploy-the-template"></a>部署範本
 
-使用 [az deployment group create][az-deployment-group-create] 命令部署範本。 這個範例會建立 *helloworld 節點： testrun* 映射，並將其推送至名為 *>mycontainerregistry*的登錄。
+使用 [az deployment group create][az-deployment-group-create] 命令部署範本。 這個範例會建立 *helloworld 節點： testrun* 映射，並將其推送至名為 *>mycontainerregistry* 的登錄。
 
 ```azurecli
 az deployment group create \
@@ -58,7 +58,7 @@ az deployment group create \
     registryName=mycontainerregistry \
     repository=helloworld-node \
     taskRunName=testrun \
-    sourceLocation=https://github.com/Azure-Samples/acr-build-helloworld-node.git
+    sourceLocation=https://github.com/Azure-Samples/acr-build-helloworld-node.git#main
  ```
 
 先前的命令會在命令列上傳遞參數。 如有需要，請在 [參數](../azure-resource-manager/templates/parameter-files.md)檔案中傳遞它們。
@@ -141,7 +141,7 @@ az acr task logs \
 
 建立從您的基底登錄提取基底映射的 Dockerfile。 在 GitHub 存放庫的本機分支中，執行下列步驟，例如 `https://github.com/myGitHubID/acr-build-helloworld-node.git` 。
 
-1. 在 GitHub UI 中，選取 [ **建立新**檔案]。
+1. 在 GitHub UI 中，選取 [ **建立新** 檔案]。
 1. 命名您的檔案 *Dockerfile-測試* 並貼上下列內容。 以您的登錄名稱取代 *mybaseregistry*。
     ```
     FROM mybaseregistry.azurecr.io/baseimages/node:9-alpine
@@ -150,7 +150,7 @@ az acr task logs \
     EXPOSE 80
     CMD ["node", "/src/server.js"]
     ```
- 1. 選取 [ **認可新**檔案]。
+ 1. 選取 [ **認可新** 檔案]。
 
 [!INCLUDE [container-registry-tasks-user-assigned-id](../../includes/container-registry-tasks-user-assigned-id.md)]
 
@@ -187,12 +187,12 @@ az role assignment create \
 |userAssignedIdentity |在工作中啟用使用者指派身分識別的資源識別碼|
 |customRegistryIdentity | 在工作中啟用使用者指派身分識別的用戶端識別碼，用來向自訂登錄進行驗證 |
 |customRegistry |在工作中存取之自訂登錄的登入伺服器名稱，例如， *mybaseregistry.azurecr.io*|
-|sourceLocation     |組建工作的遠端內容，例如* https://github.com/ \<your-GitHub-ID\> /acr-build-helloworld-node.* |
+|sourceLocation     |組建工作的遠端內容，例如 *https://github.com/ \<your-GitHub-ID\> /acr-build-helloworld-node.* |
 |dockerFilePath | 遠端內容的 Dockerfile 路徑，用來建立映射。 |
 
 ### <a name="deploy-the-template"></a>部署範本
 
-使用 [az deployment group create][az-deployment-group-create] 命令部署範本。 這個範例會建立 *helloworld 節點： testrun* 映射，並將其推送至名為 *>mycontainerregistry*的登錄。 基底映射是從 *mybaseregistry.azurecr.io*提取。
+使用 [az deployment group create][az-deployment-group-create] 命令部署範本。 這個範例會建立 *helloworld 節點： testrun* 映射，並將其推送至名為 *>mycontainerregistry* 的登錄。 基底映射是從 *mybaseregistry.azurecr.io* 提取。
 
 ```azurecli
 az deployment group create \
@@ -204,7 +204,7 @@ az deployment group create \
     taskRunName=basetask \
     userAssignedIdentity=$resourceID \
     customRegistryIdentity=$clientID \
-    sourceLocation=https://github.com/<your-GitHub-ID>/acr-build-helloworld-node.git \
+    sourceLocation=https://github.com/<your-GitHub-ID>/acr-build-helloworld-node.git#main \
     dockerFilePath=Dockerfile-test \
     customRegistry=mybaseregistry.azurecr.io
 ```
@@ -233,7 +233,7 @@ basetask
 
 若要查看執行記錄，請參閱 [上一節](#view-run-log)中的步驟。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
  * 請參閱 [ACR github](https://github.com/Azure/acr/tree/master/docs/tasks/run-as-deployment)存放庫中的更多範本範例。
  * 如需範本屬性的詳細資訊，請參閱工作[執行](/azure/templates/microsoft.containerregistry/2019-06-01-preview/registries/taskruns)和工作的範本[參考。](/azure/templates/microsoft.containerregistry/2019-06-01-preview/registries/tasks)

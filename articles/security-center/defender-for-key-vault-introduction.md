@@ -8,24 +8,24 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 91a0ea19f53d1da7631154cb71f96e495cc93857
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: HT
+ms.openlocfilehash: b1dd559db2d736fa27de2884d2fe82edaaeaaf3c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788990"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916637"
 ---
 # <a name="introduction-to-azure-defender-for-key-vault"></a>適用於 Key Vault 的 Azure Defender 簡介
 
 Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字串和密碼) 的雲端服務。 
 
-啟用 **適用於 Key Vault 的 Azure Defender** ，可提供適用於 Azure Key Vault 的 Azure 原生進階威脅防護，而提供多一層的安全情報。 
+啟用 **適用於 Key Vault 的 Azure Defender**，可提供適用於 Azure Key Vault 的 Azure 原生進階威脅防護，而提供多一層的安全情報。 
 
 ## <a name="availability"></a>可用性
 
 |層面|詳細資料|
 |----|:----|
-|版本狀態：|正式上市 (GA)|
+|版本狀態：|公開上市 (GA) |
 |定價：|**適用於 Key Vault 的 Azure Defender** 的計費方式如 [定價頁面](security-center-pricing.md)所示|
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|
 |||

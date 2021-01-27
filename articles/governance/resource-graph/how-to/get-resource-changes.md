@@ -1,14 +1,14 @@
 ---
 title: 取得資源變更
 description: 了解如何找出變更資源的時間、取得已變更屬性的清單，以及評估差異。
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 70213caeaf71e1adc5a11ec0e9cbadfea032dca4
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 58dcb7256b0876d5e7fa9d7569db102538f92bab
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203461"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917416"
 ---
 # <a name="get-resource-changes"></a>取得資源變更
 
@@ -21,7 +21,7 @@ ms.locfileid: "92203461"
 
 變更偵測和詳細資料對於下列範例案例很有用：
 
-- 在事件管理期間了解_可能_相關的變更。 在特定時間範圍內查詢變更事件，並評估變更詳細資料。
+- 在事件管理期間了解 _可能_ 相關的變更。 在特定時間範圍內查詢變更事件，並評估變更詳細資料。
 - 將組態管理資料庫 (稱為 CMDB) 保持在最新狀態。 並非以排程的頻率重新整理所有資源及其完整的屬性集，而是只取得變更的內容。
 - 了解當資源變更合規性狀態時，其他哪些屬性可能已變更。 評估這些額外的屬性可提供其他可能需要透過 Azure 原則定義來管理之屬性的深入解析。
 
@@ -40,7 +40,7 @@ ms.locfileid: "92203461"
 **resourceChanges** 端點會接受要求主體中的下列參數：
 
 - **resourceId** \[必要\]：要在其中尋找變更的 Azure 資源。
-- \[必要\]**間隔**：具有_開始_和_結束_日期的屬性，適用於使用**祖魯時區 (Z)** 檢查變更事件的時間。
+- \[必要\]**間隔**：具有 _開始_ 和 _結束_ 日期的屬性，適用於使用 **祖魯時區 (Z)** 檢查變更事件的時間。
 - **fetchPropertyChanges** (選擇性)：如果回應物件包含屬性變更，則設定布林值屬性。
 
 要求本文範例：
@@ -142,12 +142,12 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 **resourceId** 每個偵測到的變更事件都具有下列屬性：
 
 - **changeId** - 這個值對該資源而言是唯一的。 雖然 **changeId** 字串有時可能會包含其他屬性，但它只保證是唯一的。
-- **beforeSnapshot** - 包含 **snapshotId**，以及在偵測到變更之前所進行資源快照集的**時間戳記**。
-- **afterSnapshot** - 包含偵測到變更後所建立之資源快照集的 **snapshotId** 和**時間戳記**。
-- **changeType** - 描述 **beforeSnapshot** 與 **afterSnapshot** 之間，針對整個變更記錄偵測到的變更類型。 值為：_建立_、_更新_及_刪除_。 只有在 **changeType** 為 [更新] 時，才會包含 **propertyChanges** 屬性陣列。
-- **propertyChanges** - 此屬性陣列會詳細說明 **beforeSnapshot** 與**afterSnapshot** 之間已更新的所有資源屬性：
+- **beforeSnapshot** - 包含 **snapshotId**，以及在偵測到變更之前所進行資源快照集的 **時間戳記**。
+- **afterSnapshot** - 包含偵測到變更後所建立之資源快照集的 **snapshotId** 和 **時間戳記**。
+- **changeType** - 描述 **beforeSnapshot** 與 **afterSnapshot** 之間，針對整個變更記錄偵測到的變更類型。 值為：_建立_、_更新_ 及 _刪除_。 只有在 **changeType** 為 [更新] 時，才會包含 **propertyChanges** 屬性陣列。
+- **propertyChanges** - 此屬性陣列會詳細說明 **beforeSnapshot** 與 **afterSnapshot** 之間已更新的所有資源屬性：
   - **propertyName** - 已改變之資源屬性的名稱。
-  - **changeCategory** - 說明進行變更的內容。 值為：_系統_和_使用者_。
+  - **changeCategory** - 說明進行變更的內容。 值為：_系統_ 和 _使用者_。
   - **changeType** - 說明針對個別資源屬性偵測到的變更類型。
     值為：_插入_、_更新_、_移除_。
   - **beforeValue** - **beforeSnapshot** 中的資源屬性值。 當 **changeType** 為 [插入] 時，不會顯示。
@@ -281,7 +281,7 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 
 **beforeSnapshot** 和 **afterSnapshot** 分別提供快照集的建立時間，以及當時的屬性。 這項變更會發生在這些快照集之間的某個時間點。 查看上述範例，我們可以看到變更的屬性已 **>supportsHTTPstrafficonly**。
 
-若要比較結果，請使用 **resourceChanges** 中的**變更**屬性，或評估 **resourceChangeDetails** 中每個快照集的**內容**部分，以判斷差異。 如果您比較快照集，則即使預期，**時間戳記**一律會顯示為差異。
+若要比較結果，請使用 **resourceChanges** 中的 **變更** 屬性，或評估 **resourceChangeDetails** 中每個快照集的 **內容** 部分，以判斷差異。 如果您比較快照集，則即使預期，**時間戳記** 一律會顯示為差異。
 
 ## <a name="next-steps"></a>後續步驟
 

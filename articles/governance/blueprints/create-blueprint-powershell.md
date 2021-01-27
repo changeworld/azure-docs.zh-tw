@@ -1,14 +1,14 @@
 ---
 title: 快速入門：使用 PowerShell 建立藍圖
 description: 在本快速入門中，您將在 PowerShell 中使用 Azure 藍圖建立、定義和部署成品。
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: 339cd4628cda5f469a783db02c10f86259c93941
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
-ms.translationtype: HT
+ms.openlocfilehash: 65d573d0aec7d5f292bc985483e1f12c350ae03a
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89051486"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918274"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>快速入門：使用 PowerShell 定義和指派 Azure 藍圖
 
@@ -16,9 +16,9 @@ ms.locfileid: "89051486"
 
 ## <a name="prerequisites"></a>必要條件
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free)。
-
-如果尚未安裝 **Az.Blueprint** 模組，請依照[新增 Az.Blueprint 模組](./how-to/manage-assignments-ps.md#add-the-azblueprint-module)中的指示，從 PowerShell 資源庫安裝並驗證它。
+- 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free)。
+- 如果尚未安裝 **Az.Blueprint** 模組，請依照 [新增 Az.Blueprint 模組](./how-to/manage-assignments-ps.md#add-the-azblueprint-module)中的指示，從 PowerShell 資源庫安裝並驗證它。
+- 如果您之前未使用 Azure 藍圖，請透過 Azure PowerShell 註冊資源提供者 `Register-AzResourceProvider -ProviderNamespace Microsoft.Blueprint` 。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -27,9 +27,9 @@ ms.locfileid: "89051486"
 定義合規性標準模式的第一個步驟，即是以可用的資源規劃藍圖。 我們將建立名為 'MyBlueprint' 的藍圖，以設定訂用帳戶的角色和原則指派。 然後，我們將新增資源群組、ARM 範本，以及資源群組的角色指派。
 
 > [!NOTE]
-> 使用 PowerShell 時，會先建立_藍圖_物件。 對於要新增的具有參數的每個_成品_，需要在初始_藍圖_上預先定義參數。
+> 使用 PowerShell 時，會先建立 _藍圖_ 物件。 對於要新增的具有參數的每個 _成品_，需要在初始 _藍圖_ 上預先定義參數。
 
-1. 建立初始_藍圖_物件。 **BlueprintFile** 參數會取用一個 JSON 檔案，其中包含藍圖的相關屬性、要建立的任何資源群組，以及所有藍圖層級參數。 這些參數會在指派期間設定，並且供後續步驟中新增的成品使用。
+1. 建立初始 _藍圖_ 物件。 **BlueprintFile** 參數會取用一個 JSON 檔案，其中包含藍圖的相關屬性、要建立的任何資源群組，以及所有藍圖層級參數。 這些參數會在指派期間設定，並且供後續步驟中新增的成品使用。
 
    - JSON 檔案 - blueprint.json
 
@@ -106,7 +106,7 @@ ms.locfileid: "89051486"
 
      根據預設，藍圖物件會建立在預設訂用帳戶中。 若要指定管理群組，請使用參數 **ManagementGroupId**。 若要指定訂用帳戶，請使用參數 **SubscriptionId**。
 
-1. 在訂用帳戶中新增角色指派。 **ArtifactFile** 會定義成品的_種類_，屬性會對應至角色定義識別碼，且主體身分識別會以值陣列的形式傳遞。 在下列範例中，授與指定角色的主體身分識別是設定給藍圖指派期間設定的參數。 此範例使用 GUID 為 `b24988ac-6180-42a0-ab88-20f7382dd24c` 的_參與者_內建角色。
+1. 在訂用帳戶中新增角色指派。 **ArtifactFile** 會定義成品的 _種類_，屬性會對應至角色定義識別碼，且主體身分識別會以值陣列的形式傳遞。 在下列範例中，授與指定角色的主體身分識別是設定給藍圖指派期間設定的參數。 此範例使用 GUID 為 `b24988ac-6180-42a0-ab88-20f7382dd24c` 的 _參與者_ 內建角色。
 
    - JSON 檔案 - \artifacts\roleContributor.json
 
@@ -127,7 +127,7 @@ ms.locfileid: "89051486"
      New-AzBlueprintArtifact -Blueprint $blueprint -Name 'roleContributor' -ArtifactFile .\artifacts\roleContributor.json
      ```
 
-1. 在訂用帳戶中新增原則指派。 **ArtifactFile** 會定義成品的_種類_、對應至原則或方案定義的屬性，並將原則指派設定為使用要在藍圖指派期間設定的已定義藍圖參數。 此範例使用 [將標籤及其預設值套用至資源群組] 內建原則，GUID 為 `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`。
+1. 在訂用帳戶中新增原則指派。 **ArtifactFile** 會定義成品的 _種類_、對應至原則或方案定義的屬性，並將原則指派設定為使用要在藍圖指派期間設定的已定義藍圖參數。 此範例使用 [將標籤及其預設值套用至資源群組] 內建原則，GUID 為 `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`。
 
    - JSON 檔案 - \artifacts\policyTags.json
 
@@ -270,7 +270,7 @@ ms.locfileid: "89051486"
      New-AzBlueprintArtifact -Blueprint $blueprint -Type TemplateArtifact -Name 'templateStorage' -TemplateFile .\artifacts\templateStorage.json -TemplateParameterFile .\artifacts\templateStorageParams.json -ResourceGroupName storageRG
      ```
 
-1. 在資源群組下新增角色指派。 類似於先前的角色指派項目，下列範例為**擁有者**角色使用定義識別碼，並為它提供藍圖的不同參數。 此範例使用 GUID 為 `8e3af657-a8ff-443c-a75c-2fe8c4bcb635` 的_擁有者_內建角色。
+1. 在資源群組下新增角色指派。 類似於先前的角色指派項目，下列範例為 **擁有者** 角色使用定義識別碼，並為它提供藍圖的不同參數。 此範例使用 GUID 為 `8e3af657-a8ff-443c-a75c-2fe8c4bcb635` 的 _擁有者_ 內建角色。
 
    - JSON 檔案 - \artifacts\roleOwner.json
 
@@ -307,7 +307,7 @@ Publish-AzBlueprint -Blueprint $blueprint -Version '{BlueprintVersion}'
 
 使用 PowerShell 發佈藍圖後，即可將藍圖指派給訂用帳戶。 將您建立的藍圖指派給管理群組階層下的其中一個訂用帳戶。 如果將藍圖儲存到某訂用帳戶，則只能將其指派給該訂用帳戶。 **Blueprint** 參數會指定要指派的藍圖。 若要提供名稱、位置、身分識別、鎖定和藍圖參數，請在 `New-AzBlueprintAssignment` Cmdlet 上使用相符的 PowerShell 參數，或將其提供於 **AssignmentFile** 參數 JSON 檔案中。
 
-1. 將藍圖部署指派給訂用帳戶以執行它。 **參與者**和**擁有者**參數需要主體的 objectId 陣列被授與角色指派，因此請使用 [Azure Active Directory 圖形 API](../../active-directory/develop/active-directory-graph-api.md) 收集 objectId，以用於您自己的使用者、群組或服務主題的 **AssignmentFile** 中。
+1. 將藍圖部署指派給訂用帳戶以執行它。 **參與者** 和 **擁有者** 參數需要主體的 objectId 陣列被授與角色指派，因此請使用 [Azure Active Directory 圖形 API](../../active-directory/develop/active-directory-graph-api.md) 收集 objectId，以用於您自己的使用者、群組或服務主題的 **AssignmentFile** 中。
 
    - JSON 檔案 - blueprintAssignment.json
 
@@ -362,7 +362,7 @@ Publish-AzBlueprint -Blueprint $blueprint -Version '{BlueprintVersion}'
    - 使用者指派的受控識別
 
      藍圖指派也可以使用[指派使用者的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。
-     在此情況下，JSON 指派檔案的**身分識別**部分將會變更，如下所示。 請分別將 `{tenantId}`、`{subscriptionId}`、`{yourRG}` 和 `{userIdentity}` 取代為您的 tenantId、subscriptionId、資源群組名稱，以及使用者指派的受控識別名稱。
+     在此情況下，JSON 指派檔案的 **身分識別** 部分將會變更，如下所示。 請分別將 `{tenantId}`、`{subscriptionId}`、`{yourRG}` 和 `{userIdentity}` 取代為您的 tenantId、subscriptionId、資源群組名稱，以及使用者指派的受控識別名稱。
 
      ```json
      "identity": {
@@ -374,7 +374,7 @@ Publish-AzBlueprint -Blueprint $blueprint -Version '{BlueprintVersion}'
      },
      ```
 
-     **使用者指派的受控識別**可位於使用者指派藍圖具有權限的任何訂用帳戶和資源群組中。
+     **使用者指派的受控識別** 可位於使用者指派藍圖具有權限的任何訂用帳戶和資源群組中。
 
      > [!IMPORTANT]
      > Azure 藍圖不會管理使用者指派的受控識別。 使用者需負責指派足夠的角色和權限，否則藍圖指派將會失敗。

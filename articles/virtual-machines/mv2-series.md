@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: b4de2ec68d3cd10dfc4e95c6c2232837a7fca626
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0c279916eb25c5ffe0b0b655818dd1a07849e582
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975751"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917450"
 ---
 # <a name="mv2-series"></a>Mv2 系列
 
@@ -26,6 +26,7 @@ Mv2 系列 VM 的功能 Intel® Hyper-Threading 技術
 [記憶體保留更新](maintenance-and-updates.md)：不支援<br>
 [VM 世代支援](generation-2.md)：第1代和第2代<br>
 [寫入加速器](./how-to-enable-write-accelerator.md)：支援<br>
+[加速網路](../virtual-network/create-vm-accelerated-networking-cli.md)：支援<br>
 <br>
 
 |大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量IOPS / MBps (快取大小，以 GiB 為單位) | 最大取消快取的磁碟輸送量︰IOPS / MBps | 最大 NIC | 預期的網路頻寬 (Mbps)  |

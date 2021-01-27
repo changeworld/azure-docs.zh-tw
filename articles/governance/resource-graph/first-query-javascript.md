@@ -1,15 +1,15 @@
 ---
 title: 快速入門：您的第一個 JavaScript 查詢
 description: 在本快速入門中，您將遵循步驟以啟用 JavaScript 的 Resource Graph 程式庫，並執行第一個查詢。
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 194097594340e2f34433c07185c6132f8a13c845
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
-ms.translationtype: HT
+ms.openlocfilehash: 97cbd9ddf65a4135f55304f6dd67c704c6fcac5d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057411"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917516"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-javascript"></a>快速入門：使用 JavaScript 執行您的第一個 Resource Graph 查詢
 
@@ -19,7 +19,7 @@ ms.locfileid: "92057411"
 
 ## <a name="prerequisites"></a>必要條件
 
-- **Azure 訂用帳戶**：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+- **Azure 訂用帳戶**：如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/)。
 
 - **Node.js**：需要 [Node.js](https://nodejs.org/) 12 版或更新版本。
 
@@ -95,7 +95,7 @@ ms.locfileid: "92057411"
    > [!NOTE]
    > 由於此查詢範例並未提供排序修飾詞 (例如 `order by`)，因此執行此查詢多次將可能會對每個要求產生一組不同的資源。
 
-1. 將第一個參數變更為 `index.js`，並變更查詢，以 `order by` **名稱**屬性。 將 `<YOUR_SUBSCRIPTION_ID_LIST>` 取代為您的訂用帳戶識別碼：
+1. 將第一個參數變更為 `index.js`，並變更查詢，以 `order by` **名稱** 屬性。 將 `<YOUR_SUBSCRIPTION_ID_LIST>` 取代為您的訂用帳戶識別碼：
 
    ```bash
    node index.js --query "Resources | project name, type | limit 5 | order by name asc" --subs "<YOUR_SUBSCRIPTION_ID_LIST>"
@@ -110,13 +110,13 @@ ms.locfileid: "92057411"
    > [!NOTE]
    > 如同第一個查詢一樣，多次執行此查詢可能會為每個要求產生不同的資源集。 查詢命令的順序很重要。 在此範例中，`order by` 會出現在 `limit` 之後。 此命令順序會先限制查詢結果，然後再加以排序。
 
-1. 將第一個參數變更為 `index.js`，並變更查詢，以先 `order by` **名稱**屬性，然後 `limit` 為只顯示前五個結果。 將 `<YOUR_SUBSCRIPTION_ID_LIST>` 取代為您的訂用帳戶識別碼：
+1. 將第一個參數變更為 `index.js`，並變更查詢，以先 `order by` **名稱** 屬性，然後 `limit` 為只顯示前五個結果。 將 `<YOUR_SUBSCRIPTION_ID_LIST>` 取代為您的訂用帳戶識別碼：
 
    ```bash
    node index.js --query "Resources | project name, type | order by name asc | limit 5" --subs "<YOUR_SUBSCRIPTION_ID_LIST>"
    ```
 
-執行最終查詢數次後，假設您的環境中未變更任何內容，傳回的結果將會一致，且依**名稱**屬性排序，但仍限制為只顯示前五個結果。
+執行最終查詢數次後，假設您的環境中未變更任何內容，傳回的結果將會一致，且依 **名稱** 屬性排序，但仍限制為只顯示前五個結果。
 
 ## <a name="clean-up-resources"></a>清除資源
 

@@ -1,14 +1,14 @@
 ---
 title: 常見問題疑難排解
 description: 瞭解如何在使用 Azure Resource Graph 查詢 Azure 資源時，針對各種 SDK 的問題進行疑難排解。
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 13c5d5ffde8b0b82fcafa5e8149400555a0b18a6
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 0d783b9cb4fa30e3c3e0ff82536b4878c29c7a0d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056952"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916696"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>針對使用 Azure Resource Graph 發生的錯誤進行疑難排解
 
@@ -51,7 +51,7 @@ Azure CLI 和 PowerShell 只會將前 1000 個訂閱轉送至 Azure Resource Gra
 
 #### <a name="resolution"></a>解決方案
 
-具有訂閱子集的查詢批次要求會受限於 1000 個訂閱限制以下。 解決方案是使用 PowerShell 中的**訂閱**參數。
+具有訂閱子集的查詢批次要求會受限於 1000 個訂閱限制以下。 解決方案是使用 PowerShell 中的 **訂閱** 參數。
 
 ```azurepowershell-interactive
 # Replace this query with your own
@@ -88,7 +88,7 @@ Azure Resource Graph REST API 僅支援 **application/json** 的 `Content-Type`�
 
 #### <a name="resolution"></a>解決方案
 
-驗證您用來查詢 Azure Resource Graph 的工具或代理程式是否已針對 **application/json**設定 REST API 標頭 `Content-Type`。
+驗證您用來查詢 Azure Resource Graph 的工具或代理程式是否已針對 **application/json** 設定 REST API 標頭 `Content-Type`。
 
 ### <a name="scenario-no-read-permission-to-all-subscriptions-in-list"></a><a name="rest-403"></a>案例：沒有清單中所有訂閱的讀取權限
 

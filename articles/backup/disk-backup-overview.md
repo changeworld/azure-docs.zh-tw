@@ -3,12 +3,12 @@ title: Azure 磁片備份總覽
 description: 瞭解 Azure 磁片備份解決方案。
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: d73c431fdc2b2906dc1d3d9485bded9449b2f2ba
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 4db2a5f3f02322f18fcf9203c3560905cde86996
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733025"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915503"
 ---
 # <a name="overview-of-azure-disk-backup-in-preview"></a>預覽中的 Azure 磁片備份 (總覽) 
 
@@ -53,7 +53,7 @@ Azure 磁片備份解決方案在下列案例中很有用：
 
 ## <a name="how-the-backup-and-restore-process-works"></a>備份和還原程式的運作方式
 
-- 設定 Azure 檔案共用備份的第一步是建立備份保存 [庫](backup-vault-overview.md)。 保存庫可讓您匯總跨不同工作負載設定的備份。
+- 為 Azure 受控磁片設定備份的第一步是建立 [備份保存庫](backup-vault-overview.md)。 保存庫可讓您匯總跨不同工作負載設定的備份。
 
 - 然後建立備份原則，讓您設定備份頻率和保留期間。
 

@@ -1,14 +1,14 @@
 ---
 title: 常見問題疑難排解
 description: 瞭解如何針對建立原則定義、各種 Sdk 和 Kubernetes 的附加元件的問題進行疑難排解。
-ms.date: 12/01/2020
+ms.date: 01/26/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 6f31f6e6f8d24f83f44dc14112f1bdc90c8af859
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 0a64346188696cc7cc16d832474ec4ee6befdae2
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897066"
+ms.locfileid: "98917738"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>使用 Azure 原則針對錯誤進行疑難排解
 
@@ -36,13 +36,14 @@ ms.locfileid: "98897066"
 
 #### <a name="resolution"></a>解決方案
 
-首先，請驗證 Resource Manager 屬性具有別名。 若要查詢可用的別名，請移至 Visual Studio Code 或 SDK 的 [Azure 原則延伸](../how-to/extension-for-vscode.md) 模組。 如果 Resource Manager 屬性的別名不存在，請建立支援票證。
+首先，請驗證 Resource Manager 屬性具有別名。 若要查詢可用的別名，請移至 Visual Studio Code 或 SDK 的 [Azure 原則延伸](../how-to/extension-for-vscode.md) 模組。
+如果 Resource Manager 屬性的別名不存在，請建立支援票證。
 
 ### <a name="scenario-evaluation-details-arent-up-to-date"></a>案例：評估詳細資料不是最新的
 
 #### <a name="issue"></a>問題
 
-資源處於 [ *未啟動* ] 狀態，或 [合規性詳細資料] 不是最新狀態。
+資源處於 [ _未啟動_ ] 狀態，或 [合規性詳細資料] 不是最新狀態。
 
 #### <a name="cause"></a>原因
 
@@ -90,7 +91,8 @@ ms.locfileid: "98897066"
 
 #### <a name="cause"></a>原因
 
-原則指派已設定為 [_已停用_] 的 [**enforcementMode**](../concepts/assignment-structure.md#enforcement-mode)設定。 停用 **enforcementMode** 時，不會強制執行原則效果，而且活動記錄中不會有任何專案。
+原則指派已設定為 [_已停用_] 的 [**enforcementMode**](../concepts/assignment-structure.md#enforcement-mode)設定。
+停用 **enforcementMode** 時，不會強制執行原則效果，而且活動記錄中不會有任何專案。
 
 #### <a name="resolution"></a>解決方案
 
@@ -186,7 +188,7 @@ Azure 原則支援一些僅適用于原則定義的 ARM 範本函數和函式。
 
 #### <a name="resolution"></a>解決方案
 
-先前造成此問題的定義會顯示為 *[已淘汰]*，而不會移除使用者指派的受控識別，則會以管理必要條件的原則定義取代這些定義。 需要手動步驟。 刪除任何標記為 *[已淘汰]* 的現有原則指派，並將其取代為與原始的相同名稱的更新必要條件原則計畫和原則定義。
+先前造成此問題的定義會顯示為已 _\[ 淘汰 \]_，而且會由管理必要條件的原則定義所取代，而不會移除使用者指派的受控識別。 需要手動步驟。 刪除標示為已 _\[ 淘汰 \]_ 的任何現有原則指派，並將其取代為與原始的相同名稱的更新必要條件原則計畫和原則定義。
 
 如需詳細敘述的詳細資訊，請參閱 blog 張貼 [針對來賓設定稽核原則所發行的重要變更](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)。
 
@@ -226,11 +228,11 @@ Azure 原則支援一些僅適用于原則定義的 ARM 範本函數和函式。
 當安裝在叢集上，且 _kube 系統_ _pod 未在_ aad-身分 _識別_ 中排除時，就會發生此錯誤。
 
 _Aad-pod-身分識別_ 元件節點受控身分識別 (NMI) pod 會修改節點的 iptables 來攔截對 Azure 實例中繼資料端點的呼叫。 這項設定表示，對中繼資料端點提出的任何要求都會由 NMI 攔截，即使 pod 未使用 aad （ _aad_）身分識別。
-您可以設定 *AzurePodIdentityException* CUSTOMRESOURCEDEFINITION (.crd) ，以通知 _aad-pod-_ 對於源自于 .crd 中所定義之標籤的 pod 所發出的中繼資料端點的任何要求，都應該是 proxy，而不需要在 NMI 中進行任何處理。
+您可以設定 _AzurePodIdentityException_ CUSTOMRESOURCEDEFINITION (.crd) ，以通知 _aad-pod-_ 對於源自于 .crd 中所定義之標籤的 pod 所發出的中繼資料端點的任何要求，都應該是 proxy，而不需要在 NMI 中進行任何處理。
 
 #### <a name="resolution"></a>解決方案
 
-藉 `kubernetes.azure.com/managedby: aks` 由設定 *AzurePodIdentityException* .crd，將具有 _kube 系統_ 命名空間中標籤的系統 pod 排除在 _aad-pod 身分識別_ 中。
+藉 `kubernetes.azure.com/managedby: aks` 由設定 _AzurePodIdentityException_ .crd，將具有 _kube 系統_ 命名空間中標籤的系統 pod 排除在 _aad-pod 身分識別_ 中。
 
 如需詳細資訊，請參閱 [停用特定 pod/應用程式的 Azure Active Directory (Azure AD) pod 身分識別](https://azure.github.io/aad-pod-identity/docs/configure/application_exception)。
 
@@ -264,11 +266,11 @@ spec:
 附加元件可以觸達 Azure 原則服務端點，但附加元件記錄會顯示下列其中一個錯誤：
 
 - `The resource provider 'Microsoft.PolicyInsights' is not registered in subscription '{subId}'. See
-https://aka.ms/policy-register-subscription for how to register subscriptions.`
+  https://aka.ms/policy-register-subscription for how to register subscriptions.`
 
 - `policyinsightsdataplane.BaseClient#CheckDataPolicyCompliance: Failure responding to request:
-StatusCode=500 -- Original Error: autorest/azure: Service returned an error. Status=500
-Code="InternalServerError" Message="Encountered an internal server error.`
+  StatusCode=500 -- Original Error: autorest/azure: Service returned an error. Status=500
+  Code="InternalServerError" Message="Encountered an internal server error.`
 
 #### <a name="cause"></a>原因
 

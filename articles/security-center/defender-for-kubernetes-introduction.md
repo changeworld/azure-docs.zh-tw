@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 76b83a608c7178b42b762d5fd5bb94d14a6ee41b
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: a19e90a15991cdc03999bf43d5bece63325aab05
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797769"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916569"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>適用於 Kubernetes 的 Azure Defender 簡介
 
@@ -28,7 +28,7 @@ Azure 資訊安全中心和 AKS 形成了最佳的雲端原生 Kubernetes 安全
 
 |層面|詳細資料|
 |----|:----|
-|版本狀態：|正式上市 (GA)|
+|版本狀態：|公開上市 (GA) |
 |定價：|**適用於 Kubernetes 的 Azure Defender** 的計費方式如 [定價頁面](security-center-pricing.md)所示|
 |必要的角色和權限：|**安全性管理員** 可以關閉警示。<br>**安全性讀取者** 可以查看結果。|
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|
