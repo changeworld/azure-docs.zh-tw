@@ -1,6 +1,5 @@
 ---
 title: 使用媒體服務編碼影片和音訊
-titleSuffix: Azure Media Services
 description: 本文說明如何使用 Azure 媒體服務對影片和音訊進行編碼。
 services: media-services
 documentationcenter: ''
@@ -13,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 8533c99011232385e31f4e698743bbb1c6c00bc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 159336d3e8949739cb00dbe66ed82fa90256dcfd
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89300199"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897895"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>使用媒體服務編碼影片和音訊
 
@@ -31,7 +30,7 @@ ms.locfileid: "89300199"
 > [!IMPORTANT]
 > 媒體服務不會針對已取消或錯誤的作業計費。 例如，已達50% 進度且已取消的作業不會以工作分鐘的50% 計費。 您只需支付完成的工作。
 
-* 若要透過漸進式下載來傳遞，您可以使用 Azure 媒體服務將數位媒體檔案 (夾層) 轉換[MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14)成 AAC 檔案，其中包含已使用[h.264 編解碼器](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC)編碼的影片，以及已使用[AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)編解碼器編碼的音訊。 此使用方式檔案會寫入至儲存體帳戶中的資產。 您可以使用 Azure 儲存體 Api 或 Sdk (例如， [儲存體 REST API](../../storage/common/storage-rest-api-auth.md) 或 [.net SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) 直接下載檔案。 如果您在儲存體中建立具有特定容器名稱的輸出資產，請使用該位置。 否則，您可以使用媒體服務來 [列出資產容器 url](/rest/api/media/assets/listcontainersas)。 
+* 若要透過漸進式下載來傳遞，您可以使用 Azure 媒體服務將數位媒體檔案 (夾層) 轉換[](https://en.wikipedia.org/wiki/MPEG-4_Part_14)成 AAC 檔案，其中包含已使用[h.264 編解碼器](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC)編碼的影片，以及已使用[](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)編解碼器編碼的音訊。 此使用方式檔案會寫入至儲存體帳戶中的資產。 您可以使用 Azure 儲存體 Api 或 Sdk (例如， [儲存體 REST API](../../storage/common/storage-rest-api-auth.md) 或 [.net SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) 直接下載檔案。 如果您在儲存體中建立具有特定容器名稱的輸出資產，請使用該位置。 否則，您可以使用媒體服務來 [列出資產容器 url](/rest/api/media/assets/listcontainersas)。 
 * 若要準備以彈性位元速率串流傳遞的內容，必須以多個位元速率編碼夾層檔案， (高至低) 。 為了確保品質正常轉換，影片的解析度會降低，因為位元速率降低。 這會產生所謂的編碼階梯：解析度和位元速率的資料表 (查看 [自動產生的自動調整位元速率階梯](autogen-bitrate-ladder.md)) 。 您可以使用媒體服務，在多個位元速率編碼夾層檔。 在此情況下，您將會取得一組設定檔案，並將相關聯的串流設定檔寫入至儲存體帳戶中的資產。 然後，您可以在媒體服務中使用 [動態封裝](dynamic-packaging-overview.md) 功能，透過 [MPEG 破折號](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) 和 [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming)等串流通訊協定來傳遞影片。 這會要求您建立 [串流定位器](streaming-locators-concept.md) ，並建立對應至支援的通訊協定的串流 url，然後根據其功能將這些 url 遞交給裝置/應用程式。
 
 下圖顯示使用動態封裝的隨選編碼工作流程。
@@ -138,7 +137,7 @@ ms.locfileid: "89300199"
 
 ## <a name="preset-schema"></a>預設架構
 
-在媒體服務 v3 中，預設值是 API 本身中的強型別實體。 您可以在 [OPEN API 規格 (或 Swagger) ](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)中找到這些物件的「架構」定義。 您也可以在[REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset)、 [.net SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) (或其他媒體服務 v3 SDK 參考檔) 中，查看預設的定義 (例如**StandardEncoderPreset**) 。
+在媒體服務 v3 中，預設值是 API 本身中的強型別實體。 您可以在 [OPEN API 規格 (或 Swagger) ](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)中找到這些物件的「架構」定義。 您也可以在 [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset)、 [.net SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) (或其他媒體服務 v3 SDK 參考檔) 中，查看預設的定義 (例如 **StandardEncoderPreset**) 。
 
 ## <a name="scaling-encoding-in-v3"></a>在 v3 中調整編碼
 

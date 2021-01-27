@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: a88f9fab2b10271aa7856a6d0b5ee114f46cfb49
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 659f6527d43e1b45a11fddf774050ca6d42bfe12
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633927"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896658"
 ---
 # <a name="transformation-functions-in-power-query-for-data-wrangling"></a>Power Query 中的資料整頓轉換函數
 
@@ -24,7 +24,7 @@ Azure Data Factory 中的資料整頓可讓您藉由將 Power Query ```M``` 腳�
 
 目前並不支援所有 Power Query M 函式進行資料整頓（儘管在撰寫期間可供使用）。 當您建立混合時，如果不支援函式，系統會提示您輸入下列錯誤訊息：
 
-`The Wrangling Data Flow is invalid. Expression.Error: The transformation logic is not supported. Please try a simpler expression.`
+`UserQuery : Expression.Error: The transformation logic is not supported as it requires dynamic access to rows of data, which cannot be scaled out.`
 
 以下是支援的 Power Query M 函數清單。
 
@@ -96,7 +96,7 @@ Azure Data Factory 中的資料整頓可讓您藉由將 Power Query ```M``` 腳�
 | Table.Distinct | 不支援移除重複的資料列。 |
 | Table.RemoveLastN | 不支援移除底部的資料列。 |
 | Table.RowCount | 不受支援，但可以藉由加入包含值1的自訂資料行，然後以清單 Sum 來匯總該資料行來達成。 Table。支援群組。 | 
-| 資料列層級錯誤處理 | 目前不支援資料列層級錯誤處理。 例如，若要篩選出資料行中的非數值，其中一個方法就是將文字資料行轉換成數位。 無法轉換的每個資料格將會處於錯誤狀態，且需要進行篩選。 此案例無法在整頓資料流程中進行。 |
+| 資料列層級錯誤處理 | 目前不支援資料列層級錯誤處理。 例如，若要篩選出資料行中的非數值，其中一個方法就是將文字資料行轉換成數位。 無法轉換的每個資料格將會處於錯誤狀態，且需要進行篩選。 此案例無法在相應放大的 M 中進行。 |
 | Table.Transpose | 不支援 |
 | Table.Pivot | 不支援 |
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 9fc5c115486c7cbf84fc0bd98ff7996c674f2e24
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: b27b46c68d018d2ddf79d284b20cc05b51640891
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694825"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880636"
 ---
 # <a name="register-and-scan-azure-blob-storage"></a>註冊和掃描 Azure Blob 儲存體
 
@@ -22,7 +22,7 @@ ms.locfileid: "97694825"
 
 Azure Blob 儲存體支援完整和增量掃描來捕捉中繼資料和架構。 它也會根據系統和自訂分類規則自動分類資料。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 註冊資料來源之前，請先建立 Azure 範疇帳戶。 如需有關建立範疇帳戶的詳細資訊，請參閱 [快速入門：建立 Azure 範疇帳戶](create-catalog-portal.md)。
 - 您必須是 Azure 範疇資料來源管理員
@@ -45,7 +45,7 @@ Azure Blob 儲存體支援完整和增量掃描來捕捉中繼資料和架構。
 1. 將 **角色** 設定為 **儲存體 Blob 資料讀取器** ，並在 [ **選取** 輸入] 方塊底下輸入您的 Azure 範疇帳戶名稱。 然後，選取 [儲存]，將此角色指派提供給您的 Purview 帳戶。
 
 > [!Note]
-> 如需詳細資訊，請參閱[使用 Azure Active Directory 授權存取 blob 和佇列](https://docs.microsoft.com/azure/storage/common/storage-auth-aad)的步驟
+> 如需詳細資訊，請參閱[使用 Azure Active Directory 授權存取 blob 和佇列](../storage/common/storage-auth-aad.md)的步驟
 
 ### <a name="account-key"></a>帳戶金鑰
 

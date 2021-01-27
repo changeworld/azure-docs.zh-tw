@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 23c62562299768afb5f5d87bbcf4f7b19b3235ce
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 1a319c728b918dbad7dd5f240bc7a0bfeb0c4c09
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897853"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881039"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>對 AzCopy 進行設定、最佳化及疑難排解
 
@@ -22,7 +22,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 > [!NOTE]
 > 如果您要尋找可協助您開始使用 AzCopy 的內容，請參閱下列文章：
 > - [開始使用 AzCopy](storage-use-azcopy-v10.md)
-> - [使用 AzCopy 和 Blob 儲存體轉送資料](storage-use-azcopy-blobs.md)
+> - [使用 AzCopy 和 Blob 儲存體轉送資料](./storage-use-azcopy-v10.md#transfer-data)
 > - [使用 AzCopy 和檔案儲存體轉送資料](storage-use-azcopy-files.md)
 > - [使用 AzCopy 和 Amazon S3 貯體轉送資料](storage-use-azcopy-s3.md)
 
@@ -220,5 +220,3 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 如果您想要從本機電腦移除所有方案和記錄檔，以節省磁碟空間，請使用 `azcopy jobs clean` 命令。
 
 若只要移除與單一作業相關聯的計畫和記錄檔，請使用 `azcopy jobs rm <job-id>` 。 將 `<job-id>` 此範例中的預留位置取代為作業的工作識別碼。
-
-

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 8/11/2020
 ms.author: swmachan
-ms.openlocfilehash: f8175cbd469c8a3933526d01f433e1def714783b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: c93b8254e1fc80865d9889072b33cbf3fc94326d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024495"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880771"
 ---
 # <a name="translator-v30"></a>Translator v3。0
 
@@ -39,9 +39,9 @@ Microsoft Translator 透過多個資料中心位置來提供服務。 目前位�
 
 Microsoft Translator 的要求大部分是由最接近要求來源的資料中心處理。 如果資料中心發生故障，則要求可能會在 Azure 地理位置之外路由傳送。
 
-若要強制特定 Azure 地理位置處理要求，請將 API 要求中的全域端點變更為所需的區域端點：
+若要強制特定 Azure 地理位置處理要求，請將 API 要求中的全域端點變更為所需的地理端點：
 
-|Description|Azure 地理位置|基底 URL|
+|描述|Azure 地理位置| (地理端點) 的基底 URL|
 |:--|:--|:--|
 |Azure|全域 (非區域) |   api.cognitive.microsofttranslator.com|
 |Azure|美國|   api-nam.cognitive.microsofttranslator.com|
@@ -236,7 +236,7 @@ curl -X POST "https://<your-custom-domain>.cognitiveservices.azure.com/translato
 
 下表列出可用的計量，並說明如何使用它們來監視轉譯 API 呼叫。
 
-| 計量 | Description |
+| 計量 | 描述 |
 |:----|:-----|
 | TotalCalls| API 呼叫總數。|
 | TotalTokenCalls| 使用驗證權杖透過權杖服務的 API 呼叫總數。|

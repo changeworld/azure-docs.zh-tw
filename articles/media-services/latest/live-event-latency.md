@@ -1,5 +1,5 @@
 ---
-title: Azure 媒體服務中的低延遲設定 LiveEvent |Microsoft Docs
+title: Azure 媒體服務中的 LiveEvent 低延遲設定
 description: 本主題概要說明 LiveEvent 低延遲設定，並示範如何設定低延遲。
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 114efe668fba47e9d83741b8fa45e1f396725198
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 023b0f4d7f0367882e0a5bb2be89c485c18bc03c
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291509"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897827"
 ---
 # <a name="live-event-low-latency-settings"></a>實況活動低延遲設定
 

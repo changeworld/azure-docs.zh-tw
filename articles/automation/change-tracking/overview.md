@@ -3,14 +3,14 @@ title: Azure 自動化的變更追蹤和清查概觀
 description: 本文說明變更追蹤和清查功能，可協助您識別環境中的軟體和 Microsoft 服務變更。
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 11/10/2020
+ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: b5390e4b3dc6d77390c3fca6323cbd52544c638a
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 0ef821634669739ff5aed58e4404d7c21b8d8222
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445416"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896624"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>變更追蹤和清查概觀
 
@@ -32,7 +32,7 @@ ms.locfileid: "94445416"
 - Microsoft 服務
 - Linux 精靈
 
-啟用變更追蹤和清查中包含的所有功能可能會導致額外的費用。 繼續之前，請先參閱 [自動化定價](https://azure.microsoft.com/pricing/details/automation/) 和 [Azure 監視器定價](https://azure.microsoft.com/pricing/details/monitor/)。 
+啟用變更追蹤和清查中包含的所有功能可能會導致額外的費用。 繼續之前，請先參閱 [自動化定價](https://azure.microsoft.com/pricing/details/automation/) 和 [Azure 監視器定價](https://azure.microsoft.com/pricing/details/monitor/)。
 
 變更追蹤和清查會將資料轉送至 Azure 監視器記錄，而此收集的資料會儲存在 Log Analytics 工作區中。 只有在啟用 **適用于伺服器的 Azure Defender** 時，才能使用檔案完整性監視 (FIM) 功能。 若要深入瞭解，請參閱 Azure 資訊安全中心 [定價](../../security-center/security-center-pricing.md) 。 FIM 會將資料上傳至與建立的相同 Log Analytics 工作區，以儲存來自變更追蹤和清查的資料。 建議您監視連結的 Log Analytics 工作區，以追蹤確切的使用量。 如需分析 Azure 監視器記錄資料使用量的詳細資訊，請參閱 [管理使用量和成本](../../azure-monitor/platform/manage-cost-storage.md)。
 
@@ -74,16 +74,7 @@ Python2 可執行檔必須以 *python* 為別名。
 
 ## <a name="network-requirements"></a>網路需求
 
-以下是變更追蹤和清查所需的特定位址。 與這些位址的通訊皆經由連接埠 443 進行。
-
-|Azure 公用  |Azure Government  |
-|---------|---------|
-|*.ods.opinsights.azure.com    | *.ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
-|*.blob.core.windows.net | *.blob.core.usgovcloudapi.net|
-|*.azure-automation.net | *.azure-automation.us|
-
-當您建立網路群組安全性規則或設定 Azure 防火牆以允許流量流向自動化服務和 Log Analytics 工作區時，請使用 [服務](../../virtual-network/service-tags-overview.md#available-service-tags)標籤 **GuestAndHybridManagement** 和 **AzureMonitor** 。 這可簡化網路安全性規則的持續管理。 若要安全且私下地從您的 Azure Vm 連接到自動化服務，請參閱 [使用 Azure Private Link](../how-to/private-link-security.md)。 若要取得目前的服務標籤和範圍資訊，以納入您的內部部署防火牆設定，請參閱 [可下載的 JSON](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)檔案。
+檢查 [Azure 自動化的網路](../automation-network-configuration.md#update-management-and-change-tracking-and-inventory) 設定，以取得變更追蹤和清查所需的埠、url 和其他網路詳細資料的詳細資訊。
 
 ## <a name="enable-change-tracking-and-inventory"></a>啟用變更追蹤和清查
 
@@ -137,7 +128,7 @@ Python2 可執行檔必須以 *python* 為別名。
 
 - 追蹤多個檔案時需要萬用字元。
 
-- 您只能在檔案路徑的最後一個區段中使用萬用字元，例如，c:\folder 檔 **_ \\** 或 _ */etc/* 。
+- 您只能在檔案路徑的最後一個區段中使用萬用字元，例如，c:\folder 檔 **_ \\** 或 _ */etc/*。
 
 - 如果環境變數具有不正確路徑，驗證雖然會成功，但路徑會在執行期間失敗。
 

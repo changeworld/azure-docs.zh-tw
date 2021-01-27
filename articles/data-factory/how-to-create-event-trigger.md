@@ -11,12 +11,12 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: de416277de34e1c3717d581697f05c98c48d1959
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 495dda603a8ab8ce2983e010ea23856df5a094ef
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146002"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897117"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>建立會執行管線來回應事件的觸發程序
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "93146002"
 
 
 > [!NOTE]
-> 本文章中說明的整合，仰賴 [Azure 事件方格](https://azure.microsoft.com/services/event-grid/)。 請確認您的訂用帳戶已向事件方格資源提供者註冊。 如需詳細資訊，請參閱[資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。 您必須能夠執行 *EventGrid/eventSubscriptions/* * 動作。 此動作是 EventGrid EventSubscription 參與者內建角色的一部分。
+> 本文章中說明的整合，仰賴 [Azure 事件方格](https://azure.microsoft.com/services/event-grid/)。 請確認您的訂用帳戶已向事件方格資源提供者註冊。 如需詳細資訊，請參閱[資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。 您必須能夠執行 *EventGrid/eventSubscriptions/** 動作。 此動作是 EventGrid EventSubscription 參與者內建角色的一部分。
 
 ## <a name="data-factory-ui"></a>Data Factory UI
 
@@ -50,12 +50,16 @@ ms.locfileid: "93146002"
 1. 從 Azure 訂用帳戶下拉式清單中選取您的儲存體帳戶，或使用其儲存體帳戶資源識別碼手動進行。 選擇您希望發生事件的容器。 容器選取是選擇性作業，但請注意，選取所有容器可能會導致大量的事件。
 
    > [!NOTE]
-   > 事件觸發程序目前僅支援 Azure Data Lake Storage Gen2 和一般用途的第 2 版儲存體帳戶。 您必須至少擁有儲存體帳戶的 *擁有* 者存取權。  由於 Azure 事件方格的限制，Azure Data Factory 只支援每個儲存體帳戶最多 500 個事件觸發程序。
+   > 事件觸發程序目前僅支援 Azure Data Lake Storage Gen2 和一般用途的第 2 版儲存體帳戶。 由於 Azure 事件方格的限制，Azure Data Factory 只支援每個儲存體帳戶最多 500 個事件觸發程序。
+
+   > [!NOTE]
+   > 若要建立和修改新的事件觸發程式，用來登入 Data Factory 的 Azure 帳戶必須至少具有儲存體帳戶的 *擁有* 者許可權。 不需要額外的許可權： Azure Data Factory 的服務主體 _不_ 需要儲存體帳戶或事件方格的特殊許可權。
 
 1. [Blob 路徑開頭] 和 [Blob 路徑結尾] 屬性可讓您指定要收到事件的容器、資料夾和 Blob 名稱。 您的事件觸發程序至少需要定義其中一個屬性。 您可以針對 **Blob path begins with** 和 **Blob path ends with** 屬性使用各種不同的模式，如本文稍後的範例所示。
 
     * **Blob 路徑開頭：** Blob 路徑的開頭必須是資料夾路徑。 有效值包括 `2018/` 和 `2018/april/shoes.csv`。 如果未選取容器，就無法選取此欄位。
     * **Blob 路徑結尾：** Blob 路徑的結尾必須是檔案名稱或副檔名。 有效值包括 `shoes.csv` 和 `.csv`。 容器和資料夾名稱均為選擇性項目，但若已指定，則必須以 `/blobs/` 區段分隔。 例如，名為 'orders' 的容器可以有 `/orders/blobs/2018/april/shoes.csv`值。 若要指定任何容器中的資料夾，請省略前置的 '/' 字元。 例如，`april/shoes.csv` 將會在任何容器中名為 'april' 的資料夾中，對任何名為 `shoes.csv` 的檔案觸發事件。 
+    * 注意： Blob 路徑的 **開頭** 和 **結尾** 是事件觸發程式中唯一允許的模式比對。 觸發程式類型不支援其他類型的萬用字元比對。
 
 1. 選取您的觸發程序是否會回應 [已建立 Blob] 事件、[已刪除 Blob] 事件，或回應兩者。 在您指定的儲存位置中，每個事件都會觸發與觸發程序相關聯的 Data Factory 管線。
 
@@ -92,7 +96,7 @@ ms.locfileid: "93146002"
 本節提供事件型觸發程序設定的範例。
 
 > [!IMPORTANT]
-> 每當您指定容器與資料夾、容器與檔案，或容器、資料夾與檔案時，都必須包含路徑的 `/blobs/` 區段，如下列範例所示。 針對 **blobPathBeginsWith** ，Data Factory UI 會自動在觸發程序 JSON 中的資料夾與容器名稱之間新增 `/blobs/`。
+> 每當您指定容器與資料夾、容器與檔案，或容器、資料夾與檔案時，都必須包含路徑的 `/blobs/` 區段，如下列範例所示。 針對 **blobPathBeginsWith**，Data Factory UI 會自動在觸發程序 JSON 中的資料夾與容器名稱之間新增 `/blobs/`。
 
 | 屬性 | 範例 | 描述 |
 |---|---|---|

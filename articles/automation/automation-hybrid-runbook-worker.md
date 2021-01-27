@@ -3,14 +3,14 @@ title: Azure 自動化混合式 Runbook 背景工作角色概觀
 description: 此文章概述混合式 Runbook 背景工作角色，可供您用來在本機資料中心或雲端提供者的機器上執行 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 01/11/2021
+ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: a23d30047a13b1d176b086a9923e140e7f8d3e45
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 7cf18b6b677daaf97d425c86a0cad91b3abcb225
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072134"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896947"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>混合式 Runbook 背景工作概觀
 
@@ -54,16 +54,7 @@ Windows 電腦的建議安裝方法是使用 Azure 自動化的 runbook，將設
 
 ## <a name="network-planning"></a><a name="network-planning"></a>網路規劃
 
-若要讓系統和使用者混合式 Runbook 背景工作角色連線至 Azure 自動化並向其註冊，它必須能夠存取本節所述的埠號碼和 Url。 背景工作角色也必須能夠存取 [Log Analytics 代理程式所需的連接埠和 URL](../azure-monitor/platform/agent-windows.md)，以連線至 Azure 監視器 Log Analytics 工作區。
-
-混合式 Runbook 背景工作角色需要下列連接埠和 URL：
-
-* 連接埠︰只需要 TCP 443，即可存取輸出網際網路
-* 全域 URL： `*.azure-automation.net`
-* US Gov 維吉尼亞州的全域 URL： `*.azure-automation.us`
-* 代理程式服務： `https://<workspaceId>.agentsvc.azure-automation.net`
-
-如果您有針對特定區域定義的自動化帳戶，您可以限制混合式 Runbook 背景工作角色對該區域資料中心的通訊。 檢查 Azure 自動化針對必要的 DNS 記錄所 [使用的 dns 記錄](how-to/automation-region-dns-records.md) 。
+檢查 [Azure 自動化的網路](automation-network-configuration.md#network-planning-for-hybrid-runbook-worker) 設定，以取得混合式 Runbook 背景工作角色所需的埠、url 和其他網路詳細資料的詳細資訊。
 
 ### <a name="proxy-server-use"></a>使用 Proxy 伺服器
 
@@ -94,7 +85,7 @@ Azure 自動化混合式 Runbook 背景工作角色可在 Azure Government 中�
 * [Azure 專用主機](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-host)，可提供可裝載一或多個虛擬機器的實體伺服器，專用於一個 azure 訂用帳戶。
 
 >[!NOTE]
->透過混合式 Runbook 背景工作角色的計算隔離適用于 Azure 商業和美國政府雲端。 
+>透過混合式 Runbook 背景工作角色的計算隔離適用于 Azure 商業和美國政府雲端。
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>混合式 Runbook 背景工作角色的更新管理位址
 

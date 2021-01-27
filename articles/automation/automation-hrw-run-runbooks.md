@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: b73fa80085cc0491c8b4d0856d0baacfef1b51c0
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 4a080505f780e724bfd2ab997f5c823e467c4bec
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301533"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896964"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>在混合式 Runbook 背景工作上啟動 Runbook
 
@@ -22,7 +22,7 @@ ms.locfileid: "96301533"
 
 Azure 自動化處理混合式 Runbook 背景工作角色上的作業，與在 Azure 沙箱中執行的作業不同。 如果有長時間執行的 Runbook，請確定能夠接受可能重新啟動。 如需作業行為的詳細資訊，請參閱[混合式 Runbook 背景工作角色作業](automation-hybrid-runbook-worker.md#hybrid-runbook-worker-jobs)。
 
-混合式 Runbook 背景工作角色的作業會在 Windows 上的本機 **系統** 帳戶或 Linux 上的 **>nxautomation** 帳戶下執行。 若為 Linux，請確認 **>nxautomation** 帳戶可以存取儲存 runbook 模組的位置。 您使用 [Install 模組](/powershell/module/powershellget/install-module) Cmdlet 時，請務必為 `Scope` 參數指定 AllUsers，以確保 **nxautomation** 帳戶具有存取權。 如需 Linux 上的 PowerShell 有關的詳細資訊，請參閱[非 Windows 平台上的 PowerShell 已知問題](/powershell/scripting/whats-new/what-s-new-in-powershell-70?view=powershell-7.1)。
+混合式 Runbook 背景工作角色的作業會在 Windows 上的本機 **系統** 帳戶或 Linux 上的 **>nxautomation** 帳戶下執行。 若為 Linux，請確認 **>nxautomation** 帳戶可以存取儲存 runbook 模組的位置。 您使用 [Install 模組](/powershell/module/powershellget/install-module) Cmdlet 時，請務必為 `Scope` 參數指定 AllUsers，以確保 **nxautomation** 帳戶具有存取權。 如需 Linux 上的 PowerShell 有關的詳細資訊，請參閱[非 Windows 平台上的 PowerShell 已知問題](/powershell/scripting/whats-new/what-s-new-in-powershell-70)。
 
 ## <a name="configure-runbook-permissions"></a>設定 runbook 許可權
 
@@ -327,4 +327,4 @@ Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name
 
 * 如果您的 Runbook 未順利完成，請檢閱 [Runbook 執行失敗](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails)中的疑難排解指南。
 * 如需 PowerShell 的詳細資訊，包括語言參考和學習模組，請參閱 [powershell](/powershell/scripting/overview)檔。
-* 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation#automation)。
+* 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation)。

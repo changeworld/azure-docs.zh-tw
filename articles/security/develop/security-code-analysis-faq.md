@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: f872159e538dc85121a7a6d4d6503fd18a263628
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b851e52141cf93aba4aab9b2768658f0aac4660f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87543039"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879910"
 ---
 # <a name="frequently-asked-questions"></a>常見問題集
 遇到問題嗎？ 如需詳細資訊，請參閱下列常見問題。
@@ -82,7 +82,7 @@ ms.locfileid: "87543039"
 
 ### <a name="from-where-do-the-build-tasks-download-the-tools"></a>組建工作從哪裡下載工具？
 
-組建工作可以從 [Azure DevOps 套件管理](https://securitytools.pkgs.visualstudio.com/_packaging/SecureDevelopmentTools/nuget/v3/index.json)摘要下載工具的 NuGet 套件。 組建工作也可以使用節點封裝管理員，必須預先安裝在組建代理程式上。 **Npm install tslint**命令就是這類安裝的範例。
+組建工作可以從 [Azure DevOps 套件管理](https://securitytools.pkgs.visualstudio.com/_packaging/SecureDevelopmentTools/nuget/v3/index.json)摘要下載工具的 NuGet 套件。 組建工作也可以使用節點封裝管理員，必須預先安裝在組建代理程式上。 **Npm install tslint** 命令就是這類安裝的範例。
 
 ### <a name="what-effect-does-installing-the-extension-have-on-my-azure-devops-organization"></a>安裝延伸模組的 Azure DevOps 組織有何影響？ 
 
@@ -158,12 +158,12 @@ ms.locfileid: "87543039"
 
 下列資源可協助您安全地管理秘密，並從應用程式記憶體取機密資訊：
 
- - [Azure 金鑰保存庫](../../key-vault/index.yml)
+ - [Azure Key Vault](../../key-vault/index.yml)
  - [Azure Active Directory (Azure AD)](../../azure-sql/database/authentication-aad-overview.md)
  - [Azure AD 受控服務識別 (MSI) ](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
  - [適用於 Azure 資源的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)
  - [Azure App Service 和 Azure Functions 中的受控識別](../../app-service/overview-managed-identity.md)
- - [AppAuthentication 程式庫](../../key-vault/general/service-to-service-authentication.md)
+ - [AppAuthentication 程式庫](/dotnet/api/overview/azure/service-to-service-authentication)
 
 
 如需詳細資訊，請參閱在 [雲端中安全地管理秘密](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/)的 blog 文章。
@@ -196,7 +196,7 @@ ms.locfileid: "87543039"
 
 完整的錯誤訊息：
 
-「錯誤：已使用 NETCore. x. x. x. x. x. x. x. x. x. x 版還原 *專案，但*使用目前的設定，則會改用版本 *y* . y。 若要解決此問題，請確定會針對還原和後續作業 (例如建置或發佈) 使用相同的設定。 一般來說，如果在建置或發佈期間 (而不是在還原期間) 設定了 RuntimeIdentifier 屬性，就會發生此問題。」
+「錯誤：已使用 NETCore. x. x. x. x. x. x. x. x. x. x 版還原 *專案，但* 使用目前的設定，則會改用版本 *y* . y。 若要解決此問題，請確定會針對還原和後續作業 (例如建置或發佈) 使用相同的設定。 一般來說，如果在建置或發佈期間 (而不是在還原期間) 設定了 RuntimeIdentifier 屬性，就會發生此問題。」
 
 由於 Roslyn 分析器工作會在編譯過程中執行，因此組建電腦上的來源樹狀結構必須處於可建置狀態。
 
@@ -206,7 +206,7 @@ ms.locfileid: "87543039"
 
 完整的錯誤訊息：
 
-"' csc.exe ' 已結束，錯誤碼為 1--無法從 C：11.Mm.bbbb.rr 建立分析器*AAAA*的實例 \\ * *：無法載入檔案或元件 ' CodeAnalysis，Version =*x*. x. x，Culture = 中性，PublicKeyToken = 31bf3856ad364e35 ' 或其相依性的其中之一。 系統找不到指定的檔案。」
+"' csc.exe ' 已結束，錯誤碼為 1--無法從 C：11.Mm.bbbb.rr 建立分析器 *AAAA* 的實例 \\ **：無法載入檔案或元件 ' CodeAnalysis，Version =*x*. x. x，Culture = 中性，PublicKeyToken = 31bf3856ad364e35 ' 或其相依性的其中之一。 系統找不到指定的檔案。」
 
 確定您的編譯器支援 Roslyn 分析器。 執行命令 **csc.exe/version** 應該會報告版本值為2.6 或更新版本。
 

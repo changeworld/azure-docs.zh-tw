@@ -10,12 +10,12 @@ ms.date: 01/15/2021
 author: dcstwh
 ms.author: weetok
 manager: anandsub
-ms.openlocfilehash: e463328df195b5a91db8ce272d138f980d000e79
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: c3c126a96c0eb2214f63a56120d0966b9a97efed
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232058"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895385"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>在 Azure Data Factory 中將連結服務參數化
 
@@ -27,6 +27,9 @@ ms.locfileid: "98232058"
 
 > [!TIP]
 > 建議您不要將密碼或秘密參數化。 請改為將所有連接字串儲存在 Azure Key Vault 中，並將 *Secret Name* 參數化。
+
+> [!Note]
+> 在參數名稱中使用 "-" 有開啟的 bug，我們建議使用名稱，而不使用 "-"，直到 bug 解決為止。
 
 如需此功能的 7 分鐘簡介與示範，請觀看下列影片：
 
@@ -42,7 +45,7 @@ ms.locfileid: "98232058"
 - Azure Cosmos DB (SQL API) 
 - 適用於 MySQL 的 Azure 資料庫
 - Azure Databricks
-- Azure Key Vault
+- Azure 金鑰保存庫
 - Azure SQL Database
 - Azure SQL 受控執行個體
 - Azure Synapse Analytics 

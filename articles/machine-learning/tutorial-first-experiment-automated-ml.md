@@ -11,12 +11,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: 90c827774f38f07b9791a6399a53b0304bbe28c8
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
-ms.translationtype: HT
+ms.openlocfilehash: ff9bd328dd98fbd614a3bb63a1edddc2027d97b2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695212"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879776"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>教學課程：在 Azure Machine Learning 中使用自動化 ML 建立分類模型
 
@@ -252,7 +252,7 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 在此自動化機器學習教學課程中，您已使用 Azure Machine Learning 的自動化 ML 介面來建立及部署分類模型。 請參閱下列文章，以了解更多資訊及接下來的步驟：
 
 > [!div class="nextstepaction"]
-> [取用 Web 服務](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)
+> [取用 Web 服務](/power-bi/connect-data/service-aml-integrate?context=azure%2fmachine-learning%2fcontext%2fml-context)
 
 + 深入了解[自動化機器學習](concept-automated-ml.md)。
 + 如需分類計量與圖表的詳細資訊，請參閱[了解自動化機器學習結果](how-to-understand-automated-ml.md)一文。

@@ -2,19 +2,19 @@
 title: 什麼是平行處理的文件？ - 自訂翻譯工具
 titleSuffix: Azure Cognitive Services
 description: 平行文件是配對文件，其中的一份文件是另一份文件的翻譯。 該配對中的一份文件會包含原始語言的句子，而另一分文件會包含已翻譯成目標語言的這些句子。
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 6477432636db9592d9b0d9c1f90f5eee7d6e00db
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 64192014c9dfe5bb958e730dae62e504f0976fa1
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368996"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895589"
 ---
 # <a name="what-are-parallel-documents"></a>什麼是平行處理的文件？
 

@@ -3,14 +3,14 @@ title: Azure 自動化更新管理概觀
 description: 此文章提供可對 Windows 和 Linux 機器實作更新的更新管理功能概觀。
 services: automation
 ms.subservice: update-management
-ms.date: 01/13/2021
+ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: d66d4d32c788317d8b0781f9f24120fbce2f6f8f
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 718e812a8193797ad350fa61444bb05fe5a4b724
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185609"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896896"
 ---
 # <a name="update-management-overview"></a>更新管理概觀
 
@@ -185,16 +185,7 @@ Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取
 
 ## <a name="network-planning"></a><a name="ports"></a>網路規劃
 
-以下為「更新管理」特別需求的位址。 與這些位址的通訊皆經由連接埠 443 進行。
-
-|Azure 公用  |Azure Government  |
-|---------|---------|
-|`*.ods.opinsights.azure.com`    | `*.ods.opinsights.azure.us`        |
-|`*.oms.opinsights.azure.com`     | `*.oms.opinsights.azure.us`        |
-|`*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`|
-|`*.azure-automation.net` | `*.azure-automation.us`|
-
-當您建立網路群組安全性規則或設定 Azure 防火牆以允許流量流向自動化服務和 Log Analytics 工作區時，請使用 [服務](../../virtual-network/service-tags-overview.md#available-service-tags)標籤 **GuestAndHybridManagement** 和 **AzureMonitor**。 這可簡化網路安全性規則的持續管理。 若要安全且私下地從您的 Azure Vm 連接到自動化服務，請參閱 [使用 Azure Private Link](../how-to/private-link-security.md)。 若要取得目前的服務標籤和範圍資訊，以納入您的內部部署防火牆設定，請參閱 [可下載的 JSON](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)檔案。
+檢查 [Azure 自動化的網路](../automation-network-configuration.md#hybrid-runbook-worker-and-state-configuration) 設定，以取得更新管理所需埠、url 和其他網路功能詳細資料的詳細資訊。
 
 對於 Windows 機器，您也必須允許流量傳送到 Windows Update 所需的任何端點。 您可以在[與 HTTP/Proxy 相關的問題](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)中，找到所需端點的更新清單。 如果您有本機 [Windows Update 伺服器](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)，也必須允許流量傳送到您 [WSUS 金鑰](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)中指定的伺服器。
 
@@ -227,11 +218,14 @@ Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取
 |其他更新     | 本質上不重要或非安全性更新的所有其他更新。        |
 
 >[!NOTE]
->只有在支援的 Azure 公用雲端區域中使用時，才能使用適用于 Linux 機器的更新分類。 使用下列國家/地區雲端區域中的更新管理時：
+>只有在支援的 Azure 公用雲端區域中使用時，才能使用適用于 Linux 機器的更新分類。 在下列國家/地區雲端區域中使用更新管理時，不會分類 Linux 更新：
+>
 >* Azure 美國政府
 >* 中國的世紀
 >
-> 沒有 Linux 更新的分類，而且它們會在 [ **其他更新** ] 類別下回報。 更新管理使用支援的發行版本所發佈的資料，尤其是其發行的 [橢圓](https://oval.mitre.org/) (開放式弱點和評定語言) 檔。 因為網際網路存取受限於這些國家雲端，所以更新管理無法存取及使用這些檔案。
+> 更新會報告在 [ **其他更新** ] 類別下，而不是分類。
+>
+> 更新管理使用支援的發行版本所發佈的資料，尤其是其發行的 [橢圓](https://oval.mitre.org/) (開放式弱點和評定語言) 檔。 因為網際網路存取受限於這些國家雲端，更新管理無法存取檔案。
 
 針對 Linux，更新管理可以區別分類 **安全性** 和 **其他** 雲端中的重大更新和安全性更新，同時顯示因雲端中的資料擴充而顯示的評定資料。 針對修補，「更新管理」仰賴機器上可用的分類資料。 與其他發行版本不同，CentOS 在 RTM 版本中沒有此資訊可供使用。 如果您將 CentOS 機器設定為傳回以下命令的安全性資料，更新管理就能根據分類進行修補。
 

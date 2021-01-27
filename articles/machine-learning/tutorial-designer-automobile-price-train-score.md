@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: 2e46da1657a7473d3ff8cdf4ac43e5341b143455
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
-ms.translationtype: HT
+ms.openlocfilehash: 46098b2b7ebbf219a3c17b4fa40e1fd52344f683
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796103"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879792"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>教學課程：使用設計工具預測汽車價格
 
@@ -103,7 +103,7 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
 您可以將資料視覺化，以了解您將使用的資料集。
 
-1. 以滑鼠右鍵按一下 [汽車價格資料 (原始)]，然後選取 [視覺化]。
+1. 以滑鼠右鍵按一下 **汽車價格資料 (原始)** ，然後選取 [**視覺化**  >  **資料集輸出**]。
 
 1. 選取資料視窗中的不同資料行，以檢視各個資料行的相關資訊。
 
@@ -284,7 +284,7 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
 執行完成後，您可以檢視管線執行的結果。 首先，請查看迴歸模型產生的預測。
 
-1. 以滑鼠右鍵按一下 [評分模型] 模組，然後選取 [視覺化] 以檢視輸出結果。
+1. 以滑鼠右鍵按一下 [**評分模型**] 模組，然後選取 [**視覺化**  >  **計分資料集**] 以查看其輸出。
 
     您可以在這裡看到測試資料中的預測價格和實際價格。
 
@@ -294,7 +294,7 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
 使用 **評估模型**，查看定型模型對測試資料集的執行效果。
 
-1. 以滑鼠右鍵按一下 [評估模型] 模組，然後選取 [視覺化] 以檢視輸出結果。
+1. 以滑鼠右鍵按一下 [**評估模型**] 模組，然後選取 [  >  將 **評估結果** 視覺化] 以查看其輸出。
 
 您的模型會顯示下列統計資料：
 

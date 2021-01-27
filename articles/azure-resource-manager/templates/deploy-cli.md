@@ -2,13 +2,13 @@
 title: 使用 Azure CLI 和範本部署資源
 description: 使用 Azure Resource Manager 和 Azure CLI 將資源部署到 Azure。 資源會定義在 Resource Manager 範本中。
 ms.topic: conceptual
-ms.date: 01/15/2021
-ms.openlocfilehash: d79a5c93bf79c5851beabbba2eb3a663c6ab5999
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/26/2021
+ms.openlocfilehash: f01409db36ca29deb2f6938ce3118cdcb20cd1a1
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251075"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881294"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>使用 ARM 範本與 Azure CLI 來部署資源
 
@@ -103,6 +103,18 @@ az deployment group create \
 ```
 
 上述範例針對範本需要可公開存取 URI，這適用於大部分的案例，因為您的範本不應該包含機密資料。 如果您需要指定機密資料 (例如系統管理員密碼)，請將該值以安全參數傳遞。 但是，如果您想要管理範本的存取權，請考慮使用 [範本規格](#deploy-template-spec)。
+
+若要使用儲存在儲存體帳戶中的相對路徑來部署遠端連結的範本，請使用 `query-string` 來指定 SAS 權杖：
+
+```azurepowershell
+az deployment group create \
+  --name linkedTemplateWithRelativePath \
+  --resource-group myResourceGroup \
+  --template-uri "https://stage20210126.blob.core.windows.net/template-staging/mainTemplate.json" \
+  --query-string $sasToken
+```
+
+如需詳細資訊，請參閱 [使用連結的範本的相對路徑](./linked-templates.md#linked-template)。
 
 ## <a name="deployment-name"></a>部署名稱
 

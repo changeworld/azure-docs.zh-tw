@@ -3,19 +3,19 @@ title: 什麼是工作區和專案？ - 自訂翻譯工具
 titleSuffix: Azure Cognitive Services
 description: 本文將說明工作區與專案之間的差異，以及自訂翻譯服務的專案類別和標籤之間的差異。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 28bc07cadf9ffea56059755e243cb3e828077588
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 0abda0307e3cdbd0e73e131bee072172375198eb
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368962"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898048"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>什麼是自訂翻譯工具工作區？
 

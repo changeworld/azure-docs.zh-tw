@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: da136c1f3ce36bf85592c3c73c9e8f92c41c7442
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: ea274914ac70540d5763884bbd01e41e349a530d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357903"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879825"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>變更 Azure 中 SQL 虛擬機器的授權模型
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "97357903"
 
 Azure Hybrid Benefit 允許在 Azure 虛擬機器上使用具有軟體保證 (即「合格授權」) 的 SQL Server 授權。 透過使用 Azure Hybrid Benefit，客戶不需支付在 VM 上使用 SQL Server 授權的費用。 但客戶仍需支付基礎雲端計算 (即基本費率)、儲存體及備份的費用。 也必須支付與服務使用建立關聯的 I/O 費用 (如適用)。
 
-根據 Microsoft 產品條款：「客戶在 Azure 上設定工作負載時，必須表明自己目前在使用 Azure SQL Database (受控執行個體、彈性集區和單一資料庫)、Azure Data Factory、SQL Server Integration Services 或適用於 SQL Server 的 Azure Hybrid Benefit 下的 SQL Server 虛擬機器。」
+根據 Microsoft [產品條款](https://www.microsoft.com/licensing/terms/productoffering/MicrosoftAzureServices/EAEAS)：「客戶必須指出他們使用 Azure SQL Database (受控執行個體、彈性集區和單一資料庫) 、Azure Data Factory、SQL Server Integration Services，或 SQL Server 在 Azure 上設定工作負載時，Azure Hybrid Benefit SQL Server 的虛擬機器。
 
 若要表明在 Azure VM 上使用適用於 SQL Server 的 Azure Hybrid Benefit 且符合規範，您有三個可用選項：
 

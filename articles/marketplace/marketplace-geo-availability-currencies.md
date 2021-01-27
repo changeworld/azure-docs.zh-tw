@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 12/07/2020
-ms.openlocfilehash: 118fe70abf52a6c96f4f2dc47e3ad23a388f3598
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: c71c13701d064110be0ef976920c0cc01f2fa308
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853742"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879759"
 ---
 # <a name="geographic-availability-and-currency-support-for-the-commercial-marketplace"></a>商業 marketplace 的地理可用性和貨幣支援
 
@@ -195,13 +195,13 @@ Microsoft 會以當地貨幣接收客戶的款項，並以您在合作夥伴中�
 如需有關如何輸入特定供應專案類型價格的詳細資訊，請參閱下列文章：
 
 - [建立 Azure 應用程式供應項目](create-new-azure-apps-offer.md)
-- [建立 Azure 容器供應專案](partner-center-portal/create-azure-container-offer.md)
+- [建立 Azure 容器供應專案](./create-azure-container-offer.md)
 - [建立 Azure 虛擬機器供應項目](azure-vm-create.md)
 - [建立諮詢服務供應項目](./create-consulting-service-offer.md)
 - [建立 Dynamics 365 for Customer Engagement 和 PowerApps 供應項目](partner-center-portal/create-new-customer-engagement-offer.md)
 - [建立 Dynamics 365 for Operations 供應項目](partner-center-portal/create-new-operations-offer.md)
 - [建立 Dynamics 365 Business Central 供應項目](partner-center-portal/create-new-business-central-offer.md)
 - [建立 IoT Edge 模組供應項目](partner-center-portal/azure-iot-edge-module-creation.md)
-- [建立受控服務供應項目](partner-center-portal/create-new-managed-service-offer.md)
+- [建立受控服務供應項目](./plan-managed-service-offer.md)
 - [建立 Power BI 應用程式](partner-center-portal/create-power-bi-app-offer.md)
 - [建立 SaaS 供應項目](./create-new-saas-offer.md)

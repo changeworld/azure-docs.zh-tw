@@ -1,5 +1,5 @@
 ---
-title: Azure 媒體服務輸出中繼資料結構描述 | Microsoft Docs
+title: Azure 媒體服務輸出中繼資料架構
 description: 本文概述 Azure 媒體服務 v3 輸出中繼資料架構。
 author: IngridAtMicrosoft
 manager: femila
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: aa6d4edc4348fa850eeb7e8d91ce0791ee4c7170
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a27db81866760bff56c900a908162f356c01a66
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336406"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895198"
 ---
 # <a name="output-metadata"></a>輸出中繼資料
 
@@ -71,7 +71,7 @@ ms.locfileid: "91336406"
 | --- | --- |
 | **識別碼**<br />必要  |此音訊播放軌以零為基底的索引。 **注意：**  這不一定是在用於 trackid 中使用的檔案。  <br /><br />範例： `"Id": 2`|
 | **轉碼器**  |音訊播放軌轉碼器字串。  <br /><br />範例： `"Codec": "aac"`|
-| **語言**|範例： `"Language": "eng"`|
+| **Language**|範例： `"Language": "eng"`|
 | **聲道**<br />必要|音訊聲道數目。  <br /><br />範例： `"Channels": 2`|
 | **SamplingRate**<br />必要 |音訊取樣率 (每秒或每 Hz 的樣本數)。  <br /><br />範例： `"SamplingRate": 48000`|
 | **Bitrate**<br />必要 |從 AssetFile 計算出來的平均音訊位元速率 (位元 / 秒)。 只會計算基本串流承載，而不會納入封裝負荷。  <br /><br />範例： `"Bitrate": 128041`|

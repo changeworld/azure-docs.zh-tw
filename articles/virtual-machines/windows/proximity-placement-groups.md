@@ -8,17 +8,17 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 9ea986b338d977102d78e9c12bcbe5b2f2c510e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4de71be8c88264d2cfb513a7f0214515058b5185
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083441"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878319"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>使用 PowerShell 將 Vm 部署至鄰近位置群組
 
 
-若要盡可能關閉 Vm，請達到最低可能的延遲，您應該將它們部署在 [鄰近放置群組](co-location.md#proximity-placement-groups)內。
+若要盡可能關閉 Vm，請達到最低可能的延遲，您應該將它們部署在 [鄰近放置群組](../co-location.md#proximity-placement-groups)內。
 
 鄰近放置群組是邏輯群組，可用來確保 Azure 計算資源實際位於彼此接近的位置。 鄰近放置群組很適合用於具備低延遲需求的工作負載。
 
@@ -49,7 +49,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-vm"></a>建立 VM
 
-當您使用 New-azvm 建立 VM 時，請使用的鄰近放置群組建立 VM， `-ProximityPlacementGroup $ppg.Id` 以參考鄰近[New-AzVM](/powershell/module/az.compute/new-azvm)放置群組識別碼。
+當您使用 New-azvm 建立 VM 時，請使用的鄰近放置群組建立 VM， `-ProximityPlacementGroup $ppg.Id` 以參考鄰近[](/powershell/module/az.compute/new-azvm)放置群組識別碼。
 
 ```azurepowershell-interactive
 $vmName = "myVM"
@@ -96,7 +96,7 @@ Start-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
 
 
 ## <a name="availability-sets"></a>可用性設定組 (Availability Sets)
-您也可以在鄰近放置群組中建立可用性設定組。 使用與 >new-azavailabilityset 指令程式相同的 `-ProximityPlacementGroup` 參數來建立可用性設定組，而且也會在相同的鄰近放置群組中建立可用性設定組中建立的所有 vm。 [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset)
+您也可以在鄰近放置群組中建立可用性設定組。 使用與 >new-azavailabilityset 指令程式相同的 `-ProximityPlacementGroup` 參數來建立可用性設定組，而且也會在相同的鄰近放置群組中建立可用性設定組中建立的所有 vm。 [](/powershell/module/az.compute/new-azavailabilityset)
 
 若要在鄰近放置群組中新增或移除現有的可用性設定組，您必須先停止可用性設定組中的所有 Vm。 
 

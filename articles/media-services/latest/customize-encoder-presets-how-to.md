@@ -1,5 +1,5 @@
 ---
-title: 使用媒體服務 v3 .NET 編碼自訂轉換-Azure |Microsoft Docs
+title: 使用媒體服務 v3 .NET 編碼自訂轉換-Azure
 description: 本主題說明如何使用 Azure 媒體服務 v3，利用 .NET 來編碼自訂轉換。
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: b5bb505df3cad7856e0b08f04949c2e56ccec1ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 035afd43b49c05f51149ad568a0eb16991dbaf85
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295609"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897168"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>如何使用自訂轉換進行編碼-.NET
 
@@ -50,7 +50,7 @@ ms.locfileid: "89295609"
 
 建立新的[轉換](/rest/api/media/transforms)時，您需要指定想要其產生的輸出是什麼。 必要的參數是 [TransformOutput](/rest/api/media/transforms/createorupdate#transformoutput) 物件，如下列程式碼所示。 每個 **TransformOutput** 都會包含 **Preset (預設)** 。 預設 **會描述影片** 和/或音訊處理作業的逐步指示，這些作業是用來產生所需的 **TransformOutput**。 下列 **TransformOutput** 會建立自訂轉碼器和圖層輸出設定。
 
-建立[轉換](/rest/api/media/transforms)時，您應該先使用 **Get** 方法檢查是否已有轉換存在，如下列程式碼所示。 在媒體服務 v3 中，如果實體不存在，則 **取得** 實體的方法會傳回 **null** (名稱) 不區分大小寫檢查。
+建立 [轉換](/rest/api/media/transforms)時，您應該先使用 **Get** 方法檢查是否已有轉換存在，如下列程式碼所示。 在媒體服務 v3 中，如果實體不存在，則 **取得** 實體的方法會傳回 **null** (名稱) 不區分大小寫檢查。
 
 ### <a name="example"></a>範例
 

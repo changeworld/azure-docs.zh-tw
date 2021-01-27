@@ -2,19 +2,19 @@
 title: 句子配對與對齊 - 自訂翻譯工具
 titleSuffix: Azure Cognitive Services
 description: 在執行訓練時，出現在平行文件中的句子皆已配對或已對齊。 自訂翻譯工具會藉由讀取句子和此句子的翻譯，一次一個句子地學習翻譯。 接著將這兩個句子中的字組和片語彼此對齊。
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 7ed7c3a586f5671191e3c517b5925cab888caefb
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 0c33d766bfd3dff47ddb151e8ce4ea7b25c37548
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724301"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897946"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>平行文件中的句子配對與對齊
 

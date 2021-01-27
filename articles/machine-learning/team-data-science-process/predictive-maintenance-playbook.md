@@ -11,18 +11,18 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 1661f0f6cf024fde48d3706a1f8e47bf65f0d46f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 1e939b86eeadfee276378488cfcb40c07f28684d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321973"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880653"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>適用於預測性維護解決方案的 AI 指南
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
-預測性維護 ( **PdM** ) 是熱門的預測性分析應用程式，可協助數個產業的企業達成高資產使用率並節省營運成本。 本指南結合了商務和分析指導方針，以及使用 [Microsoft Azure AI 平台](https://azure.microsoft.com/overview/ai-platform)技術順利開發及部署 PdM 解決方案的最佳做法。
+預測性維護 (**PdM**) 是熱門的預測性分析應用程式，可協助數個產業的企業達成高資產使用率並節省營運成本。 本指南結合了商務和分析指導方針，以及使用 [Microsoft Azure AI 平台](https://azure.microsoft.com/overview/ai-platform)技術順利開發及部署 PdM 解決方案的最佳做法。
 
 對於入門者，本指南會介紹業界特有商務案例，以及限定這些 PdM 案例資格的程序。 此外，還提供建置 PdM 解決方案的資料需求和模型化技巧。 本指南的主要內容是關於資料科學程序 - 包括資料準備、特徵設計、模型建立及模型運算化的步驟。 為了補充這些重要概念，本指南列出一組解決方案範本，協助加速 PdM 應用程式開發。 本指南也會指向實用的訓練資源，以便實踐者深入了解資料科學背後的 AI。 
 
@@ -70,8 +70,8 @@ PdM 的典型目標陳述如下：
 
 上述目標陳述是下列各項的起點：
 
-- _資料科學家_ ，用以分析和解決特定預測問題。
-- _雲端架構設計人員和開發人員_ ，用以建置端對端解決方案。
+- _資料科學家_，用以分析和解決特定預測問題。
+- _雲端架構設計人員和開發人員_，用以建置端對端解決方案。
 
 ## <a name="qualifying-problems-for-predictive-maintenance"></a>限定預測性維護的問題
 在此務必強調，PdM 不一定能有效解決所有的使用案例或業務問題。 在選取問題期間，必須考量三個重要的限定準則：
@@ -92,7 +92,7 @@ PdM 的典型目標陳述如下：
 |**財務** |                         |
 |_ATM 故障_ 是銀行業界常見的問題。 此處的問題在於報告 ATM 現金提款交易因為提款機卡紙或零件故障而中斷的機率。 根據交易失敗的預測，即可主動檢修 ATM 以避免發生故障。| 理想的替代方案是將電腦程式設計為根據預測拒絕服務，而不是讓電腦在交易過程中故障。|
 |**能源** |                          |
-|_風的失敗_ ：風渦輪機是屬於環保國家/地區的主要能源來源，且需要大量的資本成本。 風渦輪機中的主要元件是產生器馬達，其失敗會轉譯未通過的結果。 其修理成本也極為昂貴。|預測 KPI (例如 MTTF (平均失效時間))，可協助能源公司預防渦輪機故障，並確保最少的停機時間。 故障機率可讓技術人員知道要監視可能很快會故障的渦輪機，並安排以時間為基礎的維護制度。 預測性模型可提供各種造成故障的因素見解，進而協助技術人員進一步了解問題的根本原因。|
+|_風的失敗_：風渦輪機是屬於環保國家/地區的主要能源來源，且需要大量的資本成本。 風渦輪機中的主要元件是產生器馬達，其失敗會轉譯未通過的結果。 其修理成本也極為昂貴。|預測 KPI (例如 MTTF (平均失效時間))，可協助能源公司預防渦輪機故障，並確保最少的停機時間。 故障機率可讓技術人員知道要監視可能很快會故障的渦輪機，並安排以時間為基礎的維護制度。 預測性模型可提供各種造成故障的因素見解，進而協助技術人員進一步了解問題的根本原因。|
 |斷路器故障：將電力配送到家庭與企業時，電源線必須一直正常運作，才能保證能源傳遞。 斷路器有助於限制或避免電源線在超載或天候不良的情況下受損。 此處的業務問題在於斷路器故障的預測。| PdM 解決方案有助於降低維修成本及提高設備 (例如斷路器) 的壽命。 而且藉由降低非預期的故障與服務中斷，協助改善電力網路品質。|
 |**運輸物流** |    |
 |電梯門故障：大型電梯公司會為世界各地數百萬台電梯提供全套服務。 電梯安全性、可靠性和運作時間是其客戶的主要考量。 這些公司會透過感應器追蹤上述各項和其他各種屬性，以協助他們進行矯正性和預防性維護。 在電梯中，最顯著的客戶問題就是電梯門故障。 這個案例的業務問題在於提供一個知識庫預測性應用程式，用來預測電梯門故障的可能原因。| 電梯是可能長達 20-30 年使用期限的資本投資。 所以每筆潛在銷售的競爭都很激烈，因此對於服務和支援的期望都很高。 預測性維護可為這些公司在產品和服務供應項目方面，提供超越其競爭者的優勢。|
@@ -188,7 +188,7 @@ PdM 的典型目標陳述如下：
 
 採用上述前置處理過的資料來源，在特徵設計前的最終轉換就是根據資產識別碼和時間戳記聯結上述資料表。 當機器正常運作時，所產生資料表的故障資料行會有 null 值。 您可依正常運作的指標推算這些 null 值。 使用此故障資料行來建立預測性模型的標籤。 如需詳細資訊，請參閱[預測性維護的模型化技巧](#modeling-techniques-for-predictive-maintenance)。
 
-## <a name="feature-engineering"></a>特徵設計
+## <a name="feature-engineering"></a>功能工程
 將資料模型化前的第一個步驟就是特徵設計。 其在資料科學程序中的角色[說明在此](./create-features.md)。 「特徵」是模型的預測性屬性 - 例如溫度、壓力、震動等。 對於 PdM，特徵工程牽涉到將機器的健康情況抽象化，以在大小調整的持續時間內收集的歷程記錄資料。 在該意義而言，它與其對等項目不同，例如遠端監視、異常偵測和故障偵測。 
 
 ### <a name="time-windows"></a>時段
@@ -209,7 +209,7 @@ PdM 的典型目標陳述如下：
 
 一個時段內的滾動彙總範例包括計數、平均數、CUMESUM (累計總和) 量值、最小/最大值。 此外，通常會使用變異數、標準差，以及超過 N 個標準差的極端值計數。 本指南中[使用案例](#sample-pdm-use-cases)適用的彙總範例如下所列。 
 - 航班延誤：最後一天/週內的錯誤碼計數。
-- _飛機引擎零件故障_ ：輪流表示、標準差，以及過去一天、一周等的總和。此度量應與商務領域專家一起決定。
+- _飛機引擎零件故障_：輪流表示、標準差，以及過去一天、一周等的總和。此度量應與商務領域專家一起決定。
 - ATM 故障：滾動平均值、中間值、標準差、超過三個標準差的離群值計數、CUMESUM 上限和下限。
 - 地鐵列車門故障：過去一天、週、兩週等的事件計數。
 - 斷路器故障：過去一週、年、三年等的故障計數。
@@ -217,7 +217,7 @@ PdM 的典型目標陳述如下：
 PdM 有另一個實用的技巧，就是使用可偵測資料異常的演算法來擷取趨勢變更、尖峰和層級變更。
 
 #### <a name="tumbling-aggregates"></a>輪轉彙總
-針對資產的每個標示記錄，會定義大小為 _w <sub>k</sub>_ 的視窗，其中 _k_ 是大小為 _w_ 的視窗數目。然後，系統會透過 _k_ _輪轉 windows_ _w-k、w- <sub> (k-1)</sub>、...、w- <sub>2</sub>、w- <sub>1</sub>_ ，在記錄的時間戳記之前的期間內建立匯總。 _k_ 若為較小數字可擷取短期的效果，若為較大數字則可擷取長期的降低模式。 (請參閱圖 2)。
+針對資產的每個標示記錄，會定義大小為 _w <sub>k</sub>_ 的視窗，其中 _k_ 是大小為 _w_ 的視窗數目。然後，系統會透過 _k_ _輪轉 windows_ _w-k、w-<sub> (k-1)</sub>、...、w-<sub>2</sub>、w-<sub>1</sub>_ ，在記錄的時間戳記之前的期間內建立匯總。 _k_ 若為較小數字可擷取短期的效果，若為較大數字則可擷取長期的降低模式。 (請參閱圖 2)。
 
 ![圖 2. 輪轉彙總特徵](./media/predictive-maintenance-playbook/tumbling-aggregate-features.png)
 
@@ -231,7 +231,7 @@ PdM 有另一個實用的技巧，就是使用可偵測資料異常的演算法�
 
 目前為止所討論的資料準備工作應會導致資料整理成如下所示的方式。 訓練、測試及驗證資料應具有此邏輯結構描述 (此範例是以天為單位顯示時間)。
 
-| 資產識別碼 | 時間 | \<Feature Columns> | 標籤 |
+| 資產識別碼 | Time | \<Feature Columns> | 標籤 |
 | ---- | ---- | --- | --- |
 | A123 |第 1 天 | . . . | . |
 | A123 |第 2 天 | . . . | . |
@@ -257,7 +257,7 @@ PdM 有另一個實用的技巧，就是使用可偵測資料異常的演算法�
 > 故障案例的標籤選擇和標記策略。
 
 ### <a name="binary-classification"></a>二元分類
-二元分類可用來預測在未來的時間週期（稱為 _未來的水準期間 X_ ） _內某一件設備故障的可能性。_ X 是由與網域專家諮詢的商務問題和資料所決定。 範例包括：
+二元分類可用來預測在未來的時間週期（稱為 _未來的水準期間 X_）_內某一件設備故障的可能性。_ X 是由與網域專家諮詢的商務問題和資料所決定。 範例包括：
 - 更換零件、部署維護資源、執行維護所需的「最小前置時間」，以避免在這段期間內可能發生的問題。
 - 在發生問題前可能發生的「最小事件計數」。
 
@@ -271,14 +271,14 @@ PdM 有另一個實用的技巧，就是使用可偵測資料異常的演算法�
 圖 3. 二元分類的標記方式
 
 以下列出某些使用案例的標記策略範例。
-- _航班延誤_ ：可以選擇一天做為 X，以預測接下來24小時內的延遲。 接著，在故障前 24 小時內的所有航班都已標記為 1。
+- _航班延誤_：可以選擇一天做為 X，以預測接下來24小時內的延遲。 接著，在故障前 24 小時內的所有航班都已標記為 1。
 - ATM 現金提款失敗：目標可能是判斷在接下來一小時內的交易失敗機率。 在該案例中，在失敗過後一小時內發生的所有交易都會標記為 1。 若要預測接下來 N 張提領的流通票據失敗機率，在失敗的最後 N 張票據內提領的所有票據都會標記為 1。
 - 斷路器故障：目標可能是預測下一個斷路器指令失敗。 在該案例中，可選擇一個未來指令作為 X。
 - 列車門故障：可選擇兩天作為 X。
 - 風力渦輪機故障：可選擇兩個月作為 X。
 
 ### <a name="regression-for-predictive-maintenance"></a>預測性維護的迴歸
-迴歸模型可用來「計算資產的剩餘使用年限 (RUL)」。 RUL 定義為資產在下次發生故障前可運作的時間量。 每個訓練範例都是一筆記錄，其屬於資產的時間單位 _nY_ ，其中 _n_ 是倍數。 模型應將每個新範例的 RUL 計算為「連續的數字」。 這個數字表示在故障前剩餘的時間週期。
+迴歸模型可用來「計算資產的剩餘使用年限 (RUL)」。 RUL 定義為資產在下次發生故障前可運作的時間量。 每個訓練範例都是一筆記錄，其屬於資產的時間單位 _nY_，其中 _n_ 是倍數。 模型應將每個新範例的 RUL 計算為「連續的數字」。 這個數字表示在故障前剩餘的時間週期。
 
 #### <a name="label-construction-for-regression"></a>迴歸的標籤建構
 這裡的問題是：「設備的剩餘使用年限 (RUL) 為何？」 針對故障前的每筆記錄，將標籤計算為在下步故障前剩餘的時間單位數。 在此方法中，標籤為連續變數。 (請參閱圖 4)。
@@ -301,7 +301,7 @@ PdM 有另一個實用的技巧，就是使用可偵測資料異常的演算法�
 
 圖 5. 故障時間預測的多類別分類標記方式
 
-此處的問題是：「由於根本原因/問題 _P <sub>i</sub>_ ，資產在接下來 X 個時間單位內會故障的機率為何？」 其中 _i_ 是可能的根本原因數目。 若要回答這個問題，請將資產故障前的 X 筆記錄標記為「由於根本原因 _P <sub>i</sub>_ 即將故障」(標籤 = _P <sub>i</sub>_ )。 將所有其他記錄標記為「標準」(標籤 = 0)。 在此方法中，標籤也是類別變數 (請參閱圖 6)。
+此處的問題是：「由於根本原因/問題 _P <sub>i</sub>_，資產在接下來 X 個時間單位內會故障的機率為何？」 其中 _i_ 是可能的根本原因數目。 若要回答這個問題，請將資產故障前的 X 筆記錄標記為「由於根本原因 _P <sub>i</sub>_ 即將故障」(標籤 = _P <sub>i</sub>_)。 將所有其他記錄標記為「標準」(標籤 = 0)。 在此方法中，標籤也是類別變數 (請參閱圖 6)。
 
 ![圖 6. 多元分類的根本原因預測標籤](./media/predictive-maintenance-playbook/labelling-for-multiclass-classification-for-root-cause-prediction.png)
 
@@ -361,7 +361,7 @@ PdM 有另一個實用的技巧，就是使用可偵測資料異常的演算法�
 許多 PdM 問題都會面臨這類不平衡的資料集，也就是相較於其他類別，有一個類別嚴重不具代表性。 在某些情況下，少數類別可能只佔總資料點的 0.001%。 類別不平衡不是 PdM 特有的。 很少發生失敗和異常的其他領域也會面臨類似問題，例如，詐騙偵測和網路入侵。 這些失敗可構成少數類別範例。
 
 在資料類別不平衡的情況下，大多數標準學習演算法的效能都會受到影響，因為其目標在於將整體錯誤率降到最低。 在具有 99% 否定和 1% 肯定範例的資料集中，將所有執行個體標記為否定，模型即可顯示為具有 99% 的精確度。 不過，此模型會所有的肯定範例歸類錯誤，所以即使精確度很高，此演算法也不算是有用的演算法。 因此，傳統評估計量 (例如「錯誤率的整體精確度」) 還不足以進行不平衡的學習。 若遇到不平衡的資料集，則會使用其他計量進行模型評估：
-- Precision
+- 準確率
 - 召回
 - F1 分數
 - 已調整成本的 ROC (接收端操作特性)
@@ -429,7 +429,7 @@ PdM 有另一個實用的技巧，就是使用可偵測資料異常的演算法�
 | 3 | [深入學習預測性維護](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | Azure Notebook，內含使用 LSTM (長短期記憶) 網路 (循環類神經網路的類別) 進行預測性維護的示範解決方案，以及[有關此範例的部落格文章](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance)。|
 | 4 | [適用於航太業的 Azure 預測性維護](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | 以 Azure ML v1.0 為基礎的前幾個 PdM 解決方案範本之一 (適用於飛機維護)。 本指南源自這個專案。 |
 | 5 | [適用於 IoT Edge 的 Azure AI 工具組](https://github.com/Azure/ai-toolkit-iot-edge) | 在 IoT Edge 中使用 TensorFlow 的 AI;工具組會在 Azure IoT Edge 相容的 Docker 容器中封裝深度學習模型，並將這些模型公開為 REST Api。
-| 6 | [Azure IoT 預測性維護](https://github.com/Azure/azure-iot-predictive-maintenance) | Azure IoT 套件 PCS - 預先設定的解決方案。 採用 IoT 套件的飛機維護 PdM 範本。 與相同專案相關的[另一份文件](../../iot-accelerators/quickstart-predictive-maintenance-deploy.md)和[逐步解說](../../iot-accelerators/iot-accelerators-predictive-walkthrough.md)。 |
+| 6 | [Azure IoT 預測性維護](https://github.com/Azure/azure-iot-predictive-maintenance) | Azure IoT 套件 PCS - 預先設定的解決方案。 採用 IoT 套件的飛機維護 PdM 範本。 與相同專案相關的[另一份文件](/previous-versions/azure/iot-accelerators/about-iot-accelerators)和[逐步解說](/previous-versions/azure/iot-accelerators/iot-accelerators-predictive-walkthrough)。 |
 | 7 | [使用 SQL Server R Services 的預測性維護範本](https://gallery.azure.ai/Tutorial/Predictive-Maintenance-Template-with-SQL-Server-R-Services-1) | 以 R 服務為基礎的剩餘使用年限案例示範。 |
 | 8 | [預測性維護建模指南](https://gallery.azure.ai/Collection/Predictive-Maintenance-Modelling-Guide-1) | 在 AzureML v1.0 中使用 R 設計的飛機維護資料集特徵，包含[實驗](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Experiment-1)和[資料集](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Data-Sets-1)和 Azure Notebook 和[實驗](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2)|
 

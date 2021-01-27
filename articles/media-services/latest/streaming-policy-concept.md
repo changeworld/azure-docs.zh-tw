@@ -1,5 +1,5 @@
 ---
-title: Azure 媒體服務中的串流原則 | Microsoft Docs
+title: Azure 媒體服務中的串流原則
 description: 本文解釋串流原則是什麼，以及 Azure 媒體服務用它們來做什麼。
 services: media-services
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: inhenkel
-ms.openlocfilehash: 9ecb4e0b8a74a163632967781c84d1a110ab3a9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2873486b95f0bb4a9a27e2e050cc6f6d5473a44e
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297207"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898167"
 ---
 # <a name="streaming-policies"></a>串流原則
 
@@ -33,7 +33,7 @@ Azure 媒體服務 v3 中，[串流原則](/rest/api/media/streamingpolicies)可
 下列「決策樹」可協助您為您的案例選擇預先定義的串流原則。
 
 > [!IMPORTANT]
-> * 屬於日期時間類型的**串流原則**屬性一律為 UTC 格式。
+> * 屬於日期時間類型的 **串流原則** 屬性一律為 UTC 格式。
 > * 您應該為媒體服務帳戶設計一組受限的原則，並且在需要相同的選項時，對串流定位器重新使用這些原則。 如需詳細資訊，請參閱 [配額和限制](limits-quotas-constraints.md)。
 
 ## <a name="decision-tree"></a>決策樹

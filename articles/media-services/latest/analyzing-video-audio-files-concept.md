@@ -1,6 +1,5 @@
 ---
 title: 分析影片和音訊檔案
-titleSuffix: Azure Media Services
 description: 瞭解如何在 Azure 媒體服務中使用 AudioAnalyzerPreset 和 VideoAnalyzerPreset 分析音訊和影片內容。
 services: media-services
 documentationcenter: ''
@@ -12,12 +11,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 61f5a470046ba3ddca157e83737a29ed936a0c3a
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 25b5c3163b657633ca78215468f4c2a2e40949b7
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656320"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897219"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>使用 Azure 媒體服務分析影片和音訊檔案
 
@@ -88,7 +87,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
 |名稱|描述|
 |---|---|
 |id|行識別碼。|
-|文字|文字記錄本身。|
+|text|文字記錄本身。|
 |語言|文字記錄語言。 用於支援文字記錄，其中每一行可以有不同的語言。|
 |執行個體|這一行曾出現的時間範圍清單。 如果執行個體是文字記錄，它只能有 1 個執行個體。|
 
@@ -126,7 +125,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
 |名稱|描述|
 |---|---|
 |id|OCR 行識別碼。|
-|文字|OCR 文字。|
+|text|OCR 文字。|
 |信賴度|辨識信賴。|
 |語言|OCR 語言。|
 |執行個體|此 OCR 曾出現的時間範圍清單 (相同的 OCR 可以出現多次)。|
@@ -377,7 +376,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
 |名稱|描述|
 |---|---|
 |id|關鍵字識別碼。|
-|文字|關鍵字。|
+|text|關鍵字。|
 |信賴度|關鍵字的辨識信賴。|
 |語言|關鍵字語言 (轉譯時)。|
 |執行個體|此關鍵字曾出現的時間範圍清單 (同一個關鍵字可以出現多次)。|

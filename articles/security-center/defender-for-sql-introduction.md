@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 16f903e34c64214d54fc01fa621f561f1786de08
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
-ms.translationtype: HT
+ms.openlocfilehash: 81ae46a7b6c19557eeadd2d5b28ad2fa46e77115
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755985"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881362"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>適用於 SQL 的 Azure Defender 簡介
 
@@ -27,7 +27,7 @@ ms.locfileid: "97755985"
 |----|:----|
 |版本狀態：|**適用於 Azure SQL 資料庫伺服器的 Azure Defender** - 正式發行 (GA)<br>**適用於機器上 SQL 伺服器的 Azure Defender** - 正式發行 (GA) |
 |定價：|構成 **適用於 SQL 的 Azure Defender** 的兩個方案，會依照 [定價頁面](security-center-pricing.md)顯示的方式計費|
-|受保護的 SQL 版本：|[Azure 虛擬機器上的 SQL](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)<br>[已啟用 Azure Arc 的 SQL Server](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)<br>沒有 Azure Arc 的 Windows 機器上的內部部署 SQL Server<br>Azure SQL [單一資料庫](../azure-sql/database/single-database-overview.md)和[彈性集區](../azure-sql/database/elastic-pool-overview.md)<br>[Azure SQL 受控執行個體](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure Synapse Analytics (先前稱為 SQL DW) 專用 SQL 集區](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
+|受保護的 SQL 版本：|[Azure 虛擬機器上的 SQL](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)<br>[已啟用 Azure Arc 的 SQL Server](/sql/sql-server/azure-arc/overview)<br>沒有 Azure Arc 的 Windows 機器上的內部部署 SQL Server<br>Azure SQL [單一資料庫](../azure-sql/database/single-database-overview.md)和[彈性集區](../azure-sql/database/elastic-pool-overview.md)<br>[Azure SQL 受控執行個體](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure Synapse Analytics (先前稱為 SQL DW) 專用 SQL 集區](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
 |雲端：|![是](./media/icons/yes-icon.png) 商用雲端<br>![US Gov](./media/icons/yes-icon.png)<br>![是](./media/icons/yes-icon.png) 中國 Gov (**部分**：SQL Server 的警示和弱點評量的子集。 無法使用行為威脅防護)。|
 |||
 
@@ -43,7 +43,7 @@ ms.locfileid: "97755985"
 - **適用於機器上 SQL 伺服器的 Azure Defender** 可擴充 Azure 原生 SQL Server 的保護，以完整支援混合式環境，並保護裝載於 Azure、其他雲端環境，甚至是內部部署機器的 SQL 伺服器 (所有支援的版本)：
     - [虛擬機器上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)
     - 內部部署 SQL Server：
-        - [已啟用 Azure Arc 的 SQL Server (預覽)](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)
+        - [已啟用 Azure Arc 的 SQL Server (預覽)](/sql/sql-server/azure-arc/overview)
         - [在沒有 Azure Arc 的Windows 機器上執行的 SQL Server](../azure-monitor/platform/agent-windows.md)
 
 

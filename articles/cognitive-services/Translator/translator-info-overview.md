@@ -3,21 +3,21 @@ title: Microsoft Translator 服務
 titlesuffix: Azure Cognitive Services
 description: 將翻譯工具整合到您的應用程式、網站、工具與其他解決方案中，以提供多語言使用者體驗。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: overview
 ms.date: 09/11/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: 翻譯工具, 文字翻譯, 機器翻譯, 翻譯服務
-ms.openlocfilehash: 8016c79cbe7f78bdaa18274f8873548e3982df2f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
-ms.translationtype: HT
+ms.openlocfilehash: 37f0d64879493abcf3e5b9448068b86b7a36dccb
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016461"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896692"
 ---
 # <a name="what-is-the-translator-service"></a>什麼是翻譯服務？
 

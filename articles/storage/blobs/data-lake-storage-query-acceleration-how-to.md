@@ -9,12 +9,12 @@ ms.date: 01/06/2021
 ms.author: normesta
 ms.reviewer: jamsbak
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: cc63a9787a3611f28e6466564735d029bf65b757
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 0340ab0a13d7c639d5e5bba49b3cdd445bad5a83
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968393"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879876"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>使用 Azure Data Lake Storage 查詢加速來篩選資料
 
@@ -22,7 +22,7 @@ ms.locfileid: "97968393"
 
 查詢加速可讓應用程式和分析架構藉由只抓取執行指定作業所需的資料，來大幅優化資料處理。 若要深入瞭解，請參閱 [Azure Data Lake Storage 查詢加速](data-lake-storage-query-acceleration.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 若要存取 Azure 儲存體，您需要有 Azure 訂用帳戶。 如果您還沒有訂用帳戶，請先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始操作。
 
@@ -437,7 +437,7 @@ def dump_query_csv(blob: BlobClient, query: str, headers: bool):
 
 ### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-此範例會將查詢傳送至查詢加速 API，然後再將結果串流回來。 `blob`傳遞至 helper 函數的物件屬於 `queryHemingway` [BlockBlobClient](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient)類型。 若要深入瞭解如何取得 [BlockBlobClient](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient) 物件，請參閱 [快速入門：在 Node.js中使用 JavaScript V12 SDK 來管理 blob ](storage-quickstart-blobs-nodejs.md)。
+此範例會將查詢傳送至查詢加速 API，然後再將結果串流回來。 `blob`傳遞至 helper 函數的物件屬於 `queryHemingway` [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient)類型。 若要深入瞭解如何取得 [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient) 物件，請參閱 [快速入門：在 Node.js中使用 JavaScript V12 SDK 來管理 blob ](storage-quickstart-blobs-nodejs.md)。
 
 ```javascript
 async function queryHemingway(blob)

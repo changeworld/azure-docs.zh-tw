@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.author: b-juche
-ms.openlocfilehash: a8286768dac33e48bc4d7c4dce0d9934da08c319
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: ec6a03673112dfb5397f6fae947f1fbf65fd6791
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736066"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881413"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>關於 Azure NetApp Files 的常見問題
 
@@ -263,7 +263,7 @@ NetApp 提供以 SaaS 為基礎的解決方案，也就是 [Netapp Cloud Sync](h
 
 ### <a name="can-i-use-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>我可以使用 Azure NetApp Files NFS 或 SMB 磁片區搭配 Azure VMware Solution (AVS) 嗎？
 
-您可以將 Azure NetApp Files NFS 磁片區掛接到 AVS Windows Vm 或 Linux Vm。 您可以將 Azure NetApp Files SMB 共用對應到 AVS Windows Vm。 如需詳細資訊，請參閱 [使用 Azure VMware 解決方案的 Azure NetApp Files]( ../azure-vmware/net-app-files-with-azure-vmware-solution.md)。  
+您可以將 Azure NetApp Files NFS 磁片區掛接到 AVS Windows Vm 或 Linux Vm。 您可以將 Azure NetApp Files SMB 共用對應到 AVS Windows Vm。 如需詳細資訊，請參閱 [使用 Azure VMware 解決方案的 Azure NetApp Files]( ../azure-vmware/netapp-files-with-azure-vmware-solution.md)。  
 
 ### <a name="what-regions-are-supported-for-using-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>使用 Azure NetApp Files NFS 或 SMB 磁片區搭配 Azure VMware Solution (AVS) 支援哪些區域？
 

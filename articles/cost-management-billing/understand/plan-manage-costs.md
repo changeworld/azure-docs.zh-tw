@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: c640478170049bd06e11f7f89b1e213b7b305642
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: 210f7daa9305f2fb343dfae050354264e2fd823e
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032808"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898557"
 ---
 # <a name="plan-to-manage-azure-costs"></a>規劃管理 Azure 成本
 
@@ -125,7 +125,7 @@ ms.locfileid: "97032808"
 
 ## <a name="integrate-with-billing-and-consumption-apis"></a>整合帳單與使用量 API
 
-使用 Azure [帳單](/rest/api/billing/)和[使用量](/rest/api/consumption/) API，以程式設計方式取得帳單和成本資料。 RateCard API 與使用情況 API 一起使用即可取得您的計費使用量。 如需詳細資訊，請參閱[深入瞭解 Microsoft Azure 資源耗用量](../manage/usage-rate-card-overview.md)。
+使用 Azure [帳單](/rest/api/billing/)和[使用量](/rest/api/consumption/) API，以程式設計方式取得帳單和成本資料。 RateCard API 與使用情況 API 一起使用即可取得您的計費使用量。 如需詳細資訊，請參閱[深入瞭解 Microsoft Azure 資源耗用量](../manage/consumption-api-overview.md#usage-details-api)。
 
 ## <a name="additional-resources-and-special-cases"></a><a name="other-offers"></a> 其他資源和特殊案例
 

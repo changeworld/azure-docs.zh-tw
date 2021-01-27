@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7721100d902948364c9e4b1373f1fa805c680a50
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 619f2c2670d8e376ad0bca7cf8b93b971be067a0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202210"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880720"
 ---
 # <a name="security-control-v2-privileged-access"></a>安全性控制 V2：特殊許可權存取
 
@@ -159,7 +159,7 @@ ms.locfileid: "98202210"
 
 - [瞭解特殊許可權的存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [部署特殊權限存取工作站](../../active-directory/devices/howto-azure-managed-workstation.md) (機器翻譯)
+- [部署特殊權限存取工作站](/security/compass/privileged-access-deployment) (機器翻譯)
 
 **責任**：客戶
 
@@ -217,4 +217,3 @@ Azure 角色型存取控制 (Azure RBAC) 可讓您透過角色指派來管理 Az
 - [安全性合規性管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management) 
 
 - [身分識別與金鑰管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
-

@@ -1,5 +1,5 @@
 ---
-title: 透過 Azure 監視器監視媒體服務診斷記錄 |Microsoft Docs
+title: 透過 Azure 監視器監視媒體服務診斷記錄
 description: 本文示範如何透過 Azure 監視器路由傳送和查看診斷記錄。
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e756ff0133e3d3f0f86ea2f592005f2f2986488e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c666228a8a82083c319aa6c2d7fd161f7e623f4
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707756"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897963"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>監視媒體服務診斷記錄
 
@@ -43,16 +43,16 @@ ms.locfileid: "91707756"
 
 1. 按一下「新增診斷設定」  。
 
-   資源診斷設定可定義應該從特定資源路由傳送「什麼」** 監視資料，以及監視資料應該傳送至「何處」**。
+   資源診斷設定可定義應該從特定資源路由傳送「什麼」監視資料，以及監視資料應該傳送至「何處」。
 
-1. 在出現的區段中，為您的設定指定**名稱**，並勾選 [封存至儲存體帳戶]**** 方塊。
+1. 在出現的區段中，為您的設定指定 **名稱**，並勾選 [封存至儲存體帳戶] 方塊。
 
     選取您要傳送記錄的儲存體帳戶，然後按 **[確定]**。
-1. 勾選 [記錄]**** 和 [計量]**** 下的所有方塊。 根據資源類型而定，您可能只有其中一個選項可用。 這些核取方塊可控制要將該資源類型的哪幾種記錄和計量資料傳送至您選取的目的地，在此案例中是儲存體帳戶。
+1. 勾選 [記錄] 和 [計量] 下的所有方塊。 根據資源類型而定，您可能只有其中一個選項可用。 這些核取方塊可控制要將該資源類型的哪幾種記錄和計量資料傳送至您選取的目的地，在此案例中是儲存體帳戶。
 
    ![診斷設定區段](media/media-services-diagnostic-logs/logs02.png)
-1. 將 [保留期 (天數)]**** 滑桿設為 30。 此滑桿可設定監視資料在儲存體帳戶中的保留天數。 Azure 監視器會自動刪除比指定天數更舊的資料。 保留天數為 0 會無限期地儲存資料。
-1. 按一下 **[儲存]** 。
+1. 將 [保留期 (天數)] 滑桿設為 30。 此滑桿可設定監視資料在儲存體帳戶中的保留天數。 Azure 監視器會自動刪除比指定天數更舊的資料。 保留天數為 0 會無限期地儲存資料。
+1. 按一下 [儲存]。
 
 來自資源的監視資料現在開始流入儲存體帳戶。
 
@@ -92,10 +92,10 @@ az monitor diagnostic-settings create --name amsv3diagnostic \
 
 您可能需要等候長達五分鐘，事件才會出現在儲存體帳戶中。
 
-1. 在入口網站中，在左側導覽列尋找並瀏覽至 [儲存體帳戶]**** 區段。
+1. 在入口網站中，在左側導覽列尋找並瀏覽至 [儲存體帳戶] 區段。
 1. 識別您在上一節所建立的儲存體帳戶並按一下。
 1. 按一下 [ **blob**]，然後在標示為 [ **insights-logs-keydeliveryrequests**] 的容器上按一下。 這是其中有您記錄的容器。 監視資料會依資源識別碼細分為容器，然後依日期和時間劃分。
-1. 依資源識別碼、日期和時間按一下容器，以瀏覽至 PT1H.json 檔案。 按一下 PT1H.json 檔案，然後按一下 [下載]****。
+1. 依資源識別碼、日期和時間按一下容器，以瀏覽至 PT1H.json 檔案。 按一下 PT1H.json 檔案，然後按一下 [下載]。
 
  您現在可以檢視已儲存在儲存體帳戶中的 JSON 事件。
 

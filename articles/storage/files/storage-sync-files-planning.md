@@ -8,12 +8,12 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 29f7f241f119ca7fab50409881b517961b00cf20
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: cfeb124aeb614906cef1dc710eb8485e63806539
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610466"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880570"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>規劃 Azure 檔案同步部署
 
@@ -387,6 +387,6 @@ Azure 檔案同步僅支援與位於和儲存體同步服務相同之區域中�
 ## <a name="next-steps"></a>後續步驟
 * [考量防火牆和 Proxy 設定](storage-sync-files-firewall-and-proxy.md)
 * [規劃 Azure 檔案部署](storage-files-planning.md)
-* [部署 Azure 檔案服務](storage-files-deployment-guide.md)
+* [部署 Azure 檔案服務](./storage-how-to-create-file-share.md)
 * [部署 Azure 檔案同步](storage-sync-files-deployment-guide.md)
 * [監視 Azure 檔案同步](storage-sync-files-monitoring.md)

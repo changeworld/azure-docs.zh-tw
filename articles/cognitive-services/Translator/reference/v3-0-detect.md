@@ -3,19 +3,19 @@ title: Translator 偵測方法
 titleSuffix: Azure Cognitive Services
 description: 使用 Azure 認知服務翻譯工具偵測方法來識別一段文字的語言。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: swmachan
-ms.openlocfilehash: 12029d7a77eb7cbbb10cb5330eb18d6316520a2d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.author: lajanuar
+ms.openlocfilehash: cb6660585b5f2b9ab56eaf863f1ec431e5e85109
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021315"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895521"
 ---
 # <a name="translator-30-detect"></a>Translator 3.0：偵測
 
@@ -65,7 +65,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
   </tr>
 </table> 
 
-## <a name="request-body"></a>Request body
+## <a name="request-body"></a>要求本文
 
 要求的本文是 JSON 陣列。 每個陣列項目都是具有字串屬性 `Text` 的 JSON 物件。 語言偵測會套用到 `Text` 屬性的值。 語言自動偵測的運作方式較長的輸入文字。 範例回應本文應如下所示：
 
@@ -138,7 +138,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
 <table width="100%">
   <th width="20%">狀態碼</th>
-  <th>Description</th>
+  <th>描述</th>
   <tr>
     <td>200</td>
     <td>成功。</td>

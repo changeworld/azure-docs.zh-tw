@@ -1,24 +1,10 @@
 ---
-title: 上傳媒體
-titleSuffix: Azure Media Services
-description: 了解如何上傳媒體以進行串流處理或編碼。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: how-to
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: 3040369e655ab91f56f271313dc4d2613f02be06
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
-ms.translationtype: HT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015837"
+標題：上傳媒體： Azure 媒體服務描述：瞭解如何上傳媒體以進行串流或編碼。
+服務： media services documentationcenter： ' ' author： IngridAtMicrosoft manager： femila editor： ' '
+
+ms. 服務：媒體服務 ms. 工作負載： ms. 主題：作法 ms。日期： 08/31/2020 ms. 作者： inhenkel
 ---
+
 # <a name="upload-media-for-streaming-or-encoding"></a>上傳媒體以進行串流或編碼
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

@@ -1,26 +1,11 @@
 ---
-title: 使用 Azure 監視器的媒體服務計量和診斷記錄
-titleSuffix: Azure Media Services
-description: 瞭解如何透過 Azure 監視器監視 Azure 媒體服務計量和診斷記錄。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 11/02/2020
-ms.author: inhenkel
-ms.openlocfilehash: ed436336b9b1f9f5815938d13315e821694e5f1c
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685166"
+標題：具有 Azure 監視器的媒體服務計量和診斷記錄： Azure 媒體服務描述：瞭解如何透過 Azure 監視器監視 Azure 媒體服務計量和診斷記錄。
+服務： media services documentationcenter： ' ' author： IngridAtMicrosoft manager： femila editor： ' '
+
+ms. 服務：媒體服務 ms. 工作負載：媒體 ms.tgt_pltfrm： na ms.devlang： na ms. 主題：概念 ms. 日期： 11/02/2020 ms. 作者： inhenkel
+
 ---
+
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-with-azure-monitor"></a>使用 Azure 監視器監視媒體服務計量和診斷記錄
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

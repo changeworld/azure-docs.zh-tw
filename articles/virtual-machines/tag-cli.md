@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/11/2020
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 48f906bf0025bda03df226f32db1a0d6afdb9cee
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 32d15730557c96362602b5e324254c76637ecb55
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94594965"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897437"
 ---
 # <a name="how-to-tag-a-vm-using-the-cli"></a>如何使用 CLI 標記 VM
 
@@ -44,10 +44,9 @@ az vm update \
    --remove tags.myNewTagName1
 ```
 
-既然我們已將標記套用至我們的資源 Azure CLI 和入口網站，就讓我們來看一下使用量詳細資料，以在計費入口網站中查看標記。
+既然我們已將標籤套用至資源 Azure CLI 和入口網站，讓我們看看使用量詳細資料，以查看帳單入口網站中的標記。
 
-
-**後續步驟**
+### <a name="next-steps"></a>後續步驟
 
 - 如需深入了解如何標記您的 Azure 資源，請參閱 [Azure Resource Manager 概觀](../azure-resource-manager/management/overview.md)與[使用標記來組織您的 Azure 資源](../azure-resource-manager/management/tag-resources.md)。
-- 如需查看標記如何協助您管理使用 Azure 資源，請參閱[了解 Azure 帳單](../cost-management-billing/understand/review-individual-bill.md)與[深入了解 Microsoft Azure 資源耗用量](../cost-management-billing/manage/usage-rate-card-overview.md)。
+- 若要瞭解標記如何協助您管理 Azure 資源的使用方式，請參閱 [瞭解您的 Azure 帳單](../cost-management-billing/understand/review-individual-bill.md)。

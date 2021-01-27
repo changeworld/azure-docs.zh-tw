@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: cff0c54cf5aa8854273be9502f5cf6df4e0a055b
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 3fc880e238c1c9f45c663975470a6ab57267a648
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632628"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879539"
 ---
 # <a name="monitoring-time-series-insights"></a>監視時間序列深入解析
 
@@ -27,9 +27,9 @@ ms.locfileid: "97632628"
 
 ## <a name="what-is-azure-monitor"></a>什麼是 Azure 監視器
 
-時間序列深入解析會使用 [Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/overview)建立監視資料，這是 Azure 中的完整堆疊監視服務，除了其他雲端和內部部署中的資源之外，還提供一組完整的功能來監視您的 azure 資源。
+時間序列深入解析會使用 [Azure 監視器](../azure-monitor/overview.md)建立監視資料，這是 Azure 中的完整堆疊監視服務，除了其他雲端和內部部署中的資源之外，還提供一組完整的功能來監視您的 azure 資源。
 
-請從 [使用 Azure 監視器來監視 Azure 資源](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource)的文章開始，其中說明下列概念：
+請從 [使用 Azure 監視器來監視 Azure 資源](../azure-monitor/insights/monitor-azure-resource.md)的文章開始，其中說明下列概念：
 
 - Azure 監視器是什麼？
 - 與監視相關聯的成本
@@ -63,7 +63,7 @@ Azure 時間序列深入解析會收集與 [azure 資源監視資料](../azure-m
 
 ## <a name="analyzing-metrics"></a>分析計量
 
-您可以從 [Azure 監視器] 功能表開啟計量，以分析 Azure 時間序列深入解析的計量，以及來自其他 Azure 服務的度量。 如需使用此工具的詳細資訊，請參閱[開始使用 Azure 計量瀏覽器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)。
+您可以從 [Azure 監視器] 功能表開啟計量，以分析 Azure 時間序列深入解析的計量，以及來自其他 Azure 服務的度量。 如需使用此工具的詳細資訊，請參閱[開始使用 Azure 計量瀏覽器](../azure-monitor/platform/metrics-getting-started.md)。
 
 如需所收集的平臺度量清單，請參閱 [監視 Azure 時間序列深入解析資料參考](how-to-monitor-tsi-reference.md#metrics)
 
@@ -84,11 +84,11 @@ Azure 監視器中的所有資源記錄都有相同的欄位，後面接著服�
 
 Azure 時間序列深入解析會將資料儲存在下列資料表中。
 
-| Table | 描述 |
+| 資料表 | 描述 |
 |:---|:---|
 | TSIIngress | 從輸入分類儲存資料的資料表。 輸入類別會追蹤輸入管線中發生的錯誤。 這個類別包含接收事件時所發生的錯誤 (例如，連接到事件來源) 和處理事件時所發生的錯誤 (例如剖析事件承載) 時發生錯誤。
 
-若要將資料路由傳送至 Azure 監視器記錄，您必須建立診斷設定，以將資源記錄或平臺計量傳送至 Log Analytics 工作區。 若要深入瞭解，請參閱 [收集和路由](https://docs.microsoft.com/azure/iot-hub/monitor-iot-hub#collection-and-routing)。
+若要將資料路由傳送至 Azure 監視器記錄，您必須建立診斷設定，以將資源記錄或平臺計量傳送至 Log Analytics 工作區。 若要深入瞭解，請參閱 [收集和路由](../iot-hub/monitor-iot-hub.md#collection-and-routing)。
 
 ## <a name="sample-queries"></a>範例查詢
 
@@ -115,7 +115,7 @@ Azure 時間序列深入解析會將資料儲存在下列資料表中。
 
 ## <a name="alerts"></a>警示
 
-當您在監視資料中找到重要的條件時，Azure 監視器警示會主動通知您。 它們可讓您識別並解決您的系統中的問題，然後客戶才會注意到這些問題。 您可以設定 [計量](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview)、 [記錄](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)和 [活動記錄](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-alerts)的警示。 不同類型的警示有其優點和缺點。
+當您在監視資料中找到重要的條件時，Azure 監視器警示會主動通知您。 它們可讓您識別並解決您的系統中的問題，然後客戶才會注意到這些問題。 您可以設定 [計量](../azure-monitor/platform/alerts-metric-overview.md)、 [記錄](../azure-monitor/platform/alerts-unified-log.md)和 [活動記錄](../azure-monitor/platform/activity-log-alerts.md)的警示。 不同類型的警示有其優點和缺點。
 
 根據平臺計量建立警示規則時，請注意，對於以計數單位收集的時間序列深入解析平臺計量，某些匯總可能無法使用或無法使用。
 

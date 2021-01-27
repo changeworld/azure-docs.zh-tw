@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 74e1dc12be9bfec57d76357a335b46a55912f6df
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9a905dd61bcc267b47dcd075f54a0ed6563a3797
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500269"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879624"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>針對 Azure 中的共用映射資源庫進行疑難排解
 
@@ -343,4 +343,4 @@ VM 或虛擬機器擴展集建立花費很長的時間。
 
 ## <a name="next-steps"></a>後續步驟
 
-深入了解[共用映像資源庫](./linux/shared-image-galleries.md)。
+深入了解[共用映像資源庫](./shared-image-galleries.md)。

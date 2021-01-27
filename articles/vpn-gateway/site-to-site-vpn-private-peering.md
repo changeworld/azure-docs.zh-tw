@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: cherylmc
-ms.openlocfilehash: 62ceafad0210065700e5c9734cfe9a055208ef35
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 01d87bcb5697326fa87b25b20354897049900d9d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657885"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880520"
 ---
 # <a name="configure-a-site-to-site-vpn-connection-over-expressroute-private-peering"></a>透過 ExpressRoute 私用對等互連設定站對站 VPN 連線
 
@@ -72,7 +72,7 @@ ms.locfileid: "94657885"
 
 ## <a name="portal-steps"></a><a name="portal"></a>入口網站步驟
 
-1. 設定站對站連線。 如需相關步驟，請參閱 [站對站](vpn-gateway-howto-site-to-site-resource-manager-portal.md) 設定文章。 請務必為閘道挑選區域多餘的閘道 SKU。 
+1. 設定站對站連線。 如需相關步驟，請參閱 [站對站](./tutorial-site-to-site-portal.md) 設定文章。 請務必為閘道挑選區域多餘的閘道 SKU。 
 
    區域冗余 Sku 在 SKU 結尾有 "AZ"。 例如， **VpnGw1AZ**。 區域多餘的閘道僅適用于可用性區域服務可用的區域。 如需支援可用性區域的區域相關資訊，請參閱 [支援可用性](../availability-zones/az-region.md)區域的區域。
 
@@ -89,7 +89,7 @@ ms.locfileid: "94657885"
 
 ## <a name="powershell-steps"></a><a name="powershell"></a>PowerShell 步驟
 
-1. 設定站對站連線。 如需相關步驟，請參閱 [設定站對站 VPN](vpn-gateway-howto-site-to-site-resource-manager-portal.md) 文章。 請務必為閘道挑選區域多餘的閘道 SKU。 區域冗余 Sku 在 SKU 結尾有 "AZ"。 例如，VpnGw1AZ。
+1. 設定站對站連線。 如需相關步驟，請參閱 [設定站對站 VPN](./tutorial-site-to-site-portal.md) 文章。 請務必為閘道挑選區域多餘的閘道 SKU。 區域冗余 Sku 在 SKU 結尾有 "AZ"。 例如，VpnGw1AZ。
 1. 使用下列 PowerShell 命令，將旗標設定為使用閘道上的私人 IP：
 
    ```azurepowershell-interactive

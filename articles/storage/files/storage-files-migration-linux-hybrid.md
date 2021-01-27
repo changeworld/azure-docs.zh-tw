@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 46bcfd48d8fdfb228670b87df166c1ad8de61e52
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 0ef4faf14ec01a25419fd22ba8c73a8a033b4172
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94626345"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879977"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>使用 Azure 檔案同步從 Linux 遷移至混合式雲端部署
 
@@ -220,5 +220,5 @@ Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
 深入瞭解 Azure 檔案共用及 Azure 檔案同步。下列文章包含先進的選項、最佳作法和疑難排解的協助。 這些文章會適當地連結到 [Azure 檔案共用檔](storage-files-introduction.md) 。
 
 * [Azure 檔案同步總覽](./storage-sync-files-planning.md)
-* [Azure 檔案同步部署指南](storage-files-deployment-guide.md)
+* [Azure 檔案同步部署指南](./storage-how-to-create-file-share.md)
 * [Azure 檔案同步疑難排解](storage-sync-files-troubleshoot.md)

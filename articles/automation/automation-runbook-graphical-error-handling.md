@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8af64f2189625bcff5271855d6c0102551d1a535
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24c7aaf08b4d22706bee8f37025b12a656ceaff5
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185954"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895895"
 ---
 # <a name="handle-errors-in-graphical-runbooks"></a>處理圖形化 Runbook 中的錯誤
 
@@ -47,7 +47,7 @@ Runbook 執行期間可能發生的 PowerShell 錯誤類型為終止錯誤或非
 1. 傳送關於這個問題的通知。
 2. 改為啟動另一個會自動佈建新 VM 的 Runbook。
 
-解決方案之一是讓 Runbook 中的錯誤連結指向可處理步驟 1 的活動。 例如，Runbook 可以將 `Write-Warning` Cmdlet 連線至步驟 2 的活動，例如 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) Cmdlet。
+解決方案之一是讓 Runbook 中的錯誤連結指向可處理步驟 1 的活動。 例如，Runbook 可以將 `Write-Warning` Cmdlet 連線至步驟 2 的活動，例如 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) Cmdlet。
 
 您也可以將這兩個活動放在不同的錯誤處理 Runbook 中，讓此行為廣泛用於許多 Runbook。 在呼叫此錯誤處理 Runbook 之前，您的原始 Runbook 可以從其資料建構自訂訊息，然後將此訊息做為參數傳遞至錯誤處理 Runbook。
 
@@ -59,7 +59,7 @@ Runbook 中的每個活動均有組態設定可將例外狀況變成非終止錯
 
 在下列範例中，Runbook 會擷取一個變數，其中包含 VM 的電腦名稱。 接著嘗試使用下一個活動啟動虛擬機器。<br><br> ![自動化 Runbook 的錯誤處理範例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling.png)<br><br>      
 
-`Get-AutomationVariable` 活動和 [Start-AzVM](/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) Cmdlet 會設定為將例外狀況轉換為錯誤。 如果無法取得變數或啟動 VM，程式碼就會產生錯誤。<br><br> ![自動化 Runbook 的錯誤處理活動設定](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)。
+`Get-AutomationVariable` 活動和 [Start-AzVM](/powershell/module/Az.Compute/Start-AzVM) Cmdlet 會設定為將例外狀況轉換為錯誤。 如果無法取得變數或啟動 VM，程式碼就會產生錯誤。<br><br> ![自動化 Runbook 的錯誤處理活動設定](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)。
 
 錯誤連結會從這些活動流向單一 `error management` 程式碼活動。 此活動已設定了簡單的 PowerShell 運算式，其使用 `throw` 關鍵字來停止處理，以及使用 `$Error.Exception.Message` 來取得說明目前例外狀況的訊息。<br><br> ![自動化 Runbook 的錯誤處理程式碼範例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 

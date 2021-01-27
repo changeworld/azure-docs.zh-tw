@@ -1,5 +1,5 @@
 ---
-title: 媒體服務 v2 至 v3 遷移檢查清單 |Microsoft Docs
+title: 媒體服務 v2 至 v3 的遷移檢查清單
 description: 本文是一份檢查清單，可協助您將從 Azure 媒體服務 v2 遷移至 v3 的時間最小。
 services: media-services
 author: IngridAtMicrosoft
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2021
 ms.author: inhenkel
-ms.openlocfilehash: 7d9597c16778a4ded7c1e2a7ed3ad5535b75cfde
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: bd1488a1e89bb7d5c8a3a2dedda60bd5a226e02e
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690278"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898251"
 ---
 # <a name="step-3---set-up-to-migrate-to-the-v3-rest-api-or-client-sdk"></a>步驟 3-設定以遷移至 V3 REST API 或用戶端 SDK
 

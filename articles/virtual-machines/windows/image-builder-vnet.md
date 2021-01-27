@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: 8ae41167b642be75c7bb99042bca829fd8c1728e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: f4f55e9a5d08b2c2cd14b1ca94efac15f84f1978
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736343"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879522"
 ---
 # <a name="use-azure-image-builder-for-windows-vms-allowing-access-to-an-existing-azure-vnet"></a>針對允許存取現有 Azure VNET 的 Windows Vm 使用 Azure 映射產生器
 
@@ -296,4 +296,4 @@ Remove-AzResourceGroup $imageResourceGroup -Force
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解 [Azure 共用映像資源庫](shared-image-galleries.md)。
+深入瞭解 [Azure 共用映像資源庫](../shared-image-galleries.md)。

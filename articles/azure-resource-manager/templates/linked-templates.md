@@ -2,13 +2,13 @@
 title: 連結範本以進行部署
 description: 描述如何在 Azure Resource Manager 範本中使用連結的範本 (ARM 範本) 來建立模組化範本方案。 示範如何傳遞參數值、指定參數檔案，以及動態建立 URL。
 ms.topic: conceptual
-ms.date: 01/25/2021
-ms.openlocfilehash: 7d4df67b7f69b3e58799f45ad72bd9ed68540dc2
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.date: 01/26/2021
+ms.openlocfilehash: aae3947656e475d15bc4f0da770d0398fafa13c5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790930"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880421"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 資源時使用連結和巢狀的範本
 
@@ -495,6 +495,91 @@ ms.locfileid: "98790930"
 ```
 
 您無法對參數檔案同時使用內嵌參數和連結。 同時指定 `parametersLink` 和 `parameters` 時，部署將會失敗並發生錯誤。
+
+### <a name="use-relative-path-for-linked-templates"></a>使用連結範本的相對路徑
+
+的 `relativePath` 屬性 `Microsoft.Resources/deployments` 可讓您更輕鬆地撰寫連結的範本。 這個屬性可用來在相對於父代的位置部署遠端連結的範本。 這項功能需要暫存所有範本檔案，並可在遠端 URI 使用，例如 GitHub 或 Azure 儲存體帳戶。 使用 Azure PowerShell 或 Azure CLI 中的 URI 呼叫主要範本時，子部署 URI 是父系和 relativePath 的組合。
+
+> [!NOTE]
+> 建立 templateSpec 時，屬性所參考的任何範本 `relativePath` 都會藉由 Azure PowerShell 或 Azure CLI 封裝在 templateSpec 資源中。 不需要暫存這些檔案。 如需詳細資訊，請參閱 [使用連結的範本建立範本規格](./template-specs.md#create-a-template-spec-with-linked-templates)。
+
+採用如下所示的資料夾結構：
+
+![resource manager 連結的範本相對路徑](./media/linked-templates/resource-manager-linked-templates-relative-path.png)
+
+下列範本會示範如何 *在上mainTemplate.js* 部署 *nestedChild.js* ，如上圖所示。
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "functions": [],
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "childLinked",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "relativePath": "children/nestedChild.json"
+        }
+      }
+    }
+  ],
+  "outputs": {}
+}
+```
+
+在下列部署中，上述範本中連結範本的 URI 是 **https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/linked-template-relpath/children/nestedChild.json** 。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name linkedTemplateWithRelativePath `
+  -ResourceGroupName "myResourceGroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/linked-template-relpath/mainTemplate.json"
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az deployment group create \
+  --name linkedTemplateWithRelativePath \
+  --resource-group myResourceGroup \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/linked-template-relpath/mainTemplate.json"
+```
+
+---
+
+若要使用儲存在 Azure 儲存體帳戶中的相對路徑來部署連結的範本，請使用 `QueryString` / `query-string` 參數來指定要搭配 >templateuri 參數使用的 SAS 權杖。 只有 Azure CLI 2.18 版或更新版本，以及 Azure PowerShell 5.4 版或更新版本才支援此參數。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name linkedTemplateWithRelativePath `
+  -ResourceGroupName "myResourceGroup" `
+  -TemplateUri "https://stage20210126.blob.core.windows.net/template-staging/mainTemplate.json" `
+  -QueryString $sasToken
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az deployment group create \
+  --name linkedTemplateWithRelativePath \
+  --resource-group myResourceGroup \
+  --template-uri "https://stage20210126.blob.core.windows.net/template-staging/mainTemplate.json" \
+  --query-string $sasToken
+```
+
+---
+
+請確定 QueryString 中沒有前置的 "？"。 在組合部署的 URI 時，部署會新增一個。
 
 ## <a name="template-specs"></a>範本規格
 

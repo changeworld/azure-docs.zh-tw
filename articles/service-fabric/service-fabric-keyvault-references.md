@@ -3,115 +3,76 @@ title: Azure Service Fabric-使用 Service Fabric 應用程式 KeyVault 參考
 description: 本文說明如何使用適用于應用程式秘密的 service fabric KeyVaultReference 支援。
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: f2221bb3e8e3ee3181b2cff70107dccc203954cf
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: a0e4ef0decae8cc9ab4dc5f8c69dfef854af81f3
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313800"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898591"
 ---
-# <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>KeyVaultReference Service Fabric 應用程式的支援 (預覽) 
+# <a name="keyvaultreference-support-for-azure-deployed-service-fabric-applications"></a>Azure 部署 Service Fabric 應用程式的 KeyVaultReference 支援
 
-建立雲端應用程式時，常見的挑戰是如何安全地儲存您的應用程式所需的秘密。 例如，您可能想要將容器存放庫認證儲存在 keyvault 中，並在應用程式資訊清單中加以參考。 Service Fabric KeyVaultReference 會使用 Service Fabric 受控身分識別，並可讓您輕鬆地參考 keyvault 秘密。 本文的其餘部分將詳細說明如何使用 Service Fabric KeyVaultReference，並包含一些一般使用方式。
-
-> [!IMPORTANT]
-> 不建議在生產環境中使用此預覽功能。
+建立雲端應用程式時，常見的挑戰是如何安全地將秘密散發給您的應用程式。 例如，您可能會想要將資料庫金鑰部署到您的應用程式，而不需在管線或運算子期間公開索引鍵。 Service Fabric 的 KeyVaultReference 支援可讓您輕鬆地將秘密部署到您的應用程式，只要參考儲存在 Key Vault 中的密碼 URL 即可。 Service Fabric 將會代表您應用程式的受控識別來處理提取該秘密，並使用秘密來啟用應用程式。
 
 > [!NOTE]
-> KeyVault 參考預覽功能僅支援已建立 [版本](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning) 的密碼。 不支援無版本秘密。
+> Service Fabric 應用程式的 KeyVaultReference 支援是 GA (預覽版) 從 Service Fabric 版本 7.2 CU5 開始。 建議您在使用這項功能之前，先升級為此版本。
+
+> [!NOTE]
+> Service Fabric 應用程式的 KeyVaultReference 支援僅支援已建立 [版本](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning) 的密碼。 不支援無版本秘密。 Key Vault 必須與您的 service fabric 叢集位於相同的訂用帳戶中。 
 
 ## <a name="prerequisites"></a>先決條件
 
-- 應用程式 (MIT) 的受控識別
-    
-    Service Fabric KeyVaultReference 支援使用應用程式的受控識別，因此規劃使用 KeyVaultReferences 的應用程式應該使用受控識別。 請依照本 [檔](concepts-managed-identity.md) 為您的應用程式啟用受控識別。
+- Service Fabric 應用程式的受控識別
+
+    Service Fabric KeyVaultReference 支援使用應用程式的受控識別來代表應用程式提取秘密，因此您的應用程式必須透過和指派受控識別來部署。 請依照本 [檔](concepts-managed-identity.md) 為您的應用程式啟用受控識別。
 
 - 集中秘密儲存 (CSS) 。
 
-    中央秘密存放區 (CSS) 是 Service Fabric 的加密本機秘密快取。 CSS 是本機秘密存放區快取，可將機密資料（例如密碼、權杖和金鑰）保持在記憶體中加密。 提取之後，KeyVaultReference 就會在 CSS 中快取。
+    中央秘密存放區 (CSS) 是 Service Fabric 的加密本機秘密快取。 這項功能會在從 Key Vault 提取秘密後，使用 CSS 來保護和保存秘密。 若要使用這項功能，也需要啟用此選用的系統服務。 遵循這 [份檔](service-fabric-application-secret-store.md) 來啟用和設定 CSS。
 
-    將下列新增至中的叢集設定 `fabricSettings` ，以啟用 KeyVaultReference 支援所需的所有必要功能。
-
-    ```json
-    "fabricSettings": 
-    [
-        ...
-    {
-                "name":  "CentralSecretService",
-                "parameters":  [
-                {
-                    "name":  "IsEnabled",
-                    "value":  "true"
-                },
-                {
-                    "name":  "MinReplicaSetSize",
-                    "value":  "3"
-                },
-                {
-                    "name":  "TargetReplicaSetSize",
-                    "value":  "3"
-                }
-                ]
-            },
-            {
-                "name":  "ManagedIdentityTokenService",
-                "parameters":  [
-                {
-                    "name":  "IsEnabled",
-                    "value":  "true"
-                }
-                ]
-            }
-            ]
-    ```
-
-    > [!NOTE] 
-    > 建議您針對 CSS 使用個別的加密憑證。 您可以將它新增至 "CentralSecretService" 區段。
-    
-
-    ```json
-        {
-            "name": "EncryptionCertificateThumbprint",
-            "value": "<EncryptionCertificateThumbprint for CSS>"
-        }
-    ```
-為了讓變更生效，您也必須變更升級原則，以便在升級透過叢集進行升級時，指定每個節點上的 Service Fabric 執行時間的強制重新開機。 此重新開機可確保新啟用的系統服務已在每個節點上啟動並執行。 在下列程式碼片段中，forceRestart 是必要的設定;使用您現有的值來進行其餘的設定。
-```json
-"upgradeDescription": {
-    "forceRestart": true,
-    "healthCheckRetryTimeout": "00:45:00",
-    "healthCheckStableDuration": "00:05:00",
-    "healthCheckWaitDuration": "00:05:00",
-    "upgradeDomainTimeout": "02:00:00",
-    "upgradeReplicaSetCheckTimeout": "1.00:00:00",
-    "upgradeTimeout": "12:00:00"
-}
-```
 - 授與應用程式的受控識別存取權給 keyvault
 
-    參考此 [檔](how-to-grant-access-other-resources.md) ，瞭解如何將受控識別存取權授與 keyvault。 另請注意，如果您使用系統指派的受控識別，則只會在應用程式部署之後建立受控識別。
+    參考此 [檔](how-to-grant-access-other-resources.md) ，瞭解如何將受控識別存取權授與 keyvault。 另請注意，如果您使用系統指派的受控識別，則只會在應用程式部署之後建立受控識別。 這可能會建立競爭條件，其中應用程式會先嘗試存取秘密，才能取得保存庫的存取權。 系統指派的身分識別名稱會是 `{cluster name}/{application name}/{service name}` 。
+    
+## <a name="use-keyvaultreferences-in-your-application"></a>在您的應用程式中使用 KeyVaultReferences
+KeyVaultReferences 可透過數種方式使用
+- [作為環境變數](#as-an-environment-variable)
+- [以檔案形式掛接到您的容器中](#mounted-as-a-file-into-your-container)
+- [作為容器存放庫密碼的參考](#as-a-reference-to-a-container-repository-password)
 
-## <a name="keyvault-secret-as-application-parameter"></a>將秘密 Keyvault 為應用程式參數
-假設應用程式需要讀取儲存在 keyvault 中的後端資料庫密碼，Service Fabric KeyVaultReference 支援可讓您輕鬆進行。 下列範例會 `DBPassword` 使用 Service Fabric KeyVaultReference 支援，從 keyvault 讀取秘密。
+### <a name="as-an-environment-variable"></a>作為環境變數
+
+```xml
+<EnvironmentVariables>
+      <EnvironmentVariable Name="MySecret" Type="KeyVaultReference" Value="<KeyVaultURL>"/>
+</EnvironmentVariables>
+```
+
+```C#
+string secret =  Environment.GetEnvironmentVariable("MySecret");
+```
+
+### <a name="mounted-as-a-file-into-your-container"></a>以檔案形式掛接到您的容器中
 
 - 將區段新增至 settings.xml
 
-    `DBPassword`使用類型 `KeyVaultReference` 和值定義參數`<KeyVaultURL>`
+    `MySecret`使用類型 `KeyVaultReference` 和值定義參數`<KeyVaultURL>`
 
     ```xml
-    <Section Name="dbsecrets">
-        <Parameter Name="DBPassword" Type="KeyVaultReference" Value="https://vault200.vault.azure.net/secrets/dbpassword/8ec042bbe0ea4356b9b171588a8a1f32"/>
+    <Section Name="MySecrets">
+        <Parameter Name="MySecret" Type="KeyVaultReference" Value="<KeyVaultURL>"/>
     </Section>
     ```
+
 - 參考 ApplicationManifest.xml 中的新區段 `<ConfigPackagePolicies>`
 
     ```xml
     <ServiceManifestImport>
         <Policies>
-        <IdentityBindingPolicy ServiceIdentityRef="WebAdmin" ApplicationIdentityRef="ttkappuser" />
+        <IdentityBindingPolicy ServiceIdentityRef="MyServiceMI" ApplicationIdentityRef="MyApplicationMI" />
         <ConfigPackagePolicies CodePackageRef="Code">
             <!--Linux container example-->
-            <ConfigPackage Name="Config" SectionName="dbsecrets" EnvironmentVariableName="SecretPath" MountPoint="/var/secrets"/>
+            <ConfigPackage Name="Config" SectionName="MySecrets" EnvironmentVariableName="SecretPath" MountPoint="/var/secrets"/>
             <!--Windows container example-->
             <!-- <ConfigPackage Name="Config" SectionName="dbsecrets" EnvironmentVariableName="SecretPath" MountPoint="C:\secrets"/> -->
         </ConfigPackagePolicies>
@@ -119,49 +80,31 @@ ms.locfileid: "92313800"
     </ServiceManifestImport>
     ```
 
-- 在您的應用程式中使用 KeyVaultReference
+- 使用服務程式代碼中的秘密
 
-    服務具現化的 Service Fabric 將會使用應用程式的受控識別來解析 KeyVaultReference 參數。 下所列的每個參數 `<Section  Name=dbsecrets>` 都是 EnvironmentVariable SecretPath 所指向之資料夾下的檔案。 以下 c # 程式碼片段示範如何在您的應用程式中讀取 DBPassword。
+    下所列的每個參數 `<Section  Name=MySecrets>` 都是 EnvironmentVariable SecretPath 所指向之資料夾下的檔案。 下列 c # 程式碼片段說明如何從您的應用程式讀取 MySecret。
 
     ```C#
     string secretPath = Environment.GetEnvironmentVariable("SecretPath");
-    using (StreamReader sr = new StreamReader(Path.Combine(secretPath, "DBPassword"))) 
+    using (StreamReader sr = new StreamReader(Path.Combine(secretPath, "MySecret"))) 
     {
-        string dbPassword =  sr.ReadToEnd();
-        // dbPassword to connect to DB
+        string secret =  sr.ReadToEnd();
     }
     ```
     > [!NOTE] 
-    > 在容器案例中，您可以使用該掛接點來控制將掛接的位置 `secrets` 。
+    > 掛接點會控制要掛接包含秘密值之檔案的資料夾。
 
-## <a name="keyvault-secret-as-environment-variable"></a>將秘密 Keyvault 為環境變數
+### <a name="as-a-reference-to-a-container-repository-password"></a>作為容器存放庫密碼的參考
 
-Service Fabric 環境變數現在支援 KeyVaultReference 類型，下列範例示範如何將環境變數系結至儲存在 KeyVault 中的秘密。
-
-```xml
-<EnvironmentVariables>
-      <EnvironmentVariable Name="EventStorePassword" Type="KeyVaultReference" Value="https://ttkvault.vault.azure.net/secrets/clustercert/e225bd97e203430d809740b47736b9b8"/>
-</EnvironmentVariables>
-```
-
-```C#
-string eventStorePassword =  Environment.GetEnvironmentVariable("EventStorePassword");
-```
-## <a name="keyvault-secret-as-container-repository-password"></a>將秘密 Keyvault 為容器存放庫密碼
-KeyVaultReference 是支援的容器 RepositoryCredentials 類型，以下範例顯示如何使用 keyvault 參考作為容器存放庫密碼。
 ```xml
  <Policies>
       <ContainerHostPolicies CodePackageRef="Code">
-        <RepositoryCredentials AccountName="user1" Type="KeyVaultReference" Password="https://ttkvault.vault.azure.net/secrets/containerpwd/e225bd97e203430d809740b47736b9b8"/>
+        <RepositoryCredentials AccountName="MyACRUser" Type="KeyVaultReference" Password="<KeyVaultURL>"/>
       </ContainerHostPolicies>
 ```
-## <a name="faq"></a>常見問題集
-- 受控識別必須啟用 KeyVaultReference 支援，如果使用 KeyVaultReference 而不啟用受控識別，則您的應用程式啟用將會失敗。
-
-- 如果您使用系統指派的身分識別，它只會在應用程式部署之後建立，而這會建立迴圈相依性。 部署應用程式之後，您可以授與系統指派的身分識別存取權給 keyvault。 您可以依名稱 {cluster}/{application name} 尋找系統指派的身分識別/{servicename}
-
-- Keyvault 必須與您的 service fabric 叢集位於相同的訂用帳戶中。 
 
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure KeyVault 檔](../key-vault/index.yml)
+* [深入瞭解集中秘密存放區](service-fabric-application-secret-store.md)
+* [瞭解 Service Fabric 應用程式的受控識別](concepts-managed-identity.md)

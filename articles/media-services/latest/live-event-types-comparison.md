@@ -1,5 +1,5 @@
 ---
-title: Azure 媒體服務 LiveEvent 類型 | Microsoft Docs
+title: Azure 媒體服務 LiveEvent 類型
 description: 在 Azure 媒體服務中，實況活動可以設定為 *通過* 或 *即時編碼*。 本文顯示比較即時事件種類的詳細資料表。
 services: media-services
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: c79d45cfac22f41f05071b619c444e7b7ab7956a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3126cbf4f9d87e9baa7267e309210b751a47069d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89397299"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897793"
 ---
 # <a name="live-event-types-comparison"></a>實況活動類型比較
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-在 Azure 媒體服務中，[實況活動](/rest/api/media/liveevents)可以設定為傳遞 (內部部署即時編碼器會傳送多位元率串流) 或*即時編碼* (內部部署即時編碼器會*傳送*單一位元速率串流) 。 
+在 Azure 媒體服務中，[實況活動](/rest/api/media/liveevents)可以設定為傳遞 (內部部署即時編碼器會傳送多位元率串流) 或 *即時編碼* (內部部署即時編碼器會 *傳送* 單一位元速率串流) 。 
 
 本文將比較實況活動類型的功能。
 

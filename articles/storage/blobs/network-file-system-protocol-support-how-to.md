@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: b61ce696c28a2c72a2cd3d0eb2d2fde0022dbb01
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: db946dcc0fc8571f7b6aa191909155baccf7d1a2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897734"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878573"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>使用網路檔案系統 (NFS) 3.0 通訊協定 (預覽來掛接 Blob 儲存體) 
 
@@ -82,7 +82,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNFS
 
 |設定 | Premium 效能 | 標準效能  
 |----|---|---|
-|位置|所有可用區域 |下列其中一個區域：澳大利亞東部、韓國中部和美國中南部   
+|Location|所有可用區域 |下列其中一個區域：澳大利亞東部、韓國中部和美國中南部   
 |效能|Premium| 標準
 |帳戶種類|BlockBlobStorage| 一般用途 V2
 |複寫|本地備援儲存體 (LRS)| 本地備援儲存體 (LRS)
@@ -100,7 +100,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNFS
 |工具|SDK|
 |---|---|
 |[Azure 入口網站](https://portal.azure.com)|[.NET](data-lake-storage-directory-file-acl-dotnet.md#create-a-container)|
-|[AzCopy](../common/storage-use-azcopy-blobs.md#create-a-container)|[Java](data-lake-storage-directory-file-acl-java.md#create-a-container)|
+|[AzCopy](../common/storage-use-azcopy-v10.md#transfer-data)|[Java](data-lake-storage-directory-file-acl-java.md)|
 |[PowerShell](data-lake-storage-directory-file-acl-powershell.md#create-a-container)|[Python](data-lake-storage-directory-file-acl-python.md#create-a-container)|
 |[Azure CLI](data-lake-storage-directory-file-acl-cli.md#create-a-container)|[JavaScript](data-lake-storage-directory-file-acl-javascript.md)|
 ||[REST](/rest/api/storageservices/create-container)|
@@ -162,6 +162,6 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNFS
 |`Access denied by server while mounting`|確定您的用戶端是在支援的子網路內執行。 請參閱 [支援的網路位置](network-file-system-protocol-support.md#supported-network-connections)。|
 |`No such file or directory`| 確認您要掛接的容器是在確認該功能已註冊之後所建立。 請參閱 [步驟2：確認已註冊此功能](#step-2-verify-that-the-feature-is-registered)。此外，請務必直接在終端機中輸入 mount 命令和參數。 如果您將此命令的任何部分複製並貼到另一個應用程式的終端機中，則貼上資訊中的隱藏字元可能會導致此錯誤出現。|
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 [Azure Blob 儲存體中的網路檔案系統 (NFS) 3.0 通訊協定支援 (預覽) ](network-file-system-protocol-support.md)

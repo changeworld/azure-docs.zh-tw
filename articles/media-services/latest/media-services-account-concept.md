@@ -1,5 +1,5 @@
 ---
-title: 管理 Azure 媒體服務 v3 帳戶 |Microsoft Docs
+title: 管理 Azure 媒體服務 v3 帳戶
 description: 若要在 Azure 中開始管理、加密、編碼、分析和串流處理媒體內容，您需要建立媒體服務帳戶。 本文說明如何管理 Azure 媒體服務 v3 帳戶。
 services: media-services
 author: IngridAtMicrosoft
@@ -10,12 +10,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 11/05/2020
 ms.author: inhenkel
-ms.openlocfilehash: 77453aa2d8989a0542beffb1c88ebe7ee53d1506
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 49cdee15923123ced03c2c6bc750e1b98dd42887
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "96008322"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896371"
 ---
 # <a name="manage-azure-media-services-v3-accounts"></a>管理 Azure 媒體服務 v3 帳戶
 

@@ -8,33 +8,36 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 9ca0a3852c6be04332369e57ce1916e5f589516f
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 9c1abe1323bc095fe4dfbfc559ef7e159d1f7532
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744960"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880670"
 ---
-# <a name="deploy-azure-cloud-services-extended-support-using-the-azure-portal"></a>使用 Azure 入口網站部署 Azure 雲端服務 (延伸支援) 
+# <a name="deploy-a-azure-cloud-services-extended-support-using-the-azure-portal"></a>使用 Azure 入口網站部署 Azure 雲端服務 (延伸支援) 
 本文說明如何使用 Azure 入口網站來建立雲端服務 (延伸支援) 部署。 
 
 > [!IMPORTANT]
 > 雲端服務 (延伸支援) 目前處於公開預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-1. 請參閱雲端服務的 [部署必要條件](deploy-prerequisite.md) (延伸支援) 並建立相關聯的資源。 
+## <a name="before-you-begin"></a>開始之前
 
-2. 登入 [Azure 入口網站](https://portal.azure.com)
+請參閱雲端服務的 [部署必要條件](deploy-prerequisite.md) (延伸支援) 並建立相關聯的資源。 
 
-3.  使用位於 Azure 入口網站頂端的搜尋列，搜尋並選取 **雲端服務 (延伸支援)**。
+## <a name="deploy-a-cloud-services-extended-support"></a> (延伸支援) 部署雲端服務 
+1. 登入 [Azure 入口網站](https://portal.azure.com)
+
+2.  使用位於 Azure 入口網站頂端的搜尋列，搜尋並選取 **雲端服務 (延伸支援)**。
 
     :::image type="content" source="media/deploy-portal-1.png" alt-text="影像會顯示 Azure 入口網站中的 [所有資源] 分頁。":::
  
-4.  在 [雲端服務 (延伸支援) ] 窗格中，選取 [ **建立**]。 
+3.  在 [雲端服務 (延伸支援) ] 窗格中，選取 [ **建立**]。 
 
     :::image type="content" source="media/deploy-portal-2.png" alt-text="影像顯示從 marketplace 購買雲端服務。":::
 
-5. [雲端服務 (延伸支援) 建立] 視窗將會開啟至 [ **基本** ] 索引標籤。 
+4. [雲端服務 (延伸支援) 建立] 視窗將會開啟至 [ **基本** ] 索引標籤。 
     - 選取訂用帳戶。
     - 選擇資源群組或建立新的群組。
     - 輸入您的雲端服務所需的名稱， (延伸支援) 部署。
@@ -43,11 +46,11 @@ ms.locfileid: "98744960"
 
     :::image type="content" source="media/deploy-portal-3.png" alt-text="影像顯示) home blade (延伸支援的雲端服務。":::
 
-6. 新增您的雲端服務設定、封裝和定義檔。 您可以從 blob 儲存體新增現有的檔案，或從您的本機電腦上傳這些檔案。 如果從本機電腦上傳，這些將會儲存在儲存體帳戶中。 
+5. 新增您的雲端服務設定、封裝和定義檔。 您可以從 blob 儲存體新增現有的檔案，或從您的本機電腦上傳這些檔案。 如果從本機電腦上傳，這些將會儲存在儲存體帳戶中。 
 
     :::image type="content" source="media/deploy-portal-4.png" alt-text="影像會在建立期間顯示 [基本] 索引標籤的 [上傳] 區段。":::
 
-7. 完成所有欄位之後，請移 **至 [設定** ] 索引標籤並完成。 
+6. 完成所有欄位之後，請移 **至 [設定** ] 索引標籤並完成。 
     - 請選取要與雲端服務建立關聯的虛擬網路，或建立一個新的虛擬網路。 
         - 雲端服務 (延伸支援) 部署 **必須** 在虛擬網路中。 您也 **必須** 在服務設定中參考虛擬網路 ( .cscfg) 檔案中的 `NetworkConfiguration` 一節。
     - 選取與雲端服務相關聯的現有公用 IP 位址，或建立一個新的。
@@ -61,8 +64,9 @@ ms.locfileid: "98744960"
 
  :::image type="content" source="media/deploy-portal-5.png" alt-text="當建立雲端服務 (延伸支援) 時，影像會顯示 Azure 入口網站中的設定分頁。":::
 
-8. 所有欄位都完成後，請移至 [ **審核] 和 [建立** ] 索引標籤來驗證您的部署設定，並 (延伸支援) 建立您的雲端服務。
+7. 所有欄位都完成後，請移至 [ **審核] 和 [建立** ] 索引標籤來驗證您的部署設定，並 (延伸支援) 建立您的雲端服務。
 
 ## <a name="next-steps"></a>後續步驟 
 - 請 [參閱雲端服務的常見問題，](faq.md) (延伸支援) 。
 - 使用 [Azure 入口網站](deploy-portal.md)、 [PowerShell](deploy-powershell.md)、 [範本](deploy-template.md) 或 [Visual Studio](deploy-visual-studio.md)，將雲端服務部署 (延伸支援) 。
+- 造訪[雲端服務 (延伸支援) 範例儲存](https://github.com/Azure-Samples/cloud-services-extended-support)機制

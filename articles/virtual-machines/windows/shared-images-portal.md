@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 57cebed8ac229ed54945d75786b84b3cd2a36252
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 25cd75035a814fd718cc1101e6575f78c50f105e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844194"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879692"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>使用入口網站建立 Azure 共用映射庫
 
-[共用映像資源庫](shared-image-galleries.md)可簡化跨組織共用自訂映像。 自訂映像類似 Marketplace 映像，但您要自行建立它們。 自訂映像可用於啟動部署工作，例如，預先載入應用程式、應用程式設定和其他 OS 設定。 
+[共用映像資源庫](../shared-image-galleries.md)可簡化跨組織共用自訂映像。 自訂映像類似 Marketplace 映像，但您要自行建立它們。 自訂映像可用於啟動部署工作，例如，預先載入應用程式、應用程式設定和其他 OS 設定。 
 
 共用映像資源庫可讓您與 AAD 租用戶中區域內或跨區域組織中的其他人共用自訂 VM 映像。 選擇您要共用的映像、您要開放使用的區域，以及您要共用的對象。 您可以建立多個資源庫，讓您可以根據邏輯群組共用映像。 
 
@@ -46,7 +46,7 @@ ms.locfileid: "94844194"
 1. 在 [ **虛擬機器名稱**] 中，輸入 *myVM*。
 1. 在 [區域] 中，選取 [美國東部]。
 1. 針對 [ **可用性選項**]，保留 [ *不需要基礎結構冗余*] 的預設值。
-1. **Image** `latest` 如果您是從映射定義的頁面開始，則影像的值會自動填入映射版本。
+1.  `latest` 如果您是從映射定義的頁面開始，則影像的值會自動填入映射版本。
 1. 針對 [ **大小**]，從可用大小清單中選擇 VM 大小，然後選擇 [ **選取**]。
 1. 在 [ **系統管理員帳戶**] 下，如果映射是一般化的，您需要提供使用者名稱，例如 *>azureuser* 和密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。 如果您的映射是特製化的，使用者名稱和密碼欄位將呈現灰色，因為會使用來源 VM 的使用者名稱和密碼。
 1. 如果您想要允許遠端存取 VM，請在 [ **公用輸入埠**] 下，選擇 [ **允許選取的埠** ]，然後從下拉式清單中選取 **RDP (3389)** 。 如果您不想要允許遠端存取 VM，請將 [ **未** 選取] 用於 **公用輸入埠**。
@@ -69,4 +69,4 @@ ms.locfileid: "94844194"
 - [在共用映像資源庫中建立映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [從映像版本建立 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
-如需共用映像資源庫的詳細資訊，請參閱[概觀](shared-image-galleries.md)。 若遇到任何問題，請參閱[針對共用映像資源庫問題進行疑難排解](../troubleshooting-shared-images.md)。
+如需共用映像資源庫的詳細資訊，請參閱[概觀](../shared-image-galleries.md)。 若遇到任何問題，請參閱[針對共用映像資源庫問題進行疑難排解](../troubleshooting-shared-images.md)。

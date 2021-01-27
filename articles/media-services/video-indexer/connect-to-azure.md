@@ -8,16 +8,16 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 10/21/2020
+ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: 82dc9aa9615ef86c878fb75df6650dcc1f904a8f
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 8e110ba9818b48d66c5f17bb524bada567d808ab
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97702601"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897151"
 ---
-# <a name="create-a-video-indexer-account-connected-to-azure"></a>建立連線到 Azure 的影片索引器帳戶
+# <a name="create-a-video-indexer-account"></a>建立影片索引子帳戶
 
 建立影片索引器帳戶時，您可以選擇免費試用帳戶 (您可取得特定的免費編製索引分鐘數) 或付費選項 (您不會受限於配額)。 使用免費試用時，影片索引器最多可為網站使用者提供 600 分鐘的免費編製索引，以及為 API 使用者提供 2400 分鐘的免費索引編製。 使用付費選項時，您可以建立連線至 Azure 訂用帳戶的影片索引子帳戶。 您需支付已編製索引的分鐘數，如需詳細資訊，請參閱[媒體服務定價](https://azure.microsoft.com/pricing/details/media-services/)。
 
@@ -25,7 +25,9 @@ ms.locfileid: "97702601"
 
 如果您要從 *試用版* 移至 *付費* 影片索引子帳戶，您可以選擇將所有的影片和模型自訂複製到新的帳戶，如 [從試用帳戶匯入內容](#import-your-content-from-the-trial-account) 一節中所述。
 
-## <a name="prerequisites"></a>必要條件
+本文也涵蓋將 [影片索引子帳戶連結至 Azure Government](#video-indexer-in-azure-government)。
+
+## <a name="prerequisites-for-connecting-to-azure"></a>連接至 Azure 的必要條件
 
 * Azure 訂用帳戶。
 
@@ -37,7 +39,7 @@ ms.locfileid: "97702601"
 
     此使用者應該是具有工作或學校帳戶的 Azure AD 使用者。 請勿使用個人帳戶，例如 outlook.com、live.com 或 hotmail.com。
 
-    ![所有 AAD 使用者](./media/create-account/all-aad-users.png)
+    ![所有 Azure AD 使用者](./media/create-account/all-aad-users.png)
 
 ### <a name="additional-prerequisites-for-automatic-flow"></a>自動流程的其他先決條件
 
@@ -59,7 +61,7 @@ ms.locfileid: "97702601"
 
     ![EventGrid](./media/create-account/event-grid.png)
 
-## <a name="create-a-new-account"></a>建立新帳戶
+## <a name="create-a-new-account-on-azure"></a>在 Azure 上建立新帳戶 
 
 > [!NOTE]
 > 如果您的 Azure 訂用帳戶使用以憑證為基礎的多重要素驗證，請務必在已安裝必要憑證的裝置上執行下列步驟。
@@ -155,7 +157,7 @@ ms.locfileid: "97702601"
 |應用程式識別碼|您在上一節中建立的 Azure AD 應用程式識別碼 (具有所指定媒體服務帳戶的權限)。|
 |應用程式金鑰|您在上一節中建立的 Azure AD 應用程式金鑰。 |
 
-## <a name="import-your-content-from-the-trial-account"></a>從 *試用* 帳戶匯入內容
+### <a name="import-your-content-from-the-trial-account"></a>從 *試用* 帳戶匯入內容
 
 建立新帳戶時，您可以選擇將您的內容從 *試用* 帳戶匯入至新的帳戶。 如果您核取 [**在 Azure 訂用帳戶上建立新帳戶**] 對話方塊中的 [匯 *入*] 選項，將會從 *試用* 帳戶將所有媒體和內容模型自訂複製到新的帳戶。
 
@@ -163,16 +165,10 @@ ms.locfileid: "97702601"
 
 > [!NOTE]
 > 每個帳戶只能匯入一次內容。
+>
+> *試用* 帳戶未在 Azure Government 雲端上 availagle。
 
-## <a name="delete-the-account"></a>刪除帳戶
-
-如果您稍後想要刪除該帳戶，您可以從影片索引子網站刪除該帳戶。 若要刪除帳戶，您必須是擁有者。
-
-選取帳戶 > 設定 [   ->  **刪除這個帳戶**]。 
-
-帳戶將在90天內永久刪除。
-
-## <a name="considerations"></a>考量
+## <a name="azure-media-services-considerations"></a>Azure 媒體服務考慮
 
 以下是 Azure 媒體服務的相關考量：
 
@@ -201,9 +197,52 @@ ms.locfileid: "97702601"
     請參閱 [媒體服務帳戶建立範本](https://github.com/Azure-Samples/media-services-v3-arm-templates)的範例。
 1. [以媒體服務和 Azure AD 應用程式呼叫建立帳戶](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Paid-Account)。
 
+## <a name="video-indexer-in-azure-government"></a>Azure Government 中的影片索引子
+
+### <a name="prerequisites-for-connecting-to-azure-government"></a>連接到 Azure Government 的必要條件
+
+-   [Azure Government](https://docs.microsoft.com/azure/azure-government/)中的 Azure 訂用帳戶。
+- Azure Government 中的 Azure AD 帳戶。
+- 上述的許可權和資源的所有先決條件，如以上所述，以 [連接至 Azure](#prerequisites-for-connecting-to-azure)。
+
+### <a name="create-new-account-via-the-azure-government-portal"></a>透過 Azure Government 入口網站建立新帳戶
+
+> [!NOTE]
+> Azure Government cloud 不包含影片索引子的 *試用* 體驗。
+
+若要透過影片索引子入口網站建立付費帳戶：
+
+1. 移至 https://videoindexer.ai.azure.us 
+1. 使用您的 Azure Government Azure AD 帳戶登入。
+1.  如果您的 Azure Government 中沒有任何影片索引子帳戶，您是擁有者或參與者，您將會得到空白的體驗，讓您可以開始建立帳戶。 
+
+    流程的其餘部分如上面所述，只有可供選取的區域會是可使用影片索引子的政府區域 
+
+    如果您已經是 Azure Government 中現有一或多個影片索引子帳戶的參與者或系統管理員，則會帶您前往該帳戶，您可以從該處開始依照上述步驟建立其他帳戶的步驟。
+    
+### <a name="create-new-account-via-the-api-on-azure-government"></a>透過 Azure Government 上的 API 建立新帳戶
+
+若要在 Azure Government 中建立付費帳戶，請遵循 [建立-付費帳戶](https://api-portal.videoindexer.ai.azure.us/docs/services/Operations/operations/Create-Paid-Account)中的指示。 此 API 端點僅包含政府雲端區域。
+
+### <a name="limitations-of-video-indexer-on-azure-government"></a>影片索引子在 Azure Government 上的限制
+
+*   政府雲端不提供任何手動內容仲裁。 
+
+    在公用雲端中，當內容被視為具冒犯性的內容仲裁時，客戶可以要求人類查看該內容，並可能還原該決策。  
+*   沒有試用帳戶。 
+* Bing 描述-在 Gov cloud 中，我們不會提供所識別之名人和命名實體的描述。 這只是 UI 功能。 
+
 ## <a name="clean-up-resources"></a>清除資源
 
 完成本教學課程之後，請刪除您不打算使用的資源。
+
+### <a name="delete-a-video-indexer-account"></a>刪除影片索引子帳戶
+
+如果您想要刪除影片索引子帳戶，可以從影片索引子網站刪除該帳戶。 若要刪除帳戶，您必須是擁有者。
+
+選取帳戶 > 設定 [   ->  **刪除這個帳戶**]。 
+
+帳戶將在90天內永久刪除。
 
 ## <a name="next-steps"></a>後續步驟
 

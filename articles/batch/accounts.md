@@ -2,13 +2,13 @@
 title: Batch 帳戶和 Azure 儲存體帳戶
 description: 從開發觀點了解 Azure Batch 帳戶以及如何使用。
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: 20a2a28d0eaa2c7997ea93e66d07ecb99bf297a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/26/2021
+ms.openlocfilehash: 83108a265f91c9feef2fab424f1819939c2d58c9
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83790905"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896743"
 ---
 # <a name="batch-accounts-and-azure-storage-accounts"></a>Batch 帳戶和 Azure 儲存體帳戶
 
@@ -20,9 +20,10 @@ Azure Batch 帳戶是 Batch 服務內唯一識別的實體。 大部分的 Batch
 
 您可以在單一 Batch 帳戶中執行多個 Batch 工作負載。 您也可以在 Batch 帳戶之間散佈工作負載，這些帳戶是在相同訂用帳戶中，但是位於不同的 Azure 區域。
 
+您可以使用 [Azure 入口網站](batch-account-create-portal.md)或以程式設計的方式建立 Batch 帳戶，例如使用 [Batch管理 .NET 程式庫](batch-management-dotnet.md)。 建立帳戶時，您可以將 Azure 儲存體帳戶產生關聯，以儲存作業相關的輸入和輸出資料或應用程式。
+
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-您可以使用 [Azure 入口網站](batch-account-create-portal.md)或以程式設計的方式建立 Batch 帳戶，例如使用 [Batch管理 .NET 程式庫](batch-management-dotnet.md)。 建立帳戶時，您可以將 Azure 儲存體帳戶產生關聯，以儲存作業相關的輸入和輸出資料或應用程式。
 
 ## <a name="azure-storage-accounts"></a>Azure 儲存體帳戶
 
@@ -41,4 +42,5 @@ Batch 支援下列類型的「Azure 儲存體」帳戶：
 ## <a name="next-steps"></a>後續步驟
 
 - 深入了解[節點和集區](nodes-and-pools.md)。
-- 深入了解如何使用 [Azure 入口網站](batch-account-create-portal.md)來建立 Batch 帳戶。
+- 瞭解如何使用 [Azure 入口網站](batch-account-create-portal.md) 或 [batch 管理 .net](batch-management-dotnet.md)來建立和管理 batch 帳戶。
+- 瞭解如何使用 [私人端點](private-connectivity.md) 搭配 Azure Batch 帳戶。

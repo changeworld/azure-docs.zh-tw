@@ -1,5 +1,5 @@
 ---
-title: Azure 媒體服務封裝和原始錯誤 |Microsoft Docs
+title: Azure 媒體服務封裝和來源錯誤
 description: 本主題說明您可能會收到 Azure 媒體服務串流端點 (Orgin) 服務的錯誤。
 author: IngridAtMicrosoft
 manager: femila
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: error-reference
 ms.date: 05/07/2019
 ms.author: inhenkel
-ms.openlocfilehash: 8442c52052a2016da002d392c6fe0834b3813229
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 994e5ae0647f350e0a64f35318bd5803f4ed79b2
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295320"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98894978"
 ---
 # <a name="streaming-endpoint-origin-errors"></a>串流端點 (原點) 錯誤
 

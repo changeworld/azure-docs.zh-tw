@@ -6,12 +6,12 @@ ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 933b71d75eacdca015a38524870f25a345e76d22
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
-ms.translationtype: HT
+ms.openlocfilehash: 820482a268af038737557c517ccda086cd65d943
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746160"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880554"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-azure-portal"></a>教學課程：使用 Azure 入口網站建立和管理 VPN 閘道
 
@@ -103,7 +103,7 @@ Azure VPN 閘道提供客戶組織內部與 Azure 之間的跨單位連線。 �
 擁有 VPN 閘道之後，您就可以設定連線。 下列文章將協助您建立幾個最常見的設定：
 
 > [!div class="nextstepaction"]
-> [站對站 VPN 連線](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> [站對站 VPN 連線](./tutorial-site-to-site-portal.md)
 
 > [!div class="nextstepaction"]
 > [點對站 VPN 連線](vpn-gateway-howto-point-to-site-resource-manager-portal.md)

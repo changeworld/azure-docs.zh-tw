@@ -1,6 +1,5 @@
 ---
 title: 使用動態封裝程式篩選您的資訊清單
-titleSuffix: Azure Media Services
 description: 瞭解如何使用動態封裝程式建立篩選，以篩選並選擇性地串流您的資訊清單。
 services: media-services
 documentationcenter: ''
@@ -14,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: acb30c1659c4c29e0af83da5594bdd9a7e3465d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ffdb41752630e0e5e22303ff58ecd798595a890
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89299026"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897657"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>使用動態封裝程式篩選您的資訊清單
 
@@ -27,7 +26,7 @@ ms.locfileid: "89299026"
 
 當您將自動調整位元速率串流內容傳遞至裝置時，您有時需要發佈多個版本的資訊清單，以針對特定的裝置功能或可用的網路頻寬。 [動態](dynamic-packaging-overview.md)封裝程式可讓您指定篩選器，以即時篩選出特定的編解碼器、解析度、位元速率和音訊播放軌組合。 這項篩選免除了建立多個複本的需求。 您只需要使用設定至目標裝置的一組特定篩選器來發佈新的 URL (iOS、Android、Smarttv 產品或瀏覽器) 和網路功能 (高頻寬、行動或低頻寬的案例) 。 在這種情況下，用戶端可以藉由指定可用的 [資產篩選器或帳戶篩選](filters-concept.md)) ，然後使用篩選器來串流處理資料流程的特定區段，藉以透過查詢字串 (來管理內容的串流。
 
-某些傳遞案例需要您確定客戶無法存取特定的曲目。 例如，您可能不想要將包含 HD 字幕的資訊清單發行至特定的訂閱者層。 或者，您可能想要移除特定的自動調整位元速率 (ABR) 追蹤，以降低傳遞到特定裝置的成本，而不會受益于其他的曲目。 在此情況下，您可以在建立時，將預先建立的篩選清單與 [串流定位器](streaming-locators-concept.md) 產生關聯。 用戶端接著無法管理內容的串流方式，因為它是由 **串流定位器**所定義。
+某些傳遞案例需要您確定客戶無法存取特定的曲目。 例如，您可能不想要將包含 HD 字幕的資訊清單發行至特定的訂閱者層。 或者，您可能想要移除特定的自動調整位元速率 (ABR) 追蹤，以降低傳遞到特定裝置的成本，而不會受益于其他的曲目。 在此情況下，您可以在建立時，將預先建立的篩選清單與 [串流定位器](streaming-locators-concept.md) 產生關聯。 用戶端接著無法管理內容的串流方式，因為它是由 **串流定位器** 所定義。
 
 您可以透過指定 [串流定位器上的篩選器](filters-concept.md#associating-filters-with-streaming-locator) ，以及用戶端在 URL 中指定的其他裝置特定篩選器來合併篩選。 此組合有助於限制額外的追蹤，例如中繼資料或事件串流、音訊語言或描述性音軌。
 
@@ -141,7 +140,7 @@ Azure 媒體服務支援 HLS、MPEG 破折號和 Smooth Streaming 的通訊協�
 
 ## <a name="considerations-and-limitations"></a>考量與限制
 
-- 不應針對 VOD 篩選器設定 **>forceendtimestamp**、 **>presentationwindowduration**和 **liveBackoffDuration** 的值。 它們只用于即時篩選案例。
+- 不應針對 VOD 篩選器設定 **>forceendtimestamp**、 **>presentationwindowduration** 和 **liveBackoffDuration** 的值。 它們只用于即時篩選案例。
 - 動態資訊清單會以 GOP 界限操作 (主要畫面格) ，因此修剪具有 GOP 精確度。
 - 您可以針對帳戶和資產篩選器使用相同的篩選器名稱。 資產篩選具有較高的優先順序，並且會覆寫帳戶篩選。
 - 如果您更新篩選器，則串流端點可能需要最多2分鐘的時間來重新整理規則。 如果您使用篩選器來提供內容 (，而且您已在 proxy 和 CDN 快取中快取內容) ，更新這些篩選可能會導致玩家失敗。 建議您在更新篩選器之後清除快取。 如果無法使用此選項，請考慮使用不同的篩選。

@@ -3,19 +3,19 @@ title: Translator 直譯方法
 titleSuffix: Azure Cognitive Services
 description: 使用翻譯工具直譯方法，將文字轉換成另一種語言的腳本。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: swmachan
-ms.openlocfilehash: 4b985d7b2eb07ca8bbd3556a237fbcaba5392fe5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.author: lajanuar
+ms.openlocfilehash: 0d5a7f8df0c722ca52780ba254e9af9608f26b54
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016459"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895419"
 ---
 # <a name="translator-30-transliterate"></a>Translator 3.0：直譯
 
@@ -77,7 +77,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
   </tr>
 </table> 
 
-## <a name="request-body"></a>Request body
+## <a name="request-body"></a>要求本文
 
 要求的本文是 JSON 陣列。 每個陣列項目都是字串屬性名為 `Text` 的 JSON 物件，其代表要轉換的字串。
 
@@ -128,7 +128,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 
 <table width="100%">
   <th width="20%">狀態碼</th>
-  <th>Description</th>
+  <th>描述</th>
   <tr>
     <td>200</td>
     <td>成功。</td>

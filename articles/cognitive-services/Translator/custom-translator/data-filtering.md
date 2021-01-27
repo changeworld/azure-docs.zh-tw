@@ -2,19 +2,19 @@
 title: 資料篩選 - 自訂翻譯
 titleSuffix: Azure Cognitive Services
 description: 當您提交要用於訓練自訂系統的文件時，文件會經歷一系列的處理和篩選步驟，準備進行訓練。
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 1076a4fe3a460fa07e061e9ec0ec41b088ec7eca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53dea20e356f735a521dec8c22edf8cb2aa7122d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88507258"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895861"
 ---
 # <a name="data-filtering"></a>資料篩選
 

@@ -8,12 +8,12 @@ ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 382adb36712fbf4bee83044c8b2d096223eb6269
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 20da05399eed4cb9c5a4b69a82b0b1e799997751
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630032"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880113"
 ---
 # <a name="download-blobs-from-azure-blob-storage-by-using-azcopy-v10"></a>使用 AzCopy v10 從 Azure Blob 儲存體下載 blob
 
@@ -143,7 +143,7 @@ ms.locfileid: "97630032"
 
 #### <a name="download-a-blob-snapshot"></a>下載 Blob 快照集
 
-您可以藉由參考 blob 快照集的 **日期時間** 值來下載 [blob 快照](/azure/storage/blobs/snapshots-overview)集。 
+您可以藉由參考 blob 快照集的 **日期時間** 值來下載 [blob 快照](../blobs/snapshots-overview.md)集。 
 
 |    |     |
 |--------|-----------|
@@ -158,7 +158,7 @@ ms.locfileid: "97630032"
 
 您可以使用選擇性旗標來調整您的下載作業。 以下是一些範例。
 
-|案例|旗標|
+|狀況|旗標|
 |---|---|
 |自動解壓縮檔案。|**--解壓縮**|
 |指定您希望複製相關記錄專案的詳細程度。|**--記錄層級** = \[警告 \| 錯誤 \| 資訊 \| 無\]|
@@ -166,7 +166,7 @@ ms.locfileid: "97630032"
 
 如需完整清單，請參閱 [選項](storage-ref-azcopy-copy.md#options)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在這些文章中尋找更多範例：
 

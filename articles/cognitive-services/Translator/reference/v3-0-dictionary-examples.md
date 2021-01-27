@@ -3,19 +3,19 @@ title: Translator Dictionary 範例方法
 titleSuffix: Azure Cognitive Services
 description: Translator Dictionary 範例方法提供的範例會示範如何在內容中使用字典中的詞彙。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 01/21/2020
-ms.author: swmachan
-ms.openlocfilehash: 1fe5a5669173733e3d0cf1b56b9997d15a3ff138
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.author: lajanuar
+ms.openlocfilehash: e7f0e106c1ca154dcd54990395430b3e0f6c536f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021298"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895504"
 ---
 # <a name="translator-30-dictionary-examples"></a>Translator 3.0：字典範例
 
@@ -33,7 +33,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
 
 在查詢字串上傳遞的要求參數為：
 
-| 查詢參數 | Description |
+| 查詢參數 | 描述 |
 | --------- | ----------- |
 | api-version <img width=200/> | **必要參數**。<br/>用戶端要求的 API 版本。 值必須為 `3.0`。 |
 | 從 | **必要參數**。<br/>指定輸入文字的語言。 來源語言必須是 `dictionary` 範圍內包含的[支援語言](./v3-0-languages.md)之一。 |
@@ -48,7 +48,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
 | Content-Length   | 必要的要求標頭。<br/>要求本文的長度。 |
 | X-ClientTraceId   | **選擇項**。<br/>用於識別唯一要求的 GUID，由用戶端產生。 若您使用名為 `ClientTraceId` 的查詢參數在查詢字串中包含追蹤識別碼，您就可以省略此標頭。 |
 
-## <a name="request-body"></a>Request body
+## <a name="request-body"></a>要求本文
 
 要求的本文是 JSON 陣列。 每個陣列元素都是具有下列屬性的 JSON 物件：
 

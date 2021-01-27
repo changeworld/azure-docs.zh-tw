@@ -2,18 +2,15 @@
 title: 針對 Azure 自動化共用資源的問題進行疑難排解
 description: 本文說明如何診斷並解決 Azure 自動化共用資源的問題。
 services: automation
-author: mgoedtel
-ms.author: magoedte
+ms.subservice: ''
 ms.date: 03/12/2019
-ms.topic: conceptual
-ms.service: automation
-manager: carmonm
-ms.openlocfilehash: c6bdc09d37cf29458346eaea360b4cd9e0d1226f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.topic: troubleshooting
+ms.openlocfilehash: c4ede0bffedc256f4af621d4945ebbbea0f8a4b6
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187161"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896286"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>針對共用資源問題進行疑難排解
 
@@ -33,7 +30,7 @@ ms.locfileid: "86187161"
 
 #### <a name="resolution"></a>解決方案
 
-若要解決此問題，您必須使用 [Remove-AzAutomationModule](/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) Cmdlet 移除停滯的模組。 您可以稍後再重試匯入模組。
+若要解決此問題，您必須使用 [Remove-AzAutomationModule](/powershell/module/Az.Automation/Remove-AzAutomationModule) Cmdlet 移除停滯的模組。 您可以稍後再重試匯入模組。
 
 ```azurepowershell-interactive
 Remove-AzAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
@@ -70,7 +67,7 @@ Azure modules are being updated
 * 結構不符合自動化所需的結構。
 * 模組相依於另一個尚未部署到您自動化帳戶的模組。
 * 模組在資料夾中遺失其相依性。
-* 您使用 [New-AzAutomationModule](/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) Cmdlet 來上傳模組，但未提供完整的儲存體路徑，或未使用可公開存取的 URL 來載入模組。
+* 您使用 [New-AzAutomationModule](/powershell/module/Az.Automation/New-AzAutomationModule) Cmdlet 來上傳模組，但未提供完整的儲存體路徑，或未使用可公開存取的 URL 來載入模組。
 
 #### <a name="resolution"></a>解決方案
 

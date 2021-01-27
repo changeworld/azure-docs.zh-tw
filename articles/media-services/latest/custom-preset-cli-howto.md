@@ -1,5 +1,5 @@
 ---
-title: 使用媒體服務 v3 編碼自訂轉換 Azure CLI |Microsoft Docs
+title: 使用媒體服務 v3 來編碼自訂轉換 Azure CLI
 description: 本主題說明如何使用 Azure 媒體服務 v3，以使用 Azure CLI 來編碼自訂轉換。
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: c61ac8c7cf85b1fae4c9b531f16b951dd2b80876
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9758ed7403e11ca30732377a65bbde1944368cb2
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295779"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897185"
 ---
 # <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>如何使用自訂轉換進行編碼-Azure CLI
 

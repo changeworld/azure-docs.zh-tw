@@ -1,25 +1,9 @@
 ---
-title: Azure 媒體服務 v3 中的即時事件和即時輸出概念
-titleSuffix: Azure Media Services
-description: 本主題概要說明 Azure 媒體服務 v3 中的即時事件和即時輸出。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: ne
-ms.topic: conceptual
-ms.date: 10/23/2020
-ms.author: inhenkel
-ms.openlocfilehash: a74dcb3cae74605e747a63f8fbb102404d8cc80e
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94741819"
+標題： Azure 媒體服務 v3 中的即時事件和即時輸出概念： Azure 媒體服務描述：本主題提供 Azure 媒體服務 v3 中即時事件和即時輸出的總覽。
+服務： media services documentationcenter： ' ' author： IngridAtMicrosoft manager： femila editor： ' '
+
+ms. 服務：媒體服務 ms. 工作負載：媒體 ms.tgt_pltfrm： na ms.devlang： ne ms。主題：概念 ms. 日期： 10/23/2020 ms. 作者： inhenkel
+
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>媒體服務中的即時活動和即時輸出
 
@@ -71,7 +55,7 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 
 ## <a name="creating-live-events"></a>建立實況活動
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 當您建立即時事件時，可以指定下列選項：
 
@@ -150,12 +134,12 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
     |---|---|---|
     |REST|[vanityUrl](/rest/api/media/liveevents/create#liveevent)|[LiveEventInput. accessToken](/rest/api/media/liveevents/create#liveeventinput)|
     |CLI|[--虛名-url](/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--存取權杖](/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
-    |.NET|[LiveEvent. VanityUrl](/dotnet/api/microsoft.azure.management.media.models.liveevent.md?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput. AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
+    |.NET|[LiveEvent. VanityUrl](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput. AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
 
 ### <a name="live-ingest-url-naming-rules"></a>即時內嵌 URL 命名規則
 
 * 下方的 *random* \(隨機\) 字串是 128 位元的十六進位數字 (由 32 個字元的 0-9 a-f 所組成)。
-* *您的存取權杖*：您在使用虛名模式時所設定的有效 GUID 字串。 例如 `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`。
+* *您的存取權杖*：您在使用虛名模式時所設定的有效 GUID 字串。 例如： `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"` 。
 * *資料流程名稱*：指出特定連接的資料流程名稱。 資料流程名稱值通常是由您所使用的即時編碼器所加入。 您可以設定即時編碼器使用任何名稱來描述連接，例如： "video1_audio1"、"video2_audio1"、"stream"。
 
 #### <a name="non-vanity-url"></a>非虛名 URL

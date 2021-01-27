@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: e58cbef74aa9b6f58207abf780fd63176d5edd7d
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 552d2587f35ed391b470c6d5b1693b79fd57306b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680918"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879573"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>使用適用于 Azure 資源的受控識別來授權 blob 和佇列資料的存取
 
@@ -171,4 +171,4 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 - [使用 AZURE RBAC 管理儲存體資料的存取權限](./storage-auth-aad-rbac-portal.md)。
 - 搭配[使用 Azure AD 與儲存體應用程式](storage-auth-aad-app.md)。
 - [使用 Azure AD 認證來執行 PowerShell 命令以存取 blob 資料](../blobs/authorize-data-operations-powershell.md)
-- [教學課程：使用受控 identies 從 App Service 存取儲存體](/azure/app-service/scenario-secure-app-access-storage)
+- [教學課程：使用受控 identies 從 App Service 存取儲存體](../../app-service/scenario-secure-app-access-storage.md)

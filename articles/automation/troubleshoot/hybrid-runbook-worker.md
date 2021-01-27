@@ -2,19 +2,15 @@
 title: 針對 Azure 自動化混合式 Runbook 背景工作角色問題進行疑難排解
 description: 本文說明如何針對 Azure 自動化混合式 Runbook 背景工作角色進行疑難排解並解決發生的問題。
 services: automation
-ms.service: automation
 ms.subservice: ''
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/25/2019
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 1386dd820b10b63862ddab38c441f251bea1d83d
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.topic: troubleshooting
+ms.openlocfilehash: 214501c447632232dc00b61643ea21083bd0e4ac
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428401"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896489"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>針對混合式 Runbook 背景工作角色問題進行疑難排解
 
@@ -46,7 +42,7 @@ Runbook 在嘗試執行三次後會立即暫停。 在某些情況下，Runbook 
 
 #### <a name="resolution"></a>解決方案
 
-確認電腦的輸出存取埠443上的** \* azure-automation.net** 。
+確認電腦的輸出存取埠443上的 **\* azure-automation.net** 。
 
 執行混合式 Runbook 背景工作角色的電腦應滿足最低硬體需求，您才能設定背景工作角色來裝載這項功能。 Runbook 及其所使用的背景處理序可能會導致系統超用，造成 Runbook 作業延遲或逾時。
 
@@ -58,7 +54,7 @@ Runbook 在嘗試執行三次後會立即暫停。 在某些情況下，Runbook 
 
 #### <a name="issue"></a>問題
 
-混合式 Runbook 背景工作角色收到事件 15011，表示查詢結果無效。 當背景工作角色嘗試開啟與 [SignalR 伺服器](/aspnet/core/signalr/introduction?view=aspnetcore-3.1)的連線時，會出現下列錯誤。
+混合式 Runbook 背景工作角色收到事件 15011，表示查詢結果無效。 當背景工作角色嘗試開啟與 [SignalR 伺服器](/aspnet/core/signalr/introduction)的連線時，會出現下列錯誤。
 
 ```error
 [AccountId={c7d22bd3-47b2-4144-bf88-97940102f6ca}]
@@ -114,7 +110,7 @@ At line:3 char:1
 
 #### <a name="resolution"></a>解決方案
 
-如果混合式 Runbook 背景工作角色是 Azure VM，則可改用[使用 Runbook 驗證搭配受控識別](../automation-hrw-run-runbooks.md#runbook-auth-managed-identities)。 此案例可供使用 Azure VM 的受控識別來向 Azure 資源進行驗證，而非使用執行身分帳戶，藉此簡化驗證。 當混合式 Runbook 背景工作角色是內部部署電腦時，您必須在該電腦上安裝執行身分帳戶憑證。 若要了解如何安裝憑證，請參閱[在混合式 Runbook 背景工作角色上執行 Runbook](../automation-hrw-run-runbooks.md)中的步驟，以執行 PowerShell Runbook **Export-RunAsCertificateToHybridWorker**。
+如果混合式 Runbook 背景工作角色是 Azure VM，則可改用[使用 Runbook 驗證搭配受控識別](../automation-hrw-run-runbooks.md#runbook-auth-managed-identities)。 此案例可供使用 Azure VM 的受控識別來向 Azure 資源進行驗證，而非使用執行身分帳戶，藉此簡化驗證。 當混合式 Runbook 背景工作角色是內部部署電腦時，您必須在該電腦上安裝執行身分帳戶憑證。 若要了解如何安裝憑證，請參閱 [在混合式 Runbook 背景工作角色上執行 Runbook](../automation-hrw-run-runbooks.md)中的步驟，以執行 PowerShell Runbook **Export-RunAsCertificateToHybridWorker**。
 
 ### <a name="scenario-error-403-during-registration-of-a-hybrid-runbook-worker"></a><a name="error-403-on-registration"></a>案例：在混合式 Runbook 背景工作角色註冊期間發生錯誤 403
 
@@ -222,15 +218,15 @@ Windows 混合式 Runbook 背景工作角色仰賴[適用於 Windows 的 Log Ana
 
 #### <a name="issue"></a>問題
 
-在**應用程式和服務記錄\Operations Manager** 事件記錄檔中，您會看到事件 4502，以及包含下列描述的 `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` 事件訊息：<br>`The certificate presented by the service \<wsid\>.oms.opinsights.azure.com was not issued by a certificate authority used for Microsoft services. Please contact your network administrator to see if they are running a proxy that intercepts TLS/SSL communication.`
+在 **應用程式和服務記錄\Operations Manager** 事件記錄檔中，您會看到事件 4502，以及包含下列描述的 `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` 事件訊息：<br>`The certificate presented by the service \<wsid\>.oms.opinsights.azure.com was not issued by a certificate authority used for Microsoft services. Please contact your network administrator to see if they are running a proxy that intercepts TLS/SSL communication.`
 
 #### <a name="cause"></a>原因
 
-此問題是因 Proxy 或網路防火牆封鎖 Microsoft Azure 的通訊所引起。 確認電腦的輸出存取埠443上的** \* azure-automation.net** 。
+此問題是因 Proxy 或網路防火牆封鎖 Microsoft Azure 的通訊所引起。 確認電腦的輸出存取埠443上的 **\* azure-automation.net** 。
 
 #### <a name="resolution"></a>解決方案
 
-記錄儲存每一個混合式背景工作角色本機的 C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes 中。 您可在**應用程式和服務記錄\Microsoft-SMA\Operations** 與**應用程式和服務記錄\Operations Manager** 事件記錄檔確認是否有任何警告或錯誤事件。 這些記錄檔表示連線能力或其他類型的問題會影響為 Azure 自動化啟用角色，或在正常作業下發生的問題。 如需針對 Log Analytics 代理程式問題進行疑難排解的其他協助，請參閱[針對 Log Analytics Windows 代理程式的問題進行疑難排解](../../azure-monitor/platform/agent-windows-troubleshoot.md)。
+記錄儲存每一個混合式背景工作角色本機的 C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes 中。 您可在 **應用程式和服務記錄\Microsoft-SMA\Operations** 與 **應用程式和服務記錄\Operations Manager** 事件記錄檔確認是否有任何警告或錯誤事件。 這些記錄檔表示連線能力或其他類型的問題會影響為 Azure 自動化啟用角色，或在正常作業下發生的問題。 如需針對 Log Analytics 代理程式問題進行疑難排解的其他協助，請參閱[針對 Log Analytics Windows 代理程式的問題進行疑難排解](../../azure-monitor/platform/agent-windows-troubleshoot.md)。
 
 混合式背景工作角色會將 [Runbook 輸出和訊息](../automation-runbook-output-and-messages.md)傳送至 Azure 自動化，其方式與在雲端中執行 Runbook 作業傳送輸出和訊息的方式相同。 您可透過如同在 Runbook 中所執行的步驟來啟用 [詳細資訊] 和 [進度] 資料流。
 
@@ -238,7 +234,7 @@ Windows 混合式 Runbook 背景工作角色仰賴[適用於 Windows 的 Log Ana
 
 #### <a name="issue"></a>問題
 
-在 Windows 混合式 Runbook 背景工作角色上執行的腳本無法如預期般連接到 Orchestrator 沙箱上的 Microsoft 365。 此指令碼會使用 [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) 來進行連線。 
+在 Windows 混合式 Runbook 背景工作角色上執行的腳本無法如預期般連接到 Orchestrator 沙箱上的 Microsoft 365。 此指令碼會使用 [Connect-MsolService](/powershell/module/msonline/connect-msolservice) 來進行連線。 
 
 如果調整 **Orchestrator.Sandbox.exe.config** 來設定 Proxy 和略過清單，則仍然無法正確連線到沙箱。 具有相同 Proxy 和略過清單設定的 **Powershell_ise.exe.config** 檔案或許能提供協助。 Service Management Automation (SMA) 記錄檔和 PowerShell 記錄檔不會提供關於 Proxy 的任何資訊。
 
@@ -250,7 +246,7 @@ Windows 混合式 Runbook 背景工作角色仰賴[適用於 Windows 的 Log Ana
 
 您可藉由移轉指令碼，以使用 Azure Active Directory 模組，而非 PowerShell Cmdlet 的 MSOnline 模組來解決 Orchestrator 沙箱問題。 如需詳細資訊，請參閱[從 Orchestrator 移轉至 Azure 自動化 (搶鮮版 (Beta))](../automation-orchestrator-migration.md)。
 
-如果想要繼續使用 MSOnline 模組 Cmdlet，請將指令碼變更為使用 [Invoke-Command](/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7)。 指定 `ComputerName` 和 `Credential` 參數的值。 
+如果想要繼續使用 MSOnline 模組 Cmdlet，請將指令碼變更為使用 [Invoke-Command](/powershell/module/microsoft.powershell.core/invoke-command)。 指定 `ComputerName` 和 `Credential` 參數的值。 
 
 ```powershell
 $Credential = Get-AutomationPSCredential -Name MyProxyAccessibleCredential
@@ -339,7 +335,7 @@ Failed to deregister worker. [response_status=404]
 
 1. 移除代理程式 `sudo sh onboard_agent.sh --purge` 。
 
-1. 執行以下命令：
+1. 執行下列命令：
 
    ```
    sudo mv -f /home/nxautomation/state/worker.conf /home/nxautomation/state/worker.conf_old

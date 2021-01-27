@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒體服務串流視訊檔案 - .NET | Microsoft Docs
+title: 使用 Azure 媒體服務來串流影片檔案-.NET
 description: 按照本教學課程的步驟，使用 .NET 來建立新的 Azure 媒體服務帳戶、對檔案進行編碼，然後將其串流到 Azure 媒體播放器。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 530089b9c6b9544201b0f07368cac3d1a695a4f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
+ms.openlocfilehash: dc6b240a2d97e0b4aa313f858b3965f241dd0b08
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268684"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898184"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>教學課程：編碼以 URL 為基礎的遠端檔案及串流處理影片 - .NET
 
@@ -53,12 +53,12 @@ ms.locfileid: "91268684"
 
 此範例會執行下列動作：
 
-1. 建立**轉換** (首先，檢查指定的轉換是否存在)。 
-2. 建立輸出**資產**，以作為編碼**作業**的輸出。
-3. 建立以 HTTPS URL 為基礎的**作業**輸入。
-4. 使用稍早建立的輸入和輸出提交編碼**作業**。
+1. 建立 **轉換** (首先，檢查指定的轉換是否存在)。 
+2. 建立輸出 **資產**，以作為編碼 **作業** 的輸出。
+3. 建立以 HTTPS URL 為基礎的 **作業** 輸入。
+4. 使用稍早建立的輸入和輸出提交編碼 **作業**。
 5. 檢查作業的狀態。
-6. 建立**串流定位器**。
+6. 建立 **串流定位器**。
 7. 建置串流 URL。
 
 如需範例中的每個函式作用的相關說明，請檢查程式碼並查看[這個原始程式檔](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) \(英文\) 中的註解。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: d323af2695a41e685e722c98603cf5df09866a15
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 152fee2e4e72cee6a7bc1c768c0a8ca7b031ec39
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567913"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878913"
 ---
 # <a name="connect-your-salesforce-service-cloud-to-azure-sentinel"></a>將您的 Salesforce 服務雲端連接到 Azure Sentinel
 
@@ -31,13 +31,13 @@ ms.locfileid: "98567913"
 > [!NOTE]
 > 資料會儲存在您執行 Azure Sentinel 之工作區的地理位置。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - 您必須擁有 Azure Sentinel 工作區的 [讀取] 和 [寫入] 許可權。
 
 - 您必須具有工作區共用金鑰的讀取權限。 [深入瞭解工作區金鑰](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)。
 
-- 您必須具備 Azure Functions 的讀取和寫入權限，才能建立函數應用程式。 [深入瞭解 Azure Functions](/azure/azure-functions/)。
+- 您必須具備 Azure Functions 的讀取和寫入權限，才能建立函數應用程式。 [深入瞭解 Azure Functions](../azure-functions/index.yml)。
 
 - 您必須具有下列 Salesforce REST API 認證： **SALESFORCE Api 使用者名稱**、 **salesforce api 密碼**、 **salesforce 安全性權杖**、 **Salesforce 取用者金鑰**、 **salesforce 取用者秘密**。 [深入瞭解 Salesforce REST API](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/quickstart.htm)。
 

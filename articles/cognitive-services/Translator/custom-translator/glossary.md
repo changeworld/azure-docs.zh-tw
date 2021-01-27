@@ -2,25 +2,25 @@
 title: 詞彙 - 自訂翻譯工具
 titleSuffix: Azure Cognitive Services
 description: 當您瞭解如何使用服務時，自訂翻譯詞彙將協助您瞭解文章中使用的詞彙。
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: reference
-ms.openlocfilehash: 67af6ab9ae5c60ee8291f38ea58b3b3d9744dbc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4043eb83e931184371bdf4e0bcdcf4c874262d99
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88506646"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895810"
 ---
 # <a name="custom-translator-glossary"></a>自訂翻譯工具詞彙
 
 [自訂翻譯工具](https://portal.customtranslator.azure.ai)詞彙說明使用自訂翻譯工具時可能遇到的字詞。
 
-| **單字或片語**       | **[定義]**                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| **單字或片語**       | **定義**                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 來源語言          | 來源語言是指要轉換成另一種語言 (「目標」) 的原始語言。                                                                                                                                                                                                                                                                                                                                                         |
 | 目標語言          | 目標語言是指您要讓機器翻譯在接收到來源語言後提供的語言。                                                                                                                                                                                                                                                                                                                                               |

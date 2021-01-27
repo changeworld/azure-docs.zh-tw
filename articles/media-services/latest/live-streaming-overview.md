@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒體服務 v3 的即時串流總覽 |Microsoft Docs
+title: 使用 Azure 媒體服務 v3 的即時串流總覽
 description: 本文提供使用 Azure 媒體服務 v3 進行即時串流的概觀。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 3f9fc9fd1bacce8733949969b496dc03d6c10901
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: ad3a14cff13395f4d59ab2ed59ae1cc26eaad866
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695812"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896777"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒體服務 v3 進行即時串流
 

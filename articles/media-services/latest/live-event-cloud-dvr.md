@@ -1,6 +1,5 @@
 ---
 title: 使用時間變化和即時輸出來建立隨選影片播放
-titleSuffix: Azure Media Services
 description: 本文說明如何使用時間變動和即時輸出來記錄即時資料流，以及建立隨選播放。
 services: media-services
 documentationcenter: ''
@@ -14,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 11485ebac449cbde0a4f31e2a099a153476577b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5b475f15a5dc751de154965e3d1e78a85fbd4c9
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89289506"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897861"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>使用時間變化和即時輸出來建立隨選影片播放
 

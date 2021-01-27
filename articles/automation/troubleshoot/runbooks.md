@@ -2,16 +2,16 @@
 title: 針對 Azure 自動化 Runbook 問題進行疑難排解
 description: 此文章說明如何針對 Azure 自動化 Runbook 問題進行疑難排解及解決問題。
 services: automation
+ms.subservice: ''
 ms.date: 11/03/2020
-ms.topic: conceptual
-ms.service: automation
+ms.topic: troubleshooting
 ms.custom: has-adal-ref
-ms.openlocfilehash: c7ab093f601ebcd33d184b9a9008f9de447534a1
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 116677354009c538eece02184d801cfda11574a0
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368078"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896303"
 ---
 # <a name="troubleshoot-runbook-issues"></a>針對 Runbook 問題進行疑難排解
 
@@ -147,15 +147,15 @@ Run Login-AzureRMAccount to login.
 
 如果您正嘗試存取另一個訂用帳戶中的資源，請遵循下列步驟來設定權限：
 
-1. 移至自動化執行身分帳戶，然後複製 **應用程式識別碼** 和 **指紋** 。
+1. 移至自動化執行身分帳戶，然後複製 **應用程式識別碼** 和 **指紋**。
 
     ![複製應用程式識別碼和指紋](../media/troubleshoot-runbooks/collect-app-id.png)
 
-1. 移至訂用帳戶的 **存取控制** ，自動化帳戶「不會」裝載於其中，並新增角色指派。
+1. 移至訂用帳戶的 **存取控制**，自動化帳戶「不會」裝載於其中，並新增角色指派。
 
     ![存取控制](../media/troubleshoot-runbooks/access-control.png)
 
-1. 新增先前收集到的 **應用程式識別碼** 。 選取 [參與者] 權限。
+1. 新增先前收集到的 **應用程式識別碼**。 選取 [參與者] 權限。
 
     ![新增角色指派](../media/troubleshoot-runbooks/add-role-assignment.png)
 

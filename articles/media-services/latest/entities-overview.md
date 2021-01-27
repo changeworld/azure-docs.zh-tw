@@ -1,6 +1,5 @@
 ---
 title: 媒體服務實體的篩選、排序和分頁
-titleSuffix: Azure Media Services
 description: 了解 Azure 媒體服務 v3 實體的篩選、排序和分頁。
 services: media-services
 documentationcenter: ''
@@ -13,12 +12,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 9a8cff3685cdaad011332adf58dc76f74976cd44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
+ms.openlocfilehash: 50f562927fcbcf66ca7006ac2d100520311ac917
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89300182"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897878"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>媒體服務實體的篩選、排序和分頁
 
@@ -87,7 +86,7 @@ GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000
 >
 > 只有在有一頁以上的實體時，才會顯示 `nextLink` 值。
 
-請參考下列使用 `$skiptoken` 的範例。 請務必將 amstestaccount** 取代為您的帳戶名稱，並將 api-version** 值設為最新版本。
+請參考下列使用 `$skiptoken` 的範例。 請務必將 amstestaccount 取代為您的帳戶名稱，並將 api-version 值設為最新版本。
 
 如果您要求的資產清單如下：
 

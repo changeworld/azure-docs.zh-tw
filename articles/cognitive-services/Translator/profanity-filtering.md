@@ -3,19 +3,19 @@ title: 不雅內容篩選-Translator
 titleSuffix: Azure Cognitive Services
 description: 使用「不雅內容篩選」來判斷在您的 Azure 認知服務翻譯工具中，文字轉譯的不雅內容層級。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.author: swmachan
-ms.openlocfilehash: 7ebfe766e6362a3f62e70db8bf2dcae370aceee3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: lajanuar
+ms.openlocfilehash: 9f389d669e69dbfa6ec6d4d0b4716d2367443f17
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83996154"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896794"
 ---
 # <a name="add-profanity-filtering-with-the-translator"></a>使用翻譯工具新增不雅內容篩選
 
@@ -32,6 +32,6 @@ Translator 服務通常會在翻譯中保留存在於來源中的粗話。 粗�
 | Marked | 不雅單字會以 \<profanity> XML 標記括住 ... \</profanity> | 彼は変態です。 | 他是 \<profanity> 直覺式 \</profanity> 。 |
 | 已刪除 | 將會從輸出中移除不雅單字，而不予以取代。 | 彼は。 | He is a. |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 > [!div class="nextstepaction"]
 > [使用翻譯工具呼叫套用不雅內容篩選](reference/v3-0-translate.md)

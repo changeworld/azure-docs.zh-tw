@@ -3,14 +3,14 @@ title: 設定 Azure 備份報告
 description: 使用 Log Analytics 和 Azure 活頁簿來設定及檢視 Azure 備份的報告
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 2565fa1183635c10e45b247f723788b6fe371c14
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 39d1aa17c5e92eccd34013738937e49890109561
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325242"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897270"
 ---
-# <a name="configure-azure-backup-reports"></a>設定 Azure 備份報告
+# <a name="configure-azure-backup-reports-preview"></a>設定 Azure 備份報表 (預覽) 
 
 備份管理員的常見需求是根據長期資料來取得備份的見解。 這類解決方案的使用案例包括：
 

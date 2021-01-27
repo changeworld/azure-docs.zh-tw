@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 01ceb067f589ef04b04ff0bf05e2971ee30f407c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 484dad65310efaa60e8744b2f122b5e44ae13565
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400155"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880147"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>合作夥伴 VPN 裝置設定的概觀
 本文提供設定連線到 Azure VPN 閘道之內部部署 VPN 裝置的概觀。 範例 Azure 虛擬網路和 VPN 閘道安裝程式是用來以相同參數連線到不同的內部部署 VPN 裝置設定。
@@ -27,12 +27,12 @@ Azure VPN 閘道會針對站對站 (S2S) VPN 通道使用標準的 IPsec/IKE 通
 
 ![單一 S2S VPN 通道的圖表](./media/vpn-gateway-3rdparty-device-config-overview/singletunnel.png)
 
-如需設定單一 VPN 通道的逐步指示，請參閱[設定站對站連線](vpn-gateway-howto-site-to-site-resource-manager-portal.md)。 下列章節指定範例設定的連線參數，並且提供 PowerShell 指令碼以協助您開始使用。
+如需設定單一 VPN 通道的逐步指示，請參閱[設定站對站連線](./tutorial-site-to-site-portal.md)。 下列章節指定範例設定的連線參數，並且提供 PowerShell 指令碼以協助您開始使用。
 
 ### <a name="connection-parameters"></a>連線參數
 本節列出先前章節所述之範例的參數。
 
-| **參數**                | **ReplTest1**                    |
+| **參數**                | **值**                    |
 | ---                          | ---                          |
 | 虛擬網路位址首碼        | 10.11.0.0/16<br>10.12.0.0/16 |
 | Azure VPN 閘道 IP         | Azure VPN 閘道 IP         |
@@ -150,4 +150,3 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG
 
 ## <a name="next-steps"></a>後續步驟
 如需設定主動-主動 VPN 閘道的逐步指示，請參閱[設定跨單位和 VNet 對 VNet 連線的主動-主動 VPN 閘道](vpn-gateway-activeactive-rm-powershell.md)。
-

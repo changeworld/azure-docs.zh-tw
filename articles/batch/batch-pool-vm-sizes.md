@@ -4,12 +4,12 @@ description: 如何針對 Azure Batch 集區中的計算節點，從可用的 VM
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8bb54a4db62f56f442f7cec81e6768241a05ffee
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 59218361c5fff51b33131fdd2455c599dd12b06a
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95895225"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897488"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>選擇 Azure Batch 集區中計算節點的 VM 大小和映射
 
@@ -31,44 +31,42 @@ ms.locfileid: "95895225"
 | 基本 A | Basic_A0 (A0)「以外」的所有大小 |
 | A | Standard_A0「以外」的所有大小 |
 | Av2 | 所有大小 |
-| B | 不受支援 |
-| DC | 不受支援 |
+| B | 不支援 |
+| DC | 不支援 |
 | Dv2、DSv2 | 所有大小 |
 | Dv3、Dsv3 | 所有大小 |
-| Dav4<sup>1</sup> | 所有大小 |
-| Dasv4<sup>1</sup> | 所有大小 |
+| Dav4 | 所有大小 |
+| Dasv4 | 所有大小 |
 | Ddv4, Ddsv4 |  所有大小 |
-| Dv4, Dsv4 | 不受支援 |
+| Dv4, Dsv4 | 不支援 |
 | Ev3、Esv3 | 所有大小（E64is_v3 除外） |
-| Eav4<sup>1</sup> | 所有大小 |
-| Easv4<sup>1</sup> | 所有大小 |
+| Eav4 | 所有大小 |
+| Easv4 | 所有大小 |
 | Edv4, Edsv4 |  所有大小 |
-| Ev4, Esv4 | 不受支援 |
+| Ev4, Esv4 | 不支援 |
 | F、Fs | 所有大小 |
 | Fsv2 | 所有大小 |
 | G、Gs | 所有大小 |
 | H | 所有大小 |
-| HB<sup>1</sup> | 所有大小 |
-| HBv2<sup>1</sup> | 所有大小 |
-| HC<sup>1</sup> | 所有大小 |
+| HB | 所有大小 |
+| HBv2 | 所有大小 |
+| Hc | 所有大小 |
 | Ls | 所有大小 |
-| Lsv2<sup>1</sup> | 所有大小 |
-| M<sup>1</sup> | 所有大小 |
-| Mv2<sup>1、2</sup> | 所有大小 |
+| Lsv2 | 所有大小 |
+| M | 所有大小 |
+| Mv2<sup>1</sup> | 所有大小 |
 | NC | 所有大小 |
-| NCv2<sup>1</sup> | 所有大小 |
-| NCv3<sup>1</sup> | 所有大小 |
+| NCv2 | 所有大小 |
+| NCv3 | 所有大小 |
 | NCasT4_v3 | 無 - 尚未提供 |
-| ND<sup>1</sup> | 所有大小 |
-| NDv2<sup>1</sup> | 無 - 尚未提供 |
+| ND | 所有大小 |
+| NDv2 | 無 - 尚未提供 |
 | NV | 所有大小 |
-| NVv3<sup>1</sup> | 所有大小 |
-| NVv4<sup>1</sup> | 所有大小 |
-| SAP HANA | 不受支援 |
+| NVv3 | 所有大小 |
+| NVv4 | 所有大小 |
+| SAP HANA | 不支援 |
 
-<sup>1</sup> 您可以在虛擬機器設定的 batch 集區中配置這些 VM 系列，但您必須建立新的 Batch 帳戶，並要求增加特定的 [配額](batch-quota-limit.md#increase-a-quota)。 一旦 Batch 帳戶完全支援每個 VM 系列的 vCPU 配額，就會移除這項限制。
-
-<sup>2</sup> 這些 vm 系列只能搭配第2代 vm 映射使用。
+<sup>1</sup> 這些 vm 系列只能搭配第2代 vm 映射使用。
 
 ### <a name="using-generation-2-vm-images"></a>使用第2代 VM 映射
 

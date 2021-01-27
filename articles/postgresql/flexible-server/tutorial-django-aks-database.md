@@ -7,12 +7,12 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 12/10/2020
 ms.custom: mvc
-ms.openlocfilehash: 15e94b647b0f12baceffc60ad1c6ab81cc84cf22
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
-ms.translationtype: HT
+ms.openlocfilehash: b4aa23079661150f40b39ff65117b7f4229a67e2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631936"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880890"
 ---
 # <a name="tutorial-deploy-django-app-on-aks-with-azure-database-for-postgresql---flexible-server"></a>教學課程：使用「適用於 PostgreSQL 的 Azure 資料庫 - 彈性伺服器」在 AKS 上部署 Django
 
@@ -109,7 +109,7 @@ aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 ```
 
 ## <a name="create-an-azure-database-for-postgresql---flexible-server"></a>建立適用於 PostgreSQL 的 Azure 資料庫 - 彈性伺服器
-使用 [az postgreSQL flexible-server create](/azure/postgresql/flexible-server?view=azure-cli-latest&preserve-view=true) 命令建立彈性伺服器。 下列命令會使用服務預設值和 Azure CLI 的本機內容值，建立伺服器：
+使用 [az postgreSQL flexible-server create](./index.yml?preserve-view=true&view=azure-cli-latest) 命令建立彈性伺服器。 下列命令會使用服務預設值和 Azure CLI 的本機內容值，建立伺服器：
 
 ```azurecli-interactive
 az postgres flexible-server create --public-access <YOUR-IP-ADDRESS>

@@ -4,15 +4,15 @@ description: 若要在 Azure 中建立高度可用且具有恢復功能的應用
 author: cynthn
 ms.service: azure
 ms.topic: article
-ms.date: 12/17/2020
+ms.date: 01/26/2021
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 2a2e4ac57eec866d9857f564d6c76ad4a775d223
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5883dc8b34cd1aa00ba1c5de25a09a017a130c0a
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874603"
+ms.locfileid: "98896879"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>支援可用性區域的 Azure 服務
 
@@ -58,7 +58,7 @@ Microsoft Azure 的全域基礎結構是在每個層級設計和建立的，可�
 | 美國西部 2        |                |                      |                     |                |
 
 
-若要深入瞭解這些區域中的可用性區域和可用服務支援，請洽詢您的 Microsoft 銷售或客戶代表。 針對即將支援可用性區域的即將推出區域，請參閱 [Azure 地理](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)位置。
+\* 若要深入瞭解這些區域中的可用性區域和可用服務支援，請洽詢您的 Microsoft 銷售或客戶代表。 針對即將支援可用性區域的即將推出區域，請參閱 [Azure 地理](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)位置。
 
 
 ## <a name="azure-services-supporting-availability-zones"></a>支援可用性區域的 Azure 服務

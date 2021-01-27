@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: eb71de223e2d840e0caa0444b837e16e1f091414
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f0f9832a8128a447970535f18cceca3cd4dccc69
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484782"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880248"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure 儲存體分析記錄
 
@@ -204,7 +204,7 @@ queueClient.SetServiceProperties(serviceProperties);
 azcopy copy 'https://mystorageaccount.blob.core.windows.net/$logs/queue' 'C:\Logs\Storage' --include-path '2014/05/20/09;2014/05/20/10;2014/05/20/11' --recursive
 ```
 
-若要深入了解如何下載特定檔案，請參閱[下載特定檔案](./storage-use-azcopy-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#download-specific-files) \(部分機器翻譯\)。
+若要深入了解如何下載特定檔案，請參閱[下載特定檔案](./storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#transfer-data) \(部分機器翻譯\)。
 
 當您下載記錄資料後，即可檢視檔案中的記錄項目。 這些記錄檔會使用分隔的文字格式，許多記錄讀取工具都可以剖析 (如需詳細資訊，請參閱 [Microsoft Azure 儲存體) 的監視、診斷和疑難排解](storage-monitoring-diagnosing-troubleshooting.md) 指南。 不同的工具有不同的功能可格式化、篩選、排序及搜尋記錄檔的內容。 如需儲存體記錄的記錄檔格式和內容的詳細資訊，請參閱[儲存體分析記錄格式](/rest/api/storageservices/storage-analytics-log-format)和[儲存體分析記錄作業和狀態訊息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。
 

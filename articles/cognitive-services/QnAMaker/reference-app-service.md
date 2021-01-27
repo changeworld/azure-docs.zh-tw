@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/9/2020
-ms.openlocfilehash: e7dfc6db50432b19d515671fabe26edf9cfb45ef
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c35306d3e0d874218b9ea03fbfeaaff722eacf76
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345663"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896455"
 ---
 # <a name="service-configuration"></a>服務設定
 
@@ -34,6 +34,7 @@ QnA Maker 使用 App Service 來提供 [GENERATEANSWER API](/rest/api/cognitives
 |UserAppInsightsAppId|聊天記錄和遙測|
 |UserAppInsightsKey|聊天記錄和遙測|
 |UserAppInsightsName|聊天記錄和遙測|
+|QNAMAKER_EXTENSION_VERSION|一律設定為 _最新_。 這項設定會初始化 App Service 中的 QnAMaker 網站擴充功能。|
 
 完成變更之後，您必須從 Azure 入口網站的 [**總覽**] 頁面 **重新開機** 服務。
 
