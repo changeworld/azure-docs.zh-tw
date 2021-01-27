@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: b1f1b58e9cce061aaa313457ec43256a766e3a2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2744c2a082b5321fb671de08301981fd17396640
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87281968"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879083"
 ---
 # <a name="azcopy-jobs-remove"></a>azcopy 作業移除
 
@@ -29,7 +29,7 @@ azcopy jobs remove [jobID] [flags]
 ## <a name="related-conceptual-articles"></a>相關的概念文章
 
 - [開始使用 AzCopy](storage-use-azcopy-v10.md)
-- [使用 AzCopy 和 Blob 儲存體傳輸資料](storage-use-azcopy-blobs.md)
+- [使用 AzCopy 和 Blob 儲存體傳輸資料](./storage-use-azcopy-v10.md#transfer-data)
 - [使用 AzCopy 和檔案儲存體傳輸資料](storage-use-azcopy-files.md) (機器翻譯)
 - [對 AzCopy 進行設定、最佳化及疑難排解](storage-use-azcopy-configure.md)
 
@@ -47,7 +47,7 @@ azcopy jobs remove [jobID] [flags]
 
 **--cap-mbps float**      以每秒 mb 數為單位的傳輸速率上限。 時間的輸送量可能會與端點稍有不同。 如果此選項設定為零，或省略，則輸送量不會有上限。
 
-**--** 命令輸出的輸出類型字串格式。 選項包括： text、json。 預設值為 `text`。  (預設 `text`) 
+**--** 命令輸出的輸出類型字串格式。 選項包括： text、json。 預設值是 `text`。  (預設 `text`) 
 
 **--受信任-microsoft 尾碼** 字串指定可能傳送 Azure Active Directory 登入權杖的其他網域尾碼。  預設值為 '*. core.windows.net;*。core.chinacloudapi.cn;*. core.cloudapi.de;*。core.usgovcloudapi.net '。 此處所列的任何一種都會新增至預設值。 基於安全性，您應該只在這裡放置 Microsoft Azure 網域。 以分號分隔多個專案。
 

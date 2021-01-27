@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 7ffb16936ec96f30ad7d8e05babbadb85e01a71e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57970371b947c5240be97e58c10299d2f4dfe525
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87281934"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879066"
 ---
 # <a name="azcopy-jobs-show"></a>azcopy 作業顯示
 
@@ -34,20 +34,20 @@ azcopy jobs show [jobID] [flags]
 ## <a name="related-conceptual-articles"></a>相關的概念文章
 
 - [開始使用 AzCopy](storage-use-azcopy-v10.md)
-- [使用 AzCopy 和 Blob 儲存體傳輸資料](storage-use-azcopy-blobs.md)
+- [使用 AzCopy 和 Blob 儲存體傳輸資料](./storage-use-azcopy-v10.md#transfer-data)
 - [使用 AzCopy 和檔案儲存體傳輸資料](storage-use-azcopy-files.md) (機器翻譯)
 - [對 AzCopy 進行設定、最佳化及疑難排解](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>選項。
 
-|選項|說明|
+|選項|描述|
 |--|--|
 |-h, --help|顯示顯示命令的說明內容。|
 |--with-status 字串|只列出具有此狀態的作業傳輸，可用的值：已啟動、成功、失敗|
 
 ## <a name="options-inherited-from-parent-commands"></a>繼承自父命令的選項
 
-|選項|說明|
+|選項|描述|
 |---|---|
 |--cap-mbps float|以每秒 mb 數為單位的傳輸速率上限。 時間的輸送量可能會與端點稍有不同。 如果此選項設定為零，或省略，則輸送量不會有上限。|
 |--output 類型字串|命令輸出的格式。 選項包括： text、json。 預設值為 "text"。|

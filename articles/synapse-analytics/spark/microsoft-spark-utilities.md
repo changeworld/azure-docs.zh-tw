@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: c681195a60329320b875cc06919e9440b65eb9e5
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: d2e9e306e979f569819568650b25d49278997ede
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120235"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878522"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Microsoft Spark 公用程式簡介
 
@@ -33,13 +33,17 @@ Synapse 管線會使用 (MSI) 的工作區身分識別來存取儲存體帳戶�
 1. 開啟 [Azure 入口網站](https://portal.azure.com/) 以及您想要存取的儲存體帳戶。 您可以流覽至您想要存取的特定容器。
 2. 從左面板中選取 [ **存取控制] (IAM)** 。
 3. 將 **您的 Azure AD 帳戶** 和 **工作區身分識別** (與您的工作區名稱相同) 至儲存體帳戶上的 **儲存體 Blob 資料參與者** 角色（如果尚未指派）。 
-4. 選取 [儲存]  。
+4. 選取 [儲存]。
 
 您可以透過下列 URL 使用 Synapse Spark 存取 ADLS Gen2 上的資料：
 
 <code>abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/<path></code>
 
-### <a name="configure-access-to-azure-blob-storage"></a>設定 Azure Blob 儲存體的存取權 
+<!-- ### Configure access to Azure Blob Storage  -->
+
+:::zone pivot = "programming-language-python"
+
+### <a name="configure-access-to-azure-blob-storage"></a>設定 Azure Blob 儲存體的存取權  
 
 Synapse 利用 **(SAS) 的共用存取** 簽章來存取 Azure Blob 儲存體。 為了避免在程式碼中公開 SAS 金鑰，建議您在 Synapse 工作區中建立新的連結服務，以存取您想要存取的 Azure Blob 儲存體帳戶。
 
@@ -58,9 +62,6 @@ Synapse 利用 **(SAS) 的共用存取** 簽章來存取 Azure Blob 儲存體。
 <code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
 
 以下是程式碼範例：
-
-
-:::zone pivot = "programming-language-python"
 
 ```python
 from pyspark.sql import SparkSession
@@ -85,6 +86,26 @@ print('Remote blob path: ' + wasb_path)
 
 :::zone pivot = "programming-language-scala"
 
+### <a name="configure-access-to-azure-blob-storage"></a>設定 Azure Blob 儲存體的存取權  
+
+Synapse 利用 **(SAS) 的共用存取** 簽章來存取 Azure Blob 儲存體。 為了避免在程式碼中公開 SAS 金鑰，建議您在 Synapse 工作區中建立新的連結服務，以存取您想要存取的 Azure Blob 儲存體帳戶。
+
+請遵循下列步驟，為 Azure Blob 儲存體帳戶新增連結服務：
+
+1. 開啟 [Azure Synapse Studio](https://web.azuresynapse.net/)。
+2. 從左側面板中選取 [**管理**]，然後選取 [**外部連接**] 底下的 [**連結服務**]。
+3. 在右側的 [**新增連結服務**] 面板中搜尋 **Azure Blob 儲存體**。
+4. 選取 [繼續]。
+5. 選取要存取的 Azure Blob 儲存體帳戶，並設定連結的服務名稱。 建議使用 **驗證方法** 的 **帳戶金鑰**。
+6. 選取 [ **測試連接** ] 以驗證設定是否正確。
+7. 選取 [先 **建立** ]，然後按一下 [ **全部發佈** ] 儲存變更。 
+
+您可以透過下列 URL，透過 Synapse Spark 存取 Azure Blob 儲存體上的資料：
+
+<code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
+
+以下是程式碼範例：
+
 ```scala
 val blob_account_name = "" // replace with your blob name
 val blob_container_name = "" //replace with your container name
@@ -101,13 +122,13 @@ spark.conf.set(f"fs.azure.sas.$blob_container_name.$blob_account_name.blob.core.
 
 ::: zone-end
 
-:::zone pivot = "programming-language-csharp"
+<!-- :::zone pivot = "programming-language-csharp"
 
 ```csharp
 
 ```
 
-::: zone-end
+::: zone-end -->
  
 ###  <a name="configure-access-to-azure-key-vault"></a>設定 Azure Key Vault 的存取權
 
@@ -621,11 +642,15 @@ Credentials.GetSecret("azure key vault name","secret name")
 
 ::: zone-end
 
+<!-- ### Put secret using workspace identity
+
+Puts Azure Key Vault secret for a given Azure Key Vault name, secret name, and linked service name using workspace identity. Make sure you configure the access to [Azure Key Vault](#configure-access-to-azure-key-vault) appropriately. -->
+
+:::zone pivot = "programming-language-python"
+
 ### <a name="put-secret-using-workspace-identity"></a>使用工作區身分識別來放置秘密
 
 使用工作區身分識別，為指定的 Azure Key Vault 名稱、秘密名稱和連結服務名稱放置 Azure Key Vault 秘密。 請確定您已適當地設定 [Azure Key Vault](#configure-access-to-azure-key-vault) 的存取權。
-
-:::zone pivot = "programming-language-python"
 
 ```python
 mssparkutils.credentials.putSecret('azure key vault name','secret name','secret value','linked service name')
@@ -634,26 +659,34 @@ mssparkutils.credentials.putSecret('azure key vault name','secret name','secret 
 
 :::zone pivot = "programming-language-scala"
 
+### <a name="put-secret-using-workspace-identity"></a>使用工作區身分識別來放置秘密
+
+使用工作區身分識別，為指定的 Azure Key Vault 名稱、秘密名稱和連結服務名稱放置 Azure Key Vault 秘密。 請確定您已適當地設定 [Azure Key Vault](#configure-access-to-azure-key-vault) 的存取權。
+
 ```scala
 mssparkutils.credentials.putSecret("azure key vault name","secret name","secret value","linked service name")
 ```
 
 ::: zone-end
 
-:::zone pivot = "programming-language-csharp"
+<!-- :::zone pivot = "programming-language-csharp"
 
 ```csharp
 
 ```
 
-::: zone-end
+::: zone-end -->
 
+
+<!-- ### Put secret using user credentials
+
+Puts Azure Key Vault secret for a given Azure Key Vault name, secret name, and linked service name using user credentials.  -->
+
+:::zone pivot = "programming-language-python"
 
 ### <a name="put-secret-using-user-credentials"></a>使用使用者認證來放置秘密
 
 使用使用者認證，為指定的 Azure Key Vault 名稱、秘密名稱和連結服務名稱放置 Azure Key Vault 秘密。 
-
-:::zone pivot = "programming-language-python"
 
 ```python
 mssparkutils.credentials.putSecret('azure key vault name','secret name','secret value')
@@ -662,19 +695,23 @@ mssparkutils.credentials.putSecret('azure key vault name','secret name','secret 
 
 :::zone pivot = "programming-language-scala"
 
+### <a name="put-secret-using-user-credentials"></a>使用使用者認證來放置秘密
+
+使用使用者認證，為指定的 Azure Key Vault 名稱、秘密名稱和連結服務名稱放置 Azure Key Vault 秘密。 
+
 ```scala
 mssparkutils.credentials.putSecret("azure key vault name","secret name","secret value")
 ```
 
 ::: zone-end
 
-:::zone pivot = "programming-language-csharp"
+<!-- :::zone pivot = "programming-language-csharp"
 
 ```csharp
 
 ```
 
-::: zone-end
+::: zone-end -->
 
 
 ## <a name="environment-utilities"></a>環境公用程式 

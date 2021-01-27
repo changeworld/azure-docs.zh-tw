@@ -10,8 +10,10 @@
 - name: 教學課程
   expanded: true
   items:
-    - name: 建立 SCIM 端點和設定佈建
+    - name: SCIM 端點的方案布建
       href: use-scim-to-provision-users-and-groups.md
+    - name: 開發範例 SCIM 端點
+      href: use-scim-to-build-users-and-groups-endpoints.md
     - name: 自訂屬性對應
       href: customize-application-attributes.md
     - name: 應用程式特定佈建教學課程

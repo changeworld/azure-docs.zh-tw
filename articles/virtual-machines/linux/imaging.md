@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: e364578cdec8696688cf19e14fd0529f1ca3fbb3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: HT
+ms.openlocfilehash: 223fdc215bc391bea5cad5d4cb9999b9d14ba570
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842612"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878777"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>在 Azure 中帶入並建立 Linux 映像
 
@@ -29,7 +29,7 @@ Azure 可讓您將 VHD 帶入平台，作為[受控磁碟](../faq-for-disks.md#m
 
 Azure 受控磁碟是單一 VHD。 您可以使用現有的 VHD 並從中建立受控磁碟，或從頭開始建立空的受控磁碟。 您可以藉由將磁碟連結至 VM，從受控磁碟建立 VM，但是一個 VHD 只能與一個 VM 搭配使用。 您無法修改任何 OS 屬性，Azure 只會嘗試開啟 VM，並使用該磁碟啟動。 
 
-Azure 映像可由多個 OS 磁碟和資料磁碟組成。 當您使用受控映像來建立 VM 時，平台會建立映像的複本，並將其用來建立 VM，因此受控映像支援對多個 VM 重複使用相同的映像。 Azure 也提供映像的進階管理功能，例如全域複寫，以及透過[共用映像庫](shared-image-galleries.md)進行版本設定。 
+Azure 映像可由多個 OS 磁碟和資料磁碟組成。 當您使用受控映像來建立 VM 時，平台會建立映像的複本，並將其用來建立 VM，因此受控映像支援對多個 VM 重複使用相同的映像。 Azure 也提供映像的進階管理功能，例如全域複寫，以及透過[共用映像庫](../shared-image-galleries.md)進行版本設定。 
 
 
 
@@ -65,7 +65,7 @@ Azure 提供兩種主要映像類型：一般化和特殊化。 一般化和特�
 帶入您的 Linux 映像時，您有兩個選項：
 
 - 適用於在開發和測試環境中建立簡單 VM 的受控映像。
-- [共用映像庫](shared-image-galleries.md)，以大規模建立和共用映像。
+- [共用映像庫](../shared-image-galleries.md)，以大規模建立和共用映像。
 
 
 ### <a name="managed-images"></a>受控映像
@@ -76,7 +76,7 @@ Azure 提供兩種主要映像類型：一般化和特殊化。 一般化和特�
 
 ### <a name="azure-shared-image-gallery-sig"></a>Azure 共用映像庫 (SIG)
 
-建議針對大規模建立、管理和共用映像使用[共用映像庫](shared-image-galleries.md)。 共用映像庫可協助您圍繞映像來建置結構和組織。  
+建議針對大規模建立、管理和共用映像使用[共用映像庫](../shared-image-galleries.md)。 共用映像庫可協助您圍繞映像來建置結構和組織。  
 
 - 同時支援一般化和特殊化映像。
 - 支援第 1 代和第 2 代映像。

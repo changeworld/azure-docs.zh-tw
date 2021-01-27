@@ -11,12 +11,12 @@ ms.author: siarora
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 78cc0aa6beb9ab83fea2039b271b071de1662fc1
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: aa25a81068b25b7b8696a7472eb04542e8bb1a60
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629175"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878947"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>使用 Azure Machine Learning 管理和提高資源配額
 
@@ -82,7 +82,7 @@ Azure 會使用限制和配額來防止因詐騙而產生的預算溢出，並�
 + **每個區域** 的叢集預設限制為200。 這些會在定型叢集和計算實例之間共用。 針對配額用途， (計算實例視為單一節點叢集。 ) 
 
 > [!TIP]
-> 若要深入瞭解哪些 VM 系列要要求增加配額，請查看 [Azure 中的虛擬機器大小](https://docs.microsoft.com/azure/virtual-machines/sizes)。 例如，GPU VM 系列的系列名稱開頭為 "N" (例如 NCv3 系列) 
+> 若要深入瞭解哪些 VM 系列要要求增加配額，請查看 [Azure 中的虛擬機器大小](../virtual-machines/sizes.md)。 例如，GPU VM 系列的系列名稱開頭為 "N" (例如 NCv3 系列) 
 
 下表顯示平臺的其他限制。 請透過 **技術** 支援票證與 AzureML 產品小組聯繫，以要求例外狀況。
 
@@ -209,7 +209,7 @@ Azure Machine Learning 會在 (客戶) 訂用帳戶中建立資源，但在某�
 
 :::image type="content" source="media/how-to-manage-quotas/quota-increase-private-endpoint.png" alt-text="私人端點和私人 DNS 配額增加要求的螢幕擷取畫面。":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 + [規劃和管理 Azure Machine Learning 的成本](concept-plan-manage-cost.md)
 + [Azure Machine Learning 中的服務限制](resource-limits-quotas-capacity.md)

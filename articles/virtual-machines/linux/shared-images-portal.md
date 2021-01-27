@@ -10,16 +10,16 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 2661715164cc6aa5f5ff587f2ddf28c0918445d4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 01d095a5506ec0886cdee875b57edbbbeca6fc86
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015979"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878814"
 ---
 # <a name="create-a-shared-image-gallery-using-the-portal"></a>使用入口網站建立共用映射庫
 
-[共用映像資源庫](shared-image-galleries.md)可簡化跨組織共用自訂映像。 自訂映像類似 Marketplace 映像，但您要自行建立它們。 自訂映像可用於啟動部署工作，例如，預先載入應用程式、應用程式設定和其他 OS 設定。 
+[共用映像資源庫](../shared-image-galleries.md)可簡化跨組織共用自訂映像。 自訂映像類似 Marketplace 映像，但您要自行建立它們。 自訂映像可用於啟動部署工作，例如，預先載入應用程式、應用程式設定和其他 OS 設定。 
 
 共用映射庫可讓您將自訂的 VM 映射與組織中的其他人、內部或跨區域內的 Azure AD 租使用者內的其他人共用。 選擇您要共用的映像、您要開放使用的區域，以及您要共用的對象。 您可以建立多個資源庫，讓您可以根據邏輯群組共用映像。 
 
@@ -55,7 +55,7 @@ ms.locfileid: "96015979"
 1. 在 [ **虛擬機器名稱**] 中，輸入 *myVM*。
 1. 在 [區域] 中，選取 [美國東部]。
 1. 針對 [ **可用性選項**]，保留 [ *不需要基礎結構冗余*] 的預設值。
-1. **Image** `latest` 如果您是從映射定義的頁面開始，則影像的值會自動填入映射版本。
+1.  `latest` 如果您是從映射定義的頁面開始，則影像的值會自動填入映射版本。
 1. 針對 [ **大小**]，從可用大小清單中選擇 VM 大小，然後選擇 [ **選取**]。
 1. 在 [ **系統管理員帳戶**] 下，如果來源 VM 已一般化，請輸入您的使用者 **名稱** 和 **SSH 公開金鑰**。 如果來源 VM 是特製化的，這些選項將會呈現灰色，因為會使用來自來源 VM 的資訊。
 1. 如果您想要允許遠端存取 VM，請在 [ **公用輸入埠**] 下，選擇 [ **允許選取的埠** ]，然後從下拉式清單中選取 [ **SSH (22)** 。 如果您不想要允許遠端存取 VM，請將 [ **未** 選取] 用於 **公用輸入埠**。
@@ -78,5 +78,4 @@ ms.locfileid: "96015979"
 - [在共用映像資源庫中建立映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [從映像版本建立 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
-如需共用映像資源庫的詳細資訊，請參閱[概觀](shared-image-galleries.md)。 若遇到任何問題，請參閱[針對共用映像資源庫問題進行疑難排解](../troubleshooting-shared-images.md)。
-
+如需共用映像資源庫的詳細資訊，請參閱[概觀](../shared-image-galleries.md)。 若遇到任何問題，請參閱[針對共用映像資源庫問題進行疑難排解](../troubleshooting-shared-images.md)。

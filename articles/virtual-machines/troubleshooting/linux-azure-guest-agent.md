@@ -11,23 +11,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: axelg
-ms.openlocfilehash: 247324c30bbe0edaef78c0b0d5e6a6d593e8cac9
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 62b462d8e75fc291ac599ac99dbe4fb3a74fde2b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586392"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878692"
 ---
 # <a name="troubleshoot-the-azure-linux-agent"></a>針對 Azure Linux 代理程式進行疑難排解
 
-[Azure Linux 代理程式](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)可讓虛擬機器 (VM) 與 (在 IP 位址168.63.129.16 上裝載) VM 的基礎實體伺服器通訊的網狀架構控制器通訊。
+[Azure Linux 代理程式](../extensions/agent-linux.md)可讓虛擬機器 (VM) 與 (在 IP 位址168.63.129.16 上裝載) VM 的基礎實體伺服器通訊的網狀架構控制器通訊。
 
 >[!NOTE]
 >此 IP 位址是虛擬公用 IP 位址，可促進通訊且不應封鎖。 如需詳細資訊，請參閱 [什麼是 IP 位址168.63.129.16？](../../virtual-network/what-is-ip-address-168-63-129-16.md)。
 
 ## <a name="before-you-begin"></a>開始之前
 
-檢查代理程式狀態和版本，以確定它仍然受支援。 請參閱 [Azure 中虛擬機器代理程式的最低版本支援](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/support-extensions-agent-version) 以檢查版本支援，或參閱 [WALinuxAgent 常見問題](https://github.com/Azure/WALinuxAgent/wiki/FAQ#what-does-goal-state-agent-mean-in-waagent---version-output) 以取得尋找狀態和版本的步驟。
+檢查代理程式狀態和版本，以確定它仍然受支援。 請參閱 [Azure 中虛擬機器代理程式的最低版本支援](/troubleshoot/azure/virtual-machines/support-extensions-agent-version) 以檢查版本支援，或參閱 [WALinuxAgent 常見問題](https://github.com/Azure/WALinuxAgent/wiki/FAQ#what-does-goal-state-agent-mean-in-waagent---version-output) 以取得尋找狀態和版本的步驟。
 
 ## <a name="troubleshoot-a-not-ready-status"></a>針對未就緒狀態進行疑難排解
 
@@ -64,7 +64,7 @@ ms.locfileid: "97586392"
    AutoUpdate.Enabled=y
    ```
 
-   如需有關如何更新 Azure Linux 代理程式的詳細資訊，請參閱 [如何更新 VM 上的 Azure Linux 代理程式](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent)。
+   如需有關如何更新 Azure Linux 代理程式的詳細資訊，請參閱 [如何更新 VM 上的 Azure Linux 代理程式](../extensions/update-linux-agent.md)。
 
 1. 請確定 VM 可以連線到網狀架構控制器。 使用捲曲的工具來測試 VM 是否可以連線到埠80、443和32526上的168.63.129.16。 如果 VM 未如預期般連線，請檢查是否已在 VM 的本機防火牆中開啟埠80、443和32526的輸出通訊。 如果此 IP 位址遭到封鎖，VM 代理程式可能會顯示非預期的行為。
 

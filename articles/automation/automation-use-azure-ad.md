@@ -4,12 +4,12 @@ description: 此文章說明如何在 Azure 自動化中，使用 Azure AD 作�
 services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: bbd1f977b548c2b8e7980709ea125c07e22b1fa2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41eaab7be66d446109e1052948a29ad4723b191c
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400667"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98894655"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>使用 Azure AD 向 Azure 進行驗證
 
@@ -39,9 +39,9 @@ ms.locfileid: "91400667"
 >[!NOTE]
 >若要使用這些模組，您必須搭配 64 位元版本的 Windows 使用 PowerShell 5.1 版或更新版本。 
 
-1. 安裝 Windows Management Framework (WMF) 5.1。 請參閱[安裝與設定 WMF 5.1](/powershell/scripting/wmf/setup/install-configure?view=powershell-7)。
+1. 安裝 Windows Management Framework (WMF) 5.1。 請參閱[安裝與設定 WMF 5.1](/powershell/scripting/wmf/setup/install-configure)。
 
-2. 使用[使用 PowerShellGet 在 Windows 上安裝 Azure PowerShell ](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0)中的指示，安裝 AzureRM 和/或 Az。
+2. 使用[使用 PowerShellGet 在 Windows 上安裝 Azure PowerShell ](/powershell/azure/azurerm/install-azurerm-ps)中的指示，安裝 AzureRM 和/或 Az。
 
 ### <a name="install-the-msonline-module"></a>安裝 MSOnline 模組
 
@@ -62,7 +62,7 @@ ms.locfileid: "91400667"
 
 ### <a name="install-support-for-pscredential"></a>安裝 PSCredential 的支援
 
-Azure 自動化使用 [PSCredential](/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0) 類別來代表認證資產。 您的指令碼會使用 `Get-AutomationPSCredential` Cmdlet 來擷取 `PSCredential` 物件。 如需詳細資訊，請參閱 [Azure 自動化中的認證資產](shared-resources/credentials.md)。
+Azure 自動化使用 [PSCredential](/dotnet/api/system.management.automation.pscredential) 類別來代表認證資產。 您的指令碼會使用 `Get-AutomationPSCredential` Cmdlet 來擷取 `PSCredential` 物件。 如需詳細資訊，請參閱 [Azure 自動化中的認證資產](shared-resources/credentials.md)。
 
 ## <a name="assign-a-subscription-administrator"></a>指派訂用帳戶系統管理員
 
@@ -80,7 +80,7 @@ Azure 自動化使用 [PSCredential](/dotnet/api/system.management.automation.ps
 
 ## <a name="configure-azure-automation-to-manage-the-azure-subscription"></a>設定 Azure 自動化來管理 Azure 訂用帳戶
 
-若要讓 Azure 自動化與 Azure AD 通訊，您必須將與 Azure 連線相關聯的認證擷取至 Azure AD。 這些認證的範例包括租用戶識別碼、訂用帳戶識別碼等等。 如需 Azure 與 Azure AD 之間連結的詳細資訊，請參閱[將您的組織連結至 Azure Active Directory](/azure/devops/organizations/accounts/connect-organization-to-azure-ad?view=azure-devops) \(英文\)。
+若要讓 Azure 自動化與 Azure AD 通訊，您必須將與 Azure 連線相關聯的認證擷取至 Azure AD。 這些認證的範例包括租用戶識別碼、訂用帳戶識別碼等等。 如需 Azure 與 Azure AD 之間連結的詳細資訊，請參閱[將您的組織連結至 Azure Active Directory](/azure/devops/organizations/accounts/connect-organization-to-azure-ad) \(英文\)。
 
 ## <a name="create-a-credential-asset"></a>建立認證資產
 
@@ -92,11 +92,11 @@ Azure 自動化使用 [PSCredential](/dotnet/api/system.management.automation.ps
 
 ### <a name="create-the-credential-asset-with-windows-powershell"></a>使用 Windows PowerShell 建立認證資產
 
-若要在 Windows PowerShell 中準備新的認證資產，您的指令碼會先使用指派的使用者名稱和密碼來建立 `PSCredential` 物件。 接著，指令碼會使用這個物件，透過呼叫 [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure.service/new-azureautomationcredential?view=azuresmps-4.0.0) \(英文\) Cmdlet 來建立資產。 或者，指令碼可以呼叫 [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) Cmdlet 來提示使用者輸入名稱和密碼。 請參閱 [Azure 自動化中的認證資產](shared-resources/credentials.md)。 
+若要在 Windows PowerShell 中準備新的認證資產，您的指令碼會先使用指派的使用者名稱和密碼來建立 `PSCredential` 物件。 接著，指令碼會使用這個物件，透過呼叫 [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure.service/new-azureautomationcredential) \(英文\) Cmdlet 來建立資產。 或者，指令碼可以呼叫 [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) Cmdlet 來提示使用者輸入名稱和密碼。 請參閱 [Azure 自動化中的認證資產](shared-resources/credentials.md)。 
 
 ## <a name="manage-azure-resources-from-an-azure-automation-runbook"></a>從 Azure 自動化 Runbook 管理 Azure 資源
 
-您可以從使用認證資產的 Azure 自動化 Runbook 來管理 Azure 資源。 以下是 PowerShell Runbook 範例，其會收集用來停止和啟動 Azure 訂用帳戶中虛擬機器的認證資產。 此 Runbook 會先使用 `Get-AutomationPSCredential` 來擷取要用來向 Azure 進行驗證的認證。 然後，其會呼叫 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.6.1) Cmdlet，以使用認證連線到 Azure。 指令碼會使用 [Select-AzureSubscription](/powershell/module/servicemanagement/azure.service/select-azuresubscription?view=azuresmps-4.0.0) \(英文\) Cmdlet 來選擇要使用的訂用帳戶。 
+您可以從使用認證資產的 Azure 自動化 Runbook 來管理 Azure 資源。 以下是 PowerShell Runbook 範例，其會收集用來停止和啟動 Azure 訂用帳戶中虛擬機器的認證資產。 此 Runbook 會先使用 `Get-AutomationPSCredential` 來擷取要用來向 Azure 進行驗證的認證。 然後，其會呼叫 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) Cmdlet，以使用認證連線到 Azure。 指令碼會使用 [Select-AzureSubscription](/powershell/module/servicemanagement/azure.service/select-azuresubscription) \(英文\) Cmdlet 來選擇要使用的訂用帳戶。 
 
 ```azurepowershell
 Workflow Stop-Start-AzureVM 

@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: cynthn
-ms.openlocfilehash: ea50d0fdc5a772cae449951901af36eed4e93771
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a264996c3a2d907e58746c0fcf3eb8b2aefe43ba
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737620"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878862"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>使用 Azure CLI 將 VM 部署至鄰近放置群組
 
-若要盡可能關閉 Vm，請達到最低可能的延遲，您應該將它們部署在 [鄰近放置群組](co-location.md#proximity-placement-groups)內。
+若要盡可能關閉 Vm，請達到最低可能的延遲，您應該將它們部署在 [鄰近放置群組](../co-location.md#proximity-placement-groups)內。
 
 鄰近放置群組是邏輯群組，可用來確保 Azure 計算資源實際位於彼此接近的位置。 鄰近放置群組很適合用於具備低延遲需求的工作負載。
 

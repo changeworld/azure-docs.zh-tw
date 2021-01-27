@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: tutorial
-ms.date: 03/06/2020
+ms.date: 01/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 303f02e0c6b72b7061a996b3ce8e70799954b435
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
-ms.translationtype: HT
+ms.openlocfilehash: d3da63503c80652bc8737f2cb4894e25d8bc6fc0
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861046"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893401"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>教學課程：設定適用於受控網域的混合式 Azure Active Directory Join
 
@@ -90,23 +90,21 @@ ms.locfileid: "96861046"
 
 1. 啟動 Azure AD Connect，然後選取 [設定]。
 
-   ![歡迎使用](./media/hybrid-azuread-join-managed-domains/welcome-azure-ad-connect.png)
-
 1. 在 [其他工作] 中選取 [設定裝置選項]，然後選取 [下一步]。
 
    ![其他工作](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-additional-tasks.png)
 
 1. 在 [概觀] 中，選取 [下一步]。
 
-   ![概觀](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-overview.png)
-
 1. 在 [連線到 Azure AD] 中，輸入 Azure AD 租用戶的全域管理員認證。  
-
-   ![連接至 Azure AD](./media/hybrid-azuread-join-managed-domains/connect-to-azure-ad-username-password.png)
 
 1. 在 [裝置選項] 中選取 [設定混合式 Azure AD Join]，然後選取 [下一步]。
 
    ![裝置選項](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-device-options.png)
+
+1. 在 [裝置作業系統] 中，選取 Active Directory 環境中的裝置所使用的作業系統，然後選取 [下一步]。
+
+   ![裝置作業系統](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-device-operating-systems.png)
 
 1. 在 [SCP 設定] 中，針對要以 Azure AD Connect 設定 SCP 的每個樹系完成下列步驟，然後選取 [下一步]。
 
@@ -116,17 +114,9 @@ ms.locfileid: "96861046"
 
    ![SCP](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-scp-configuration.png)
 
-1. 在 [裝置作業系統] 中，選取 Active Directory 環境中的裝置所使用的作業系統，然後選取 [下一步]。
-
-   ![裝置作業系統](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-device-operating-systems.png)
-
 1. 在 [準備好設定] 中，選取 [設定]。
 
-   ![準備設定](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-ready-to-configure.png)
-
 1. 在 [設定完成] 中，選取 [結束]。
-
-   ![組態完成](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-configuration-complete.png)
 
 ## <a name="enable-windows-down-level-devices"></a>啟用舊版 Windows 裝置
 

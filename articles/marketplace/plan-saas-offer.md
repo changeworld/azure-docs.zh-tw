@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: e188c74c6eba5e4182f7b72277db8dd8e08db8d4
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 714b7bccea9b1e0c18ad78a4d98ed3526a279f5f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913921"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879253"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>如何規劃商用 marketplace 的 SaaS 供應專案
 
@@ -176,7 +176,7 @@ _現在就 (免費的)_、_免費試用_，以及 _透過 Microsoft_ 清單選�
 
     這個文字方塊具有 rich text 編輯器控制項，可用來讓您的描述更吸引人。 您也可以使用 HTML 標籤來格式化您的描述。 您最多可以在此方塊中輸入3000個字元的文字，包括 HTML 標籤。 如需其他秘訣，請參閱[撰寫一份出色的應用程式介紹](/windows/uwp/publish/write-a-great-app-description)。
 
-- **消費者入門指示**：如果您選擇透過 Microsoft (可交易供應專案) 銷售您的供應專案，則需要此欄位。 這些指示可協助客戶連接到您的 SaaS 供應專案。 您最多可以新增3000個字元的文字，並連結至更詳細的線上檔。
+- **開始使用指示**：如果您選擇透過 Microsoft (可交易供應專案) 銷售您的供應專案，則需要此欄位。 這些指示可協助客戶連接到您的 SaaS 供應專案。 您最多可以新增3000個字元的文字，並連結至更詳細的線上檔。
 - **搜尋關鍵字** (選擇性) ：提供最多三個搜尋關鍵字，讓客戶可以用來在線上商店尋找您的供應專案。 您不需要包含供應專案 **名稱** 和 **描述**：該文字會自動包含在搜尋中。
 - **隱私權原則連結**：公司隱私權原則的 URL。 您必須提供有效的隱私權原則，並負責確保您的應用程式符合隱私權法律和規定。
 - **連絡人資訊**：您必須提供組織中的下列連絡人：
@@ -250,7 +250,7 @@ SaaS 供應專案可以使用兩個定價模型的其中一個搭配每個方案
 | Microsoft 向您支付授權成本的 80%<br>`*` 針對合格的 SaaS 應用程式，Microsoft 會向您的授權成本支付90% 的費用| 每月 $80.00<br>``*`` 每月 $90.00 |
 |||
 
-**`*` 減少 Marketplace 服務費用**–針對您已在商業市集中發佈的特定 SaaS 供應專案，microsoft 將從20% 的 (降低其 marketplace 服務費用，如 microsoft Publisher 合約) 至10% 所述。 若您的供應專案 () 符合資格，則您的供應專案 (s) 必須由 Microsoft 指定為 Azure IP 共同銷售受到激勵。 在每個日曆月份結束之前，至少必須符合五 (5) 個工作天，才能獲得減少的 Marketplace 服務費用。 一旦符合資格，就會將降低的服務費用授與在下個月的第一天生效的所有交易，並在 Azure IP 共同銷售受到激勵狀態遺失之前繼續套用。 如需 IP 共同銷售資格的詳細資訊，請參閱 [共同銷售狀態的需求](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。 降低的 Marketplace 服務費用也適用于 Azure IP 共同銷售受到激勵 Vm、受控應用程式，以及透過商業 Marketplace 提供的任何其他合格可交易 IaaS 供應專案。
+**`*` 減少 Marketplace 服務費用**–針對您已在商業市集中發佈的特定 SaaS 供應專案，microsoft 將從20% 的 (降低其 marketplace 服務費用，如 microsoft Publisher 合約) 至10% 所述。 若您的供應專案 () 符合資格，則您的供應專案 (s) 必須由 Microsoft 指定為 Azure IP 共同銷售受到激勵。 在每個日曆月份結束之前，至少必須符合五 (5) 個工作天，才能獲得減少的 Marketplace 服務費用。 一旦符合資格，就會將降低的服務費用授與在下個月的第一天生效的所有交易，並在 Azure IP 共同銷售受到激勵狀態遺失之前繼續套用。 如需 IP 共同銷售資格的詳細資訊，請參閱 [共同銷售狀態的需求](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。 降低的 Marketplace 服務費用也適用于 Azure IP 共同銷售受到激勵 Vm、受控應用程式，以及透過商業 Marketplace 提供的任何其他合格可交易 IaaS 供應專案。
 
 ## <a name="additional-sales-opportunities"></a>其他銷售商機
 
@@ -258,7 +258,7 @@ SaaS 供應專案可以使用兩個定價模型的其中一個搭配每個方案
 
 - **透過 Csp 轉售**：使用此選項可讓 Microsoft 雲端解決方案提供者 (CSP) 合作夥伴將您的解決方案轉售為配套供應專案的一部分。 如需此程式的詳細資訊，請參閱 [雲端解決方案提供者程式](cloud-solution-providers.md)。
 
-- **與 Microsoft 共同銷售**：此選項可讓 microsoft 銷售團隊在評估客戶的需求時，考慮您的 IP 共同銷售合格解決方案。 如需共同銷售資格的詳細資訊，請參閱 [共同銷售狀態的需求](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。 如需如何準備您的供應專案以進行評估的詳細資訊，請參閱 [合作夥伴中心中的共同銷售選項](commercial-marketplace-co-sell.md)。
+- **與 Microsoft 共同銷售**：此選項可讓 microsoft 銷售團隊在評估客戶的需求時，考慮您的 IP 共同銷售合格解決方案。 如需共同銷售資格的詳細資訊，請參閱 [共同銷售狀態的需求](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。 如需如何準備您的供應專案以進行評估的詳細資訊，請參閱 [合作夥伴中心中的共同銷售選項](commercial-marketplace-co-sell.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: f3e9d70ced0d2974a66717436c28c5b6914f6745
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a2c717601747e15556608559450b35bb934410b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87287147"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879100"
 ---
 # <a name="azcopy-jobs-clean"></a>azcopy 作業清除
 
@@ -26,7 +26,7 @@ azcopy jobs clean [flags]
 ## <a name="related-conceptual-articles"></a>相關的概念文章
 
 - [開始使用 AzCopy](storage-use-azcopy-v10.md)
-- [使用 AzCopy 和 Blob 儲存體傳輸資料](storage-use-azcopy-blobs.md)
+- [使用 AzCopy 和 Blob 儲存體傳輸資料](./storage-use-azcopy-v10.md#transfer-data)
 - [使用 AzCopy 和檔案儲存體傳輸資料](storage-use-azcopy-files.md) (機器翻譯)
 - [對 AzCopy 進行設定、最佳化及疑難排解](storage-use-azcopy-configure.md)
 

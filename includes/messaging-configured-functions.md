@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: b487dcad83ccbc31adf2d7ec2dd77c490db2c68e
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 9bc641d680d927c44814f6814ebf6a6dde958c9e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935186"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98900816"
 ---
 Azure Functions 可讓您建立以預先建立的進入點為基礎的僅限設定複寫工作。 Azure Functions 的設定 [式複寫範例](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config) 說明如何在您自己的程式碼中運用 [預先建立](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/src/Azure.Messaging.Replication) 的協助程式，或完全避免處理常式代碼，並只使用設定。
 
@@ -218,13 +218,12 @@ Azure Functions 可讓您建立以預先建立的進入點為基礎的僅限設�
 
 ### <a name="retry-policy"></a>重試原則
 
-請參閱 [Azure Functions 檔](/azure/azure-functions/functions-bindings-error-pages) ，以重試設定重試原則的相關資訊。 在此存放庫的整個專案中選擇的原則設定，會將具有重試間隔的指數輪詢策略設定為5秒到5分鐘，並無限期地重試以避免資料遺失。
+請參閱 [Azure Functions 檔](../articles/azure-functions/functions-bindings-error-pages.md) ，以重試設定重試原則的相關資訊。 在此存放庫的整個專案中選擇的原則設定，會將具有重試間隔的指數輪詢策略設定為5秒到5分鐘，並無限期地重試以避免資料遺失。
 
-針對服務匯流排，請參閱「 [在觸發程式恢復功能之上使用重試支援](/azure/azure-functions/functions-bindings-error-pages#using-retry-support-on-top-of-trigger-resilience) 」一節，以瞭解觸發程式的互動和為佇列定義的最大傳遞計數。
+針對服務匯流排，請參閱「 [在觸發程式恢復功能之上使用重試支援](../articles/azure-functions/functions-bindings-error-pages.md#using-retry-support-on-top-of-trigger-resilience) 」一節，以瞭解觸發程式的互動和為佇列定義的最大傳遞計數。
 
 ### <a name="build-deploy-and-configure"></a>組建、部署和設定
 
 當您將焦點放在設定時，工作仍然需要建立可部署的應用程式，並設定 Azure Functions 主機，使其擁有連接至指定端點的所有必要資訊。 
 
 在 Azure Functions 的設定 [式複寫範例](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config)中，會說明這一點，以及可重複使用的腳本。
-

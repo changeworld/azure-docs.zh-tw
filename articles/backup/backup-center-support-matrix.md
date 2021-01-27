@@ -3,12 +3,12 @@ title: 備份中心的支援矩陣
 description: 本文摘要說明備份中心針對每個工作負載類型所支援的案例
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: 40582ddc1187082230e2887edcd24b3716811be2
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 672f0e127f173260f25978497198fd7b554aa390
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173992"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893587"
 ---
 # <a name="support-matrix-for-backup-center"></a>備份中心的支援矩陣
 
@@ -18,16 +18,16 @@ ms.locfileid: "92173992"
 
 | **類別** | **案例**  | **支援的工作負載**  | **限制** |
 | -------------| ------------- | ----------------------- |------------|
-| 監視   | 查看所有作業 | <li> Azure 虛擬機器 <br><br> <li> 適用於 PostgreSQL 的 Azure 資料庫伺服器 | <li> 現成可用的7天工作。 <br> <li> 每個篩選器/下拉式清單最多可支援1000個專案。 因此，您可以使用備份中心來監視跨租使用者的最多1000訂用帳戶和1000保存庫。 |
-| 監視 | 查看所有備份實例 | <li> Azure 虛擬機器 <br><br> <li> 適用於 PostgreSQL 的 Azure 資料庫伺服器 | 同上 |
-| 監視 | 查看所有備份原則 | <li> Azure 虛擬機器 <br><br> <li> 適用於 PostgreSQL 的 Azure 資料庫伺服器 | 同上 |
-| 監視 | 查看所有保存庫 | <li> Azure 虛擬機器 <br><br> <li> 適用於 PostgreSQL 的 Azure 資料庫伺服器 | 同上 |
-| 動作 | 設定備份 | <li> Azure 虛擬機器 <br><br> <li> 適用於 PostgreSQL 的 Azure 資料庫伺服器 | 請參閱[AZURE VM 備份](./backup-support-matrix-iaas.md)和[適用於 PostgreSQL 的 Azure 資料庫 Server 備份](backup-azure-database-postgresql.md#support-matrix)的支援矩陣 |
-| 動作 | 還原備份實例 | <li> Azure 虛擬機器 <br><br> <li> 適用於 PostgreSQL 的 Azure 資料庫伺服器 | 請參閱[AZURE VM 備份](./backup-support-matrix-iaas.md)和[適用於 PostgreSQL 的 Azure 資料庫 Server 備份](backup-azure-database-postgresql.md#support-matrix)的支援矩陣 |
-| 動作 | 建立保存庫 | <li> Azure 虛擬機器 <br><br> <li> 適用於 PostgreSQL 的 Azure 資料庫伺服器 | 請參閱復原服務保存[庫](./backup-support-matrix.md#vault-support)的支援矩陣 |
-| 動作 | 建立備份原則 | <li> Azure 虛擬機器 <br><br> <li> 適用於 PostgreSQL 的 Azure 資料庫伺服器 | 請參閱復原服務保存[庫](./backup-support-matrix.md#vault-support)的支援矩陣 |
-| 動作 | 針對備份實例執行隨選備份 | <li> Azure 虛擬機器 <br><br> <li> 適用於 PostgreSQL 的 Azure 資料庫伺服器 | 請參閱[AZURE VM 備份](./backup-support-matrix-iaas.md)和[適用於 PostgreSQL 的 Azure 資料庫 Server 備份](backup-azure-database-postgresql.md#support-matrix)的支援矩陣 |
-| 動作 | 停止備份實例的備份 | <li> Azure 虛擬機器 <br><br> <li> 適用於 PostgreSQL 的 Azure 資料庫伺服器 | 請參閱[AZURE VM 備份](./backup-support-matrix-iaas.md)和[適用於 PostgreSQL 的 Azure 資料庫 Server 備份](backup-azure-database-postgresql.md#support-matrix)的支援矩陣 |
+| 監視   | 查看所有作業 | <li> Azure 虛擬機器 <br><br> <li> 適用於 PostgreSQL 的 Azure 資料庫伺服器 <br><br> <li> Azure VM 中的 SQL <br><br> <li> Azure VM 中的 SAP Hana <br><br> <li> Azure 檔案儲存體 | <li> 現成可用的7天工作。 <br> <li> 每個篩選器/下拉式清單最多可支援1000個專案。 因此，您可以使用備份中心來監視跨租使用者的最多1000訂用帳戶和1000保存庫。 |
+| 監視 | 查看所有備份實例 | <li> Azure 虛擬機器 <br><br> <li> 適用於 PostgreSQL 的 Azure 資料庫伺服器 <br><br> <li> Azure VM 中的 SQL <br><br> <li> Azure VM 中的 SAP Hana <br><br> <li> Azure 檔案 | 同上 |
+| 監視 | 查看所有備份原則 | <li> Azure 虛擬機器 <br><br> <li> 適用於 PostgreSQL 的 Azure 資料庫伺服器 <br><br> <li> Azure VM 中的 SQL <br><br> <li> Azure VM 中的 SAP Hana <br><br> <li> Azure 檔案 | 同上 |
+| 監視 | 查看所有保存庫 | <li> Azure 虛擬機器 <br><br> <li> 適用於 PostgreSQL 的 Azure 資料庫伺服器 <br><br> <li> Azure VM 中的 SQL <br><br> <li> Azure VM 中的 SAP Hana <br><br> <li> Azure 檔案 | 同上 |
+| 動作 | 設定備份 | <li> Azure 虛擬機器 <br><br> <li> 適用於 PostgreSQL 的 Azure 資料庫伺服器 <br><br> <li> Azure VM 中的 SQL <br><br> <li> Azure VM 中的 SAP Hana <br><br> <li> Azure 檔案 | 請參閱[AZURE VM 備份](./backup-support-matrix-iaas.md)和[適用於 PostgreSQL 的 Azure 資料庫 Server 備份](backup-azure-database-postgresql.md#support-matrix)的支援矩陣 |
+| 動作 | 還原備份實例 | <li> Azure 虛擬機器 <br><br> <li> 適用於 PostgreSQL 的 Azure 資料庫伺服器 <br><br> <li> Azure VM 中的 SQL <br><br> <li> Azure VM 中的 SAP Hana <br><br> <li> Azure 檔案 | 請參閱[AZURE VM 備份](./backup-support-matrix-iaas.md)和[適用於 PostgreSQL 的 Azure 資料庫 Server 備份](backup-azure-database-postgresql.md#support-matrix)的支援矩陣 |
+| 動作 | 建立保存庫 | <li> Azure 虛擬機器 <br><br> <li> 適用於 PostgreSQL 的 Azure 資料庫伺服器 <br><br> <li> Azure VM 中的 SQL <br><br> <li> Azure VM 中的 SAP Hana <br><br> <li> Azure 檔案 | 請參閱復原服務保存[庫](./backup-support-matrix.md#vault-support)的支援矩陣 |
+| 動作 | 建立備份原則 | <li> Azure 虛擬機器 <br><br> <li> 適用於 PostgreSQL 的 Azure 資料庫伺服器 <br><br> <li> Azure VM 中的 SQL <br><br> <li> Azure VM 中的 SAP Hana <br><br> <li> Azure 檔案 | 請參閱復原服務保存[庫](./backup-support-matrix.md#vault-support)的支援矩陣 |
+| 動作 | 針對備份實例執行隨選備份 | <li> Azure 虛擬機器 <br><br> <li> 適用於 PostgreSQL 的 Azure 資料庫伺服器 <br><br> <li> Azure VM 中的 SQL <br><br> <li> Azure VM 中的 SAP Hana <br><br> <li> Azure 檔案 | 請參閱[AZURE VM 備份](./backup-support-matrix-iaas.md)和[適用於 PostgreSQL 的 Azure 資料庫 Server 備份](backup-azure-database-postgresql.md#support-matrix)的支援矩陣 |
+| 動作 | 停止備份實例的備份 | <li> Azure 虛擬機器 <br><br> <li> 適用於 PostgreSQL 的 Azure 資料庫伺服器 <br><br> <li> Azure VM 中的 SQL <br><br> <li> Azure VM 中的 SAP Hana <br><br> <li> Azure 檔案 | 請參閱[AZURE VM 備份](./backup-support-matrix-iaas.md)和[適用於 PostgreSQL 的 Azure 資料庫 Server 備份](backup-azure-database-postgresql.md#support-matrix)的支援矩陣 |
 | 深入解析 | 查看備份報表 | <li> Azure 虛擬機器 <br><br> <li> Azure 虛擬機器中的 SQL <br><br> <li> Azure 虛擬機器中的 SAP Hana <br><br> <li> Azure 檔案 <br><br> <li> System Center Data Protection Manager <br><br> <li> Azure 備份代理程式 (MARS)  <br><br> <li> Azure 備份伺服器 (MABS) | 請參閱 [備份報告的支援案例](./configure-reports.md#supported-scenarios) |
 | 控管 | 在 [備份] 類別下，查看並指派內建和自訂 Azure 原則 | N/A | N/A |
 | 控管 | 視圖未設定進行備份的資料來源 | <li> Azure 虛擬機器 <br><br> <li> 適用於 PostgreSQL 的 Azure 資料庫伺服器 | N/A |

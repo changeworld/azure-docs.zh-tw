@@ -1,45 +1,29 @@
 ---
-title: 透過媒體服務 v3 進行即時串流
-titleSuffix: Azure Media Services
-description: 了解如何透過 Azure 媒體服務 v3 進行即時串流。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: tutorial
-ms.custom: mvc, devx-track-csharp
-ms.date: 06/13/2019
-ms.author: inhenkel
-ms.openlocfilehash: b2e456474a9d052d9515c8169ce233e9577a5c53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256560"
+標題：以媒體服務 v3 進行即時串流： Azure 媒體服務描述：瞭解如何使用 Azure 媒體服務 v3 即時串流。
+服務： media services documentationcenter： ' ' author： IngridAtMicrosoft manager： femila editor： ' '
+
+ms. 服務：媒體服務 ms. 工作負載：媒體 ms.tgt_pltfrm： na ms. ms.devlang： na ms. 主題：教學課程 ms. 自訂： "mvc，devx-track-csharp" ms. date： 06/13/2019 ms. 作者： inhenkel
+
 ---
-# <a name="tutorial-stream-live-with-media-services"></a>教學課程：透過媒體服務進行即時串流
+
+# <a name="tutorial-stream-live-with-media-services"></a>教學課程：使用媒體服務即時串流
 
 > [!NOTE]
 > 雖然教學課程使用 [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) 範例，但是 [REST API](/rest/api/media/liveevents)、[CLI](/cli/azure/ams/live-event?view=azure-cli-latest) 或其他受支援 [SDK](media-services-apis-overview.md#sdks) 的一般步驟都相同。
 
-在 Azure 媒體服務中，[即時事件](/rest/api/media/liveevents)會負責處理即時串流內容。 即時事件會提供輸入端點 (內嵌 URL)，接著您再提供給即時編碼器。 即時事件會從即時編碼器接收即時輸入資料流，再透過一或多個[串流端點](/rest/api/media/streamingendpoints)進行串流處理。 即時事件也會提供預覽端點 (預覽 URL)，您可在進一步處理和傳遞之前先用來預覽及驗證您的資料流。 本教學課程說明如何使用 .NET Core 建立即時事件的**傳遞**類型。
+在 Azure 媒體服務中，[即時事件](/rest/api/media/liveevents)會負責處理即時串流內容。 即時事件會提供輸入端點 (內嵌 URL)，接著您再提供給即時編碼器。 即時事件會從即時編碼器接收即時輸入資料流，再透過一或多個[串流端點](/rest/api/media/streamingendpoints)進行串流處理。 即時事件也會提供預覽端點 (預覽 URL)，您可在進一步處理和傳遞之前先用來預覽及驗證您的資料流。 本教學課程說明如何使用 .NET Core 建立即時事件的 **傳遞** 類型。
 
 本教學課程說明如何：
 
 > [!div class="checklist"]
 > * 下載本主題中說明的範例應用程式。
 > * 檢查執行即時串流的程式碼。
-> * 使用 [https://ampdemo.azureedge.net](https://ampdemo.azureedge.net) 上的 [Azure 媒體播放器](https://amp.azure.net/libs/amp/latest/docs/index.html)監看事件。
+> * 觀看 [Azure 媒體播放機](https://amp.azure.net/libs/amp/latest/docs/index.html) at 的活動 [https://ampdemo.azureedge.net](https://ampdemo.azureedge.net) 。
 > * 清除資源。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 需要有下列項目，才能完成教學課程：
 
@@ -47,7 +31,7 @@ ms.locfileid: "89256560"
 - [建立媒體服務帳戶](./create-account-howto.md)。<br/>請務必記住您用於資源群組名稱和「媒體服務」帳戶名稱的值。
 - 請依照[使用 Azure CLI 存取 Azure 媒體服務 API](./access-api-howto.md) 中的步驟，並儲存認證。 您必須使用這些認證來存取 API。
 - 用來廣播事件的相機或裝置 (例如筆記型電腦)。
-- 內部部署即時編碼器，其會將相機中的訊號轉換成資料流，再傳送至媒體服務即時串流服務；請參閱[建議的內部部署即時編碼器](recommended-on-premises-live-encoders.md)。 資料流的格式必須是 **RTMP** 或 **Smooth Streaming**。
+- 將來自相機的信號轉換成傳送至媒體服務即時串流服務之串流的內部部署即時編碼器，請參閱 [建議的內部部署即時編碼器](recommended-on-premises-live-encoders.md)。 資料流的格式必須是 **RTMP** 或 **Smooth Streaming**。
 
 > [!TIP]
 > 請務必先檢閱[使用媒體服務 v3 進行即時串流](live-streaming-overview.md)，再繼續操作。 
@@ -65,7 +49,7 @@ ms.locfileid: "89256560"
 在您下載的專案中開啟 [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/appsettings.json)。 將值取代為您從[存取 API](./access-api-howto.md) 中取得的認證。
 
 > [!IMPORTANT]
-> 此範例會對每個資源使用唯一尾碼。 如果您取消偵錯，或在應用程式執行完成之前加以終止，您的帳戶將會出現多個即時事件。 <br/>請確實停止執行即時事件。 否則將會產生相關**費用**！
+> 此範例會對每個資源使用唯一尾碼。 如果您取消偵錯，或在應用程式執行完成之前加以終止，您的帳戶將會出現多個即時事件。 <br/>請確實停止執行即時事件。 否則將會產生相關 **費用**！
 
 ## <a name="examine-the-code-that-performs-live-streaming"></a>檢查執行即時串流的程式碼
 
@@ -75,7 +59,7 @@ ms.locfileid: "89256560"
 
 > [!IMPORTANT]
 > 此範例會對每個資源使用唯一尾碼。 如果您取消偵錯，或在應用程式執行完成之前加以終止，您的帳戶將會出現多個即時事件。 <br/>
-> 請確實停止執行即時事件。 否則將會產生相關**費用**！
+> 請確實停止執行即時事件。 否則將會產生相關 **費用**！
 
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>開始搭配使用媒體服務 API 與 .NET SDK
 
@@ -85,13 +69,13 @@ ms.locfileid: "89256560"
 
 ### <a name="create-a-live-event"></a>建立即時事件
 
-本節說明如何建立**傳遞**類型的即時事件 (LiveEventEncodingType 設定為 [無])。 如需可用的即時事件類型詳細資訊，請參閱[即時事件類型](live-events-outputs-concept.md#live-event-types)。 
+本節說明如何建立 **傳遞** 類型的即時事件 (LiveEventEncodingType 設定為 [無])。 如需可用的即時事件類型詳細資訊，請參閱[即時事件類型](live-events-outputs-concept.md#live-event-types)。 
  
 您可能想要在建立即時事件時指定下列各項：
 
 * 媒體服務位置。
 * 「實況活動」的串流通訊協定 (目前支援 RTMP 和 Smooth Streaming 通訊協定)。<br/>當「即時事件」或其相關「即時輸出」正在執行時，您無法變更通訊協定選項。 如果您需要不同的通訊協定，則應為每個串流通訊協定建立個別的「即時事件」。  
-* 內嵌和預覽的 IP 限制。 您可以定義獲允許將視訊內嵌到這個「實況活動」的 IP 位址。 允許的 IP 位址可以指定為單一 IP 位址 (例如 ‘10.0.0.1’)、使用 IP 位址和 CIDR 子網路遮罩的 IP 範圍 (例如 ‘10.0.0.1/22’)，或是使用 IP 位址和小數點十進位子網路遮罩的 IP 範圍 (例如 '10.0.0.1(255.255.252.0)')。<br/>如果未指定 IP 位址而且也未定義規則，則任何 IP 位址都不允許。 若要允許任何 IP 位址，請建立規則，並設定 0.0.0.0/0。<br/>IP 位址必須採用下列其中一個格式：具有四個數字的 IpV4 位址或 CIDR 位址範圍。
+* 內嵌和預覽的 IP 限制。 您可以定義獲允許將視訊內嵌到這個「實況活動」的 IP 位址。 允許的 IP 位址可以指定為單一 IP 位址 (例如 ‘10.0.0.1’)、使用 IP 位址和 CIDR 子網路遮罩的 IP 範圍 (例如 ‘10.0.0.1/22’)，或是使用 IP 位址和小數點十進位子網路遮罩的 IP 範圍 (例如 '10.0.0.1(255.255.252.0)')。<br/>如果未指定 IP 位址而且也未定義規則，則任何 IP 位址都不允許。 若要允許任何 IP 位址，請建立規則，並設定 0.0.0.0/0。<br/>IP 位址必須是下列其中一種格式：具有四個數字或 CIDR 位址範圍的 IpV4 位址。
 * 在建立事件時，您可以指定要自動啟動它。 <br/>當自動啟動設為 true 時，即時事件將會在建立後隨即啟動。 這意味著「即時事件」只要開始執行，就會立即開始計費。 您必須對「實況活動」資源明確呼叫「停止」，才能終止進一步計費。 如需詳細資訊，請參閱[實況活動狀態和計費](live-event-states-billing.md)。
 * 針對要預測的內嵌 URL，設定「虛名」模式。 如需詳細資訊，請參閱[實況活動內嵌 URL](live-events-outputs-concept.md#live-event-ingest-urls)。
 
@@ -131,7 +115,7 @@ ms.locfileid: "89256560"
 #### <a name="create-a-streaming-locator"></a>建立串流定位器
 
 > [!NOTE]
-> 建立媒體服務帳戶時，**預設**串流端點會新增至**已停止**狀態的帳戶。 若要開始串流內容並利用[動態封裝](dynamic-packaging-overview.md)和動態加密功能，您想要串流內容的串流端點必須處於**執行中**狀態。
+> 建立媒體服務帳戶時，**預設** 串流端點會新增至 **已停止** 狀態的帳戶。 若要開始串流處理您的內容並利用 [動態封裝](dynamic-packaging-overview.md)和動態加密，您想要串流內容的串流端點必須處於執行 **中狀態。**
 
 當您已使用串流定位器發行即時輸出資產時，即時事件 (最長為 DVR 時段長度) 將繼續可檢視，直到串流定位器到期或遭到刪除，視孰者為早。
 

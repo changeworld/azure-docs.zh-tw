@@ -7,19 +7,19 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 01/19/2020
-ms.openlocfilehash: 6075027124352746a3adbb8f6937d3787eb22b9d
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: a1726b29c153bf680d29fe821ac34aa958064335
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602573"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879236"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>合作夥伴中心中的商業 marketplace 方案支援
 
 Microsoft 提供各式各樣的產品和服務支援。 尋找正確的支援小組很重要，可確保適當且及時的回應。 請考慮下列案例，這些案例應有助於將您的查詢傳送給適當的團隊：
 
 - 如果您是發行者，並有來自客戶的問題，請要求您的客戶使用 [Azure 入口網站](https://portal.azure.com/)中的支援連結來要求支援。
-- 如果您是發行者，而且偵測到在 Azure 上執行的應用程式有安全性問題，請參閱 [如何記錄安全性事件支援票證](/azure/security/fundamentals/event-support-ticket)。 發行者一旦發現可疑的安全性事件，必須立即報告，包括其 Azure Marketplace 軟體和服務供應項目的安全性事件和弱點。
+- 如果您是發行者，而且偵測到在 Azure 上執行的應用程式有安全性問題，請參閱 [如何記錄安全性事件支援票證](../security/fundamentals/event-support-ticket.md)。 發行者一旦發現可疑的安全性事件，必須立即報告，包括其 Azure Marketplace 軟體和服務供應項目的安全性事件和弱點。
 - 如果您是發行者，並且有與您的應用程式或服務相關的問題，請參閱下列支援選項。
 
 ## <a name="get-help-or-open-a-support-ticket"></a>取得協助或開啟支援票證

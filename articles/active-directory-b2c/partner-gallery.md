@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6af68f51e76f60c807be2008ae61e27879ebbb11
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 5012e90aae316897454ffc7933efc88d83afdf6e
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703202"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893369"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV 合作夥伴
 
@@ -74,6 +74,7 @@ Microsoft 與下列 Isv 合作提供安全性。
 | ISV 合作夥伴 | 描述和整合逐步解說 |
 |:-------------------------|:--------------|
 | ![Arkose lab 標誌的螢幕擷取畫面](./media/partner-gallery/arkose-logo.png) | [Arkose Labs](./partner-arkose-labs.md) 是一項詐騙防護解決方案提供者，可協助組織防止 bot 攻擊、帳戶接管攻擊，以及詐騙帳戶。 |
+| ![Ping 標誌的螢幕擷取畫面](./media/partner-gallery/ping-logo.png) | [Ping 身分識別](./partner-ping-identity.md) 可讓您跨多個雲端安全地混合存取內部部署的繼承應用程式。 |
 | ![分層標誌的螢幕擷取畫面](./media/partner-gallery/strata-logo.png) | [分層](./partner-strata.md) 藉由強制執行一致的存取原則、讓身分識別保持同步，讓您能夠輕鬆地將應用程式從舊版身分識別系統轉換成以標準為基礎的驗證以及 Azure AD B2C 所提供的存取控制，來提供內部部署應用程式的安全混合式存取。 |
 | ![Zscaler 標誌的螢幕擷取畫面](./media/partner-gallery/zscaler-logo.png) | [Zscaler](./partner-zscaler.md) 提供以原則為基礎、安全的私用應用程式和資產存取，而不會有 VPN 的成本、麻煩或安全性風險。 |
 

@@ -3,20 +3,20 @@ title: 使用備份中心監視和操作備份
 description: 本文說明如何使用備份中心大規模監視和操作備份
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 29e09e502e83ea67af290f206ee0e68b847b2069
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ce3b0f00c51e9b466a9ed040b677df811448b1d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90994514"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893773"
 ---
-# <a name="monitor-and-operate-backups-using-backup-center"></a>使用備份中心監視和操作備份
+# <a name="monitor-and-operate-backups-using-backup-center-preview"></a>使用備份中心 (預覽版來監視和操作備份) 
 
 作為備份系統管理員，您可以使用 [備份中心] 作為單一的單一窗格，以每日一天監視您的作業和備份清查。 您也可以使用備份中心來執行一般作業，例如回應隨選備份要求、還原備份、建立備份原則等等。
 
 ## <a name="supported-scenarios"></a>支援的案例
 
-* Azure VM 備份和適用於 PostgreSQL 的 Azure 資料庫 Server 備份目前支援「備份中心」。
+* 目前支援備份中心的 Azure VM 備份、Azure VM 備份中的 SQL、Azure VM 備份中的 SAP Hana、Azure 檔案儲存體備份和適用於 PostgreSQL 的 Azure 資料庫 Server 備份。
 * 如需支援和不支援案例的詳細清單，請參閱 [支援矩陣](backup-center-support-matrix.md) 。
 
 ## <a name="backup-instances"></a>備份實例

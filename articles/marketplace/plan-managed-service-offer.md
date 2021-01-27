@@ -8,12 +8,12 @@ author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
 ms.date: 12/23/2020
-ms.openlocfilehash: a504969d23fce8000119aadf9e45d599da0894f0
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 57a6883a2c4fff14507df27b55ac0f6621306bf5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97918115"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879270"
 ---
 # <a name="how-to-plan-a-managed-service-offer-for-the-microsoft-commercial-marketplace"></a>如何規劃 Microsoft 商業 marketplace 的受控服務供應專案
 
@@ -25,7 +25,7 @@ ms.locfileid: "97918115"
 
 若要發佈受管理的服務，您必須在雲端平臺獲得金級或銀級的 Microsoft 專長認證。 此專長認證會向客戶展示您的專業知識。 如需詳細資訊，請參閱 [Microsoft 合作夥伴網路](https://partner.microsoft.com/membership/competencies)專長認證。
 
-供應專案必須符合所有適用的 [商業 marketplace 認證原則](https://docs.microsoft.com/legal/marketplace/certification-policies) ，才能在 Azure Marketplace 上發佈。
+供應專案必須符合所有適用的 [商業 marketplace 認證原則](/legal/marketplace/certification-policies) ，才能在 Azure Marketplace 上發佈。
 
 ## <a name="customer-leads"></a>潛在客戶
 

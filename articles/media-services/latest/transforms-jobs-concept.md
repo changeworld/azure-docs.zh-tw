@@ -1,24 +1,11 @@
 ---
-title: 媒體服務中的轉換和作業
-titleSuffix: Azure Media Services
-description: 瞭解如何建立轉換來描述在 Azure 媒體服務中處理影片的規則。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: conceptual
-ms.date: 08/19/2019
-ms.author: inhenkel
-ms.openlocfilehash: 4cb4bcf5eb205d27cbca764d5ec16890a23be5c6
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426774"
+# <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>必要欄位。 查看更多有關 aka.ms/skyeye/meta 的資訊。
+標題：媒體服務中的轉換和作業： Azure 媒體服務描述：瞭解如何建立轉換來描述在 Azure 媒體服務中處理影片的規則。
+服務： media services documentationcenter： ' ' author： IngridAtMicrosoft manager： femila editor： ' '
+
+ms. 服務：媒體-服務 ms. 工作負載： ms. 主題：概念 ms. 日期： 08/19/2019 ms. 作者： inhenkel
 ---
+
 # <a name="transforms-and-jobs-in-media-services"></a>媒體服務中的轉換和作業
 
 本主題提供有關 [轉換](/rest/api/media/transforms) 和 [作業](/rest/api/media/jobs) 的詳細資料，並說明這些實體之間的關聯性。
@@ -47,18 +34,18 @@ ms.locfileid: "92426774"
     1. 哪裡可以找到該影片。
     2. 和寫入輸出縮圖映像的位置。
 
-**轉換**可協助您建立一次配方 (步驟 1)，並使用該配方提交作業 (步驟 2)。
+**轉換** 可協助您建立一次配方 (步驟 1)，並使用該配方提交作業 (步驟 2)。
 
 > [!NOTE]
 > Datetime 類型之 **轉換** 和 **作業** 的屬性一律採用 UTC 格式。
 
 ## <a name="transforms"></a>轉換
 
-使用**轉換**可設定視訊編碼或分析的一般工作。 每個 **轉換** 都會描述處理影片或音訊檔案的配方或工作流程。 單一轉換可套用多個規則。 例如，轉換可以指定每個視訊以指定的位元速率編碼至 MP4 檔案，並從影片第一幀畫面產生縮圖映像。 您將為每個您要加入轉換的規則新增 TransformOutput 項目。 您可以使用預設值來告訴轉換如何處理輸入媒體檔案。
+使用 **轉換** 可設定視訊編碼或分析的一般工作。 每個 **轉換** 都會描述處理影片或音訊檔案的配方或工作流程。 單一轉換可套用多個規則。 例如，轉換可以指定每個視訊以指定的位元速率編碼至 MP4 檔案，並從影片第一幀畫面產生縮圖映像。 您將為每個您要加入轉換的規則新增 TransformOutput 項目。 您可以使用預設值來告訴轉換如何處理輸入媒體檔案。
 
 ### <a name="viewing-schema"></a>查看架構
 
-在媒體服務 v3 中，預設值是 API 本身中的強型別實體。 您可以在 [OPEN API 規格 (或 Swagger) ](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)中找到這些物件的「架構」定義。 您也可以在[REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset)、 [.net SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)或其他媒體服務 v3 SDK 參考檔中查看預設的定義 (例如**StandardEncoderPreset**) 。
+在媒體服務 v3 中，預設值是 API 本身中的強型別實體。 您可以在 [OPEN API 規格 (或 Swagger) ](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)中找到這些物件的「架構」定義。 您也可以在 [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset)、 [.net SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)或其他媒體服務 v3 SDK 參考檔中查看預設的定義 (例如 **StandardEncoderPreset**) 。
 
 ### <a name="creating-transforms"></a>建立轉換
 
@@ -78,7 +65,7 @@ ms.locfileid: "92426774"
 
 ## <a name="jobs"></a>工作
 
-**作業**是媒體服務的實際要求，可將**轉換**套用至指定的輸入影片或音訊內容。 一旦建立轉換，您就可以使用媒體服務 API 或使用任何已發佈的 SDK 提交作業。 **作業**會指定輸入影片的位置、輸出的位置等資訊。 您可以使用下列內容指定輸入影片的位置： HTTPS Url、SAS Url 或 [資產](/rest/api/media/assets)。  
+**作業** 是媒體服務的實際要求，可將 **轉換** 套用至指定的輸入影片或音訊內容。 一旦建立轉換，您就可以使用媒體服務 API 或使用任何已發佈的 SDK 提交作業。 **作業** 會指定輸入影片的位置、輸出的位置等資訊。 您可以使用下列內容指定輸入影片的位置： HTTPS Url、SAS Url 或 [資產](/rest/api/media/assets)。  
 
 ### <a name="job-input-from-https"></a>從 HTTPS 進行的作業輸入
 
@@ -94,7 +81,7 @@ ms.locfileid: "92426774"
 
 ### <a name="updating-jobs"></a>更新作業
 
-作業實體上的更新 [作業](/rest/api/media/jobs) 可以用來在提交作業之後修改 *描述* 和 *優先順序* 屬性。 只有在作業仍處於排入佇列的狀態時，才能有效變更「優先順序」** 屬性。 如果作業已開始處理，或已經處理完成，則變更優先順序不會有任何作用。
+作業實體上的更新 [作業](/rest/api/media/jobs) 可以用來在提交作業之後修改 *描述* 和 *優先順序* 屬性。 只有在作業仍處於排入佇列的狀態時，才能有效變更「優先順序」屬性。 如果作業已開始處理，或已經處理完成，則變更優先順序不會有任何作用。
 
 ### <a name="job-object-diagram"></a>工作物件圖表
 

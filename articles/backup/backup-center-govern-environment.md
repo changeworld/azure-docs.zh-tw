@@ -3,14 +3,14 @@ title: 使用備份中心管理您的備份資產
 description: 瞭解如何管理您的 Azure 環境，以確保您的所有資源都符合備份中心的備份觀點。
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: ebb4d72c3a3377072e185251bd642762f6876c03
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 67b0591c7d7146d162687018854365d338105d76
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173803"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893841"
 ---
-# <a name="govern-your-backup-estate-using-backup-center"></a>使用備份中心管理您的備份資產
+# <a name="govern-your-backup-estate-using-backup-center-preview"></a>使用備份中心 (預覽版來管理您的備份資產) 
 
 備份中心可協助您管理 Azure 環境，以確保您的所有資源都符合備份的觀點。 以下是備份中心的一些治理功能：
 
@@ -43,6 +43,11 @@ ms.locfileid: "92173803"
 選取 [可保護的資料 **源** ] 功能表項目，可讓您查看尚未設定備份的所有資料來源。 您可以依 datasource 訂用帳戶、資源群組、位置、類型和標記來篩選清單。 一旦您識別出需要備份的資料來源之後，您可以在對應的格線專案上按一下滑鼠右鍵，然後選取 [ **備份** ] 來設定資源的備份。
 
 ![可保護的資料來源功能表](./media/backup-center-govern-environment/protectable-datasources.png)
+
+> [!NOTE]
+> 如果您選取 **AZURE VM 中的 SQL** 做為資料來源類型，可保護的資料 **源** 視圖會顯示沒有任何已設定備份之 SQL 資料庫的所有資源庫 vm 清單。
+> 如果您選取 [ **Azure 儲存體 (Azure 檔案儲存體)** 作為資料來源類型，[可保護的資料 **源** ] 視圖會顯示 (支援檔案共用的所有儲存體帳戶清單) 該檔案共用沒有任何已設定進行備份的檔案共用。
+
 
 ## <a name="next-steps"></a>後續步驟
 

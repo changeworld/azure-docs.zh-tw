@@ -1,25 +1,10 @@
 ---
-title: 使用媒體服務 v3 進行上傳、編碼和串流
-titleSuffix: Azure Media Services
-description: 本教學課程說明如何使用 Azure 媒體服務 v3 來上傳檔案、編碼影片和串流處理內容。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: tutorial
-ms.custom: mvc
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: eedbb63f4928c0397150b40a47fdc7c3e87d1991
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256759"
+標題：使用媒體服務 v3 上傳、編碼和串流： Azure 媒體服務描述：示範如何使用 Azure 媒體服務 v3 上傳檔案、編碼影片及串流內容的教學課程。
+服務： media services documentationcenter： ' ' author： IngridAtMicrosoft manager： femila editor： ' '
+
+ms. 服務：媒體-服務 ms. 工作負載： ms. 主題：教學課程 ms. 自訂： mvc ms. 日期： 08/31/2020 ms. 作者： inhenkel
 ---
+
 # <a name="tutorial-upload-encode-and-stream-videos-with-media-services-v3"></a>教學課程：使用媒體服務 v3 上傳、編碼和串流處理影片
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
@@ -66,12 +51,12 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 
 此範例會執行下列動作：
 
-1. 建立新的**轉換** (首先，檢查指定的轉換是否存在)。
-2. 建立輸出**資產**，作為編碼**作業**的輸出。
-3. 建立輸入**資產**，並將指定的本機視訊檔案上傳到其中。 此資產會作為作業的輸入。
+1. 建立新的 **轉換** (首先，檢查指定的轉換是否存在)。
+2. 建立輸出 **資產**，作為編碼 **作業** 的輸出。
+3. 建立輸入 **資產**，並將指定的本機視訊檔案上傳到其中。 此資產會作為作業的輸入。
 4. 使用已建立的輸入和輸出提交編碼作業。
 5. 檢查作業的狀態。
-6. 建立**串流定位器**。
+6. 建立 **串流定位器**。
 7. 建置串流 URL。
 
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>開始搭配使用媒體服務 API 與 .NET SDK
@@ -82,13 +67,13 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 
 ### <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>建立輸入資產並將本機檔案上傳到其中
 
-**CreateInputAsset** 函式會建立新的輸入[資產](/rest/api/media/assets)，並將指定的本機影片檔案上傳到其中。 這項**資產**會用來作為編碼作業的輸入。 在媒體服務 v3 中，**作業**的輸入可以是**資產**，或是您透過 HTTPS URL 讓媒體服務帳戶可存取的內容。 若要了解如何從 HTTPS URL 進行編碼，請參閱[這篇](job-input-from-http-how-to.md)文章。
+**CreateInputAsset** 函式會建立新的輸入 [資產](/rest/api/media/assets)，並將指定的本機影片檔案上傳到其中。 這項 **資產** 會用來作為編碼作業的輸入。 在媒體服務 v3 中，**作業** 的輸入可以是 **資產**，或是您透過 HTTPS URL 讓媒體服務帳戶可存取的內容。 若要了解如何從 HTTPS URL 進行編碼，請參閱[這篇](job-input-from-http-how-to.md)文章。
 
 在媒體服務 v3 中，您會使用 Azure 儲存體 API 來上傳檔案。 下列 .NET 程式碼片段將說明執行方式。
 
 下列函式會執行下列動作：
 
-* 建立**資產**。
+* 建立 **資產**。
 * 取得可寫入的 [SAS URL](../../storage/common/storage-sas-overview.md)，以存取[儲存體中的資產容器](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container)。
 
     如果使用資產的 [ListContainerSas](/rest/api/media/assets/listcontainersas) 函式來取得 SAS URL，請注意到此函式會傳回多個 SAS URL，因為每個儲存體帳戶都有兩個儲存體帳戶金鑰。 儲存體帳戶之所以有兩個金鑰，是因為其允許無縫輪替儲存體帳戶金鑰 (例如，在使用一個金鑰時變更另一個金鑰，然後開始使用新金鑰並輪替另一個金鑰)。 第一個 SAS URL 代表儲存體金鑰 1，而第二個代表儲存體金鑰 2。
@@ -104,7 +89,7 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 
 ### <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>建立轉換和編碼上傳檔案的作業
 
-在媒體服務中編碼或處理內容時，將編碼設定設為配方 (recipe) 是很常見的模式。 然後您可以透過提交**作業**，將該配方套用到影片。 藉由為每部新影片提交新的作業，您可以將該配方套用到媒體櫃中的所有影片。 配方在媒體服務中稱為**轉換**。 如需詳細資訊，請參閱[轉換和作業](./transforms-jobs-concept.md)。 本教學課程中所述的範例會定義編碼影片的配方，以便將影片串流到各種 iOS 和 Android 裝置。
+在媒體服務中編碼或處理內容時，將編碼設定設為配方 (recipe) 是很常見的模式。 然後您可以透過提交 **作業**，將該配方套用到影片。 藉由為每部新影片提交新的作業，您可以將該配方套用到媒體櫃中的所有影片。 配方在媒體服務中稱為 **轉換**。 如需詳細資訊，請參閱[轉換和作業](./transforms-jobs-concept.md)。 本教學課程中所述的範例會定義編碼影片的配方，以便將影片串流到各種 iOS 和 Android 裝置。
 
 #### <a name="transform"></a>轉換
 
@@ -112,13 +97,13 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 
 您可以使用內建的 EncoderNamedPreset 或使用自訂預設值。 如需詳細資訊，請參閱[如何自訂編碼器預設值](customize-encoder-presets-how-to.md)。
 
-建立[轉換](/rest/api/media/transforms)時，您應該先使用 **Get** 方法檢查是否已有轉換存在，如下列程式碼所示。 在媒體服務 v3 中，如果實體不存在，對實體執行的 **Get** 方法會傳回 **null** (檢查名稱時不區分大小寫)。
+建立 [轉換](/rest/api/media/transforms)時，您應該先使用 **Get** 方法檢查是否已有轉換存在，如下列程式碼所示。 在媒體服務 v3 中，如果實體不存在，對實體執行的 **Get** 方法會傳回 **null** (檢查名稱時不區分大小寫)。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#EnsureTransformExists)]
 
 #### <a name="job"></a>工作 (Job)
 
-如同前面所述，[轉換](/rest/api/media/transforms)物件是配方，而[作業](/rest/api/media/jobs)則是實際要求媒體服務，將**轉換**套用至指定的輸入影片或音訊內容。 **作業**會指定輸入影片的位置、輸出的位置等資訊。
+如同前面所述，[轉換](/rest/api/media/transforms)物件是配方，而 [作業](/rest/api/media/jobs)則是實際要求媒體服務，將 **轉換** 套用至指定的輸入影片或音訊內容。 **作業** 會指定輸入影片的位置、輸出的位置等資訊。
 
 在此範例中，輸入影片已從本機電腦上傳。 如果您想要了解如何從 HTTPS URL 進行編碼，請參閱[這篇](job-input-from-http-how-to.md)文章。
 
@@ -130,7 +115,7 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 
 事件方格專為高可用性、一致效能及動態調整而設計。 透過事件方格，您的應用程式幾乎可以從所有 Azure 服務和自訂來源接聽及回應事件。 以 HTTP 為基礎的簡單回應式事件處理，可協助您透過智慧型事件篩選和路由來建置有效率的解決方案。  請參閱[將事件路由至自訂 Web 端點](job-state-events-cli-how-to.md)。
 
-**作業**通常會經歷下列狀態：**已排程**、**已排入佇列**、**正在處理**、**已完成** (最後一個狀態)。 如果作業發生錯誤，您會收到**錯誤**狀態。 如果正在取消作業，您會收到**正在取消**的狀態，以及完成時的**已取消**狀態。
+**作業** 通常會經歷下列狀態：**已排程**、**已排入佇列**、**正在處理**、**已完成** (最後一個狀態)。 如果作業發生錯誤，您會收到 **錯誤** 狀態。 如果正在取消作業，您會收到 **正在取消** 的狀態，以及完成時的 **已取消** 狀態。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#WaitForJobToFinish)]
 
@@ -142,7 +127,7 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 
 編碼完成後，下一個步驟是要讓用戶端可播放輸出資產中的視訊。 您可以透過兩個步驟來執行此動作：第一步，建立[串流定位器](/rest/api/media/streaminglocators)，第二步，建置用戶端可使用的串流 URL。
 
-建立 [串流定位器] 的程序稱為發佈。 根據預設，**串流定位器**會在進行 API 呼叫後立即生效，而且會持續運作到遭到刪除為止 (除非您有設定選擇性的開始和結束時間)。
+建立 [串流定位器] 的程序稱為發佈。 根據預設，**串流定位器** 會在進行 API 呼叫後立即生效，而且會持續運作到遭到刪除為止 (除非您有設定選擇性的開始和結束時間)。
 
 建立 [StreamingLocator](/rest/api/media/streaminglocators) 時，您必須指定所需的 **StreamingPolicyName**。 在此範例中，您將串流處理乾淨 (或未加密的) 內容，而使用預先定義的乾淨串流原則 (**PredefinedStreamingPolicy.ClearStreamingOnly**)。
 
@@ -157,10 +142,10 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 
 ### <a name="get-streaming-urls"></a>取得串流 URL
 
-建立了[串流定位器](/rest/api/media/streaminglocators)之後，現在您可以取得串流 URL，如 **GetStreamingURLs** 中所示。 若要建置 URL，您需要串連[串流端點](/rest/api/media/streamingendpoints)主機名稱和**串流定位器**路徑。 此範例會使用預設的**串流端點**。 初次建立媒體服務帳戶時，此預設的**串流端點**會處於停止狀態，因此您需要呼叫 **Start**。
+建立了 [串流定位器](/rest/api/media/streaminglocators)之後，現在您可以取得串流 URL，如 **GetStreamingURLs** 中所示。 若要建置 URL，您需要串連 [串流端點](/rest/api/media/streamingendpoints)主機名稱和 **串流定位器** 路徑。 此範例會使用預設的 **串流端點**。 初次建立媒體服務帳戶時，此預設的 **串流端點** 會處於停止狀態，因此您需要呼叫 **Start**。
 
 > [!NOTE]
-> 在此方法中，您需要 locatorName，也就是為輸出資產建立**串流定位器**時所使用的項目。
+> 在此方法中，您需要 locatorName，也就是為輸出資產建立 **串流定位器** 時所使用的項目。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#GetStreamingURLs)]
 
@@ -188,7 +173,7 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 
 1. 開啟瀏覽器並巡覽至 [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)。
 2. 在 [URL:] 方塊中，貼上您在執行應用程式時取得的其中一個串流 URL 值。
-3. 選取 [更新播放程式]。
+3. 選取 [更新播放程式]  。
 
 Azure 媒體播放器可以用於測試，但不應用於生產環境。
 

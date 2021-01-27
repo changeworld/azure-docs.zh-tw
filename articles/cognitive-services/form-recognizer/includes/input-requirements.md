@@ -5,12 +5,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/27/2019
 ms.author: pafarley
-ms.openlocfilehash: b3d24ce4dd42ea8122610943379160ca93406c21
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
-ms.translationtype: HT
+ms.openlocfilehash: 7cf3d86eeea9d1b0f5fcbb757d3597e21cbcc369
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548133"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98900825"
 ---
 表單辨識器可處理符合下列需求的輸入文件：
 
@@ -25,8 +25,3 @@ ms.locfileid: "92548133"
 * 文字必須使用拉丁字母 (英文字元)。
 * 對於不受監督的學習 (不使用標記資料)，資料必須包含索引鍵和值。
 * 對於不受監督的學習 (不使用標記資料)，索引鍵必須出現在值的上方或左邊；不能出現在下方或右邊。
-
-表單辨識器目前不支援這些類型的輸入資料：
-
-* 複雜資料表 (巢狀資料表、合併的標題或資料格等等)。
-* 核取方塊或選項按鈕。

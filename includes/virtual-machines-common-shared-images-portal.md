@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 1af80f208c72af9434d596f2c1219c08c0e3f719
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e7a4af2c18bfc2b8fbd6149dab12c0bcfc665341
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015978"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878813"
 ---
 ## <a name="create-an-image-gallery"></a>建立映像資源庫
 
@@ -35,7 +35,7 @@ ms.locfileid: "96015978"
 
 ## <a name="create-an-image-definition"></a>建立映像定義 
 
-映像定義會建立映像的邏輯群組。 並且可用來管理在其中建立的映像版本相關資訊。 映像定義名稱可以由大寫或小寫字母、數字、點、虛線和句點組成。 若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](../articles/virtual-machines/windows/shared-image-galleries.md#image-definitions)。
+映像定義會建立映像的邏輯群組。 並且可用來管理在其中建立的映像版本相關資訊。 映像定義名稱可以由大寫或小寫字母、數字、點、虛線和句點組成。 若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](../articles/virtual-machines/shared-image-galleries.md#image-definitions)。
 
 在您的資源庫內建立資源庫映射定義。 在此範例中，資源庫影像的名稱是 *myImageDefinition*。
 
@@ -44,7 +44,7 @@ ms.locfileid: "96015978"
 1. 在 [ **映射定義名稱**] 中，輸入 *myImageDefinition*。
 1. 針對 [ **作業系統**]，請根據您的來源 VM 選取正確的選項。  
 1. 針對 **vm 產生**，請根據您的來源 VM 選取選項。 在大部分的情況下，這會是 *Gen 1*。 如需詳細資訊，請參閱 [第2代 Vm 支援](../articles/virtual-machines/generation-2.md)。
-1. 針對 [ **作業系統狀態**]，選取以您的來源 VM 為基礎的選項。 如需詳細資訊，請參閱 [一般化和特製](../articles/virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images)化。
+1. 針對 [ **作業系統狀態**]，選取以您的來源 VM 為基礎的選項。 如需詳細資訊，請參閱 [一般化和特製](../articles/virtual-machines/shared-image-galleries.md#generalized-and-specialized-images)化。
 1. 若為 **發行者**，請輸入 *myPublisher*。 
 1. 在 [ **供應** 專案] 中輸入 *myOffer*。
 1. 針對 [ **SKU**]，輸入 *mySKU*。

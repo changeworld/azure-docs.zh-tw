@@ -1,5 +1,5 @@
 ---
-title: 媒體保留單元-Azure |Microsoft Docs
+title: 媒體保留單元-Azure
 description: 媒體保留單元可讓您調整媒體處理常式，並決定媒體處理工作的速度。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: df691f5b9e74432f683e52fbb896dd4d44efe2aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e0cfc47b546c31e6b93d224e64de20b79baacfd9
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91622059"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98891290"
 ---
 # <a name="media-reserved-units"></a>媒體保留單元
 

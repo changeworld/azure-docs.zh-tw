@@ -7,16 +7,16 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 6699db280c4d82867d5559255eab08fd6b55b65a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: e3a7ea2cd696f54b032a3f17eceff466a6201436
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201513"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878675"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>預覽：建立 Windows 映像並將其發佈到共用映像庫 
 
-此文章說明如何使用 Azure Image Builder 及 Azure PowerShell 在[共用映像庫](shared-image-galleries.md)中建立映像版本，然後以全域方式散發該映像。 您也可以使用 [Azure CLI](../linux/image-builder-gallery.md) 來執行此工作。
+此文章說明如何使用 Azure Image Builder 及 Azure PowerShell 在[共用映像庫](../shared-image-galleries.md)中建立映像版本，然後以全域方式散發該映像。 您也可以使用 [Azure CLI](../linux/image-builder-gallery.md) 來執行此工作。
 
 我們將會使用 .json 範本來設定映像。 我們要使用的 .json 檔案位於這裡：[armTemplateWinSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json)。 我們將會下載並編輯該範本的本機版本，因此此文章是使用本機 PowerShell 工作階段來撰寫的。
 

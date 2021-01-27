@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 10/06/2020
-ms.openlocfilehash: 2191a4df5b319ec16a4a6116aa99cfac50c87d9b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3be967b611f6b75705a60bfa14523832b0652931
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462911"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879219"
 ---
 # <a name="publishing-guide-by-offer-type"></a>依供應項目類型的發行指南
 
@@ -36,7 +36,7 @@ ms.locfileid: "96462911"
 | [**諮詢服務**](./plan-consulting-service-offer.md) | 諮詢服務可協助您將客戶與服務連線，以支援及擴充其 Azure、Dynamics 365 或 Power Suite 服務的使用。|
 | [**Dynamics 365**](appsource-offer-publishing-guide.md) | 您可以發佈建置於或擴充 Dynamics 365 Business Central、Dynamics 365 Customer Engagement、Power Apps 和財務和營運應用程式的 AppSource 供應專案。|
 | [**IoT Edge 模組**](iot-edge-module.md) | Azure IoT Edge 模組是 IoT Edge 所管理的最小計算單位，並可包含 Microsoft 服務 (例如「Azure 串流分析」)、第三方服務，或您自己的解決方案特定程式碼。 |
-| [**受控服務**](partner-center-portal/create-new-managed-service-offer.md) | 您可以透過 [Azure Lighthouse](../lighthouse/overview.md)建立受控服務供應專案，以及管理客戶委派的訂用帳戶或資源群組。|
+| [**受控服務**](./plan-managed-service-offer.md) | 您可以透過 [Azure Lighthouse](../lighthouse/overview.md)建立受控服務供應專案，以及管理客戶委派的訂用帳戶或資源群組。|
 | [**Power BI 應用程式** <br/>**Microsoft 365**](appsource-offer-publishing-guide.md) | 您可以發佈建置於或擴充 Power BI 和 Microsoft 365 的 AppSource 供應專案。|
 | [**軟體即服務**](plan-saas-offer.md) | 使用「軟體即服務」 (SaaS) 供應專案類型，讓客戶以訂用帳戶的形式購買您的 SaaS 型技術解決方案。 如需 SaaS 供應專案的單一登入需求的詳細資訊，請參閱在 [商業市場中 Azure AD 和可交易 saas](azure-ad-saas.md)供應專案。 |
 

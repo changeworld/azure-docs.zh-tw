@@ -8,12 +8,12 @@ ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 6390aafca4937a480e4d92ff04003a294b9c0e20
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: c4e85195ace0a24aa11d4a03b8f429f2714399b0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356169"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879151"
 ---
 # <a name="azcopy-copy"></a>azcopy 複製
 
@@ -37,7 +37,7 @@ ms.locfileid: "97356169"
 ## <a name="related-conceptual-articles"></a>相關的概念文章
 
 - [開始使用 AzCopy](storage-use-azcopy-v10.md)
-- [使用 AzCopy 和 Blob 儲存體傳輸資料](storage-use-azcopy-blobs.md)
+- [使用 AzCopy 和 Blob 儲存體傳輸資料](./storage-use-azcopy-v10.md#transfer-data)
 - [使用 AzCopy 和檔案儲存體傳輸資料](storage-use-azcopy-files.md) (機器翻譯)
 - [對 AzCopy 進行設定、最佳化及疑難排解](storage-use-azcopy-configure.md)
 
@@ -230,7 +230,7 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
     
 - 在 blob 上設定標籤時，SAS 中的標記) 有額外的許可權 ( ' t '，而不會讓服務將授權錯誤傳回。
 
-## <a name="options"></a>選項
+## <a name="options"></a>選項。
 
 **--備份** 啟用 Windows 的上傳 SeBackupPrivilege 或 SeRestorePrivilege for 下載，以允許 AzCopy 查看和讀取所有檔案，不論其檔案系統許可權為何，以及還原擁有權限。 要求執行 AzCopy 的帳戶必須具有這些許可權 (例如，具有系統管理員許可權或 `Backup Operators` 群組) 的成員。 此旗標會啟用帳戶已有的許可權。
 
@@ -284,7 +284,7 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 
 **--include-模式** 字串在複製時只會包含這些檔案。 此選項支援萬用字元字元 ( * ) 。 使用來分隔檔案 `;` 。
 
-**--版本清單** 字串會指定檔案，其中每個版本識別碼都會列在個別的行上。 請確定來源必須指向單一 blob，而且使用此旗標在檔案中指定的所有版本識別碼都必須僅屬於來源 blob。 AzCopy 會在提供的目的資料夾中下載指定的版本。 如需詳細資訊，請參閱 [下載舊版的 blob](storage-use-azcopy-blobs.md#download-previous-versions-of-a-blob)。
+**--版本清單** 字串會指定檔案，其中每個版本識別碼都會列在個別的行上。 請確定來源必須指向單一 blob，而且使用此旗標在檔案中指定的所有版本識別碼都必須僅屬於來源 blob。 AzCopy 會在提供的目的資料夾中下載指定的版本。 如需詳細資訊，請參閱 [下載舊版的 blob](./storage-use-azcopy-v10.md#transfer-data)。
 
 **--記錄層級** 字串會定義記錄檔的記錄詳細資訊、可用層級： (所有要求/回應的資訊) 、警告 (回應緩慢) 、錯誤 (只有失敗的要求) ，以及無 (沒有輸出記錄) 。  (預設 `INFO`) 。 
 
@@ -322,8 +322,8 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 
 **--** 命令輸出的輸出類型字串格式。 選項包括： text、json。 預設值是 `text`。  (預設的「文字」 ) 
 
-**--受信任-microsoft 尾碼** 字串指定可能傳送 Azure Active Directory 登入權杖的其他網域尾碼。  預設值為 `*.core.windows.net;*.core.chinacloudapi.cn;*.core.cloudapi.de;*.core.usgovcloudapi.net`。 此處所列的任何一種都會新增至預設值。 基於安全性，您應該只在這裡放置 Microsoft Azure 網域。 以分號分隔多個專案。
+**--受信任-microsoft 尾碼** 字串指定可能傳送 Azure Active Directory 登入權杖的其他網域尾碼。  預設為 `*.core.windows.net;*.core.chinacloudapi.cn;*.core.cloudapi.de;*.core.usgovcloudapi.net`。 此處所列的任何一種都會新增至預設值。 基於安全性，您應該只在這裡放置 Microsoft Azure 網域。 以分號分隔多個專案。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [azcopy](storage-ref-azcopy.md)

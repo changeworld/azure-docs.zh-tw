@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: d9e26b6388223ae252a5e85e6e9fb9783a3b8429
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 9169d691b58ad4a59796123c64f856128a0f8c83
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600402"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879321"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>如何規劃虛擬機器供應專案
 
@@ -30,10 +30,10 @@ ms.locfileid: "98600402"
   - [Windows VM](../virtual-machines/windows/tutorial-manage-vm.md)
 
 - 範例
-  - [適用於 Linux 虛擬機器的 Azure CLI 範例](../virtual-machines/linux/cli-samples.md) \(部分機器翻譯\)
-  - [適用於 Linux 虛擬機器的 Azure PowerShell](../virtual-machines/linux/powershell-samples.md) \(部分機器翻譯\)
-  - [適用於 Windows 虛擬機器的 Azure CLI 範例](../virtual-machines/windows/cli-samples.md) \(部分機器翻譯\)
-  - [適用於 Windows 虛擬機器的 Azure PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick.md)
+  - [適用於 Linux 虛擬機器的 Azure CLI 範例](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine) \(部分機器翻譯\)
+  - [適用於 Linux 虛擬機器的 Azure PowerShell](https://github.com/Azure/azure-docs-powershell-samples/tree/master/virtual-machine) \(部分機器翻譯\)
+  - [適用於 Windows 虛擬機器的 Azure CLI 範例](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine) \(部分機器翻譯\)
+  - [適用於 Windows 虛擬機器的 Azure PowerShell](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick)
 
 ## <a name="technical-requirements"></a>技術需求
 

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 1/15/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 71de1d17731e086d012da5365fa6671bcb9e6e3b
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 49184778c7d6592f074e04df535b9bc221f3162e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539246"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878794"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>針對 Azure 檔案同步進行移難排解
 使用 Azure 檔案同步，將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的彈性、效能及相容性。 Azure 檔案同步會將 Windows Server 轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料，包括 SMB、NFS 和 FTPS。 您可以視需要存取多個散佈於世界各地的快取。
@@ -206,8 +206,8 @@ Set-AzStorageSyncServerEndpoint `
     - 如果伺服器位於 Proxy 後方，請依照 Proxy [文件](./storage-sync-files-firewall-and-proxy.md#proxy)中的步驟設定整部電腦或應用程式專屬的 Proxy 設定。
     - 使用 Test-StorageSyncNetworkConnectivity Cmdlet 來檢查與服務端點的網路連線能力。 若要深入了解，請參閱[測試與服務端點的網路連線能力](./storage-sync-files-firewall-and-proxy.md#test-network-connectivity-to-service-endpoints) (機器翻譯)。
     - 如果伺服器上已設定 TLS 加密套件順序，您可以使用群組原則或 TLS Cmdlet 來新增加密套件：
-        - 若要使用群組原則，請參閱 [使用群組原則設定 TLS 加密套件順序](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-group-policy)。
-        - 若要使用 TLS Cmdlet，請參閱 [使用 Tls PowerShell Cmdlet 設定 Tls 加密套件順序](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets)。
+        - 若要使用群組原則，請參閱 [使用群組原則設定 TLS 加密套件順序](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-group-policy)。
+        - 若要使用 TLS Cmdlet，請參閱 [使用 Tls PowerShell Cmdlet 設定 Tls 加密套件順序](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets)。
     
         Azure 檔案同步目前支援下列 TLS 1.2 通訊協定的加密套件：  
         - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P384  
@@ -931,7 +931,7 @@ PerItemErrorCount: 1006.
 如果已刪除目錄，請執行下列步驟來移除現有的伺服器端點，並使用新路徑建立新的伺服器端點：
 
 1. 遵循 [移除伺服器端點](./storage-sync-files-server-endpoint.md#remove-a-server-endpoint)中記載的步驟，移除同步群組中的伺服器端點。
-2. 遵循 [新增伺服器端點](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#add-a-server-endpoint)中所述的步驟，在同步群組中建立新的伺服器端點。
+2. 遵循 [新增伺服器端點](./storage-sync-files-server-endpoint.md#add-a-server-endpoint)中所述的步驟，在同步群組中建立新的伺服器端點。
 
 ### <a name="common-troubleshooting-steps"></a>常用的疑難排解步驟
 <a id="troubleshoot-storage-account"></a>**確認儲存體帳戶確實存在。**  
