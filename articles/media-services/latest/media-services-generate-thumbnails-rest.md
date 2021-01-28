@@ -1,5 +1,5 @@
 ---
-title: 如何使用 Azure 媒體服務編碼器標準搭配 REST 來產生縮圖
+title: 使用 Azure 媒體服務 v3 .NET 從原則取得簽署金鑰
 description: 本文說明如何使用 REST 來編碼資產，並同時使用媒體編碼器標準產生縮圖。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: ec2782297f2659341c9fa7e87ce15d3dbceb022c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 75b8fd53836cce02816413afaeb656c3ac3f8796
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019557"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935395"
 ---
 # <a name="how-to-generate-thumbnails-using-encoder-standard-with-rest"></a>如何使用編碼器標準搭配 REST 來產生縮圖
 

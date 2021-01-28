@@ -7,12 +7,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: 6ff5731e7d346c954253ec4186357595461b7678
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: e1b175a176255da465433b2db45cb3cb67d360d1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400247"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934507"
 ---
 # <a name="use-azure-iot-dps-ip-connection-filters"></a>使用 Azure IoT DPS IP 連線篩選器
 
@@ -258,5 +258,5 @@ IP 篩選器規則會依序套用，第一個符合 IP 位址的規則會決定�
 若要進一步探索管理 DPS，請參閱：
 
 * [了解 IoT DPS IP 位址](iot-dps-understand-ip-address.md)
-* [使用 Azure CLI 設定 DPS](how-to-manage-dps-with-cli.md)
+* [使用 Azure CLI 設定 DPS](quick-setup-auto-provision-cli.md)
 * [DPS 存取控制](how-to-control-access.md)

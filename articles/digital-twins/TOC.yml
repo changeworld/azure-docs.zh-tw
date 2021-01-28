@@ -53,6 +53,8 @@
               href: how-to-set-up-instance-powershell.md
             - name: 已編寫指令碼版本
               href: how-to-set-up-instance-scripted.md
+        - name: 使用 Private Link 啟用私人存取
+          href: how-to-enable-private-link.md
         - name: 撰寫應用程式驗證碼
           href: how-to-authenticate-client.md
         - name: 建立應用程式註冊
@@ -107,6 +109,8 @@
               href: how-to-manage-routes-apis-cli.md
             - name: 入口網站版本
               href: how-to-manage-routes-portal.md
+        - name: 啟用路由事件的受控識別
+          href: how-to-enable-managed-identities.md
         - name: 與 Azure 地圖服務整合
           href: how-to-integrate-maps.md
         - name: 與 Azure 時間序列深入解析整合
@@ -153,6 +157,18 @@
       href: /cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true
 - name: 資源
   items:
+    - name: Digital Twins 服務限制
+      href: reference-service-limits.md
+    - name: 價格與可用性
+      items:
+        - name: 定價
+          href: 'https://azure.microsoft.com/pricing/details/digital-twins'
+        - name: SLA
+          href: 'https://azure.microsoft.com/support/legal/sla/digital-twins'
+        - name: 區域和可用性
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
+    - name: 客戶資料要求
+      href: resources-customer-data-requests.md
     - name: API 和 SDK
       items:
         - name: 控制平面
@@ -243,22 +259,10 @@
           href: /samples/azure-samples/dtdl-validator/dtdl-validator/
         - name: DTMI 規格
           href: 'https://github.com/Azure/digital-twin-model-identifier'
-    - name: 客戶資料要求
-      href: resources-customer-data-requests.md
-    - name: Digital Twins 服務限制
-      href: reference-service-limits.md
-    - name: 價格與可用性
-      items:
-        - name: 定價
-          href: 'https://azure.microsoft.com/pricing/details/digital-twins'
-        - name: SLA
-          href: 'https://azure.microsoft.com/support/legal/sla/digital-twins'
-        - name: 區域和可用性
-          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
-    - name: 客戶案例
-      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
     - name: Channel 9 影片
       href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
+    - name: 客戶案例
+      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
     - name: Azure 工具
       items:
         - name: Azure Cloud Shell
@@ -267,7 +271,5 @@
           href: /powershell/azure/
         - name: Azure 入口網站
           href: 'https://portal.azure.com'
-    - name: Azure RBAC 文件
-      href: ../role-based-access-control/overview.md
     - name: 支援和協助選項
       href: ../iot-fundamentals/iot-support-help.md

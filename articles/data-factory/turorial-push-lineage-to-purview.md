@@ -1,5 +1,5 @@
 ---
-title: 將 Data Factory 歷程資料推送至 Azure 範疇
+title: 將 Data Factory 歷程資料推送至 Azure Purview
 description: 瞭解如何將 Data Factory 歷程資料推送至 Azure 範疇
 services: data-factory
 ms.author: lle
@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 12/3/2020
-ms.openlocfilehash: 6b50c9440a958bc1398e79ddf3c5a0984816ec45
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: e87a9d677fee94d410099db1da80a56b5539048c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96603181"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935462"
 ---
 # <a name="push-data-factory-lineage-data-to-azure-purview-preview"></a>將 Data Factory 歷程資料推送至 Azure 範疇 (Preview) 
 
@@ -29,7 +29,7 @@ ms.locfileid: "96603181"
 ## <a name="prerequisites"></a>必要條件
 * **Azure 訂用帳戶**。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
 * **Azure Data Factory**。 如果您沒有 Azure Data Factory，請參閱 [建立 Azure Data Factory](./quickstart-create-data-factory-portal.md)。
-* **Azure 範疇帳戶**。 範疇帳戶會捕獲 data factory 所產生的所有歷程資料。 如果您沒有 Azure 範疇帳戶，請參閱 [建立 Azure 範疇](https://docs.microsoft.com/azure/purview/create-catalog-portal)。
+* **Azure 範疇帳戶**。 範疇帳戶會捕獲 data factory 所產生的所有歷程資料。 如果您沒有 Azure 範疇帳戶，請參閱 [建立 Azure 範疇](../purview/create-catalog-portal.md)。
 
 
 ## <a name="run-data-factory-activities-and-push-lineage-data-to-azure-purview"></a>執行 Data Factory 活動並將歷程資料推送至 Azure 範疇
@@ -76,6 +76,6 @@ ms.locfileid: "96603181"
 > 在「執行 SSIS 套件」活動的歷程中，我們只支援來源和目的地。 尚不支援轉換的歷程。
 
 ## <a name="next-steps"></a>後續步驟
-[目錄歷程使用者指南](https://docs.microsoft.com/azure/purview/catalog-lineage-user-guide)
+[目錄歷程使用者指南](../purview/catalog-lineage-user-guide.md)
 
 [將 Data Factory 連線到 Azure 範疇](connect-data-factory-to-azure-purview.md)

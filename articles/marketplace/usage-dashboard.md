@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 563ccdb0633f94acccf3ade9faf1c40c28f108ac
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9f798751065d4889569f4b798ac864342f3e54ef
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462938"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934395"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>商業市集分析中的使用量儀表板
 
@@ -122,7 +122,7 @@ _**表1：資料詞彙的字典**_
 | Marketplace 訂用帳戶識別碼 | Marketplace 訂用帳戶識別碼 | 與客戶用來購買商業 marketplace 供應專案的 Azure 訂用帳戶相關聯的唯一識別碼。 識別碼先前是 Azure 訂用帳戶 GUID。 |
 | MonthStartDate | 月開始日期 | 月開始日期代表購買月份。 |
 | 供應項目類型 | 供應項目類型 | 商業 marketplace 供應專案的類型。 |
-| Azure 授權類型 | Azure 授權類型 | 客戶用來購買 Azure 的授權合約類型。 也稱為通道。 可能的值包括：<ui><li>雲端解決方案提供者</li><li>企業</li><li>企業透過轉銷商</li><li>隨用隨付</li></ul> |
+| Azure 授權類型 | Azure 授權類型 | 客戶用來購買 Azure 的授權合約類型。 也稱為通道。 可能的值包括：<ui><li>雲端解決方案提供者</li><li>Enterprise</li><li>企業透過轉銷商</li><li>隨用隨付</li></ul> |
 | Marketplace 授權類型 | Marketplace 授權類型 | 商業 marketplace 供應專案的計費方法。 可能的值包括：<ul><li>透過 Azure 計費</li><li>攜帶您自己的授權</li><li>免費</li><li>Microsoft 成為轉銷商</li></ul> |
 | SKU | SKU | 與供應專案相關聯的方案。 |
 | 客戶國家/地區 | Customer Country/Region | 客戶提供的國家/地區名稱。 國家/地區可能與客戶的 Azure 訂用帳戶中的國家/地區不同。 |
@@ -135,7 +135,7 @@ _**表1：資料詞彙的字典**_
 | 供應項目名稱 | 供應項目名稱 | 商業 marketplace 供應專案的名稱。 |
 | DeploymentMethod | 已被取代 | 已淘汰 (與供應專案類型相同的定義) 
  |
-| 客戶公司名稱 | 客戶公司名稱 | 客戶提供的公司名稱。 名稱可能與客戶的 Azure 訂用帳戶中的城市不同。 |
+| 客戶公司名稱 | 客戶公司名稱 | 客戶提供的公司名稱。 名稱可能與客戶的 Azure 訂用帳戶中的名稱不同。 |
 | 使用日期 | 使用日期 | 以使用量為基礎的資產產生使用量事件的日期。 |
 | IsMultisolution | 為 Multisolution | 表示供應專案是否為 Multisolution 供應專案類型。 |
 | 是新的客戶 | 已被取代 | 已被取代 |

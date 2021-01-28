@@ -5,13 +5,13 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 5484d13a70d8eaf905d3c8a51d575f177427019b
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 01/27/2021
+ms.openlocfilehash: 3ce22837da2ca30249b399a297b6188d950b1ea4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882156"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935147"
 ---
 # <a name="blob-storage-and-azure-data-lake-gen2-output-from-azure-stream-analytics"></a>Azure 串流分析的 Blob 儲存體和 Azure Data Lake Gen2 輸出
 
@@ -44,7 +44,7 @@ Data Lake Storage Gen2 讓 Azure 儲存體成為在 Azure 上打造企業 Data L
 當您使用 Blob 儲存體作為輸出時，在下列情況下 Blob 中會建立新檔案：
 
 * 如果檔案超過允許的區塊數目上限 (目前為 50,000 個)。 您可以在未達到允許 Blob 大小上限的情況下，達到允許的區塊數目上限。 比方說，如果輸出速率很高，您可看到每個區塊有更多位元組，且檔案大小更大。 如果輸出速率很低，每個區塊都會具有較少的資料，且檔案大小會較小。
-* 如果輸出中有結構描述變更，且輸出格式需要固定的結構描述 (CSV 與 Avro)。
+* 如果輸出中有架構變更，而且輸出格式需要固定的架構 (CSV、Avro、Parquet) 。
 * 如果作業已重新啟動，無論是由使用者於外部停止並啟動它，或是於內部重新啟動以進行系統維護或錯誤復原。
 * 如果完全分割查詢，則系統會為每個輸出分割區建立新檔案。
 * 如果使用者刪除儲存體帳戶的檔案或容器。

@@ -10,21 +10,21 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 12/03/2020
 ms.author: mbullwin
-ms.openlocfilehash: 370883b90902dad5a6e222897e68e1d3e9dd2acf
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b4153b07b153a9ee0b16dc032ab5e7810e236d7d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737983"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936281"
 ---
 # <a name="deploy-an-anomaly-detector-module-to-iot-edge"></a>將異常偵測器模組部署到 IoT Edge
 
 瞭解如何將認知服務 [異常](../anomaly-detector-container-howto.md) 偵測器模組部署到 IoT Edge 裝置。 一旦部署到 IoT Edge 中，模組會與其他模組一起在 IoT Edge 中執行，作為容器實例。 它會公開與在標準 docker 容器環境中執行的異常偵測器容器實例完全相同的 Api。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-* 使用 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先建立[免費帳戶](https://azure.microsoft.com/free)，再開始進行。
-* 安裝 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* 使用 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free)。
+* 安裝 [Azure CLI](/cli/azure/install-azure-cli)。
 * [IoT 中樞](../../../iot-hub/iot-hub-create-through-portal.md)和[IoT Edge](../../../iot-edge/quickstart-linux.md)裝置。
 
 [!INCLUDE [Create a Cognitive Services Anomaly Detector resource](../includes/create-anomaly-detector-resource.md)]

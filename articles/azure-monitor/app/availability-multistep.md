@@ -3,12 +3,12 @@ title: 使用多步驟 Web 測試進行監視 - Azure Application Insights
 description: 使用 Azure Application Insights 設定多步驟 Web 測試，以監視您的 Web 應用程式
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 2df8b7450423c901665090608da83f68b43b30e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0031971dc2ccd2a9e681220dd835f46d33e36dbb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87024768"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934861"
 ---
 # <a name="multi-step-web-tests"></a>多重步驟 Web 測試
 
@@ -17,7 +17,7 @@ ms.locfileid: "87024768"
 > [!NOTE]
 > 多步驟 Web 測試取決於 Visual Studio Webtest 檔案。 已[宣佈](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/) Visual Studio 2019 會是具有 Webtest 功能的最後一個版本。 請務必瞭解，雖然不會新增任何新功能，但目前仍支援 Visual Studio 2019 中的 Webtest 功能，並且會在產品的支援生命週期中繼續受到支援。 Azure 監視器產品小組已解決多步驟可用性測試的相關問題，如[這裡](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)所示。  
 > </br>
-> [Azure Government](../../azure-government/index.yml) 雲端中**不支援**多步驟 Web 測試。
+> [Azure Government](../../azure-government/index.yml) 雲端中 **不支援** 多步驟 Web 測試。
 
 
 ## <a name="pre-requisites"></a>必要條件
@@ -37,7 +37,7 @@ ms.locfileid: "87024768"
 > [!WARNING]
 > 我們不再建議使用多步驟錄製器。 錄製器是針對具有基本互動的靜態 HTML 網頁所開發，並不提供現代化網頁的功能體驗。
 
-如需建立 Visual Studio Web 測試的指引，請參閱[官方 Visual Studio 2019 文件](/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019)。
+如需建立 Visual Studio Web 測試的指引，請參閱[官方 Visual Studio 2019 文件](/visualstudio/test/how-to-create-a-web-service-test)。
 
 ## <a name="upload-the-web-test"></a>上傳 Web 測試
 
@@ -66,7 +66,7 @@ ms.locfileid: "87024768"
 |----|----|----|
 |**近乎即時 (預覽)** | 我們建議使用近乎即時的警示。 您的可用性測試建立後，此類型的警示會設定完成。  |
 |**傳統** | 我們不再建議使用傳統警示來進行新的可用性測試。|
-|**警示位置閾值**|建議至少為位置數的 3/5。 警示位置閾值與測試位置數目之間的最佳關聯性，就是**警示位置閾值** = **測試位置數目 - 2 (最少五個測試位置)。**|
+|**警示位置閾值**|建議至少為位置數的 3/5。 警示位置閾值與測試位置數目之間的最佳關聯性，就是 **警示位置閾值** = **測試位置數目 - 2 (最少五個測試位置)。**|
 
 ## <a name="configuration"></a>組態
 
@@ -102,7 +102,7 @@ Web 測試日期時間外掛程式提供處理參數化時間的方式。
 
 在所有情況下，您應該只為了測試用途在您的應用程式中建立帳戶。 可能的話，限制此測試帳戶的權限，讓 Web 測試不可能影響實際使用者。
 
-**簡單的使用者名稱和密碼**以一般方式記錄 Web 測試。 先刪除 Cookie。
+**簡單的使用者名稱和密碼** 以一般方式記錄 Web 測試。 先刪除 Cookie。
 
 **SAML 驗證**
 
@@ -117,7 +117,7 @@ Web 測試日期時間外掛程式提供處理參數化時間的方式。
 | 目標內容參數名稱 | 將接收所產生之判斷提示的內容參數。 |
 
 
-**用戶端密碼**如果應用程式的登入路由牽涉到用戶端密碼，請使用此路由。 Azure Active Directory (AAD) 是可提供用戶端密碼登入的服務範例。 在 AAD 中，用戶端密碼是應用程式金鑰。
+**用戶端密碼** 如果應用程式的登入路由牽涉到用戶端密碼，請使用此路由。 Azure Active Directory (AAD) 是可提供用戶端密碼登入的服務範例。 在 AAD 中，用戶端密碼是應用程式金鑰。
 
 以下是使用應用程式金鑰之 Azure Web 應用程式的 Web 測試範例︰
 

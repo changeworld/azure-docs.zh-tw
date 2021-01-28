@@ -9,74 +9,74 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 605a5f2f74ca6fb46d851c41f60001c48a95be95
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: HT
+ms.openlocfilehash: d8db9257ad6eed98b39cd2c9a52351f013453365
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450871"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935234"
 ---
 # <a name="tutorial-machine-learning-model-scoring-wizard-preview-for-dedicated-sql-pools"></a>教學課程：專用 SQL 集區的機器學習模型評分精靈 (預覽)
 
-了解如何使用預測性機器學習模型，輕鬆地擴充專用 SQL 集區中的資料。  您資料科學家所建立的模型現在可輕鬆地供資料專業人員進行預測性分析。 Synapse 中的資料專業人員可以直接從 Azure Machine Learning 模型登錄中選取模型，以便在 Synapse SQL 集區中進行部署，並啟動預測來擴充資料。
+了解如何使用預測性機器學習模型，輕鬆地擴充專用 SQL 集區中的資料。 您資料科學家所建立的模型現在可輕鬆地供資料專業人員進行預測性分析。 Azure Synapse Analytics 中的資料專業人員可以直接從 Azure Machine Learning 模型登錄選取模型，以便在 Azure Synapse SQL 集區中進行部署，並啟動預測以豐富資料。
 
 在本教學課程中，您將了解如何：
 
 > [!div class="checklist"]
-> - 定型預測性機器學習模型，並在 Azure Machine Learning 模型登錄中註冊模型
-> - 使用 SQL 評分精靈來啟動專用 SQL 集區中的預測
+> - 定型預測性機器學習模型，並在 Azure Machine Learning 模型登錄中註冊模型。
+> - 您可以使用 SQL 評分嚮導來啟動專用 SQL 集區中的預測。
 
 如果您沒有 Azure 訂用帳戶，請[在開始前建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必要條件
 
-- [Synapse Analytics 工作區](../get-started-create-workspace.md)，並將 ADLS Gen2 儲存體帳戶設定為預設儲存體。 您必須是所要使用 ADLS Gen2 檔案系統的 **儲存體 Blob 資料參與者**。
+- [Azure Synapse Analytics 工作區](../get-started-create-workspace.md) ，具有設定為預設儲存體的 Azure Data Lake Storage Gen2 儲存體帳戶。 您必須是您所使用 Data Lake Storage Gen2 檔案系統的 *儲存體 Blob 資料參與者* 。
 - 在您 Azure Synapse Analytics 工作區中的專用 SQL 集區。 如需詳細資訊，請參閱[建立專用 SQL 集區](../quickstart-create-sql-pool-studio.md)。
-- Azure Synapse Analytics 工作區中的 Azure Machine Learning 連結服務。 如需詳細資料，請參閱[在 Synapse 中建立 Azure Machine Learning 已連結的服務](quickstart-integrate-azure-machine-learning.md)。
+- Azure Synapse Analytics 工作區中的 Azure Machine Learning 連結服務。 如需詳細資料，請參閱[在 Azure Synapse 中建立 Azure Machine Learning 已連結的服務](quickstart-integrate-azure-machine-learning.md)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
-登入 [Azure 入口網站](https://portal.azure.com/)
+登入 [Azure 入口網站](https://portal.azure.com/)。
 
 ## <a name="train-a-model-in-azure-machine-learning"></a>在 Azure Machine Learning 中將模型定型
 
-開始之前，請確認您的 **sklearn** 版本是 0.20.3。
+開始之前，請確認您的 sklearn 版本是 0.20.3。
 
-在執行筆記本中的所有儲存格之前，請檢查計算執行個體是否正在執行。
+在您執行筆記本中的所有資料格之前，請先檢查計算實例是否正在執行。
 
-![驗證 AML 計算](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-train-00b.png)
+![顯示 Azure Machine Learning 計算驗證的螢幕擷取畫面。](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-train-00b.png)
 
-1. 瀏覽至您的 Azure Machine Learning 工作區。
+1. 移至您的 Azure Machine Learning 工作區。
 
 1. 下載 [Predict NYC Taxi Tips.ipynb](https://go.microsoft.com/fwlink/?linkid=2144301)。
 
-1. 在 [Azure Machine Learning Studio](https://ml.azure.com) 中啟動 Azure Machine Learning 工作區。
+1. 開啟 [Azure Machine Learning Studio](https://ml.azure.com)中的 Azure Machine Learning 工作區。
 
-1. 移至 [Notebooks] 然後按一下 [上傳檔案]，選取您已下載的 "Predict NYC Taxi Tips.ipynb" 並上傳檔案。
-   ![上傳檔案](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-train-00a.png)
+1. 移至 **筆記本**  >  **上傳** 檔案。 然後選取您已下載並上傳的 **NYC 計程車秘訣 .ipynb** 檔案。
+   ![用來上傳檔案之按鈕的螢幕擷取畫面。](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-train-00a.png)
 
-1. 上傳並開啟筆記本之後，請按一下 [執行所有儲存格]。
+1. 上傳並開啟筆記本之後，請選取 [ **執行所有資料格**]。
 
-   其中一個儲存格可能會失敗，並要求您向 Azure 進行驗證。 請在儲存格輸出中注意這個項目，並遵循連結並輸入程式碼，藉此在瀏覽器中進行驗證。 重新執行 Notebook。
+   其中一個資料格可能會失敗，並要求您向 Azure 進行驗證。 請在資料格輸出中監看這點，然後在瀏覽器中遵循連結並輸入程式碼來進行驗證。 然後重新執行筆記本。
 
-1. 筆記本會定型 ONNX 模型，並向 MLFlow 註冊。 移至 [模型]，以檢查是否已正確註冊新的模型。
-   ![登錄中的模型](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-train-00c.png)
+1. 筆記本會將 ONNX 模型定型，並向 MLflow 註冊。 移至 [ **模型** ]，確認已正確註冊新的模型。
+   ![顯示登錄中模型的螢幕擷取畫面。](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-train-00c.png)
 
-1. 執行筆記本也會將測試資料匯出為 CSV 檔案。 將 CSV 檔案下載到您的本機系統。 稍後，您會將 CSV 檔案匯入專用 SQL 集區，並使用該資料來測試模型。
+1. 執行筆記本也會將測試資料匯出為 CSV 檔案。 將 CSV 檔案下載到您的本機系統。 稍後，您會將 CSV 檔案匯入到專用的 SQL 集區，並使用資料來測試模型。
 
-   CSV 檔案會建立在與您筆記本檔案相同的資料夾中。 如果您未立即看到檔案，請在 [檔案總管] 上按一下 [重新整理]。
+   CSV 檔案會建立在與您筆記本檔案相同的資料夾中。 如果您沒有立即看到 **，請在檔案總管中選取** [重新整理]。
 
-   ![CSV 檔案](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-train-00d.png)
+   ![顯示 C S V 檔案的螢幕擷取畫面。](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-train-00d.png)
 
-## <a name="launch-predictions-with-sql-scoring-wizard"></a>使用 SQL 評分精靈啟動預測
+## <a name="launch-predictions-with-the-sql-scoring-wizard"></a>使用 SQL 計分 wizard 啟動預測
 
-1. 使用 Synapse Studio 開啟 Synapse 工作區。
+1. 使用 Synapse Studio 開啟 Azure Synapse 工作區。
 
-1. 瀏覽至 [資料] -> [已連結] -> [儲存體帳戶]。 將 `test_data.csv` 上傳到預設儲存體帳戶。
+1. 移至 **資料**  >  **連結**  >  的 **儲存體帳戶**。 將 `test_data.csv` 上傳到預設儲存體帳戶。
 
-   ![上傳資料](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00a.png)
+   ![顯示用於上傳資料之選項的螢幕擷取畫面。](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00a.png)
 
-1. 移至 [開發] -> [SQL 指令碼]。 建立新的 SQL 指令碼，以將 `test_data.csv` 載入您的專用 SQL 集區。
+1. 移至 [開發] > [SQL 指令碼]。 建立新的 SQL 指令碼，以將 `test_data.csv` 載入您的專用 SQL 集區。
 
    > [!NOTE]
    > 請先更新此指令碼中的檔案 URL，再加以執行。
@@ -119,34 +119,36 @@ ms.locfileid: "96450871"
 
    ![將資料載入到專用 SQL 集區](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00b.png)
 
-1. 移至 [資料] -> [工作區]。 在專用 SQL 集區資料表上按一下滑鼠右鍵，以開啟 SQL 評分精靈。 選取 [機器學習] -> [使用現有的模型進行擴充]。
+1. 移至 [資料] > [工作區]。 在專用 SQL 集區資料表上按一下滑鼠右鍵，以開啟 SQL 評分精靈。 選取 [機器學習] > [使用現有的模型進行擴充]。
 
    > [!NOTE]
-   > 除非您已針對 Azure Machine Learning 建立連結的服務，否則不會顯示機器學習選項 (請參閱本教學課程開頭的 **必要條件**)。
+   > 除非您已針對 Azure Machine Learning 建立連結的服務，否則不會出現機器學習服務選項。  (請參閱本教學課程開頭的 [必要條件](#prerequisites) 。 ) 
 
-   ![機器學習選項](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00c.png)
+   ![顯示機器學習選項的螢幕擷取畫面。](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00c.png)
 
-1. 在下拉式方塊中選取連結的 Azure Machine Learning 工作區。 這會從所選 Azure Machine Learning 工作區的模型登錄中，載入機器學習模型的清單。 目前僅支援 ONNX 模型，因此這只會顯示 ONNX 模型。
+1. 在下拉式方塊中選取連結的 Azure Machine Learning 工作區。 此步驟會從所選 Azure Machine Learning 工作區的模型登錄載入機器學習模型的清單。 目前只支援 ONNX 模型，因此此步驟只會顯示 ONNX 模型。
 
-1. 選取您剛才定型的模型，然後按一下 [繼續]。
+1. 選取您剛剛定型的模型，然後選取 [ **繼續**]。
 
-   ![選取 Azure Machine Learning 模型](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00d.png)
+   ![顯示選取 Azure Machine Learning 模型的螢幕擷取畫面。](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00d.png)
 
-1. 接下來，將資料表資料行對應至模型輸入，並指定模型輸出。 如果模型是以 MLFlow 格式儲存，且已填入模型簽章，則會根據名稱的相似性，使用邏輯自動為您完成對應。 介面也支援手動對應。
+1. 將資料表資料行對應至模型輸入，並指定模型輸出。 如果將模型儲存為 MLflow 格式，並填入模型簽章，則會根據名稱的相似性使用邏輯，自動為您完成對應。 介面也支援手動對應。
 
-   按一下 **[繼續]** 。
+   選取 [繼續]。
 
-   ![資料表與模型的對應](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00e.png)
+   ![顯示資料表對模型對應的螢幕擷取畫面。](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00e.png)
 
-1. 所產生的 T-SQL 程式碼會包裝在預存程序內。 這就是您需要提供預存程序名稱的原因。 包含中繼資料 (版本、描述等) 的模型二進位檔會從 Azure Machine Learning 實際複製到專用 SQL 集區資料表。 因此，您必須指定要在哪一個資料表中儲存模型。 您可以選擇 [使用現有的資料表]，也可以 [建立新的資料表]。 完成後，按一下 [部署模型 + 開啟編輯器] 以部署模型並產生 T-SQL 預測指令碼。
+1. 產生的 T-sql 程式碼會包裝在預存程式內。 這就是您需要提供預存程式名稱的原因。 模型二進位檔（包括中繼資料 (版本、描述和其他資訊) ）將會從 Azure Machine Learning 實際複製到專用的 SQL 集區資料表。 因此，您必須指定要在哪一個資料表中儲存模型。 
 
-   ![建立程序](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00f.png)
+   您可以選擇 **現有的資料表** 或 **建立新** 的資料表。 當您完成時，請選取 [ **部署模型 + 開啟腳本** ] 來部署模型並產生 t-sql 預測腳本。
 
-1. 產生指令碼之後，請按一下 [執行] 來執行評分並取得預測。
+   ![顯示建立預存程式之選項的螢幕擷取畫面。](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00f.png)
 
-   ![執行預測](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00g.png)
+1. 產生腳本之後， **請選取 [執行]** 來執行評分並取得預測。
+
+   ![顯示評分和預測的螢幕擷取畫面。](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00g.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-- [快速入門：在 Synapse 中建立新的 Azure Machine Learning 連結服務](quickstart-integrate-azure-machine-learning.md)
+- [快速入門：在 Azure Synapse 中建立新的 Azure Machine Learning 連結服務](quickstart-integrate-azure-machine-learning.md)
 - [Azure Synapse Analytics 中的機器學習功能](what-is-machine-learning.md)

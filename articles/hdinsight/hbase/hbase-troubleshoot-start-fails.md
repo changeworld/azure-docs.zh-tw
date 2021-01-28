@@ -3,16 +3,13 @@ title: Apache HBase Master 在 Azure HDInsight 中無法啟動
 description: Apache HBase Master (HMaster) 無法在 Azure HDInsight 中啟動
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/14/2019
-ms.openlocfilehash: 032c25969bf477e1163b8db2aca631044c457939
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c30077d0d8f359e93745b53755f9dae998073d4d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539967"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936900"
 ---
 # <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Apache HBase Master (HMaster) 無法在 Azure HDInsight 中啟動
 
@@ -83,7 +80,7 @@ HMaster 發生嚴重例外狀況的時間，類似于： `java.io.IOException: T
 
 ### <a name="resolution"></a>解決方案
 
-1. 從 Apache Ambari UI 中，移至  。 在自訂檔案中 `hbase-site.xml` ，新增下列設定：
+1. 從 Apache Ambari UI 中，移至 **HBase** 的 [連線]  >  ****。 在自訂檔案中 `hbase-site.xml` ，新增下列設定：
 
     ```
     Key: hbase.master.namespace.init.timeout Value: 2400000  
@@ -113,9 +110,9 @@ HMaster 發生嚴重例外狀況的時間，類似于： `java.io.IOException: T
 
 變更 Zookeeper 會話超時，但不只 `hbase-site` 是設定， `zookeeper.session.timeout` 也 `zoo.cfg` `maxSessionTimeout` 需要變更 Zookeeper 設定。
 
-1. 存取 Ambari UI，移至 **HBase-> 設定-> 設定** ，在 [超時] 區段中，變更 [Zookeeper 會話超時] 的值。
+1. 存取 Ambari UI，移至 **HBase-> 設定-> 設定**，在 [超時] 區段中，變更 [Zookeeper 會話超時] 的值。
 
-1. 存取 Ambari UI，移至 **Zookeeper-> 設定-> 自訂** ] `zoo.cfg` ，新增/變更下列設定。 請確定值與 HBase 相同 `zookeeper.session.timeout` 。
+1. 存取 Ambari UI，移至 **Zookeeper-> 設定-> 自訂**] `zoo.cfg` ，新增/變更下列設定。 請確定值與 HBase 相同 `zookeeper.session.timeout` 。
 
     ```
     Key: maxSessionTimeout Value: 120000  

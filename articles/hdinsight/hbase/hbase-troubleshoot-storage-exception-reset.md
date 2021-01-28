@@ -3,16 +3,13 @@ title: Azure HDInsight 中的連線重設之後的儲存體例外狀況
 description: Azure HDInsight 中的連線重設之後的儲存體例外狀況
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/08/2019
-ms.openlocfilehash: 82fb0e0ae5722f972cdfe90581c96df2a61f0124
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 82cad7fc68d650e5f525a8722d3e2f3e9865f456
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539950"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936748"
 ---
 # <a name="scenario-storage-exception-after-connection-reset-in-azure-hdinsight"></a>案例： Azure HDInsight 中的連線重設之後的儲存體例外狀況
 
@@ -32,7 +29,7 @@ ms.locfileid: "92539950"
 
 1. 從 Apache Ambari UI 中，重新開機使用中的 HMaster。 這可讓兩個待命 HMaster 中的其中一個變成作用中的，而新的使用中 HMaster 將會重載中繼資料資料表資訊。 因此，您將不會 `already-deleted` 在 HMASTER UI 中看到資料表。
 
-1. 您可以從像是 Cloud Explorer 或執行命令之類的 UI 工具找到孤立的 blob 檔案 `hdfs dfs -ls /xxxxxx/yyyyy` 。 執行 `hdfs dfs -rmr /xxxxx/yyyy` 以刪除該 blob。 例如 `hdfs dfs -rmr /hbase/data/default/ThatTable/ThatFile`。
+1. 您可以從像是 Cloud Explorer 或執行命令之類的 UI 工具找到孤立的 blob 檔案 `hdfs dfs -ls /xxxxxx/yyyyy` 。 執行 `hdfs dfs -rmr /xxxxx/yyyy` 以刪除該 blob。 例如： `hdfs dfs -rmr /hbase/data/default/ThatTable/ThatFile` 。
 
 現在您可以在 HBase 中建立具有相同名稱的新資料表。
 

@@ -3,16 +3,13 @@ title: 在 Apache HBase 叢集中限定的 CPU-Azure HDInsight
 description: 針對 Azure HDInsight 中 Apache HBase 叢集中區域伺服器上的限定 CPU 進行疑難排解
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/01/2019
-ms.openlocfilehash: bed73c3ccc7f514ffc9ff8f97534ae4b249834ce
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7d0cf139f06bb296b486d2932d95b53fc1167a5d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017010"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937023"
 ---
 # <a name="scenario-pegged-cpu-on-region-server-in-apache-hbase-cluster-in-azure-hdinsight"></a>案例： Azure HDInsight 中的 Apache HBase 叢集中的區域伺服器上已限定 CPU
 
@@ -26,7 +23,7 @@ Apache HBase 區域伺服器進程的開始時間接近 200% CPU，導致 HBase 
 
 如果您正在執行 HBase cluster 3.4 版，可能是因為將 jdk 升級為版本 1.7.0 _151 所造成的潛在錯誤。 我們看到的徵兆是，區域伺服器進程開始接近 200% CPU (若要確認這項作業，請執行 `top` 命令; 如果有接近 200% cpu 的進程，請取得其 pid，並藉由執行 ) 來確認其為區域伺服器進程 `ps -aux | grep` 。
 
-## <a name="resolution"></a>解決方法
+## <a name="resolution"></a>解決方案
 
 1. 在叢集中的所有節點上安裝 jdk 1.8，如下所示：
 

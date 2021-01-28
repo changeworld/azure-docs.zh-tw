@@ -4,12 +4,12 @@ description: 建立 HTTP 觸發的無伺服器 PowerShell 函式來自動建立 
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7b94d583ca26b88d093810528d3193f20d765f1d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: HT
+ms.openlocfilehash: e7315796f2f7f89800b58f5fa607e69cd7ae3447
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349243"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935413"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>教學課程：使用 HTTP 觸發的 Azure 函式來建立容器群組
 
@@ -105,7 +105,7 @@ if ($name) {
 
 ## <a name="run-the-function-in-azure"></a>在 Azure 中執行函式
 
-在部署順利完成後，取得函式 URL。 例如，使用 **Azure：Functions** 區域 (在 Visual Studio Code 中) 來複製 **HttpTrigger** 函式 URL，或在 [Azure 入口網站](../azure-functions/functions-create-first-azure-function.md#test-the-function)中取得函式 URL。
+在部署順利完成後，取得函式 URL。 例如，使用 **Azure：Functions** 區域 (在 Visual Studio Code 中) 來複製 **HttpTrigger** 函式 URL，或在 [Azure 入口網站](../azure-functions/functions-get-started.md)中取得函式 URL。
 
 函式 URL 的格式如下：
 

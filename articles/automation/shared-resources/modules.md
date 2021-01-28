@@ -3,14 +3,14 @@ title: 在 Azure 自動化中管理模組
 description: 此文章說明如何使用 PowerShell 模組，在 Runbook 中啟用 Cmdlet，以及在 DSC 設定中啟用 DSC 資源。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 10/22/2020
+ms.date: 01/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: c940ede63e2a467a29ae56308893d573925d0039
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d62ed96f86078839e66a4cf2ce71f304de2abf4d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458144"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936629"
 ---
 # <a name="manage-modules-in-azure-automation"></a>在 Azure 自動化中管理模組
 
@@ -25,10 +25,18 @@ Azure 自動化會使用數個 PowerShell 模組，在 Runbook 中啟用 Cmdlet�
 
 當您建立自動化帳戶時，Azure 自動化預設會匯入一些模組。 請參閱[預設模組](#default-modules)。
 
+## <a name="sandboxes"></a>沙箱
+
 當自動化執行 Runbook 和 DSC 編譯作業時，其會將模組載入至沙箱，Runbook 可在其中執行，而且 DSC 設定可在其中編譯。 自動化也會將所有 DSC 資源自動放置於 DSC 提取伺服器的模組中。 當機器套用 DSC 設定時，即可提取資源。
 
 >[!NOTE]
 >請確認只會匯入您的 Runbook 和 DSC 設定所需的模組。 不建議您匯入根 Az 模組。 該模組包含許多您可能不需要的其他模組，而其可能會導致效能問題。 請改為匯入個別模組，例如 Az.Compute。
+
+雲端沙箱最多可支援48系統呼叫，並基於安全性理由限制所有其他呼叫。 雲端沙箱不支援其他功能，例如認證管理和某些網路功能。
+
+由於包含的模組和 Cmdlet 數目，因此很難事先知道哪一個 Cmdlet 會產生不支援的呼叫。 一般而言，我們發現需要提高存取權的 Cmdlet 有問題，需要認證作為參數，或與網路相關的 Cmdlet。 沙箱中不支援任何執行完整堆疊網路作業的 Cmdlet，包括從 AIPService PowerShell 模組的連線 [AipService](/powershell/module/aipservice/connect-aipservice) ，以及從 Set-dnsclient 模組 [解析 DnsName](/powershell/module/dnsclient/resolve-dnsname) 。
+
+這些是沙箱的已知限制。 建議的解決方法是部署 [混合式 Runbook 背景工作角色](../automation-hybrid-runbook-worker.md) ，或使用 [Azure Functions](../../azure-functions/functions-overview.md)。
 
 ## <a name="default-modules"></a>預設模組
 

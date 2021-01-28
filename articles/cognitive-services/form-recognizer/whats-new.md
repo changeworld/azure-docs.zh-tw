@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 7539e896d810a2f0fbf3c07f389f25e2d3c31fe1
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: f6d610db01b465306cdaaafa9b1308dba63ff9ca
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97844994"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936162"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表單辨識器的新功能
 
@@ -85,7 +85,7 @@ ms.locfileid: "97844994"
 
 ### <a name="new-features"></a>新功能
 
-* **2.0 版參考可用** -請參閱 V2.0 [API 參考](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) ，以及適用于 [.net](/dotnet/api/overview/azure/ai.formrecognizer-readme?view=azure-dotnet)、 [Python](/python/api/overview/azure/?view=azure-python)、 [JAVA](/java/api/overview/azure/ai-formrecognizer-readme?view=azure-java-preview)和 [JavaScript](/javascript/api/overview/azure/?view=azure-node-latest)的更新 sdk。
+* **2.0 版參考可用** -請參閱 V2.0 [API 參考](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) ，以及適用于 [.net](/dotnet/api/overview/azure/ai.formrecognizer-readme)、 [Python](/python/api/overview/azure/)、 [JAVA](/java/api/overview/azure/ai-formrecognizer-readme)和 [JavaScript](/javascript/api/overview/azure/)的更新 sdk。
 * **資料表增強功能和解壓縮增強功能** -包括精確度改良和資料表提取增強功能，特別是在 _不含標籤的自訂定型_ 中學習資料表標頭和結構的功能。 
 
 * **貨幣支援** -全域貨幣符號的偵測和解壓縮。
@@ -110,10 +110,10 @@ ms.locfileid: "97844994"
 
 ### <a name="new-features"></a>新功能
 * **SDK 支援表單辨識器 API V2.0 公開預覽** -本月我們已擴充我們的服務支援，以包含適用于表單辨識器 v2.0 的預覽 SDK (預覽版) 版本。 使用下列連結來開始使用您選擇的語言： 
-   * [.NET SDK](/dotnet/api/overview/azure/ai.formrecognizer-readme?view=azure-dotnet)
-   * [Java SDK](/java/api/overview/azure/ai-formrecognizer-readme?view=azure-java-preview)
-   * [Python SDK](/python/api/overview/azure/ai-formrecognizer-readme?view=azure-python-preview)
-   * [JavaScript SDK](/javascript/api/overview/azure/ai-form-recognizer-readme?view=azure-node-preview)
+   * [.NET SDK](/dotnet/api/overview/azure/ai.formrecognizer-readme)
+   * [Java SDK](/java/api/overview/azure/ai-formrecognizer-readme)
+   * [Python SDK](/python/api/overview/azure/ai-formrecognizer-readme)
+   * [JavaScript SDK](/javascript/api/overview/azure/ai-form-recognizer-readme)
 
   新的 SDK 支援表單辨識器2.0 版 REST API 的所有功能。 例如，您可以使用或不使用標籤來定型模型，並從表單中將文字、索引鍵值組和資料表解壓縮、使用預先建立的回條服務將收據中的資料解壓縮，並使用您檔中的版面佈建服務來將文字和資料表解壓縮。 您可以透過 [Sdk 意見反應表單](https://aka.ms/FR_SDK_v1_feedback)，在 sdk 上分享您的意見反應。
  
@@ -209,7 +209,7 @@ ms.locfileid: "97844994"
 
 ## <a name="next-steps"></a>後續步驟
 
-完成 [快速入門](quickstarts/client-library.md) ，開始以您選擇的語言撰寫表單辨識器的表單處理應用程式。
+完成[快速入門](quickstarts/client-library.md)，開始以您選擇的語言搭配表單辨識器，來撰寫表單處理應用程式。
 
 ## <a name="see-also"></a>請參閱
 

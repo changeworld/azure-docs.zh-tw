@@ -3,12 +3,12 @@ title: 將容器中的 .NET 應用程式部署到 Azure Service Fabric
 description: 了解如何使用 Visual Studio 將現有 .NET 應用程式容器化，並在 Service Fabric 本機為容器偵錯。 需將容器化的應用程式推送至 Azure 容器登錄，並部署到 Service Fabric 叢集。 部署到 Azure 時，應用程式會使用 Azure SQL 資料庫保存資料。
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: 85e9b553000c52131c04502d496aa050b73d6d8a
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 7930651a0faa5f37336c15557e2a0f068d613011
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791657"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936707"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>教學課程：將 Windows 容器中的 .NET 應用程式部署到 Azure Service Fabric
 
@@ -29,7 +29,7 @@ ms.locfileid: "98791657"
 
 1. 如果您沒有 Azure 訂用帳戶，請[建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 2. 啟用 Windows 功能 **hyper-v** 和 **容器**。
-3. 安裝 [Docker CE for Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)，以便在 Windows 10 上執行容器。
+3. 安裝 [適用于 Windows 的 Docker Desktop](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description) ，讓您可以在 Windows 10 上執行容器。
 4. 安裝 [Service Fabric 執行階段 6.2 版或更新版本](service-fabric-get-started.md)和 [Service Fabric SDK 3.1 版](service-fabric-get-started.md)或更新版本。
 5. 安裝 [Visual Studio 2019 16.1 版](https://www.visualstudio.com/)或更新版本，其中包含 **Azure 開發** 及 **ASP.NET 和 Web 開發** 工作負載。
 6. 安裝 [Azure PowerShell][link-azure-powershell-install]

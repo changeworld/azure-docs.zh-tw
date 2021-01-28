@@ -2,19 +2,19 @@
 title: 教學課程 - Azure Toolkit for IntelliJ (Spark 應用程式)
 description: 教學課程 - 使用 Azure Toolkit for IntelliJ 來開發以 Scala 撰寫的 Spark 應用程式，並將其提交至無伺服器 Apache Spark 集區。
 services: synapse-analytics
-author: hrasheed-msft
+author: jejiang
 ms.author: jejiang
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 39f39b6f53944510b5f3692bb8b3fdd472004454
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
-ms.translationtype: HT
+ms.openlocfilehash: 04faaa05cf51f740958238ece0a9a211c43fca41
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121221"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935445"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>教學課程：使用 Synapse 工作區搭配 IntelliJ 來建立 Apache Spark 應用程式
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d62e7566038af6647cab2992b02184a4ea5ba30b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: bf92765431ea6b0f80b96ab7d61e8e830220dc82
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344142"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934540"
 ---
 # <a name="secure-azure-digital-twins"></a>保護 Azure 數位 Twins
 
@@ -89,6 +89,39 @@ Azure 提供 **兩個 azure 內建角色** ，以授權存取 Azure 數位 Twins
 
 如果使用者嘗試執行其角色不允許的動作，他們可能會收到來自服務要求讀取的錯誤 `403 (Forbidden)` 。 如需詳細資訊和疑難排解步驟，請參閱 [*疑難排解： Azure 數位 Twins 要求失敗，狀態： 403 (禁止)*](troubleshoot-error-403.md)。
 
+## <a name="managed-identity-for-accessing-other-resources-preview"></a>用來存取其他資源 (預覽) 的受控識別
+
+設定 [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) Azure 數位 Twins 實例的 **受控識別** ，可讓實例輕鬆地存取其他受 Azure AD 保護的資源，例如 [Azure Key Vault](../key-vault/general/overview.md)。 身分識別是由 Azure 平臺所管理，而且您不需要布建或輪替任何秘密。 如需 Azure AD 中受控識別的詳細資訊，請參閱  [*適用于 Azure 資源的受控*](../active-directory/managed-identities-azure-resources/overview.md)識別。 
+
+Azure 支援兩種類型的受控識別：系統指派和使用者指派。 Azure 數位 Twins 目前僅支援 **系統指派的** 身分識別。 
+
+您可以針對 Azure 數位實例使用系統指派的受控識別，向 [自訂定義的端點](concepts-route-events.md#create-an-endpoint)進行驗證。 Azure 數位 Twins 支援系統指派的身分識別型驗證給[事件中樞](../event-hubs/event-hubs-about.md)和 [服務匯流排](../service-bus-messaging/service-bus-messaging-overview.md)   目的地的端點，以及針對寄[](../storage/blobs/storage-blobs-introduction.md)不出   [的信件事件](concepts-route-events.md#dead-letter-events)Azure 儲存體的容器端點。 [事件方格](../event-grid/overview.md)  受控識別目前不支援端點。
+
+如需如何為 Azure 數位 Twins 啟用系統管理的身分識別，並使用它來路由事件的指示，請參閱作法 [*：啟用路由事件的受控識別 (預覽)*](how-to-enable-managed-identities.md)。
+
+## <a name="private-network-access-with-azure-private-link-preview"></a>使用 Azure Private Link (preview 的私人網路存取) 
+
+[Azure Private Link](../private-link/private-link-overview.md)是一項服務，可讓您透過[azure 虛擬網路 Azure Cosmos DB VNet) ](../virtual-network/virtual-networks-overview.md)中的私人端點，來存取 azure 資源 (例如[Azure 事件中樞](../event-hubs/event-hubs-about.md)、 [Azure 儲存體](../storage/common/storage-introduction.md)和[ (](../cosmos-db/introduction.md)) ，以及 azure 裝載的客戶和合作夥伴服務。 
+
+同樣地，您可以使用 Azure 數位對應項實例的私人端點，以允許位於虛擬網路中的用戶端透過 Private Link 安全地存取實例。 
+
+私人端點會使用來自您 Azure VNet 位址空間的 IP 位址。 您私人網路上的用戶端與 Azure 數位 Twins 實例之間的網路流量會透過 VNet 和 Microsoft 骨幹網路上的 Private Link 來進行，而不會暴露在公用網際網路上。 以下是此系統的視覺標記法：
+
+:::image type="content" source="media/concepts-security/private-link.png" alt-text="此圖顯示 PowerGrid 公司的網路，此公司是沒有網際網路/公用雲端存取的受保護 VNET，透過 Private Link 連接到名為 CityOfTwins 的 Azure 數位 Twins 實例。":::
+
+為您的 Azure 數位 Twins 實例設定私人端點，可讓您保護 Azure 數位 Twins 實例的安全，並消除公開風險，同時避免從您的 VNet 遭到外泄資料。
+
+如需如何設定 Azure 數位 Twins Private Link 的指示，請參閱作法 [*：使用 Private Link 啟用私用存取 (preview)*](how-to-enable-private-link.md)。
+
+### <a name="design-considerations"></a>設計考量 
+
+使用適用于 Azure 數位 Twins 的 Private Link 時，以下是您可能想要考慮的一些因素：
+* **定價**：如需定價詳細資料，請參閱  [Azure Private Link 定價](https://azure.microsoft.com/pricing/details/private-link)。 
+* **區域可用性**：針對 Azure 數位 Twins，此功能可在所有 azure 區域提供 Azure 數位 Twins。 
+* **每個 Azure 數位 Twins 實例的私人端點數目上限**：10
+
+如需 Private Link 限制的詳細資訊，請參閱 [Azure Private Link 檔：限制](../private-link/private-link-service-overview.md#limitations)。
+
 ## <a name="service-tags"></a>服務標籤
 
 **服務** 標籤代表來自指定 Azure 服務的一組 IP 位址首碼。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤，而盡可能簡化網路安全性規則頻繁的更新。 如需服務標記的詳細資訊，請參閱  [*虛擬網路標記*](../virtual-network/service-tags-overview.md)。 
@@ -97,7 +130,7 @@ Azure 提供 **兩個 azure 內建角色** ，以授權存取 Azure 數位 Twins
 
 以下是 **AzureDigitalTwins** 服務標記的詳細資料。
 
-| Tag | 目的 | 可以使用輸入或輸出？ | 是否可為區域性？ | 是否可與 Azure 防火牆搭配使用？ |
+| Tag | 目的 | 可以使用輸入還是輸出？ | 是否可為區域性？ | 是否可與 Azure 防火牆搭配使用？ |
 | --- | --- | --- | --- | --- |
 | AzureDigitalTwins | Azure Digital Twins<br>注意：此標籤或此標記所涵蓋的 IP 位址，可用來限制對 [事件路由](concepts-route-events.md)設定之端點的存取。 | 輸入 | 否 | 是 |
 
@@ -113,7 +146,7 @@ Azure 提供 **兩個 azure 內建角色** ，以授權存取 Azure 數位 Twins
 
 4. 使用 *步驟 2* 中的 ip 範圍，在外部資源 (s) 上設定 ip 篩選器。  
 
-5. 視需要定期更新 IP 範圍。 範圍可能會隨著時間而改變，因此建議您定期檢查這些範圍，並在需要時重新整理。 這些更新的頻率可能不同，但建議您每週檢查一次。
+5. 視需要定期更新 IP 範圍。 範圍可能會隨著時間而改變，因此建議您定期檢查並視需要重新整理這些範圍。 這些更新的頻率可能不同，但建議您每週檢查一次。
 
 ## <a name="encryption-of-data-at-rest"></a>待用資料加密
 
@@ -123,7 +156,7 @@ Azure 數位 Twins 會將待用資料和傳輸中的資料加密提供給資料�
 
 Azure 數位 Twins 目前不支援 **跨原始來源資源分享 (CORS)**。 因此，如果您是從瀏覽器應用程式呼叫 REST API、 [API 管理 (APIM) ](../api-management/api-management-key-concepts.md) 介面或 [Power Apps](/powerapps/powerapps-overview) 連接器，您可能會看到原則錯誤。
 
-若要解決這個錯誤，您可以執行下列其中一項：
+若要解決這個錯誤，您可以執行下列其中一個動作：
 * 從訊息中去除 CORS 標頭 `Access-Control-Allow-Origin` 。 此標頭會指出是否可以共用回應。 
 * 或者，建立 CORS proxy 並透過它來 REST API 要求。 
 

@@ -1,6 +1,6 @@
 ---
-title: 教學課程：Azure Synapse 中認知服務的必要條件
-description: 如何在 Azure Synapse 中設定使用認知服務必要條件的教學課程
+title: 教學課程： Azure Synapse Analytics 中的認知服務必要條件
+description: 瞭解如何設定在 Azure Synapse 中使用認知服務的必要條件。
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.subservice: machine-learning
@@ -9,70 +9,73 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: eef65db05ab94b5b8de5ff82c2c51dba0730f170
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 3ab861caca0ef6f58c2c1bc722412774deb725ce
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222168"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936688"
 ---
-# <a name="tutorial-pre-requisites-for-using-cognitive-services-in-azure-synapse"></a>教學課程：在 Azure Synapse 中使用認知服務的必要條件
+# <a name="tutorial-prerequisites-for-using-cognitive-services-in-azure-synapse-analytics"></a>教學課程：在 Azure Synapse Analytics 中使用認知服務的必要條件
 
-在本教學課程中，您將了解如何設定必要元件，以安全地運用 Azure Synapse 中的認知服務。
+在本教學課程中，您將瞭解如何設定在 Azure Synapse Analytics 中安全使用 Azure 認知服務的必要條件。
 
 本教學課程涵蓋下列項目：
 > [!div class="checklist"]
-> - 建立認知服務資源。 例如文字分析或異常偵測器。
-> - 將認知服務資源的驗證金鑰儲存為 Azure Key Vault 中的祕密，並設定 Azure Synapse 工作區的存取權。
-> - 在 Azure Synapse Analytics 工作區中建立 Azure Key Vault 連結服務。
+> - 建立認知服務資源，例如文字分析或異常偵測器。
+> - 將驗證金鑰儲存為認知服務資源，以做為 Azure Key Vault 中的秘密，並設定 Azure Synapse Analytics 工作區的存取權。
+> - 在您的 Azure Synapse Analytics 工作區中建立 Azure Key Vault 連結服務。
 
 如果您沒有 Azure 訂用帳戶，[請在開始前建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必要條件
 
-- [Azure Synapse Analytics 工作區](../get-started-create-workspace.md)，並將 ADLS Gen2 儲存體帳戶設定為預設儲存體。 您必須是所要使用 ADLS Gen2 檔案系統的 **儲存體 Blob 資料參與者**。
+- [Azure Synapse Analytics 工作區](../get-started-create-workspace.md) ，具有設定為預設儲存體的 Azure Data Lake Storage Gen2 儲存體帳戶。 您必須是您所使用 Azure Data Lake Storage Gen2 檔案系統的 *儲存體 Blob 資料參與者* 。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
-登入 [Azure 入口網站](https://portal.azure.com/)
+登入 [Azure 入口網站](https://portal.azure.com/)。
 
 ## <a name="create-a-cognitive-services-resource"></a>建立認知服務資源
 
-[Azure 認知服務](../../cognitive-services/index.yml)包含許多不同類型的服務。 以下是 Synapse 教學課程中所使用的一些範例。
+[Azure 認知服務](../../cognitive-services/index.yml) 包含許多類型的服務。 文字分析和異常偵測器是 Azure Synapse 教學課程中的兩個範例。
 
-### <a name="create-an-anomaly-detector-resource"></a>建立 Anomaly Detector 資源
-在 Azure 入口網站中建立[異常偵測器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)。
+您可以在 Azure 入口網站中建立 [文字分析](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) 資源：
 
-![建立異常偵測器](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00a.png)
+![在入口網站中使用 [建立] 按鈕顯示文字分析的螢幕擷取畫面。](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00b.png)
 
-### <a name="create-a-text-analytics-resource"></a>建立文字分析資源
-在 Azure 入口網站中建立[文字分析](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)資源。
+您可以在 Azure 入口網站中建立 [異常](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) 偵測器資源：
 
-![建立文字分析](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00b.png)
+![在入口網站中使用 [建立] 按鈕顯示異常偵測器的螢幕擷取畫面。](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00a.png)
 
-## <a name="create-key-vault-and-configure-secrets-and-access"></a>建立 Key Vault 並設定祕密和存取
+## <a name="create-a-key-vault-and-configure-secrets-and-access"></a>建立金鑰保存庫，並設定秘密和存取權
 
-1. 在 Azure 入口網站中建立 [Key Vault](https://ms.portal.azure.com/#create/Microsoft.KeyVault)。
-2. 移至 **Key Vault -> 存取原則**，並授與 [Azure Synapse 工作區 MSI](../security/synapse-workspace-managed-identity.md) 權限以讀取 Azure Key Vault 中的祕密。
+1. 在 Azure 入口網站中建立 [金鑰保存庫](https://ms.portal.azure.com/#create/Microsoft.KeyVault) 。
+2. 移至 **Key Vault**  >  **存取原則**，並授與 [Azure Synapse 工作區 MSI](../security/synapse-workspace-managed-identity.md)許可權，以從 Azure Key Vault 讀取秘密。
 
->請確定已儲存原則變更。 此步驟很容易遺漏。
+   > [!NOTE]
+   > 請確定已儲存原則變更。 此步驟很容易遺漏。
 
-![新增存取原則](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00c.png)
+   ![顯示用於新增存取原則之選項的螢幕擷取畫面。](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00c.png)
 
-3. 移至您的認知服務資源，例如 **異常偵測器 -> 金鑰和端點**，將兩個金鑰的其中一個複製到剪貼簿。
+3. 移至您的認知服務資源。 例如，移至 **異常** 偵測器  >  **金鑰和端點**。 然後將兩個金鑰的其中一個複製到剪貼簿。
 
-4. 移至 **Key Vault -> 祕密** 以建立新的祕密。 指定祕密的名稱，然後將上一個步驟中的金鑰貼到 [值] 欄位中。 最後，按一下 [建立]。
+4. 移至 **Key Vault**  >  **secret** 以建立新的密碼。 指定密碼的名稱，然後在 [ **值** ] 欄位中貼上上一個步驟中的金鑰。 最後，選取 [建立]。
 
-![建立祕密](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00d.png)
+   ![顯示用於建立秘密之選項的螢幕擷取畫面。](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00d.png)
 
-> 請務必記住或記下此祕密名稱！ 稍後從 Azure Synapse Studio 連線到認知服務時，將會用到此名稱。
+   > [!IMPORTANT]
+   > 請確定您記得或記下此秘密名稱。 稍後當您從 Azure Synapse Studio 連線到認知服務時，將會用到它。
 
-## <a name="create-azure-keyvault-linked-service-in-azure-synapse"></a>在 Azure Synapse 中建立 Azure Key Vault 連結服務
+## <a name="create-an-azure-key-vault-linked-service-in-azure-synapse"></a>在 Azure Synapse 中建立 Azure Key Vault 連結服務
 
-1. 在 Azure Synapse Studio 中開啟您的工作區。 瀏覽至 **管理 -> 連結服務**。 建立 Azure Key Vault 連結服務，指向我們剛才建立的 Key Vault。 然後按一下 [測試連線] 按鈕並檢查是否顯示為綠色，以確認連線。 如果一切正常運作，請先按一下 [建立]，然後按一下 [全部發佈] 以儲存變更。
-![連結服務](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00e.png)
+1. 在 Azure Synapse Studio 中開啟您的工作區。 
+2. 移至 [**管理**  >  **連結的服務**]。 指向您剛才建立的金鑰保存庫，以建立 **Azure Key Vault** 連結的服務。 
+3. 選取 [ **測試連接** ] 按鈕來驗證連接。 如果連接為綠色，請選取 [ **建立** ]，然後選取 [ **全部發佈** ] 以儲存您的變更。
 
-您現在已準備好繼續進行在 Azure Synapse Studio 中使用 Azure 認知服務體驗的其中一個教學課程。
+![以新的連結服務顯示 Azure Key Vault 的螢幕擷取畫面。](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00e.png)
+
+您現在已準備好繼續使用 Azure Synapse Studio 中的 Azure 認知服務體驗的其中一個教學課程。
 
 ## <a name="next-steps"></a>後續步驟
 

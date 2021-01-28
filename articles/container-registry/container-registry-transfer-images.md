@@ -4,18 +4,18 @@ description: 使用 Azure 儲存體帳戶建立傳送管線，將映射或其他
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: fd2cee972ef173853572b871bc80b92b28c505cd
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: ab6657ecd335a6de8c6c93e3c2ff392ac54c487c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932595"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935346"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>將構件傳送至另一個登錄
 
 本文說明如何將映射或其他登錄成品的集合從一個 Azure container registry 傳送到另一個登錄。 來源和目標登錄可以位於相同或不同的訂用帳戶、Active Directory 租使用者、Azure 雲端或實體中斷連線的雲端。 
 
-若要傳輸成品，您可以使用[blob 儲存體](../storage/blobs/storage-blobs-introduction.md)建立*傳送管線*，以複寫兩個登錄之間的構件：
+若要傳輸成品，您可以使用 [blob 儲存體](../storage/blobs/storage-blobs-introduction.md)建立 *傳送管線*，以複寫兩個登錄之間的構件：
 
 * 來源登錄中的成品會匯出至來源儲存體帳戶中的 blob 
 * Blob 會從來源儲存體帳戶複製到目標儲存體帳戶
@@ -25,12 +25,12 @@ ms.locfileid: "91932595"
 
 在本文中，您會使用 Azure Resource Manager 範本部署來建立和執行傳送管線。 Azure CLI 用來布建相關聯的資源，例如儲存體秘密。 建議使用 Azure CLI 2.2.0 版或更新版本。 如果您需要安裝或升級 CLI，請參閱[安裝 Azure CLI][azure-cli]。
 
-**進階**容器登錄服務層級中提供這項功能。 如需登錄服務層級和限制的相關資訊，請參閱 [Azure Container Registry 層級](container-registry-skus.md)。
+**進階** 容器登錄服務層級中提供這項功能。 如需登錄服務層級和限制的相關資訊，請參閱 [Azure Container Registry 層級](container-registry-skus.md)。
 
 > [!IMPORTANT]
 > 此功能目前為預覽狀態。 若您同意[補充的使用規定][terms-of-use]即可取得預覽。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * **容器** 登錄-您需要具有要傳送之成品的現有來源登錄，以及目標登錄。 ACR 傳輸旨在跨實體中斷連線的雲端進行移動。 進行測試時，來源和目標登錄可以位於相同或不同的 Azure 訂用帳戶、Active Directory 租使用者或雲端。 
 
@@ -39,7 +39,7 @@ ms.locfileid: "91932595"
 
   如有需要，請使用 [Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli) 或其他工具建立儲存體帳戶。 
 
-  針對每個帳戶中的成品傳輸建立 blob 容器。 例如，建立名為 *transfer*的容器。 有兩個以上的傳送管線可以共用相同的儲存體帳戶，但應該使用不同的儲存體容器範圍。
+  針對每個帳戶中的成品傳輸建立 blob 容器。 例如，建立名為 *transfer* 的容器。 有兩個以上的傳送管線可以共用相同的儲存體帳戶，但應該使用不同的儲存體容器範圍。
 * **金鑰保存庫** -需要有金鑰保存庫，才能儲存用來存取來源和目標儲存體帳戶的 SAS 權杖秘密。 在與您的來源和目標登錄相同的 Azure 訂用帳戶或訂用帳戶中建立來源和目標金鑰保存庫。 基於示範目的，本文中使用的範本和命令也會假設來源和目標金鑰保存庫分別位於與來源和目標登錄相同的資源群組中。 這種情況不需要使用一般資源群組，但可簡化本文中使用的範本和命令。
 
    如有需要，請使用 [Azure CLI](../key-vault/secrets/quick-create-cli.md) 或其他工具來建立金鑰保存庫。
@@ -277,7 +277,7 @@ IMPORT_RES_ID=$(az deployment group show \
 |pipelineRunName     |  您為執行選擇的名稱       |
 |pipelineResourceId     |  匯出管線的資源識別碼。<br/>範例： `/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.ContainerRegistry/registries/<sourceRegistryName>/exportPipelines/myExportPipeline`|
 |targetName     |  您為匯出至來源儲存體帳戶的構件 blob 選擇的名稱，例如 *myblob*
-|artifacts | 要作為標籤或資訊清單摘要來傳送的來源成品陣列<br/>範例： `[samples/hello-world:v1", "samples/nginx:v1" , "myrepository@sha256:0a2e01852872..."]` |
+|構件 | 要作為標籤或資訊清單摘要來傳送的來源成品陣列<br/>範例： `[samples/hello-world:v1", "samples/nginx:v1" , "myrepository@sha256:0a2e01852872..."]` |
 
 如果以相同的屬性重新部署 Pipelinerun 來資源，您也必須使用 [forceUpdateTag](#redeploy-pipelinerun-resource) 屬性。
 
@@ -312,7 +312,7 @@ az storage blob list \
 
 ## <a name="transfer-blob-optional"></a> (選用) 傳送 blob 
 
-使用 AzCopy 工具或其他方法，將 [blob 資料](../storage/common/storage-use-azcopy-blobs.md#copy-blobs-between-storage-accounts) 從來源儲存體帳戶傳送到目標儲存體帳戶。
+使用 AzCopy 工具或其他方法，將 [blob 資料](../storage/common/storage-use-azcopy-v10.md#transfer-data) 從來源儲存體帳戶傳送到目標儲存體帳戶。
 
 例如，下列命令會 [`azcopy copy`](../storage/common/storage-ref-azcopy-copy.md) 將 myblob 從來源帳戶中的 *傳送* 容器複製到目標帳戶中的 *傳輸* 容器。 如果 blob 存在於目標帳戶中，則會覆寫該 blob。 驗證會針對來源和目標容器使用具有適當許可權的 SAS 權杖。 不會顯示建立權杖 (步驟。 ) 
 
@@ -377,7 +377,7 @@ az acr repository list --name <target-registry-name>
 
 ## <a name="redeploy-pipelinerun-resource"></a>重新部署 Pipelinerun 來資源
 
-如果以 *相同的屬性*重新部署 pipelinerun 來資源，您必須利用 **forceUpdateTag** 屬性。 這個屬性工作表示即使設定未變更，也應該重新建立 Pipelinerun 來資源。 請在每次重新部署 Pipelinerun 來資源時，確定 forceUpdateTag 不同。 下列範例會重新建立匯出的 Pipelinerun 來。 目前的日期時間是用來設定 forceUpdateTag，藉此確保此屬性一律是唯一的。
+如果以 *相同的屬性* 重新部署 pipelinerun 來資源，您必須利用 **forceUpdateTag** 屬性。 這個屬性工作表示即使設定未變更，也應該重新建立 Pipelinerun 來資源。 請在每次重新部署 Pipelinerun 來資源時，確定 forceUpdateTag 不同。 下列範例會重新建立匯出的 Pipelinerun 來。 目前的日期時間是用來設定 forceUpdateTag，藉此確保此屬性一律是唯一的。
 
 ```console
 CURRENT_DATETIME=`date +"%Y-%m-%d:%T"`

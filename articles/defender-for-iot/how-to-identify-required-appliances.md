@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/13/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 25685d7e933c9d171e1547be2f5899c08443321a
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 92bf066c9769cc4b2525923b9e18ed3c0e9c577a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246565"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937140"
 ---
 # <a name="identify-required-appliances"></a>識別所需的設備
 
@@ -109,7 +109,7 @@ ms.locfileid: "98246565"
 
 ### <a name="appliance-bom"></a>設備 BOM
 
-| Pn | 說明 | 數量 |
+| Pn | 描述 | 數量 |
 |--|--|--|
 | P19766-B21 | HPE DL360 Gen10 8SFF NC CTO Server | 1 |
 | P19766-B21 | 歐洲-多語系當地語系化 | 1 |
@@ -180,7 +180,7 @@ ms.locfileid: "98246565"
 
 ### <a name="appliance-bom"></a>設備 BOM
 
-| Pn | 說明 | 數量 |
+| Pn | 描述 | 數量 |
 |--|--|--|
 | P06961-B21 | HPE DL20 Gen10 NHP 2LFF CTO Server | 1 |
 | P06961-B21 | HPE DL20 Gen10 NHP 2LFF CTO Server | 1 |
@@ -209,7 +209,7 @@ ms.locfileid: "98246565"
 
 | 類型 | Enterprise |
 |--|--|
-| 說明 | 適用于企業部署類型的虛擬裝置 |
+| 描述 | 適用于企業部署類型的虛擬裝置 |
 | vCPU | 8 |
 | 記憶體 | 32 GB |
 | 儲存體 | 1.8 TB |
@@ -225,7 +225,7 @@ ms.locfileid: "98246565"
 | 映像 | :::image type="content" source="media/how-to-prepare-your-network/deployment-type-enterprise-for-azure-defender-for-iot-v2.png" alt-text="企業部署類型。"::: |
 | 型號 | Dell PowerEdge R340 XL |
 | 監視埠 | 最多9個 RJ45 或六個選擇 |
-| 最大頻寬 [1](#anchortext2)| 1G Mb/秒 |
+| 最大頻寬 [1](#anchortext2)| 1 Gb/秒 |
 | 受保護的裝置數上限 | 10,000 |
 
 <a id="anchortext2">一個</a> 頻寬容量可能會有所不同，取決於通訊協定的散發。
