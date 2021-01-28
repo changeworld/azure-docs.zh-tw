@@ -2,7 +2,7 @@
 title: 快速入門：使用 JAVA 將遙測傳送至 Azure IoT 中樞
 description: 本快速入門中，您會執行兩個範例 Java 應用程式，以將模擬的遙測資料傳送至 IoT 中樞和從 IoT 中樞讀取遙測資料，以便在雲端中處理。
 author: wesmc7777
-manager: philmea
+manager: lizross
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
@@ -15,13 +15,13 @@ ms.custom:
 - mqtt
 - devx-track-java
 - devx-track-azurecli
-ms.date: 05/26/2020
-ms.openlocfilehash: 8ac2ada18cdb3c9af4902b28d16fef640f979101
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
-ms.translationtype: HT
+ms.date: 01/27/2021
+ms.openlocfilehash: c0f1272bf195c6d5ef2dfe88cc6541f731fa51c8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121429"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928565"
 ---
 # <a name="quickstart-send-telemetry-to-an-azure-iot-hub-and-read-it-with-a-java-application"></a>快速入門：將遙測傳送至 Azure IoT 中樞，並使用 Java 應用程式加以讀取
 
@@ -33,7 +33,7 @@ ms.locfileid: "98121429"
 
 * 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-* Java SE 開發套件 8。 在 [Azure 和 Azure Stack 的 Java 長期支援](/java/azure/jdk/?view=azure-java-stable)中，選取 [長期支援]  下的 [Java 8]  。
+* Java SE 開發套件 8。 在 [Azure 和 Azure Stack 的 Java 長期支援](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)中，選取 [長期支援]  下的 [Java 8]  。
 
     您可以使用下列命令，以確認開發電腦上目前的 Java 版本：
 
@@ -49,7 +49,9 @@ ms.locfileid: "98121429"
     mvn --version
     ```
 
-* [範例 Java 專案](https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip)。
+* 使用 [azure-iot-範例-java 存放庫頁面](https://github.com/Azure-Samples/azure-iot-samples-java)上的 [程式 **代碼**] 按鈕，下載或複製 azure--範例-java 存放庫。 
+
+    本文使用來自存放庫的 [模擬裝置](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Quickstarts/simulated-device) 和 [讀取 d2c 訊息](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Quickstarts/read-d2c-messages) 範例。
 
 * 在您的防火牆中開啟的連接埠 8883。 本快速入門中的裝置範例會使用 MQTT 通訊協定，其會透過連接埠 8883 進行通訊。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
@@ -113,6 +115,16 @@ ms.locfileid: "98121429"
 
     使用您稍早所記錄的裝置連接字串來取代 `connString` 變數的值。 然後將變更儲存到 **SimulatedDevice.java**。
 
+    ```java
+    public class SimulatedDevice {
+      // The device connection string to authenticate the device with your IoT hub.
+      // Using the Azure CLI:
+      // az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyJavaDevice --output table
+
+      //private static String connString = "{Your device connection string here}";    
+      private static String connString = "HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyJavaDevice;SharedAccessKey={YourSharedAccessKey}";    
+     ```
+
 3. 在本機終端機視窗中，執行下列命令以安裝模擬裝置應用程式所需的程式庫，並建置模擬裝置應用程式：
 
     ```cmd/sh
@@ -142,6 +154,23 @@ ms.locfileid: "98121429"
     | `EVENT_HUBS_COMPATIBLE_ENDPOINT` | 使用您稍早所記錄的事件中樞相容端點來取代變數的值。 |
     | `EVENT_HUBS_COMPATIBLE_PATH`     | 使用您稍早所記錄的事件中樞相容路徑來取代變數的值。 |
     | `IOT_HUB_SAS_KEY`                | 使用您稍早所記錄的服務主要金鑰來取代變數的值。 |
+
+    ```java
+    public class ReadDeviceToCloudMessages {
+    
+      private static final String EH_COMPATIBLE_CONNECTION_STRING_FORMAT = "Endpoint=%s/;EntityPath=%s;"
+          + "SharedAccessKeyName=%s;SharedAccessKey=%s";
+    
+      // az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {your IoT Hub name}
+      private static final String EVENT_HUBS_COMPATIBLE_ENDPOINT = "{your Event Hubs compatible endpoint}";
+    
+      // az iot hub show --query properties.eventHubEndpoints.events.path --name {your IoT Hub name}
+      private static final String EVENT_HUBS_COMPATIBLE_PATH = "{your Event Hubs compatible name}";
+    
+      // az iot hub policy show --name service --query primaryKey --hub-name {your IoT Hub name}
+      private static final String IOT_HUB_SAS_KEY = "{your service primary key}";    
+    ```
+
 
 3. 在本機終端機視窗中，執行下列命令安裝所需的程式庫並建置後端應用程式：
 

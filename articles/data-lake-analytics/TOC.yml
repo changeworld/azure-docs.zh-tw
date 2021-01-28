@@ -68,7 +68,7 @@
             - name: 基本概念
               href: data-lake-analytics-u-sql-get-started.md
             - name: 程式設計語言參考
-              href: 'https://docs.microsoft.com/u-sql'
+              href: /u-sql
             - name: 目錄
               href: data-lake-analytics-u-sql-catalog.md
             - name: 使用者定義的運算子

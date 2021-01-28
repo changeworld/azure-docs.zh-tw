@@ -1,19 +1,16 @@
 ---
 title: 在 Azure HDInsight 上搭配 Jupyter 使用 Python 套件的指令碼動作
 description: 如何使用腳本動作來設定可搭配 HDInsight Spark 叢集使用的 Jupyter 筆記本，以使用外部 python 套件的逐步指示。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 21423f7200d25c9a5b3b63d2371e56977cd9d227
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 8fbbe137ece7aac2dd2196c5ebec435e118297ad
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821370"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929818"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>使用指令碼動作在 Azure HDInsight 上安全地管理 Python 環境
 

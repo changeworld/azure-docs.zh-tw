@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight 中 Apache Hive 的閘道深入探討和最佳作法
 description: 瞭解如何流覽透過 Azure HDInsight 閘道執行 Hive 查詢的最佳作法
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 3db411df69a754857220867865522f8e4fa24030
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 63484d882d8ccd387257c6f246c2048a09c77bc8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011484"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933114"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Hive 的閘道深入探討和最佳作法
 

@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight 商務持續性
 description: 本文概述 Azure HDInsight 商務持續性規劃的最佳作法、單一區域可用性和優化選項。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 keywords: hadoop 高可用性
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: f83f5aec264aeae1a729e81932843825a0ce6673
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 74f8bdd26e000b89bfae84102077c241f85abf7e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546937"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933312"
 ---
 # <a name="azure-hdinsight-business-continuity"></a>Azure HDInsight 商務持續性
 
@@ -53,7 +50,7 @@ Azure HDInsight 叢集依賴許多 Azure 服務，例如儲存體、資料庫、
 
 您可以使用其他選擇性服務，例如 Azure Key Vault 和 Azure Data Factory。
 
-:::image type="content" source="media/hdinsight-business-continuity/hdinsight-components.png" alt-text="資料轉換和資料服務層級":::
+:::image type="content" source="media/hdinsight-business-continuity/hdinsight-components.png" alt-text="HDInsight 元件":::
 
 ### <a name="azure-hdinsight-cluster-compute"></a>Azure HDInsight 叢集 (計算) 
 
@@ -122,9 +119,9 @@ HDInsight 建議 Azure Data Lake Storage Gen2 作為基礎儲存層。 [Azure �
 |讀取寫入模式 |需要讀取和寫入主要和次要都啟用 |將次要資料庫設計為唯讀|
 |RTO & 零 RPO |要求零資料遺失 (RPO = 0) 和零停機 (RTO = 0)  |以減少需要容錯移轉的元件數目的方式設計 RPO 和 RTO。|
 |商務功能 |在次要資料庫中需要主要的完整商務功能 |評估您是否可以使用次要資料庫中最小的重要商務功能子集來執行。|
-|連接性 |要求來自主要的所有上游和下游系統都必須連接到次要|將次要連接限制為最小的重要子集。|
+|連線能力 |要求來自主要的所有上游和下游系統都必須連接到次要|將次要連接限制為最小的重要子集。|
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解本文中討論的專案，請參閱：
 

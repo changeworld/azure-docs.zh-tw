@@ -1,19 +1,16 @@
 ---
 title: Zeppelin & Apache Spark 叢集的筆記本-Azure HDInsight
 description: 如何在 Azure HDInsight 上搭配使用 Zeppelin Notebook 和 Apache Spark 叢集的逐步指示。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 00b9568d03260a9d1ac0b6916e09f3d9ef4da34d
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: ba58c007dc0bc3776f429366651cb79404b137b3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822160"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928483"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>在 Azure HDInsight 上搭配使用 Apache Zeppelin Notebook 和 Apache Spark 叢集
 
@@ -197,7 +194,7 @@ Zeppelin 筆記本中的第一個程式碼片段會在您的叢集中建立新�
 
 若要從命令列驗證服務，請透過 SSH 連線到前端節點。 使用命令將使用者切換至 zeppelin `sudo su zeppelin` 。 狀態命令：
 
-|Command |描述 |
+|命令 |描述 |
 |---|---|
 |`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh status`|服務狀態。|
 |`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh --version`|服務版本。|

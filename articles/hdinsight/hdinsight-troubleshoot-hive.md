@@ -3,17 +3,14 @@ title: 使用 Azure HDInsight 為 Hive 進行疑難排解
 description: 取得有關使用 Apache Hive 和 Azure HDInsight 的常見問題解答。
 keywords: Azure HDInsight, Hive, 常見問題集, 疑難排解指南, 常見問題
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: f1a26e3323e4d1db2e9b2bda9afaa2756307749b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a76974b8daddf225b0d9b8b581475d657322847e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288956"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931444"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>使用 Azure HDInsight 對 Apache Hive 進行疑難排解
 
@@ -49,7 +46,7 @@ ms.locfileid: "93288956"
 
 ### <a name="resolution-steps"></a>解決步驟
 
-1. 使用 SSH 連線到 HDInsight 叢集。 如需詳細資訊，請參閱 **其他閱讀資料** 。
+1. 使用 SSH 連線到 HDInsight 叢集。 如需詳細資訊，請參閱 **其他閱讀資料**。
 
 2. 若要檢視 Hive 用戶端記錄，請使用下列命令：
 
@@ -120,17 +117,17 @@ ms.locfileid: "93288956"
    您必須提供範例程式作為第一個引數。
 
    有效的程式名稱包括：
-    - **ContainerReuseAnalyzer** ：列印 DAG 中的容器重複使用詳細資料
-    - **CriticalPath** ：尋找 DAG 的關鍵路徑
-    - **LocalityAnalyzer** ：列印 DAG 中的位置詳細資料
-    - **ShuffleTimeAnalyzer** ：分析 DAG 中的隨機播放時間詳細資料 
-    - **SkewAnalyzer** ：分析 DAG 中的扭曲詳細資料
-    - **SlowNodeAnalyzer** ：列印 DAG 中的節點詳細資料
-    - **SlowTaskIdentifier** ：列印 DAG 中的低速工作詳細資料
-    - **SlowestVertexAnalyzer** ：列印 DAG 中最慢頂點詳細資料
-    - **SpillAnalyzer** ：列印 DAG 中的溢出詳細資料
-    - **TaskConcurrencyAnalyzer** ：列印 DAG 中的工作並行詳細資料
-    - **VertexLevelCriticalPathAnalyzer** ：在 DAG 的頂點層級中尋找關鍵路徑
+    - **ContainerReuseAnalyzer**：列印 DAG 中的容器重複使用詳細資料
+    - **CriticalPath**：尋找 DAG 的關鍵路徑
+    - **LocalityAnalyzer**：列印 DAG 中的位置詳細資料
+    - **ShuffleTimeAnalyzer**：分析 DAG 中的隨機播放時間詳細資料 
+    - **SkewAnalyzer**：分析 DAG 中的扭曲詳細資料
+    - **SlowNodeAnalyzer**：列印 DAG 中的節點詳細資料
+    - **SlowTaskIdentifier**：列印 DAG 中的低速工作詳細資料
+    - **SlowestVertexAnalyzer**：列印 DAG 中最慢頂點詳細資料
+    - **SpillAnalyzer**：列印 DAG 中的溢出詳細資料
+    - **TaskConcurrencyAnalyzer**：列印 DAG 中的工作並行詳細資料
+    - **VertexLevelCriticalPathAnalyzer**：在 DAG 的頂點層級中尋找關鍵路徑
 
 ### <a name="additional-reading"></a>延伸閱讀
 

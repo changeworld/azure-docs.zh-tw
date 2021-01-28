@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight 中的企業安全性一般指導方針
 description: 您可以更輕鬆地企業安全性套件部署和管理的一些最佳作法。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 8d97886232eecc369746e33df484cbfb9d40da72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92ad8362f75cdf0613d4ee95f39c23aa6d4819bb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87530260"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933560"
 ---
 # <a name="enterprise-security-general-information-and-guidelines-in-azure-hdinsight"></a>Azure HDInsight 中的企業安全性一般資訊與指導方針
 
@@ -171,7 +168,7 @@ Azure AD DS 會定期從 Azure AD 同步處理物件。 Azure 入口網站上的
 
 如需影響您的 HDInsight 叢集設定之 Ambari 屬性的完整清單，請參閱 [AMBARI LDAP 驗證設定](https://ambari.apache.org/1.2.1/installing-hadoop-using-ambari/content/ambari-chap2-4.html)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [使用 HDInsight 中的 Azure Active Directory Domain Services 企業安全性套件設定](./apache-domain-joined-configure-using-azure-adds.md)
 

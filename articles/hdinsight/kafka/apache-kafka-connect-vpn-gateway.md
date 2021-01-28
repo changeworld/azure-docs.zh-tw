@@ -1,19 +1,16 @@
 ---
 title: 使用虛擬網路連線到 Kafka - Azure HDInsight
 description: 了解如何透過 Azure 虛擬網路，直接連線到 HDInsight 上的 Kafka。 了解如何使用 VPN 閘道從開發用戶端連線到 Kafka，或使用 VPN 閘道裝置從內部部署網路的用戶端進行連線。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-python
 ms.date: 03/04/2020
-ms.openlocfilehash: ca5bff7f8a14efc0916210296048e3731aec5a59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad802b2bdf08a8e43179beece5f52d869513aff3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87873461"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933051"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>透過 Azure 虛擬網路連線到 HDInsight 上的 Apache Kafka
 
@@ -288,7 +285,7 @@ Apache Zookeeper 預設會將 Kafka 代理程式的網域名稱傳回給用戶�
 
 ### <a name="connect-to-the-vpn-gateway"></a>連線到 VPN 閘道
 
-若要連線到 VPN 閘道，請使用[設定點對站連線](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect)文件的__連線到 Azure__ 一節。
+若要連線到 VPN 閘道，請使用 [設定點對站連線](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect)文件的 __連線到 Azure__ 一節。
 
 ## <a name="example-python-client"></a><a id="python-client"></a> 範例：Python 用戶端
 
@@ -339,9 +336,9 @@ Apache Zookeeper 預設會將 Kafka 代理程式的網域名稱傳回給用戶�
 
     使用從本節的步驟 1 傳回的位址來取代 `'kafka_broker'` 項目：
 
-   * 如果您使用__軟體 VPN 用戶端__，使用背景工作節點的 IP 位址來取代 `kafka_broker` 項目。
+   * 如果您使用 __軟體 VPN 用戶端__，使用背景工作節點的 IP 位址來取代 `kafka_broker` 項目。
 
-   * 如果您具有__透過自訂 DNS 伺服器啟用的名稱解析__，使用背景工作節點的 FQDN 來取代 `kafka_broker` 項目。
+   * 如果您具有 __透過自訂 DNS 伺服器啟用的名稱解析__，使用背景工作節點的 FQDN 來取代 `kafka_broker` 項目。
 
      > [!NOTE]
      > 此程式碼會將 `test message` 字串傳送至 `testtopic` 主題。 HDInsight 上 Kafka 的預設組態是建立主題 (如果不存在)。
@@ -362,9 +359,9 @@ Apache Zookeeper 預設會將 Kafka 代理程式的網域名稱傳回給用戶�
 
     使用從本節的步驟 1 傳回的位址來取代 `'kafka_broker'` 項目：
 
-    * 如果您使用__軟體 VPN 用戶端__，使用背景工作節點的 IP 位址來取代 `kafka_broker` 項目。
+    * 如果您使用 __軟體 VPN 用戶端__，使用背景工作節點的 IP 位址來取代 `kafka_broker` 項目。
 
-    * 如果您具有__透過自訂 DNS 伺服器啟用的名稱解析__，使用背景工作節點的 FQDN 來取代 `kafka_broker` 項目。
+    * 如果您具有 __透過自訂 DNS 伺服器啟用的名稱解析__，使用背景工作節點的 FQDN 來取代 `kafka_broker` 項目。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -4,12 +4,12 @@ description: 針對 SDK 撰寫遙測處理器和遙測初始化運算式，以�
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: b3ccc3516d5b31f4c119c2d5a2bd11a63dbdc611
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb9159b98b219c6fb04beb7bbbaade64fc72a30b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758025"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927757"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>在 Application Insights SDK 中篩選及前置處理遙測
 
@@ -497,7 +497,7 @@ public void Initialize(ITelemetry telemetry)
 
 #### <a name="add-information-from-httpcontext"></a>從 HttpCoNtext 新增資訊
 
-下列範例初始化運算式會從讀取資料 [`HttpContext`](/aspnet/core/fundamentals/http-context?view=aspnetcore-3.1) ，並將其附加至 `RequestTelemetry` 實例。 會透過「函式相依性 `IHttpContextAccessor` 插入」自動提供。
+下列範例初始化運算式會從讀取資料 [`HttpContext`](/aspnet/core/fundamentals/http-context) ，並將其附加至 `RequestTelemetry` 實例。 會透過「函式相依性 `IHttpContextAccessor` 插入」自動提供。
 
 ```csharp
 public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer

@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: lajanuar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9ebcbadbc8b502121b25393c7761794bcd3f07e8
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: dd5b83908ae7c6d62acd3391933028685facf755
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897100"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927483"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>教學課程：使用 WPF 建立翻譯應用程式
 
-在本教學課程中，您將建置以單一訂用帳戶金鑰使用 Azure 認知服務進行文字翻譯、語言偵測和拼字檢查的 [Windows Presentation Foundation (WPF)](/visualstudio/designers/getting-started-with-wpf?view=vs-2019) 應用程式。 具體來說，您的應用程式將呼叫翻譯工具和 [Bing 拼字檢查](https://azure.microsoft.com/services/cognitive-services/spell-check/)的 API。
+在本教學課程中，您將建置以單一訂用帳戶金鑰使用 Azure 認知服務進行文字翻譯、語言偵測和拼字檢查的 [Windows Presentation Foundation (WPF)](/visualstudio/designers/getting-started-with-wpf) 應用程式。 具體來說，您的應用程式將呼叫翻譯工具和 [Bing 拼字檢查](https://azure.microsoft.com/services/cognitive-services/spell-check/)的 API。
 
 什麼是 WPF？ 這是可建立桌面用戶端應用程式的 UI 架構。 WPF 開發平台支援廣泛的應用程式開發功能，包括應用程式模型、資源、控制項、圖形、版面配置、資料繫結、文件和安全性。 它是 .NET Framework 的子集，因此，如果您先前曾使用 ASP.NET 或 Windows Forms 在 .NET Framework 中建置應用程式，即應熟悉其程式設計體驗。 WPF 使用可延伸應用程式標記語言 (XAML) 提供應用程式開發的宣告式模型，我們將在接下來的章節中加以討論。
 
@@ -90,7 +90,7 @@ ms.locfileid: "98897100"
 1. 將這些參考新增至專案後，您可以按一下 [確定] 以關閉 [參考管理員]。
 
 > [!NOTE]
-> 如果您想要深入了解組件參考，請參閱[操作說明：使用參考管理員新增或移除參考](/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019)。
+> 如果您想要深入了解組件參考，請參閱[操作說明：使用參考管理員新增或移除參考](/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager)。
 
 ### <a name="install-newtonsoftjson"></a>安裝 Newtonsoft.Json
 

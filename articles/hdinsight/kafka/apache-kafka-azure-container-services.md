@@ -1,19 +1,16 @@
 ---
 title: 使用 Azure Kubernetes Service 搭配 HDInsight 上的 Kafka
 description: 了解如何從 Azure Kubernetes Service (AKS) 中裝載的容器映像使用 HDInsight 上的 Kafka。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: ab87f181f78158d2ea0dd6575a30e6087600f60c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d807b591229644984f6658cdacd0bf447759f292
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485676"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933033"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>使用 Azure Kubernetes Service 搭配 HDInsight 上的 Apache Kafka
 
@@ -58,14 +55,14 @@ HDInsight 和 AKS 均使用 Azure 虛擬網路作為計算資源的容器。 若
 * [部署 Azure Kubernetes Service (AKS) 叢集 - CLI](../../aks/kubernetes-walkthrough.md)
 
 > [!IMPORTANT]  
-> AKS 會在安裝期間於**新增**的資源群組中建立虛擬網路。 此新增的資源群組會遵循 **MC_resourceGroup_AKSclusterName_location** 命名慣例。  
+> AKS 會在安裝期間於 **新增** 的資源群組中建立虛擬網路。 此新增的資源群組會遵循 **MC_resourceGroup_AKSclusterName_location** 命名慣例。  
 > 此網路會對等互連至在下一節中針對 HDInsight 建立的網路。
 
 ## <a name="configure-virtual-network-peering"></a>設定虛擬網路對等互連
 
 ### <a name="identify-preliminary-information"></a>識別初步資訊
 
-1. 從 [Azure 入口網站](https://portal.azure.com)，找到包含 AKS 叢集虛擬網路的新增**資源群組**。
+1. 從 [Azure 入口網站](https://portal.azure.com)，找到包含 AKS 叢集虛擬網路的新增 **資源群組**。
 
 2. 在資源群組中，選取 [虛擬網路] 資源。 記下名稱以在稍後使用。
 
@@ -93,7 +90,7 @@ HDInsight 和 AKS 均使用 Azure 虛擬網路作為計算資源的容器。 若
     |屬性 |值 |
     |---|---|
     |從 \<this VN> 到遠端虛擬網路的對等互連名稱|輸入此對等互連設定的唯一名稱。|
-    |虛擬網路|選取 **AKS 叢集**的虛擬網路。|
+    |虛擬網路|選取 **AKS 叢集** 的虛擬網路。|
     |的對等互連名稱 \<AKS VN>\<this VN>|輸入唯一名稱。|
 
     讓所有其他欄位保留預設值，然後選取 [確定] 來設定對等互連。

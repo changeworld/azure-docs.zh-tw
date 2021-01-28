@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 6201a4e0551f0f75dde65b2bc4b8b560a0f5ea20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d424a22a26119dcb3ef6a0e5c4f3dc0c13b1aa4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87007991"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927580"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Azure 診斷延伸模組概觀
 Azure 診斷延伸模組是 [Azure 監視器中的代理程式](agents-overview.md)，可從 Azure 計算資源 (包括虛擬機器) 的客體作業系統收集監視資料。 本文提供 Azure 診斷延伸模組的概觀，包括支援的特定功能，以及安裝與設定的選項。 
@@ -50,7 +50,7 @@ Azure 診斷延伸模組無須付費，但內嵌資料可能會產生費用。 �
 | 效能計數器 | 測量作業系統和工作負載不同層面效能的數值。 |
 | IIS 記錄             | 在客體作業系統上執行的 IIS 網站其使用量資訊。 |
 | 應用程式記錄     | 追蹤應用程式所寫入的訊息。 |
-| .NET EventSource 記錄 |使用 .NET [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) 類別的程式碼編寫事件 |
+| .NET EventSource 記錄 |使用 .NET [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource) 類別的程式碼編寫事件 |
 | [以資訊清單為基礎的 ETW 記錄](/windows/desktop/etw/about-event-tracing) \(英文\) |事件追蹤 (適用於任何程序所產生的 Windows 事件)。 |
 | 損毀傾印 (記錄)   | 應用程式損毀時的程序狀態資訊。 |
 | 檔案型記錄    | 您的應用程式或服務所建立的記錄。 |

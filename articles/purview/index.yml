@@ -6,15 +6,15 @@ metadata:
   description: 了解如何使用 Azure Purview，讓組織可以在其中尋找、了解及取用資料來源。 教學課程、REST API 參考和其他文件會示範如何規劃和設定資料儲存機制，以便資料取用者探索可用的資料來源，並取得由主題專家所提供的知識。
   ms.service: purview
   ms.topic: landing-page
-  author: hrasheed-msft
-  ms.author: hrasheed
+  author: JasonWHowell
+  ms.author: jasonh
   ms.date: 11/29/2020
-  ms.openlocfilehash: 378a335653acf31275c312bcf4fa53b36bfa614e
-  ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
-  ms.translationtype: HT
+  ms.openlocfilehash: c9e9a32ca5c77082186f15a0eae3f3430347a02b
+  ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+  ms.translationtype: MT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 12/03/2020
-  ms.locfileid: "96549411"
+  ms.lasthandoff: 01/28/2021
+  ms.locfileid: "98926910"
 landingContent:
 - title: 關於 Azure Purview
   linkLists:

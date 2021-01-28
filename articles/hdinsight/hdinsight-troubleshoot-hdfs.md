@@ -1,19 +1,16 @@
 ---
 title: 針對 Azure HDInsight 中的 HDFS 進行疑難排解
 description: 取得有關使用 HDFS 和 Azure HDInsight 的常見問題解答。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: add8bc14c1810d4b0d5894a840f2b815230f31cc
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 0be7805493e5acc41254c57ca912b5a2ecf02dae
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288999"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931453"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>使用 Azure HDInsight 針對 Apache Hadoop HDFS 問題進行疑難排解
 
@@ -104,7 +101,7 @@ Caused by: com.microsoft.azure.storage.StorageException: The request body is too
 
 在寫入 Azure 儲存體時，HDInsight 叢集上的 HBase 會將區塊大小預設為 256 KB。 雖然這適用於 HBase API 或 REST API，但會導致在使用 `hadoop` 或 `hdfs dfs` 命令列公用程式時發生錯誤。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 使用 `fs.azure.write.request.size` 來指定較大的區塊大小。 您可以使用參數根據每次使用來進行修改 `-D` 。 以下命令是搭配使用此參數與 `hadoop` 命令的範例︰
 
@@ -116,7 +113,7 @@ hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file
 
 1. 在瀏覽器中，移至叢集的 Ambari Web UI。 URL 是 `https://CLUSTERNAME.azurehdinsight.net` ，其中 `CLUSTERNAME` 是您的叢集名稱。 出現提示時，請輸入該叢集的管理員名稱和密碼。
 2. 在畫面左側選取 [HDFS]，然後選取 [設定] 索引標籤。
-3. 在 [篩選...] 欄位中，輸入 `fs.azure.write.request.size`。
+3. 在 [ **篩選 ...** ] 欄位中，輸入 `fs.azure.write.request.size` 。
 4. 將值從 262144 (256 KB) 變更為新值。 例如，4194304 (4 MB)。
 
     ![透過 Ambari Web UI 變更值的影像](./media/hdinsight-troubleshoot-hdfs/hbase-change-block-write-size.png)

@@ -1,18 +1,15 @@
 ---
 title: 在 Azure HDInsight 上使用 SparkCruise 來加速 Apache Spark 查詢
 description: 瞭解如何使用 SparkCruise 優化平臺來改善 Apache Spark 查詢的效率。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.openlocfilehash: 1a73b4707f83d6a23dffc20d95aa7b8a0fa465b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f07ea3007d2e72c179abe38cca56178b564bc231
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88649052"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928281"
 ---
 # <a name="sparkcruise-on-azure-hdinsight"></a>Azure HDInsight 上的 SparkCruise
 
@@ -22,7 +19,7 @@ ms.locfileid: "88649052"
 
 您在分析平臺（例如 Apache Spark）上執行的查詢會分解成包含較小子查詢的查詢計劃。 這些子查詢可能會在多個查詢的查詢計劃中重複顯示。 每次發生時，都會重新執行，以傳回結果。 不過，重新執行相同的查詢可能沒有效率，因而導致不必要的計算成本。
 
-*SparkCruise* 是工作負載優化平臺，可重複使用一般計算，減少整體查詢執行時間和資料傳輸成本。 此平臺使用 *具體化視圖*的概念，也就是其結果以預先計算的形式儲存的查詢。 然後當查詢本身再次顯示時，就可以重複使用這些結果，而不是重新計算結果。
+*SparkCruise* 是工作負載優化平臺，可重複使用一般計算，減少整體查詢執行時間和資料傳輸成本。 此平臺使用 *具體化視圖* 的概念，也就是其結果以預先計算的形式儲存的查詢。 然後當查詢本身再次顯示時，就可以重複使用這些結果，而不是重新計算結果。
 
 ## <a name="setup-and-installation"></a>設定與安裝
 
@@ -58,7 +55,7 @@ ms.locfileid: "88649052"
     sudo /opt/peregrine/analyze/peregrine.sh show
     ```
 
-此 `analyze` 命令會剖析查詢計劃，並建立工作負載的表格式標記法。 您可以使用[HDInsight SparkCruise 範例](https://github.com/Azure-Samples/azure-sparkcruise-samples)存放庫中包含的*WorkloadInsights*筆記本來查詢此工作負載資料表。 然後，此 `views` 命令會識別常見的子計畫運算式，並選取有趣的子計畫運算式，以供未來具體化和重複使用。 輸出是包含未來 Spark SQL 查詢附注的意見檔。 
+此 `analyze` 命令會剖析查詢計劃，並建立工作負載的表格式標記法。 您可以使用 [HDInsight SparkCruise 範例](https://github.com/Azure-Samples/azure-sparkcruise-samples)存放庫中包含的 *WorkloadInsights* 筆記本來查詢此工作負載資料表。 然後，此 `views` 命令會識別常見的子計畫運算式，並選取有趣的子計畫運算式，以供未來具體化和重複使用。 輸出是包含未來 Spark SQL 查詢附注的意見檔。 
 
 此 `show` 命令會顯示類似下列文字的輸出：
 
@@ -146,7 +143,7 @@ drwxr-xr-x   - root root          0 2020-07-24 17:21 /peregrine/views/9409467400
 sudo /opt/peregrine/analyze/peregrine.sh clean
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [使用工作負載深入解析筆記本來判斷 SparkCruise 的優點](https://github.com/Azure-Samples/azure-sparkcruise-samples/tree/main/SparkCruise)
 * [使用 Azure HDInsight IO 快取改善 Apache Spark 工作負載的效能](apache-spark-improve-performance-iocache.md)

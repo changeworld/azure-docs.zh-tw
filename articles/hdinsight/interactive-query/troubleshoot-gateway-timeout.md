@@ -1,18 +1,15 @@
 ---
 title: 從 Azure HDInsight 中的 Apache Ambari Hive View 執行查詢時發生例外狀況
 description: 在 Azure HDInsight 中透過 Apache Ambari Hive View 執行 Apache Hive 查詢時的疑難排解步驟。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 12/23/2019
-ms.openlocfilehash: aeedda5c26a2e9dc0fa2b228285cfda45d880d29
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 40ef380cd2bd4743b92daf44a0a5b70ade1cbb35
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547379"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933010"
 ---
 # <a name="exception-when-running-queries-from-apache-ambari-hive-view-in-azure-hdinsight"></a>從 Azure HDInsight 中的 Apache Ambari Hive View 執行查詢時發生例外狀況
 
@@ -54,13 +51,13 @@ Http 處理常式執行緒應該很快：準備作業並傳回 `queryid` 。 不
 
 * 如果使用外部 hive 中繼存放區，請檢查資料庫計量，並確定資料庫未多載。 請考慮調整中繼存放區資料庫層。
 
-* 確定已開啟 parallel ops (如此可讓 HTTP 處理常式執行緒以平行方式執行) 。 若要確認此值，請啟動 [Apache Ambari](../hdinsight-hadoop-manage-ambari.md) ，然後流覽至 **Hive 配置** 的  >  **Configs**  >  **Advanced**  >  **自訂 hive 網站** 。 的值 `hive.server2.parallel.ops.in.session` 應該是 `true` 。
+* 確定已開啟 parallel ops (如此可讓 HTTP 處理常式執行緒以平行方式執行) 。 若要確認此值，請啟動 [Apache Ambari](../hdinsight-hadoop-manage-ambari.md) ，然後流覽至 **Hive 配置** 的  >    >  **Advanced**  >  **自訂 hive 網站**。 的值 `hive.server2.parallel.ops.in.session` 應該是 `true` 。
 
 * 請確定叢集的 VM SKU 不太小而無法載入。 請考慮在多個群集之間分割工作。 如需詳細資訊，請參閱 [選擇叢集類型](../hdinsight-capacity-planning.md#choose-a-cluster-type)。
 
 * 如果叢集上已安裝 Ranger，請檢查是否有太多 Ranger 原則需要針對每個查詢進行評估。 尋找重複或不需要的原則。
 
-* 檢查 Ambari 的 **HiveServer2 堆積大小** 值。 流覽至 **Hive**  >  **Configs**  >  **設定**  >  **優化** 。 請確定值大於 10 GB。 視需要調整以將效能優化。
+* 檢查 Ambari 的 **HiveServer2 堆積大小** 值。 流覽至 **Hive**  >    >  **設定**  >  **優化**。 請確定值大於 10 GB。 視需要調整以將效能優化。
 
 * 確定 Hive 查詢經過妥善調整。 如需詳細資訊，請參閱 [Azure HDInsight 中的優化 Apache Hive 查詢](../hdinsight-hadoop-optimize-hive-query.md)。
 

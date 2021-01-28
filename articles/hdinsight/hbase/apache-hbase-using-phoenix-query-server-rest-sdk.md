@@ -1,19 +1,16 @@
 ---
 title: Phoenix Query Server REST SDK - Azure HDInsight
 description: 在 Azure HDInsight 中安裝和使用 Phoenix Query Server 的 REST SDK。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/01/2020
-ms.openlocfilehash: 051d7b37f5f78ce28134fa7c4ee188f3dde81812
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ce459e2820cfd2ea5cacb036f5d6885c9c5afa0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504837"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933363"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix Query Server REST SDK
 
@@ -25,7 +22,7 @@ ms.locfileid: "89504837"
 
 ## <a name="install-the-sdk"></a>安裝 SDK
 
-適用於 Apache Phoenix Query Server 的 Microsoft .NET 驅動程式是以 NuGet 套件的形式提供使用，您可以使用以下命令，從 Visual Studio **NuGet 套件管理員主控台**安裝此套件：
+適用於 Apache Phoenix Query Server 的 Microsoft .NET 驅動程式是以 NuGet 套件的形式提供使用，您可以使用以下命令，從 Visual Studio **NuGet 套件管理員主控台** 安裝此套件：
 
 ```console
 Install-Package Microsoft.Phoenix.Client
@@ -76,7 +73,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 | 屬性 | 描述 |
 | -- | -- |
 | AutoCommit | 布林值，用來表示是否為 Phoenix 交易啟用 `autoCommit`。 |
-| 唯讀 | 布林值，用來表示連線是否為唯讀連線。 |
+| ReadOnly | 布林值，用來表示連線是否為唯讀連線。 |
 | TransactionIsolation | 整數，用來表示依據 JDBC 規格的交易隔離層級 - 請參閱下表。|
 | 目錄 | 擷取連線屬性時所要使用的目錄名稱。 |
 | 結構描述 | 擷取連線屬性時所要使用的結構描述名稱。 |

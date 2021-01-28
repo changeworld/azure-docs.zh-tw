@@ -1,19 +1,16 @@
 ---
 title: 針對 Azure HDInsight 中的 Apache Spark 叢集問題進行疑難排解
 description: 了解 Azure HDInsight 中的 Apache Spark 叢集相關問題，以及如何解決這些問題。
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.author: hrasheed
-ms.openlocfilehash: 65163225853037ac4cb97a02c0bdaf554b509fb1
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: c92b55d3ac7f4476b7b74d25b40150a74c6ea1cf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822194"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930156"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight 上的 Apache Spark 叢集已知問題
 
@@ -119,7 +116,7 @@ HDInsight Spark 叢集不支援 Spark-Phoenix 連接器。
 
 2. 重新啟動您先前嘗試啟動的 Notebook。 此時您應有足夠的資源可建立工作階段。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [概觀：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
 
