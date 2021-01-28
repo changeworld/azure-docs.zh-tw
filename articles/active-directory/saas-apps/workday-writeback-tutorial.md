@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: c65fddcc90b25f70759fb038a72dad0facfa99a9
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
-ms.translationtype: HT
+ms.openlocfilehash: 3a623a487dd31caf8c85b18771d90e3a6306df68
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359726"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953999"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>教學課程：設定從 Azure AD 至 Workday 的屬性回寫
 本教學課程旨在說明將屬性從 Azure AD 回寫到 Workday 時所需執行的步驟。 Workday 回寫佈建應用程式支援將值指派給下列 Workday 屬性：
@@ -172,6 +172,7 @@ ms.locfileid: "94359726"
 
 ## <a name="next-steps"></a>後續步驟
 
+* [深入瞭解 Azure AD 與 Workday 的整合案例和 web 服務呼叫](../app-provisioning/workday-integration-reference.md)
 * [瞭解如何針對佈建活動檢閱記錄和取得報告](../app-provisioning/check-status-user-account-provisioning.md)
 * [了解如何設定 Workday 與 Azure Active Directory 之間的單一登入](workday-tutorial.md)
 * [了解如何將其他 SaaS 應用程式與 Azure Active Directory 整合](tutorial-list.md)

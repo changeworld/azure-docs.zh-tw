@@ -1,18 +1,19 @@
 ---
 title: Azure 中的區域和可用性區域
 description: 瞭解 Azure 中的區域和可用性區域，以符合您的技術與法規需求。
-author: cynthn
+author: prsandhu
 ms.service: azure
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/26/2021
-ms.author: cynthn
+ms.author: prsandhu
+ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 0b67f113fb8ab3835419a75697e60a732d4ee390
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: dae5319e6c8b87d6a9eef98875ad7e8da623e65c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896048"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955795"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure 中的區域和可用性區域
 
@@ -152,10 +153,10 @@ Azure 服務分為三種類別：基本、主流和特製化的服務。 將服�
 > |                                       | 虛擬機器： Ev4-Series                      |                                                      |
 > |                                       | 虛擬機器： Fsv2-Series                     |                                                      |
 > |                                       | 虛擬機器： M 系列                        |                                                      |
-> |                                       | Virtual WAN                                       |                                                      |
+> |                                       | 虛擬 WAN                                       |                                                      |
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [在 Azure 中支援可用性區域的區域](az-region.md)
 - [快速入門範本](https://aka.ms/azqs)

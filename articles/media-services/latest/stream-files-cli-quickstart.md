@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒體服務和 Azure CLI 來串流影片檔案
+title: 使用 Azure 媒體服務 CLI 串流影片檔案
 description: 按照本教學課程的步驟，使用 Azure CLI 來建立新的 Azure 媒體服務帳戶、對檔案進行編碼，然後將其串流到 Azure 媒體播放器。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: devx-track-azurecli
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: f4a71509c29555da2fdbc1e7eed2fd985237d6a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
+ms.openlocfilehash: c78205d7e2b41628de9e8b92c9fa5506e82158cb
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268766"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954491"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>教學課程：編碼以 URL 為基礎的遠端檔案及串流處理影片 - Azure CLI
 
@@ -85,7 +85,7 @@ az ams account create --n amsaccount -g amsResourceGroup --storage-account amsst
 
 ## <a name="start-the-streaming-endpoint"></a>啟動串流端點
 
-下列 Azure CLI 命令會啟動預設**串流端點**。
+下列 Azure CLI 命令會啟動預設 **串流端點**。
 
 ```azurecli-interactive
 az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
@@ -128,7 +128,7 @@ az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
 
 ## <a name="create-a-transform-for-adaptive-bitrate-encoding"></a>建立調適性位元速率編碼的轉換
 
-建立**轉換**，以設定視訊編碼或分析的一般工作。 在此範例中，我們會進行調適性位元速率編碼。 接著，我們會在所建立的轉換之下提交作業。 此作業是要求媒體服務將轉換套用至指定的視訊或音訊內容。
+建立 **轉換**，以設定視訊編碼或分析的一般工作。 在此範例中，我們會進行調適性位元速率編碼。 接著，我們會在所建立的轉換之下提交作業。 此作業是要求媒體服務將轉換套用至指定的視訊或音訊內容。
 
 ```azurecli-interactive
 az ams transform create --name testEncodingTransform --preset AdaptiveStreaming --description 'a simple Transform for Adaptive Bitrate Encoding' -g amsResourceGroup -a amsaccount
@@ -160,7 +160,7 @@ az ams transform create --name testEncodingTransform --preset AdaptiveStreaming 
 
 ## <a name="create-an-output-asset"></a>建立輸出資產
 
-建立輸出**資產**，以作為編碼作業的輸出。
+建立輸出 **資產**，以作為編碼作業的輸出。
 
 ```azurecli-interactive
 az ams asset create -n testOutputAssetName -a amsaccount -g amsResourceGroup
@@ -237,7 +237,7 @@ az ams job start --name testJob001 --transform-name testEncodingTransform --base
 
 ### <a name="check-status"></a>檢查狀態
 
-在 5 分鐘後，檢查作業的狀態。 其狀態應為「完成」。 若未完成，請在幾分鐘後再次檢查。 若已完成，請移至下一個步驟並建立**串流定位器**。
+在 5 分鐘後，檢查作業的狀態。 其狀態應為「完成」。 若未完成，請在幾分鐘後再次檢查。 若已完成，請移至下一個步驟並建立 **串流定位器**。
 
 ```azurecli-interactive
 az ams job show -a amsaccount -g amsResourceGroup -t testEncodingTransform -n testJob001

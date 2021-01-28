@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: c3e6408a6a3473380edbe2966eba41970bd73562
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: be6d47d8f40746bfb2154ddb62cf2e9ce93e74aa
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762753"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955678"
 ---
 # <a name="errors-in-the-connector-status-section"></a>連接器狀態欄段中的錯誤
 
@@ -66,6 +66,10 @@ ms.locfileid: "98762753"
 
 * **錯誤**：「發生錯誤。 無法取得連接詳細資料。」 當客戶定義 ITSM 動作群組時，就會出現此錯誤。
 
-    **原因**：新建立的 ITSM 連接器尚未完成初始同步處理。
+    **原因**：當下列情況時，會顯示這類錯誤：
+    * 新建立的 ITSM 連接器尚未完成初始同步處理。
+    * 未正確定義連接器
 
-    **解決方案**：建立新的 ITSM 連接器時，ITSM 連接器會開始同步處理來自 ITSM 系統的資訊，例如工作專案範本和工作專案。 同步 ITSM 連接器以產生新的重新整理權杖[，如下所述。](./itsmc-resync-servicenow.md)
+    **解決方案**： 
+    * 建立新的 ITSM 連接器時，ITSM 連接器會開始同步處理來自 ITSM 系統的資訊，例如工作專案範本和工作專案。 同步 ITSM 連接器以產生新的重新整理權杖[，如下所述。](./itsmc-resync-servicenow.md)
+    * 如 [這裡](./itsmc-connections-servicenow.md#create-a-connection) 所述，檢查 ITSM 連接器中的連線詳細資料，並檢查您的 ITSM 連接器是否可成功 [同步](./itsmc-resync-servicenow.md)。

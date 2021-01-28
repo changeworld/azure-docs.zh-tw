@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: ba5dd0ccc06a443378f87cfb92da76616ad67263
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 4dfe2130d8274e2b3463c0fb42587b50fef77f18
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029510"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953728"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>使用虛擬網路保護 Azure Machine Learning 推斷環境
 
@@ -205,6 +205,7 @@ except:
     prov_config.service_cidr = "10.0.0.0/16"
     prov_config.dns_service_ip = "10.0.0.10"
     prov_config.subnet_name = subnet_name
+    prov_config.load_balancer_subnet = subnet_name
     prov_config.docker_bridge_cidr = "172.17.0.1/16"
 
     # Create compute target
@@ -271,7 +272,7 @@ aks_target.wait_for_completion(show_output = True)
 
 如果您不想要使用預設輸出規則，而且想要限制虛擬網路的輸出存取權，您必須允許存取 Azure Container Registry。 例如，請確定您的網路安全性群組 (NSG) 包含允許存取 __AzureContainerRegistry. RegionName__ 服務標記的規則，其中 ' {RegionName} 是 Azure 區域的名稱。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 本文是四部分虛擬網路系列的第三部分。 請參閱文章的其餘部分，以瞭解如何保護虛擬網路：
 

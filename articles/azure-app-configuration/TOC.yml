@@ -1,6 +1,6 @@
 - name: Azure 應用程式組態文件
   href: index.yml
-- name: 總覽
+- name: 概觀
   items:
     - name: 關於 Azure 應用程式組態
       href: overview.md
@@ -104,6 +104,8 @@
           href: overview-managed-identity.md
         - name: 安全性基準
           href: security-baseline.md
+        - name: Azure 原則的安全性控制
+          href: ./security-controls-policy.md
     - name: 高可用性
       items:
         - name: 復原和災害復原

@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的 VMware/實體嚴重損壞修復的支援矩陣
 description: 摘要說明使用 Azure Site Recovery 將 VMware Vm 和實體伺服器的災難復原至 Azure 的支援。
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 0a96d20d1b614f444ffa36cd6f8d83393c7c4f7a
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: f525666e91a482a6c23128e266b4f5669437a502
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897287"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956016"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>從 VMware VM 和實體伺服器至 Azure 之災害復原的支援矩陣
 
@@ -133,7 +133,8 @@ Debian 7 | [9.36](https://support.microsoft.com/help/4578241/)、 [9.37](https:/
 Debian 8 | [9.36](https://support.microsoft.com/help/4578241/)、 [9.37](https://support.microsoft.com/help/4582666/)、 [9.38](https://support.microsoft.com/help/4590304/)、 [9.39](https://support.microsoft.com/help/4597409/)、 [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)  | 3.16.0-4-amd64 至 3.16.0-11-amd64、4.9.0 4.9.0-. bpo. 4-amd64 至 4.9.0 4.9.0-. bpo. 11-amd64 |
 |||
 Debian 9。1 | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) | 4.9.0-1-amd64 至 4.9.0-14-amd64 </br> 4.19.0 4.9.0-. bpo. 1-amd64 to 4.19.0 4.9.0-. bpo. 13-amd64 </br> 4.19.0 4.9.0-. bpo. 1-a-a-4.19.0 4.9.0-. bpo. 13-a-a--雲端-amd64 </br>
-Debian 9。1 | [9.39](https://support.microsoft.com/help/4597409/) | 4.9.0-1-amd64 至 4.9.0-14-amd64 </br> 4.19.0 4.9.0-. bpo. 1-amd64 to 4.19.0 4.9.0-. bpo. 12-amd64 </br> 4.19.0 4.9.0-. bpo. 1-4.19.0 4.9.0-. bpo. 12-雲端-amd64 </br> Debian 9。1 | [9.38](https://support.microsoft.com/help/4590304/) | 4.9.0-1-amd64 至 4.9.0-13-amd64 </br> 4.19.0 4.9.0-. bpo. 1-amd64 to 4.19.0 4.9.0-. bpo. 11-amd64 </br> 4.19.0 4.9.0-. bpo. 1-4.19.0 4.9.0-. bpo. 11-a </br> 
+Debian 9。1 | [9.39](https://support.microsoft.com/help/4597409/) | 4.9.0-1-amd64 至 4.9.0-14-amd64 </br> 4.19.0 4.9.0-. bpo. 1-amd64 to 4.19.0 4.9.0-. bpo. 12-amd64 </br> 4.19.0 4.9.0-. bpo. 1-4.19.0 4.9.0-. bpo. 12-雲端-amd64 </br> 
+Debian 9。1 | [9.38](https://support.microsoft.com/help/4590304/) | 4.9.0-1-amd64 至 4.9.0-13-amd64 </br> 4.19.0 4.9.0-. bpo. 1-amd64 to 4.19.0 4.9.0-. bpo. 11-amd64 </br> 4.19.0 4.9.0-. bpo. 1-4.19.0 4.9.0-. bpo. 11-a </br> 
 Debian 9。1 | [9.37](https://support.microsoft.com/help/4582666/) | 4.9.0-3-amd64 至 4.9.0-13-amd64、4.19.0 4.9.0-. bpo. 6-amd64 至 4.19.0 4.9.0-. bpo. 10-amd64、4.19.0 4.9.0-. bpo. 6-a-a-i 至 4.19.0 4.9.0-. bpo. 10-雲端
 
 ### <a name="suse-linux-enterprise-server-12-supported-kernel-versions"></a>SUSE Linux Enterprise Server 12 支援的核心版本
@@ -188,10 +189,10 @@ XFSv5 | XFS 檔案系統上的 XFSv5 功能（例如中繼資料總和檢查碼�
 主機網路 NIC 小組 | 支援 VMware VM。 <br/><br/>不支援實體機器複寫。
 主機網路 VLAN | 是。
 主機網路 IPv4 | 是。
-主機網路 IPv6 | 否。
-客體/伺服器網路 NIC 小組 | 否。
+主機網路 IPv6 | 不會。
+客體/伺服器網路 NIC 小組 | 不會。
 客體/伺服器網路 IPv4 | 是。
-客體/伺服器網路 IPv6 | 否。
+客體/伺服器網路 IPv6 | 不會。
 客體/伺服器網路靜態 IP (Windows) | 是。
 客體/伺服器網路靜態 IP (Linux) | 是。 <br/><br/>VM 設定為在容錯回復時使用 DHCP。
 客體/伺服器網路多重 NIC | 是。
@@ -202,44 +203,44 @@ Site Recovery 服務的 Private link 存取權 | 是。 [深入了解](hybrid-ho
 
 **元件** | **支援**
 --- | ---
-Azure ExpressRoute | 是
-ILB | 是
-ELB | 是
-Azure 流量管理員 | 是
-多個 NIC | 是
-保留的 IP 位址 | 是
-IPv4 | 是
-保留來源 IP 位址 | 是
-Azure 虛擬網路服務端點<br/> | 是
+Azure ExpressRoute | Yes
+ILB | Yes
+ELB | Yes
+Azure 流量管理員 | Yes
+多個 NIC | Yes
+保留的 IP 位址 | Yes
+IPv4 | Yes
+保留來源 IP 位址 | Yes
+Azure 虛擬網路服務端點<br/> | Yes
 加速網路 | 否
 
 ## <a name="storage"></a>儲存體
 **元件** | **支援**
 --- | ---
 動態磁碟 | 作業系統磁片必須是基本磁碟。 <br/><br/>資料磁碟可以是動態磁碟
-Docker 磁碟設定 | 否
+Docker 磁碟設定 | No
 主機 NFS | VMware 為是<br/><br/> 實體伺服器為否
-主機 SAN (iSCSI/FC) | 是
+主機 SAN (iSCSI/FC) | Yes
 主機 vSAN | VMware 為是<br/><br/> 實體伺服器為 N/A
 主機多重路徑 (MPIO) | 是，通過 Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON 測試
 主機虛擬磁碟區 (VVol) | VMware 為是<br/><br/> 實體伺服器為 N/A
-客體/伺服器 VMDK | 是
-客體/伺服器共用叢集磁碟 | 否
-客體/伺服器加密磁碟 | 否
-客體/伺服器 NFS | 否
+客體/伺服器 VMDK | Yes
+客體/伺服器共用叢集磁碟 | No
+客體/伺服器加密磁碟 | No
+客體/伺服器 NFS | No
 來賓/伺服器 iSCSI | 適用于遷移-是<br/>若為嚴重損壞修復-否，iSCSI 會以連結的磁片容錯回復至 VM
-客體/伺服器 SMB 3.0 | 否
-客體/伺服器 RDM | 是<br/><br/> 實體伺服器為 N/A
+客體/伺服器 SMB 3.0 | No
+客體/伺服器 RDM | Yes<br/><br/> 實體伺服器為 N/A
 客體/伺服器磁碟 > 1 TB | 是，磁片必須大於 1024 MB<br/><br/>複寫至受控磁片時，最高可達 8192 GB (9.26 版) <br></br> 複寫至儲存體帳戶時最高達 4095 GB
-客體/伺服器磁碟使用 4K 邏輯與 4k 實體磁區大小 | 否
-具有4K 邏輯和 512-位元組實體磁區大小的來賓/伺服器磁片 | 否
-客體/伺服器磁碟區使用等量磁碟 > 4 TB | 是
+客體/伺服器磁碟使用 4K 邏輯與 4k 實體磁區大小 | No
+具有4K 邏輯和 512-位元組實體磁區大小的來賓/伺服器磁片 | No
+客體/伺服器磁碟區使用等量磁碟 > 4 TB | Yes
 邏輯磁碟區管理 (LVM)| 厚布建-是 <br></br> 精簡布建-否
-客體/伺服器 - 儲存體空間 | 否
-來賓/伺服器 NVMe 介面 | 否
-客體/伺服器 熱新增/移除磁碟 | 否
-客體/伺服器 - 排除磁碟 | 是
-客體/伺服器多重路徑 (MPIO) | 否
+客體/伺服器 - 儲存體空間 | No
+來賓/伺服器 NVMe 介面 | No
+客體/伺服器 熱新增/移除磁碟 | No
+客體/伺服器 - 排除磁碟 | Yes
+客體/伺服器多重路徑 (MPIO) | No
 來賓/伺服器 GPT 磁碟分割 | [更新彙總套件 37](https://support.microsoft.com/help/4508614/)支援五個磁碟分割 (行動服務) 的版本9.25。 先前支援四個。
 ReFS | 行動服務9.23 版或更高版本支援復原檔案系統
 來賓/伺服器 EFI/UEFI 開機 | -支援所有具有 Site Recovery 行動代理程式9.30 版的 [Azure MARKETPLACE UEFI 作業系統](../virtual-machines/generation-2.md#generation-2-vm-images-in-azure-marketplace) 。 <br/> -不支援安全 UEFI 開機類型。 [深入了解。](../virtual-machines/generation-2.md#on-premises-vs-azure-generation-2-vms)
@@ -248,26 +249,26 @@ ReFS | 行動服務9.23 版或更高版本支援復原檔案系統
 
 |**複寫的類型**   |**支援**  |
 |---------|---------|
-|卸載資料傳輸 (ODX)     |       否  |
-|離線植入        |   否      |
-| Azure 資料箱 | 否
+|卸載資料傳輸 (ODX)     |       No  |
+|離線植入        |   No      |
+| Azure 資料箱 | No
 
 ## <a name="azure-storage"></a>Azure 儲存體
 
 **元件** | **支援**
 --- | ---
-本地備援儲存體 | 是
-異地備援儲存體 | 是
-讀取權限異地備援儲存體 | 是
-非經常性儲存體 | 否
-經常性存取儲存體| 否
-區塊 Blob | 否
-靜態加密 (SSE) | 是
+本地備援儲存體 | Yes
+異地備援儲存體 | Yes
+讀取權限異地備援儲存體 | Yes
+非經常性儲存體 | No
+經常性存取儲存體| No
+區塊 Blob | No
+靜態加密 (SSE) | Yes
 靜態加密 (CMK) | 是 (via PowerShell Az 3.3.0 module) 
 靜態加密 | 是 (via) 的 PowerShell Az 3.3.0 模組。 深入瞭解適用于 [Windows](../virtual-machines/disk-encryption.md) 和 [Linux](../virtual-machines/disk-encryption.md)的支援區域。
-進階儲存體 | 是
-安全傳輸選項 | 是
-匯入/匯出服務 | 否
+進階儲存體 | Yes
+安全傳輸選項 | Yes
+匯入/匯出服務 | No
 適用于 Vnet 的 Azure 儲存體防火牆 | 是。<br/> 設定在目標儲存體/快取儲存體帳戶上 (用來儲存複寫資料) 。
 一般用途 v2 儲存體帳戶 (經常性存取層和非經常性存取層)  | 是，V2 相較于 V1) ， (的交易成本明顯較高
 
@@ -275,10 +276,10 @@ ReFS | 行動服務9.23 版或更高版本支援復原檔案系統
 
 **功能** | **支援**
 --- | ---
-可用性設定組 | 是
-可用性區域 | 否
-中樞 | 是
-受控磁碟 | 是
+可用性設定組 | Yes
+可用性區域 | No
+中樞 | Yes
+受控磁碟 | Yes
 
 ## <a name="azure-vm-requirements"></a>Azure VM 需求
 
@@ -332,10 +333,10 @@ VM 上所有磁碟的尖峰資料變換 | 54 MB/秒
 
 **動作** | **支援**
 --- | ---
-在資源群組間移動保存庫 | 否
-移動訂用帳戶內和跨訂用帳戶 | 否
-跨資源群組間移動儲存體、網路、Azure VM | 否
-在訂用帳戶內和跨訂用帳戶移動儲存體、網路、Azure Vm。 | 否
+在資源群組間移動保存庫 | No
+移動訂用帳戶內和跨訂用帳戶 | No
+跨資源群組間移動儲存體、網路、Azure VM | No
+在訂用帳戶內和跨訂用帳戶移動儲存體、網路、Azure Vm。 | No
 
 
 ## <a name="obtain-latest-components"></a>取得最新的元件
@@ -348,7 +349,7 @@ VM 上所有磁碟的尖峰資料變換 | 54 MB/秒
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 [了解如何](tutorial-prepare-azure.md)準備 Azure 的 VMware VM 災害復原。
 
 [9.32 UR]: https://support.microsoft.com/en-in/help/4538187/update-rollup-44-for-azure-site-recovery

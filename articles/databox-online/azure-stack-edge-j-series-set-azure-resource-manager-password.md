@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 915146cd17b90272daea4ce57f5243baf1d49cb3
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 8ecd1a99d41dc1391e6dba129d50eb53a67843d1
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578785"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955330"
 ---
 # <a name="set-azure-resource-manager-password-on-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 裝置上設定 Azure Resource Manager 密碼
 
@@ -21,53 +21,55 @@ ms.locfileid: "94578785"
 
 本文說明如何設定您的 Azure Resource Manager 密碼。 當您透過 Azure Resource Manager 連接到裝置本機 Api 時，必須設定此密碼。
 
-設定密碼的程序可能會根據您使用的是 Azure 入口網站或 PowerShell Cmdlet 而有所不同。 下列各節將說明每個程式。
+<!--The procedure to set the password can be different depending upon whether you use the Azure portal or the PowerShell cmdlets. Each of these procedures is described in the following sections.-->
 
 
 ## <a name="reset-password-via-the-azure-portal"></a>透過 Azure 入口網站重設密碼
 
-1. 在 Azure 入口網站中，移至您所建立的 Azure Stack Edge 資源來管理您的裝置。 移至 [Edge 計算] > [開始使用]  。
-
-2. 在右側窗格中，從命令列中選取 [重設 Edge ARM 密碼]。 
+1. 在 Azure 入口網站中，移至您所建立的 Azure Stack Edge 資源來管理您的裝置。 前往 **Edge 服務 > 雲端儲存體閘道**。
 
     ![重設 EdgeARM 使用者密碼1](media/azure-stack-edge-j-series-set-azure-resource-manager-password/set-edgearm-password-1.png)
 
-3. 在 [ **重設 EdgeArm 使用者密碼** ] 分頁中，提供密碼以透過 Azure Resource Manager 連接到您的裝置本機 api。 確認密碼，然後選取 [ **重設** ]。
+2. 在右側窗格中，從命令列中選取 [重設 Edge ARM 密碼]。 
 
     ![重設 EdgeARM 使用者密碼2](media/azure-stack-edge-j-series-set-azure-resource-manager-password/set-edgearm-password-2.png)
 
+3. 在 [ **重設 EdgeArm 使用者密碼** ] 分頁中，提供密碼以透過 Azure Resource Manager 連接到您的裝置本機 api。 確認密碼，然後選取 [ **重設**]。
+
+    ![重設 EdgeARM 使用者密碼3](media/azure-stack-edge-j-series-set-azure-resource-manager-password/set-edgearm-password-3.png)
 
 
-## <a name="reset-password-via-powershell"></a>透過 PowerShell 重設密碼
 
-1. 在 Azure 入口網站中，移至您所建立用來管理裝置的 Azure Stack Edge 資源。 請記下 [ **總覽** ] 頁面中的下列參數。
+<!--## Reset password via PowerShell
 
-    - Azure Stack Edge 資源名稱
-    - 訂用帳戶識別碼
+1. In the Azure Portal, go to the Azure Stack Edge resource you created to manage your device. Make a note of the following parameters in the **Overview** page.
 
-2. 移至 [ **設定] > 屬性** 。 請記下 [ **屬性** ] 頁面中的下列參數。
+    - Azure Stack Edge resource name
+    - Subscription ID
 
-    - 資源群組
-    - CIK 加密金鑰：選取 [view]，然後複製 **加密金鑰** 。
+2. Go to **Settings > Properties**. Make a note of the following parameters in the **Properties** page.
 
-    ![取得 CIK 加密金鑰](media/azure-stack-edge-j-series-set-azure-resource-manager-password/get-cik-portal.png)
+    - Resource group
+    - CIK encryption key: Select view and then copy the **Encryption Key**.
+
+    ![Get CIK encryption key](media/azure-stack-edge-j-series-set-azure-resource-manager-password/get-cik-portal.png)
  
-3. 識別您將用來連接到 Azure Resource Manager 的密碼。
+3. Identify a password that you will use to connect to Azure Resource Manager.
 
-4. 啟動 cloud shell。 選取右上角的圖示：
+4. Start the cloud shell. Select on the icon in the top right corner:
 
-    ![啟動 cloud shell](media/azure-stack-edge-j-series-set-azure-resource-manager-password/start-cloud-shell.png) 
+    ![Start cloud shell](media/azure-stack-edge-j-series-set-azure-resource-manager-password/start-cloud-shell.png) 
 
-    Cloud shell 啟動後，您可能需要切換至 PowerShell。
+    Once the cloud shell has started, you may need to switch to PowerShell.
 
-    ![Cloud Shell](media/azure-stack-edge-j-series-set-azure-resource-manager-password/cloud-shell.png)   
+    ![Cloud shell](media/azure-stack-edge-j-series-set-azure-resource-manager-password/cloud-shell.png)   
 
 
-5. 設定內容。 輸入：
+5. Set context. Type:
 
     `Set-AzContext -SubscriptionId <Subscription ID>`
 
-    以下是範例輸出：
+    Here is a sample output:
 
     
     ```azurepowershell
@@ -80,11 +82,11 @@ ms.locfileid: "94578785"
         PS Azure:/
     ```
     
-5.  如果您有任何舊的 PS 模組，則需要安裝這些模組。
+5.  If you have any old PS modules, you need to install those.
 
     `Remove-Module  Az.DataBoxEdge -force`
 
-    以下是範例輸出。 在此範例中，沒有要安裝的舊模組。
+    Here is a sample output. In this example, there were no old modules to be installed.
 
     
     ```azurepowershell
@@ -99,7 +101,7 @@ ms.locfileid: "94578785"
         PS Azure:\
     ```
 
-6. 下一組命令會下載並執行腳本，以安裝 PowerShell 模組。
+6. Next set of commands will download and run a script to install PowerShell modules.
     
     ```azurepowershell
         cd ~/clouddrive
@@ -108,7 +110,7 @@ ms.locfileid: "94578785"
         Import-Module ~/clouddrive/Az.DataBoxEdge/Az.DataBoxEdge.psd1 -Force
     ```
 
-7. 在下一組命令中，您必須提供資源名稱、資源組名、加密金鑰，以及您在上一個步驟中所識別的密碼。
+7. In the next set of commands, you'll need to provide the resource name, resource group name, encryption key, and the password you identified in the previous step.
 
     ```azurepowershell
     $devicename = "<Azure Stack Edge resource name>"
@@ -116,18 +118,18 @@ ms.locfileid: "94578785"
     $cik = "<Encryption key>"
     $password = "<Password>"
     ```
-    密碼和加密金鑰參數必須以安全字串的形式傳遞。 使用下列 Cmdlet，將密碼和加密金鑰轉換為安全字串。
+    The password and encryption key parameters must be passed as secure strings. Use the following cmdlets to convert the password and encryption key to secure strings.
 
     ```azurepowershell
     $pass = ConvertTo-SecureString $password -AsPlainText -Force
     $key = ConvertTo-SecureString $cik -AsPlainText -Force
     ```
-    使用上述產生的安全字串做為 Set-AzDataBoxEdgeUser Cmdlet 中的參數，以重設密碼。 使用您在建立 Azure Stack Edge Pro/Data Box Gateway 資源時所使用的相同資源群組。
+    Use the above generated secure strings as parameters in the Set-AzDataBoxEdgeUser cmdlet to reset the password. Use the same resource group that you used when creating the Azure Stack Edge Pro/Data Box Gateway resource.
 
     ```azurepowershell
     Set-AzDataBoxEdgeUser -ResourceGroupName $resourceGroup -DeviceName $devicename -Name EdgeARMUser  -Password $pass -EncryptionKey $key
     ```
-    以下是範例輸出。
+    Here is the sample output.
     
     ```azurepowershell
     PS /home/aseuser/clouddrive> $devicename = "myaseresource"
@@ -144,8 +146,8 @@ ms.locfileid: "94578785"
     
         PS /home/aseuser/clouddrive>
     ```
-使用新密碼連接到 Azure Resource Manager。
+Use the new password to connect to Azure Resource Manager.-->
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [連線到 Azure Resource Manager](azure-stack-edge-j-series-connect-resource-manager.md)

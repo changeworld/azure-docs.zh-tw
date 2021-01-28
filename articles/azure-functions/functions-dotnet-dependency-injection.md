@@ -4,15 +4,15 @@ description: 了解如何在 .NET 函式中使用相依性插入來註冊和使�
 author: ggailey777
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 08/15/2020
+ms.date: 01/27/2021
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: 70ec9248db002823e969fa5f4fba8bf1074a9af7
-ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
+ms.openlocfilehash: 66e2cd22f4bcb95be65d6d04345dcac622436a04
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97706927"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955083"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用相依性插入
 
@@ -256,6 +256,24 @@ public class HttpTrigger
 ```
 
 如需使用選項的詳細資訊，請參閱 [ASP.NET Core 中的選項模式](/aspnet/core/fundamentals/configuration/options)。
+
+## <a name="using-aspnet-core-user-secrets"></a>使用 ASP.NET Core 的使用者秘密
+
+在本機開發時，ASP.NET Core 提供 [秘密管理員工具](/aspnet/core/security/app-secrets#secret-manager) ，可讓您將秘密資訊儲存在專案根目錄之外。 這會讓秘密不會不慎認可到原始檔控制。 Azure Functions Core Tools (3.0.3233 版或更新版本) 會自動讀取 ASP.NET Core 秘密管理員所建立的秘密。
+
+若要將 .NET Azure Functions 專案設定為使用使用者密碼，請在專案根目錄中執行下列命令。
+
+```bash
+dotnet user-secrets init
+```
+
+然後使用 `dotnet user-secrets set` 命令來建立或更新秘密。
+
+```bash
+dotnet user-secrets set MySecret "my secret value"
+```
+
+若要存取函式應用程式程式碼中的使用者秘密值，請使用 `IConfiguration` 或 `IOptions` 。
 
 ## <a name="customizing-configuration-sources"></a>自訂設定來源
 

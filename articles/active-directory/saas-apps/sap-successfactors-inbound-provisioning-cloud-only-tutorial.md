@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: 6a73ecf18a4bd89567dc603758d9ff8501267a1f
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
-ms.translationtype: HT
+ms.openlocfilehash: a39f7701d0244eff7f914908a6708dfc14873b35
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570028"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954849"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning"></a>教學課程：設定從 SAP SuccessFactors 到 Azure AD 的使用者佈建
 本教學課程的目標是要說明將員工資料從 SuccessFactors 員工中心佈建到 Azure Active Directory 所需的步驟，以及將電子郵件地址回寫至 SuccessFactors 的選用功能。 
@@ -223,9 +223,8 @@ Azure AD 使用者佈建服務支援的 SuccessFactors 使用者佈建工作流�
 
 1. 在 [屬性對應] 區段中，您可以定義個別 SuccessFactors 屬性如何對應至 Active Directory 屬性。
 
-  >[!NOTE]
-  >如需應用程式所支援的 SuccessFactors 屬性完整清單，請參閱 [SuccessFactors 屬性參考](../app-provisioning/sap-successfactors-attribute-reference.md)
-
+     >[!NOTE]
+     >如需應用程式所支援的 SuccessFactors 屬性完整清單，請參閱 [SuccessFactors 屬性參考](../app-provisioning/sap-successfactors-attribute-reference.md)
 
 1. 按一下現有的屬性對應以進行更新，或按一下畫面底端的 [新增新對應] 以新增新對應。 個別屬性對應支援下列屬性：
 

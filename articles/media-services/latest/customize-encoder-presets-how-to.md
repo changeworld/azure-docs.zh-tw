@@ -1,5 +1,5 @@
 ---
-title: 使用媒體服務 v3 .NET 編碼自訂轉換-Azure
+title: 編碼自訂轉換 .NET
 description: 本主題說明如何使用 Azure 媒體服務 v3，利用 .NET 來編碼自訂轉換。
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 035afd43b49c05f51149ad568a0eb16991dbaf85
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: c8c9f1deb1b776a818269909b3feb19f00a2c356
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897168"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954271"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>如何使用自訂轉換進行編碼-.NET
 
@@ -58,6 +58,6 @@ ms.locfileid: "98897168"
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/EncodeCustomTransform/MediaV3ConsoleApp/Program.cs#EnsureTransformExists)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [串流檔案](stream-files-tutorial-with-api.md) 

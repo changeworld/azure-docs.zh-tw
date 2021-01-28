@@ -3,12 +3,12 @@ title: 將以事件為基礎的影片錄製到雲端並從雲端播放的教學�
 description: 在本教學課程中，您將了解如何在 Azure IoT Edge 上使用 Azure Live Video Analytics，將以事件為基礎的影片錄製到雲端並從雲端播放。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: cfb4648d991565470133d603194c07b797f89311
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
-ms.translationtype: HT
+ms.openlocfilehash: fb8d8c8499029777ae5765f53ff51db92b3bd587
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060430"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954458"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>教學課程：將以事件為基礎的影片錄製到雲端並從雲端播放
 
@@ -170,6 +170,12 @@ ms.locfileid: "98060430"
 > :::image type="content" source="./media/quickstarts/create-deployment-single-device.png" alt-text="建立單一裝置的部署":::
 
 如果這是您在 IoT Edge 上使用 Live Video Analytics 的第一個教學課程，Visual Studio Code 會提示您輸入 IoTHub 連接字串。 您可以從 appsettings.json 檔案複製字串。
+
+> [!NOTE]
+> 系統可能會要求您提供 IoT 中樞的內建端點資訊。 若要取得該資訊，請在 Azure 入口網站中，流覽至您的 IoT 中樞，並在左側流覽窗格中尋找內 **建端點** 選項。 按一下該處，並在 [**事件中樞相容端點**] 區段中尋找 **事件中樞相容端點**。 複製並使用方塊中的文字。 端點看起來會像這樣：  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
 
 接下來，Visual Studio Code 會要求您選取 IoT 中樞裝置。 選取您的 IoT Edge 裝置 (應該是 lva-sample-device)。
 

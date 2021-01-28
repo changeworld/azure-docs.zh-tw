@@ -4,12 +4,12 @@ description: 在本教學課程中，您將使用 Intel 提供的 AI 模型伺�
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 4ef0b919384839108c003488b0697054ebfa14a0
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: db018c5c8d8f3990fd465f4d586ef4dc70980542
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629159"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955711"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>教學課程：使用 Intel 提供的 AI 擴充功能 OpenVINO™ Model Server 來分析即時影片 - Intel 提供的 AI 擴充功能 
 
@@ -124,6 +124,12 @@ Intel® 發佈的 [OpenVINO™ 工具組](https://software.intel.com/content/www
     否則，請在左下角的 [Azure IoT 中樞] 窗格附近，選取 [其他動作] 圖示，然後選取 [設定 IoT 中樞連接字串]。 您可以從 *appsettings.json* 檔案複製字串。 或者，若要確保您已在 Visual Studio Code 中設定適當的 IoT 中樞，請使用[選取 IoT 中樞命令](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub)。
     
     ![設定 IoT 中樞連接字串](./media/quickstarts/set-iotconnection-string.png)
+
+> [!NOTE]
+> 系統可能會要求您提供 IoT 中樞的內建端點資訊。 若要取得該資訊，請在 Azure 入口網站中，流覽至您的 IoT 中樞，並在左側流覽窗格中尋找內 **建端點** 選項。 按一下該處，並在 [**事件中樞相容端點**] 區段中尋找 **事件中樞相容端點**。 複製並使用方塊中的文字。 端點看起來會像這樣：  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
 
 1. 以滑鼠右鍵按一下 src/edge/config/deployment.openvino.amd64.json，然後選取 [建立單一裝置的部署]。 
 

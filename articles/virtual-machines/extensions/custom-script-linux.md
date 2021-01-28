@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: 24d1992db5f1826045fdb47397e44dc2e2fbdaf9
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 94506c4107a157c2b3265a28ffdf5d1eedddd256
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94962156"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954761"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>搭配 Linux 虛擬機器使用 Azure 自訂指令碼擴充功能第 1 版
 自訂指令碼擴充功能第 2 版會在 Azure 虛擬機器上下載並執行指令碼。 此擴充功能適用於部署後設定、軟體安裝或其他任何設定/管理工作。 您可以從 Azure 儲存體或其他可存取的網際網路位置下載指令碼，或是將指令碼提供給擴充功能執行階段。 
@@ -59,7 +59,7 @@ Linux 自訂指令碼擴充功能有兩個：
 * 建議您不要執行會導致 VM 代理程式停止或更新的腳本。 這可能會讓擴充處於轉換狀態，並導致超時。
 * 如果您的腳本會造成重新開機，則安裝應用程式並執行腳本等。您應該使用 Cron 作業或使用 DSC 或 Chef、Puppet 擴充功能之類的工具，來排程重新開機。
 * 擴充功能只會執行指令碼一次。如果您想要在每次開機時執行指令碼，則可以使用 [cloud-init image](../linux/using-cloud-init.md)，並使用 [Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) 模組。 或者，您可以使用腳本來建立 SystemD 服務單位。
-* 您只能將一個延伸模組版本套用至 VM。 若要執行第二個自訂腳本，您需要移除自訂腳本擴充功能，並使用更新的腳本再次重新套用。 
+* 您只能將一個延伸模組版本套用至 VM。 若要執行第二個自訂腳本，您可以使用新的設定來更新現有的延伸模組。 或者，您也可以移除自訂腳本擴充功能，並使用更新的腳本再次重新套用。
 * 如果您想要排程指令碼的執行時間，則應該使用擴充功能來建立 Cron 作業。 
 * 當指令碼正在執行時，只能從 Azure 入口網站或 CLI 看到「正在轉換」擴充功能狀態。 如果您需要執行中指令碼更頻繁的狀態更新，便必須建立自己的解決方案。
 * 自訂腳本擴充功能原本就不支援 proxy 伺服器，不過您可以使用支援腳本內 proxy 伺服器的檔案傳輸工具，例如 *捲曲*。 
@@ -500,5 +500,5 @@ az vm extension list -g myResourceGroup --vm-name myVM
 ]
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 若要查看程式碼、目前問題和版本，請參閱 [custom-script-extension-linux 存放庫](https://github.com/Azure/custom-script-extension-linux)。

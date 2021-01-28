@@ -1,5 +1,5 @@
 ---
-title: 內容感知編碼的預設值-Azure 媒體服務
+title: 內容感知編碼的預設值
 description: 本文討論 Microsoft Azure 媒體服務 v3 中的內容感知編碼。
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5d08e09905841f6068f2bac45680a8e5a011c158
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c63ada9621fc1485742a7683fd6742f0e896854
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297360"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954424"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>使用內容感知編碼預設值，為指定的解決方式找出最佳位元速率值
 
@@ -47,11 +47,11 @@ Microsoft 的彈性 [串流處理](autogen-bitrate-ladder.md) 預設部分解決
 
 ![使用 PSNR 的 RD 曲線](media/content-aware-encoding/msrv3.png)
 
-**圖3：使用 PSNR 進行低品質輸入的 RD 曲線 (1080p) **
+**圖3：使用 PSNR 進行低品質輸入的 RD 曲線 (1080p)**
 
 ![使用 VMAF 的 RD 曲線](media/content-aware-encoding/msrv4.png)
 
-**圖4：使用 VMAF 進行低品質輸入的 RD 曲線 (1080p) **
+**圖4：使用 VMAF 進行低品質輸入的 RD 曲線 (1080p)**
 
 ## <a name="how-to-use-the-content-aware-encoding-preset"></a>如何使用內容感知編碼預設值 
 
@@ -81,7 +81,7 @@ TransformOutput[] output = new TransformOutput[]
 > [!NOTE]
 > 使用預設值的編碼作業 `ContentAwareEncoding` 會依據輸出分鐘數計費。 
   
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [教學課程：使用媒體服務 v3 上傳、編碼和串流影片](stream-files-tutorial-with-api.md)
 * [教學課程：編碼以 URL 為基礎的遠端檔案及串流處理影片 - REST](stream-files-tutorial-with-rest.md)

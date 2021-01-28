@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/07/2020
+ms.date: 01/27/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 640098e118db87214d7364132a5119e35cb94c0a
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
-ms.translationtype: HT
+ms.openlocfilehash: ac64233467166ca6567f1601c3b90f80fdba3dcf
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778711"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954643"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>教學課程：設定搭配 GPU 的 Azure Stack Edge Pro 網路
 
@@ -132,7 +132,8 @@ ms.locfileid: "96778711"
 
 > [!IMPORTANT]
 > * 若您允許在 Azure Stack Edge Pro 裝置上計算及使用 IoT Edge 模組，建議將 Web Proxy 驗證設定為 [無]。 不支援 NTLM。
->* 不支援 Proxy 自動設定 (PAC) 檔案。 PAC 檔案會定義網頁瀏覽器和其他使用者代理程式如何自動選擇適當的 Proxy 伺服器 (存取方法) 來擷取指定的 URL。 嘗試攔截和讀取所有流量 (然後以自己的憑證重新簽署所有內容) 的 Proxy 不受系統相容，因為 Proxy 的憑證不受信任。 通常透明的 Proxy 與 Azure Stack Edge Pro 搭配較能運作良好。 不支援非透明的 Web Proxy。
+> * 不支援 Proxy 自動設定 (PAC) 檔案。 PAC 檔案會定義網頁瀏覽器和其他使用者代理程式如何自動選擇適當的 Proxy 伺服器 (存取方法) 來擷取指定的 URL。 
+> * 透明 proxy 適用于 Azure Stack Edge Pro。 針對透過在 proxy 伺服器上安裝的憑證 (攔截和讀取所有流量的非透明 proxy) ，請上傳 proxy 憑證的公開金鑰做為 Azure Stack Edge Pro 裝置上的簽署鏈。 然後，您可以在 Azure Stack Edge 裝置上設定 proxy 伺服器設定。 如需詳細資訊，請參閱 [攜帶您自己的憑證，並透過本機 UI 上傳](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates)。  
 
 <!--1. Go to the **Get started** page in the local web UI of your device.
 2. On the **Network** tile, configure your web proxy server settings. Although web proxy configuration is optional, if you use a web proxy, you can configure it on this page only.

@@ -1,5 +1,5 @@
 ---
-title: 使用 CLI 監視事件方格的 Azure 媒體服務事件
+title: 使用事件方格監視 Azure 媒體服務事件
 description: 本文說明如何訂閱事件方格，以使用 Azure CLI 來監視 Azure 媒體服務事件。
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d7148841083cccf4197fe353d077e5149e4afac5
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 9608dfd7ac4076e6cd74846c3f52ed2e3645777a
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895317"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955999"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>在 Azure CLI 中使用事件方格建立和監視媒體服務事件
 
@@ -109,6 +109,6 @@ az account set --subscription mySubscriptionId
 
 ![訂用訂用帳戶事件](./media/monitor-events-portal/view-subscription-event.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [上傳、編碼和串流](stream-files-tutorial-with-api.md)

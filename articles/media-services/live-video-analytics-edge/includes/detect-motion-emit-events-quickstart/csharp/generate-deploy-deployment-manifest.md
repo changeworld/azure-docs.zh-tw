@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 055448eacf1cc12c6d021c6571a0478cb35442ba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
-ms.translationtype: HT
+ms.openlocfilehash: 32027695f914257ef245d920f00fc1d1976fa791
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89566890"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956241"
 ---
 部署資訊清單會定義要將哪些模組部署至邊緣裝置。 其也會定義這些模組的組態設定。 
 
@@ -14,6 +14,13 @@ ms.locfileid: "89566890"
 1. 在 [Azure IoT 中樞] 窗格旁，選取 [其他動作] 圖示，以設定 IoT 中樞的連接字串。 您可以從 *src/cloud-to-device-console-app/appsettings.json* 檔案複製字串。 
 
     ![設定 IOT 連接字串](../../../media/quickstarts/set-iotconnection-string.png)
+
+> [!NOTE]
+> 系統可能會要求您提供 IoT 中樞的內建端點資訊。 若要取得該資訊，請在 Azure 入口網站中，流覽至您的 IoT 中樞，並在左側流覽窗格中尋找內 **建端點** 選項。 按一下該處，並在 [**事件中樞相容端點**] 區段中尋找 **事件中樞相容端點**。 複製並使用方塊中的文字。 端點看起來會像這樣：  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
+
 1. 以滑鼠右鍵按一下 **src/edge/deployment.template.json**，然後選取 [產生 IoT Edge 部署資訊清單]。
 
     ![產生 IoT Edge 部署資訊清單](../../../media/quickstarts/generate-iot-edge-deployment-manifest.png)

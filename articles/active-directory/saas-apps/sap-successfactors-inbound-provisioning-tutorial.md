@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: ce48d87c6e04e6c349b681e953647feb5e7ddda5
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
-ms.translationtype: HT
+ms.openlocfilehash: 7b59e0ae2fbb73f341d5254fd2804d50ad141a19
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570111"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953796"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>教學課程：設定從 SAP SuccessFactors 到 Active Directory 的使用者佈建 
 本教學課程的目標是要說明將使用者從 SuccessFactors 員工中心佈建到 Active Directory (AD) 和 Azure AD 所需的步驟，以及將電子郵件地址回寫至 SuccessFactors 的選用功能。 
@@ -186,7 +186,7 @@ Azure AD 使用者佈建服務支援的 SuccessFactors 使用者佈建工作流�
 
 若要佈建至內部部署的 Active Directory，則必須在已加入網域並可透過網路存取所需 Active Directory 網域的伺服器上，安裝佈建代理程式。
 
-將下載的代理程式安裝程式傳輸到伺服器主機，並遵循[安裝代理程式一節](../cloud-provisioning/how-to-install.md)中所列的步驟來完成代理程式設定。
+將下載的代理程式安裝程式傳輸到伺服器主機，並遵循[安裝代理程式一節](../cloud-sync/how-to-install.md)中所列的步驟來完成代理程式設定。
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-successfactors-and-active-directory"></a>第 3 部分：在佈建應用程式中，設定 SuccessFactors 和 Active Directory 的連線能力
 在此步驟中，我們將在 Azure 入口網站中建立 SuccessFactors 和 Active Directory 的連線能力。 
@@ -209,12 +209,12 @@ Azure AD 使用者佈建服務支援的 SuccessFactors 使用者佈建工作流�
         > 如果並未在屬性對應中設定 *parentDistinguishedName* 屬性，此設定僅適用於使用者帳戶建立。 此設定不適用於使用者搜尋或更新作業。 整個網域的子樹狀會落在搜尋作業的範圍中。
 
    * **通知電子郵件** – 輸入您的電子郵件地址，然後勾選 [發生失敗時傳送電子郵件] 核取方塊。
-    > [!NOTE]
-    > 如果佈建作業進入[隔離](../app-provisioning/application-provisioning-quarantine-status.md)狀態，Azure AD 佈建服務會傳送電子郵件通知。
+     > [!NOTE]
+     > 如果佈建作業進入[隔離](../app-provisioning/application-provisioning-quarantine-status.md)狀態，Azure AD 佈建服務會傳送電子郵件通知。
 
    * 按一下 [測試連線] 按鈕。 如果連線測試成功，請按一下頂端的 [儲存] 按鈕。 如果失敗，請仔細檢查代理程式上設定的 SuccessFactors 認證和 AD 認證是否有效。
-    >[!div class="mx-imgBorder"]
-    >![Azure 入口網站](./media/sap-successfactors-inbound-provisioning/sf2ad-provisioning-creds.png)
+     >[!div class="mx-imgBorder"]
+     >![Azure 入口網站](./media/sap-successfactors-inbound-provisioning/sf2ad-provisioning-creds.png)
 
    * 順利儲存認證之後，[對應] 區段會顯示 [將 SuccessFactors 使用者同步至內部部署 Active Directory] 預設對應
 
@@ -250,9 +250,8 @@ Azure AD 使用者佈建服務支援的 SuccessFactors 使用者佈建工作流�
 
 1. 在 [屬性對應] 區段中，您可以定義個別 SuccessFactors 屬性如何對應至 Active Directory 屬性。
 
-  >[!NOTE]
-  >如需應用程式所支援的 SuccessFactors 屬性完整清單，請參閱 [SuccessFactors 屬性參考](../app-provisioning/sap-successfactors-attribute-reference.md)
-
+     >[!NOTE]
+     >如需應用程式所支援的 SuccessFactors 屬性完整清單，請參閱 [SuccessFactors 屬性參考](../app-provisioning/sap-successfactors-attribute-reference.md)
 
 1. 按一下現有的屬性對應以進行更新，或按一下畫面底端的 [新增新對應] 以新增新對應。 個別屬性對應支援下列屬性：
 

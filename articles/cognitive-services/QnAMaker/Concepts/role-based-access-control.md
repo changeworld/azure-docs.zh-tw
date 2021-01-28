@@ -1,16 +1,16 @@
 ---
 title: 與其他人共同作業-QnA Maker
-description: ''
+description: 瞭解如何使用 Azure 角色型存取控制與其他作者和編輯者共同作業。
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: ecf81152605d77e1036c9fbf5d3308af2b1fb988
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: cb6d0ee9c651ca1dcc554f5951a5733727af2d6b
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96346150"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954101"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>與其他作者和編輯者共同作業
 
@@ -35,7 +35,7 @@ ms.locfileid: "96346150"
 > [!div class="mx-imgBorder"]
 > ![下圖顯示從作者的觀點來登入 QnA Maker 入口網站，以及使用撰寫 Api 的流程。](../media/qnamaker-how-to-collaborate-knowledge-base/rbac-flow-from-portal-to-service.png)
 
-|步驟|說明|
+|步驟|描述|
 |--|--|
 |1|入口網站取得 QnA Maker 資源的權杖。|
 |2|入口網站會呼叫適當的 QnA Maker 撰寫 API (APIM，) 傳遞權杖而不是金鑰。|

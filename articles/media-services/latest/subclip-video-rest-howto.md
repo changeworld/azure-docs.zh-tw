@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒體服務 REST 編碼時子剪輯影片
+title: 使用媒體服務 REST 編碼時子剪輯影片
 description: 本主題說明如何使用 REST 以 Azure 媒體服務編碼時子剪輯影片
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: how-to
 ms.date: 06/10/2019
 ms.author: inhenkel
-ms.openlocfilehash: 524da91d55bad29a5f7c6dcec0eecc245b9954fd
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 6c287e168289082b2bd717a2706dd011c7115691
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511904"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955661"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>使用媒體服務編碼時子剪輯影片-REST
 
@@ -26,7 +26,7 @@ ms.locfileid: "97511904"
 
 本主題中的 REST 範例會建立一項工作，以在提交編碼工作時修剪影片。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成此主題中所述的步驟，您必須：
 
@@ -84,6 +84,6 @@ ms.locfileid: "97511904"
 
     您會看到 **回應** ，其中包含已建立和提交作業的相關資訊，以及作業的狀態。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [如何使用自訂轉換進行編碼](custom-preset-rest-howto.md) 

@@ -1,5 +1,5 @@
 ---
-title: 使用時間變化和即時輸出來建立隨選影片播放
+title: 使用時間變化來建立隨選影片播放
 description: 本文說明如何使用時間變動和即時輸出來記錄即時資料流，以及建立隨選播放。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: f5b475f15a5dc751de154965e3d1e78a85fbd4c9
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: a2bb876c164f0df56a8b7f3c4a3666ff306e9416
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897861"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955931"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>使用時間變化和即時輸出來建立隨選影片播放
 
@@ -54,7 +54,7 @@ ms.locfileid: "98897861"
 > [!NOTE]
 > 當您刪除即時輸出時，不會刪除資產中的基礎資產和內容。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [子剪輯您的](subclip-video-rest-howto.md)影片。
 * [為您的資產定義篩選準則](filters-dynamic-manifest-rest-howto.md)。

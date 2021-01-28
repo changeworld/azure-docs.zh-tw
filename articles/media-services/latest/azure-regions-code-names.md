@@ -1,5 +1,5 @@
 ---
-title: 可用 Azure 媒體服務 v3 的雲端和區域
+title: Azure 媒體服務 v3 的雲端和區域
 description: 本文討論用於端點的 Url，以及用於區域的程式碼。
 services: media-services
 author: IngridAtMicrosoft
@@ -8,14 +8,14 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: c17eeda91af46c4159f7c4b1747416298f24c703
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 74f30ebb766ea34603c0a30455837c47222967c0
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319637"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954322"
 ---
-# <a name="regional-code-names-and-endpoints"></a>區域程式碼名稱和端點
+# <a name="regional-code-names-and-endpoints"></a>區域代碼名稱和端點
 
 ### <a name="region-code-name"></a>區域碼名稱
 
@@ -84,10 +84,10 @@ az account list-locations
 ## <a name="see-also"></a>另請參閱
 
 * [Azure 區域](https://azure.microsoft.com/global-infrastructure/regions/)
-* [區域程式碼名稱和端點](azure-regions-code-names.md)
+* [區域代碼名稱和端點](azure-regions-code-names.md)
 * [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)
 * [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [媒體服務 v3 概觀](media-services-overview.md)

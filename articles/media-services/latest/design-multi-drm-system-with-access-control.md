@@ -1,5 +1,5 @@
 ---
-title: 多重 DRM 內容保護系統-Azure 媒體服務 v3
+title: 多重 DRM 內容保護系統
 description: 本文提供如何使用 Azure 媒體服務來設計多重 DRM 內容保護系統的詳細說明。
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 58edf1e0257cf9de8d8f3a3b56f295dcaf1f6cbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e0104dd2761f74fbd84486aebbf8c3c4e128eb08
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89298193"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954896"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>設計具有存取控制的多重 DRM 內容保護系統
 
@@ -136,11 +136,11 @@ DRM 子系統可能包含下列元件：
 | **建置組塊** | **技術** |
 | --- | --- |
 | **球員** |[Azure 媒體播放器](https://azure.microsoft.com/services/media-services/media-player/) |
-| **身分識別提供者 (IDP) ** |Azure Active Directory (Azure AD) |
+| **身分識別提供者 (IDP)** |Azure Active Directory (Azure AD) |
 | **安全權杖服務 (STS)** |Azure AD |
 | **DRM 保護工作流程** |Azure 媒體服務動態保護 |
 | **DRM 授權傳遞** |* 媒體服務授權傳遞 (PlayReady、Widevine、FairPlay) <br/>* Axinom 授權伺服器 <br/>* 自訂 PlayReady 授權伺服器 |
-| **來源** |Azure 媒體服務串流端點 |
+| **起源** |Azure 媒體服務串流端點 |
 | **金鑰管理** |不需要參考實作 |
 | **內容管理** |C# 主控台應用程式 |
 
@@ -233,7 +233,7 @@ DRM 子系統可能包含下列元件：
 
     ![JWT](./media/design-multi-drm-system-with-access-control/media-services-1st-gotcha.png)
 
-* 將權限新增至應用程式的 Azure AD 中 (在應用程式的 [設定]**** 索引標籤)。 每個應用程式皆需要權限 (本機和已部署版本)。
+* 將權限新增至應用程式的 Azure AD 中 (在應用程式的 [設定] 索引標籤)。 每個應用程式皆需要權限 (本機和已部署版本)。
 
     ![權限](./media/design-multi-drm-system-with-access-control/media-services-perms-to-other-apps.png)
 
@@ -249,7 +249,7 @@ DRM 子系統可能包含下列元件：
     <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
     ```
 
-    GUID 是 Azure AD 租用戶識別碼。 您可以在 Azure 入口網站的 [端點]**** 快顯功能表中找到 GUID。
+    GUID 是 Azure AD 租用戶識別碼。 您可以在 Azure 入口網站的 [端點] 快顯功能表中找到 GUID。
 
 * 授與群組成員資格宣告權限。 請確定下列項目位於 Azure AD 應用程式資訊清單檔中： 
 

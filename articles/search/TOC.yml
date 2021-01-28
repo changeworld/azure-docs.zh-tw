@@ -91,7 +91,7 @@
     - name: Python 範例
       href: samples-python.md
     - name: REST 範例
-      href: /samples/browse/?expanded=azure&languages=http&products=azure-cognitive-search
+      href: samples-rest.md
 - name: 概念
   items:
     - name: 全文檢索搜尋

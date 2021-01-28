@@ -1,17 +1,17 @@
 ---
-title: 使用媒體服務) 攜帶您自己的金鑰 (客戶管理的金鑰
+title: '攜帶您自己的金鑰 (客戶管理的金鑰) '
 description: 您可以使用客戶管理的金鑰 (也就是使用媒體服務) 攜帶您自己的金鑰。
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: a56922c972efeb21c188413522bd05f83b74ca12
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: c11bb0e369075c3024824d65290e8aecfa68e6f4
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681817"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956135"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>使用媒體服務將您自己的金鑰 (客戶管理的金鑰) 
 
@@ -39,9 +39,9 @@ ms.locfileid: "94681817"
 
 ## <a name="tutorials"></a>教學課程
 
-- [使用 Azure 入口網站搭配媒體服務使用客戶管理的金鑰或 BYOK](tutorial-byok-portal.md)
+- [使用 Azure 入口網站來搭配媒體服務使用客戶自控金鑰或 BYOK](tutorial-byok-portal.md)
 - [使用客戶管理的金鑰或 BYOK 搭配媒體服務 REST API](tutorial-byok-postman.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [使用媒體服務動態加密來保護您的內容](content-protection-overview.md)

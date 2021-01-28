@@ -3,12 +3,12 @@ title: IoT Edge 版本資訊的即時影片分析-Azure
 description: 本主題提供有關 IoT Edge 版本、增強功能、bug 修正和已知問題的即時影片分析版本資訊。
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 328fe97c4e03f039a1224d13ce6712ccff06b3b7
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: f130b93b8d799c371a640f2b29c22c0d77834cba
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629771"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954390"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge 版本資訊的即時影片分析
 
@@ -35,7 +35,7 @@ mcr.microsoft.com/media/live-video-analytics:2.0.1
 > 在快速入門和教學課程中，部署資訊清單會使用 2 (即時影片分析： 2) 的標記。 因此只要重新部署這類資訊清單，就會更新您的 edge > 裝置上的模組。
 ### <a name="bug-fixes"></a>錯誤修正 
 
-* `ActivationSignalOffset` `MinimumActivationTime` `MaximumActivationTime` 未正確地將欄位和信號閘道處理器設定為必要的屬性。 它們現在是 **選擇性** 屬性。
+* `ActivationSignalOffset` `MinimumActivationTime` 未正確將欄位、和（即 `MaximumActivationTime` 信號閘道處理器）設定為必要的屬性。 它們現在是 **選擇性** 屬性。
 * 修正了使用 bug，讓 IoT Edge 模組上的即時影片分析在特定區域中部署時損毀。
 
 <hr width=100%>
@@ -48,7 +48,7 @@ mcr.microsoft.com/media/live-video-analytics:2.0.1
 ```
 ### <a name="module-updates"></a>模組更新
 * 針對每個圖表拓撲新增了使用一個以上 HTTP 擴充處理器和 gRPC 擴充處理器的支援。
-* 已新增接收節點的磁碟空間管理支援。
+* 已新增 [接收節點的磁碟空間管理](upgrading-lva-module.md#disk-space-management-with-sink-nodes)支援。
 * `MediaGraphGrpcExtension` 節點現在支援在單一 gRPC 伺服器內使用多個 AI 模型的 [extensionConfiguration](grpc-extension-protocol.md) 屬性。
 * 已新增以 [Prometheus 格式](https://prometheus.io/docs/practices/naming/)收集即時影片分析模組計量的支援。 深入瞭解如何 [在 Azure 監視器中收集計量和觀點。](monitoring-logging.md#azure-monitor-collection-via-telegraf) 
 * 新增篩選輸出選取專案的功能。 您可以使用任何圖形節點的 [說明]，將 **僅限音訊** 或全 **影片** 或 **音訊和影片** 傳遞給 `outputSelectors` 。 
@@ -56,7 +56,7 @@ mcr.microsoft.com/media/live-video-analytics:2.0.1
     * 圖形擴充處理器節點本身內現在可使用畫面播放速率管理。
 
 ### <a name="visual-studio-code-extension"></a>Visual Studio Code 擴充功能
-* [IoT Edge 上發行的實況影片分析](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge)-A Visual Studio Code 延伸模組，可協助您管理 LVA 媒體圖形。 此延伸模組適用于 **LVA 2.0 模組** ，並可讓您使用極精緻且便於使用的圖形化介面，來編輯和管理媒體圖表。
+* [IoT Edge 上發行的實況影片分析](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge)-A Visual Studio Code 延伸模組，可協助您管理 LVA 媒體圖形。 此延伸模組適用于 **LVA 2.0 模組** ，並提供使用精緻且便於使用的圖形介面來編輯和管理媒體圖表。
 ## <a name="september-22-2020"></a>2020 年 9 月 22 日
 
 此版本戳記適用于2020年9月的重新整理：
@@ -93,15 +93,15 @@ mcr.microsoft.com/media/live-video-analytics:1.0.3
 
 ### <a name="module-updates"></a>模組更新
 
-* 您現在可以使用 gRPC 架構，在 IoT Edge 的即時影片分析和您的自訂擴充功能之間取得高資料內容傳輸效能。 若 [要](analyze-live-video-use-your-grpc-model-quickstart.md) 開始使用，請參閱。
+* 您現在可以使用 gRPC 架構，在 IoT Edge 的即時影片分析和您的自訂擴充功能之間取得高資料內容傳輸效能。 請參閱 [快速入門](analyze-live-video-use-your-grpc-model-quickstart.md) 以開始使用。
 * 更廣泛的即時影片分析區域部署，且僅更新雲端服務。  
-* 即時影片分析現已在全球25個額外的區域推出。 以下是所有可用區域的 [清單](https://azure.microsoft.com/global-infrastructure/services/?products=media-services) 。  
+* 即時影片分析現已在全球25多個區域推出。 以下是所有可用區域的 [清單](https://azure.microsoft.com/global-infrastructure/services/?products=media-services) 。  
 * 針對快速入門 [設定的設定](https://aka.ms/lva-edge/setup-resources-for-samples) 也會隨著新區域的支援而更新。
     * 任何已設定資源的人都不會呼叫動作
 
 ### <a name="bug-fixes"></a>錯誤修正 
 
-* 移除在設定腳本中使用已被取代的 Azure 延伸模組
+* 移除在安裝腳本中使用已被取代的 Azure 擴充功能
 
 <hr width=100%>
 
@@ -118,7 +118,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.2
 
 ### <a name="module-updates"></a>模組更新
 
-* 您現在可以建立具有資產接收器節點的圖形拓撲，以及信號閘道處理器節點下游的 file sink 節點。 如 [需範例，請參閱](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-motion-assets-files) 。
+* 您現在可以建立具有「資產接收器」節點的圖形拓撲，以及「信號閘道處理器」節點下游的「檔接收器」節點。 請參閱 [拓撲](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-motion-assets-files) 以取得範例。
 
 ### <a name="bug-fixes"></a>錯誤修正
 

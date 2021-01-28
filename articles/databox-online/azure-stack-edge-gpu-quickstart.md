@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/27/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to quickly deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 2d1bd7d2a4f066311ea01046a8d71e6ecb52c3f5
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 642ab348cd2bb5cd2cedd2b481b0d06fb6c4b425
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919796"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953932"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>快速入門：開始使用搭配 GPU 的 Azure Stack Edge Pro 
 
@@ -28,7 +28,7 @@ ms.locfileid: "98919796"
 開始部署之前，請確定已符合下列必要條件：
 
 1. Azure Stack Edge Pro GPU 裝置已傳遞至您的站台，並且[拆封](azure-stack-edge-gpu-deploy-install.md#unpack-the-device)並[掛接在機架上](azure-stack-edge-gpu-deploy-install.md#rack-the-device)。 
-1. 設定網路，讓您的裝置可連線到[列出的 URL 模式和連接埠](azure-stack-edge-gpu-system-requirements.md#networking-port-requirements)。 
+1. 設定您的網路，讓您的裝置能夠觸達所 [列出的 URL 模式和埠](azure-stack-edge-gpu-system-requirements.md#networking-port-requirements)。 
 1. 您具有 Azure 訂用帳戶的擁有者或參與者存取權。
 1. 在 Azure 入口網站中移至 [首頁] > [訂用帳戶] > [您的訂用帳戶] > [資源提供者]。 搜尋 `Microsoft.DataBoxEdge` 並註冊資源提供者。 如果您要建立 IoT 中樞資源以部署計算工作負載，請重複相關步驟以註冊 `Microsoft.Devices`。
 1. 確定您至少有 2 個免費的靜態連續 IP 可供 Kubernetes 節點使用，且至少有 1 個靜態 IP 可用於 IoT Edge 服務。 針對您部署的每個模組或外部服務，您將需要 1 個額外的 IP。

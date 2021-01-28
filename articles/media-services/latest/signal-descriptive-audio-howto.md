@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒體服務 v3 來為描述性音訊曲目提供信號
+title: 使用媒體服務 v3 為描述性音訊曲目提供信號
 description: 遵循本教學課程的步驟來上傳檔案、編碼影片、新增描述性音訊播放軌，並使用媒體服務 v3 串流您的內容。
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 155e79f8d42988d8498c52c0f930bc03bc599cf0
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 3d029f23a094646d20dd6ae8cb6560aeef4aed54
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898213"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954507"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>指示描述性音訊曲目
 
@@ -243,6 +243,6 @@ await UpoadAudioIntoOutputAsset(client, config.ResourceGroup, config.AccountName
 
 Azure 媒體播放器可以用於測試，但不應用於生產環境。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [分析影片](analyze-videos-tutorial-with-api.md)

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: dbd7937667a3c4d5af9f13e15cdd4ff2081241f0
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0e993cb1e53645f7081a20fc6a2785b8cfef1cce
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98723875"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954172"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>如何連接 Azure Data Factory 和 Azure 範疇
 
@@ -69,12 +69,22 @@ ms.locfileid: "98723875"
 >[!Note]
 >我們現在支援同時新增10個以上的資料處理站。 如果您想要一次新增10個以上的資料處理站，請提出支援票證。
 
+### <a name="how-does-the-authentication-work"></a>驗證的運作方式為何？
+
+當範疇使用者註冊可存取的 Data Factory 時，後端會發生下列情況：
+
+1. **Data Factory 的 MSI** 會新增至範疇 RBAC 角色：**範疇資料編者**。
+
+    :::image type="content" source="./media/how-to-link-azure-data-factory/adf-msi.png" alt-text="顯示 Azure Data Factory MSI 的螢幕擷取畫面。" lightbox="./media/how-to-link-azure-data-factory/adf-msi.png":::
+     
+2. Data Factory 管線必須重新執行，才能將歷程中繼資料推送回範疇。
+3. 後續執行會將 Data Factory 的中繼資料推送至範疇。
 
 ### <a name="remove-data-factory-connections"></a>移除 data factory 連接
 若要移除 data factory 連接，請執行下列動作：
 
 1. 在 [ **Data Factory 連接** ] 頁面上，選取一或多個 Data Factory 連接旁邊的 [ **移除** ] 按鈕。
-1. 選取快顯視窗中的 [ **確認** ] 以刪除選取的資料處理站連接。
+2. 選取快顯視窗中的 [ **確認** ] 以刪除選取的資料處理站連接。
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="顯示如何選取 data factory 以移除連接的螢幕擷取畫面。" lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
 
@@ -99,7 +109,7 @@ Data Factory 與範疇之間的整合僅支援 Data Factory 支援的資料系�
 
 | 資料儲存系統 | 支援作為來源 | 支援作為接收 |
 | ------------------- | ------------------- | ----------------- |
-| ADLS Gen1 | 是 | 是 (非二進位複製)  |
+| ADLS Gen1 | Yes | 是 (非二進位複製)  |
 | ADLS Gen2 | 是 | 是 |
 | Azure Blob | 是 | 是 |
 | Azure Cosmos DB (SQL API)  | 是 | 是 |
@@ -128,22 +138,22 @@ Data Factory 與範疇之間的整合僅支援 Data Factory 支援的資料系�
 
 | 資料儲存系統 | 支援 |
 | ------------------- | ------------------- | ----------------- |
-| ADLS Gen1 | 是 |
-| ADLS Gen2 | 是 |
-| Azure Blob | 是 |
-| Azure SQL Database \* | 是 |
-| Azure Synapse Analytics (先前為 SQL DW) \* | 是 |
+| ADLS Gen1 | Yes |
+| ADLS Gen2 | Yes |
+| Azure Blob | Yes |
+| Azure SQL Database \* | Yes |
+| Azure Synapse Analytics (先前為 SQL DW) \* | Yes |
 
 ### <a name="data-factory-execute-ssis-package-support"></a>Data Factory 執行 SSIS 套件支援
 
 | 資料儲存系統 | 支援 |
 | ------------------- | ------------------- | ----------------- |
-| Azure Blob | 是 |
-| ADLS Gen1 | 是 |
-| ADLS Gen2 | 是 |
-| Azure SQL Database \* | 是 |
-| Azure SQL MI \*| 是 |
-| Azure Synapse Analytics (先前為 SQL DW) \* | 是 |
+| Azure Blob | Yes |
+| ADLS Gen1 | Yes |
+| ADLS Gen2 | Yes |
+| Azure SQL Database \* | Yes |
+| Azure SQL MI \*| Yes |
+| Azure Synapse Analytics (先前為 SQL DW) \* | Yes |
 | SQL Server 內部內部部署 \* | 是 |
 | Azure 檔案儲存體 | 是 |
 
@@ -212,7 +222,7 @@ Azure 範疇支援幾種歷程模式。 產生的歷程資料是以 Data Factory
 
 :::image type="content" source="./media/how-to-link-azure-data-factory/adf-resource-set-lineage.png" alt-text="顯示資源集歷程的螢幕擷取畫面。" lightbox="./media/how-to-link-azure-data-factory/adf-resource-set-lineage.png":::
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [目錄歷程使用者指南](catalog-lineage-user-guide.md)
 - [連結至 Azure Data Share 進行歷程](how-to-link-azure-data-share.md)

@@ -1,5 +1,5 @@
 ---
-title: 從 HTTPS URL 建立 Azure 媒體服務工作輸入
+title: 從 HTTPS URL 建立工作輸入
 description: 本主題示範如何從 HTTPS URL 建立 Azure 媒體服務工作輸入。
 services: media-services
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: b71262b57e9e07c58eb6b3f6e0506151063d77d5
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1073a13f477894e1b35d732fd1cd6191747a62a2
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895351"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955982"
 ---
 # <a name="create-a-job-input-from-an-https-url"></a>從 HTTPS URL 建立工作輸入
 
@@ -37,6 +37,6 @@ ms.locfileid: "98895351"
 
 請參閱[錯誤碼](/rest/api/media/jobs/get#joberrorcode) \(英文\)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [從本機檔案建立工作輸入](job-input-from-local-file-how-to.md).

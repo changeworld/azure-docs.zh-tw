@@ -1,11 +1,25 @@
 ---
-標題：具有 Azure 監視器的媒體服務計量和診斷記錄： Azure 媒體服務描述：瞭解如何透過 Azure 監視器監視 Azure 媒體服務計量和診斷記錄。
-服務： media services documentationcenter： ' ' author： IngridAtMicrosoft manager： femila editor： ' '
-
-ms. 服務：媒體服務 ms. 工作負載：媒體 ms.tgt_pltfrm： na ms.devlang： na ms. 主題：概念 ms. 日期： 11/02/2020 ms. 作者： inhenkel
-
+title: 使用 Azure 監視器的計量和診斷記錄
+description: 瞭解如何透過 Azure 監視器監視 Azure 媒體服務計量和診斷記錄。
+services: media-services
+documentationcenter: ''
+author: IngridAtMicrosoft
+manager: femila
+editor: ''
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: conceptual
+ms.date: 11/02/2020
+ms.author: inhenkel
+ms.openlocfilehash: 35b0d9c2937024341be6183ac1438b7c4500d6ef
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954981"
 ---
-
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-with-azure-monitor"></a>使用 Azure 監視器監視媒體服務計量和診斷記錄
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
@@ -29,7 +43,7 @@ ms. 服務：媒體服務 ms. 工作負載：媒體 ms.tgt_pltfrm： na ms.devla
 
 您可以監視下列帳戶計量。
 
-|度量名稱|顯示名稱|描述|
+|度量名稱|顯示名稱|Description|
 |---|---|---|
 |AssetCount|資產計數|您帳戶中的資產。|
 |AssetQuota|資產配額|帳戶中的資產配額。|
@@ -47,7 +61,7 @@ ms. 服務：媒體服務 ms. 工作負載：媒體 ms.tgt_pltfrm： na ms.devla
 
 以下是支援的媒體服務 [串流端點](/rest/api/media/streamingendpoints) 計量：
 
-|度量名稱|顯示名稱|描述|
+|度量名稱|顯示名稱|Description|
 |---|---|---|
 |Requests|Requests|提供串流端點所服務的 HTTP 要求總數。|
 |輸出|輸出|每分鐘的輸出位元組總計（每個串流端點）。|
@@ -83,7 +97,7 @@ ms. 服務：媒體服務 ms. 工作負載：媒體 ms.tgt_pltfrm： na ms.devla
 
 ### <a name="key-delivery"></a>金鑰傳遞
 
-|名稱|描述|
+|Name|描述|
 |---|---|
 |金鑰傳遞服務要求|顯示金鑰傳遞服務要求資訊的記錄。 如需詳細資訊，請參閱 [架構](media-services-diagnostic-logs-schema.md)。|
 
@@ -100,7 +114,7 @@ ms. 服務：媒體服務 ms. 工作負載：媒體 ms.tgt_pltfrm： na ms.devla
 
 請參閱 [如何監視媒體服務診斷記錄](media-services-diagnostic-logs-howto.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [如何收集和取用來自 Azure 資源的記錄資料](../../azure-monitor/platform/platform-logs-overview.md)
 * [使用 Azure 監視器建立、檢視及管理計量警示](../../azure-monitor/platform/alerts-metric.md)

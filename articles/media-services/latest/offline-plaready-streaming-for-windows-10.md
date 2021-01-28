@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒體服務 v3 設定離線 PlayReady 串流
+title: 設定離線 PlayReady 串流
 description: 本文說明如何設定 Azure 媒體服務 v3 帳戶，以供 Windows 10 離線的串流 PlayReady。
 services: media-services
 keywords: DASH, DRM, Widevine Offline Mode, ExoPlayer, Android, Widevine 離線模式
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 19c930915de20d7f3a8938570e074458b32a8efb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea3d895970c6a18286d719471a693f774efaa387
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975674"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955219"
 ---
 # <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>使用媒體服務 v3 進行 Windows 10 的離線 PlayReady 串流
 
@@ -38,7 +38,7 @@ Azure 媒體服務支援在具備 DRM 保護的情況下離線下載/播放。 �
 
 本節提供一些離線模式播放的背景資訊，尤其是開發該技術的原因：
 
-* 在某些國家/地區，網際網路可用性和/或頻寬仍有限制。使用者可以選擇先下載，以便能以夠高的解析度觀賞內容，來獲得令人滿意的檢視體驗。 在此情況下，更常見的問題不是網路可用性，而是有限的網路頻寬。 OTT/OVP 提供者正在要求提供離線模式支援。
+* 在某些國家/地區，網際網路可用性和/或頻寬仍有限制。 使用者可以選擇先下載，以便能以夠高的解析度觀賞內容，來獲得令人滿意的檢視體驗。 在此情況下，更常見的問題不是網路可用性，而是有限的網路頻寬。 OTT/OVP 提供者正在要求提供離線模式支援。
 * Netflix 2016 年第 3 季股東會議中，Netflix CEO Reed Hastings 揭露了一項資訊，那就是下載內容是「頻繁被要求的功能」，並且「我們對此持開放態度」。
 * 某些內容提供者可能不允許在國家/地區的邊界之外傳遞 DRM 授權。 如果使用者想要在需要出國旅行時仍能觀賞內容，就需要離線下載。
  
@@ -125,6 +125,6 @@ private async void LoadUri_Click(object sender, RoutedEventArgs e)
 * PlayReady 授權傳遞服務可以從 Azure 媒體服務或其他位置提供；
 * 所準備的 Smooth Streaming 內容仍可用來透過 DASH 進行線上串流，或使用 PlayReady 以 DRM 內容的方式進行串流。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [設計具有存取控制的多重 DRM 內容保護系統](design-multi-drm-system-with-access-control.md)

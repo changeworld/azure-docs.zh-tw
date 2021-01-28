@@ -4,12 +4,12 @@ description: 提供支援設定的摘要，以及 Azure 磁片備份的限制。
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 5281a5f0b833759c2594b6748cf06f2e12c03822
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 08d2ac8451e88dd8d40ed5faee0368ff7739cd16
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757469"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954693"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>預覽版中的 Azure 磁片備份支援矩陣 () 
 
@@ -66,6 +66,8 @@ Azure 磁片備份于下欄區域提供預覽：美國中西部、東部美國2�
 
 - 受控磁片的[Private Links](../virtual-machines/disks-enable-private-links-for-import-export-portal.md)支援可讓您限制受控磁片的匯出和匯入，使其只在 Azure 虛擬網路中發生。 Azure 磁片備份支援備份已啟用私人端點的磁片。 這不包括可透過私人端點存取的備份資料或快照集。
 
-## <a name="next-steps"></a>後續步驟
+- 在預覽期間，您無法停用備份，因此不支援 [ **停止備份並保留備份資料** ] 選項。 您可以刪除備份實例，這不僅會停止備份，也會刪除所有備份資料。
+
+## <a name="next-steps"></a>下一步
 
 - [備份 Azure 受控磁碟](backup-managed-disks.md)

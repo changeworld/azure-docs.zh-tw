@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d04075b415bace4104a58e8221d764355d3318d0
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 9276fca62e96395150c9545b8f4dcb5c8c0afb87
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744273"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954237"
 ---
 # <a name="authentication-methods-in-azure-active-directory---oath-tokens"></a>Azure Active Directory OATH 權杖中的驗證方法
 
@@ -37,28 +37,28 @@ OATH TOTP 硬體權杖通常會隨附在權杖中預先編寫的秘密金鑰或�
 
 在軟體權杖設定流程中也可使用 Azure AD 來設定可重新植入的可程式化 OATH TOTP 硬體權杖。
 
-OATH 硬體權杖已作為公開預覽的一部分支援。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+OATH 硬體權杖已作為公開預覽的一部分支援。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ![將 OATH 權杖上傳到 MFA OATH 權杖刀鋒視窗](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 
-取得權杖後，必須使用逗號分隔值 (CSV) 檔案格式加以上傳，包括 UPN、序號、祕密金鑰、時間間隔、製造商和模型，如下列範例所示：
+一旦取得權杖之後，必須以逗點分隔值的形式上傳， (CSV) 檔案格式，包括 UPN、序號、秘密金鑰、時間間隔、製造商和型號，如下列範例所示：
 
 ```csv
 upn,serial number,secret key,time interval,manufacturer,model
 Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
-```
+```  
 
 > [!NOTE]
 > 請確定您在 CSV 檔案中包含標頭資料列。
 
 將格式正確設為 CSV 檔案後，系統管理員可接著登入 Azure 入口網站，瀏覽至 [Azure Active Directory] > [安全性] > [MFA] > [OATH 權杖]，並上傳所產生的 CSV 檔案。
 
-視 CSV 檔案的大小而定，可能需要數分鐘的時間來處理。 選取 [重新整理] 按鈕來取得目前的狀態。 如果檔案中有任何錯誤，您可下載 CSV 檔案，其中列出您需要解決的任何錯誤。 所下載 CSV 檔案中的欄位名稱與上傳的版本不同。
+視 CSV 檔案的大小而定，可能需要數分鐘的時間來處理。 選取 [重新整理] 按鈕來取得目前的狀態。 如果檔案中有任何錯誤，您可下載 CSV 檔案，其中列出您需要解決的任何錯誤。 所下載 CSV 檔案中的欄位名稱與上傳的版本不同。  
 
-一旦解決任何錯誤後，系統管理員可接著針對權杖選取 [啟動] 並輸入權杖上顯示的 OTP，以啟動每個金鑰。
+一旦解決任何錯誤後，系統管理員可接著針對權杖選取 [啟動] 並輸入權杖上顯示的 OTP，以啟動每個金鑰。 每隔5分鐘可啟用最多200個 OATH 權杖。 
 
 使用者可設定最多 5 個 OATH 硬體權杖或驗證器應用程式 (例如 Microsoft Authenticator 應用程式) 的組合，以在任何時間點使用。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 深入瞭解如何使用 [Microsoft Graph REST API Beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)來設定驗證方法。

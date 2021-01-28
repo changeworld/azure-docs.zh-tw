@@ -13,12 +13,12 @@ ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: cc4cc9394e957caa96f1333e5e3dfdbd68d3edb8
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: d3fa13a6751b2d8acf1fc99aecbf174f1823fb0b
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763367"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954913"
 ---
 # <a name="logging-in-msal-for-java"></a>Java 版 MSAL 中的記錄
 
@@ -72,6 +72,6 @@ PublicClientApplication app2 = PublicClientApplication.builder(PUBLIC_CLIENT_ID)
         .build();
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-如需更多程式碼範例，請參閱 [Microsoft 身分識別平臺程式碼範例) ](sample-v2-code.md)。
+如需更多程式碼範例，請參閱 [Microsoft 身分識別平臺程式碼範例](sample-v2-code.md)。

@@ -1,9 +1,24 @@
 ---
-標題： Azure 媒體服務 v3 中的即時事件和即時輸出概念： Azure 媒體服務描述：本主題提供 Azure 媒體服務 v3 中即時事件和即時輸出的總覽。
-服務： media services documentationcenter： ' ' author： IngridAtMicrosoft manager： femila editor： ' '
-
-ms. 服務：媒體服務 ms. 工作負載：媒體 ms.tgt_pltfrm： na ms.devlang： ne ms。主題：概念 ms. 日期： 10/23/2020 ms. 作者： inhenkel
-
+title: 實況活動和即時輸出概念
+description: 本主題概要說明 Azure 媒體服務 v3 中的即時事件和即時輸出。
+services: media-services
+documentationcenter: ''
+author: IngridAtMicrosoft
+manager: femila
+editor: ''
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: ne
+ms.topic: conceptual
+ms.date: 10/23/2020
+ms.author: inhenkel
+ms.openlocfilehash: 0b223fcedfdead991f7ce374f7f7814749388f90
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955948"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>媒體服務中的即時活動和即時輸出
 
@@ -55,7 +70,7 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 
 ## <a name="creating-live-events"></a>建立實況活動
 
-### <a name="options"></a>選項。
+### <a name="options"></a>選項
 
 當您建立即時事件時，可以指定下列選項：
 
@@ -130,7 +145,7 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 
     使用下列 Api 來啟用虛名 URL，並將存取權杖設定為有效的 GUID (例如 `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`) 。  
 
-    |Language|啟用虛名 URL|設定存取權杖|
+    |語言|啟用虛名 URL|設定存取權杖|
     |---|---|---|
     |REST|[vanityUrl](/rest/api/media/liveevents/create#liveevent)|[LiveEventInput. accessToken](/rest/api/media/liveevents/create#liveeventinput)|
     |CLI|[--虛名-url](/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--存取權杖](/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|

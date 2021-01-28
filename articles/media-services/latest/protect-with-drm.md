@@ -1,9 +1,25 @@
 ---
-標題： Azure 媒體服務 DRM 加密與授權傳遞服務： Azure 媒體服務描述：瞭解如何使用 DRM 動態加密與授權傳遞服務來傳遞以 Microsoft PlayReady、Google Widevine 或 Apple FairPlay 授權加密的串流。
-服務： media services documentationcenter： ' ' author： IngridAtMicrosoft manager： femila editor： ' '
-
-ms. 服務：媒體-服務 ms. 工作負載：媒體 ms.tgt_pltfrm： na ms. ms.devlang： na ms. 主題：教學課程 ms. 日期： 08/31/2020 ms. 作者： inhenkel ms. 自訂： seodec18
-
+title: 媒體服務 DRM 加密與授權傳遞
+description: 了解如何使用 DRM 動態加密和授權傳遞服務來傳遞以 Microsoft PlayReady、Google Widevine 或 Apple FairPlay 授權加密的串流。
+services: media-services
+documentationcenter: ''
+author: IngridAtMicrosoft
+manager: femila
+editor: ''
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: tutorial
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: seodec18
+ms.openlocfilehash: a4f5810f76af7116421bac3953b4eb65370055e3
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955168"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>教學課程：使用 DRM 動態加密與授權傳遞服務
 

@@ -1,5 +1,5 @@
 ---
-title: Azure 媒體服務 v3 雲端和區域可用性
+title: Azure 媒體服務 v3 區域可用性
 description: 本文會討論可使用 Azure 媒體服務 v3 的 Azure 雲端和區域。
 services: media-services
 author: IngridAtMicrosoft
@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: 20c025cfabf6ed3cedd838f8be964bec06ad595e
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 91df515703b4b6b368b07482fad1aa8b781281f6
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242493"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954441"
 ---
 # <a name="azure-media-services-v3-clouds-and-regions-availability"></a>Azure 媒體服務 v3 雲端和區域可用性
 
@@ -66,7 +66,7 @@ Azure 媒體服務 v3 可透過 Azure Resource Manager 取得。 但是，並非
 ## <a name="see-also"></a>另請參閱
 
 * [Azure 區域](https://azure.microsoft.com/global-infrastructure/regions/)
-* [區域程式碼名稱和端點](azure-regions-code-names.md)
+* [區域代碼名稱和端點](azure-regions-code-names.md)
 * [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)
 * [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)
 

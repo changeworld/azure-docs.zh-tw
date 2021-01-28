@@ -1,5 +1,5 @@
 ---
-title: 建立串流定位器和組建 Url-Azure 媒體服務
+title: 建立串流定位器並建置 URL
 description: 本文示範如何建立串流定位器和組建 Url。
 services: media-services
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 916defd652ff9f4b3f372c609055d2a974126916
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ecbc42237326cb895c47e96eda13bbddcdeb558f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295711"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956118"
 ---
 # <a name="create-a-streaming-locator-and-build-urls"></a>建立串流定位器並建置 URL
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-在 Azure 媒體服務中，若要建立串流 URL，您必須先建立 [串流定位器](streaming-locators-concept.md)。 然後，您會串連 [串流端點](/rest/api/media/streamingendpoints) 主機名稱和 **串流定位器** 路徑。 此範例會使用預設的**串流端點**。 當您第一次建立媒體服務帳戶時，此*預設***串流端點**會處於停止狀態，因此您必須呼叫**start**以開始串流。
+在 Azure 媒體服務中，若要建立串流 URL，您必須先建立 [串流定位器](streaming-locators-concept.md)。 然後，您會串連 [串流端點](/rest/api/media/streamingendpoints) 主機名稱和 **串流定位器** 路徑。 此範例會使用預設的 **串流端點**。 當您第一次建立媒體服務帳戶時，此 *預設***串流端點** 會處於停止狀態，因此您必須呼叫 **start** 以開始串流。
 
 本文示範如何建立串流定位器，並使用 JAVA 和 .NET Sdk 建立串流 URL。
 
@@ -169,6 +169,6 @@ private static async Task<IList<string>> GetStreamingUrlsAsync(
 * [使用 REST 建立篩選器](filters-dynamic-manifest-rest-howto.md)
 * [使用 CLI 建立篩選器](filters-dynamic-manifest-cli-howto.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [使用 DRM 保護您的內容](protect-with-drm.md)。

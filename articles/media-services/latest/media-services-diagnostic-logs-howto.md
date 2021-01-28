@@ -1,5 +1,5 @@
 ---
-title: 透過 Azure 監視器監視媒體服務診斷記錄
+title: 透過 Azure 監視器監視診斷記錄
 description: 本文示範如何透過 Azure 監視器路由傳送和查看診斷記錄。
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c666228a8a82083c319aa6c2d7fd161f7e623f4
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1d9252a5fdf7b1c68c1bb64bd22ede8640184a0c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897963"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953949"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>監視媒體服務診斷記錄
 
@@ -187,6 +187,6 @@ az monitor diagnostic-settings create --name amsv3diagnostic \
 * [Azure 監視器診斷記錄](../../azure-monitor/platform/platform-logs-overview.md)
 * [如何收集和取用來自 Azure 資源的記錄資料](../../azure-monitor/platform/platform-logs-overview.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [監視計量](media-services-metrics-howto.md)

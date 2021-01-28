@@ -1,5 +1,5 @@
 ---
-title: 成為內部部署編碼器合作夥伴-Azure 媒體服務
+title: 成為內部部署編碼器合作夥伴
 description: 本文討論如何驗證您的內部部署即時串流編碼器。
 services: media-services
 author: johndeu
@@ -8,12 +8,12 @@ ms.author: johndeu
 ms.date: 08/31/2020
 ms.topic: how-to
 ms.service: media-services
-ms.openlocfilehash: 1383b6afac9ad2332169328ef71981e23e86bdcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e07831ce4a016d49e0343da66efc0345effafd94
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297445"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954356"
 ---
 # <a name="how-to-verify-your-on-premises-live-streaming-encoder"></a>如何驗證您的內部部署即時串流編碼器
 
@@ -25,15 +25,15 @@ ms.locfileid: "89297445"
 
 ## <a name="pass-through-live-event-verification"></a>傳遞即時事件驗證
 
-1. 在您的媒體服務帳戶中，確認**串流端點**正在執行。 
-2. 建立並啟動**傳遞**即時事件。 <br/> 如需詳細資訊，請參閱[實況活動狀態和計費](live-event-states-billing.md)。
+1. 在您的媒體服務帳戶中，確認 **串流端點** 正在執行。 
+2. 建立並啟動 **傳遞** 即時事件。 <br/> 如需詳細資訊，請參閱[實況活動狀態和計費](live-event-states-billing.md)。
 3. 取得內嵌 URL 並設定您的內部部署編碼器使用該 URL，以將多位元速率即時資料流傳送到媒體服務。
 4. 取得預覽 URL 並使用它來確認實際上已收到來自編碼器的輸入。
 5. 建立新的 **資產** 物件。
 6. 建立 **即時輸出** ，並使用您建立的資產名稱。
-7. 使用內建的**串流原則**類型建立**串流定位器**。
-8. 列出**串流定位器**上的路徑，以取回要使用的 URL。
-9. 取得您想要串流的來源**串流端點**主機名稱。
+7. 使用內建的 **串流原則** 類型建立 **串流定位器**。
+8. 列出 **串流定位器** 上的路徑，以取回要使用的 URL。
+9. 取得您想要串流的來源 **串流端點** 主機名稱。
 10. 結合步驟 8 的 URL 和步驟 9 的主機名稱，即可取得完整的 URL。
 11. 將您的即時編碼器執行約 10 分鐘的時間。
 12. 停止即時事件。 
@@ -44,15 +44,15 @@ ms.locfileid: "89297445"
 
 ## <a name="live-encoding-live-event-verification"></a>即時編碼即時事件驗證
 
-1. 在您的媒體服務帳戶中，確認**串流端點**正在執行。 
-2. 建立並啟動**即時編碼**即時事件。 <br/> 如需詳細資訊，請參閱[實況活動狀態和計費](live-event-states-billing.md)。
+1. 在您的媒體服務帳戶中，確認 **串流端點** 正在執行。 
+2. 建立並啟動 **即時編碼** 即時事件。 <br/> 如需詳細資訊，請參閱[實況活動狀態和計費](live-event-states-billing.md)。
 3. 取得內嵌 URL 並設定您的編碼器將單一位元速率即時資料流推送到媒體服務。
 4. 取得預覽 URL 並使用它來確認實際上已收到來自編碼器的輸入。
 5. 建立新的 **資產** 物件。
 6. 建立 **即時輸出** ，並使用您建立的資產名稱。
-7. 使用內建的**串流原則**類型建立**串流定位器**。
-8. 列出**串流定位器**上的路徑，以取回要使用的 URL。
-9. 取得您想要串流的來源**串流端點**主機名稱。
+7. 使用內建的 **串流原則** 類型建立 **串流定位器**。
+8. 列出 **串流定位器** 上的路徑，以取回要使用的 URL。
+9. 取得您想要串流的來源 **串流端點** 主機名稱。
 10. 結合步驟 8 的 URL 和步驟 9 的主機名稱，即可取得完整的 URL。
 11. 將您的即時編碼器執行約 10 分鐘的時間。
 12. 停止即時事件。
@@ -73,6 +73,6 @@ ms.locfileid: "89297445"
 
 [測試的內部部署編碼器](recommended-on-premises-live-encoders.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [使用媒體服務 v3 進行即時串流](live-streaming-overview.md)

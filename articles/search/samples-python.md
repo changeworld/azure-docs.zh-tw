@@ -7,29 +7,28 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.openlocfilehash: 6e0f3d318cc462b03151d5a4935ae318df46e2c5
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.date: 01/27/2021
+ms.openlocfilehash: 0d09851cf8e68cead4a67615aaa792512482f351
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510551"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955117"
 ---
 # <a name="python-code-samples-for-azure-cognitive-search"></a>Azure 認知搜尋的 Python 程式碼範例
 
-深入瞭解 Python 程式碼範例，以示範 Azure 認知搜尋的特性和功能。 主要存放庫如下所示：
+深入瞭解 Python 程式碼範例，以示範 Azure 認知搜尋解決方案的功能和工作流程。 這些範例會使用適用于 [**AZURE SDK For Python**](/azure/developer/python/)的 [**Azure 認知搜尋用戶端程式庫**](/python/api/overview/azure/search-documents-readme)，您可以透過下列連結流覽。
 
-| Repository | 說明 |
-|------------|-------------|
-| [azure sdk for python/tree/master/sdk/搜尋/azure-搜尋-檔/範例/](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/search/azure-search-documents/samples) | Azure SDK 團隊所產生的範例，隨附于 SDK 中的 Azure.Search.Documents 用戶端程式庫。 您也可以檢查用戶端程式庫的 [單元測試](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/search/azure-search-documents/tests) ，以查看如何呼叫不同的 api。 |
-| [Azure-範例/azure-搜尋-python-範例](https://github.com/Azure-Samples/azure-search-python-samples) | 伴隨操作說明文章的程式碼範例，包括 [快速入門：在 Python 中建立搜尋索引](search-get-started-python.md)。|
+| 目標 | 連結 |
+|--------|------|
+| 套件下載 | [pypi.org/project/azure-search-documents/](https://pypi.org/project/azure-search-documents/) |
+| API 參考資料 | [azure-search-documents](/python/api/azure-search-documents)  |
+| API 測試案例 | [github.com/Azure/azure-sdk-for-python/tree/master/sdk/search/azure-search-documents/tests](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/search/azure-search-documents/tests) |
+| 原始程式碼 | [github.com/Azure/azure-sdk-for-python/tree/master/sdk/search/azure-search-documents](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/search/azure-search-documents)  |
 
-> [!Tip]
-> 請嘗試 [範例瀏覽器](/samples/browse/?languages=python&products=azure-cognitive-search) ，以搜尋 Github 中的 Microsoft 程式碼範例，並依產品、服務和語言進行篩選。
+## <a name="sdk-samples"></a>SDK 範例
 
-## <a name="python-sdk-samples"></a>Python SDK 範例
-
-適用于 Python 的 Azure SDK 包含許多範例，以及包含必要條件和套件安裝的 [快速入門頁面](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/search/azure-search-documents/samples) 。 此頁面也包含下列範例的連結，這些範例會在此處列出以方便您參考。
+來自 Azure SDK 開發小組的程式碼範例會示範 API 的使用方式。 您可以在 azure sdk 中找到這些範例 [**-適用于 python/樹狀結構/master/sdk/搜尋/azure-搜尋-檔/範例**](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/search/azure-search-documents/samples) （位於 GitHub）。
 
 | 範例 | 描述 |
 |---------|-------------|
@@ -43,12 +42,15 @@ ms.locfileid: "96510551"
 | [篩選查詢](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/search/azure-search-documents/samples/sample_filter_query.py) | 示範如何設定 [篩選運算式](search-filters.md)。 |
 | [Facet 查詢](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/search/azure-search-documents/samples/sample_facet_query.py) | 示範如何使用 [facet](search-filters-facets.md)。 |
 
-## <a name="documentation-samples"></a>文件和範例
+## <a name="doc-samples"></a>Doc 範例
 
-下列範例有 [Azure 認知搜尋檔](./index.yml)中的相關文章。
+來自認知搜尋團隊的程式碼範例會示範功能和工作流程。 教學課程、快速入門和操作說明文章中都會參考許多這些範例。 您可以在 Azure 中找到這些範例 [**-範例/azure-搜尋-python-**](https://github.com/Azure-Samples/azure-search-python-samples) 在 GitHub 上的範例。
 
-| 範例 | 描述 | 
-|---------|-------------|
-| [快速入門](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Quickstart) | [快速入門的原始程式碼：在 Python 中建立搜尋索引](search-get-started-python.md)。  |
-| [教學課程-ai-擴充](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment)  | 教學課程的原始程式碼 [：使用 Python 和 AI 從 Azure blob 產生可搜尋的內容](cognitive-search-tutorial-blob-python.md)。  |
-| [AzureML-自訂技能](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill)  | 原始碼 [範例：使用 Python 建立自訂技能](cognitive-search-custom-skill-python.md)。  |
+| 範例 | 發行項 |
+|---------|---------|
+| [快速入門](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Quickstart) | [快速入門的原始程式碼：在 Python 中建立搜尋索引](search-get-started-python.md)。 本文涵蓋使用範例資料建立、載入和查詢搜尋索引的基本工作流程。 |
+| [教學課程-ai-擴充](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment)  | 教學課程的原始程式碼 [：使用 Python 和 AI 從 Azure blob 產生可搜尋的內容](cognitive-search-tutorial-blob-python.md)。 本文說明如何使用認知技能集建立 blob 索引子，讓技能集建立和轉換原始內容，使其可供搜尋或取用。 |
+| [AzureML-自訂技能](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill)  | 原始碼 [範例：使用 Python 建立自訂技能](cognitive-search-custom-skill-python.md)。 本文示範索引子和技能集與 Azure Machine Learning 中的深度學習模型整合。 |
+
+> [!Tip]
+> 請嘗試 [範例瀏覽器](/samples/browse/?languages=python&products=azure-cognitive-search) ，以搜尋 Github 中的 Microsoft 程式碼範例，並依產品、服務和語言進行篩選。

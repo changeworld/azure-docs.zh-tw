@@ -5,12 +5,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a41a5828a82d81c5e7e8749fee70cd15e17bb9d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f05afb3c23fc720bb0100a751a6943d7bb03453f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84697685"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954778"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>將 Azure Functions 效能和可靠性最佳化
 
@@ -62,7 +62,7 @@ ms.locfileid: "84697685"
 
 如果佇列項目已經過處理，請讓您的函式成為無作業。
 
-利用已針對您在 Azure Functions 平台中所使用元件提供的防禦性措施。 例如，請參閱文件中**處理有害的佇列訊息**，以了解 [Azure 儲存體佇列觸發程序和繫結](functions-bindings-storage-queue-trigger.md#poison-messages)。 
+利用已針對您在 Azure Functions 平台中所使用元件提供的防禦性措施。 例如，請參閱文件中 **處理有害的佇列訊息**，以了解 [Azure 儲存體佇列觸發程序和繫結](functions-bindings-storage-queue-trigger.md#poison-messages)。 
 
 ## <a name="scalability-best-practices"></a>延展性最佳做法
 
@@ -112,7 +112,7 @@ FUNCTIONS_WORKER_PROCESS_COUNT 適用於 Functions 在擴增應用程式以符�
 
 函式應用程式中的 `host.json` 檔案能夠設定主機執行階段和觸發程序行為。  除了批次處理行為，您可以管理數個觸發程序的並行作業。 經常調整這些選項中的值，可協助每個執行個體針對所叫用函式的需求進行適當調整。
 
-檔案 host.js中的設定會套用到應用程式內的所有函式，在函式的 *單一實例* 內。 例如，如果您的函式應用程式中有兩個 HTTP 函式和 [`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings) 要求設定為25，則對任一個 HTTP 觸發程式的要求都會計入共用的25個並行要求。  當該函式應用程式調整為10個實例時，這兩個函式會有效地允許250的並行要求 (10 個實例，每個實例) 25 個並行要求。 
+檔案 host.js中的設定會套用到應用程式內的所有函式，在函式的 *單一實例* 內。 例如，如果您的函式應用程式中有兩個 HTTP 函式和 [`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings) 要求設定為25，則對任一個 HTTP 觸發程式的要求都會計入共用的25個並行要求。  當該函式應用程式調整為10個實例時，十個函式會有效地允許250個並行要求 (10 個實例，每個實例) 25 個並行要求。 
 
 您可以在host.js的設定 [ 文章](functions-host-json.md)中找到其他主機配置選項。
 

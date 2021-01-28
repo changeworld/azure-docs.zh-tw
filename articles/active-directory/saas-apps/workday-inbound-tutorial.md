@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: 8e83841031593d0d1af4499f3ef9a15400ce7794
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
-ms.translationtype: HT
+ms.openlocfilehash: a34881901fd8642fff9ac37512cd2ef260ad9d1c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569517"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954206"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教學課程：設定 Workday 來自動佈建使用者
 
@@ -41,7 +41,7 @@ ms.locfileid: "98569517"
 ### <a name="whats-new"></a>新功能
 本節會擷取最近的 Workday 整合增強功能。 如需更新、計劃性變更和封存的完整清單，請造訪 [Azure Active Directory 的新增功能？](../fundamentals/whats-new.md)頁面 
 
-* **2020 年 10月 - 已啟用 Workday 的隨選佈建：** 使用[隨選佈建](../app-provisioning/provision-on-demand.md)，您現在可以測試 Workday 中特定使用者設定檔的端對端佈建，以驗證您的屬性對應和運算式邏輯。   
+* **2020 年 10月 - 已啟用 Workday 的隨選佈建：** 使用 [隨選佈建](../app-provisioning/provision-on-demand.md)，您現在可以測試 Workday 中特定使用者設定檔的端對端佈建，以驗證您的屬性對應和運算式邏輯。   
 
 * **2020 年 5 月 - 能夠將電話號碼回寫到 Workday：** 除了電子郵件和使用者名稱之外，您現在也可以將公司電話號碼和行動電話號碼從 Azure AD 回寫到 Workday。 如需詳細資訊，請參閱[回寫應用程式教學課程](workday-writeback-tutorial.md)。
 
@@ -157,7 +157,7 @@ ms.locfileid: "98569517"
 
 1. 搜尋並選取在上一個步驟中建立的安全性群組。 
    >[!div class="mx-imgBorder"]
-   >![選取安全性群組](./media/workday-inbound-tutorial/select-security-group-msft-wdad.png)
+   >![選取安全性群組](./media/workday-inbound-tutorial/select-security-group-workday.png)
 
 1. 按一下群組名稱旁邊的省略號 (...)，然後從功能表中，選取 [安全性群組] > [維護安全性群組的網域權限]
    >[!div class="mx-imgBorder"]
@@ -228,7 +228,7 @@ ms.locfileid: "98569517"
 
 ## <a name="provisioning-agent-installation-prerequisites"></a>佈建代理程式安裝必要條件
 
-請先檢閱[佈建代理程式安裝必要條件](../cloud-provisioning/how-to-prerequisites.md)，再繼續進行下一節。 
+請先檢閱[佈建代理程式安裝必要條件](../cloud-sync/how-to-prerequisites.md)，再繼續進行下一節。 
 
 ## <a name="configuring-user-provisioning-from-workday-to-active-directory"></a>設定將使用者從 Workday 佈建至 Active Directory
 
@@ -267,7 +267,7 @@ ms.locfileid: "98569517"
 
 若要佈建至內部部署的 Active Directory，則必須在已加入網域並可透過網路存取所需 Active Directory 網域的伺服器上，安裝佈建代理程式。
 
-將下載的代理程式安裝程式傳輸到伺服器主機，並遵循 [**安裝代理程式** 一節](../cloud-provisioning/how-to-install.md)中所列的步驟來完成代理程式設定。
+將下載的代理程式安裝程式傳輸到伺服器主機，並遵循 [**安裝代理程式** 一節](../cloud-sync/how-to-install.md)中所列的步驟來完成代理程式設定。
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>第 3 部分：在佈建應用程式中，設定 Workday 和 Active Directory 的連線能力
 在此步驟中，我們將在 Azure 入口網站中建立 Workday 和 Active Directory 的連線能力。 
@@ -336,7 +336,7 @@ ms.locfileid: "98569517"
       * 運算子：IS NOT NULL
 
    > [!TIP]
-   > 第一次設定佈建應用程式時，您將需要測試及確認屬性對應和運算式，以確保它提供您所需的結果。 Microsoft 建議您使用 [來源物件範圍] 底下的範圍篩選，利用幾個來自 Workday 的測試使用者來測試您的對應。 確認對應能夠運作之後，您便可以移除篩選，或逐漸擴大篩選來包含更多使用者。
+   > 第一次設定佈建應用程式時，您將需要測試及確認屬性對應和運算式，以確保它提供您所需的結果。 Microsoft 建議在 [**來源物件範圍**] 和 [隨 [選布建](../app-provisioning/provision-on-demand.md)] 下使用 [範圍篩選](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)條件，以使用 Workday 的一些測試使用者來測試您的對應。 確認對應能夠運作之後，您便可以移除篩選，或逐漸擴大篩選來包含更多使用者。
 
    > [!CAUTION] 
    > 佈建引擎的預設行為是停用/刪除超出範圍的使用者。 這可能不適合您的 Workday 至 AD 整合。 若要覆寫此預設行為，請參閱[略過刪除超出範圍的使用者帳戶](../app-provisioning/skip-out-of-scope-deletions.md)一文
@@ -1065,7 +1065,8 @@ Azure AD 佈建服務會歸類到 GDPR 分類的 **資料處理器** 類別。 �
 
 ## <a name="next-steps"></a>後續步驟
 
+* [深入瞭解 Azure AD 與 Workday 的整合案例和 web 服務呼叫](../app-provisioning/workday-integration-reference.md)
 * [瞭解如何針對佈建活動檢閱記錄和取得報告](../app-provisioning/check-status-user-account-provisioning.md)
 * [了解如何設定 Workday 與 Azure Active Directory 之間的單一登入](workday-tutorial.md)
-* [了解如何將其他 SaaS 應用程式與 Azure Active Directory 整合](tutorial-list.md)
+* [了解如何設定 Workday Writeback](workday-writeback-tutorial.md)
 * [了解如何使用 Microsoft Graph API 來管理佈建設定](/graph/api/resources/synchronization-overview) \(英文\)

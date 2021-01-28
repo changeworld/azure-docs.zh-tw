@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/27/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8a0d69ea57eb5b8b2a074c37d4798a99c576ce95
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: ea4def3cfaa19e27dc05e955bf97b41976ec2190
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538173"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98953915"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-azure-ad-b2c-account-from-another-azure-ad-b2c-tenant"></a>使用來自另一個 Azure AD B2C 租使用者的 Azure AD B2C 帳戶設定註冊和登入
 
@@ -107,6 +107,17 @@ ms.locfileid: "98538173"
 
 1. 選取 [儲存]。
 
+## <a name="add-azure-ad-b2c-identity-provider-to-a-user-flow"></a>將 Azure AD B2C 身分識別提供者新增至使用者流程 
+
+1. 在 Azure AD B2C 租用戶中，選取 [使用者流程]。
+1. 按一下您要新增 Azure AD B2C 識別提供者的使用者流程。
+1. 在 **社交識別提供者** 底下，選取 [ **Fabrikam**]。
+1. 選取 [儲存]。
+1. 若要測試您的原則，請選取 [ **執行使用者流程**]。
+1. 針對 [ **應用程式**]，選取您先前註冊的 web 應用程式（名為 *testapp1-pre-production* ）。 **Reply URL** 應顯示 `https://jwt.ms`。
+1. 按一下 [**執行使用者流程**]
+1. 在 [註冊或登入] 頁面中，選取 [ *Fabrikam* ] 以其他 Azure AD B2C 租使用者登入。
+
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
@@ -125,9 +136,9 @@ ms.locfileid: "98538173"
 1. 針對 [金鑰使用方法]，選取 `Signature`。
 1. 選取 [建立]。
 
-## <a name="add-a-claims-provider"></a>新增宣告提供者
+## <a name="configure-azure-ad-b2c-as-an-identity-provider"></a>將 Azure AD B2C 設定為身分識別提供者
 
-如果您想要讓使用者使用其他 Azure AD B2C (Fabrikam) 登入，您必須將另一個 Azure AD B2C 定義為 Azure AD B2C 可透過端點與之通訊的宣告提供者。 此端點會提供一組宣告，由 Azure AD B2C 用來確認特定使用者已驗證。
+若要讓使用者能夠使用來自另一個 Azure AD B2C 租使用者 (Fabrikam) 的帳戶進行登入，您必須將另一個 Azure AD B2C 定義為 Azure AD B2C 可透過端點與之通訊的宣告提供者。 此端點會提供一組宣告，由 Azure AD B2C 用來確認特定使用者已驗證。
 
 您可以藉由將 Azure AD B2C 新增至原則擴充檔中的 **ClaimsProvider** 專案，將 Azure AD B2C 定義為宣告提供者。
 
@@ -139,7 +150,7 @@ ms.locfileid: "98538173"
       <Domain>fabrikam.com</Domain>
       <DisplayName>Federation with Fabrikam tenant</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="Fabrikam-OpenIdConnect">
+        <TechnicalProfile Id="AzureADB2CFabrikam-OpenIdConnect">
         <DisplayName>Fabrikam</DisplayName>
         <Protocol Name="OpenIdConnect"/>
         <Metadata>
@@ -185,86 +196,32 @@ ms.locfileid: "98538173"
     |TechnicalProfile\DisplayName|這個值會顯示在登入畫面的登入按鈕上。 例如， *Fabrikam*。 |
     |中繼資料 \ client_id|識別提供者的應用程式識別碼。 使用您稍早在其他 Azure AD B2C 租使用者中建立的應用程式識別碼來更新用戶端識別碼。|
     |Metadata\METADATA|指向 OpenID Connect 身分識別提供者設定檔的 URL，也稱為 OpenID 知名的設定端點。 輸入下列 URL， `{tenant}` 並以其他 Azure AD B2C 租使用者 (Fabrikam) 的功能變數名稱取代。 將取代為 `{tenant}` 您在另一個租使用者中設定的原則名稱，並 `{policy]` 使用原則名稱： `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/v2.0/.well-known/openid-configuration` 。 例如： `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/B2C_1_susi/v2.0/.well-known/openid-configuration` 。|
-    |CryptographicKeys| 將 **StorageReferenceId** 的值更新為您稍早建立之原則金鑰的名稱。 例如： `B2C_1A_FabrikamAppSecret` 。| 
+    |CryptographicKeys| 將 **StorageReferenceId** 的值更新為您稍早建立之原則金鑰的名稱。 例如 `B2C_1A_FabrikamAppSecret`。| 
     
 
-### <a name="upload-the-extension-file-for-verification"></a>上傳擴充檔案準備驗證
-
-現在，您已設定原則，讓 Azure AD B2C 知道如何與其他 Azure AD B2C 租使用者通訊。 嘗試上傳原則的擴充檔案，這只是為了確認它到目前為止沒有任何問題。
-
-1. 在 Azure AD B2C 租用戶的 [自訂原則] 頁面上，選取 [上傳原則]。
-1. 啟用 [覆寫現有的原則]，然後瀏覽並選取 *TrustFrameworkExtensions.xml* 檔案。
-1. 按一下 [上傳] 。
-
-## <a name="register-the-claims-provider"></a>註冊宣告提供者
-
-此時，已設定身分識別提供者，但尚未在任何註冊/登入頁面中提供。 若要讓它可供使用，請建立現有範本使用者旅程圖的複本，然後加以修改，讓它也有 Azure AD 的識別提供者：
-
-1. 從 Starter Pack 開啟 TrustFrameworkBase.xml 檔案。
-1. 尋找並複製包含 `Id="SignUpOrSignIn"` 之 **UserJourney** 元素的整個內容。
-1. 開啟 *TrustFrameworkExtensions.xml*，並尋找 **UserJourneys** 元素。 如果此元素不存在，請新增。
-1. 貼上您複製的整個 **UserJourney** 元素內容作為 **UserJourneys** 元素的子系。
-1. 重新命名使用者旅程圖的識別碼。 例如： `SignUpSignInFabrikam` 。
-
-### <a name="display-the-button"></a>顯示按鈕
-
-**ClaimsProviderSelection** 元素類似于註冊/登入頁面上的識別提供者按鈕。 如果您加入 Azure AD B2C 的 **ClaimsProviderSelection** 專案，當使用者在頁面上時，就會顯示新的按鈕。
-
-1. 在 `Order="1"` 您于 *TrustFrameworkExtensions.xml* 中建立的使用者旅程圖中，尋找包含的 >orchestrationstep 元素。
-1. 在 **ClaimsProviderSelections** 底下新增下列元素。 將 **TargetClaimsExchangeId** 的值設定成適當的值，例如 `FabrikamExchange`：
-
-    ```xml
-    <ClaimsProviderSelection TargetClaimsExchangeId="FabrikamExchange" />
-    ```
-
-### <a name="link-the-button-to-an-action"></a>將按鈕連結至動作
-
-現在已備妥按鈕，您需要將它連結至動作。 在此案例中，動作是用於 Azure AD B2C 與其他 Azure AD B2C 通訊以接收權杖。 藉由連結 Azure AD B2C 宣告提供者的技術設定檔，將按鈕連結至動作：
-
-1. 在使用者旅程圖中，尋找包含 `Order="2"` 的 **OrchestrationStep**。
-1. 新增下列 **ClaimsExchange** 元素，以確定您針對 **>targetclaimsexchangeid** 所使用的 **識別碼** 使用相同的值：
-
-    ```xml
-    <ClaimsExchange Id="FabrikamExchange" TechnicalProfileReferenceId="Fabrikam-OpenIdConnect" />
-    ```
-
-    將 **>technicalprofilereferenceid** 的值更新為您稍早建立之技術設定檔的 **識別碼** 。 例如： `Fabrikam-OpenIdConnect` 。
-
-1. 儲存 TrustFrameworkExtensions.xml 檔案，並再次上傳它以供驗證。
-
-::: zone-end
-
-::: zone pivot="b2c-user-flow"
-
-## <a name="add-azure-ad-b2c-identity-provider-to-a-user-flow"></a>將 Azure AD B2C 身分識別提供者新增至使用者流程 
-
-1. 在 Azure AD B2C 租用戶中，選取 [使用者流程]。
-1. 按一下您要新增 Azure AD B2C 識別提供者的使用者流程。
-1. 在 **社交識別提供者** 底下，選取 [ **Fabrikam**]。
-1. 選取 [儲存]。
-1. 若要測試您的原則，請選取 [ **執行使用者流程**]。
-1. 針對 [ **應用程式**]，選取您先前註冊的 web 應用程式（名為 *testapp1-pre-production* ）。 **Reply URL** 應顯示 `https://jwt.ms`。
-1. 按一下 [**執行使用者流程**]
-1. 在 [註冊或登入] 頁面中，選取 [ *Fabrikam* ] 以其他 Azure AD B2C 租使用者登入。
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
+[!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
 
 
-## <a name="update-and-test-the-relying-party-file"></a>更新並測試信賴憑證者檔案
+```xml
+<OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
+  <ClaimsProviderSelections>
+    ...
+    <ClaimsProviderSelection TargetClaimsExchangeId="AzureADB2CFabrikamExchange" />
+  </ClaimsProviderSelections>
+  ...
+</OrchestrationStep>
 
-更新信賴憑證者 (RP) 檔案，此檔案將起始您剛才建立的使用者旅程圖。
+<OrchestrationStep Order="2" Type="ClaimsExchange">
+  ...
+  <ClaimsExchanges>
+    <ClaimsExchange Id="AzureADB2CFabrikamExchange" TechnicalProfileReferenceId="AzureADB2CFabrikam-OpenIdConnect" />
+  </ClaimsExchanges>
+</OrchestrationStep>
+```
 
-1. 在您的工作目錄中建立一份 SignUpOrSignIn.xml 複本，並將它重新命名。 例如，將它重新命名為 *SignUpSignInFabrikam.xml*。
-1. 開啟新檔案，並將 **TrustFrameworkPolicy** 的 **PolicyId** 屬性更新成唯一值。 例如： `SignUpSignInFabrikam` 。
-1. 將 **PublicPolicyUri** 的值更新成原則的 URI。 例如： `http://contoso.com/B2C_1A_signup_signin_fabrikam` 。
-1. 更新 **>referenceid** 中 **ReferenceId** 屬性的值，以符合您稍早建立之使用者旅程圖的識別碼。 例如， *SignUpSignInFabrikam*。
-1. 儲存變更並上傳檔案。
-1. 在 [ **自訂原則**] 底下，選取清單中的新原則。
-1. 在 [ **選取應用程式** ] 下拉式清單中，選取您稍早建立的 Azure AD B2C 應用程式。 例如 *testapp1*。
-1. 選取 **立即執行** 
-1. 在 [註冊或登入] 頁面中，選取 [ *Fabrikam* ] 以其他 Azure AD B2C 租使用者登入。
+[!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
+
+[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
 
 ::: zone-end
 

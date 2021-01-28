@@ -6,19 +6,19 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 01/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 09dddad24794491b53a11f7b0e4347f43f11598b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a866c21e067293481a52dd563873892de8b5444c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440479"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955270"
 ---
 # <a name="scenario-any-to-any"></a>案例：任何對任意
 
-使用虛擬 WAN 虛擬中樞路由時，有很多可用的案例。 在任何對任何情況下，任何輪輻都可以觸及另一個輪輻。 如果有多個中樞，則在標準虛擬 WAN 中預設會啟用中樞對中樞路由 (也稱為「中樞間) 」。 如需虛擬中樞路由的詳細資訊，請參閱 [關於虛擬中樞路由](about-virtual-hub-routing.md)。
+使用虛擬 WAN 虛擬中樞路由時，有很多可用的案例。 在任何對任何情況下，任何輪輻都可以觸及另一個輪輻。 如果有多個中樞，則在標準虛擬 WAN 中預設會啟用中樞對中樞路由 (也稱為「中樞間) 」。 您可以使用各種不同的方法來建立此設定，例如 Azure 入口網站或 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/201-virtual-wan-with-all-gateways/)。 如需虛擬中樞路由的詳細資訊，請參閱 [關於虛擬中樞路由](about-virtual-hub-routing.md)。 
 
 ## <a name="design"></a><a name="design"></a>設計
 

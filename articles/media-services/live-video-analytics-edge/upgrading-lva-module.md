@@ -5,12 +5,12 @@ author: naiteeks
 ms.topic: how-to
 ms.author: naiteeks
 ms.date: 12/14/2020
-ms.openlocfilehash: aa8657550c6475afd9f893acf8985c50cec0f199
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 49c17946203bc6c3655b1aaf7b04a1ee3ea67388
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119453"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955644"
 ---
 # <a name="upgrading-live-video-analytics-on-iot-edge-from-10-to-20"></a>將 IoT Edge 的即時影片分析從1.0 升級為2。0
 
@@ -19,7 +19,7 @@ ms.locfileid: "98119453"
 ## <a name="change-list"></a>變更清單
 
 > [!div class="mx-tdCol4BreakAll"]
-> |標題|即時影片分析1。0|即時影片分析2。0|描述|
+> |標題|即時影片分析1。0|即時影片分析2。0|Description|
 > |-------------|----------|---------|---------|
 > |容器映射|mcr.microsoft.com/media/live-video-analytics:1|mcr.microsoft.com/media/live-video-analytics:2|Microsoft 已發佈 docker 映射，可在 Azure IoT Edge 上進行即時影片分析|
 > |**MediaGraph-節點** |    |   |   |
@@ -37,7 +37,7 @@ ms.locfileid: "98119453"
 "image": "mcr.microsoft.com/media/live-video-analytics:2"
 ```
 > [!TIP]
-如果您尚未在 IoT Edge 模組上修改即時影片分析的名稱，請在 `lvaEdge` 模組節點下尋找。
+> 如果您尚未在 IoT Edge 模組上修改即時影片分析的名稱，請在 `lvaEdge` 模組節點下尋找。
 
 ### <a name="topology-file-changes"></a>拓撲檔案變更
 在您的拓撲檔案中，確定 **`apiVersion`** 已設定為2。0
@@ -58,9 +58,9 @@ ms.locfileid: "98119453"
 >**`outputSelectors`** 是選擇性屬性。 如果未使用這項功能，則媒體圖形將會通過音訊 (（如果已啟用）) 和來自 RTSP 攝影機下游的影片。 
 
 * 在 `MediaGraphHttpExtension` 和 `MediaGraphGrpcExtension` 處理器中，請注意下列變更：  
-    * **映像屬性**
-        * `MediaGraphImageFormatEncoded` 不再受支援。 
-        * 請改用 **`MediaGraphImageFormatBmp`** 或 **`MediaGraphImageFormatJpeg`** 或 **`MediaGraphImageFormatPng`** 。 例如，
+    #### <a name="image-properties"></a>映像屬性
+    * `MediaGraphImageFormatEncoded` 不再受支援。 
+      * 請改用 **`MediaGraphImageFormatBmp`** 或 **`MediaGraphImageFormatJpeg`** 或 **`MediaGraphImageFormatPng`** 。 例如，
         ```
         "image": {
                 "scale": 
@@ -94,14 +94,14 @@ ms.locfileid: "98119453"
         >[!NOTE]
         > 可能的 pixelFormat 值包括： `yuv420p` 、 `rgb565be` 、 `rgb565le` 、 `rgb555be` 、 `rgb555le` 、 `rgb24` 、 `bgr24` `argb` `rgba` `abgr` 、、、、 `bgra`  
 
-    * **適用于 Grpc 擴充處理器的 extensionConfiguration**  
-        * 在 `MediaGraphGrpcExtension` 處理器中，有一個稱為的新屬性 **`extensionConfiguration`** ，它是選擇性字串，可作為 gRPC 合約的一部分使用。 這個欄位可以用來將任何資料傳遞至推斷伺服器，而且您可以定義推斷伺服器如何使用該資料。  
-        這個屬性的一個使用案例是當您在單一推斷伺服器中封裝多個 AI 模型時。 使用這個屬性，您就不需要為每個 AI 模型公開節點。 相反地，針對圖形實例，您可以使用屬性，以擴充提供者的形式來定義如何選取不同的 AI 模型 **`extensionConfiguration`** ，而 LVA 會將此字串傳遞至推斷伺服器，這可以用來叫用所需的 ai 模型。  
+    #### <a name="extensionconfiguration-for-grpc-extension-processor"></a>適用于 Grpc 擴充處理器的 extensionConfiguration  
+    * 在 `MediaGraphGrpcExtension` 處理器中，有一個稱為的新屬性 **`extensionConfiguration`** ，它是選擇性字串，可作為 gRPC 合約的一部分使用。 這個欄位可以用來將任何資料傳遞至推斷伺服器，而且您可以定義推斷伺服器如何使用該資料。  
+    這個屬性的一個使用案例是當您在單一推斷伺服器中封裝多個 AI 模型時。 使用這個屬性，您就不需要為每個 AI 模型公開節點。 相反地，針對圖形實例，您可以使用屬性，以擴充提供者的形式來定義如何選取不同的 AI 模型 **`extensionConfiguration`** ，而 LVA 會將此字串傳遞至推斷伺服器，這可以用來叫用所需的 ai 模型。  
 
-    * **AI 組合**
-        * Live Video Analytics 2.0 現在支援在拓撲內使用一個以上的 media graph 擴充處理器。 您可以依照順序，以平行方式或兩者的組合，將媒體框架從 RTSP 攝影機傳遞至不同的 AI 模型。 請參閱範例拓撲，其中顯示兩個依序使用的 AI 模型。
+    #### <a name="ai-composition"></a>AI 組合
+    * Live Video Analytics 2.0 現在支援在拓撲內使用一個以上的 media graph 擴充處理器。 您可以依照順序，以平行方式或兩者的組合，將媒體框架從 RTSP 攝影機傳遞至不同的 AI 模型。 請參閱範例拓撲，其中顯示兩個依序使用的 AI 模型。
 
-
+### <a name="disk-space-management-with-sink-nodes"></a>具有接收節點的磁碟空間管理
 * 在您的 [檔案 **接收** ] 節點中，您現在可以指定 IoT Edge 模組的即時影片分析可使用多少磁碟空間來儲存已處理的影像。 若要這樣做，請將 **`maximumSizeMiB`** 欄位加入至 FileSink 節點。 範例 File Sink 節點如下所示：
     ```
     "sinks": [
@@ -154,6 +154,7 @@ ms.locfileid: "98119453"
     >[!NOTE]
     >  檔案 **接收** 路徑會分割成基底目錄路徑和檔案名模式，而 **資產接收** 路徑則包含基底目錄路徑。  
 
+### <a name="frame-rate-management"></a>畫面播放速率管理
 * **`MediaGraphFrameRateFilterProcessor`** 在 **IoT Edge 2.0 模組的即時影片分析** 中已淘汰。
     * 若要取樣傳入影片以進行處理，請將 **`samplingOptions`** 屬性新增至 MediaGraph 延伸處理器 (`MediaGraphHttpExtension` 或 `MediaGraphGrpcExtension`)   
      ```
@@ -169,8 +170,8 @@ ms.locfileid: "98119453"
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/telemetry-schema/telegraf.png" alt-text="事件的分類法":::
 
-您可以使用 docker 輕鬆地產生具有自訂設定的 Telegraf 映射。 在 [ [監視和記錄](monitoring-logging.md#azure-monitor-collection-via-telegraf) ] 頁面中深入瞭解此資訊。
+您可以使用 docker 輕鬆地產生具有自訂設定的 Telegraf 映射。 在 [ [監視和記錄](monitoring-logging.md#azure-monitor-collection-via-telegraf) ] 頁面中深入瞭解。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [開始使用 IoT Edge 的即時影片分析](get-started-detect-motion-emit-events-quickstart.md)

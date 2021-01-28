@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 7d1b4b3542f6914d413a5e29e57baa15e7a53346
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 3cc38fad6f26bf6f382b4a275638c450c8333a04
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012779"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955727"
 ---
 # <a name="connect-servicenow-with-it-service-management-connector"></a>使用 IT 服務管理連接器連接 ServiceNow
 
 本文說明如何設定 ServiceNow 實例與 IT 服務管理連接器之間的連線 (ITSMC) 在 Log Analytics 中，讓您可以集中管理您的 IT 服務管理 (ITSM) 工作專案。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 確定您符合下列連接必要條件。
 
 ### <a name="itsmc-installation"></a>ITSMC 安裝
@@ -122,7 +122,7 @@ ServiceNow 管理員必須為其 ServiceNow 實例產生用戶端識別碼和用
    | --- | --- |
    | **連接名稱**   | 輸入您想要與 ITSMC 連接的 ServiceNow 實例名稱。 您稍後會在 Log Analytics 中，于設定 ITSM 工作專案及查看詳細分析時使用此名稱。 |
    | **夥伴類型**   | 選取 **ServiceNow**。 |
-   | **伺服器 Url**   | 輸入您想要連線至 ITSMC 之 ServiceNow 實例的 URL。 URL 應指向支援的 SaaS 版本，其 servicenow.com 為尾碼 *。*|
+   | **伺服器 Url**   | 輸入您想要連線至 ITSMC 之 ServiceNow 實例的 URL。 URL 應指向支援的 SaaS 版本， *servicenow.com* (例如 https://XXXXX.service-now.com/) 。|
    | **使用者名稱**   | 輸入您在 ServiceNow 應用程式中建立的整合使用者名稱，以支援 ITSMC 的連接。|
    | **密碼**   | 輸入與此使用者名稱相關聯的密碼。 **注意**：使用者名稱和密碼僅用來產生驗證權杖。 它們不會儲存在 ITSMC 服務內的任何位置。  |
    | **用戶端識別碼**   | 輸入您想要用於 OAuth2 authentication 的用戶端識別碼，這是您稍早產生的識別碼。 如需產生用戶端識別碼和秘密的詳細資訊，請參閱 [設定 OAuth](https://wiki.servicenow.com/index.php?title=OAuth_Setup)。 |
@@ -142,7 +142,7 @@ ServiceNow 管理員必須為其 ServiceNow 實例產生用戶端識別碼和用
 > [!NOTE]
 > ServiceNow 具有每小時要求的速率限制。 若要設定限制，請在 ServiceNow 實例中定義 **輸入 REST API 速率限制** 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [ITSM 連接器總覽](itsmc-overview.md)
 * [建立 Azure 警示的 ITSM 工作項目](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts)

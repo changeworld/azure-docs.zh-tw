@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 61b396cbcc8c91c75c961f702de7ed6a33e676e4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5e0c2541c398f2e135b8763cc753ec8c20c3967d
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947012"
+ms.locfileid: "98953745"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>設定 Azure 數位 Twins 實例和驗證 (入口網站) 
 
@@ -56,8 +56,8 @@ ms.locfileid: "98947012"
 
 以下是您可以在安裝期間設定的其他選項，方法是使用 [ **建立資源** ] 進程中的其他索引標籤。
 
-* **網路** 功能：在此索引標籤中，您可以使用 [Azure Private Link](../private-link/private-link-overview.md) 來啟用私人端點，以消除實例的公用網路公開。 如需相關指示，請參閱作法 [*：使用 Private Link 啟用私用存取*](how-to-enable-private-link.md#add-a-private-endpoint-during-instance-creation)。
-* **Advanced**：在此索引標籤中，您可以為您的實例啟用 [系統管理](../active-directory/managed-identities-azure-resources/overview.md) 的身分識別，以便在將事件轉送至 [端點](concepts-route-events.md)時使用。 如需相關指示，請參閱作法 [*：啟用路由事件的受控*](how-to-enable-managed-identities.md)識別。
+* **網路** 功能：在此索引標籤中，您可以使用 [Azure Private Link](../private-link/private-link-overview.md) 來啟用私人端點，以消除實例的公用網路公開。 如需相關指示，請參閱作法 [*：使用 Private Link (預覽) 啟用私用存取*](how-to-enable-private-link.md#add-a-private-endpoint-during-instance-creation)。
+* **Advanced**：在此索引標籤中，您可以為您的實例啟用 [系統管理](../active-directory/managed-identities-azure-resources/overview.md) 的身分識別，以便在將事件轉送至 [端點](concepts-route-events.md)時使用。 如需相關指示，請參閱作法 [*：啟用路由事件的受控識別 (預覽)*](how-to-enable-managed-identities.md#add-a-system-managed-identity-during-instance-creation)。
 * **標記**：在此索引標籤中，您可以將標記新增至您的實例，以協助您在 Azure 資源之間進行組織。 如需 Azure 資源標記的詳細資訊，請參閱 [*為邏輯組織標記資源、資源群組和*](../azure-resource-manager/management/tag-resources.md)訂用帳戶。
 
 ### <a name="verify-success-and-collect-important-values"></a>驗證成功並收集重要值
@@ -108,7 +108,7 @@ ms.locfileid: "98947012"
 
 您現在已準備好開始使用 Azure 數位 Twins 實例，並已獲指派管理該實例的許可權。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 使用 Azure 數位 Twins CLI 命令，在您的實例上測試個別 REST API 呼叫： 
 * [az dt 參考](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)

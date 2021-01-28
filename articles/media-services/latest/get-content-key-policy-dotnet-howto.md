@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒體服務 v3 .NET 從原則取得簽署金鑰
+title: 從原則 .NET 取得簽署金鑰
 description: 本主題示範如何使用媒體服務 v3 .NET SDK，從現有原則取得簽署金鑰。
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 7107a2acdc0ca430797245125ca903f7414908da
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1436561f7c82446038c231fadec3bd62c94d4ff9
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427063"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955100"
 ---
 # <a name="get-a-signing-key-from-the-existing-policy"></a>從現有原則取得簽署金鑰
 
@@ -43,6 +43,6 @@ v3 API 的金鑰設計原則之一，是讓 API 更為安全。 v3 Api 不會傳
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetOrCreateContentKeyPolicy)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [設計具有存取控制的多重 DRM 內容保護系統](design-multi-drm-system-with-access-control.md) 

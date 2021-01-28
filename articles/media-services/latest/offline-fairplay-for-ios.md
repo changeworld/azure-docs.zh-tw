@@ -1,5 +1,5 @@
 ---
-title: 適用于 iOS 的離線 FairPlay 串流 Azure 媒體服務 v3
+title: 適用于 iOS 的媒體服務 v3 離線 FairPlay 串流
 description: 本主題概要說明，並示範如何使用 Azure 媒體服務 v3 動態加密您的 HTTP 即時串流 (以離線模式使用 Apple FairPlay HLS) 內容。
 services: media-services
 keywords: HLS, DRM, FairPlay Streaming (FPS), Offline, iOS 10, FairPlay 串流 (FPS), 離線
@@ -16,12 +16,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 886a8aa1a6f062b5fe01476e387742f34efc0c56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 399f9b0184217db8180fcec38e4f78917d5c9bc8
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532234"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955223"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>使用媒體服務 v3 的適用于 iOS 的離線 FairPlay 串流
 
@@ -209,6 +209,6 @@ func requestApplicationCertificate() throws -> Data {
 
 請參閱 [常見問題以提供疑難排解的協助](frequently-asked-questions.md#why-does-only-audio-play-but-not-video-during-offline-mode)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 了解如何[使用 AES-128 保護](protect-with-aes128.md)

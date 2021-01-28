@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒體服務 v3 來管理串流端點
+title: 管理串流端點
 description: 本文示範如何使用 Azure 媒體服務 v3 來管理串流端點。
 services: media-services
 documentationcenter: ''
@@ -15,18 +15,18 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 8d3835d78ec55f120f6b9439aea9c29434e6bd47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d656ce23cf68a1eec23421b769d5847f9b661bb4
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89289472"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955897"
 ---
 # <a name="manage-streaming-endpoints-with--media-services-v3"></a>使用媒體服務 v3 來管理串流端點
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-當您建立媒體服務帳戶時，**預設**[串流端點](streaming-endpoint-concept.md)會新增至您的帳戶處於**已停止**狀態。 若要開始串流處理您的內容並利用[動態封裝](dynamic-packaging-overview.md)和[動態加密](content-protection-overview.md)，您想要串流內容的串流端點必須處於執行**中狀態。**
+當您建立媒體服務帳戶時，**預設**[串流端點](streaming-endpoint-concept.md)會新增至您的帳戶處於 **已停止** 狀態。 若要開始串流處理您的內容並利用 [動態封裝](dynamic-packaging-overview.md)和 [動態加密](content-protection-overview.md)，您想要串流內容的串流端點必須處於執行 **中狀態。**
 
 本文說明如何使用不同的技術，在您的串流端點上執行 [start](/rest/api/media/streamingendpoints/start) 命令。 
  
@@ -106,7 +106,7 @@ if (streamingEndpoint != null)
 
 ---
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [媒體服務 v3 OpenAPI 規格 (Swagger) ](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)
 * [串流端點作業](/rest/api/media/streamingendpoints)

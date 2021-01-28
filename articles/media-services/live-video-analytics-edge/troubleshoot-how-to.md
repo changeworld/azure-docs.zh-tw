@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: d23294c21d49b1c2ab83c4bf8f110d5d4bc7aafb
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d519193d55c9535dc71206d2d9f72661d7a40d71
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878285"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954407"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>針對 IoT Edge 上的即時影片分析進行疑難排解
 
@@ -97,6 +97,17 @@ az iot edge set-modules --hub-name <iot-hub-name> --device-id lva-sample-device 
 
     > [!TIP]
     > 如果您在環境中執行 Azure IoT Edge 模組時遇到問題，請 **[Azure IoT Edge 標準的診斷步驟](../../iot-edge/troubleshoot.md?preserve-view=true&view=iotedge-2018-06)** ，作為疑難排解和診斷的指南。
+
+執行 **[即時影片分析資源設定腳本](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)** 時，您可能也會遇到問題。 常見的問題包括：
+
+* 使用您沒有擁有者許可權的訂用帳戶。 這會導致腳本因 **ForbiddenError** 或 **AuthorizationFailed** 錯誤而失敗。
+    * 若要解決這個問題，請確定您有想要使用之訂用帳戶的 **擁有** 者許可權。 如果您無法自行執行，請洽詢訂用帳戶管理員以授與適當的許可權。
+* **範本部署因為原則違規而失敗。**
+    * 若要通過此問題，請與您的 IT 系統管理員合作，以確保呼叫 (s) 建立虛擬機器，以略過封鎖 ssh 驗證。 因為我們使用的安全防禦網路需要使用者名稱和密碼來與 Azure 資源通訊，所以不需要這麼做。 這些認證會儲存在 Cloud Shell 的 **~/clouddrive/lva-sample/vm-edge-device-credentials.txt** 檔案中，一旦虛擬機器成功建立之後，就會部署並附加至 IoT 中樞。
+* 安裝腳本無法建立服務主體及（或） Azure 資源。
+    * 若要解決此問題，請確認您的訂用帳戶和 Azure 租使用者尚未達到其最大服務限制。 深入瞭解 [Azure AD 服務限制和限制](https://docs.microsoft.com/azure/active-directory/enterprise-users/directory-service-limits-restrictions) ，以及 [Azure 訂用帳戶和服務限制、配額和條件約束。](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)
+
+
 ### <a name="live-video-analytics-working-with-external-modules"></a>使用外部模組的即時影片分析
 
 透過 media graph 擴充處理器的即時影片分析可以擴充媒體圖形，以使用 HTTP 或 gRPC 通訊協定從其他 IoT Edge 模組傳送和接收資料。 在 [特定範例](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)中，此媒體圖形可將影片框架作為影像傳送至外部推斷模組（例如 Yolo v3），並使用 HTTP 通訊協定接收以 JSON 為基礎的分析結果。 在這種拓撲中，事件的目的地大多是 IoT 中樞。 在您沒有在中樞上看到推斷事件的情況下，請檢查下列各項：
@@ -314,6 +325,6 @@ Live Video Analytics 不會監視或提供任何硬體資源監視。 開發人�
 1. 然後，當您擁有所需的影像框架數目時，就可以執行處理邏輯。
 1. 準備好時，請將推斷結果回復為即時影片分析。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [教學課程：以事件為基礎的影片錄製到雲端並從雲端播放](event-based-video-recording-tutorial.md)

@@ -1,5 +1,5 @@
 ---
-title: 建立具有多個轉換輸出的 Azure 媒體服務作業
+title: 建立具有多個轉換輸出的作業
 description: 本主題示範如何建立具有多個轉換輸出的 Azure 媒體服務作業。
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e5fe12b02503aff625a1cc2c39a71abcdf3dab0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0396415593f2d0f41abc55433bb8f19c4913ac26
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89296772"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954135"
 ---
 # <a name="create-a-job-with-multiple-transform-outputs"></a>建立具有多個轉換輸出的作業
 
@@ -136,6 +136,6 @@ private static async Task<Job> SubmitJobAsync(IAzureMediaServicesClient client,
 
 請參閱[錯誤碼](/rest/api/media/jobs/get#joberrorcode) \(英文\)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [使用 .NET Azure 媒體服務 v3 範例](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/) 

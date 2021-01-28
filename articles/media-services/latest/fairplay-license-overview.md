@@ -1,5 +1,5 @@
 ---
-title: 媒體服務和 Apple FairPlay 授權支援-Azure
+title: 媒體服務 Apple FairPlay 授權支援
 description: 本主題提供 Apple FairPlay 授權需求和設定的總覽。
 author: IngridAtMicrosoft
 manager: femila
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: a1f93567e2502612ebdf4bc6e67de0138b18657a
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 5a00ba8000f33e8e50b1a5d01f40a68a7fe2442d
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897589"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956186"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay 授權需求和設定
 
@@ -29,7 +29,7 @@ Azure 媒體服務可讓您使用 **Apple FairPlay** (AES-128 CBC) 來加密您�
 
 媒體服務也會提供您可以用來設定 FairPlay 授權的 API。 本主題討論 FairPlay 授權需求，並示範如何使用媒體服務 API 設定 **FairPlay** 授權。 
 
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 
 當使用媒體服務搭配 **Apple FairPlay** 來加密您的 HLS 內容，以及使用媒體服務來傳遞 FairPlay 授權時，需要下列項目：
 
@@ -120,6 +120,6 @@ private static ContentKeyPolicyFairPlayConfiguration ConfigureFairPlayPolicyOpti
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 查看如何[使用 DRM 保護](protect-with-drm.md)

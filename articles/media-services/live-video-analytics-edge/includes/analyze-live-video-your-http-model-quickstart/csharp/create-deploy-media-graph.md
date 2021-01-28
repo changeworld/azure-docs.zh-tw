@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 304f62def117d1b1a803b2f604151c5e52dbe7be
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
-ms.translationtype: HT
+ms.openlocfilehash: 48c6e1141a00635dd1fd82ef9053b2e77168e5e8
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97532051"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956247"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>查看和編輯範例檔案
 
@@ -48,6 +48,13 @@ ms.locfileid: "97532051"
     否則，請在左下角的 [Azure IoT 中樞] 窗格附近，選取 [其他動作] 圖示，然後選取 [設定 IoT 中樞連接字串]。 您可以從 *appsettings.json* 檔案複製字串。 或者，若要確保您已在 Visual Studio Code 中設定適當的 IoT 中樞，請使用[選取 IoT 中樞命令](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub)。
     
     ![設定 IoT 中樞連接字串](../../../media/quickstarts/set-iotconnection-string.png)
+
+> [!NOTE]
+> 系統可能會要求您提供 IoT 中樞的內建端點資訊。 若要取得該資訊，請在 Azure 入口網站中，流覽至您的 IoT 中樞，並在左側流覽窗格中尋找內 **建端點** 選項。 按一下該處，並在 [**事件中樞相容端點**] 區段中尋找 **事件中樞相容端點**。 複製並使用方塊中的文字。 端點看起來會像這樣：  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
+
 1. 以滑鼠右鍵按一下 *src/edge/config/ deployment.yolov3.amd64.json*，然後選取 [建立單一裝置的部署]。 
 
     ![建立單一裝置的部署](../../../media/quickstarts/create-deployment-single-device.png)
@@ -58,7 +65,7 @@ ms.locfileid: "97532051"
     * 名為 `rtspsim` 的模組，其會模擬 RTSP 伺服器並作為即時影片摘要的來源。
 
         > [!NOTE]
-        > 如果您使用自己的邊緣裝置，而不是我們的設定指令碼所佈建的裝置，請移至您的邊緣裝置，並以 **管理員權限** 執行下列命令，以提取並儲存用於本快速入門的範例影片檔案：  
+        > 上述步驟假設您使用的是安裝腳本所建立的虛擬機器。 如果您改為使用您自己的 edge 裝置，請移至您的 edge 裝置，並以系統 **管理員許可權** 執行下列命令，以提取和儲存本快速入門所使用的範例影片檔案：  
         
         ```
         mkdir /home/lvaadmin/samples

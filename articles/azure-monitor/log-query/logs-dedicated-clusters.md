@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: adcc894db630bba11e84e2f277705d2f31caf7dc
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 1222108694ff7274e5d8fd063635b70a76ffc59c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920218"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954744"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure 監視器記錄專用叢集
 
@@ -81,10 +81,12 @@ Authorization: Bearer <token>
 
 建立 *叢集資源之後* ，您可以編輯其他屬性，例如 *Sku*、* keyVaultProperties 或 *billingType*。 請參閱下方的詳細資料。
 
+每個區域最多可以有2個作用中的叢集。 如果刪除叢集，它仍會保留14天。 在每個區域中，每個訂用帳戶最多可以有4個保留叢集 (作用中或最近刪除的) 。
+
 > [!WARNING]
 > 叢集建立會觸發資源配置和布建。 此作業最多可能需要一小時的時間才能完成。 建議您以非同步方式執行它。
 
-建立叢集的使用者帳戶必須具有標準的 Azure 資源建立許可權：和叢集 `Microsoft.Resources/deployments/*` 寫入權限 `(Microsoft.OperationalInsights/clusters/write)` 。
+建立叢集的使用者帳戶必須具有標準的 Azure 資源建立許可權：和叢集 `Microsoft.Resources/deployments/*` 寫入權限， `Microsoft.OperationalInsights/clusters/write` 方法是讓其角色指派此特定動作或 `Microsoft.OperationalInsights/*` `*/write` 。
 
 ### <a name="create"></a>建立 
 
@@ -503,7 +505,9 @@ Remove-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-nam
 
 ## <a name="limits-and-constraints"></a>限制和條件約束
 
-- 每個區域和訂用帳戶的叢集數目上限為2
+- 每個區域和訂用帳戶的作用中叢集數目上限為2
+
+- 每個區域和訂用帳戶 (作用中或最近刪除) 的保留叢集數目上限為4 
 
 - 連結的工作區到叢集的最大值是1000
 
@@ -567,7 +571,7 @@ Remove-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-nam
   -  404--找不到工作區。 您指定的工作區不存在或已刪除。
   -  409--進程中的工作區連結或取消連結作業。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 深入瞭解 [Log Analytics 專用叢集計費](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)
 - 深入瞭解 [Log Analytics 工作區的正確設計](../platform/design-logs-deployment.md)

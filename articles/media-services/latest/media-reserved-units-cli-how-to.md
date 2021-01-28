@@ -1,5 +1,5 @@
 ---
-title: 如何使用 CLI 調整媒體保留單元 (Mru) -Azure
+title: " (Mru) CLI 調整媒體保留單元"
 description: 本主題顯示如何使用 CLI 搭配 Azure 媒體服務調整媒體處理。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: 41026a64d6f7549c5a268493cfb5975838002df2
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: b1c98bfa6b2cf45a59b70126001442ed80659668
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895300"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955880"
 ---
 # <a name="how-to-scale-media-reserved-units"></a>如何調整媒體保留單元
 

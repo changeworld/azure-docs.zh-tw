@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 197b7ff0a6c613a019007ba507d678b619c9afd4
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
-ms.translationtype: HT
+ms.openlocfilehash: ef4381f305292b366348aa3729209dc3f5e8c87b
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358587"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954084"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>教學課程：設定從 Workday 至 Azure AD 的使用者佈建
 本教學課程的目的是要說明需要執行什麼步驟，才能將員工資料從 Workday 佈建至 Azure Active Directory。 
@@ -208,11 +208,11 @@ ms.locfileid: "94358587"
 
 ## <a name="next-steps"></a>後續步驟
 
+* [深入瞭解 Azure AD 與 Workday 的整合案例和 web 服務呼叫](../app-provisioning/workday-integration-reference.md)
 * [深入了解輸入佈建支援的 Workday 屬性](../app-provisioning/workday-attribute-reference.md)
 * [了解如何設定 Workday Writeback](workday-writeback-tutorial.md)
 * [瞭解如何針對佈建活動檢閱記錄和取得報告](../app-provisioning/check-status-user-account-provisioning.md)
 * [了解如何設定 Workday 與 Azure Active Directory 之間的單一登入](workday-tutorial.md)
-* [了解如何將其他 SaaS 應用程式與 Azure Active Directory 整合](tutorial-list.md)
 * [了解如何匯出和匯入您的佈建設定](../app-provisioning/export-import-provisioning-configuration.md)
 
 

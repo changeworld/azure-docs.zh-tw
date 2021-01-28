@@ -1,18 +1,19 @@
 ---
 title: 支援可用性區域的 Azure 服務
 description: 若要在 Azure 中建立高度可用且具有恢復功能的應用程式，可用性區域可提供可讓您用來執行資源的實體不同位置。
-author: cynthn
+author: prsandhu
 ms.service: azure
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/26/2021
-ms.author: cynthn
+ms.author: prsandhu
+ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 5883dc8b34cd1aa00ba1c5de25a09a017a130c0a
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: e8e62d92afb70ec9d4df40f677de05583ef472b0
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896879"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955778"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>支援可用性區域的 Azure 服務
 
@@ -143,7 +144,7 @@ Microsoft Azure 的全域基礎結構是在每個層級設計和建立的，可�
 | 虛擬機器： Ev4-Series                    |      ： large_blue_diamond：  |
 | 虛擬機器： Fsv2-Series                   |      ： large_blue_diamond：  |
 | 虛擬機器： M 系列                      |      ： large_blue_diamond：  |
-| Virtual WAN                                     |      ： large_blue_diamond：  |
+| 虛擬 WAN                                     |      ： large_blue_diamond：  |
 
 
 **非區域**
@@ -194,7 +195,7 @@ Microsoft Azure 的全域基礎結構是在每個層級設計和建立的，可�
 - [建立 Azure Kubernetes Service (AKS) 使用可用性區域的叢集](../aks/availability-zones.md)
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [Azure 中的區域和可用性區域](az-overview.md) \(部分機器翻譯\)

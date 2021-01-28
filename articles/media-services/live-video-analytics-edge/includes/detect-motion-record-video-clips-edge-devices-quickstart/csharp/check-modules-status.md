@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: e46a56742ab8b98c53c1cd05e840e8ad4b8a73da
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
-ms.translationtype: HT
+ms.openlocfilehash: 53052097fa6616f889b710c58488a9f7a616168d
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88682096"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956239"
 ---
 在[產生和部署 IoT Edge 部署資訊清單](../../../detect-motion-emit-events-quickstart.md#generate-and-deploy-the-deployment-manifest)步驟中，於 Visual Studio Code 中展開 [AZURE IOT 中樞] 底下的 [lva-sample-device] 節點 (位於左下方區段)。 您應該會看到下列部署的模組：
 
@@ -14,7 +14,7 @@ ms.locfileid: "88682096"
   ![模組](../../../media/quickstarts/lva-sample-device-node.png)
 
 > [!NOTE]
-> 如果您使用自己的邊緣裝置，而不是我們的設定指令碼所佈建的裝置，請移至您的邊緣裝置，並以**管理員權限**執行下列命令，以提取並儲存用於本快速入門的範例影片檔案：  
+> 上述步驟假設您使用的是安裝腳本所建立的虛擬機器。 如果您改為使用您自己的 edge 裝置，請移至您的 edge 裝置，並以系統 **管理員許可權** 執行下列命令，以提取和儲存本快速入門所使用的範例影片檔案：  
 
 ```
 mkdir /home/lvaadmin/samples

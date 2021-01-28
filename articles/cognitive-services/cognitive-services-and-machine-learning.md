@@ -7,12 +7,12 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 4ab32cd37d732cd9f177363da547edd22bd5af77
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 77464ccfb5b80c84f091d8e6bc491908baed6486
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349260"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954998"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>認知服務和機器學習
 
@@ -23,7 +23,7 @@ ms.locfileid: "96349260"
 |服務類別|目的|
 |--|--|
 |[決策](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|建置應用程式，以顯示有助於做出明智與高效決策的建議。|
-|[語言](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|可讓您的應用程式使用預先建置的指令碼處理自然語言、評估情感，以及了解如何辨識使用者想要的內容。|
+|[Language](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|允許您的應用程式使用預先建立的指令碼處理自然語言、評估情感，以及了解如何辨識使用者想要的內容。|
 |[搜尋](https://azure.microsoft.com/services/cognitive-services/directory/search/)|將 Bing 搜尋 API 新增至您的應用程式，並透過單一 API 呼叫，充分利用搜查數十億個網頁、影像、視訊和新聞的能力。|
 |[語音](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|將語音轉換成文字，並將文字轉換成自然發音語音。 從一種語言翻譯成另一種語言，並啟用說話者驗證和辨識。|
 |[視覺](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|辨識、識別、仲裁您的圖片、影片和數位筆跡內容，並為其製作標題及編製索引。|
@@ -134,7 +134,7 @@ ms.locfileid: "96349260"
 * [架構指南-Microsoft 的機器學習服務產品是什麼？](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
 * [機器學習服務-深度學習和機器學習的簡介](../machine-learning/concept-deep-learning-vs-machine-learning.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 在 [Azure 入口網站](cognitive-services-apis-create-account.md) 中或使用 [Azure CLI](./cognitive-services-apis-create-account-cli.md)建立您的認知服務帳戶。
 * 瞭解如何對認知服務 [進行驗證](authentication.md) 。

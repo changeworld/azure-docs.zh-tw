@@ -10,12 +10,12 @@ ms.topic: reference
 ms.workload: identity
 ms.date: 01/18/2021
 ms.author: chmutali
-ms.openlocfilehash: 251e1d4249373ec52afb3d7edaa2325c992b66f1
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 38a93d5db6f8331da6e7afdef3e91b2764537459
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570154"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954016"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-workday"></a>Azure Active Directory 布建與 Workday 的整合方式
 
@@ -43,7 +43,7 @@ Azure AD 布建服務會使用基本驗證來連接到 Workday Web 服務 API �
 1. 複製 [元素] *addressPrefixes* 中所列的所有 IP 位址範圍，並使用範圍來建立您的 IP 位址清單。
 1. 登入 Workday 系統管理員入口網站。 
 1. 存取「 **維護 IP 範圍** 」工作，為 Azure 資料中心建立新的 ip 範圍。 使用 CIDR 標記法) 作為逗點分隔清單，以指定 IP 範圍 (。  
-1. 存取 [ **管理驗證原則** ] 工作以建立新的驗證原則。 在 [驗證原則] 中，使用 **驗證** 允許清單來指定 Azure AD ip 範圍，以及允許從這個 ip 範圍存取的安全性群組。 儲存變更。 
+1. 存取 [ **管理驗證原則** ] 工作以建立新的驗證原則。 在驗證原則中，使用驗證允許清單來指定 Azure AD IP 範圍，以及允許從這個 IP 範圍存取的安全性群組。 儲存變更。 
 1. 存取「 **啟用所有擱置中的驗證原則變更** 」工作以確認變更。
 
 ### <a name="limiting-access-to-worker-data-in-workday-using-constrained-security-groups"></a>使用受限制的安全性群組限制存取 Workday 中的背景工作資料
@@ -348,7 +348,7 @@ Azure AD 布建服務會處理每個頁面，並在完整同步處理期間逐�
 </Get_Workers_Request>
 ```
 
-### <a name="retrieving-worker-data-attributes"></a>正在抓取背景工作資料屬性
+## <a name="retrieving-worker-data-attributes"></a>正在抓取背景工作資料屬性
 
 *Get_Workers* API 可能會傳回與背景工作關聯的不同資料集。 視布建架構中所設定的 [XPATH API 運算式](workday-attribute-reference.md) 而定，Azure AD 布建服務會決定要從 Workday 取出哪些資料集。 因此， *Response_Group* 旗標會在 *Get_Workers* 要求中設定。 
 
@@ -403,6 +403,9 @@ Azure AD 布建服務會處理每個頁面，並在完整同步處理期間逐�
 | 45 | 使用者帳戶資料                    | No                  | wd： Worker \_ data/wd：使用者 \_ 帳戶 \_ 資料                                        |
 | 46 | 背景工作檔資料                 | No                  | wd： Worker \_ Data/wd： worker \_ Document \_ 資料                                     |
 
+>[!NOTE]
+>資料表中所列的每個 Workday 實體都會受到 Workday 中的 **網域安全性原則** 所保護。 如果您在設定正確的 XPATH 之後無法抓取任何與實體相關聯的屬性，請洽詢您的 Workday 系統管理員，確定已針對與布建應用程式相關聯的整合系統使用者設定適當的網域安全性原則。 例如，若要取得 *技能資料*，Workday 網域背景工作資料需要 *取得* 存取權 *：技能和體驗*。 
+
 以下是一些範例，說明如何擴充 Workday 整合以符合特定需求。 
 
 **範例 1**
@@ -446,7 +449,7 @@ Azure AD 布建服務會處理每個頁面，並在完整同步處理期間逐�
 
 `wd:Worker/wd:Worker_Data/wd:Account_Provisioning_Data/wd:Provisioning_Group_Assignment_Data[wd:Status='Assigned']/wd:Provisioning_Group/text()`
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [瞭解如何將 Workday 設定為 Active Directory 布建](../saas-apps/workday-inbound-tutorial.md)
 * [瞭解如何設定回寫至 Workday](../saas-apps/workday-writeback-tutorial.md)

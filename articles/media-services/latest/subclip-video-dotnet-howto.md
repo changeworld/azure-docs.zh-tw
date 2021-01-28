@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒體服務編碼時子剪輯影片
+title: 使用媒體服務編碼時子剪輯影片
 description: 本主題說明如何使用 .NET SDK 以 Azure 媒體服務編碼時子剪輯影片
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 06/09/2019
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1725fab30ddb4d40e0bf5345683588c878658052
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9408adfe33fc71707532f3bf5646f3727fd7dda
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89296561"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955049"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---net"></a>使用媒體服務編碼時子剪輯影片-.NET
 

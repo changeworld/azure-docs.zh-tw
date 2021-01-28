@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 64064a584681d84eb6ba023c4777c0fdc4e6ec3d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 566563dde26d2dd36f4358bc8c6dcdcfb5ba8465
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791925"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954846"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>教學課程：使用註冊群組佈建多個 x.509 裝置
 
@@ -352,6 +352,9 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
 在非 Windows 裝置上，您可以從程式碼將憑證鏈結傳遞為憑證存放區。
 
 在 Windows 型裝置上，您必須將簽署憑證 (根和中繼憑證) 新增至 Windows [憑證存放區](/windows/win32/secauthn/certificate-stores)。 否則，系統將不會透過傳輸層安全性 (TLS) 安全通道，將簽署憑證傳輸至 DPS。
+
+> [!TIP]
+> 您也可以使用 OpenSSL，而不是使用安全通道 (Schannel) 搭配 C SDK。 如需使用 OpenSSL 的詳細資訊，請參閱在 [SDK 中使用 OpenSSL](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#using-openssl-in-the-sdk)。
 
 若要將簽署憑證新增至 Windows 型裝置中的憑證存放區：
 

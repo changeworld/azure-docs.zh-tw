@@ -1,5 +1,5 @@
 ---
-title: 使用媒體服務的受控識別和信任的儲存體
+title: 受控識別和受信任的儲存體
 description: 媒體服務可搭配受控識別使用，以啟用受信任的儲存體。
 services: media-services
 author: IngridAtMicrosoft
@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.author: inhenkel
-ms.openlocfilehash: d0811e8f9183ee334d413bcad69f2c7b32023be3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 291508a6beaa687b3a10f55df4591ce601ab51a0
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499351"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956169"
 ---
 # <a name="managed-identities-and-trusted-storage-with-media-services"></a>使用媒體服務的受控識別和信任的儲存體
 
@@ -52,9 +52,9 @@ ms.locfileid: "96499351"
 
 這些教學課程包含上述兩個案例。
 
-- [使用 Azure 入口網站搭配媒體服務使用客戶管理的金鑰或 BYOK](tutorial-byok-portal.md)
+- [使用 Azure 入口網站來搭配媒體服務使用客戶自控金鑰或 BYOK](tutorial-byok-portal.md)
 - [使用客戶管理的金鑰或 BYOK 搭配媒體服務 REST API](tutorial-byok-postman.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要深入瞭解受控識別針對您和您的 Azure 應用程式所能做的動作，請參閱 [Azure AD 受控](../../active-directory/managed-identities-azure-resources/overview.md)識別。

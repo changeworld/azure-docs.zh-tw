@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 262177d8cde3a5eee2721f2af8a0511c205da9b9
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: d36086052f4e5719fd17989e3326a4b5728ee3ca
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98890524"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954288"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Microsoft Spark 公用程式簡介
 
@@ -39,10 +39,6 @@ Synapse 管線會使用 (MSI) 的工作區身分識別來存取儲存體帳戶�
 
 <code>abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/<path></code>
 
-<!-- ### Configure access to Azure Blob Storage  -->
-
-:::zone pivot = "programming-language-python"
-
 ### <a name="configure-access-to-azure-blob-storage"></a>設定 Azure Blob 儲存體的存取權  
 
 Synapse 利用 **(SAS) 的共用存取** 簽章來存取 Azure Blob 儲存體。 為了避免在程式碼中公開 SAS 金鑰，建議您在 Synapse 工作區中建立新的連結服務，以存取您想要存取的 Azure Blob 儲存體帳戶。
@@ -62,6 +58,8 @@ Synapse 利用 **(SAS) 的共用存取** 簽章來存取 Azure Blob 儲存體。
 <code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
 
 以下是程式碼範例：
+
+:::zone pivot = "programming-language-python"
 
 ```python
 from pyspark.sql import SparkSession
@@ -86,26 +84,6 @@ print('Remote blob path: ' + wasb_path)
 
 :::zone pivot = "programming-language-scala"
 
-### <a name="configure-access-to-azure-blob-storage"></a>設定 Azure Blob 儲存體的存取權  
-
-Synapse 利用 **(SAS) 的共用存取** 簽章來存取 Azure Blob 儲存體。 為了避免在程式碼中公開 SAS 金鑰，建議您在 Synapse 工作區中建立新的連結服務，以存取您想要存取的 Azure Blob 儲存體帳戶。
-
-請遵循下列步驟，為 Azure Blob 儲存體帳戶新增連結服務：
-
-1. 開啟 [Azure Synapse Studio](https://web.azuresynapse.net/)。
-2. 從左側面板中選取 [**管理**]，然後選取 [**外部連接**] 底下的 [**連結服務**]。
-3. 在右側的 [**新增連結服務**] 面板中搜尋 **Azure Blob 儲存體**。
-4. 選取 [繼續]。
-5. 選取要存取的 Azure Blob 儲存體帳戶，並設定連結的服務名稱。 建議使用 **驗證方法** 的 **帳戶金鑰**。
-6. 選取 [ **測試連接** ] 以驗證設定是否正確。
-7. 選取 [先 **建立** ]，然後按一下 [ **全部發佈** ] 儲存變更。 
-
-您可以透過下列 URL，透過 Synapse Spark 存取 Azure Blob 儲存體上的資料：
-
-<code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
-
-以下是程式碼範例：
-
 ```scala
 val blob_account_name = "" // replace with your blob name
 val blob_container_name = "" //replace with your container name
@@ -123,27 +101,6 @@ spark.conf.set(f"fs.azure.sas.$blob_container_name.$blob_account_name.blob.core.
 ::: zone-end
 
 :::zone pivot = "programming-language-csharp"
-
-
-### <a name="configure-access-to-azure-blob-storage"></a>設定 Azure Blob 儲存體的存取權  
-
-Synapse 利用 **(SAS) 的共用存取** 簽章來存取 Azure Blob 儲存體。 為了避免在程式碼中公開 SAS 金鑰，建議您在 Synapse 工作區中建立新的連結服務，以存取您想要存取的 Azure Blob 儲存體帳戶。
-
-請遵循下列步驟，為 Azure Blob 儲存體帳戶新增連結服務：
-
-1. 開啟 [Azure Synapse Studio](https://web.azuresynapse.net/)。
-2. 從左側面板中選取 [**管理**]，然後選取 [**外部連接**] 底下的 [**連結服務**]。
-3. 在右側的 [**新增連結服務**] 面板中搜尋 **Azure Blob 儲存體**。
-4. 選取 [繼續]。
-5. 選取要存取的 Azure Blob 儲存體帳戶，並設定連結的服務名稱。 建議使用 **驗證方法** 的 **帳戶金鑰**。
-6. 選取 [ **測試連接** ] 以驗證設定是否正確。
-7. 選取 [先 **建立** ]，然後按一下 [ **全部發佈** ] 儲存變更。 
-
-您可以透過下列 URL，透過 Synapse Spark 存取 Azure Blob 儲存體上的資料：
-
-<code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
-
-以下是程式碼範例：
 
 ```csharp
 var blob_account_name = "";  // replace with your blob name
@@ -945,7 +902,7 @@ Env.GetClusterId()
 
 ::: zone-end
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [查看 Synapse 範例筆記本](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks)
 - [快速入門：使用 Web 工具在 Azure Synapse Analytics 中建立 Apache Spark 集區](../quickstart-apache-spark-notebook.md)

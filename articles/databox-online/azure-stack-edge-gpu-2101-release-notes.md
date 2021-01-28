@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 01/19/2021
+ms.date: 01/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 8158868a39bf8a1fe03a620f37e4dcb1c9adc14e
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 6fff5b9d41c960ebe37098695c694725de0226e0
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805190"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954609"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Azure Stack Edge 2101 版本資訊
 
@@ -40,7 +40,7 @@ Azure Stack Edge 2101 版提供下列新功能。
 
 下表提供2101版本中已知問題的摘要。
 
-| 否。 | 功能 | 問題 | 因應措施/註解 |
+| 不會。 | 功能 | 問題 | 因應措施/註解 |
 | --- | --- | --- | --- |
 |**1.**|預覽功能 |在此版本中，下列功能：本機 Azure Resource Manager、Vm、Vm 的雲端管理、Azure Arc 啟用的 Kubernetes、Azure Stack Edge Pro R 的 VPN、Azure Stack Edge 迷你 R、多進程服務 (適用于) Pro GPU 的 MP Azure Stack Edge，全都以預覽形式提供。  |這些功能將在稍後的版本中正式推出。 |
 |**2.**|Kubernetes 儀表板 | 不支援具有 SSL 憑證之 Kubernetes 儀表板的 *Https* 端點。 | |
@@ -57,7 +57,7 @@ Azure Stack Edge 2101 版提供下列新功能。
 
 下表提供先前版本所執行之已知問題的摘要。
 
-| 否。 | 功能 | 問題 | 因應措施/註解 |
+| 不會。 | 功能 | 問題 | 因應措施/註解 |
 | --- | --- | --- | --- |
 | **1.** |Azure Stack Edge Pro + Azure SQL | 建立 SQL database 需要系統管理員存取權。   |請執行下列步驟，而不是中的步驟 1-2 [https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](../iot-edge/tutorial-store-data-sql-server.md#create-the-sql-database) 。 <ul><li>在裝置的本機 UI 中，啟用計算介面。 選取計算 **> 適用的計算 > 埠 # > 啟用。**</li><li>`sqlcmd`從您的用戶端電腦下載https://docs.microsoft.com/sql/tools/sqlcmd-utility </li><li>連接到您的計算介面 IP 位址 (已啟用) 的埠，並將 "，1401" 新增至位址的結尾。</li><li>最後一個命令看起來會像這樣： sqlcmd-S {Interface IP}，1401-U SA-P "強！Passw0rd」。</li>在此之後，來自目前檔的步驟3-4 應該相同。 </li></ul> |
 | **2.** |重新整理| 不支援透過重新整理還原 **的 blob** 增量變更 |在重新整理之後，Blob 端點（blob 的部分更新）可能會導致更新未上傳至雲端。 例如，動作的順序如下：<ul><li>在雲端中建立 blob。 或從裝置刪除先前上傳的 blob。</li><li>使用重新整理功能將 blob 從雲端重新整理至設備。</li><li>使用 Azure SDK REST Api 只更新 blob 的一部分。</li></ul>這些動作可能會導致 blob 的更新區段無法在雲端中更新。 <br>因應 **措施：透過** Explorer 或命令列使用 robocopy 之類的工具或一般檔案複製來取代整個 blob。|
@@ -77,13 +77,12 @@ Azure Stack Edge 2101 版提供下列新功能。
 |**16.**|憑證 |在某些情況下，本機 UI 中的憑證狀態可能需要數秒鐘的時間來更新。 |本機 UI 中的下列案例可能會受到影響。<ul><li>[**憑證**] 頁面中的 [**狀態**] 資料行。</li><li>[**開始** 使用] 頁面中的 [**安全性**] 磚。</li><li>**[總覽**] 頁面中的 [設定 **] 磚。**</li></ul>  |
 |**至.**|IoT Edge |透過 IoT Edge 部署的模組無法使用主機網路。 | |
 |**達.**|計算 + Kubernetes |Compute/Kubernetes 不支援 NTLM web proxy。 ||
-|**診斷.**|計算 + web proxy + 更新 |如果您有以 web proxy 設定的計算，則計算更新可能會失敗。 |建議您在更新前先停用計算。 |
-|**名.**|Kubernetes + 更新 |較舊的軟體版本（例如2008版）有競爭條件更新問題，而導致更新失敗並產生 ClusterConnectionException。 |使用較新的組建應該有助於避免這個問題。 如果您仍然看到此問題，因應措施是重試升級，而且應該可以運作。|
+|**診斷.**|Kubernetes + 更新 |較舊的軟體版本（例如2008版）有競爭條件更新問題，而導致更新失敗並產生 ClusterConnectionException。 |使用較新的組建應該有助於避免這個問題。 如果您仍然看到此問題，因應措施是重試升級，而且應該可以運作。|
 
 
 <!--|**18.**|Azure Private Edge Zone (Preview) |There is a known issue with Virtual Network Function VM if the VM was created on Azure Stack Edge device running earlier preview builds such as 2006/2007b and then the device was updated to 2009 GA release. The issue is that the VNF information can't be retrieved or any new VNFs can't be created unless the VNF VMs are deleted before the device is updated.  |Before you update Azure Stack Edge device to 2009 release, use the PowerShell command `get-mecvnf` followed by `remove-mecvnf <VNF guid>` to remove all Virtual Network Function VMs one at a time. After the upgrade, you will need to redeploy the same VNFs.|-->
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [更新裝置](azure-stack-edge-gpu-install-update.md)

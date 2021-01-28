@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 40d2f957ce115b43a1dcc138b86e05ec9cc47384
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
-ms.translationtype: HT
+ms.openlocfilehash: c5c1fd202b52c8708ab067ca802481f4d4bb4e27
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060561"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956240"
 ---
 本教學課程需要下列 Azure 資源：
 
@@ -26,7 +26,19 @@ ms.locfileid: "98060561"
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-    指令碼成功完成時，您應該會在訂用帳戶中看到所有所需資源。
+    指令碼成功完成時，您應該會在訂用帳戶中看到所有所需資源。 腳本會設定總計12個資源：
+    1. **串流端點** -這將有助於播放錄製的 AMS 資產。
+    1. **虛擬機器** -這是將作為 edge 裝置的虛擬機器。
+    1. **磁片** -這是連接至虛擬機器的儲存磁片，用來儲存媒體和構件。
+    1. **網路安全性群組** -這可用來篩選 azure 虛擬網路中 azure 資源的進出網路流量。
+    1. **網路介面** -這可讓 Azure 虛擬機器與網際網路、Azure 和其他資源進行通訊。
+    1. 防禦連線-這可讓您使用瀏覽器和 Azure 入口網站連接到 **您的虛擬** 機。
+    1. **公用 IP 位址** -這可讓 Azure 資源與網際網路和公眾面向的 azure 服務進行通訊
+    1. **虛擬網路** -這可讓許多類型的 Azure 資源（例如您的虛擬機器）安全地彼此通訊，以及與網際網路和內部部署網路通訊。 深入瞭解 [虛擬網路](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
+    1. **Iot 中樞** -這可作為 iot 應用程式、IoT Edge 模組與其管理裝置之間雙向通訊的中央訊息中樞。
+    1. **媒體服務帳戶** -這有助於在 Azure 中管理和串流處理媒體內容。
+    1. **儲存體帳戶** -您必須有一個主要儲存體帳戶，且您可以有任意數目的次要儲存體帳戶與您的媒體服務帳戶相關聯。 如需詳細資訊，請參閱 [Azure 儲存體帳戶與 Azure 媒體服務帳戶](https://docs.microsoft.com/azure/media-services/latest/storage-account-concept)。
+    1. **Container registry** -這有助於儲存和管理您的私人 Docker 容器映射和相關構件。
 1. 在指令碼完成後，選取大括弧以公開資料夾結構。 您會在 *~/clouddrive/lva-sample* 目錄下看到一些檔案。 與本快速入門相關的項目包括：
 
      * * **~/clouddrive/lva-sample/edge-deployment/.env** - 此檔案包含 Visual Studio Code 用來將模組部署至邊緣裝置的屬性。

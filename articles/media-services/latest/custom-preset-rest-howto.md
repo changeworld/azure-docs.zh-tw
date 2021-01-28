@@ -1,5 +1,5 @@
 ---
-title: 使用媒體服務 v3 REST 編碼自訂轉換-Azure
+title: 編碼自訂轉換 REST
 description: 本主題說明如何使用 Azure 媒體服務 v3，使用 REST 來編碼自訂轉換。
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 7a2cfc0db2f95b21c872dd2ed0cf4fbf675a8d6f
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 2c0416e2787bc69465e18a71f6b9912f7571c24d
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897606"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956084"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>如何使用自訂轉換進行編碼-REST
 
@@ -151,6 +151,6 @@ PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:r
 
 針對媒體服務將轉換套用至指定的影片或音訊，您需要在該轉換下提交作業。 如需示範如何在轉換下提交作業的完整範例，請參閱 [教學課程：串流影片檔案-REST](stream-files-tutorial-with-rest.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 查看 [其他 REST 作業](/rest/api/media/)

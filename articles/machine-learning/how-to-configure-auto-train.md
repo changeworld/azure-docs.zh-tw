@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 9021d933e3808867ec784ad3c6d0f8810d608ea3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 6971d67204beb39ff0afa6c68dbecf278d86b299
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600067"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954710"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中設定自動化 ML 實驗
 
@@ -203,15 +203,53 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 ### <a name="primary-metric"></a>主要計量
 `primary metric`參數會決定要在模型定型期間用來優化的度量。 可選取的可用計量取決於您所選擇的工作類型，下表顯示每種工作類型的有效主要計量。
 
+為自動化機器學習選擇要優化的主要度量取決於許多因素。 我們建議您的主要考慮是選擇最能代表您商務需求的度量。 然後，請考慮計量是否適用于您的資料集設定檔 (資料大小、範圍、類別散發等 ) 。
+
 請在[了解自動化機器學習結果](how-to-understand-automated-ml.md)中了解這些計量的特定定義。
 
 |分類 | 迴歸 | 時間序列預測
 |--|--|--
-|精確度| spearman_correlation | spearman_correlation
-|AUC_weighted | normalized_root_mean_squared_error | normalized_root_mean_squared_error
-|average_precision_score_weighted | r2_score | r2_score
-|norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
-|precision_score_weighted |
+|`accuracy`| `spearman_correlation` | `spearman_correlation`
+|`AUC_weighted` | `normalized_root_mean_squared_error` | `normalized_root_mean_squared_error`
+|`average_precision_score_weighted` | `r2_score` | `r2_score`
+|`norm_macro_recall` | `normalized_mean_absolute_error` | `normalized_mean_absolute_error`
+|`precision_score_weighted` |
+
+### <a name="primary-metrics-for-classification-scenarios"></a>分類案例的主要計量 
+
+Thresholded 後的計量（例如 `accuracy` 、 `average_precision_score_weighted` 、和）也 `norm_macro_recall` `precision_score_weighted` 可能無法針對非常小的資料集進行優化、具有極大的類別扭曲 (類別不平衡) ，或預期的計量值非常接近0.0 或1.0。 在這些情況下， `AUC_weighted` 可以成為主要度量的較佳選擇。 在自動化機器學習完成之後，您可以根據最適合您商務需求的計量來選擇獲獎的模型。
+
+| Metric | 使用案例 (s 的範例)  |
+| ------ | ------- |
+| `accuracy` | 影像分類、情感分析、變換預測 |
+| `AUC_weighted` | 詐騙偵測、影像分類、異常偵測/垃圾郵件偵測 |
+| `average_precision_score_weighted` | 情感分析 |
+| `norm_macro_recall` | 流失預測 |
+| `precision_score_weighted` |  |
+
+### <a name="primary-metrics-for-regression-scenarios"></a>回歸案例的主要度量
+
+`r2_score` `spearman_correlation` 當值對預測的級別涵蓋許多等級的等級時，和等度量可以更有效地表示模型的品質。 例如，薪資估計，其中許多人的薪資為 $ 20k 至 $ 100k，但在 $ 100M 範圍內的一些薪資，尺規會相當高。 
+
+`normalized_mean_absolute_error``normalized_root_mean_squared_error`在此情況下，會將 $ 30k 薪資為背景工作角色的 $ 20k 預測錯誤視為工作者進行 $ 2000 萬。 在現實情況下，只預測 $ 2000 萬薪資的 $ 20k 很接近 (相對) 的相對差異較0.1 小，而 $ 30k 的 $ 20k 則不會關閉 (大67% 相對差異) 。 `normalized_mean_absolute_error``normalized_root_mean_squared_error`當要預測的值採用類似的尺規時，和會很有用。
+
+| Metric | 使用案例 (s 的範例)  |
+| ------ | ------- |
+| `spearman_correlation` | |
+| `normalized_root_mean_squared_error` | 價格預測 (房屋/產品/秘訣) ，評論分數預測 |
+| `r2_score` | 航空公司延遲、薪資估計、Bug 解決時間 |
+| `normalized_mean_absolute_error` |  |
+
+### <a name="primary-metrics-for-time-series-forecasting-scenarios"></a>時間序列預測案例的主要計量
+
+請參閱上方的回歸附注。
+
+| Metric | 使用案例 (s 的範例)  |
+| ------ | ------- |
+| `spearman_correlation` | |
+| `normalized_root_mean_squared_error` | 價格預測 (預測) 、庫存優化、需求預測 |
+| `r2_score` | 價格預測 (預測) 、庫存優化、需求預測 |
+| `normalized_mean_absolute_error` | |
 
 ### <a name="data-featurization"></a>資料特徵化
 

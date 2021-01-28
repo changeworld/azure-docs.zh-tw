@@ -12,37 +12,34 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 0c1e9e6da02478f5e4703676b74fc8247a4f619b
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 9656da8be086724482f129efab323e02b73e117e
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753531"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954950"
 ---
 # <a name="single-page-application-move-to-production"></a>單一頁面應用程式：移至生產環境
 
-既然您已瞭解如何取得權杖來呼叫 web Api，請瞭解如何移至生產環境。
+現在您已瞭解如何取得權杖來呼叫 web Api，以下是將應用程式移至生產環境時要考慮的一些事項。
 
-## <a name="improve-your-app"></a>改善您的應用程式
-
-[啟用記錄](msal-logging.md) ，讓您的應用程式生產環境就緒。
-
-## <a name="test-your-integration"></a>測試您的整合
-
-遵循 [Microsoft 身分識別平台整合檢查清單](identity-platform-integration-checklist.md)來測試您的整合。
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="deploy-your-app"></a>部署您的應用程式
 
 查看 [部署範例](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter3) ，以瞭解如何分別使用 Azure 儲存體和 Azure App 服務來部署 SPA 和 Web API 專案。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="code-samples"></a>程式碼範例
 
-- 快速入門範例的深入探討，其中說明如何使用 **MSAL.js**： [JavaScript SPA 教學](./tutorial-v2-javascript-spa.md)課程來登入使用者，以及取得存取權杖以呼叫 **Microsoft Graph API** 的程式碼。
+這些程式碼範例示範單一頁面應用程式的數個重要作業。
+- [SPA 與 ASP.NET 後端](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi)：如何使用 **MSAL.js** (ASP.NET Core) 取得您自己的後端 web API 權杖。
 
-- 示範如何使用 **MSAL.js**： [SPA 與 ASP.NET 後端](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi)，為您自己的後端 web API 取得權杖 (ASP.NET Core) 的範例。
+- [Node.js WEB api (Azure AD](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2)：如何使用 **passport-Azure-AD** 來驗證後端 Web api 的存取權杖 ( # A1) 。
 
-- 示範如何使用 **passport-azure-ad**： [Node.js web api (Azure AD](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2)來驗證後端 Web api ( # A0) 的存取權杖的範例。
+- 使用 [Azure AD B2C 的 SPA](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)：如何使用 **MSAL.js** 在以 **Azure Active Directory B2C** (Azure AD B2C) 註冊的應用程式中登入使用者。
 
-- 此範例示範如何使用 **MSAL.js** ，在以 **Azure Active Directory B2C** (Azure AD B2C) ： [SPA 與 Azure AD B2C](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)註冊的應用程式中登入使用者。
+- [Node.js WEB API (Azure AD B2C)](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)：如何使用 **passport-Azure-AD** 來驗證以 **Azure Active Directory B2C** (Azure AD B2C) 註冊之應用程式的存取權杖。
 
-- 此範例會示範如何使用 **passport-azure-ad** 來驗證向 **Azure Active Directory B2C** (Azure AD B2C) ： [Node.js Web API (](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)Azure AD B2C) 中註冊之應用程式的存取權杖。
+## <a name="next-steps"></a>下一步
+
+- [JAVASCRIPT SPA 教學](./tutorial-v2-javascript-spa.md)課程：深入探討如何使用 **MSAL.js** 來登入使用者，以及取得存取權杖以呼叫 **Microsoft Graph API** 。

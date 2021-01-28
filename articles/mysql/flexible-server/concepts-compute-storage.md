@@ -5,13 +5,13 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/20/2020
-ms.openlocfilehash: 36f31ee390a6a208b202698ec9bda59b644c9e30
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 01/27/2021
+ms.openlocfilehash: 267b362c94b04b3be634f7e61c2b6d67604d7854
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534665"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954676"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>適用於 MySQL 的 Azure 資料庫彈性的伺服器 (預覽) 中的計算和儲存體選項
 
@@ -70,6 +70,9 @@ ms.locfileid: "94534665"
 | Standard_E64ds_v4    | 64     | 504               |
 
 若要取得可用計算系列的詳細資料，請參閱適用于 [高載 (B 系列) ](../../virtual-machines/sizes-b-series-burstable.md)的 Azure VM 檔、 [一般用途 (Ddsv4 系列) ](../../virtual-machines/ddv4-ddsv4-series.md)，以及 [記憶體優化 (Edsv4 系列) ](../../virtual-machines/edv4-edsv4-series.md)。
+
+>[!NOTE]
+>針對 [高載 (B 系列) ](../../virtual-machines/sizes-b-series-burstable.md) 計算層，當伺服器因為任何原因而重新開機時（例如使用者起始、規劃或未規劃的維護），累積的點數可能會遺失。 原因是當適用於 MySQL 的 Azure 資料庫重新開機它時，它會保留在相同的節點上，將會保留累積的信用額度。 Contrarily，每當適用於 MySQL 的 Azure 資料庫伺服器在新節點上啟動全新時，就會取得初始點數。 如需詳細資訊，請參閱 [高載 (B 系列) 常見問題](https://docs.microsoft.com/azure/virtual-machines/sizes-b-series-burstable#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart)。
 
 ## <a name="storage"></a>儲存體
 
@@ -153,7 +156,7 @@ ms.locfileid: "94534665"
 
 ## <a name="pricing"></a>定價
 
-如需最新的定價資訊，請參閱服務的[定價頁面](https://azure.microsoft.com/pricing/details/MySQL/)。 若要查看您想要的設定成本， [Azure 入口網站](https://portal.azure.com/#create/Microsoft.MySQLServer/flexibleServers) 根據您選取的選項，在 [ **計算 + 儲存體** ] 索引標籤上顯示每月成本。 如果您沒有 Azure 訂用帳戶，則可以使用 Azure 價格計算機來取得估計的價格。 在 [Azure 定價計算機](https://azure.microsoft.com/pricing/calculator/) 網站上，選取 **[新增專案** ]，展開 [ **資料庫** ] 類別，選擇 [ **適用於 MySQL 的 Azure 資料庫** ] 和 [ **彈性伺服器** ] 作為部署類型，以自訂選項。
+如需最新的定價資訊，請參閱服務的[定價頁面](https://azure.microsoft.com/pricing/details/MySQL/)。 若要查看您想要的設定成本， [Azure 入口網站](https://portal.azure.com/#create/Microsoft.MySQLServer/flexibleServers) 根據您選取的選項，在 [ **計算 + 儲存體** ] 索引標籤上顯示每月成本。 如果您沒有 Azure 訂用帳戶，則可以使用 Azure 價格計算機來取得估計的價格。 在 [Azure 定價計算機](https://azure.microsoft.com/pricing/calculator/) 網站上，選取 **[新增專案**]，展開 [ **資料庫** ] 類別，選擇 [ **適用於 MySQL 的 Azure 資料庫**] 和 [ **彈性伺服器** ] 作為部署類型，以自訂選項。
 
 如果您想要將伺服器成本優化，可以考慮下列秘訣：
 
@@ -162,7 +165,7 @@ ms.locfileid: "94534665"
 - 停止未使用的伺服器。
 - 如果不需要較長的備份保留期，請縮短備份保留期限。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 深入了解如何[在入口網站中建立 MySQL 伺服器](quickstart-create-server-portal.md)。
 - 瞭解 [服務限制](concepts-limitations.md)。

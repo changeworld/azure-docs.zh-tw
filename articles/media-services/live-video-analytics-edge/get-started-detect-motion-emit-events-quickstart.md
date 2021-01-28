@@ -3,12 +3,12 @@ title: 開始使用 IoT Edge 上的 Live Video Analytics - Azure
 description: 本快速入門說明如何在 IoT Edge 上開始使用 Live Video Analytics。 了解如何偵測即時影片串流中的動作。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: cbe4b1280897064938222680fc932cfe289d2f32
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 2ae8292375c0b85cc4c771c1fe7d853c5fcd3afd
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631931"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955761"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>快速入門：開始使用 - IoT Edge 上的 Live Video Analytics
 
@@ -59,7 +59,21 @@ ms.locfileid: "98631931"
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-指令碼成功完成時，您應該會在訂用帳戶中看到所有所需資源。 在指令碼輸出中，資源資料表會列出 IoT 中樞名稱。 請尋找 **`Microsoft.Devices/IotHubs`** 資源類型，並記下該名稱。 在下一個步驟中，您將需要此名稱。  
+    指令碼成功完成時，您應該會在訂用帳戶中看到所有所需資源。 腳本會設定總計12個資源：
+    1. **串流端點** -這將有助於播放錄製的 AMS 資產。
+    1. **虛擬機器** -這是將作為 edge 裝置的虛擬機器。
+    1. **磁片** -這是連接至虛擬機器的儲存磁片，用來儲存媒體和構件。
+    1. **網路安全性群組** -這可用來篩選 azure 虛擬網路中 azure 資源的進出網路流量。
+    1. **網路介面** -這可讓 Azure 虛擬機器與網際網路、Azure 和其他資源進行通訊。
+    1. 防禦連線-這可讓您使用瀏覽器和 Azure 入口網站連接到 **您的虛擬** 機。
+    1. **公用 IP 位址** -這可讓 Azure 資源與網際網路和公眾面向的 azure 服務進行通訊
+    1. **虛擬網路** -這可讓許多類型的 Azure 資源（例如您的虛擬機器）安全地彼此通訊，以及與網際網路和內部部署網路通訊。 深入瞭解 [虛擬網路](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
+    1. **Iot 中樞** -這可作為 iot 應用程式、IoT Edge 模組與其管理裝置之間雙向通訊的中央訊息中樞。
+    1. **媒體服務帳戶** -這有助於在 Azure 中管理和串流處理媒體內容。
+    1. **儲存體帳戶** -您必須有一個主要儲存體帳戶，且您可以有任意數目的次要儲存體帳戶與您的媒體服務帳戶相關聯。 如需詳細資訊，請參閱 [Azure 儲存體帳戶與 Azure 媒體服務帳戶](https://docs.microsoft.com/azure/media-services/latest/storage-account-concept)。
+    1. **Container registry** -這有助於儲存和管理您的私人 Docker 容器映射和相關構件。
+
+在指令碼輸出中，資源資料表會列出 IoT 中樞名稱。 請尋找 **`Microsoft.Devices/IotHubs`** 資源類型，並記下該名稱。 在下一個步驟中，您將需要此名稱。  
 
 > [!NOTE]
 > 此指令碼也會在 **_~/clouddrive/lva-sample/_* _ 目錄中產生幾個組態檔。 在快速入門稍後的地方會需要這些檔案。
@@ -101,6 +115,12 @@ RTSP 模擬器模組會在您執行 [Live Video Analytics 資源設定指令碼]
 1. 在 [總管] 索引標籤的左下角，選取 [Azure IoT 中樞]。
 1. 選取 [其他選項] 圖示，以查看捷徑功能表。 然後選取 [設定 IoT 中樞連接字串]。
 1. 輸入方塊出現時，請輸入您的 IoT 中樞連接字串。 在 Cloud Shell 中，您可以從 *~/clouddrive/lva-sample/appsettings.json* 取得連接字串。
+
+> [!NOTE]
+> 系統可能會要求您提供 IoT 中樞的內建端點資訊。 若要取得該資訊，請在 Azure 入口網站中，流覽至您的 IoT 中樞，並在左側流覽窗格中尋找內 **建端點** 選項。 按一下該處，並在 [**事件中樞相容端點**] 區段中尋找 **事件中樞相容端點**。 複製並使用方塊中的文字。 端點看起來會像這樣：  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
 
 如果連線成功，便會出現邊緣裝置清單。 您應該至少會看到一個名為 **lva-sample-device** 的裝置。 您現在可以透過捷徑功能表來管理 IoT Edge 裝置，並與 Azure IoT 中樞互動。 若要檢視邊緣裝置上所部署的模組，請在 [lva-sample-device] 底下展開 [模組] 節點。
 

@@ -1433,7 +1433,7 @@
               href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-vhd.md'
             - name: 從 VDH 建立快照集
               href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-snapshot-from-vhd.md'
-- name: 網路功能
+- name: 網路
   items:
     - name: 概觀
       href: network-overview.md
@@ -1741,7 +1741,7 @@
         - name: 備份多個 VM
           href: ../backup/tutorial-backup-vm-at-scale.md
         - name: 還原選項
-          href: /backup/backup-azure-arm-restore-vms.md
+          href: ../backup/backup-azure-arm-restore-vms.md
         - name: 支援矩陣
           href: ../backup/backup-support-matrix-iaas.md
         - name: 定價

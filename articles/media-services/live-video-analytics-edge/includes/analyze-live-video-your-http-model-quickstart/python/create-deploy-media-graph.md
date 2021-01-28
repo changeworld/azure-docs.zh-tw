@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 6aeded077c20e59b3f9b3863a9956596382d3a82
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
-ms.translationtype: HT
+ms.openlocfilehash: 1b5dd2fb4ef8cb3f6fd169477d9ee82e912c146e
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97531974"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956246"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>查看和編輯範例檔案
 
@@ -53,6 +53,12 @@ ms.locfileid: "97531974"
     
     ![設定 IoT 中樞連接字串](../../../media/quickstarts/set-iotconnection-string.png)
 
+> [!NOTE]
+> 系統可能會要求您提供 IoT 中樞的內建端點資訊。 若要取得該資訊，請在 Azure 入口網站中，流覽至您的 IoT 中樞，並在左側流覽窗格中尋找內 **建端點** 選項。 按一下該處，並在 [**事件中樞相容端點**] 區段中尋找 **事件中樞相容端點**。 複製並使用方塊中的文字。 端點看起來會像這樣：  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
+
 1. 以滑鼠右鍵按一下 *src/edge/config/ deployment.yolov3.amd64.json*，然後選取 [建立單一裝置的部署]。 
 
     ![建立單一裝置的部署](../../../media/quickstarts/create-deployment-single-device.png)
@@ -62,6 +68,15 @@ ms.locfileid: "97531974"
 
     * 名為 **lvaEdge** 的 Live Video Analytics 模組
     * 名為 **rtspsim** 的模組，其會模擬 RTSP 伺服器並作為即時影片摘要的來源
+        > [!NOTE]
+        > 上述步驟假設您使用的是安裝腳本所建立的虛擬機器。 如果您改為使用您自己的 edge 裝置，請移至您的 edge 裝置，並以系統 **管理員許可權** 執行下列命令，以提取和儲存本快速入門所使用的範例影片檔案：  
+        
+        ```
+        mkdir /home/lvaadmin/samples
+        mkdir /home/lvaadmin/samples/input    
+        curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
+        chown -R lvaadmin /home/lvaadmin/samples/  
+        ```
     * **yolov3** 模組，這是 YOLOv3 物件偵測模型，會將電腦視覺套用至映像並傳回多個物件類型類別
  
       ![部署在邊緣裝置中的模組](../../../media/quickstarts/yolov3.png)

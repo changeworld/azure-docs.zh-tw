@@ -11,12 +11,12 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: 17b2d717ac6f244cb3ddddfdbc2f29581aa1f59f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: d8b1c2a5384e479e39d169d368554f16c300a33e
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95527304"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954541"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>將模型部署到 Azure Machine Learning 計算實例
 
@@ -38,11 +38,12 @@ ms.locfileid: "95527304"
 
 示範本機部署的範例筆記本包含在您的計算實例上。 使用下列步驟來載入筆記本，並在 VM 上將模型部署為 web 服務：
 
-1. 從 [Azure Machine Learning studio](https://ml.azure.com)中，選取您 Azure Machine Learning 的計算實例。
+1. 從 [Azure Machine Learning studio](https://ml.azure.com)中，選取 [筆記本]，然後選取 [範例筆記本] 下的 [how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local. .ipynb]。 將此筆記本複製到您的使用者資料夾。
 
-1. 開啟 `samples-*` 子目錄，然後開啟 `how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb` 。 開啟後，執行筆記本。
+1. 尋找在步驟1中複製的筆記本，選擇或建立計算實例以執行筆記本。
 
     ![筆記本上執行中本機服務的螢幕擷取畫面](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service.png)
+
 
 1. 筆記本會顯示服務執行所在的 URL 和埠。 例如： `https://localhost:6789` 。 您也可以執行包含的資料格 `print('Local service port: {}'.format(local_service.port))` 來顯示埠。
 
@@ -52,7 +53,7 @@ ms.locfileid: "95527304"
     * 筆記本 VM： `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.notebooks.azureml.net/score` 。 
     * 計算實例： `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.instances.azureml.net/score` 。 
 
-    例如，套用至物件的 
+    例如， 
     * 筆記本 VM： `https://vm-name-6789.northcentralus.notebooks.azureml.net/score` 
     * 計算實例： `https://vm-name-6789.northcentralus.instances.azureml.net/score`
 
@@ -93,7 +94,7 @@ resp = requests.post(service_url, test_sample, headers=headers)
 print("prediction:", resp.text)
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [如何使用自訂 Docker 映射部署模型](how-to-deploy-custom-docker-image.md)
 * [部署疑難排解](how-to-troubleshoot-deployment.md)
