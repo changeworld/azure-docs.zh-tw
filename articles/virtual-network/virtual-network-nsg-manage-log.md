@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: 5d06c251ce16aff56a3645f5032cce4e27d5fc9e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 412556f3bd517539fc8ccad94c4de52226f16597
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216881"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946233"
 ---
 # <a name="resource-logging-for-a-network-security-group"></a>網路安全性群組的資源記錄
 
@@ -93,7 +93,7 @@ Set-AzDiagnosticSetting `
 
 ### <a name="azure-cli"></a>Azure CLI
 
-您可以執行 [Azure Cloud Shell](https://shell.azure.com/bash) 中採用的命令，或從您的電腦執行 Azure CLI。 Azure Cloud Shell 是免費的互動式殼層。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 如果您是從電腦執行 CLI，您需要版本 2.0.38 或更新版本。 請在您的電腦上執行 `az --version`，以尋找已安裝的版本。 如果您需要升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 如果您在本機執行 CLI，則還需要執行 `az login` 以使用具有[必要權限](virtual-network-network-interface.md#permissions)的帳戶來登入 Azure。
+您可以執行 [Azure Cloud Shell](https://shell.azure.com/bash) 中採用的命令，或從您的電腦執行 Azure CLI。 Azure Cloud Shell 是免費的互動式殼層。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 如果您是從電腦執行 CLI，您需要版本 2.0.38 或更新版本。 請在您的電腦上執行 `az --version`，以尋找已安裝的版本。 如果您需要升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 如果您在本機執行 CLI，則還需要執行 `az login` 以使用具有[必要權限](virtual-network-network-interface.md#permissions)的帳戶來登入 Azure。
 
 若要啟用資源記錄，您需要現有 NSG 的識別碼。 如果您目前沒有 NSG，可以使用 [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) 來建立。
 

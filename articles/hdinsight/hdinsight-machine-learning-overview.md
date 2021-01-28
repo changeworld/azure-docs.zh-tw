@@ -1,19 +1,16 @@
 ---
 title: 機器學習服務概觀 - Azure HDInsight
 description: Azure HDInsight 中叢集的 big data machine learning 選項總覽。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: a3c050b414e322f08fd45a569a22cea2db591b99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18be3fa8851c2dbaab622c770d02f4db252a231c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302684"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945254"
 ---
 # <a name="machine-learning-on-hdinsight"></a>HDInsight 上的機器學習服務
 
@@ -41,7 +38,7 @@ Azure Machine Learning 提供可建立預測性分析模型的工具，也提供
 
 ![Microsoft Azure 機器學習服務總覽](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
 
-針對使用 [Hive 查詢](../machine-learning/team-data-science-process/create-features-hive.md)之 HDInsight Hadoop 叢集中的資料建立特徵。 *特徵工程設計*藉由以學習程序的原始資料來建立特徵，以嘗試增加學習演算法的預測能力。 您可以使用 [匯 [入資料] 模組](../machine-learning/classic/import-data.md)，從 Azure Machine Learning Studio (傳統) 執行 HiveQL 查詢，並存取 Hive 中處理的資料並儲存在 blob 儲存體中。
+針對使用 [Hive 查詢](../machine-learning/team-data-science-process/create-features-hive.md)之 HDInsight Hadoop 叢集中的資料建立特徵。 *特徵工程設計* 藉由以學習程序的原始資料來建立特徵，以嘗試增加學習演算法的預測能力。 您可以使用 [匯 [入資料] 模組](../machine-learning/classic/import-data.md)，從 Azure Machine Learning Studio (傳統) 執行 HiveQL 查詢，並存取 Hive 中處理的資料並儲存在 blob 儲存體中。
 
 ## <a name="microsoft-cognitive-toolkit"></a>Microsoft 辨識工具組
 

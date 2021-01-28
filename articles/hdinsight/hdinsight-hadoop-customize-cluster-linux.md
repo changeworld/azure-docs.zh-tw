@@ -1,19 +1,16 @@
 ---
 title: 使用指令碼動作來自訂 Azure HDInsight 叢集
 description: 使用腳本動作，將自訂群組件新增至 HDInsight 叢集。 腳本動作是 Bash 腳本，可用於自訂叢集設定。 或新增其他服務和公用程式，例如色調、Solr 或 R。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, contperf-fy21q2
 ms.date: 09/02/2020
-ms.openlocfilehash: 70918d1dc829ff0114a8c1019524feb934c9f915
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 46be3349490f04660d4fc8b69e4cdc295d8ecc1c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630933"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945793"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>使用指令碼動作來自訂 Azure HDInsight 叢集
 
@@ -128,7 +125,7 @@ Status            : Succeeded
 
 HDInsight 提供一些指令碼以在 HDInsight 叢集上安裝下列元件：
 
-| Name | 指令碼 |
+| 名稱 | 指令碼 |
 | --- | --- |
 | 新增 Azure 儲存體帳戶 |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. 請參閱[將其他儲存體帳戶新增至 HDInsight](hdinsight-hadoop-add-storage.md)。 |
 | 安裝 Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. 請參閱[在 HDInsight Hadoop 叢集上安裝和使用 Hue](hdinsight-hadoop-hue-linux.md)。 |
@@ -153,7 +150,7 @@ HDInsight 提供一些指令碼以在 HDInsight 叢集上安裝下列元件：
     | 屬性 | 值 |
     | --- | --- |
     | 選取指令碼 | 若要使用自己的指令碼，請選取 [自訂]。 或是選取其中一個提供的指令碼。 |
-    | Name |指定指令碼動作的名稱。 |
+    | 名稱 |指定指令碼動作的名稱。 |
     | Bash 指令碼 URI |指定指令碼的 URI。 |
     | Head/Worker/ZooKeeper |指定執行腳本的節點： **Head**、 **Worker** 或 **ZooKeeper**。 |
     | 參數 |如果指令碼要求，請指定參數。 |
@@ -226,7 +223,7 @@ HDInsight .NET SDK 提供用戶端程式庫，可讓您更輕鬆地從 .NET 應�
     | 屬性 | 值 |
     | --- | --- |
     | 選取指令碼 | 若要使用您自己的腳本，請選取 [ __自訂__]。 否則，請選取提供的指令碼。 |
-    | Name |指定指令碼動作的名稱。 |
+    | 名稱 |指定指令碼動作的名稱。 |
     | Bash 指令碼 URI |指定指令碼的 URI。 |
     | Head/Worker/Zookeeper |指定執行腳本的節點： **Head**、 **Worker** 或 **ZooKeeper**。 |
     | 參數 |如果指令碼要求，請指定參數。 |
@@ -315,7 +312,7 @@ NodeTypes       : {HeadNode, WorkerNode}
 
 ### <a name="azure-cli"></a>Azure CLI
 
-| Command | 描述 |
+| 命令 | 描述 |
 | --- | --- |
 | [`az hdinsight script-action delete`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-delete) |刪除叢集的指定持續性腳本動作。 此命令不會復原腳本所執行的動作，只會移除已保存的旗標。|
 |[`az hdinsight script-action execute`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-execute)|在指定的 HDInsight 叢集上執行指令碼動作。|
@@ -331,7 +328,7 @@ NodeTypes       : {HeadNode, WorkerNode}
 > [!NOTE]  
 > 這個範例也示範如何使用 .NET SDK 來安裝 HDInsight 應用程式。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [開發 HDInsight 的指令碼動作指令碼](hdinsight-hadoop-script-actions-linux.md)
 * [在 HDInsight 叢集新增儲存體](hdinsight-hadoop-add-storage.md)

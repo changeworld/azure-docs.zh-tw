@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro device so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 04ba9777fe9e8470e6f02c83f3996d098023e05e
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: a48abb34a201928185130fbe8fdf9592e77492d9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763450"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944955"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-the-azure-portal"></a>透過 Azure 入口網站將 Vm 部署到您的 Azure Stack Edge Pro GPU 裝置
 
@@ -22,6 +22,9 @@ ms.locfileid: "97763450"
 
 本文適用于 Azure Stack Edge Pro GPU、Azure Stack Edge Pro R 和 Azure Stack Edge 迷你 R 裝置。 
 
+> [!IMPORTANT] 
+> 建議您為管理從雲端部署到您裝置上之 Vm 的使用者啟用多重要素驗證。
+        
 ## <a name="vm-deployment-workflow"></a>VM 部署工作流程
 
 部署工作流程的高階摘要如下所示：
@@ -43,7 +46,7 @@ ms.locfileid: "97763450"
     使用上面的資源來建立虛擬機器。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在您開始透過 Azure 入口網站建立及管理裝置上的 Vm 之前，請確定：
 
@@ -122,7 +125,7 @@ ms.locfileid: "97763450"
     |參數 |描述  |
     |---------|---------|
     |虛擬機器名稱     |         |
-    |影像     | 從裝置上可用的 VM 映射進行選取。        |
+    |映像     | 從裝置上可用的 VM 映射進行選取。        |
     |大小     | 從支援的 [VM 大小](azure-stack-edge-gpu-virtual-machine-sizes.md)中選擇。        |
     |使用者名稱     | 使用預設的使用者名稱 *>azureuser*。        |
     |驗證類型    | 從 SSH 公開金鑰或使用者定義密碼進行選擇。       |

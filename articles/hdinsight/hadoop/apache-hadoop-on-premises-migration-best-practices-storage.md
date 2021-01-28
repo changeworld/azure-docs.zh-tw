@@ -1,19 +1,17 @@
 ---
 title: 儲存體：將內部部署 Apache Hadoop 遷移至 Azure HDInsight
 description: 了解將內部部署 Hadoop 叢集移轉至 Azure HDInsight 的儲存體最佳做法。
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: 0594774533f306421f6f3d1260d074bd92b9c919
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8d87d2164a5131b71a2000243c37553610497750
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544863"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944852"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>將內部部署 Apache Hadoop 叢集遷移至 Azure HDInsight
 
@@ -98,15 +96,15 @@ Data Lake Storage Gen2 的基本功能是將 [階層命名空間](../../storage/
 
 以往雲端式分析必須在效能、管理及安全性方面妥協。 Azure Data Lake Storage (ADLS) Gen2 的主要功能如下：
 
-- **Hadoop 相容存取** ： Azure Data Lake Storage Gen2 可讓您管理及存取資料，就如同使用 [HADOOP 分散式檔案系統 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)一樣。 新的 [ABFS 驅動程式](../../storage/blobs/data-lake-storage-abfs-driver.md) 可在包含于 [Azure HDInsight](../index.yml)的所有 Apache Hadoop 環境中使用。 此驅動程式可讓您存取儲存在 Data Lake Storage Gen2 中的資料。
+- **Hadoop 相容存取**： Azure Data Lake Storage Gen2 可讓您管理及存取資料，就如同使用 [HADOOP 分散式檔案系統 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)一樣。 新的 [ABFS 驅動程式](../../storage/blobs/data-lake-storage-abfs-driver.md) 可在包含于 [Azure HDInsight](../index.yml)的所有 Apache Hadoop 環境中使用。 此驅動程式可讓您存取儲存在 Data Lake Storage Gen2 中的資料。
 
-- **POSIX 權限的超集合** ：Data Lake Gen2 的安全性模型可完全支援 ACL 和 POSIX 權限，以及一些 Data Lake Storage Gen2 特有的額外細微姓。 這些設定可透過系統管理工具或 Hive 和 Spark 這類架構來配置。
+- **POSIX 權限的超集合**：Data Lake Gen2 的安全性模型可完全支援 ACL 和 POSIX 權限，以及一些 Data Lake Storage Gen2 特有的額外細微姓。 這些設定可透過系統管理工具或 Hive 和 Spark 這類架構來配置。
 
-- **符合成本效益** ：Data Lake Storage Gen2 具有低成本儲存體容量和異動功能。 隨著資料在整個生命週期中進行轉換，計費率也會變更，以透過 [Azure Blob 儲存體生命週期](../../storage/blobs/storage-lifecycle-management-concepts.md)等內建功能將成本降至最低。
+- **符合成本效益**：Data Lake Storage Gen2 具有低成本儲存體容量和異動功能。 隨著資料在整個生命週期中進行轉換，計費率也會變更，以透過 [Azure Blob 儲存體生命週期](../../storage/blobs/storage-lifecycle-management-concepts.md)等內建功能將成本降至最低。
 
-- **可搭配使用 Blob 儲存體工具、架構及應用程式** ：Data Lake Storage Gen2 可繼續搭配使用現今仍有的各種 Blob 儲存體工具、架構及應用程式。
+- **可搭配使用 Blob 儲存體工具、架構及應用程式**：Data Lake Storage Gen2 可繼續搭配使用現今仍有的各種 Blob 儲存體工具、架構及應用程式。
 
-- **優化驅動程式** ： Azure Blob 檔案系統驅動程式 (ABFS) 專門針對大型資料分析進行 [優化](../../storage/blobs/data-lake-storage-abfs-driver.md) 。 對應的 REST API 會透過 dfs 端點 dfs.core.windows.net 呈現。
+- **優化驅動程式**： Azure Blob 檔案系統驅動程式 (ABFS) 專門針對大型資料分析進行 [優化](../../storage/blobs/data-lake-storage-abfs-driver.md) 。 對應的 REST API 會透過 dfs 端點 dfs.core.windows.net 呈現。
 
 您可以使用下列其中一種格式來存取儲存在 ADLS Gen2 中的資料：
 - `abfs:///`:存取叢集的預設 Data Lake Storage。
@@ -171,13 +169,13 @@ hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode.
 
 5. 若要使用共用存取簽章來限制對容器的存取，請在 Ambari HDFS 的 [設定] > [進階] > [自訂核心網站] > [新增屬性] 下，將自訂項目新增至叢集的核心網站組態。
 
-6. 針對 [金鑰]  和 [值]  欄位使用下列值：
+6. 針對 [金鑰] 和 [值] 欄位使用下列值：
 
-    機 **碼** ： `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **值** ： Python 應用程式從上述步驟4傳回的 SAS 金鑰。
+    機 **碼**： `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **值**： Python 應用程式從上述步驟4傳回的 SAS 金鑰。
 
-7. 按一下 [新增]  按鈕以儲存這個金鑰和值，然後按一下 [儲存]  按鈕以儲存組態變更。 出現提示時，加入變更的描述 (例如，「新增 SAS 儲存體存取權」)，然後按一下 [儲存]  。
+7. 按一下 [新增] 按鈕以儲存這個金鑰和值，然後按一下 [儲存] 按鈕以儲存組態變更。 出現提示時，加入變更的描述 (例如，「新增 SAS 儲存體存取權」)，然後按一下 [儲存]。
 
-8. 在 Ambari Web UI 中，選取左側清單中的 [HDFS]，然後從右側 [服務動作] 下拉式清單中選取 [重新啟動所有受影響項目]  。 出現提示時，選取 [確認全部重新啟動]  。
+8. 在 Ambari Web UI 中，選取左側清單中的 [HDFS]，然後從右側 [服務動作] 下拉式清單中選取 [重新啟動所有受影響項目]。 出現提示時，選取 [確認全部重新啟動]。
 
 9. 對 MapReduce2 和 YARN 重複此程序。
 
@@ -220,6 +218,6 @@ Azure 儲存體提供本機冗余的儲存體 (LRS) 但您也應該將重要資�
 
 如需詳細資訊，請參閱[將其他儲存體帳戶新增至 HDInsight](../hdinsight-hadoop-add-storage.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 閱讀本系列的下一篇文章： [內部部署到 Azure HDInsight Hadoop 遷移的資料移轉最佳做法](apache-hadoop-on-premises-migration-best-practices-data-migration.md)。

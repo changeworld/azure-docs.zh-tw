@@ -7,12 +7,12 @@ ms.date: 12/15/2020
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: 0ceee3c65e8c4df5d843bb441fb6426a0f4eb696
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 1a5f665627da1b08ec57b04863a58f227c673af4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220247"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944912"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>針對 Azure Data Factory 中的管線協調流程和觸發程式進行疑難排解
 
@@ -60,7 +60,7 @@ Source=Microsoft.DataTransfer.Common,'
 Type=Microsoft.DataTransfer.Execution.Core.ExecutionException,Message=There are substantial concurrent MappingDataflow executions which is causing failures due to throttling under Integration Runtime 'AutoResolveIntegrationRuntime'.
 `
 
-**原因**：您已達到整合執行時間的容量限制。 您可能會同時使用相同的整合執行時間來執行大量的資料流程。 如需詳細資料，請參閱 [Azure 訂用帳戶和服務限制、配額和條件約束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#version-2) 。
+**原因**：您已達到整合執行時間的容量限制。 您可能會同時使用相同的整合執行時間來執行大量的資料流程。 如需詳細資料，請參閱 [Azure 訂用帳戶和服務限制、配額和條件約束](../azure-resource-manager/management/azure-subscription-service-limits.md#version-2) 。
 
 **解決方案**：
  
@@ -76,13 +76,13 @@ Azure Data Factory 會評估所有分葉層級活動的結果。 只有當所有
 **解決方法**
 
 1. 遵循 [如何處理管線失敗和錯誤，以](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459)執行活動層級的檢查。
-1. 使用 Azure Logic Apps 以定期 [依 Factory 查詢的](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory)間隔來監視管線。
+1. 使用 Azure Logic Apps 以定期 [依 Factory 查詢的](/rest/api/datafactory/pipelineruns/querybyfactory)間隔來監視管線。
 
 ## <a name="monitor-pipeline-failures-in-regular-intervals"></a>監視管線失敗的定期間隔
 
 您可能需要依間隔（例如5分鐘）監視失敗的 Data Factory 管線。 您可以使用端點來查詢和篩選資料處理站中的管線執行。 
 
-設定 Azure 邏輯應用程式，每5分鐘查詢一次失敗的所有管線，如 [Factory 查詢](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory)中所述。 然後，您可以將附隨報告給我們的票證系統。
+設定 Azure 邏輯應用程式，每5分鐘查詢一次失敗的所有管線，如 [Factory 查詢](/rest/api/datafactory/pipelineruns/querybyfactory)中所述。 然後，您可以將附隨報告給我們的票證系統。
 
 如需詳細資訊，請移至 [從 Data Factory 傳送通知，第2部分](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/)。
 

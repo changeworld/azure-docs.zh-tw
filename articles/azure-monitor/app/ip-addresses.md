@@ -1,17 +1,17 @@
 ---
-title: Application Insights 和 Log Analytics 使用的 IP 位址 | Microsoft Docs
+title: Azure 監視器所使用的 IP 位址
 description: Application Insights 所需的伺服器防火牆例外狀況
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: eb0739cb44b9f67258069a574ed0bedb95eac5a4
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.date: 01/27/2020
+ms.openlocfilehash: 5a6cc190f84b74cc8a1d4ff24d10cbfa07f3c2fb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625177"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945063"
 ---
-# <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights 和 Log Analytics 使用的 IP 位址
-[Azure Application Insights](./app-insights-overview.md) 服務會使用一些 IP 位址。 如果您所監視的應用程式裝載於防火牆後面，您可能需要知道這些位址。
+# <a name="ip-addresses-used-by-azure-monitor"></a>Azure 監視器所使用的 IP 位址
+[Azure 監視器](../overview.md) 會使用多個 IP 位址。 Azure 監視器是由核心平臺計量和記錄所組成，以及 Log Analytics 和 Application Insights。 如果您要監視的應用程式或基礎結構裝載于防火牆後方，您可能需要知道這些位址。
 
 > [!NOTE]
 > 雖然這些位址是靜態的，但可能隨時需要變更。 除了可用性監視和需要輸入防火牆規則的 Webhook 之外，Application Insights 的所有流量都表示輸出流量。

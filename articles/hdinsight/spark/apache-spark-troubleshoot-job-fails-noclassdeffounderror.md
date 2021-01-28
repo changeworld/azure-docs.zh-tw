@@ -3,16 +3,13 @@ title: NoClassDefFoundError-在 Azure HDInsight 中使用 Apache Kafka 資料 Ap
 description: 從 Apache Kafka 叢集讀取資料的 Apache Spark 串流作業失敗，且 Azure HDInsight 中有 NoClassDefFoundError
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: c523dbc4612ebfcebf3923900b31f3a2a7b0c5c6
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 4d00cbcb0151da39feb0cb015660291af544d7f4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287772"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946377"
 ---
 # <a name="apache-spark-streaming-job-that-reads-apache-kafka-data-fails-with-noclassdeffounderror-in-hdinsight"></a>使用 HDInsight 中的 NoClassDefFoundError 讀取 Apache Kafka 資料的 Apache Spark 串流作業失敗
 
@@ -44,7 +41,7 @@ spark-submit \
 ~/Kafka_Spark_SQL.py <bootstrap server details>
 ```
 
-## <a name="resolution"></a>解決方法
+## <a name="resolution"></a>解決方案
 
 將 Spark 提交命令與選項搭配使用 `–packages` ，並確定 Spark 資料流程 kafka jar 檔案的版本與您正在執行之 kafka 叢集的版本相同。
 

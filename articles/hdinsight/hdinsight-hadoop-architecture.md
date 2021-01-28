@@ -1,19 +1,16 @@
 ---
 title: Apache Hadoop 架構 - Azure HDInsight
 description: 描述 Azure HDInsight 叢集上的 Apache Hadoop 儲存和處理。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/07/2020
-ms.openlocfilehash: 389aee77ac56407f3a116d42ad62fbd94de1bb4e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6f291e5aa440a3e6e45a1dcdb872e18c8d4557ce
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541939"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945895"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>HDInsight 上的 Apache Hadoop 架構
 
@@ -37,7 +34,7 @@ ResourceManager 會將叢集的計算資源授與 MapReduce 作業這類應用�
 
 ResourceManager 也會執行 Web 伺服器處理序，提供可用來監控應用程式狀態的 Web 使用者介面。
 
-當使用者提交要在叢集上執行的 MapReduce 應用程式時，會將應用程式提交至 ResourceManager。 接著，ResourceManager 會在可用的 NodeManager 節點上配置容器。 NodeManager 節點是應用程式實際執行的地方。 第一個配置的容器會執行名為 ApplicationMaster 的特殊應用程式。 此 ApplicationMaster 負責以後續容器的形式，取得執行提交之應用程式所需的資源。 ApplicationMaster 會檢查應用程式的階段 (例如，對應階段和簡化階段)，並將資料的需求量納入考量。 接著，ApplicationMaster 會代表應用程式向 ResourceManager 要求 ( *交涉* ) 資源。 ResourceManager 再將叢集中 NodeManagers 的資源授與 ApplicationMaster，供其在執行應用程式時使用。
+當使用者提交要在叢集上執行的 MapReduce 應用程式時，會將應用程式提交至 ResourceManager。 接著，ResourceManager 會在可用的 NodeManager 節點上配置容器。 NodeManager 節點是應用程式實際執行的地方。 第一個配置的容器會執行名為 ApplicationMaster 的特殊應用程式。 此 ApplicationMaster 負責以後續容器的形式，取得執行提交之應用程式所需的資源。 ApplicationMaster 會檢查應用程式的階段 (例如，對應階段和簡化階段)，並將資料的需求量納入考量。 接著，ApplicationMaster 會代表應用程式向 ResourceManager 要求 (*交涉*) 資源。 ResourceManager 再將叢集中 NodeManagers 的資源授與 ApplicationMaster，供其在執行應用程式時使用。
 
 NodeManagers 會執行組成應用程式的各項工作，然後將其進度和狀態回報給 ApplicationMaster。 ApplicationMaster 再將應用程式的狀態回報給 ResourceManager。 ResourceManager 會將任何結果傳回用戶端。
 
@@ -68,7 +65,7 @@ NodeManagers 會執行組成應用程式的各項工作，然後將其進度和�
 
 `fs.trash.interval`來自 **HDFS**  >  **Advanced core 網站** 的屬性應維持預設值， `0` 因為您不應該將任何資料儲存在本機檔案系統上。 此值不會影響遠端儲存體帳戶 (WASB、ADLS GEN1、ABFS) 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [搭配 MapReduce 與 HDInsight 上的 Apache Hadoop](hadoop/hdinsight-use-mapreduce.md)
 * [Azure HDInsight 簡介](hadoop/apache-hadoop-introduction.md)

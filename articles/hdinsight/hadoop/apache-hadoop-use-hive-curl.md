@@ -1,19 +1,16 @@
 ---
 title: 在 HDInsight 中搭配使用 Apache Hadoop Hive 與 Curl - Azure
 description: 瞭解如何使用捲曲從遠端將 Apache Pig 作業提交至 Azure HDInsight。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/06/2020
-ms.openlocfilehash: 956406ec5ac99be5973f1928bbb89db10e68b339
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 124661c57f779b9f8a639debcc093ed15e717694
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000485"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946466"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>搭配 HDInsight 中的 Apache Hadoop 使用 REST 來執行 Apache Hive 查詢
 

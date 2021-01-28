@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: fb03d0f8c2dc1f3812d417bc5a5d49857f3c1051
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 89bf920a5a5dd833425f1b41bd206beaae9d30fd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737671"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946251"
 ---
 # <a name="cross-region-load-balancer-preview"></a>跨區域負載平衡器 (預覽) 
 
@@ -142,6 +142,8 @@ Azure 跨區域負載平衡器會使用地理鄰近性的負載平衡演算法�
 * 不支援跨區域 IPv6 前端 IP 設定。 
 
 * 目前無法設定健康情況探查。 預設健康情況探查每隔20秒會自動收集關於區域負載平衡器的可用性資訊。 
+
+* Azure kubernetes Service (AKS) 目前無法與跨區域 Load Balancer 整合。 在以 AKS 部署的公用 Load Balancer 前端設定跨區域 Load Balancer 時，應會發生連線中斷的情況。
 
 ## <a name="pricing-and-sla"></a>價格和 SLA
 跨區域負載平衡器會共用標準負載平衡器的 [SLA](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/ ) 。

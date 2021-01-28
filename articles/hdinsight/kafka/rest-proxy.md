@@ -1,19 +1,16 @@
 ---
 title: Apache Kafka REST Proxy - Azure HDInsight
 description: 了解如何在 Azure HDInsight 上使用 Kafka REST Proxy 執行 Apache Kafka 作業。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-python
 ms.date: 04/03/2020
-ms.openlocfilehash: d6c45a5c8062c3b6441309361037f8755a552074
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: a9a007d33226c508e193368b08b189001bf53401
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95791891"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944072"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>使用 REST Proxy 與 Azure HDInsight 中的 Apache Kafka 叢集互動
 

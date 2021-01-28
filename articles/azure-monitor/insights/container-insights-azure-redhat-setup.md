@@ -3,12 +3,12 @@ title: 設定 Azure Red Hat OpenShift v3. x 與容器的 Azure 監視器 |Micros
 description: 本文說明如何使用 Azure Red Hat OpenShift 第3版和更高版本上託管的 Azure 監視器來設定 Kubernetes 叢集的監視。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 5141ef3a96d39f16a2a9f005dd580b952046e7bf
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: f21a338a06d4a0947e2623854d828c720fb2d4bb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695669"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944547"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>使用容器 Azure 監視器設定 Azure Red Hat OpenShift v3
 
@@ -30,7 +30,7 @@ ms.locfileid: "97695669"
 您可以使用下列支援的方法，針對新的或 Azure Red Hat OpenShift 的一或多個現有部署啟用容器的 Azure 監視器：
 
 - 針對 Azure 入口網站中的現有叢集或使用 Azure Resource Manager 範本。
-- 適用于使用 Azure Resource Manager 範本的新叢集，或使用 [Azure CLI](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create)建立新叢集時。
+- 適用于使用 Azure Resource Manager 範本的新叢集，或使用 [Azure CLI](/cli/azure/openshift#az-openshift-create)建立新叢集時。
 
 ## <a name="supported-and-unsupported-features"></a>支援和不支援的功能
 
@@ -39,7 +39,7 @@ ms.locfileid: "97695669"
 - 即時資料 (預覽) 
 - 從叢集節點和 pod[收集計量](container-insights-update-metrics.md)，並將其儲存在 Azure 監視器計量資料庫中
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - [Log Analytics 工作區](../platform/design-logs-deployment.md)。
 

@@ -1,19 +1,16 @@
 ---
 title: 移轉至 HDInsight 的 Azure Resource Manager 工具
 description: 如何移轉至 HDInsight 叢集的 Azure Resource Manager 開發工具
-ms.reviewer: jasonh
-author: hrasheed-msft
-ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.topic: how-to
 ms.date: 02/21/2018
-ms.openlocfilehash: 57dec799cbda03e20717a402a88f1d818d9acd92
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 2ff62f4feba44a1c706ab85db1be3f7f654e6135
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629471"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945765"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>移轉至以 Azure Resource Manager 為基礎的開發工具 (適用於 HDInsight 叢集)
 
@@ -83,7 +80,7 @@ HDInsight 正在取代以 Azure Service Manager (ASM) 為基礎的工具 (適用
 ## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>將 Azure PowerShell 移轉至 Azure Resource Manager
 有關 Azure PowerShell 在 Azure Resource Manager 模式中的一般資訊，請參閱 [搭配使用 Azure PowerShell 與 Azure Resource Manager](../azure-resource-manager/management/manage-resources-powershell.md)。
 
-Azure PowerShell Resource Manager Cmdlet 可與 ASM Cmdlet 並存安裝。 來自兩種模式的 Cmdlet 可依其名稱來區分。  相較于較舊的 Azure 服務管理模式中的 *a z* ，Resource Manager 模式在 Cmdlet 名稱中有 *AzHDInsight* 。  例如， *>new-azhdinsightcluster* 與 *AzureHDInsightCluster* 的比較。 某些參數和切換參數可能會有新的名稱，而且當使用資源管理員時，會有許多新的參數可供使用。  例如，數個 Cmdlet 需要名為 -ResourceGroupName  的新切換參數。
+Azure PowerShell Resource Manager Cmdlet 可與 ASM Cmdlet 並存安裝。 來自兩種模式的 Cmdlet 可依其名稱來區分。  相較于較舊的 Azure 服務管理模式中的 *a z* ，Resource Manager 模式在 Cmdlet 名稱中有 *AzHDInsight* 。  例如， *>new-azhdinsightcluster* 與 *AzureHDInsightCluster* 的比較。 某些參數和切換參數可能會有新的名稱，而且當使用資源管理員時，會有許多新的參數可供使用。  例如，數個 Cmdlet 需要名為 -ResourceGroupName 的新切換參數。
 
 在您可以使用 HDInsight Cmdlet 之前，必須連線到您的 Azure 帳戶，並建立新的資源群組︰
 
@@ -134,17 +131,17 @@ help *azurehdinsight*
 
 **指令碼動作相關的 Cmdlet：**
 
-* **AzHDInsightPersistedScriptAction** ：取得叢集的持續性腳本動作，並依時間順序列出，或取得指定之持續性腳本動作的詳細資料。 
-* **AzHDInsightScriptActionHistory** ：取得叢集的腳本動作歷程記錄，並依反向時間順序列出，或取得先前執行腳本動作的詳細資料。 
-* **AzHDInsightPersistedScriptAction** ：從 HDInsight 叢集移除持續性腳本動作。
-* **AzHDInsightPersistedScriptAction** ：將先前執行的腳本動作設定為持續性腳本動作。
-* **Submit-AzHDInsightScriptAction** ：將新的腳本動作提交至 Azure HDInsight 叢集中。 
+* **AzHDInsightPersistedScriptAction**：取得叢集的持續性腳本動作，並依時間順序列出，或取得指定之持續性腳本動作的詳細資料。 
+* **AzHDInsightScriptActionHistory**：取得叢集的腳本動作歷程記錄，並依反向時間順序列出，或取得先前執行腳本動作的詳細資料。 
+* **AzHDInsightPersistedScriptAction**：從 HDInsight 叢集移除持續性腳本動作。
+* **AzHDInsightPersistedScriptAction**：將先前執行的腳本動作設定為持續性腳本動作。
+* **Submit-AzHDInsightScriptAction**：將新的腳本動作提交至 Azure HDInsight 叢集中。 
 
 如需關於其他使用方式的詳細資訊，請參閱 [使用指令碼動作自訂以 Linux 為基礎的 HDInsight 叢集](hdinsight-hadoop-customize-cluster-linux.md)。
 
 **叢集身分識別相關的 Cmdlet：**
 
-* **AzHDInsightClusterIdentity** ：將叢集身分識別新增至叢集設定物件，讓 HDInsight 叢集可以存取 Azure Data Lake Storage。 請參閱[使用 Azure PowerShell 建立搭配 Data Lake Storage 的 HDInsight 叢集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)。
+* **AzHDInsightClusterIdentity**：將叢集身分識別新增至叢集設定物件，讓 HDInsight 叢集可以存取 Azure Data Lake Storage。 請參閱[使用 Azure PowerShell 建立搭配 Data Lake Storage 的 HDInsight 叢集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)。
 
 ### <a name="examples"></a>範例
 **建立叢集**

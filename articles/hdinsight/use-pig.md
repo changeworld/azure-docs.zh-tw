@@ -2,19 +2,16 @@
 title: 使用 Apache Pig
 titleSuffix: Azure HDInsight
 description: 了解如何在 HDInsight 上搭配 Apache Hadoop 使用 Pig。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: 9474a1845898e3fda0c810314f41f6f4deabc96b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7b74a41f7d6b636dddce0388d5ee0e0a12658d52
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538726"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944608"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>在 HDInsight 上搭配 Apache Hadoop 使用 Apache Pig
 
@@ -30,11 +27,11 @@ Pig 可讓您將處理定義為一系列轉換，使資料流過以產生所需�
 
 Pig Latin 語言可讓您從原始輸入描述資料流 (經過一或多個轉換後) 以產生所需的輸出。 Pig Latin 程式遵循此一般模式：
 
-* **載入** ：讀取要從檔案系統操作的資料。
+* **載入**：讀取要從檔案系統操作的資料。
 
-* **轉換** ：操縱資料。
+* **轉換**：操縱資料。
 
-* 傾印 **或儲存** ：將資料輸出至畫面，或儲存資料以供處理。
+* 傾印 **或儲存**：將資料輸出至畫面，或儲存資料以供處理。
 
 ### <a name="user-defined-functions"></a>使用者自訂函數
 

@@ -1,19 +1,16 @@
 ---
 title: 將 Azure HDInsight 中的 Hive 查詢最佳化
 description: 本文說明如何將 Azure HDInsight 中的 Apache Hive 查詢優化。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 10/28/2020
-ms.openlocfilehash: 840c481a54451e1f8374aec4799df10b96fb2e4d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: a15c3e0fb3550c6e50b3fba2279611fdba25bc84
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910877"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945555"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>將 Azure HDInsight 中的 Apache Hive 查詢最佳化
 
@@ -53,11 +50,11 @@ ms.locfileid: "92910877"
 
 Tez 比較迅速，因為：
 
-* **在 MapReduce 引擎中執行有向非循環圖 (DAG) 作為單一作業** 。 DAG 要求每一組對應程式後面有一組歸納器。 這項需求會導致每個 Hive 查詢有多個 MapReduce 作業。 Tez 沒有這類條件約束，而且可以處理複雜的 DAG 作為一項工作，將工作啟動額外負荷降至最低。
-* **避免不必要的寫入** 。 使用多個作業，在 MapReduce 引擎中處理相同的 Hive 查詢。 每個 MapReduce 作業的輸出都會寫入 HDFS，作為中繼資料。 因為 Tez 會將每個 Hive 查詢的工作數目降至最低，所以能夠避免不必要的寫入。
-* **將啟動延遲最小化** 。 Tez 會減少需要啟動的對應器數目，同時提升整個最佳化，因此較能夠將啟動延遲降到最低。
-* **重複使用容器** 。 可能的話，Tez 將會重複使用容器，以確保降低啟動容器的延遲。
-* **連續最佳化技巧** 。 習慣上，是在編譯階段進行最佳化。 但是有更多關於輸入的資訊可用，所以在執行階段進行最佳化比較理想。 Tez 會使用連續最佳化技巧，進一步在執行階段將計劃最佳化。
+* **在 MapReduce 引擎中執行有向非循環圖 (DAG) 作為單一作業**。 DAG 要求每一組對應程式後面有一組歸納器。 這項需求會導致每個 Hive 查詢有多個 MapReduce 作業。 Tez 沒有這類條件約束，而且可以處理複雜的 DAG 作為一項工作，將工作啟動額外負荷降至最低。
+* **避免不必要的寫入**。 使用多個作業，在 MapReduce 引擎中處理相同的 Hive 查詢。 每個 MapReduce 作業的輸出都會寫入 HDFS，作為中繼資料。 因為 Tez 會將每個 Hive 查詢的工作數目降至最低，所以能夠避免不必要的寫入。
+* **將啟動延遲最小化**。 Tez 會減少需要啟動的對應器數目，同時提升整個最佳化，因此較能夠將啟動延遲降到最低。
+* **重複使用容器**。 可能的話，Tez 將會重複使用容器，以確保降低啟動容器的延遲。
+* **連續最佳化技巧**。 習慣上，是在編譯階段進行最佳化。 但是有更多關於輸入的資訊可用，所以在執行階段進行最佳化比較理想。 Tez 會使用連續最佳化技巧，進一步在執行階段將計劃最佳化。
 
 如需這些概念的詳細資訊，請參閱 [Apache TEZ](https://tez.apache.org/)。
 
@@ -79,7 +76,7 @@ Hive 資料分割的實作方法是將未經處理的資料重新整理成新的
 
 * 在只有幾個值的資料行上進行 **分割** 區分割時，可能會導致幾個資料分割。 例如，根據性別的資料分割，只會建立兩個 (男性和女性) 所建立的資料分割，因此最多可減少一半的延遲。
 * **不要超過分割** 區-另一種極端，在具有唯一值的資料行上建立資料分割 (例如，userid) 會導致多個分割區。 過度分割會在叢集 namenode 上造成太多壓力，因為它必須處理大量目錄。
-* **避免資料扭曲** - 明智地選擇分割索引鍵，讓所有分割區的大小平均。 例如，「州/省」  資料行上的資料分割可能會扭曲資料的分佈。 由於加州的人口幾乎是佛蒙特州的 30 倍，分割區大小可能會有偏差，且效能可能會有極大的差異。
+* **避免資料扭曲** - 明智地選擇分割索引鍵，讓所有分割區的大小平均。 例如，「州/省」資料行上的資料分割可能會扭曲資料的分佈。 由於加州的人口幾乎是佛蒙特州的 30 倍，分割區大小可能會有偏差，且效能可能會有極大的差異。
 
 若要建立分割資料表，請使用 *Partitioned By* 子句：
 
@@ -132,9 +129,9 @@ STORED AS TEXTFILE;
 
 Hive 支援不同的檔案格式。 例如：
 
-* **文字** ：預設檔案格式且適用於大部分的案例。
-* **Avro** ：適用於互通性案例。
-* **ORC/Parquet** ：最適合處理效能。
+* **文字**：預設檔案格式且適用於大部分的案例。
+* **Avro**：適用於互通性案例。
+* **ORC/Parquet**：最適合處理效能。
 
 ORC (最佳化的資料列單欄式) 格式是儲存 Hive 資料的高效率方式。 相較於其他格式，ORC 具有下列優點：
 
@@ -199,9 +196,9 @@ set hive.vectorized.execution.enabled = true;
 
 * **Hive 值區：** 能將大型資料集叢集化或分段以最佳化查詢效能的技術。
 * **聯結最佳化：** Hive 的查詢執行計劃最佳化，可改善聯結的效率並減少使用者提示的需求。 如需詳細資訊，請參閱 [聯結最佳化](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization)。
-* **增加歸納器** 。
+* **增加歸納器**。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您學到幾種常見的 Hive 查詢最佳化方法。 如需詳細資訊，請參閱下列文章：
 

@@ -1,19 +1,16 @@
 ---
 title: 查詢 Azure 監視器記錄以監視 Azure HDInsight 叢集
 description: 瞭解如何對 Azure 監視器記錄執行查詢，以監視在 HDInsight 叢集中執行的作業。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
-ms.openlocfilehash: c2ddcd8ea3524b4afdfa7f70d21f0cba96975f72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9213f36ec33939c3df3b56d21822aa3b6a17c03
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085356"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945615"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>查詢 Azure 監視器記錄來監視 HDInsight 叢集
 
@@ -24,7 +21,7 @@ ms.locfileid: "86085356"
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 您必須已將 HDInsight 叢集設定為使用 Azure 監視器記錄，並將 HDInsight 叢集特定的 Azure 監視器記錄監視解決方案新增至工作區。 如需相關指示，請參閱 [搭配使用 Azure 監視器記錄與 HDInsight](hdinsight-hadoop-oms-log-analytics-tutorial.md)叢集。
 
@@ -107,7 +104,7 @@ search in (metrics_resourcemanager_queue_root_default_CL) *
 
     ![輸入查詢以建立 alert1](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert-query.png "輸入查詢以建立 alert1")
 
-1. 在 [建立規則]**** 視窗中，輸入查詢和其他詳細資料以建立警示，然後選取 [建立警示規則]****。
+1. 在 [建立規則] 視窗中，輸入查詢和其他詳細資料以建立警示，然後選取 [建立警示規則]。
 
     ![輸入查詢以建立警示2](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert.png "輸入查詢以建立警示2")
 
@@ -121,7 +118,7 @@ search in (metrics_resourcemanager_queue_root_default_CL) *
 
 1. 選取您要編輯或刪除的警示。
 
-1. 您可以使用下列選項：**儲存**、**捨棄**、**停用**和**刪除**。
+1. 您可以使用下列選項：**儲存**、**捨棄**、**停用** 和 **刪除**。
 
     ![HDInsight Azure 監視器記錄警示刪除編輯](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 

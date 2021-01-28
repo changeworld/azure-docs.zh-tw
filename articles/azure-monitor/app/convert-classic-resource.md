@@ -3,12 +3,12 @@ title: 將 Azure 監視器 Application Insights 傳統資源遷移到以工作�
 description: 瞭解將 Azure 監視器 Application Insights 傳統資源升級至新的工作區架構模型所需的步驟。
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 709cff1326bb6393a14c594ea434a6c16fb80860
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5316bf5b919fe8b24ea1dd601214df62aa034f37
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536518"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945105"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>遷移至以工作區為基礎的 Application Insights 資源
 
@@ -51,7 +51,7 @@ ms.locfileid: "95536518"
 - 以工作區為基礎的資源不支援連續匯出，且必須停用。
 完成遷移後，您可以使用 [診斷設定](../platform/diagnostic-settings.md) 來設定儲存體帳戶的資料封存，或串流至 Azure 事件中樞。  
 
-- 請在 **General**  >  您的 Log Analytics 工作區中，檢查目前的保留設定，以瞭解一般 **使用量和預估成本**  >  **資料保留期**。 這項設定會影響您在遷移 Application Insights 資源之後，儲存任何新內嵌資料的時間長度。 如果您目前儲存 Application Insights 的資料超過預設的90天，而且想要保留此較長的保留期間，您可能需要調整您的工作區保留設定。
+- 請在  >  您的 Log Analytics 工作區中，檢查目前的保留設定，以瞭解一般 **使用量和預估成本**  >  **資料保留期**。 這項設定會影響您在遷移 Application Insights 資源之後，儲存任何新內嵌資料的時間長度。 如果您目前儲存 Application Insights 的資料超過預設的90天，而且想要保留此較長的保留期間，您可能需要調整您的工作區保留設定。
 
 ## <a name="migrate-your-resource"></a>遷移您的資源
 
@@ -114,7 +114,7 @@ az monitor app-insights component update --app
 az monitor app-insights component update --app your-app-insights-resource-name -g your_resource_group --workspace "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test1234/providers/microsoft.operationalinsights/workspaces/test1234555"
 ```
 
-如需此命令的完整 Azure CLI 文件，請參閱 [Azure CLI 文件](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-update)。
+如需此命令的完整 Azure CLI 文件，請參閱 [Azure CLI 文件](/cli/azure/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-update)。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 

@@ -1,19 +1,16 @@
 ---
 title: 使用啟動程式自訂 Azure HDInsight 叢集設定
 description: 瞭解如何使用 .NET、PowerShell 和 Resource Manager 範本，以程式設計方式自訂 HDInsight 叢集設定。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/01/2020
-ms.openlocfilehash: 246c5600da3b554ba65872780f0719a58f3f4be2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 306ebcf7db3c11f783af8cf4c1779bd3d1a013a4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547481"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945757"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>使用 Bootstrap 自訂 HDInsight 叢集
 
@@ -46,7 +43,7 @@ ms.locfileid: "92547481"
 
 如需在建立期間于 HDInsight 叢集上安裝其他元件的相關資訊，請參閱 [使用腳本動作自訂 hdinsight 叢集 (Linux) ](hdinsight-hadoop-customize-cluster-linux.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 如果使用 PowerShell，您將需要 [Az 模組](/powershell/azure/) \(部分機器翻譯\)。
 
@@ -86,9 +83,9 @@ New-AzHDInsightCluster `
 **若要確認變更：**
 
 1. 導覽至 `https://CLUSTERNAME.azurehdinsight.net/` `CLUSTERNAME` 您叢集的名稱。
-1. 從左側功能表，流覽至 **Hive 配置**  >  **Configs**  >  **Advanced** 。
-1. 展開 [ **Advanced hive-site** ]。
-1. 找出 **中繼存放區** ，並確認此值為 **90 年代** 。
+1. 從左側功能表，流覽至 **Hive 配置**  >    >  **Advanced**。
+1. 展開 [ **Advanced hive-site**]。
+1. 找出 **中繼存放區** ，並確認此值為 **90 年代**。
 
 以下是更多自訂其他組態檔的範例：
 

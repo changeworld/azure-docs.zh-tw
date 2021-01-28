@@ -1,19 +1,16 @@
 ---
 title: 什麼是 Apache Hadoop 和 MapReduce - Azure HDInsight
 description: 簡介 HDInsight 以及 Apache Hadoop 技術堆疊和元件。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/27/2020
-ms.openlocfilehash: ef1914499765beff9913f9735cf55736135f9d96
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
-ms.translationtype: HT
+ms.openlocfilehash: 1e3fc23dd220a8d9764a64c453e9fb856307ac47
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899637"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946517"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>什麼是 Apache HDInsight 中的 Apache Hadoop？
 
@@ -27,9 +24,9 @@ Azure HDInsight 是雲端中供企業使用的完全受控、全方位的開放�
 
 [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) 是一種可撰寫工作來處理大量資料的軟體架構。 輸入的資料會分割成獨立的區塊。 每個區塊會在叢集的節點之間平行處理。 MapReduce 工作由兩項功能組成：
 
-* **對應程式** ：取用輸入資料、分析 (通常使用篩選及排序作業)，以及發出 Tuple (機碼值組)
+* **對應程式**：取用輸入資料、分析 (通常使用篩選及排序作業)，以及發出 Tuple (機碼值組)
 
-* **減壓器** ：取用對應程式發出的 Tuple 並執行摘要作業，從對應程式資料建立較小的組合結果
+* **減壓器**：取用對應程式發出的 Tuple 並執行摘要作業，從對應程式資料建立較小的組合結果
 
 下圖說明了基本字數統計 MapReduce 工作範例：
 
@@ -44,7 +41,7 @@ MapReduce 可在各種語言中實作。 Java 是最常見的實作，基於示�
 
 ## <a name="development-languages"></a>開發語言
 
-以 Java 及 Java Virtual Machine 為基礎的語言或架構可以 [MapReduce 工作](..//hadoop/submit-apache-hadoop-jobs-programmatically.md)的形式直接執行。 本文件中使用的範例是 Java MapReduce 應用程式。 非 Java 語言 (例如 C#、Python 或獨立可執行檔) 必須使用 **Hadoop 串流** 。
+以 Java 及 Java Virtual Machine 為基礎的語言或架構可以 [MapReduce 工作](..//hadoop/submit-apache-hadoop-jobs-programmatically.md)的形式直接執行。 本文件中使用的範例是 Java MapReduce 應用程式。 非 Java 語言 (例如 C#、Python 或獨立可執行檔) 必須使用 **Hadoop 串流**。
 
 Hadoop 串流會透過 STDIN 與 STDOUT 與對應工具和歸納工具進行通訊。 對應工具和歸納工具會一次從 STDIN 讀取一行資料，並將輸出寫入至 STDOUT。 對應工具和歸納工具所讀取或發出的每行資料，必須為機碼/值組格式，並以索引標籤字元分隔：
 

@@ -1,19 +1,16 @@
 ---
 title: 了解並解決 HDInsight 上的 WebHCat 錯誤 - Azure
 description: 了解 WebHCat 在 HDInsight 上傳回的常見錯誤以及如何解決這些問題。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 951dba6e64561301dc7dbb6ebd6fd6b641c90a47
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: ce7a21a2b5401c68c6b58bc934fb20b0225ba8ad
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285674"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945460"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>了解並解決 HDInsight 上從 WebHCat 收到的錯誤
 
@@ -39,7 +36,7 @@ ms.locfileid: "93285674"
 
 ## <a name="too-many-requests"></a>要求太多
 
-**HTTP 狀態碼** ：429
+**HTTP 狀態碼**：429
 
 | 原因 | 解決方案 |
 | --- | --- |
@@ -47,7 +44,7 @@ ms.locfileid: "93285674"
 
 ## <a name="server-unavailable"></a>無法使用伺服器
 
-**HTTP 狀態碼** ：503
+**HTTP 狀態碼**：503
 
 | 原因 | 解決方案 |
 | --- | --- |
@@ -55,7 +52,7 @@ ms.locfileid: "93285674"
 
 ## <a name="bad-request-content-could-not-find-job"></a>不正確的要求內容：找不到作業
 
-**HTTP 狀態碼** ：400
+**HTTP 狀態碼**：400
 
 | 原因 | 解決方案 |
 | --- | --- |
@@ -65,7 +62,7 @@ ms.locfileid: "93285674"
 
 ## <a name="bad-gateway"></a>閘道不正確
 
-**HTTP 狀態碼** ：502
+**HTTP 狀態碼**：502
 
 | 原因 | 解決方案 |
 | --- | --- |

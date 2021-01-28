@@ -3,16 +3,13 @@ title: OutOfMemoryError Azure HDInsight 中 Apache Spark 的例外狀況
 description: Azure HDInsight 中 Apache Spark 叢集的各種 OutOfMemoryError 例外狀況
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/15/2019
-ms.openlocfilehash: 156d3ce4b7f8b6eaa297f2cddd0d5a93f382f78e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a15d79f2ae9c3d20a73ec557c57a5c189b18111b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547277"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946336"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>OutOfMemoryError Azure HDInsight 中 Apache Spark 的例外狀況
 
@@ -60,7 +57,7 @@ java.lang.OutOfMemoryError
 
 1. 決定 Spark 應用程式將處理的資料大小上限。 根據輸入資料的大小上限、轉換輸入資料所產生的中繼資料，以及進一步轉換中繼資料所產生的輸出資料，來預估大小。 如果初始估計值不足，請稍微增加大小，然後反覆運算至記憶體錯誤減少。
 
-1. 請確定要使用的 HDInsight 叢集具有足夠的記憶體資源及核心，才能採用 Spark 應用程式。 您可以藉由在叢集的 YARN UI 的 [叢集計量] 區段中，針對 [已使用的 **記憶體****總計** ] 和 [已 **使用的虛擬核心** ] 與 [ **虛擬核心總計** ] 的值，查看叢集計量區段。
+1. 請確定要使用的 HDInsight 叢集具有足夠的記憶體資源及核心，才能採用 Spark 應用程式。 您可以藉由在叢集的 YARN UI 的 [叢集計量] 區段中，針對 [已使用的 **記憶體****總計**] 和 [已 **使用的虛擬核心**] 與 [**虛擬核心總計**] 的值，查看叢集計量區段。
 
     ![yarn 核心記憶體視圖](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
 

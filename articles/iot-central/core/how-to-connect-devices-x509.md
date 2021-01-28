@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: d36cf2344891bb70ab5499e77699b111429a936b
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: bffff099e8df2b944cbef50a074ef625267ed238
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96121834"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944626"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>如何使用適用于 IoT Central 應用程式 Node.js 裝置 SDK，將裝置與 x.509 憑證連線
 
@@ -21,7 +21,7 @@ IoT Central 支援共用存取簽章 (SAS) 和 x.509 憑證來保護裝置與應
 
 本文說明兩種使用 x.509 的方式：通常用於生產環境中的 [群組註冊](how-to-connect-devices-x509.md#use-a-group-enrollment) ，以及 [個別註冊](how-to-connect-devices-x509.md#use-an-individual-enrollment) 適用于測試。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 完成 [建立用戶端應用程式，並將其連接到 Azure IoT Central 應用程式 (JavaScript) ](./tutorial-connect-device.md) 教學課程。
 - [Git](https://git-scm.com/download/)。
@@ -199,7 +199,7 @@ filename | 內容
 
 1. 將 _mytestselfcertprimary_key pem_ 和 _mytestselfcertprimary_cert pem_ 檔案複製到包含 **simple_thermostat.js** 應用程式的 _azure-iot-sdk-node/device/samples/pnp_ 資料夾。 當您完成將 [裝置連線 (JavaScript) 教學](./tutorial-connect-device.md)課程時，就會使用此應用程式。
 
-1. 修改您在中使用的環境變數，如下所示：
+1. 修改您在上述範例中使用的環境變數，如下所示：
 
     ```cmd/sh
     set IOTHUB_DEVICE_DPS_DEVICE_ID=mytestselfcertprimary

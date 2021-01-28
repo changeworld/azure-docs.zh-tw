@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory 的 Azure Private Link
+title: 適用於 Azure Data Factory 的 Azure Private Link
 description: 瞭解 Azure Private Link 在 Azure Data Factory 中的運作方式。
 services: data-factory
 ms.author: abnarain
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 5d13a6a77ede6277eebc7fdab7cd42165cb602fa
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 6fb460c65d37723b03c1dfd4fba2c353c19455bd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746336"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944579"
 ---
-# <a name="azure-private-link-for-azure-data-factory"></a>Azure Data Factory 的 Azure Private Link
+# <a name="azure-private-link-for-azure-data-factory"></a>適用於 Azure Data Factory 的 Azure Private Link
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -67,7 +67,7 @@ Azure Data Factory 服務的通訊會通過 Private Link 並協助提供安全�
 > 當您建立連結服務時，請確定您的認證儲存在 Azure key vault 中。 否則，當您在 Azure Data Factory 中啟用 Private Link 時，認證將無法運作。
 
 ## <a name="dns-changes-for-private-endpoints"></a>私人端點的 DNS 變更
-當您建立私人端點時，Data Factory 的 DNS CNAME 資源記錄會更新為首碼為 ' privatelink ' 的子域中的別名。 根據預設，我們也會建立對應至 ' privatelink ' 子域的 [私人 dns 區域](https://docs.microsoft.com/azure/dns/private-dns-overview)，並以 DNS 為私人端點的資源記錄。
+當您建立私人端點時，Data Factory 的 DNS CNAME 資源記錄會更新為首碼為 ' privatelink ' 的子域中的別名。 根據預設，我們也會建立對應至 ' privatelink ' 子域的 [私人 dns 區域](../dns/private-dns-overview.md)，並以 DNS 為私人端點的資源記錄。
 
 當您從 VNet 外部使用私人端點來解析 data factory 端點 URL 時，它會解析為 data factory 服務的公用端點。 從裝載私人端點的 VNet 解析時，儲存體端點 URL 會解析為私人端點的 IP 位址。
 
@@ -89,8 +89,8 @@ Azure Data Factory 服務的通訊會通過 Private Link 並協助提供安全�
 如果您在網路上使用自訂 DNS 伺服器，用戶端必須能夠將 Data Factory 端點的 FQDN 解析為私人端點 IP 位址。 您應該將您的 DNS 伺服器設定為將私人連結子域委派給 VNet 的私人 DNS 區域，或設定 ' DataFactoryA ' 的 A 記錄。具有私人端點 IP 位址的 {region}. privatelink. datafactory。
 
 如需有關設定您自己的 DNS 伺服器以支援私人端點的詳細資訊，請參閱下列文章：
-- [Azure 虛擬網路中的資源名稱解析](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [私人端點的 DNS 設定](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
+- [Azure 虛擬網路中的資源名稱解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
+- [私人端點的 DNS 設定](../private-link/private-endpoint-overview.md#dns-configuration)
 
 
 ## <a name="set-up-private-link-for-azure-data-factory"></a>設定 Azure Data Factory 的 Private Link

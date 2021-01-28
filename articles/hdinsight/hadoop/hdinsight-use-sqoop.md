@@ -1,18 +1,15 @@
 ---
 title: 使用 Azure HDInsight (Apache Hadoop) 執行 Apache Sqoop 作業
 description: 了解如何從工作站使用 Azure PowerShell，在 Hadoop 叢集與 Azure SQL 資料庫之間執行 Sqoop 匯入和匯出。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: c09a910ea5f6ac5c66a94c73bda49d1f65630708
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 1c34b673cd970a9e7577b7ff01d27eb0e4cc1ac1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545220"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946434"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>搭配使用 Apache Sqoop 與 HDInsight 中的 Hadoop
 
@@ -82,7 +79,7 @@ HDInsight 叢集附有某些範例資料。 您將用到以下兩個範例：
     |---|---|
     |訂用帳戶 |從下拉式清單中選取您的 Azure 訂用帳戶。|
     |資源群組 |從下拉式清單中選取您的資源群組，或建立一個新的資源群組|
-    |位置 |從下拉式清單中選取區域。|
+    |Location |從下拉式清單中選取區域。|
     |叢集名稱 |輸入 Hadoop 叢集的名稱。 僅使用小寫字母。|
     |叢集登入使用者名稱 |保留預先填入的值 `admin` 。|
     |叢集登入密碼 |輸入密碼。|
@@ -93,21 +90,21 @@ HDInsight 叢集附有某些範例資料。 您將用到以下兩個範例：
     |_artifacts 位置 | 除非您想要在不同的位置使用您自己的 bacpac 檔案，否則請使用預設值。|
     |_artifacts 位置 Sas 權杖 |保留空白。|
     |Bacpac 檔案名 |除非您想要使用自己的 bacpac 檔案，否則請使用預設值。|
-    |位置 |使用預設值。|
+    |Location |使用預設值。|
 
     [邏輯 SQL server](../../azure-sql/database/logical-servers.md)名稱將會是 `<ClusterName>dbserver` 。 資料庫名稱將會是 `<ClusterName>db` 。 預設的儲存體帳戶名稱將會是 `e6qhezrh2pdqu` 。
 
 3. 選取 [我同意上方所述的條款及條件]。
 
-4. 選取 [購買]。 您會看到新的圖格，標題為「提交範本部署的部署」。 大約需要 20 分鐘的時間來建立叢集和 SQL Database。
+4. 選取 [購買]  。 您會看到新的圖格，標題為「提交範本部署的部署」。 大約需要 20 分鐘的時間來建立叢集和 SQL Database。
 
 ## <a name="run-sqoop-jobs"></a>執行 Sqoop 工作
 
 HDInsight 可以使用各種方法執行 Sqoop 工作。 請使用下表決定適合您的方法，然後跟著連結逐項閱讀介紹。
 
-| **使用此方法** | ...一個 **互動式** 殼層 | ... **批次處理** | ...從此 **用戶端作業系統** |
+| **使用此方法** | ...一個 **互動式** 殼層 | ...**批次處理** | ...從此 **用戶端作業系統** |
 |:--- |:---:|:---:|:--- |:--- |
-| [Ssh](apache-hadoop-use-sqoop-mac-linux.md) |? |? |Linux、Unix、Mac OS X 或 Windows |
+| [SSH](apache-hadoop-use-sqoop-mac-linux.md) |? |? |Linux、Unix、Mac OS X 或 Windows |
 | [.NET SDK for Hadoop](apache-hadoop-use-sqoop-dotnet-sdk.md) |&nbsp; |?  |Windows (目前) |
 | [Azure PowerShell](apache-hadoop-use-sqoop-powershell.md) |&nbsp; |? |Windows |
 

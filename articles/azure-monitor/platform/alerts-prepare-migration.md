@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 9df5d702019063ffba6d79cc63370cd25a7242fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60a721af9acf980e88ad60504e75d2488c8a4d81
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358776"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944479"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>準備邏輯應用程式和 Runbook 以便移轉傳統警示規則
 
@@ -30,7 +30,7 @@ ms.locfileid: "91358776"
 | 部署腳本類型 | 傳統警示 | 新增度量警示 |
 | ---------------------- | -------------- | ----------------- |
 |REST API     | [microsoft insights/alertrules](/rest/api/monitor/alertrules)         | [microsoft.insights/metricalerts](/rest/api/monitor/metricalerts)       |
-|Azure CLI     | [az monitor alert](/cli/azure/monitor/alert?view=azure-cli-latest)        | [az 監視器計量警示](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
+|Azure CLI     | [az monitor alert](/cli/azure/monitor/alert)        | [az 監視器計量警示](/cli/azure/monitor/metrics/alert)        |
 |PowerShell      | [參考](/powershell/module/az.monitor/add-azmetricalertrule)       |  [參考](/powershell/module/az.monitor/add-azmetricalertrulev2)    |
 | Azure Resource Manager 範本 | [傳統警示](./alerts-enable-template.md)|[針對新的計量警示](./alerts-metric-create-templates.md)|
 
@@ -53,7 +53,7 @@ ms.locfileid: "91358776"
 | 時間匯總 (度量在評估視窗上的匯總方式) | **timeAggregation** | **timeAggregation** |
 | 評估期 | **windowSize** | **windowSize。** |
 | 操作員 (如何將匯總的計量值與閾值進行比較)  | **condition. operator** | **data. condition. operator** |
-| 閾值 | **coNtext。條件。閾值** | **>allof [0]. 閾值** |
+| 臨界值 | **coNtext。條件。閾值** | **>allof [0]. 閾值** |
 | 度量值 | **metricValue** | **>allof [0]. metricValue** |
 | 訂用帳戶識別碼 | **subscriptionId** | **資料。 subscriptionId** |
 | 受影響資源的資源群組 | **內容 resourceGroup** | **資料. 內容 resourceGroup** |

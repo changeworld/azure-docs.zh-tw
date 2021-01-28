@@ -1,18 +1,15 @@
 ---
 title: 管理 Azure HDInsight 中網域帳戶的 SSH 存取
 description: 在 HDInsight 中管理 Azure AD 帳戶 SSH 存取的步驟。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 02/14/2020
-ms.openlocfilehash: 5be992ef8375f98b3c5978d8b71dc92ce9f91123
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fab06f5e269f311f798c096a6465c8c6ce75fc2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86081497"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946751"
 ---
 # <a name="manage-ssh-access-for-domain-accounts-in-azure-hdinsight"></a>管理 Azure HDInsight 中網域帳戶的 SSH 存取
 
@@ -60,7 +57,7 @@ SSH 驗證記錄檔會寫入至 `/var/log/auth.log` 。 如果您透過 SSH 看�
 
 若要啟用詳細資訊記錄，您必須使用選項來重新開機 `sshd` `-d` 。 如同 `/usr/sbin/sshd -d` 您也可以 `sshd` 在自訂埠上執行 (例如 2222) ，如此您就不需要停止主要 SSH 背景程式。 您也可以搭配 `-v` SSH 用戶端使用選項，以取得更多的記錄 (用戶端) 失敗的觀點。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [使用企業安全性套件管理 HDInsight 叢集](./apache-domain-joined-manage.md)
 * [使用 SSH 連線到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。

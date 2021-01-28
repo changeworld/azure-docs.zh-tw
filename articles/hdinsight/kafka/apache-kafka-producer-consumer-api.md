@@ -1,19 +1,16 @@
 ---
 title: 教學課程：Apache Kafka Producer 和 Consumer API - Azure HDInsight
 description: 了解如何搭配 HDInsight 上的 Kafka 使用 Apache Kafka Producer 和 Consumer API。 在本教學課程中，您將了解如何從 Java 應用程式將這些 API 用於 HDInsight 上的 Kafka。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: b942fb321d2bceef64930bea0c660f66747508b6
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
-ms.translationtype: HT
+ms.openlocfilehash: e5a635a8837aadaf423c6f3a0925dbac4080e60f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629301"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945168"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>教學課程：使用 Apache Kafka Producer 和 Consumer API
 
@@ -219,7 +216,7 @@ Kafka 中儲存的記錄會依照其在資料分割內接收的順序儲存。 �
 
 1. **主題建立失敗** 如果您的叢集已啟用企業安全性套件，請使用 [適用於生產者和取用者的預建 JAR 檔案](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Prebuilt-Jars/kafka-producer-consumer-esp.jar)。 您可以從[`DomainJoined-Producer-Consumer`子目錄](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer)中的程式碼建置 ESP jar。 生產者和取用者屬性都有已啟用 ESP 的叢集所適用的額外屬性 `CommonClientConfigs.SECURITY_PROTOCOL_CONFIG`。
 
-2. **已啟用 ESP 的叢集中發生失敗** ：如果產生和取用作業失敗，而且您使用已啟用 ESP 的叢集，請檢查使用者 `kafka` 是否存在於所有 Ranger 原則中。 如果不存在，請將其新增至所有 Ranger 原則。
+2. **已啟用 ESP 的叢集中發生失敗**：如果產生和取用作業失敗，而且您使用已啟用 ESP 的叢集，請檢查使用者 `kafka` 是否存在於所有 Ranger 原則中。 如果不存在，請將其新增至所有 Ranger 原則。
 
 ## <a name="clean-up-resources"></a>清除資源
 

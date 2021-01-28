@@ -1,19 +1,16 @@
 ---
 title: 在 HDInsight Linux 叢集上使用 Hue 與 Hadoop - Azure - Azure
 description: 了解如何在 HDInsight 叢集上安裝 Hue，並且使用通道將要求路由至 Hue。 使用 Hue 瀏覽儲存體並執行 Hive 或 Pig。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/31/2020
-ms.openlocfilehash: e80df5d1c3d2b2195e76622964406cc65c933a63
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8d4663aac6af4abb8d9855d2f972965e997d9c92
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546189"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945683"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 叢集上安裝和使用 Hue
 
@@ -91,7 +88,7 @@ Hue 是一組用來與 Apache Hadoop 叢集進行互動的 Web 應用程式。 �
 
     ![HDInsight Hue 入口網站使用 Hive 編輯器](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png "使用 Hive")
 
-2. 在 [協助] 索引標籤中，於 [資料庫] 底下，您應該會看到 **hivesampletable** 。 這是 HDInsight 上的所有 Hadoop 叢集隨附的範例資料表。 在右窗格中輸入範例查詢，然後在下方窗格的 [結果]  索引標籤中查看輸出，如螢幕擷取畫面所示。
+2. 在 [協助] 索引標籤中，於 [資料庫] 底下，您應該會看到 **hivesampletable**。 這是 HDInsight 上的所有 Hadoop 叢集隨附的範例資料表。 在右窗格中輸入範例查詢，然後在下方窗格的 [結果]  索引標籤中查看輸出，如螢幕擷取畫面所示。
 
     ![HDInsight Hue 入口網站 Hive 查詢](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png "執行 Hive 查詢")
 

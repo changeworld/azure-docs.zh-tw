@@ -1,19 +1,16 @@
 ---
 title: Visual Studio Code 的 Azure HDInsight
 description: 瞭解如何使用 Spark & Hive 工具 (Azure HDInsight) 進行 Visual Studio Code。 使用這些工具來建立及提交查詢和腳本。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 30c13adfebb911e443fb042821e09628da3b9405
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 1209c49cbd988a02b1e3503994fdbdac3f26216a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610976"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946138"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>使用 Spark & Hive Tools for Visual Studio Code
 

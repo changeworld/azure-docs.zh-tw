@@ -8,12 +8,12 @@ ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 709b83ad3e71a932202cebb9c9cb6187feae4ed7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 812d4976a0c6afe646c329ee483be20c33416381
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080000"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943896"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure 表格儲存體資料表設計指南：可擴充的高效能資料表
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -124,7 +124,7 @@ ms.locfileid: "93080000"
 </table>
 
 
-到目前為止，這項設計看起來類似關聯式資料庫中的資料表。 主要差異在於必要的資料行，以及能夠在相同資料表中儲存多個實體類型。 此外，每個使用者定義屬性 (例如 **FirstName** 或 **Age** ) 都具有資料類型，例如整數或字串，就像關聯式資料庫中的資料行一樣。 然而，不同於關聯式資料庫，表格儲存體的無結構描述本質意味著，一個屬性在每個實體上不一定是相同的資料類型。 若要將複雜資料類型儲存在單一屬性中，您必須使用序列化格式，例如 JSON 或 XML。 如需詳細資訊，請參閱[了解表格儲存體資料模型](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)。
+到目前為止，這項設計看起來類似關聯式資料庫中的資料表。 主要差異在於必要的資料行，以及能夠在相同資料表中儲存多個實體類型。 此外，每個使用者定義屬性 (例如 **FirstName** 或 **Age**) 都具有資料類型，例如整數或字串，就像關聯式資料庫中的資料行一樣。 然而，不同於關聯式資料庫，表格儲存體的無結構描述本質意味著，一個屬性在每個實體上不一定是相同的資料類型。 若要將複雜資料類型儲存在單一屬性中，您必須使用序列化格式，例如 JSON 或 XML。 如需詳細資訊，請參閱[了解表格儲存體資料模型](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)。
 
 您選擇的 `PartitionKey` 和 `RowKey` 極為重要，攸關資料表設計是否良好。 儲存在資料表中的每個實體，都必須有獨一無二的 `PartitionKey` 和 `RowKey` 組合。 如同關聯式資料庫資料表中的索引鍵，`PartitionKey` 和 `RowKey` 值會進行索引編製，以建立可啟用快速查閱的叢集索引。 不過，表格儲存體不會建立任何次要索引，因此這些是僅有的兩個索引屬性 (稍後描述的一些模式將說明如何解決這種明顯的限制)。  
 
@@ -211,7 +211,7 @@ EGT 也會帶來需在您設計中評估的潛在取捨。 使用越多分割區
 * 「資料表掃描」不包含 `PartitionKey`，而且效率不佳，因為會在所有組成資料表的分割區中搜尋任何相符實體。 無論篩選條件是否使用 `RowKey`，都會執行資料表掃描。 例如： `$filter=LastName eq 'Jones'` 。  
 * 傳回多個實體的 Azure 表格儲存體查詢，依 `PartitionKey` 和 `RowKey` 順序來排序實體。 為了避免在用戶端重新排序實體，選擇的 `RowKey` 應該定義最常用的排序次序。 Azure Cosmos DB 中以 Azure 資料表 API 傳回的查詢結果，不會依分割區索引鍵或資料列索引鍵排序。 如需詳細的功能差異清單，請參閱 [Azure Cosmos DB 和 Azure 資料表儲存體中資料表 API 之間的差異](table-api-faq.md#table-api-vs-table-storage)。
 
-如果使用 " **or** " 來根據 `RowKey` 值指定篩選條件，將會導致分割區掃描，且不視為範圍查詢。 因此，請避免查詢使用像這樣的篩選條件：`$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')`。  
+如果使用 "**or**" 來根據 `RowKey` 值指定篩選條件，將會導致分割區掃描，且不視為範圍查詢。 因此，請避免查詢使用像這樣的篩選條件：`$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')`。  
 
 關於如何使用儲存體用戶端程式庫來執行有效率的查詢，如需用戶端程式碼範例，請參閱：  
 
@@ -253,7 +253,7 @@ EGT 也會帶來需在您設計中評估的潛在取捨。 使用越多分割區
 > [!NOTE]
 > Azure Cosmos DB 中以 Azure 資料表 API 傳回的查詢結果，不會依分割區索引鍵或資料列索引鍵排序。 如需詳細的功能差異清單，請參閱 [Azure Cosmos DB 和 Azure 資料表儲存體中資料表 API 之間的差異](table-api-faq.md#table-api-vs-table-storage)。
 
-表格儲存體中的索引鍵是字串值。 為確保數值正確排序，您應該將數值轉換成固定長度，並以零填補。 例如，如果作為 `RowKey` 的員工識別碼值是整數值，您應該將員工識別碼 **123** 轉換為 **00000123** 。 
+表格儲存體中的索引鍵是字串值。 為確保數值正確排序，您應該將數值轉換成固定長度，並以零填補。 例如，如果作為 `RowKey` 的員工識別碼值是整數值，您應該將員工識別碼 **123** 轉換為 **00000123**。 
 
 許多應用程式都需要使用以不同順序排序的資料：例如，依名稱或加入日期為員工排序。 在[資料表設計模式](#table-design-patterns)一節中，下列模式指出如何替換實體的排序次序：  
 
@@ -321,7 +321,7 @@ EGT 也會帶來需在您設計中評估的潛在取捨。 使用越多分割區
 
 另一種方式是將資料反正規化，只儲存具有反正規化部門資料的員工實體，如下列範例所示。 在此特定案例中，如果您需要變更部門經理的詳細資料，則這種反正規化方法可能不是最佳選擇。 因為，您必須更新部門的每個員工。  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE02.png" alt-text="此圖顯示部門實體和員工實體":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE02.png" alt-text="員工實體的圖形，顯示如何反正規化您的資料，並只儲存具有正規化部門資料的員工實體。":::
 
 如需詳細資訊，請參閱本指南下半部的 [去正規化模式](#denormalization-pattern) 。  
 
@@ -398,18 +398,18 @@ EGT 也會帶來需在您設計中評估的潛在取捨。 使用越多分割區
 ### <a name="inheritance-relationships"></a>繼承關聯性
 如果用戶端應用程式使用一組類別 (形成一部分繼承關聯性) 來代表商務實體，則您可以輕鬆地將這些實體保存在表格儲存體中。 例如，您在用戶端應用程式中可能定義下列這組類別，其中 `Person` 是抽象類別。
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE03.png" alt-text="此圖顯示部門實體和員工實體":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE03.png" alt-text="繼承關聯性的圖表":::
 
 在表格儲存體中，您可以使用單一 `Person` 資料表來保存兩個具體類別的執行個體。 使用如下所示的實體：  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE04.png" alt-text="此圖顯示部門實體和員工實體":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE04.png" alt-text="此圖顯示客戶實體和員工實體":::
 
 關於在用戶端程式碼中如何在相同資料表中使用多個實體類型，如需詳細資訊，請參閱本指南稍後的[使用異質實體類型](#work-with-heterogeneous-entity-types)。 其中提供如何在用戶端程式碼中辨識實體類型的範例。  
 
 ## <a name="table-design-patterns"></a>資料表設計模式
 在前幾節中，您已了解如何將資料表設計最佳化，以利於使用查詢來取出實體資料，以及插入、更新和刪除實體資料。 本節說明一些適用於表格儲存體的模式。 此外，您會看到如何實際解決本指南前述的一些問題和利弊得失。 下圖總結不同模式之間的關聯性：  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE05.png" alt-text="此圖顯示部門實體和員工實體":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE05.png" alt-text="資料表設計模式的圖表":::
 
 此模式圖突顯本指南提及的模式 (藍色) 與反模式 (橘色) 之間的一些關聯性。 當然還有許多其他模式也值得考量。 例如，表格儲存體的主要案例之一是使用[命令查詢責任分離](/previous-versions/msp-n-p/jj554200(v=pandp.10))模式中的[具體化檢視模式](/previous-versions/msp-n-p/dn589782(v=pandp.10))。  
 
@@ -419,14 +419,14 @@ EGT 也會帶來需在您設計中評估的潛在取捨。 使用越多分割區
 #### <a name="context-and-problem"></a>內容和問題
 表格儲存體會使用 `PartitionKey` 和 `RowKey` 值，自動為實體編製索引。 這可讓用戶端應用程式使用這些值，有效率地取出實體。 例如，就下列資料表結構來說，用戶端應用程式可以使用點查詢，依門名稱和員工識別碼 (`PartitionKey` 和 `RowKey` 值) 來取出個別員工實體。 用戶端也可以擷取每個部門內以員工識別碼排序的實體。
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE06.png" alt-text="此圖顯示部門實體和員工實體":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE06.png" alt-text="員工實體的圖形，其中用戶端應用程式可以使用「部門名稱」和「員工識別碼」 (PartitionKey 和 RowKey 值) ，藉此使用點查詢來取出個別員工實體。":::
 
 如果您還想根據其他屬性 (例如電子郵件地址) 的值來尋找員工實體，則必須使用效率較低的分割區掃描，才能找出相符項目。 這是因為表格儲存體不提供次要索引。 此外，無法要求以 `RowKey` 順序以外的順序來排序員工清單。  
 
 #### <a name="solution"></a>解決方法
 若要解決缺少次要索引的問題，您可以為每個實體儲存多個複本，且每個複本使用不同的 `RowKey` 值。 如果您儲存的實體具有下列結構，則您可以根據電子郵件地址或員工識別碼，有效率地取出員工實體。 `RowKey`、`empid_`和 `email_` 前置值可讓您使用一組電子郵件地址或員工識別碼，以查詢單一員工或一群員工。  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE07.png" alt-text="此圖顯示部門實體和員工實體":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE07.png" alt-text="此圖顯示 RowKey 值不固定的員工實體":::
 
 下列兩個篩選準則 (一個依員工識別碼查閱，另一個依電子郵件地址查閱) 都指定點查詢：  
 
@@ -450,7 +450,7 @@ EGT 也會帶來需在您設計中評估的潛在取捨。 使用越多分割區
 * 在 `RowKey` 中填補數值 (例如，員工識別碼 000223)，有助於根據上限和下限來正確排序和篩選。  
 * 您不一定需要複製實體的所有屬性。 例如，如果查詢在 `RowKey` 中使用電子郵件地址來查閱實體，而且決不需要員工的年齡，則這些實體可能具有下列結構：
 
-  :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE08.png" alt-text="此圖顯示部門實體和員工實體":::
+  :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE08.png" alt-text="員工實體的圖形":::
 
 * 一般來說，最好是儲存重複的資料，並確定您可以使用單一查詢來取出所有需要的資料，而不要使用一個查詢來尋找實體，然後又使用另一個查詢來查閱所需的資料。  
 
@@ -477,7 +477,7 @@ EGT 也會帶來需在您設計中評估的潛在取捨。 使用越多分割區
 #### <a name="context-and-problem"></a>內容和問題
 表格儲存體會使用 `PartitionKey` 和 `RowKey` 值，自動為實體編製索引。 這可讓用戶端應用程式使用這些值，有效率地取出實體。 例如，就下列資料表結構來說，用戶端應用程式可以使用點查詢，依門名稱和員工識別碼 (`PartitionKey` 和 `RowKey` 值) 來取出個別員工實體。 用戶端也可以擷取每個部門內以員工識別碼排序的實體。  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE09.png" alt-text="此圖顯示部門實體和員工實體":::形
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE09.png" alt-text="員工實體結構的圖形，在使用時，用戶端應用程式可以使用「部門名稱」和「員工識別碼」 (PartitionKey 和 RowKey 值) ，藉此使用點查詢來取出個別的員工實體。":::形
 
 如果您也想能夠根據其他屬性 (例如電子郵件地址) 的值尋找員工實體，您必須使用效率較低的資料分割掃描來尋找相符項目。 這是因為表格儲存體不提供次要索引。 此外，無法要求以 `RowKey` 順序以外的順序來排序員工清單。  
 
@@ -486,7 +486,7 @@ EGT 也會帶來需在您設計中評估的潛在取捨。 使用越多分割區
 #### <a name="solution"></a>解決方法
 若要解決缺少次要索引的問題，您可以為每個實體儲存多個複本，且每個複本使用不同的 `PartitionKey` 和 `RowKey` 值。 如果您儲存的實體具有下列結構，則您可以根據電子郵件地址或員工識別碼，有效率地取出員工實體。 `PartitionKey`、`empid_` 和 `email_` 前置值可讓您識別要用於查詢的索引。  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE10.png" alt-text="此圖顯示部門實體和員工實體":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE10.png" alt-text="此圖顯示具有主要索引的員工實體和具有次要索引的員工實體":::
 
 下列兩個篩選準則 (一個依員工識別碼查閱，另一個依電子郵件地址查閱) 都指定點查詢：  
 
@@ -509,7 +509,7 @@ EGT 也會帶來需在您設計中評估的潛在取捨。 使用越多分割區
 * 在 `RowKey` 中填補數值 (例如，員工識別碼 000223)，有助於根據上限和下限來正確排序和篩選。  
 * 您不一定需要複製實體的所有屬性。 例如，如果查詢在 `RowKey` 中使用電子郵件地址來查閱實體，而且決不需要員工的年齡，則這些實體可能具有下列結構：
   
-  :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE11.png" alt-text="此圖顯示部門實體和員工實體":::
+  :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE11.png" alt-text="此圖顯示具有次要索引的員工實體":::
 
 * 一般來說，最好是儲存重複的資料，並確定您可以使用單一查詢來取出所有需要的資料，而不要使用一個查詢來透過次要索引尋找實體，然後又使用另一個查詢在主要索引中查閱所需的資料。  
 
@@ -549,7 +549,7 @@ EGT 可讓您在共用相的資料分割索引鍵的多個實體之間執行不�
 
 但是，您無法使用 EGT 來執行這兩項作業。 若要避免因失敗而導致實體同時出現或未出現在這兩個資料表中，封存作業必須最終一致。 下列順序圖說明此作業的步驟。  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE12.png" alt-text="此圖顯示部門實體和員工實體":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE12.png" alt-text="最終一致性的解決方案圖表":::
 
 用戶端會將訊息放入 Azure 佇列中，以起始封存作業 (在此範例中，封存員工 #456)。 背景工作角色會輪詢佇列中的新訊息；若找到新訊息，它會讀取訊息，並將隱藏的複本保留在佇列上。 背景工作角色接著會擷取來自 **目前** 資料表的實體複本、將複本插入 **封存** 資料表中，然後從 **目前** 資料表中刪除原始複本。 最後，如果前述步驟沒有任何錯誤，背景工作角色會從佇列中刪除隱藏的訊息。  
 
@@ -589,7 +589,7 @@ EGT 可讓您在共用相的資料分割索引鍵的多個實體之間執行不�
 #### <a name="context-and-problem"></a>內容和問題
 表格儲存體會使用 `PartitionKey` 和 `RowKey` 值，自動為實體編製索引。 這可讓用戶端應用程式使用點查詢，有效率地取出實體。 例如，就下列資料表結構來說，用戶端應用程式可以使用門名稱和員工識別碼 (`PartitionKey` 和 `RowKey` 值)，有效率地取出個別員工實體。  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE13.png" alt-text="此圖顯示部門實體和員工實體":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE13.png" alt-text="員工實體結構的圖形，用戶端應用程式可以使用部門名稱和員工識別碼 (PartitionKey 和 RowKey) ，有效率地取得個別員工實體。":::
 
 如果您還想要根據另一個非唯一屬性 (例如姓氏) 的值，以取出員工實體清單，則必須使用效率較低的分割區掃描。 此掃描會尋找相符項目，而不是使用索引直接查閱。 這是因為表格儲存體不提供次要索引。  
 
@@ -608,13 +608,29 @@ EGT 可讓您在共用相的資料分割索引鍵的多個實體之間執行不�
 
 使用儲存下列資料的索引實體：  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE14.png" alt-text="此圖顯示部門實體和員工實體" 和 `RowKey` 值，從您在步驟 2 中取得的員工清單取出每個員工實體。  
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE14.png" alt-text="此圖顯示的員工實體，具有字串包含姓氏相同的員工識別碼清單":::
+
+對於姓氏儲存在 `RowKey` 中的員工，`EmployeeIDs` 屬性包含員工識別碼清單。  
+
+下列步驟概述您新增員工時應該遵循的程序。 在此範例中，我們要在 Sales 部門中新增識別碼為 000152 且姓氏為 Jones 的員工：  
+
+1. 取出具有 `PartitionKey` 值 "Sales" 和 `RowKey` 值 "Jones" 的索引實體。 儲存此實體的 ETag　以在步驟 2 中使用。  
+2. 建立實體群組交易 (也就是批次作業)，以插入新的員工實體 (`PartitionKey` 值 "Sales" 和 `RowKey` 值 "000152") 和更新索引實體 (`PartitionKey` 值 "Sales" 和 `RowKey` 值 "Jones")。 EGT 的作法是將新的員工識別碼加入 EmployeeIDs 欄位中的清單。 如需 EGT 的詳細資訊，請參閱[實體群組交易](#entity-group-transactions)。  
+3. 如果 EGT 因為開放式同步存取錯誤而失敗 (也就是其他人已修改索引實體)，則您必須從步驟 1 重新開始。  
+
+如果您使用第二個選項，則可以採用類似的方法來刪除員工。 變更員工的姓氏稍微複雜一些，因為您需要執行 GET 來更新三個實體：員工實體、舊姓氏的索引實體，以及新姓氏的索引實體。 進行任何變更之前，您必須先取出每個實體，以便取出 ETag 值，讓您之後利用開放式同步存取來執行更新。  
+
+當您需要查閱部門中具有特定姓氏的所有員工時，下列步驟概述您應該遵循的程序。 在此範例中，我們要在 Sales 部門中查閱姓氏為 Jones 的所有員工：  
+
+1. 取出具有 `PartitionKey` 值 "Sales" 和 `RowKey` 值 "Jones" 的索引實體。  
+2. 剖析 `EmployeeIDs` 欄位中的員工識別碼清單。  
+3. 如果您需要其中每個員工的其他資訊 (例如電子郵件地址)，請使用 `PartitionKey` 值 "Sales" 和 `RowKey` 值，從您在步驟 2 中取得的員工清單取出每個員工實體。  
 
 選項 3：在個別的資料分割或資料表中建立索引實體  
 
 使用此選項時，請使用儲存下列資料的索引實體：  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE15.png" alt-text="此圖顯示部門實體和員工實體":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE15.png" alt-text="顯示員工索引實體的螢幕擷取畫面，其中包含 RowKey 和 PartitionKey 中儲存姓氏的員工的員工識別碼清單。":::
 
 `EmployeeIDs`屬性包含員工識別碼清單，其中包含儲存在和中的姓氏 `RowKey` `PartitionKey` 。  
 
@@ -646,12 +662,12 @@ EGT 可讓您在共用相的資料分割索引鍵的多個實體之間執行不�
 #### <a name="context-and-problem"></a>內容和問題
 在關係資料庫中，您通常會將資料正規化，以移除當查詢從多個資料表取出資料時出現的重複資料。 如果您將 Azure 資料表中的資料標準化，您必須從用戶端到伺服器往返多次才能擷取相關的資料。 例如，就下列資料表結構而言，則您需要兩次來回行程，才能取出部門的詳細資料。 其中，一個行程擷取含有經理識別碼的部門實體，第二個行程在員工實體中擷取經理的詳細資料。  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE16.png" alt-text="此圖顯示部門實體和員工實體":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE16.png" alt-text="部門實體和員工實體的圖形":::
 
 #### <a name="solution"></a>解決方法
 不要將資料儲存在兩個不同的實體中，而是將資料反正規化，並將管理員詳細資料的複本保存在部門實體中。 例如：  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE17.png" alt-text="此圖顯示部門實體和員工實體":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE17.png" alt-text="反正規化且合併的部門實體圖形":::
 
 由於部門實體中儲存這些屬性，您現在可以使用點查詢，取出部門相關的所有詳細資料。  
 
@@ -679,18 +695,18 @@ EGT 可讓您在共用相的資料分割索引鍵的多個實體之間執行不�
 
 假設您在表格儲存體中使用下列結構來儲存員工實體：  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE18.png" alt-text="此圖顯示部門實體和員工實體":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE18.png" alt-text="您應該用來將員工實體儲存在資料表儲存體中的員工實體結構圖形。":::
 
 您也需要儲存員工在組織上班各年度的考核和績效歷史資料，而且您需要依年份存取這項資訊。 建立另一個資料表來儲存具有下列結構的實體，是可行選項之一：  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE19.png" alt-text="此圖顯示部門實體和員工實體":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE19.png" alt-text="員工考核實體的圖形":::
 
 使用此方法時，您可能決定在新的實體中重複某些資訊 (例如名字和姓氏)，讓您透過單一要求來取出資料。 不過，因為您無法使用 EGT 以不可部分完成的方式更新兩個實體，所以無法維持強大的一致性。  
 
 #### <a name="solution"></a>解決方法
 使用具有下列結構的實體，在原始資料表中儲存新的實體類型：  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE20.png" alt-text="此圖顯示部門實體和員工實體":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE20.png" alt-text="具有複合索引鍵的員工實體圖片":::
 
 請注意，`RowKey` 現在是複合索引鍵，由員工識別碼和考核資料年份所組成。 這可讓您對單一實體使用單一要求，以取出員工的績效和考核資料。  
 
@@ -701,7 +717,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 #### <a name="issues-and-considerations"></a>問題和考量
 當您決定如何實作此模式時，請考慮下列幾點：  
 
-* 您應該使用適當的分隔符號字元，以輕鬆剖析 `RowKey` 值：例如， **000123_2012** 。  
+* 您應該使用適當的分隔符號字元，以輕鬆剖析 `RowKey` 值：例如，**000123_2012**。  
 * 您也將此實體與包含同一員工相關資料的其他實體，一起儲存在相同的分割區。 這表示您可以使用 EGT 來維持強大的一致性。
 * 您應該考量查詢資料的頻率，以判斷此模式是否合適。 例如，如果您不常存取考核資料，但經常存取主要員工資料，則應該將這兩項資料保持為分開的實體。  
 
@@ -762,7 +778,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 
 一種可能的設計是在 `RowKey` 中使用登入要求的日期和時間：  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE21.png" alt-text="此圖顯示部門實體和員工實體":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE21.png" alt-text="登入嘗試實體的圖形":::
 
 這種方法可避免分割區熱點，因為應用程式可以在個別的分割區，插入和刪除每個使用者的登入實體。 不過，如果您有大量實體，則這種方法可能耗費成本又耗時。 首先，您需要執行資料表掃描，以識別要刪除的所有實體，然後您必須刪除每個舊的實體。 您可以藉由將多個刪除要求批次處理到 EGT 中，以減少刪除舊實體所需的伺服器往返次數。  
 
@@ -792,14 +808,14 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 #### <a name="context-and-problem"></a>內容和問題
 常見的案例是應用程式需一次儲存必須經常擷取的資料序列。 比方說，您的應用程式可能會記錄每一位員工每小時傳送多少 IM 訊息，然後使用這項資訊來繪製每個使用者在過去 24 小時內傳送的訊息數。 一個設計可為每個員工儲存 24 個實體：  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE22.png" alt-text="此圖顯示部門實體和員工實體":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE22.png" alt-text="訊息統計資料實體的圖形":::
 
 採用這種設計，您可以輕鬆地找出並更新實體，以在應用程式需要更新訊息計數值時更新每個員工。 不過，若要擷取資訊以繪製過去 24 小時內的活動圖，您必須擷取 24 個實體。  
 
 #### <a name="solution"></a>解決方法
 使用下列設計，以個別屬性來儲存每小時的訊息計數：  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE23.png" alt-text="此圖顯示部門實體和員工實體":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE23.png" alt-text="此圖顯示具有各個屬性的訊息統計資料實體":::
 
 透過這項設計，您可以使用合併作業來更新員工在特定時段內的訊息計數。 現在，您可以對單一實體使用要求，以取出您繪製圖表所需的全部資訊。  
 
@@ -828,7 +844,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 #### <a name="solution"></a>解決方法
 表格儲存體可讓您儲存多個實體，以代表單一大型商務物件，而此物件有 252 個以上的屬性。 例如，如果您想要儲存每個員工在過去 365 天傳送的 IM 訊息計數，您可以採用下列設計，使用兩個具有不同結構描述的實體：  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE24.png" alt-text="此圖顯示部門實體和員工實體":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE24.png" alt-text="此圖顯示具有 Rowkey 01 的訊息統計資料實體和具有 Rowkey 02 的訊息統計資料實體":::
 
 如果您需要進行必須同時更新兩個實體的變更，讓它們彼此保持同步，您可以使用 EGT。 否則，您可以使用合併作業來更新某天的訊息計數。 若要取得個別員工的所有資料，您必須同時取出這兩個實體。 作法是透過兩個有效率的要求 (使用 `PartitionKey` 和 `RowKey` 值)。  
 
@@ -855,7 +871,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 #### <a name="solution"></a>解決方法
 如果因為一或多個屬性包含大量資料，導致實體的大小超過 1 MB，您可以將資料儲存在 Blob 儲存體中，然後將 blob 的位址儲存在實體的屬性中。 例如，您可以將員工的相片儲存在 Blob 儲存體中，並將相片的連結儲存在員工實體的 `Photo` 屬性中：  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE25.png" alt-text="此圖顯示部門實體和員工實體":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE25.png" alt-text="此圖顯示的員工實體，具有 Photo 字串指向 Blob 儲存體":::
 
 #### <a name="issues-and-considerations"></a>問題和考量
 當您決定如何實作此模式時，請考慮下列幾點：  
@@ -880,12 +896,12 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 #### <a name="context-and-problem"></a>內容和問題
 在前面加上或附加實體至您已儲存的實體，通常會導致應用程式將新實體新增至資料分割序列的第一個或最後一個資料分割。 在此情況下，任何特定時刻的所有插入作業，都發生在相同的分割區，因而產生熱點。 這會導致表格儲存體無法在多個節點之間平衡插入的負載，還可能導致應用程式觸及分割區的可擴縮性目標。 例如，假設有一個應用程式會記錄員工的網路和資源存取。 就如下的實體結構而言，如果交易量達到個別分割區的可擴縮性目標，可能會導致當前這一小時的分割區成為熱點：  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE26.png" alt-text="此圖顯示部門實體和員工實體":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE26.png" alt-text="實體結構的圖形，如果交易量達到個別資料分割的擴充性目標，可能會導致目前小時的資料分割變成作用點。":::
 
 #### <a name="solution"></a>解決方法
 下列替代實體結構在應用程式記錄事件時，可避免任何特定分割區產生熱點：  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE27.png" alt-text="此圖顯示部門實體和員工實體":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE27.png" alt-text="此圖顯示的員工實體，具有年、月、日、時及事件識別碼的複合 RowKey":::
 
 請注意，在此範例中，`PartitionKey` 和 `RowKey` 都是複合索引鍵。 `PartitionKey` 同時使用部門和員工識別碼，將記錄分散到多個分割區。  
 
@@ -911,13 +927,13 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 #### <a name="context-and-problem"></a>內容和問題
 記錄資料有一個常見的使用案例，就是取出特定日期/時間範圍的一組記錄項目。 例如，您想要尋找應用程式在特定日期的 15:04 和 15:06 之間記錄的所有錯誤和重大訊息。 您不想要使用記錄訊息的日期和時間，以決定將記錄實體的儲存到哪個分割區。 這會產生熱點分割區，因為在任何特定時間，所有記錄實體都共用相同的 `PartitionKey` 值 (請參閱[前置/附加反模式](#prepend-append-anti-pattern))。 例如，記錄訊息的下列實體結構描述會產生熱點分割區，因為應用程式會將當前日期和小時的所有記錄訊息，全部寫入分割區：  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE28.png" alt-text="此圖顯示部門實體和員工實體":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE28.png" alt-text="顯示記錄訊息之實體架構的圖形會產生熱資料分割。":::
 
 在此範例中，`RowKey` 包含記錄訊息的日期和時間，以確保記錄訊息依日期/時間順序排序。 `RowKey` 也包含訊息識別碼，以防萬一多個記錄訊息共用相同的日期和時間。  
 
 另一種方法是使用 `PartitionKey`，以確保應用程式將訊息寫入一系列的分割區。 例如，如果記錄訊息的來源可讓您將訊息分散到許多分割區，則您可以採用下列實體結構描述：  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE29.png" alt-text="此圖顯示部門實體和員工實體":::
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE29.png" alt-text="記錄訊息實體的圖形":::
 
 不過，此結構描述的問題在於，若要取出特定時間範圍內的所有記錄訊息，您必須搜尋資料表中的每個分割區。
 
@@ -1093,7 +1109,7 @@ foreach (var e in entities)
 您也應該考量您的設計會如何影響用戶端應用程式處理並行存取和更新作業的方式。  
 
 #### <a name="managing-concurrency"></a>管理並行存取
-根據預設，表格儲存體會在個別實體的層級上，針對插入、合併和刪除作業，實作開放式同步存取檢查，但用戶端可以強制表格儲存體略過這些檢查。 如需詳細資訊，請參閱[在 Microsoft Azure 儲存體中管理並行](../storage/common/storage-concurrency.md)。  
+根據預設，表格儲存體會在個別實體的層級上，針對插入、合併和刪除作業，實作開放式同步存取檢查，但用戶端可以強制表格儲存體略過這些檢查。 如需詳細資訊，請參閱[在 Microsoft Azure 儲存體中管理並行](../storage/blobs/concurrency-manage.md)。  
 
 #### <a name="merge-or-replace"></a>合併或取代
 `TableOperation` 類別的 `Replace` 方法一律會取代表格儲存體中的完整實體。 如果您在要求中未包含某個屬性，但該屬性存在於已儲存的實體中，則要求會從已儲存的實體中移除該屬性。 除非您想要明確地從已儲存的實體中移除屬性，否則即必須在要求中包含每個屬性。  

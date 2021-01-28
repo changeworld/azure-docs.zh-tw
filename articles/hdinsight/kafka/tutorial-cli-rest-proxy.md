@@ -1,19 +1,16 @@
 ---
 title: 教學課程：使用 Azure CLI 在 HDInsight 中建立 Apache Kafka REST Proxy 啟用的叢集
 description: 了解如何在 Azure HDInsight 上使用 Kafka REST Proxy 執行 Apache Kafka 作業。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 68dddcbc5771ef1a8b5d6ea423674a1c6845a5e6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
-ms.translationtype: HT
+ms.openlocfilehash: ff11b8461b483f5a66df19bb1b108a1fe1168fb9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539474"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944022"
 ---
 # <a name="tutorial-create-an-apache-kafka-rest-proxy-enabled-cluster-in-hdinsight-using-azure-cli"></a>教學課程：使用 Azure CLI 在 HDInsight 中建立 Apache Kafka REST Proxy 啟用的叢集
 
@@ -130,14 +127,14 @@ Apache Kafka API 只能由同一個虛擬網路中的資源來存取。 您可�
 
         |參數 | 描述|
         |---|---|
-        |--type|此值必須是 **Kafka** 。|
-        |--workernode-data-disks-per-node|每個背景工作節點要使用的資料磁碟數目。 只有資料磁碟支援 HDInsight Kafka。 本教學課程使用的值為 **2** 。|
+        |--type|此值必須是 **Kafka**。|
+        |--workernode-data-disks-per-node|每個背景工作節點要使用的資料磁碟數目。 只有資料磁碟支援 HDInsight Kafka。 本教學課程使用的值為 **2**。|
 
     1. Kafka REST Proxy 的必要參數：
 
         |參數 | 描述|
         |---|---|
-        |--kafka-management-node-size|節點的大小。 本教學課程使用的值為 **Standard_D4_v2** 。|
+        |--kafka-management-node-size|節點的大小。 本教學課程使用的值為 **Standard_D4_v2**。|
         |--kafka-client-group-id|Kafka Rest Proxy 的用戶端 AAD 安全性群組識別碼。 此值會從 **$securityGroupID** 變數傳遞。|
         |--kafka-client-group-name|Kafka Rest Proxy 的用戶端 AAD 安全性群組名稱。 此值會從 **$securityGroupName** 變數傳遞。|
         |--version|HDInsight 叢集版本必須至少為 4.0。 此值會從 **$clusterVersion** 變數傳遞。|

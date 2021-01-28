@@ -4,12 +4,12 @@ description: 本文說明如何停止使用容器的 Azure 監視器來監視 Az
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 99c4ecb6c8b77f1576f25816ba486ed262249c32
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 476934d84d8ffc63336ec620432db3507b2cbb34
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695703"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943836"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>如何停止使用容器的 Azure 監視器來監視 Azure Kubernetes Service (AKS)
 
@@ -18,7 +18,7 @@ ms.locfileid: "97695703"
 
 ## <a name="azure-cli"></a>Azure CLI
 
-使用 [az aks disable-addons](/cli/azure/aks?view=azure-cli-latest#az-aks-disable-addons) 命令可停用容器的 Azure 監視。 此命令會從叢集節點移除代理程式，但不會移除解決方案或已收集並儲存在您 Azure 監視器資源中的資料。  
+使用 [az aks disable-addons](/cli/azure/aks#az-aks-disable-addons) 命令可停用容器的 Azure 監視。 此命令會從叢集節點移除代理程式，但不會移除解決方案或已收集並儲存在您 Azure 監視器資源中的資料。  
 
 ```azurecli
 az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG

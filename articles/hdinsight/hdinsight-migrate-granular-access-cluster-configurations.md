@@ -3,16 +3,15 @@ title: 以角色為基礎的細微存取 Azure HDInsight 叢集設定
 description: 瞭解遷移至更細微的 HDInsight 叢集設定角色型存取所需的變更。
 author: tylerfox
 ms.author: tyfox
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: d2e9c1fe89866511f8eae0b900563471cd6e52e9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 08be42f4f0801fc700b3e0fc645c1bbc1b747e91
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533303"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944099"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>移轉至叢集組態中以角色為基礎的細微存取
 
@@ -28,8 +27,8 @@ ms.locfileid: "92533303"
 
 | 角色                                  | 先前是                                                                                        | 往後       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
-| 讀取者                                | -讀取存取權，包括秘密。                                                                   | -讀取存取權， **排除** 秘密 |           |   |   |
-| HDInsight 叢集操作員<br> (新的角色)  | 不適用                                                                                              | -讀取/寫入存取權，包括秘密         |   |   |
+| 讀者                                | -讀取存取權，包括秘密。                                                                   | -讀取存取權， **排除** 秘密 |           |   |   |
+| HDInsight 叢集操作員<br> (新的角色)  | N/A                                                                                              | -讀取/寫入存取權，包括秘密         |   |   |
 | 參與者                           | -讀取/寫入存取權，包括秘密。<br>-建立和管理所有類型的 Azure 資源。<br>-執行腳本動作。     | 沒有變更 |
 | 擁有者                                 | -讀取/寫入存取權，包括秘密。<br>-所有資源的完整存取權<br>-將存取權委派給其他人。<br>-執行腳本動作。 | 沒有變更 |
 
@@ -88,7 +87,7 @@ ms.locfileid: "92533303"
 
 更新為 Azure Data Lake 的版本2.3.9000.1 或更新版本 [，以及適用于 Visual Studio 的串流分析工具](https://marketplace.visualstudio.com/items?itemName=ADLTools.AzureDataLakeandStreamAnalyticsTools&ssr=false#overview) ，以避免中斷。  如需更新的說明，請參閱我們 [的檔、更新 Data Lake Tools for Visual Studio](./hadoop/apache-hadoop-visual-studio-tools-get-started.md#update-data-lake-tools-for-visual-studio)。
 
-### <a name="azure-toolkit-for-eclipse"></a>適用於 Eclipse 的 Azure 工具組
+### <a name="azure-toolkit-for-eclipse"></a>Azure Toolkit for Eclipse
 
 如果您使用的是3.15.0 版或更新版本，請更新至 [最新版本的 Azure Toolkit for Eclipse](https://marketplace.eclipse.org/content/azure-toolkit-eclipse) ，以避免中斷。
 

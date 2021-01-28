@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 19c27dc80f9af013c458663c9c7afb0033683acd
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: d8944c9e49bde8c452a10a1886cae316a0f7a33f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97348062"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945078"
 ---
 # <a name="create-luis-resources"></a>建立 LUIS 資源
 
@@ -107,7 +107,7 @@ Azure 資源（例如 LUIS 資源）是由包含資源的訂用帳戶所擁有�
 
 擁有者和所有參與者都具有編寫應用程式的存取權。
 
-|撰寫存取權包括：|附註|
+|撰寫存取權包括：|備註|
 |--|--|
 |新增或移除端點金鑰||
 |匯出版本||
@@ -117,7 +117,7 @@ Azure 資源（例如 LUIS 資源）是由包含資源的訂用帳戶所擁有�
 |修改模型|
 |發佈|
 |檢閱用於[主動式學習](luis-how-to-review-endpoint-utterances.md)的端點語句|
-|定型|
+|Train|
 
 <a name="prediction-endpoint-runtime-key"></a>
 
@@ -173,7 +173,7 @@ Azure 資源（例如 LUIS 資源）是由包含資源的訂用帳戶所擁有�
 
 ### <a name="create-resources-in-the-azure-cli"></a>在 Azure CLI 中建立資源
 
-使用 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 來個別建立每個資源。
+使用 [Azure CLI](/cli/azure/install-azure-cli) 來個別建立每個資源。
 
 資源 `kind` ：
 

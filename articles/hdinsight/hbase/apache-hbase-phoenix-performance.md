@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight 中的 Phoenix 效能
 description: 將 Azure HDInsight 叢集的 Apache Phoenix 效能優化的最佳作法
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/27/2019
-ms.openlocfilehash: 0dfb93db1af807459c37653189a90b754c933aa4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ffba3b986b35c375d0404d9d2bae5af79f93c54f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504786"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944808"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Apache Phoenix 效能最佳做法
 
@@ -62,7 +59,7 @@ Phoenix 中資料表上定義的主索引鍵，可決定資料儲存在基礎 HB
 
 這個 rowkey 現在可儲存資料的複本。 請考量主索引鍵包含的資料行大小和數目，因為基礎 HBase 資料表中的每個資料格都包含這個值。
 
-此外，如果主索引鍵具有單調遞增值 ，您應該建立具有「salt 貯體」** 的資料表，協助您避免建立寫入熱點；請參閱[分割資料](#partition-data)。
+此外，如果主索引鍵具有單調遞增值 ，您應該建立具有「salt 貯體」的資料表，協助您避免建立寫入熱點；請參閱[分割資料](#partition-data)。
 
 ### <a name="column-family-design"></a>資料行系列設計
 

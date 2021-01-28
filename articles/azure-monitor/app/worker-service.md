@@ -4,12 +4,12 @@ description: 使用 Azure 監視器 Application Insights 監視 .NET Core/.NET F
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
-ms.openlocfilehash: 3d02b6e70d0832b92ae88db237b4c554b92e7f3b
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 155a0963146860431cb44c255e1e1d1aca3ae344
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875065"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943868"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>背景工作服務應用程式的 Application Insights (非 HTTP 應用程式) 
 
@@ -19,9 +19,9 @@ ms.locfileid: "91875065"
 
 ## <a name="supported-scenarios"></a>支援的案例
 
-適用于背景 [工作角色服務的 APPLICATION INSIGHTS SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) 最適用于非 HTTP 應用程式，無論其執行位置或方式為何。 如果您的應用程式正在執行，且具有與 Azure 的網路連線能力，則可以收集遙測。 支援任何 .NET Core 支援的 Application Insights 監視。 此封裝可用於新引進的 [.Net Core 3.0 背景工作服務](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances)、 [Asp.Net Core 2.1/2.2 中的背景](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&preserve-view=true)工作、主控台應用程式 ( .net Core/.NET Framework) 等等。
+適用于背景 [工作角色服務的 APPLICATION INSIGHTS SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) 最適用于非 HTTP 應用程式，無論其執行位置或方式為何。 如果您的應用程式正在執行，且具有與 Azure 的網路連線能力，則可以收集遙測。 支援任何 .NET Core 支援的 Application Insights 監視。 此封裝可用於新引進的 [.Net Core 3.0 背景工作服務](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances)、 [Asp.Net Core 2.1/2.2 中的背景](/aspnet/core/fundamentals/host/hosted-services)工作、主控台應用程式 ( .net Core/.NET Framework) 等等。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 有效的 Application Insights 檢測金鑰。 需要有此金鑰才能將任何遙測資料傳送至 Application Insights。 如果您需要建立新的 Application Insights 資源以取得檢測金鑰，請參閱 [建立 Application Insights 資源](./create-new-resource.md)。
 
@@ -124,7 +124,7 @@ ms.locfileid: "91875065"
 或者，您也可以在下列任一環境變數中指定檢測金鑰。
 `APPINSIGHTS_INSTRUMENTATIONKEY` 或 `ApplicationInsights:InstrumentationKey`
 
-例如： `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
+例如：`SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 或 `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
 通常會 `APPINSIGHTS_INSTRUMENTATIONKEY` 針對部署至 Web Apps 為 Web 作業的應用程式，指定檢測金鑰。
@@ -134,7 +134,7 @@ ms.locfileid: "91875065"
 
 ## <a name="aspnet-core-background-tasks-with-hosted-services"></a>使用託管服務 ASP.NET Core 背景工作
 
-[本](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-2.2&preserve-view=true) 檔說明如何在 ASP.NET Core 2.1/2.2 應用程式中建立背景工作。
+[本](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio) 檔說明如何在 ASP.NET Core 2.1/2.2 應用程式中建立背景工作。
 
 完整範例可在[這裡](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/BackgroundTasksWithHostedService)共用
 
@@ -563,9 +563,9 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 [.Net Core 主控台應用程式](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) 如果您使用以 .NET Core (2.0 或更高版本撰寫的主控台應用程式，) 或 .NET Framework (4.7.2 或更高版本，請使用此範例) 
 
-[使用 HostedServices 的 ASP .Net Core 背景](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/BackgroundTasksWithHostedService)工作如果您使用的是 Asp.Net Core 2.1/2.2，請使用此範例，並依照[此處](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&preserve-view=true)的官方指引建立背景工作
+[使用 HostedServices 的 ASP .Net Core 背景](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/BackgroundTasksWithHostedService)工作如果您使用的是 Asp.Net Core 2.1/2.2，請使用此範例，並依照[此處](/aspnet/core/fundamentals/host/hosted-services)的官方指引建立背景工作
 
-[.Net Core 3.0 背景工作服務](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights)如果您有 .NET Core 3.0 背景工作服務應用程式，請依照[此處](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-3.0&preserve-view=true#worker-service-template)的官方指引使用此範例
+[.Net Core 3.0 背景工作服務](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights)如果您有 .NET Core 3.0 背景工作服務應用程式，請依照[此處](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio#worker-service-template)的官方指引使用此範例
 
 ## <a name="open-source-sdk"></a>開放原始碼 SDK
 

@@ -1,19 +1,16 @@
 ---
 title: 存取 Apache Hadoop YARN 應用程式記錄-Azure HDInsight
 description: 了解如何使用命令列和網頁瀏覽器存取以 Linux 為基礎之 HDInsight (Apache Hadoop) 叢集上的 YARN 應用程式記錄。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 726cf362e62f0ef914dfaea090a08c224bd5d8d6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0eb7dec2fd4ee327905acdea7a07456221bcbd46
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001944"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945996"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>在以 Linux 為基礎的 HDInsight 上存取 Apache Hadoop YARN 應用程式記錄
 
@@ -58,7 +55,7 @@ YARN Timeline Server 包含下列類型的資料：
 
 1. 從網頁瀏覽器瀏覽至 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是叢集的名稱。
 
-1. 從 Ambari UI 中，流覽至 **MapReduce2**  >  **Configs**  >  **Advanced Advanced**  >  **Custom mapred-site**。
+1. 從 Ambari UI 中，流覽至 **MapReduce2**  >    >  **Advanced Advanced**  >  **Custom mapred-site**。
 
 1. 新增下列 *其中一* 組屬性：
 

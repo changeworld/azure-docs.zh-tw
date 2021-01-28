@@ -1,23 +1,20 @@
 ---
 title: Azure HDInsight 上的 ML 服務簡介
 description: 了解如何使用 HDInsight 上的 ML 服務來建立適用於巨量資料分析的應用程式。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: b3a6fc2ff45d61d63118edc23f40f69f16db9131
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
-ms.translationtype: HT
+ms.openlocfilehash: 87f4181e820b1c6ecdeb0fda85a88e80db248dd2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536142"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943921"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>什麼是 Azure HDInsight 中的 ML 服務
 
-在 Azure 中建立 HDInsight 叢集時，可選擇 Microsoft Machine Learning Server 作為部署選項。 提供此選項的叢集類型稱為 **ML 服務** 。 這項功能可讓您依需求存取 HDInsight 上的可調整、分散式的分析方法。
+在 Azure 中建立 HDInsight 叢集時，可選擇 Microsoft Machine Learning Server 作為部署選項。 提供此選項的叢集類型稱為 **ML 服務**。 這項功能可讓您依需求存取 HDInsight 上的可調整、分散式的分析方法。
 
 HDInsight 上的 ML 服務所提供的最新功能，適用於幾乎任何大小的資料集上所進行的 R 型分析， 且資料集可載入 Azure Blob 或 Data Lake 儲存體。 以 R 為基礎的應用程式可以使用 8000 個以上的開放原始碼 R 套件。 ScaleR 中的常式與 Microsoft 的巨量資料分析套件亦可供使用。
 
@@ -134,7 +131,7 @@ HDInsight 叢集的 Linux 邊緣節點，是 R 型分析的登陸區域。 HDIns
 
 桌面 IDE 可以透過遠端 MapReduce 或 Spark 計算內容來存取叢集。 選項包括：Microsoft 的 [Visual Studio R 工具](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS)、RStudio 與 Walware 的 Eclipse 型 StatET。
 
-在命令提示字元中輸入 **R** ，存取邊緣節點上的 R 主控台。 使用主控台介面時，可方便地在文字編輯器中開發 R 指令碼， 然後可視需要將指令碼的區段剪下並貼到 R 主控台。
+在命令提示字元中輸入 **R**，存取邊緣節點上的 R 主控台。 使用主控台介面時，可方便地在文字編輯器中開發 R 指令碼， 然後可視需要將指令碼的區段剪下並貼到 R 主控台。
 
 ## <a name="pricing"></a>定價
 

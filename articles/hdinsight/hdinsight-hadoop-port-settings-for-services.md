@@ -1,19 +1,16 @@
 ---
 title: HDInsight 上 Hadoop 服務所使用的連接埠 - Azure
 description: 本文提供在 Azure HDInsight 中執行的 Apache Hadoop 服務所使用的埠清單
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: d0d990bc273c33e94b82b597753b29361b1665e1
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: b5dadb886078f701bb01447efd606c862ee73073
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821854"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945526"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight 上 Apache Hadoop 服務所使用的連接埠
 
@@ -59,7 +56,7 @@ HDInsight 叢集中的所有節點都位於 Azure 虛擬網路中。 節點無�
 
 在網際網路上公開的所有服務都必須經過驗證︰
 
-| 連接埠 | 認證 |
+| Port | 認證 |
 | --- | --- |
 | 22 或 23 |在叢集建立期間指定的 SSH 使用者認證 |
 | 443 |在叢集建立期間設定的登入名稱 (預設值：admin) 和密碼 |
@@ -74,7 +71,7 @@ HDInsight 叢集中的所有節點都位於 Azure 虛擬網路中。 節點無�
 
 ### <a name="ambari"></a>Ambari
 
-| 服務 | 節點 | 連接埠 | URL 路徑 | 通訊協定 |
+| 服務 | 節點 | Port | URL 路徑 | 通訊協定 |
 | --- | --- | --- | --- | --- |
 | Ambari Web UI | 前端節點 | 8080 | / | HTTP |
 | Ambari REST API | 前端節點 | 8080 | /api/v1 | HTTP |

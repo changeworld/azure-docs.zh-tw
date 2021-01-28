@@ -1,19 +1,16 @@
 ---
 title: 使用網頁瀏覽器建立 Apache Hadoop 叢集，Azure HDInsight
 description: 瞭解如何在 HDInsight 上建立 Apache Hadoop、Apache HBase、Apache Storm 或 Apache Spark 叢集。 使用網頁瀏覽器和 Azure 入口網站。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/06/2020
-ms.openlocfilehash: ebfd5c456d3658c6339e5174c9c4ab33f6c52d4d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c68d342cf21d69fa97ba3d5171ba596662fd845f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541701"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945814"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 入口網站在 HDInsight 中建立 Linux 型叢集
 
@@ -25,7 +22,7 @@ Azure 入口網站是 Web 架構的管理工具，可用來管理裝載於 Micro
 
 Azure 入口網站會公開大部分的叢集屬性。 藉由使用 Azure Resource Manager 範本，您可以隱藏許多詳細資料。 如需詳細資訊，請參閱[使用 Resource Manager 範本在 HDInsight 中建立 Apache Hadoop 叢集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)。
 
-如果您沒有 Azure 訂用帳戶，請先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始進行。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="create-clusters"></a>建立叢集
 
@@ -53,11 +50,11 @@ Azure 入口網站會公開大部分的叢集屬性。 藉由使用 Azure Resour
 |區域|從下拉式清單中，選取要在其中建立叢集的區域。|
 |叢集類型|按一下 [ **選取叢集類型** ] 以開啟清單。 從清單中選取想要的叢集類型。 HDInsight 叢集有不同的類型。 它們與調整叢集時所針對的工作負載或技術對應。 目前沒有任何支援的方法可建立結合多個類型的叢集。|
 |版本|從下拉式清單中選取 [版本]  。 如果您不知道要選擇哪一個項目，請使用預設版本。 如需詳細資訊，請參閱 [HDInsight 叢集版本](hdinsight-component-versioning.md)。|
-|叢集登入使用者名稱|提供使用者名稱，預設值為 **admin** 。|
+|叢集登入使用者名稱|提供使用者名稱，預設值為 **admin**。|
 |叢集登入密碼|請提供密碼。|
 |確認叢集登入密碼|重新輸入密碼|
 |安全殼層 (SSH) 使用者名稱|提供使用者名稱，預設值為 **sshuser**|
-|將叢集登入密碼用於 SSH|如果您想要的 SSH 密碼與您先前指定的管理員密碼相同，請選取 [ **使用 ssh 的叢集登入密碼** ] 核取方塊。 如果不要，請提供 [密碼]  或 [公開金鑰]  來驗證 SSH 使用者。 我們建議使用公開金鑰。 選擇底部的 [選取]  以儲存認證設定。  如需詳細資訊，請參閱[使用 SSH 連線到 HDInsight (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md)。|
+|將叢集登入密碼用於 SSH|如果您想要的 SSH 密碼與您先前指定的管理員密碼相同，請選取 [ **使用 ssh 的叢集登入密碼** ] 核取方塊。 如果不要，請提供 [密碼] 或 [公開金鑰]來驗證 SSH 使用者。 我們建議使用公開金鑰。 選擇底部的 [選取] 以儲存認證設定。  如需詳細資訊，請參閱[使用 SSH 連線到 HDInsight (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md)。|
 
 選取 **[下一步：儲存體 >>** ] 前進至下一個索引標籤。
 
@@ -70,13 +67,13 @@ Azure 入口網站會公開大部分的叢集屬性。 藉由使用 Azure Resour
 
 ### <a name="primary-storage"></a>主要儲存體
 
-從 **主要儲存體類型** 的下拉式清單中，選取您的預設儲存體類型。 稍後要完成的欄位會根據您的選取專案而有所不同。 針對 **Azure 儲存體** ：
+從 **主要儲存體類型** 的下拉式清單中，選取您的預設儲存體類型。 稍後要完成的欄位會根據您的選取專案而有所不同。 針對 **Azure 儲存體**：
 
-1. 針對 [ **選取方法** ]，選擇 [ **從清單選取** ] 或 [ **使用存取金鑰** ]。
-    * 針對 [ **從清單選取** ]，然後從下拉式清單中選取您的 **主要儲存體帳戶** ，或選取 [ **建立新** 的]。
-    * 在 [ **使用存取金鑰** ] 中，輸入您的 **儲存體帳戶名稱** 。 然後提供 **存取金鑰** 。
+1. 針對 [ **選取方法**]，選擇 [ **從清單選取**] 或 [ **使用存取金鑰**]。
+    * 針對 [ **從清單選取**]，然後從下拉式清單中選取您的 **主要儲存體帳戶** ，或選取 [ **建立新** 的]。
+    * 在 [ **使用存取金鑰**] 中，輸入您的 **儲存體帳戶名稱**。 然後提供 **存取金鑰**。
 
-1. 針對 [ **容器** ]，接受預設值，或輸入一個新值。
+1. 針對 [ **容器**]，接受預設值，或輸入一個新值。
 
 ### <a name="additional-azure-storage"></a>其他 Azure 儲存體
 
@@ -87,7 +84,7 @@ Azure 入口網站會公開大部分的叢集屬性。 藉由使用 Azure Resour
 選擇性：指定現有的 SQL Database，以將 Apache Hive、Apache Oozie 和或 Apache Ambari 中繼資料儲存在叢集之外。 用於中繼存放區的 Azure SQL Database 必須允許連線至其他 Azure 服務，包括 Azure HDInsight。 當您建立中繼存放區時，請勿使用包含破折號或連字號的資料庫名稱。 這些字元可能會導致叢集建立程序失敗。
 
 > [!IMPORTANT]
-> 針對支援中繼存放區的叢集圖形，預設中繼存放區會提供具有 **基本層 5 DTU 限制的 Azure SQL Database， (無法升級)** ！ 適用于基本測試用途。 針對大型或生產工作負載，建議您遷移至外部中繼存放區。
+> 針對支援中繼存放區的叢集圖形，預設中繼存放區會提供具有 **基本層 5 DTU 限制的 Azure SQL Database， (無法升級)**！ 適用于基本測試用途。 針對大型或生產工作負載，建議您遷移至外部中繼存放區。
 
 選取 **[下一步]： [安全性 + 網路] >>** 進入下一個索引標籤。
 
@@ -128,13 +125,13 @@ Azure 入口網站會公開大部分的叢集屬性。 藉由使用 Azure Resour
 
 ![HDInsight 建立叢集摘要](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-review-create-hadoop.png "指定叢集節點的數目")
 
-檢查設定。 選取 [建立]  以建立叢集。
+檢查設定。 選取 [建立] 以建立叢集。
 
 建立叢集需要一些時間，通常約 20 分鐘左右。 監視 **通知** 以檢查佈建程序。
 
 ## <a name="post-creation"></a>建立後
 
-在建立程序完成之後，從 [已成功部署]  通知中選取 [前往資源]  。 叢集視窗會提供以下資訊。
+在建立程序完成之後，從 [已成功部署] 通知中選取 [前往資源]。 叢集視窗會提供以下資訊。
 
 ![HDI Azure 入口網站叢集總覽](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-completed.png "叢集屬性")
 
@@ -155,7 +152,7 @@ Azure 入口網站會公開大部分的叢集屬性。 藉由使用 Azure Resour
 
 如果您在建立 HDInsight 叢集時遇到問題，請參閱[存取控制需求](./hdinsight-hadoop-customize-cluster-linux.md#access-control)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 您已成功建立 HDInsight 叢集。 現在，請了解如何使用您的叢集。
 

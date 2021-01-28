@@ -1,19 +1,16 @@
 ---
 title: 使用 Ambari Web UI 監視和管理 Azure HDInsight
 description: 瞭解如何使用 Apache Ambari UI 來監視和管理 HDInsight 叢集。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 01/12/2021
-ms.openlocfilehash: 8195cffed077a77c0ad66fda1126e2f3ea53d5f0
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 087f284bed7ab0c9eb551c1629ab4f9196c80d76
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179141"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945700"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>使用 Apache Ambari Web UI 管理 HDInsight 叢集
 
@@ -216,7 +213,7 @@ HDInsight 不支援下列 Ambari 作業：
 
 * __移動 Metrics Collector (計量收集器) 服務__。 檢視 Metrics Collector (計量收集器) 服務上的資訊時，[Service Actions] \(服務動作\) 功能表提供的其中一個動作是 [Move Metrics collector] \(移動計量收集器\)。 HDInsight 不支援這個動作。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md) 與 HDInsight 搭配使用。
 * [使用 Apache Ambari 將 HDInsight 叢集設定最佳化](./hdinsight-changing-configs-via-ambari.md)

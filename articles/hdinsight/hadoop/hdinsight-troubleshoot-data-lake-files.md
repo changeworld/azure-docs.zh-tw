@@ -3,16 +3,13 @@ title: 無法存取 Azure HDInsight 中的 Data Lake 儲存體檔案
 description: 無法存取 Azure HDInsight 中的 Data Lake 儲存體檔案
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/13/2019
-ms.openlocfilehash: 8bac53cd08629e8b0a9cb91e596856c0ae6b5a2f
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: f4c5a23b604334952730fcc4cf1fcb3fcbed6237
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289119"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944392"
 ---
 # <a name="unable-to-access-data-lake-storage-files-in-azure-hdinsight"></a>無法存取 Azure HDInsight 中的 Data Lake 儲存體檔案
 
@@ -30,7 +27,7 @@ LISTSTATUS failed with error 0x83090aa2 (Forbidden. ACL verification failed. Eit
 
 使用者可能已撤銷檔案/資料夾上 (SP) 的服務主體許可權。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 1. 確認 SP 具有「x」許可權，可沿著路徑進行往返。 如需詳細資訊，請參閱 [權限](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html)。 `dfs`檢查存取 Data Lake 儲存體帳戶中的檔案/資料夾的範例命令：
 
@@ -99,7 +96,7 @@ Token Refresh failed - Received invalid http response: 500
     Error: java.lang.IllegalArgumentException: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://clustername.hmssomerandomstringc.cx.internal.cloudapp.net:909/api/oauthtoken}
     ```
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 使用下列 PowerShell 腳本建立新的憑證或指派現有的憑證：
 

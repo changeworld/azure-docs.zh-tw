@@ -3,12 +3,12 @@ title: 使用容器 Azure 監視器設定 Azure Red Hat OpenShift v4. x |Microso
 description: 本文說明如何使用 Azure Red Hat OpenShift 第4版或更新版本上裝載的 Azure 監視器來設定 Kubernetes 叢集的監視。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: e9f31d1b71122c53a67dc40af31d33255e2e98d8
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 8cd551a028f2fc67c26f8e32d59c0e0650aa1e54
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994537"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944536"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>使用容器 Azure 監視器設定 Azure Red Hat OpenShift v4. x
 
@@ -20,7 +20,7 @@ ms.locfileid: "91994537"
 
 您可以使用本文中所述的支援方法，為 Azure Red Hat OpenShift v4. x 的一或多個現有部署啟用容器的 Azure 監視器。
 
-針對現有的叢集，請 [在 Azure CLI 中執行此 Bash 腳本](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create&preserve-view=true)。
+針對現有的叢集，請 [在 Azure CLI 中執行此 Bash 腳本](/cli/azure/openshift#az-openshift-create&preserve-view=true)。
 
 ## <a name="supported-and-unsupported-features"></a>支援和不支援的功能
 
@@ -29,7 +29,7 @@ ms.locfileid: "91994537"
 - 即時資料 (預覽) 
 - 從叢集節點和 pod[收集計量](container-insights-update-metrics.md)，並將它們儲存在 Azure 監視器計量資料庫中
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - Azure CLI 2.0.72 版或更新版本  
 
@@ -97,7 +97,7 @@ ms.locfileid: "91994537"
     Microsoft Azure                       AzureCloud   0fb60ef2-03cc-4290-b595-e71108e8f4ce  Enabled  True
     ```
 
-1. 複製 **SubscriptionId**的值。
+1. 複製 **SubscriptionId** 的值。
 
 1. 藉由執行下列命令，切換至裝載 Log Analytics 工作區的訂用帳戶：
 
@@ -111,7 +111,7 @@ ms.locfileid: "91994537"
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
-1. 在輸出中，尋找工作區名稱，然後在欄位 **識別碼**下複製該 Log Analytics 工作區的完整資源識別碼。
+1. 在輸出中，尋找工作區名稱，然後在欄位 **識別碼** 下複製該 Log Analytics 工作區的完整資源識別碼。
 
 1. 若要啟用監視，請執行下列命令。 取代 `azureAroV4ClusterResourceId` 、和參數的值 `logAnalyticsWorkspaceResourceId` `kubeContext` 。
 
@@ -133,7 +133,7 @@ ms.locfileid: "91994537"
 
 在此範例中，您不需要預先建立或指定現有的工作區。 此命令會在叢集訂用帳戶的預設資源群組中建立預設工作區，以簡化您的程式，如果區域中還沒有該工作區存在的話。
 
-所建立的預設工作區格式為*DefaultWorkspace- \<GUID> - \<Region> *。  
+所建立的預設工作區格式為 *DefaultWorkspace- \<GUID> - \<Region>*。  
 
 取代和參數的值 `azureAroV4ClusterResourceId` `kubeContext` 。
 
@@ -158,13 +158,13 @@ export kubeContext="<kubeContext name of your ARO v4 cluster>"
 
 1. 在 [ **見解** ] 區段中，選取 [ **容器**]。
 
-1. 在 [ **監視-容器** ] 頁面上，選取 [未受 **監視**的叢集]。
+1. 在 [ **監視-容器** ] 頁面上，選取 [未受 **監視** 的叢集]。
 
 1. 在未受監視叢集的清單中，選取叢集，然後選取 [ **啟用**]。
 
-    您可以在 [叢集**類型**] 欄中尋找**ARO**值，以識別清單中的結果。 當您選取 [ **啟用**] 之後，系統會將您重新導向到這篇文章。
+    您可以在 [叢集 **類型**] 欄中尋找 **ARO** 值，以識別清單中的結果。 當您選取 [ **啟用**] 之後，系統會將您重新導向到這篇文章。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 既然您已啟用監視來收集 RedHat OpenShift 4.x 叢集的健康情況和資源使用量，以及它們上執行的工作負載，請瞭解 [如何使用](container-insights-analyze.md) 容器 Azure 監視器。
 

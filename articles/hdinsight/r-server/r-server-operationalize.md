@@ -1,27 +1,24 @@
 ---
 title: 在 HDInsight 上運作 ML 服務 - Azure
 description: 瞭解如何讓您的資料模型，以 Azure HDInsight 中的 ML 服務進行預測。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/27/2018
-ms.openlocfilehash: 20159cf911670eb70fd5757991c07b63b3f1776b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c90642e58c026c78ce854e7fe74dd36963d48b67
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536261"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944010"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>在 Azure HDInsight 上運作 ML 服務叢集
 
 當您使用 HDInsight 中的 ML 服務叢集來完成資料模型建構之後，便可以讓該模型運作以做出預測。 本文提供如何執行此工作的相關指示。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-* HDInsight 上的 ML 服務叢集。 請參閱  作為 [叢集類型]  。
+* HDInsight 上的 ML 服務叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop 叢集](../hdinsight-hadoop-create-linux-clusters-portal.md)，然後選取 [ML 服務] 作為 [叢集類型]。
 
 * 安全殼層 (SSH) 用戶端：SSH 用戶端可用來從遠端連線至 HDInsight 叢集，並直接在叢集上執行命令。 如需詳細資訊，請參閱[搭配 HDInsight 使用 SSH](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
@@ -54,7 +51,7 @@ ms.locfileid: "92536261"
         sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
         ```
 
-1. 您會看到可從中選擇的選項。 選擇第一個選項 (如下列螢幕擷取畫面所示) 來 **設定要運作的 ML Server** 。
+1. 您會看到可從中選擇的選項。 選擇第一個選項 (如下列螢幕擷取畫面所示) 來 **設定要運作的 ML Server**。
 
     ![R 伺服器管理公用程式選取](./media/r-server-operationalize/admin-util-one-box-1.png)
 
@@ -86,7 +83,7 @@ ms.locfileid: "92536261"
 
 ### <a name="long-delays-when-consuming-web-service-on-apache-spark"></a>在 Apache Spark 上取用 Web 服務時長時間延遲
 
-如果您在 Apache Spark 計算內容中嘗試取用使用 mrsdeploy 函式建立的 Web 服務時，遇到長時間延遲，您可能需要新增一些遺漏的資料夾。 每當使用 mrsdeploy 函式從 Web 服務叫用 Spark 應用程式時，該應用程式會屬於名為 'rserve2'  的使用者。 若要解決這個問題：
+如果您在 Apache Spark 計算內容中嘗試取用使用 mrsdeploy 函式建立的 Web 服務時，遇到長時間延遲，您可能需要新增一些遺漏的資料夾。 每當使用 mrsdeploy 函式從 Web 服務叫用 Spark 應用程式時，該應用程式會屬於名為 'rserve2' 的使用者。 若要解決這個問題：
 
 ```r
 # Create these required folders for user 'rserve2' in local and hdfs:
@@ -151,21 +148,21 @@ ML 服務叢集並非透過 [Apache Hadoop YARN](https://hadoop.apache.org/docs/
 
 請遵循下列步驟來將背景工作節點解除委任：
 
-1. 登入叢集的 Ambari 主控台，然後按一下 [Hosts]  \(主機\) 索引標籤。
+1. 登入叢集的 Ambari 主控台，然後按一下 [Hosts] \(主機\) 索引標籤。
 
 1. 選取背景工作節點 (以解除委任)。
 
-1. 按一下 [ **動作**  >  **選取的主機**  >  **主機**  >  **] 開啟維護模式** 。 例如，在以下映像中，我們選取了要解除委任 wn3 和 wn4。  
+1. 按一下 [**動作**  >  **選取的主機**  >  **主機**  >  **] 開啟維護模式**。 例如，在以下映像中，我們選取了要解除委任 wn3 和 wn4。  
 
    ![Apache Ambari 開啟維護模式](./media/r-server-operationalize/get-started-operationalization.png)  
 
-* 選取 [選取 **動作**  >  的 **主機** ]  >  **[datanode** > 按一下 [ **解除** 委任]。
-* 選取 [選取 **動作**  >  的 **主機** ]  >  **[nodemanagers** > 按一下 [ **解除** 委任]。
-* 選取 [選取 **動作** 的  >  **主機** ]  >  **[datanode** > 按一下 [ **停止** ]。
-* 選取 [選取 **動作**  >  的 **主機** ]  >  **[nodemanagers** > 按一下 [ **停止** ]。
-* 選取 **Actions** [選取  >  **主機**  >  **主機** 的動作] > 按一下 [ **停止所有元件** ]。
+* 選取 [選取 **動作**  >  的 **主機**]  >  **[datanode** > 按一下 [**解除** 委任]。
+* 選取 [選取 **動作**  >  的 **主機**]  >  **[nodemanagers** > 按一下 [**解除** 委任]。
+* 選取 [選取 **動作** 的  >  **主機**]  >  **[datanode** > 按一下 [**停止**]。
+* 選取 [選取 **動作**  >  的 **主機**]  >  **[nodemanagers** > 按一下 [**停止**]。
+* 選取[選取  >  **主機**  >  **主機** 的動作] > 按一下 [**停止所有元件**]。
 * 將背景工作節點取消選取，並選取前端節點。
-* 選取選取的 **動作**  >  **主機** > 「 **主機**  >  **重新開機所有元件** 」。
+* 選取選取的 **動作**  >  **主機**> 「**主機**  >  **重新開機所有元件**」。
 
 ### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>步驟 2：在每個已解除委任的背景工作節點上設定計算節點
 
@@ -177,7 +174,7 @@ ML 服務叢集並非透過 [Apache Hadoop YARN](https://hadoop.apache.org/docs/
     dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
     ```
 
-1. 輸入  選項。
+1. 輸入 **1** 以選取 [設定要運作的 ML Server] 選項。
 
 1. 輸入 **C** 以選取選項 `C. Compute node`。 這會設定背景工作角色節點上的計算節點。
 
@@ -202,7 +199,7 @@ ML 服務叢集並非透過 [Apache Hadoop YARN](https://hadoop.apache.org/docs/
     }
     ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [在 HDInsight 上管理 ML 服務叢集](r-server-hdinsight-manage.md)
 * [在 HDInsight 上計算 ML 服務叢集的內容選項](r-server-compute-contexts.md)

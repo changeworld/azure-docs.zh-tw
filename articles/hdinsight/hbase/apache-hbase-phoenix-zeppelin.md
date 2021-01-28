@@ -1,19 +1,16 @@
 ---
 title: 使用 Apache Phoenix 在 Azure HDInsight 中執行 Apache 基底查詢
 description: 瞭解如何使用 Apache Zeppelin 搭配 Phoenix 執行 Apache 基底查詢。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 10/14/2019
-ms.openlocfilehash: e85226e7a2544cda01f40a1c1be6be32f11d9dfc
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 50a72d0400b23162e05b17b37bdad48783261072
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542789"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944774"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-phoenix-queries-over-apache-hbase-in-azure-hdinsight"></a>使用 Apache Zeppelin 在 Azure HDInsight 中透過 Apache HBase 執行 Apache Phoenix 查詢
 
@@ -23,7 +20,7 @@ Apache Zeppelin 是開放原始碼的 web 型筆記本，可讓您使用互動�
 
 HDInsight 使用者可以使用 Apache Zeppelin 來查詢 Phoenix 資料表。 Apache Zeppelin 已與 HDInsight 叢集整合，不需要額外的步驟就能使用它。 只要使用 JDBC 解譯器建立 Zeppelin 筆記本並開始撰寫您的 Phoenix SQL 查詢
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 HDInsight 上的 Apache HBase 叢集。 請參閱 [開始使用 Apache HBase](./apache-hbase-tutorial-get-started-linux.md)。
 
@@ -31,22 +28,22 @@ HDInsight 上的 Apache HBase 叢集。 請參閱 [開始使用 Apache HBase](./
 
 1. 在下列 URL (`https://CLUSTERNAME.azurehdinsight.net/zeppelin`) 中，將 `CLUSTERNAME` 取代為您的叢集名稱。 在網頁瀏覽器中輸入該 URL。 輸入您的叢集登入使用者名稱與密碼。
 
-1. 在 [Zeppelin] 頁面中，選取 [ **建立新筆記** ]。
+1. 在 [Zeppelin] 頁面中，選取 [ **建立新筆記**]。
 
     ![HDInsight 互動式查詢 Zeppelin](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-create-note.png)
 
-1. 從 [建立新記事]  對話方塊，輸入或選取下列值：
+1. 從 [建立新記事] 對話方塊，輸入或選取下列值：
 
     - 附注名稱：輸入附注的名稱。
     - 預設解譯器：從下拉式清單中選取 [ **jdbc** ]。
 
-    然後選取 [ **建立備註** ]。
+    然後選取 [ **建立備註**]。
 
 1. 確定筆記本標頭顯示已線上狀態。 它是由右上角的綠點表示。
 
     ![Zeppelin Notebook 狀態](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-connected.png "Zeppelin Notebook 狀態")
 
-1. 建立 HBase 資料表。 輸入下列命令，然後按 **Shift + enter** ：
+1. 建立 HBase 資料表。 輸入下列命令，然後按 **Shift + enter**：
 
     ```sql
     %jdbc(phoenix)
@@ -96,7 +93,7 @@ HDInsight 上的 Apache HBase 叢集。 請參閱 [開始使用 Apache HBase](./
     DROP TABLE dbo.Company;
     ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [Apache Phoenix 現在支援 Azure HDInsight 中的 Zeppelin](/archive/blogs/ashish/apache-phoenix-now-supports-zeppelin-in-azure-hdinsight)
 - [Apache Phoenix 文法](https://phoenix.apache.org/language/index.html)

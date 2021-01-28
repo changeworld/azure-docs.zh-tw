@@ -1,18 +1,15 @@
 ---
 title: 將 Azure HDInsight 3.6 Apache Storm 遷移至 HDInsight 4.0 Apache Spark
 description: 將 Apache Storm 工作負載遷移至 Spark 串流或 Spark 結構化串流的差異和遷移流程。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/16/2019
-ms.openlocfilehash: e1262a4699bc42cb5b9a4398be2254854c5d5ff2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa57c01558cfdcf069b17fad9e86f7640553dcfd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86081191"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944777"
 ---
 # <a name="migrate-azure-hdinsight-36-apache-storm-to-hdinsight-40-apache-spark"></a>將 Azure HDInsight 3.6 Apache Storm 遷移至 HDInsight 4.0 Apache Spark
 
@@ -57,7 +54,7 @@ Spark 結構化串流會取代 Spark 串流 (DStreams) 。 結構化串流將繼
 
 Storm 拓撲是由有向非循環圖 (DAG) 中排列的多個元件所組成。 圖形中元件之間的資料流程。 每個元件會取用一或多個資料流，並可選擇性地發出一或多個資料流。
 
-|元件 |說明 |
+|元件 |描述 |
 |---|---|
 |壺 嘴|將資料帶入拓撲中。 它們會將一或多個串流發出至拓撲。|
 |螺栓|取用從 spout 或其他螺栓發出的串流。 Bolt 可以選擇性地將串流發出至拓撲。 Bolt 也負責將資料寫入外部服務或儲存體，例如 HDFS、Kafka 或 HBase。|
@@ -67,7 +64,7 @@ Storm 拓撲是由有向非循環圖 (DAG) 中排列的多個元件所組成。 
 
 風暴是由下列三個守護程式所組成，可讓風暴叢集正常運作。
 
-|精靈 |說明 |
+|精靈 |描述 |
 |---|---|
 |Nimbus|與 Hadoop JobTracker 相似之處在于，它負責將程式碼散發到叢集，以及將工作指派給機器和監視失敗。|
 |Zookeeper|用於叢集協調。|
@@ -147,7 +144,7 @@ Spark 結構化串流以非深入的資料表形式表示資料流程。 當新�
     > [!div class="mx-imgBorder"]
     > ![視需要移除舊的 HDInsight 叢集](./media/migrate-storm-to-spark/remove-old-clusters1.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需有關風暴、Spark 串流和 Spark 結構化串流的詳細資訊，請參閱下列檔：
 

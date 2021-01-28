@@ -4,17 +4,16 @@ description: 關於 HDInsight 的常見問題
 keywords: 常見問題，常見問題
 author: Ramakoni1
 ms.author: ramakoni
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 120a73c7bf2ea9ee61d1fe1aef9ffa39a3cb3f76
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 13282962886d8682b6056d10f8f0cc5a7f626d60
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882393"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946020"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight：常見問題集
 
@@ -178,7 +177,7 @@ ktutil: q
 
 ### <a name="can-i-use-a-self-signed-certificate-in-an-aad-ds-secure-ldap-setup-and-provision-an-esp-cluster"></a>我可以在 AAD DS 安全 LDAP 安裝程式中使用自我簽署憑證，並布建 ESP 叢集嗎？
 
-建議使用由憑證授權單位單位所發行的憑證。 但 ESP 也支援使用自我簽署憑證。 如需詳細資訊，請參閱：
+建議使用由憑證授權單位單位所發行的憑證。 但 ESP 也支援使用自我簽署憑證。 如需詳細資訊，請參閱
 
 - [啟用 Azure Active Directory Domain Services](domain-joined/apache-domain-joined-configure-using-azure-adds.md#enable-azure-ad-ds)
 
@@ -255,7 +254,7 @@ done
 
 目前沒有任何 Ranger 外掛程式存在於 blob 儲存體和 Azure Data Lake Storage Gen1 或 Gen2。 針對 ESP 叢集，您應該使用 Azure Data Lake Storage。 您至少可以使用 HDFS 工具在檔案系統層級手動設定細微許可權。 此外，使用 Azure Data Lake Storage 時，ESP 叢集將會使用叢集層級的 Azure Active Directory 來進行某些檔案系統存取控制。 
 
-您可以使用 Azure 儲存體總管，將資料存取原則指派給使用者的安全性群組。 如需詳細資訊，請參閱：
+您可以使用 Azure 儲存體總管，將資料存取原則指派給使用者的安全性群組。 如需詳細資訊，請參閱
 
 - [如何? 將 Azure AD 使用者的許可權設定為使用 Hive 或其他服務查詢 Data Lake Storage Gen2 中的資料？](hdinsight-hadoop-use-data-lake-storage-gen2.md#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
 - [搭配 Azure Data Lake Storage Gen2 使用 Azure 儲存體總管設定檔案和目錄等級使用權限](../storage/blobs/data-lake-storage-explorer.md)

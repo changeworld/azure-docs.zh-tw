@@ -1,19 +1,16 @@
 ---
 title: 在叢集建立期間 Apache Hive 程式庫-Azure HDInsight
 description: 瞭解如何在叢集建立期間，將 Apache Hive 程式庫 (jar 檔案) 新增至 HDInsight 叢集。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 02/14/2020
-ms.openlocfilehash: c678372fbd54e528a8a16eacc601e815cfd32e58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6695e5e985a30d6f912095225c4899e1c910e34
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86082228"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945956"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>建立 HDInsight 叢集時新增自訂 Apache Hive 程式庫
 
@@ -25,7 +22,7 @@ ms.locfileid: "86082228"
 
 叢集建立期間，指令碼會列舉檔案、將它們複製到前端和背景工作節點上的 `/usr/lib/customhivelibs/` 目錄，然後將它們加入至 `core-site.xml` 檔案中的 `hive.aux.jars.path` 屬性。 在以 Linux 為基礎的叢集上，它也會以檔案的位置來更新 `hive-env.sh` 檔案。
 
-使用本文中的腳本動作，可讓您在使用 Hive 用戶端進行 **WebHCat**和 **HiveServer2**時使用程式庫。
+使用本文中的腳本動作，可讓您在使用 Hive 用戶端進行 **WebHCat** 和 **HiveServer2** 時使用程式庫。
 
 ## <a name="the-script"></a>指令碼
 
@@ -35,11 +32,11 @@ ms.locfileid: "86082228"
 
 ### <a name="requirements"></a>需求
 
-* 指令碼必須同時套用至**前端節點**和**背景工作節點**。
+* 指令碼必須同時套用至 **前端節點** 和 **背景工作節點**。
 
-* 您想要安裝的 jar 必須儲存在**單一容器**中的 Azure Blob 儲存體。
+* 您想要安裝的 jar 必須儲存在 **單一容器** 中的 Azure Blob 儲存體。
 
-* 包含 jar 檔案程式庫的儲存體帳戶**必須**在建立期間連結至 HDInsight 叢集。 它必須是預設的儲存體帳戶，或透過 __儲存體帳戶設定__新增的帳戶。
+* 包含 jar 檔案程式庫的儲存體帳戶 **必須** 在建立期間連結至 HDInsight 叢集。 它必須是預設的儲存體帳戶，或透過 __儲存體帳戶設定__ 新增的帳戶。
 
 * 必須指定容器的 WASB 路徑做為指令碼動作的參數。 例如，如果 jar 儲存在名為 **mystorage** 的儲存體帳戶上稱為 **libs** 的容器中，則這個參數會是 `wasbs://libs@mystorage.blob.core.windows.net/`。
 
@@ -71,6 +68,6 @@ ms.locfileid: "86082228"
 
 叢集建立完成後，您就可以從 Hive 使用透過此腳本新增的 jar，而不需要使用 `ADD JAR` 語句。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需使用 Hive 的詳細資訊，請參閱 [搭配使用 Apache Hive 與 HDInsight](hadoop/hdinsight-use-hive.md)

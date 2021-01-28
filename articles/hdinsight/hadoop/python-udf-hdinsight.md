@@ -1,19 +1,16 @@
 ---
 title: 搭配 Apache Hive 和 Apache Pig 的 Python UDF - Azure HDInsight
 description: 了解如何在 HDInsight 中從 Apache Hive 和 Apache Pig (Azure 上的 Apache Hadoop 技術堆疊) 使用 Python 使用者定義函數 (UDF)。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive, devx-track-python
-ms.openlocfilehash: 0179fd10e75af0ced55b4bb41f9525dc26b3efe5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 593b809813f949cd1d0bcc17e1d1b7255ea19130
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023069"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944267"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>在 HDInsight 上搭配 Apache Hive 和 Apache Pig 使用 Python 使用者定義函數 (UDF)
 
@@ -25,7 +22,7 @@ HDInsight 3.0 和更新版本上預設已安裝 Python2.7。 Apache Hive 可以�
 
 HDInsight 也包含 Jython (以 Java 撰寫的 Python 實作)。 Jython 會直接在 JAVA 虛擬機器上執行，並不會使用串流處理。 搭配使用 Python 與 Pig 時，建議使用的 Python 解譯器為 Jython。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * **HDInsight 上的 Hadoop** 叢集。 請參閱[開始在 Linux 上使用 HDInsight](apache-hadoop-linux-tutorial-get-started.md)。
 * **SSH 用戶端**。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。

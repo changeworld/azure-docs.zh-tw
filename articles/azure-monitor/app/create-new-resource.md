@@ -3,12 +3,12 @@ title: 建立新的 Azure Application Insights 資源 | Microsoft Docs
 description: 針對新的即時應用程式手動設定 Application Insights 監視。
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 3fd05e6bd68be89b964fe1ad32029bf44f3352ea
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 2924ccbbf591020d7872d3e9cca62a9c271db7c0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906364"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944601"
 ---
 # <a name="create-an-application-insights-resource"></a>建立 Application Insights 資源
 
@@ -94,7 +94,7 @@ SamplingPercentage :
 TenantId           : {subid}
 ```
 
-如需此 Cmdlet 的完整 PowerShell 檔，以及若要瞭解如何取得檢測金鑰，請參閱 [Azure PowerShell 檔](/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0)。
+如需此 Cmdlet 的完整 PowerShell 檔，以及若要瞭解如何取得檢測金鑰，請參閱 [Azure PowerShell 檔](/powershell/module/az.applicationinsights/new-azapplicationinsights)。
 
 ### <a name="azure-cli-preview"></a>Azure CLI (preview) 
 
@@ -151,7 +151,7 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 }
 ```
 
-如需此命令的完整 Azure CLI 檔，以及瞭解如何取得檢測金鑰，請參閱 [Azure CLI 檔](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)。
+如需此命令的完整 Azure CLI 檔，以及瞭解如何取得檢測金鑰，請參閱 [Azure CLI 檔](/cli/azure/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-create)。
 
 ## <a name="next-steps"></a>後續步驟
 * [診斷搜尋](./diagnostic-search.md)

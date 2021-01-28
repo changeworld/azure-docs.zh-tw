@@ -1,19 +1,16 @@
 ---
 title: 'C #、Apache Hive & apache Hadoop 上的 Apache Pig-Azure HDInsight'
 description: 了解如何搭配使用 C# 使用者定義函數 (UDF) 與 Azure HDInsight 中的 Apache Hive 和 Apache Pig 串流處理。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/06/2019
-ms.openlocfilehash: e99d68d31f1da4dcb3ef1086a2bbd90f0ab30410
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 97b23a2b9e3b95a5ea0efcd27d0ec185b1c456f1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023120"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946551"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>搭配使用 c # 使用者定義函式與 HDInsight 中 Apache Hadoop 上的 Apache Hive 和 Apache Pig
 
@@ -24,7 +21,7 @@ ms.locfileid: "96023120"
 
 Hive 和 Pig 都可以將資料傳遞至外部應用程式進行處理。 這個程序稱為 _串流處理_。 使用 .NET 應用程式時，資料會在 STDIN 上傳遞至應用程式，而應用程式會在 STDOUT 上傳回結果。 為了在 STDIN 和 STDOUT 讀取和寫入，您可以從主控台應用程式使用 `Console.ReadLine()` 和 `Console.WriteLine()`。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * 熟悉如何撰寫和建置以 .NET Framework 4.5 為目標的 C# 程式碼。
 
@@ -56,7 +53,7 @@ Hive 和 Pig 都可以將資料傳遞至外部應用程式進行處理。 這個
 
 2. 選取 [建立新專案]。
 
-3. 在 [ **建立新專案** ] 視窗中，選擇 [ **主控台應用程式 ( .NET Framework])** 範本 (c # 版本) 。 然後選取 [下一步]  。
+3. 在 [ **建立新專案** ] 視窗中，選擇 [ **主控台應用程式 ( .NET Framework])** 範本 (c # 版本) 。 然後選取 [下一步]。
 
 4. 在 [**設定您的新專案**] 視窗中，輸入 *hivecsharp.exe* 的 **專案名稱**，然後流覽至或建立儲存新專案的 **位置**。 然後選取 [建立]。
 
@@ -123,7 +120,7 @@ Hive 和 Pig 都可以將資料傳遞至外部應用程式進行處理。 這個
 
 2. 在 [開始] 視窗中，選取 [建立新專案]。
 
-3. 在 [ **建立新專案** ] 視窗中，選擇 [ **主控台應用程式 ( .NET Framework])** 範本 (c # 版本) 。 然後選取 [下一步]  。
+3. 在 [ **建立新專案** ] 視窗中，選擇 [ **主控台應用程式 ( .NET Framework])** 範本 (c # 版本) 。 然後選取 [下一步]。
 
 4. 在 [**設定您的新專案**] 視窗中，輸入 *為 pigudf.exe* 的 **專案名稱**，然後移至或建立儲存新專案的 **位置**。 然後選取 [建立]。
 

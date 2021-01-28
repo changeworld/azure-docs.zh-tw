@@ -1,19 +1,17 @@
 ---
 title: 架構：內部部署 Apache Hadoop 至 Azure HDInsight
 description: 了解將內部部署 Hadoop 叢集遷移到 Azure HDInsight 的架構最佳做法。
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: af9b1f42140c5656c5f55a98c2d635d59e130db5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: eb01f2fabb89c6928dc4919987efa27df36a8a7a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533728"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946453"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>將內部部署 Apache Hadoop 叢集遷移到 Azure HDInsight - 架構最佳作法
 
@@ -103,7 +101,7 @@ HDInsight 會使用 Azure SQL Database 作為 Hive 和 Oozie 中繼存放區。 
 - 定期備份自訂中繼存放區。
 - 將中繼存放區與 HDInsight 叢集保存在相同區域。
 - 使用 Azure SQL Database 監視工具（例如 Azure 入口網站或 Azure 監視器記錄）監視中繼存放區的效能和可用性。
-- `ANALYZE TABLE`視需要執行命令，以產生資料表和資料行的統計資料。 例如 `ANALYZE TABLE [table_name] COMPUTE STATISTICS`。
+- `ANALYZE TABLE`視需要執行命令，以產生資料表和資料行的統計資料。 例如： `ANALYZE TABLE [table_name] COMPUTE STATISTICS` 。
 
 ## <a name="best-practices-for-different-workloads"></a>不同工作負載的最佳做法
 
@@ -118,7 +116,7 @@ HDInsight 會使用 Azure SQL Database 作為 Hive 和 Oozie 中繼存放區。 
 - 請考慮在 Hive 資料表和稽核上使用 Ranger RBAC。
 - 請考慮使用 CosmosDB 取代 MongoDB 或 Cassandra。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 閱讀此系列中的下一篇文章：
 

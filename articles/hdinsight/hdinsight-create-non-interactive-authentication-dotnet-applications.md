@@ -1,19 +1,16 @@
 ---
 title: 非互動式驗證 .NET 應用程式-Azure HDInsight
 description: 了解如何在 Azure HDInsight 中建立非互動式驗證 Microsoft .NET 應用程式。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/23/2019
-ms.openlocfilehash: a696ba4f7bab85f2353e80d028220688531b3b69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 121c5850ef47999f54d206b95b69e10775d3e5c9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021760"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946081"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>建立非互動式驗證 .NET HDInsight 應用程式
 
@@ -21,11 +18,11 @@ ms.locfileid: "89021760"
 
 從非互動式 .NET 應用程式，您需要︰
 
-* 您的 Azure 訂用帳戶租用戶識別碼 (又稱為目錄識別碼**)。 請參閱[取得租用戶識別碼](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。
+* 您的 Azure 訂用帳戶租用戶識別碼 (又稱為目錄識別碼)。 請參閱[取得租用戶識別碼](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。
 * Azure Active Directory (Azure AD) 應用程式用戶端識別碼。 請參閱 [建立 Azure Active Directory 應用程式](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) 並 [取得應用程式識別碼](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。
 * Azure AD 應用程式秘密金鑰。 請參閱[取得應用程式驗證金鑰](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 HDInsight 叢集。 請參閱[入門教學課程](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 
@@ -37,8 +34,8 @@ HDInsight 叢集。 請參閱[入門教學課程](hadoop/apache-hadoop-linux-tut
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 流覽至您稍後在本文中將用來執行 Hive 查詢的 HDInsight 叢集所在的資源群組。 如果您有大量的資源群組，您可以使用篩選來找出您想要的資源群組。
-1. 在資源群組功能表中，選取 [存取控制 (IAM)]****。
-1. 選取 [角色指派]**** 索引標籤，以查看目前的角色指派。
+1. 在資源群組功能表中，選取 [存取控制 (IAM)]。
+1. 選取 [角色指派] 索引標籤，以查看目前的角色指派。
 1. 從頁面頂端選取 [+ 新增]。
 1. 依照指示將擁有者角色新增至您的 Azure AD 應用程式。 成功新增角色之後，應用程式會列在 [擁有者] 角色底下。
 

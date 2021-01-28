@@ -1,19 +1,16 @@
 ---
 title: 使用 Azure CLI Azure HDInsight 建立 Apache Hadoop 叢集
 description: 瞭解如何使用跨平臺 Azure CLI 來建立 Azure HDInsight 叢集。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 02/03/2020
-ms.openlocfilehash: 4d378151b72ab09e8b51467ce09ec9d43c517813
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a2b39f25aa2a8847697df8a5097f5ffdc9cbd212
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657953"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945890"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>使用 Azure CLI 建立 HDInsight 叢集
 
@@ -40,7 +37,7 @@ ms.locfileid: "94657953"
 
 2. 設定環境變數。 本文中使用的變數是以 Bash 為基礎。 針對其他環境，會需要一點變化。 請參閱 [az-hdinsight-建立](/cli/azure/hdinsight#az-hdinsight-create) 以取得建立叢集的可能參數完整清單。
 
-    |參數 | 說明 |
+    |參數 | 描述 |
     |---|---|
     |`--workernode-count`| 叢集中的背景工作節點數目。 本文使用變數 `clusterSizeInNodes` 作為傳遞給的值 `--workernode-count` 。 |
     |`--version`| HDInsight 叢集版本。 本文使用變數 `clusterVersion` 作為傳遞給的值 `--version` 。 另請參閱： [支援的 HDInsight 版本](./hdinsight-component-versioning.md#supported-hdinsight-versions)。|

@@ -3,18 +3,18 @@ title: 教學課程 - 建立和管理 Azure 預算
 description: 此教學課程可協助規劃和說明您取用之 Azure 服務的成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 12/16/2020
+ms.date: 01/27/2021
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: c8b0265a72911688f08e0f8c4a39fa657f034472
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
-ms.translationtype: HT
+ms.openlocfilehash: 5659f3b2d020a97ed2460c55283bb41f2f7606cc
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630134"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943738"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教學課程：建立和管理 Azure 預算
 
@@ -22,7 +22,7 @@ ms.locfileid: "97630134"
 
 成本和使用方式資料通常會在 8-24 小時內提供，而其後將會根據這些成本每 24 時評估一次預算。 請務必熟悉[成本和使用量資料更新](./understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention) 詳細資訊。 達到預算閾值時，通常會在評估的一小時內收到電子郵件通知。
 
-當您在未來選取到期日時，預算會在期間 (每月、每季或每年) 結束時自動重設相同的預算金額。 因為它們會使用相同的預算金額重設，所以，在預算的貨幣金額與未來期間不同時您需要另外建立預算。
+當您在未來選取到期日時，預算會在期間 (每月、每季或每年) 結束時自動重設相同的預算金額。 因為它們會使用相同的預算金額重設，所以，在預算的貨幣金額與未來期間不同時您需要另外建立預算。 當預算過期時，就會自動刪除。
 
 此教學課程的範例會引導您針對 Azure Enterprise 合約 (EA) 訂用帳戶建立和編輯預算。
 
@@ -37,7 +37,7 @@ ms.locfileid: "97630134"
 > * 使用 PowerShell 建立和編輯預算
 > * 使用 Azure Resource Manager 範本建立預算
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 預算受下列類型的 Azure 帳戶類型和範圍支援：
 
@@ -86,7 +86,7 @@ ms.locfileid: "97630134"
 
 建立預算之後，會針對它們顯示您目前費用的簡單檢視。
 
-選取 [新增]  。
+選取 [新增]。
 
 ![此範例顯示已建立的預算清單](./media/tutorial-acm-create-budgets/budgets01.png)
 

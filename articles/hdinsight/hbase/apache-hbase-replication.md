@@ -1,19 +1,16 @@
 ---
 title: 虛擬網路中的 HBase 叢集複寫-Azure HDInsight
 description: 了解如何針對負載平衡、高可用性、零停機時間移轉和更新，以及災害復原來設定 HDInsight 版本之間的 HBase 複寫。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: 8fc5ba2280b5ad68a40f4992adc170408e80e5a6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cfcb3a5a601afadb9f3fcd71c24e18a9d7f27b9e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021787"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946405"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>設定 Azure 虛擬網路中的 Apache HBase 叢集複寫
 
@@ -38,7 +35,7 @@ ms.locfileid: "96021787"
 
 您可以從 [GitHub](https://github.com/Azure/hbase-utils/tree/master/replication) 使用[指令碼動作](../hdinsight-hadoop-customize-cluster-linux.md)指令碼複寫叢集。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 開始本文之前，您必須擁有 Azure 訂用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
 ## <a name="set-up-the-environments"></a>設定環境
@@ -78,7 +75,7 @@ ms.locfileid: "96021787"
 | 閘道名稱 | vnet1gw |
 | 閘道類型 | Vpn |
 | 閘道 VPN 類型 | RouteBased |
-| 閘道 SKU | Basic |
+| 閘道 SKU | 基本 |
 | 閘道 IP | vnet1gwip |
 
 **VNet 2**
@@ -95,7 +92,7 @@ ms.locfileid: "96021787"
 | 閘道名稱 | vnet2gw |
 | 閘道類型 | Vpn |
 | 閘道 VPN 類型 | RouteBased |
-| 閘道 SKU | Basic |
+| 閘道 SKU | 基本 |
 | 閘道 IP | vnet1gwip |
 
 ## <a name="setup-dns"></a>設定 DNS
@@ -305,7 +302,7 @@ sudo service bind9 status
       >
       > 本逐步解說假設 hn1 為作用中前端節點。 請檢查您的叢集，以識別作用中的前端節點。
 
-6. 選取 [建立]。 指令碼執行需要花費一些時間，特別是在使用 **-copydata** 引數的情況下。
+6. 選取 [建立]  。 指令碼執行需要花費一些時間，特別是在使用 **-copydata** 引數的情況下。
 
 必要的引數︰
 

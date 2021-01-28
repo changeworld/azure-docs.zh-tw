@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
 ms.subservice: alerts
-ms.openlocfilehash: 4ea5c8552d35db67a1d2caf20c0143c74cdd642e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36cf5882913426062e281194b61a8c760141512a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86505477"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944154"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>如何在其目標資源移至不同的 Azure 區域時，更新警示規則或動作規則
 
@@ -78,7 +78,7 @@ Azure 資源發出的計量為區域。 每當資源移至新區域時，就會�
 1. 開啟您在上一個步驟中識別的規則，方法是按一下該規則。
 2. 在 [ **資源**] 底下，按一下 [ **編輯** ]，然後視需要調整範圍。
 3. 視需要調整規則的其他屬性。
-4. 按一下 **[儲存]** 。
+4. 按一下 [儲存]。
 
 ![變更警示規則範圍](media/alerts-resource-move/change-alert-rule-scope.png)
 
@@ -106,10 +106,10 @@ Azure 資源發出的計量為區域。 每當資源移至新區域時，就會�
 
 ### <a name="change-the-scope-of-a-rule-using-azure-cli"></a>使用 Azure CLI 變更規則的範圍
 
-1.  取得現有規則 (計量 [警示](/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-show)、 [活動記錄警示](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)) 。
+1.  取得現有規則 (計量 [警示](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-show)、 [活動記錄警示](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)) 。
 2.  直接更新規則範圍 (計量 [警示](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update)、 [活動記錄警示](/cli/azure/monitor/activity-log/alert/scope)) 
 3.  如有需要，請分割成兩個規則 (與計量警示的某些案例相關，如上述) 所述。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 瞭解如何修正 [警示通知](alerts-troubleshoot.md)、計量 [警示](alerts-troubleshoot-metric.md)和 [記錄警示](alerts-troubleshoot-log.md)的其他問題。 

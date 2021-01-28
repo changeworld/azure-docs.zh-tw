@@ -1,19 +1,16 @@
 ---
 title: 在虛擬網路上建立 HBase 叢集 - Azure
 description: 開始在 Azure HDInsight 中使用 HBase。 了解如何在 Azure 虛擬網路上建立 HDInsight HBase 叢集。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: 82e3374491aa119d9985ea7ef31e180c920511d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f179981aa39402681b4830d58a29f5b1259c7e2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087736"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946125"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>在 Azure 虛擬網路中的 HDInsight 上建立 Apache HBase 叢集
 
@@ -58,7 +55,7 @@ ms.locfileid: "86087736"
     |屬性 |值 |
     |---|---|
     |訂用帳戶|選取用來建立 HDInsight 叢集、相依儲存體帳戶和 Azure 虛擬網路的 Azure 訂用帳戶。|
-    資源群組|選取 [新建]**** 並指定新的資源群組名稱。|
+    資源群組|選取 [新建] 並指定新的資源群組名稱。|
     |Location|選取資源群組的位置。|
     |叢集名稱|輸入要建立的 Hadoop 叢集的名稱。|
     |叢集登入使用者名稱和密碼|預設的使用者名稱是 **admin**。提供密碼。|
@@ -66,7 +63,7 @@ ms.locfileid: "86087736"
 
     選取 **[我同意上方所述的條款及條件**]。
 
-1. 選取 [購買]。 大約需要 20 分鐘的時間來建立叢集。 叢集建立之後，您可以在入口網站中選取叢集來開啟它。
+1. 選取 [購買]  。 大約需要 20 分鐘的時間來建立叢集。 叢集建立之後，您可以在入口網站中選取叢集來開啟它。
 
 完成本文之後，您可能會想要刪除叢集。 利用 HDInsight，您的資料會儲存在 Azure 儲存體中，以便您在未使用叢集時安全地進行刪除。 您也需支付 HDInsight 叢集的費用 (即使未使用)。 由於叢集費用是儲存體費用的許多倍，所以刪除未使用的叢集符合經濟效益。 如需有關刪除叢集的指示，請參閱[使用 Azure 入口網站管理 HDInsight 中的 Apache Hadoop 叢集](../hdinsight-administer-use-portal-linux.md#delete-clusters)。
 
@@ -144,7 +141,7 @@ ms.locfileid: "86087736"
 > [!NOTE]  
 > 如需 Azure 虛擬網路中名稱解析的詳細資訊，包括如何使用您自己的 DNS 伺服器，請參閱[名稱解析 (DNS)](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解如何建立 Apache HBase 叢集。 若要深入了解，請參閱：
 

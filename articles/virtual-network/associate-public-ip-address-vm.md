@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: 76f92b5da2331748fbbbfc68f1e456fd50dd71ee
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 6ea16da3844b8098d87d65e1016f92c69ae34067
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223018"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945158"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>將公用 IP 位址與虛擬機器產生關聯
 
@@ -65,7 +65,7 @@ ms.locfileid: "98223018"
 安裝 [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json) 或使用 Azure Cloud Shell。 Azure Cloud Shell 是免費的 Bash Shell，您可以直接在 Azure 入口網站內執行。 它具有預先安裝和設定的 Azure CLI，可與您的帳戶搭配使用。 在接下來的 CLI 命令中，選取 [試用] 按鈕。 選取 [試用]，會叫用可登入 Azure 帳戶的 Cloud Shell。
 
 1. 如果在 Bash 中使用本機 CLI，請使用 `az login` 登入 Azure。
-2. 公用 IP 位址會與連接至 VM 的網路介面 IP 設定建立關聯。 使用 [az network nic-ip-config update](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-update) 命令，將公用 ip 位址與 ip 設定產生關聯。 下列範例會將名為 *myVMPublicIP* *的現有* 公用 IP 位址，與存在名為 *myResourceGroup* 的資源群組中名為 *>myvmvmnic* 的現有網路介面的 IP 設定產生關聯。
+2. 公用 IP 位址會與連接至 VM 的網路介面 IP 設定建立關聯。 使用 [az network nic-ip-config update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update) 命令，將公用 ip 位址與 ip 設定產生關聯。 下列範例會將名為 *myVMPublicIP* *的現有* 公用 IP 位址，與存在名為 *myResourceGroup* 的資源群組中名為 *>myvmvmnic* 的現有網路介面的 IP 設定產生關聯。
   
    ```azurecli-interactive
    az network nic ip-config update \
@@ -75,7 +75,7 @@ ms.locfileid: "98223018"
      --public-ip-address myVMPublicIP
    ```
 
-   - 如果您沒有現有的公用 IP 位址，請使用 [az network public-IP create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) 命令建立一個。 例如，下列命令會在名為 *myResourceGroup* 的資源群組中建立名為 *MYVMPUBLICIP* 的公用 IP 位址。
+   - 如果您沒有現有的公用 IP 位址，請使用 [az network public-IP create](/cli/azure/network/public-ip#az-network-public-ip-create) 命令建立一個。 例如，下列命令會在名為 *myResourceGroup* 的資源群組中建立名為 *MYVMPUBLICIP* 的公用 IP 位址。
   
      ```azurecli-interactive
      az network public-ip create --name myVMPublicIP --resource-group myResourceGroup
@@ -84,7 +84,7 @@ ms.locfileid: "98223018"
      > [!NOTE]
      > 先前的命令會建立一個公用 IP 位址，其中包含您可能想要自訂的數個設定的預設值。 若要深入瞭解所有公用 IP 位址設定，請參閱 [建立公用 ip 位址](virtual-network-public-ip-address.md#create-a-public-ip-address)。 位址會從用於每個 Azure 區域的公用 IP 位址池指派。 若要查看每個區域中使用的位址集區清單，請參閱 [Microsoft Azure DATACENTER IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。
 
-   - 如果您不知道連接至 VM 的網路介面名稱，請使用 [az vm nic list](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-list) 命令來加以查看。 例如，下列命令會列出連接至 *myResourceGroup* 資源群組中 *myVM* VM 的網路介面名稱：
+   - 如果您不知道連接至 VM 的網路介面名稱，請使用 [az vm nic list](/cli/azure/vm/nic#az-vm-nic-list) 命令來加以查看。 例如，下列命令會列出連接至 *myResourceGroup* 資源群組中 *myVM* VM 的網路介面名稱：
 
      ```azurecli-interactive
      az vm nic list --vm-name myVM --resource-group myResourceGroup
@@ -98,13 +98,13 @@ ms.locfileid: "98223018"
 
      在上述範例中，*myVMVMNic* 是網路介面的名稱。
 
-   - 如果您不知道網路介面的 IP 設定名稱，請使用 [az network nic ip-config list](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-list) 命令來取得名稱。 例如，下列命令會列出 *myResourceGroup* 資源群組中 *myVMVMNic* 網路介面的 IP 設定名稱：
+   - 如果您不知道網路介面的 IP 設定名稱，請使用 [az network nic ip-config list](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-list) 命令來取得名稱。 例如，下列命令會列出 *myResourceGroup* 資源群組中 *myVMVMNic* 網路介面的 IP 設定名稱：
 
      ```azurecli-interactive
      az network nic ip-config list --nic-name myVMVMNic --resource-group myResourceGroup --out table
      ```
 
-3. 使用 [az vm list-ip-](/cli/azure/vm?view=azure-cli-latest#az-vm-list-ip-addresses) address 命令來查看指派給 IP 設定的公用 IP 位址。 下列範例會顯示在名為 *myResourceGroup* 的資源群組中，指派給名為 *MYVM* 之現有 VM 的 IP 位址。
+3. 使用 [az vm list-ip-](/cli/azure/vm#az-vm-list-ip-addresses) address 命令來查看指派給 IP 設定的公用 IP 位址。 下列範例會顯示在名為 *myResourceGroup* 的資源群組中，指派給名為 *MYVM* 之現有 VM 的 IP 位址。
 
    ```azurecli-interactive
    az vm list-ip-addresses --name myVM --resource-group myResourceGroup --out table

@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight 高可用性解決方案架構案例研究
 description: 本文是虛構的案例研究，可能 Azure HDInsight 高可用性解決方案架構。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 keywords: hadoop 高可用性
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 4b98b03c2d7eb4a0403b4595c1376656ed42511b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0616694d05e3fc9d2255ad97647ebe3bce545a93
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855033"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945355"
 ---
 # <a name="azure-hdinsight-highly-available-solution-architecture-case-study"></a>Azure HDInsight 高可用性解決方案架構案例研究
 
@@ -68,7 +65,7 @@ Azure API Apps 和 API 管理層會傳回公開的網頁。 Power BI 會履行�
 
 下圖顯示 Contoso 零售的高可用性嚴重損壞修復架構。
 
-:::image type="content" source="./media/hdinsight-high-availability-case-study/contoso-solution.png" alt-text="Contoso 零售架構":::
+:::image type="content" source="./media/hdinsight-high-availability-case-study/contoso-solution.png" alt-text="Contoso 解決方案":::
 
 **Kafka** 使用 [主動–被動](hdinsight-business-continuity-architecture.md#apache-kafka) 複寫，將 Kafka 主題從主要區域鏡像至次要區域。 Kafka 複寫的替代方案可能是在這兩個區域中產生 Kafka。
 

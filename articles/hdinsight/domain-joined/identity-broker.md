@@ -2,17 +2,14 @@
 title: 'Azure HDInsight 識別碼代理程式 (HIB) '
 description: 瞭解 Azure HDInsight 識別碼代理程式，以簡化已加入網域之 Apache Hadoop 叢集的驗證。
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: b8dfe9a23e5c6697323142212156006cb65d2f9b
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 47ba11260c3b58566963e5a3ffac80ca461a8a23
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556523"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946811"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight 識別碼代理程式 (HIB) 
 

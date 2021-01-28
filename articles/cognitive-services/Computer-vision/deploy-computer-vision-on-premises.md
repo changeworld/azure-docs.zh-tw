@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/23/2020
+ms.date: 01/27/2020
 ms.author: aahi
-ms.openlocfilehash: b3e1bb3f418f21c75e29b5a1cad337c6f3c10145
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 8f795a7c0d8a2bac09c588924b0fd87e62258da3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246633"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946183"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>搭配 Kubernetes 和 Helm 使用電腦視覺容器
 
 管理內部部署電腦視覺容器的選項之一，是使用 Kubernetes 和 Helm。 使用 Kubernetes 和 Helm 來定義電腦視覺的容器映射，我們將建立 Kubernetes 套件。 此套件將會部署到內部部署的 Kubernetes 叢集。 最後，我們將探討如何測試已部署的服務。 如需在沒有 Kubernetes 協調流程的情況下執行 Docker 容器的詳細資訊，請參閱 [安裝和執行電腦視覺容器](computer-vision-how-to-install-containers.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 使用內部部署電腦視覺容器之前的必要條件如下：
 
@@ -176,11 +176,11 @@ spec:
 {{- end -}}
 
 {{- define "redis.connStr" -}}
-{{- $hostMaster := printf "%s-redis-master:6379" .Release.Name }}
-{{- $hostSlave := printf "%s-redis-slave:6379" .Release.Name -}}
+{{- $hostMain := printf "%s-redis-master:6379" .Release.Name }}
+{{- $hostReplica := printf "%s-redis-slave:6379" .Release.Name -}}
 {{- $passWord := printf "password=%s" .Values.read.image.args.redis.password -}}
 {{- $connTail := "ssl=False,abortConnect=False" -}}
-{{- printf "%s,%s,%s,%s" $hostMaster $hostSlave $passWord $connTail -}}
+{{- printf "%s,%s,%s,%s" $hostMain $hostReplica $passWord $connTail -}}
 {{- end -}}
 ```
 範本會指定負載平衡器服務，以及要讀取的容器/映射的部署。

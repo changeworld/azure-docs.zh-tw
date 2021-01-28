@@ -3,17 +3,16 @@ title: 建立 Azure HDInsight-Azure Data Lake Storage Gen2-入口網站
 description: 瞭解如何使用入口網站搭配 Azure HDInsight 叢集的 Azure Data Lake Storage Gen2。
 author: guyhay
 ms.author: guyhay
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 09/17/2020
-ms.openlocfilehash: 104424c1e3bd1df69106db7da45b744755b51e82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d54c005ffb17571be172b5716723febb742253a3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858765"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945386"
 ---
 # <a name="create-a-cluster-with-data-lake-storage-gen2-using-the-azure-portal"></a>使用 Azure 入口網站建立具有 Data Lake Storage Gen2 的叢集
 
@@ -32,9 +31,9 @@ Azure 入口網站是 Web 架構的管理工具，可用來管理裝載於 Micro
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在左上方按一下 [ **建立資源**]。
 1. 在 [搜尋] 方塊中，輸入 **使用者指派** ，然後按一下 [ **使用者指派的受控識別**]。
-1. 按一下 [建立]。
+1. 按一下頁面底部的 [新增]  。
 1. 輸入受控識別的名稱，然後選取正確的訂用帳戶、資源群組和位置。
-1. 按一下 [建立]。
+1. 按一下頁面底部的 [新增]  。
 
 如需有關受控識別如何在 Azure HDInsight 中運作的詳細資訊，請參閱 [Azure HDInsight 中的受控](hdinsight-managed-identities.md)識別。
 
@@ -47,12 +46,12 @@ Azure 入口網站是 Web 架構的管理工具，可用來管理裝載於 Micro
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在左上方按一下 [ **建立資源**]。
 1. 在搜尋方塊中，輸入 **儲存體** ，然後按一下 [ **儲存體帳戶**]。
-1. 按一下 [建立]。
+1. 按一下頁面底部的 [新增]  。
 1. 在 [ **建立儲存體帳戶** ] 畫面上：
     1. 選取正確的訂用帳戶和資源群組。
     1. 輸入具有 Data Lake Storage Gen2 之儲存體帳戶的名稱。
     1. 按一下 [ **Advanced （Advanced** ）] 索引標籤。
-    1. 按一下 [ **Data Lake Storage Gen2**] 下**階層命名空間**旁的 [**已啟用**]。
+    1. 按一下 [ **Data Lake Storage Gen2**] 下 **階層命名空間** 旁的 [**已啟用**]。
     1. 按一下 [檢閱 + 建立]。
     1. 按一下 [建立] 
 
@@ -65,7 +64,7 @@ Azure 入口網站是 Web 架構的管理工具，可用來管理裝載於 Micro
 將受控識別指派給儲存體帳戶上的 **儲存體 Blob 資料擁有** 者角色。
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，移至您的儲存體帳戶。
-1. 選取您的儲存體帳戶，然後選取 [ **存取控制] (IAM) ** ，以顯示帳戶的存取控制設定。 選取 [角色指派] 索引標籤，以查看角色指派的清單。
+1. 選取您的儲存體帳戶，然後選取 [ **存取控制] (IAM)** ，以顯示帳戶的存取控制設定。 選取 [角色指派] 索引標籤，以查看角色指派的清單。
 
     ![顯示儲存體存取控制設定的螢幕擷取畫面](./media/hdinsight-hadoop-use-data-lake-storage-gen2/portal-access-control.png)
 
@@ -74,7 +73,7 @@ Azure 入口網站是 Web 架構的管理工具，可用來管理裝載於 Micro
 
     ![顯示如何指派 Azure 角色的螢幕擷取畫面](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
 
-1. 選取 [儲存]****。 您選取的使用者指派身分識別現在會列在選取的角色底下。
+1. 選取 [儲存]。 您選取的使用者指派身分識別現在會列在選取的角色底下。
 1. 完成此初始設定後，您可以透過入口網站建立叢集。 此叢集必須與儲存體帳戶位在相同的 Azure 區域中。 在叢集建立功能表的 [ **儲存體** ] 索引標籤中，選取下列選項：
 
     * 針對 [ **主要儲存體類型**]，選取 [ **Azure Data Lake Storage Gen2**]。

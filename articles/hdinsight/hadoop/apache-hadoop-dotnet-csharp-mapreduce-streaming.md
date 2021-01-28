@@ -1,19 +1,16 @@
 ---
 title: 搭配 HDInsight 的 Hadoop 上的 MapReduce 使用 C# - Azure
 description: 了解如何搭配 Azure HDInsight 的 Apache Hadoop 使用 C# 以建立 MapReduce 解決方案。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, seoapr2020, devx-track-csharp
 ms.date: 04/28/2020
-ms.openlocfilehash: 4153b612b4b15883f28517d806acf6b340a94e49
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6948491091f558aa7f317d519b0f92c63cac4788
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543044"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946629"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>搭配 HDInsight 的 Apache Hadoop 上的 MapReduce 串流使用 C#
 
@@ -31,7 +28,7 @@ HDInsight 叢集會使用[Mono https://mono-project.com) (](https://mono-project
 
 本文件中使用於串流的基本程序如下︰
 
-1. 在此範例中，Hadoop 會將資料傳遞至對應程式 ( *mapper.exe* 在 STDIN 上) 。
+1. 在此範例中，Hadoop 會將資料傳遞至對應程式 (*mapper.exe* 在 STDIN 上) 。
 2. 對應工具會處理資料，然後發出以 Tab 分隔的機碼值組到 STDOUT。
 3. Hadoop 會讀取輸出，然後傳遞至歸納器 (此範例中的 *reducer.exe* 在 STDIN 上) 。
 4. 歸納器會讀取以 Tab 分隔的機碼值組、處理資料，然後在 STDOUT 發出以 Tab 分隔的機碼值組格式結果。
@@ -55,7 +52,7 @@ HDInsight 叢集會使用[Mono https://mono-project.com) (](https://mono-project
 
 ## <a name="create-the-mapper"></a>建立對應工具
 
-在 Visual Studio 中， *建立名為對應程式的新* .NET Framework 主控台應用程式。 針對此應用程式使用下列程式碼：
+在 Visual Studio 中， *建立名為對應程式的新*.NET Framework 主控台應用程式。 針對此應用程式使用下列程式碼：
 
 ```csharp
 using System;
@@ -147,27 +144,27 @@ namespace reducer
 
 接下來，您 *必須將對應工具* 和 *歸納器* 應用程式上傳到 HDInsight 儲存體。
 
-1. 在 Visual Studio 中，選取 [ **View**  >  **伺服器總管** 。
+1. 在 Visual Studio 中，選取 [ **View**  >  **伺服器總管**。
 
-1. 以滑鼠右鍵按一下 [ **Azure** ]，選取 **[連線到 Microsoft Azure 訂** 用帳戶]，然後完成登入程式。
+1. 以滑鼠右鍵按一下 [ **Azure**]，選取 **[連線到 Microsoft Azure 訂** 用帳戶]，然後完成登入程式。
 
 1. 展開您要部署此應用程式的 HDInsight 叢集。 就會列出含有文字 **(預設儲存體帳戶)** 的項目。
 
    ![儲存體帳戶、HDInsight 叢集、伺服器總管、Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-storage-account.png)
 
-   * 如果可以展開 **(預設儲存體帳戶)** 專案，則會使用 **Azure 儲存體帳戶** 做為叢集的預設儲存體。 若要查看叢集預設儲存體上的檔案，請展開該專案，然後按兩下 [ **(預設容器)** 。
+   * 如果可以展開 **(預設儲存體帳戶)** 專案，則會使用 **Azure 儲存體帳戶** 做為叢集的預設儲存體。 若要查看叢集預設儲存體上的檔案，請展開該專案，然後按兩下 [ **(預設容器)**。
 
-   * 如果無法展開 **(預設儲存體帳戶)** 專案，您就會使用 **Azure Data Lake Storage** 作為叢集的預設儲存體。 若要檢視叢集之預設儲存體上的檔案，請按兩下 [(預設儲存體帳戶)]  項目。
+   * 如果無法展開 **(預設儲存體帳戶)** 專案，您就會使用 **Azure Data Lake Storage** 作為叢集的預設儲存體。 若要檢視叢集之預設儲存體上的檔案，請按兩下 [(預設儲存體帳戶)] 項目。
 
 1. 若要上傳 .exe 檔案，請使用下列其中一種方法：
 
-    * 如果您是使用 **Azure 儲存體帳戶** ，請選取 [ **上傳 Blob** ] 圖示。
+    * 如果您是使用 **Azure 儲存體帳戶**，請選取 [ **上傳 Blob** ] 圖示。
 
         ![適用于對應工具的 HDInsight 上傳圖示 Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
 
-        在 [ **上傳新** 檔案] 對話方塊的 [ **檔案名** ] 底下，選取 **[流覽]** 。 在 [ **上傳 Blob** ] 對話方塊中，移至對應 *工具專案的* [ *bin\debug* ] 資料夾，然後選擇 *mapper.exe* 檔。 最後，選取 [ **開啟** ]，然後按一下 **[確定]** 以完成上傳。
+        在 [ **上傳新** 檔案] 對話方塊的 [ **檔案名**] 底下，選取 **[流覽]**。 在 [**上傳 Blob** ] 對話方塊中，移至對應 *工具專案的*[ *bin\debug* ] 資料夾，然後選擇 *mapper.exe* 檔。 最後，選取 [ **開啟** ]，然後按一下 **[確定]** 以完成上傳。
 
-    * 針對 **Azure Data Lake Storage** ，以滑鼠右鍵按一下檔案清單中的空白區域，然後選取 **[上傳** ]。 最後，選取 *mapper.exe* 檔案，然後選取 [ **開啟** ]。
+    * 針對 **Azure Data Lake Storage**，以滑鼠右鍵按一下檔案清單中的空白區域，然後選取 **[上傳**]。 最後，選取 *mapper.exe* 檔案，然後選取 [ **開啟**]。
 
     *mapper.exe* 上傳完成後，請針對 *reducer.exe* 檔案重複上傳程序。
 
@@ -183,7 +180,7 @@ namespace reducer
 
 1. 使用下列其中一個命令來啟動 MapReduce 作業：
 
-   * 如果預設儲存體 **Azure 儲存體** ：
+   * 如果預設儲存體 **Azure 儲存體**：
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar \
@@ -194,7 +191,7 @@ namespace reducer
             -output /example/wordcountout
         ```
 
-    * 如果預設儲存體 **Data Lake Storage Gen1** ：
+    * 如果預設儲存體 **Data Lake Storage Gen1**：
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar \
@@ -205,7 +202,7 @@ namespace reducer
             -output /example/wordcountout
         ```
 
-   * 如果預設儲存體 **Data Lake Storage Gen2** ：
+   * 如果預設儲存體 **Data Lake Storage Gen2**：
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar \
@@ -267,7 +264,7 @@ yourselves      3
 youth   17
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [在 HDInsight 上的 Apache Hadoop 中使用 MapReduce](hdinsight-use-mapreduce.md)。
 * [使用 c # 使用者定義函數搭配 Apache Hive 和 Apache Pig](apache-hadoop-hive-pig-udf-dotnet-csharp.md)。

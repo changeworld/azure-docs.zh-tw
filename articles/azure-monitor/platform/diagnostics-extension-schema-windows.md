@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: d2b1afea746410e966b43bef01a039a8471d4ae7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: eccd4010d796e541e4a0a2c0b0c485b5f18f0366
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008815"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943726"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows 診斷延伸模組架構
 Azure 診斷擴充功能是 Azure 監視器中的代理程式，可從客體作業系統和 Azure 計算資源的工作負載收集監視資料。 本文詳細說明在 Windows 虛擬機器和其他計算資源上設定診斷擴充功能時所使用的架構。
@@ -157,7 +157,7 @@ Azure 診斷擴充功能是 Azure 監視器中的代理程式，可從客體作�
 
 |子元素|描述|  
 |--------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|設定要收集從 [EventSource 類別](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1)產生的事件。 必要屬性：<br /><br /> **provider** - EventSource 事件的類別名稱。<br /><br /> 選用屬性包括：<br /><br /> - **scheduledTransferLogLevelFilter** - 要傳輸至儲存體帳戶的最低嚴重性層級。<br /><br /> - **scheduledTransferPeriod** - 排程傳輸至儲存體之間的間隔，無條件進位到最接近的分鐘數。 值是 [XML「持續時間資料類型」(英文)](https://www.w3schools.com/xml/schema_dtypes_date.asp)。 |  
+|**EtwEventSourceProviderConfiguration**|設定要收集從 [EventSource 類別](/dotnet/api/system.diagnostics.tracing.eventsource)產生的事件。 必要屬性：<br /><br /> **provider** - EventSource 事件的類別名稱。<br /><br /> 選用屬性包括：<br /><br /> - **scheduledTransferLogLevelFilter** - 要傳輸至儲存體帳戶的最低嚴重性層級。<br /><br /> - **scheduledTransferPeriod** - 排程傳輸至儲存體之間的間隔，無條件進位到最接近的分鐘數。 值是 [XML「持續時間資料類型」(英文)](https://www.w3schools.com/xml/schema_dtypes_date.asp)。 |  
 |**EtwManifestProviderConfiguration**|必要屬性：<br /><br /> **provider** - 事件提供者的 GUID<br /><br /> 選用屬性包括：<br /><br /> - **scheduledTransferLogLevelFilter** - 要傳輸至儲存體帳戶的最低嚴重性層級。<br /><br /> - **scheduledTransferPeriod** - 排程傳輸至儲存體之間的間隔，無條件進位到最接近的分鐘數。 值是 [XML「持續時間資料類型」(英文)](https://www.w3schools.com/xml/schema_dtypes_date.asp)。 |  
 
 
@@ -165,7 +165,7 @@ Azure 診斷擴充功能是 Azure 監視器中的代理程式，可從客體作�
 ## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration 元素  
  樹狀結構︰根目錄 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders- EtwEventSourceProviderConfiguration
 
- 設定要收集從 [EventSource 類別](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1)產生的事件。  
+ 設定要收集從 [EventSource 類別](/dotnet/api/system.diagnostics.tracing.eventsource)產生的事件。  
 
 |子元素|描述|  
 |--------------------|-----------------|  
@@ -208,7 +208,7 @@ Azure 診斷擴充功能是 Azure 監視器中的代理程式，可從客體作�
 
 |子元素|描述|  
 |-------------------|-----------------|  
-|**PerformanceCounterConfiguration**|以下為必要屬性：<br /><br /> - **counterSpecifier** - 效能計數器的名稱。 例如： `\Processor(_Total)\% Processor Time` 。 若要在主機上取得效能計數器清單，請執行 `typeperf` 命令。<br /><br /> - **sampleRate** - 應針對計數器進行取樣的頻率。<br /><br /> 選用屬性：<br /><br /> **unit** - 計數器的測量單位。 值可以在[Unittype.pixel 表示類別](/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet)中使用 |
+|**PerformanceCounterConfiguration**|以下為必要屬性：<br /><br /> - **counterSpecifier** - 效能計數器的名稱。 例如： `\Processor(_Total)\% Processor Time` 。 若要在主機上取得效能計數器清單，請執行 `typeperf` 命令。<br /><br /> - **sampleRate** - 應針對計數器進行取樣的頻率。<br /><br /> 選用屬性：<br /><br /> **unit** - 計數器的測量單位。 值可以在[Unittype.pixel 表示類別](/dotnet/api/microsoft.azure.management.sql.models.unittype)中使用 |
 |**sinks** | 在 1.5 中新增。 選擇性。 同時要傳送診斷資料的接收位置指標。 例如，Azure 監視器或事件中樞。 請注意，如果您想要上傳至事件中樞的事件具有資源識別碼，您必須在 [*計量*] 元素底下新增 [ *resourceId* ] 屬性。|    
 
 
@@ -223,7 +223,7 @@ Azure 診斷擴充功能是 Azure 監視器中的代理程式，可從客體作�
 
 |子元素|描述|  
 |-------------------|-----------------|  
-|**資料來源**|要收集的 Windows 事件記錄。 必要屬性：<br /><br /> **name** - 說明要收集之 Windows 事件的 XPath 查詢。 例如：<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> 若要收集所有事件，請指定 "*" |
+|**DataSource**|要收集的 Windows 事件記錄。 必要屬性：<br /><br /> **name** - 說明要收集之 Windows 事件的 XPath 查詢。 例如：<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> 若要收集所有事件，請指定 "*" |
 |**sinks** | 在 1.5 中新增。 選擇性。 針對支援接收的所有子元素，同時要傳送診斷資料的接收位置指標。 接收範例為 Application Insights 或事件中樞。|  
 
 

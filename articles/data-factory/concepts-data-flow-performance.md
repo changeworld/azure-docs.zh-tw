@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 12/18/2020
-ms.openlocfilehash: d23b2f65f25b704beaee12c53e47706653dcc208
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 9706bee07f028c36b4d03311a7abbb969a1be685
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858567"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944988"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>對應資料流的效能和調整指南
 
@@ -115,7 +115,7 @@ Spark 叢集的類型有三個可用的選項： [一般用途]、[記憶體優�
 
 預設叢集大小為四個驅動程式節點和四個背景工作節點。  當您處理更多資料時，建議使用較大的群集。 以下是可能的調整大小選項：
 
-| 背景工作核心 | 驅動程式核心 | 核心總數 | 注意 |
+| 背景工作核心 | 驅動程式核心 | 核心總數 | 備註 |
 | ------------ | ------------ | ----------- | ----- |
 | 4 | 4 | 8 | 適用于計算優化 |
 | 8 | 8 | 16 | |
@@ -161,7 +161,7 @@ Azure SQL Database 有一個稱為「來源」資料分割的唯一資料分割�
 
 #### <a name="isolation-level"></a>隔離等級
 
-在 Azure SQL 來源系統上讀取的隔離等級會對效能造成影響。 選擇 [讀取未認可] 可提供最快的效能，並防止任何資料庫鎖定。 若要深入瞭解 SQL 隔離等級，請參閱 [瞭解隔離等級](https://docs.microsoft.com/sql/connect/jdbc/understanding-isolation-levels)。
+在 Azure SQL 來源系統上讀取的隔離等級會對效能造成影響。 選擇 [讀取未認可] 可提供最快的效能，並防止任何資料庫鎖定。 若要深入瞭解 SQL 隔離等級，請參閱 [瞭解隔離等級](/sql/connect/jdbc/understanding-isolation-levels)。
 
 #### <a name="read-using-query"></a>使用查詢讀取
 
@@ -208,7 +208,7 @@ Azure SQL Database 有一個稱為「來源」資料分割的唯一資料分割�
 ![停用索引](media/data-flow/disable-indexes-sql.png "停用索引")
 
 > [!WARNING]
-> 停用索引時，資料流程實際上會取得資料庫的控制權，而且查詢目前不可能成功。 如此一來，許多 ETL 作業都會在夜間觸發，以避免發生此衝突。 如需詳細資訊，請瞭解 [停用索引的條件約束](https://docs.microsoft.com/sql/relational-databases/indexes/disable-indexes-and-constraints)
+> 停用索引時，資料流程實際上會取得資料庫的控制權，而且查詢目前不可能成功。 如此一來，許多 ETL 作業都會在夜間觸發，以避免發生此衝突。 如需詳細資訊，請瞭解 [停用索引的條件約束](/sql/relational-databases/indexes/disable-indexes-and-constraints)
 
 #### <a name="scaling-up-your-database"></a>擴大您的資料庫
 
@@ -216,7 +216,7 @@ Azure SQL Database 有一個稱為「來源」資料分割的唯一資料分割�
 
 ### <a name="azure-synapse-analytics-sinks"></a>Azure Synapse Analytics 接收
 
-寫入至 Azure Synapse Analytics 時，請確定 [ **啟用預備** 環境] 設定為 [true]。 這可讓 ADF 使用 [SQL Copy 命令](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql) 進行寫入，以有效地大量載入資料。 使用暫存時，您將需要參考 Azure Data Lake Storage gen2 或 Azure Blob 儲存體帳戶來暫存資料。
+寫入至 Azure Synapse Analytics 時，請確定 [ **啟用預備** 環境] 設定為 [true]。 這可讓 ADF 使用 [SQL Copy 命令](/sql/t-sql/statements/copy-into-transact-sql) 進行寫入，以有效地大量載入資料。 使用暫存時，您將需要參考 Azure Data Lake Storage gen2 或 Azure Blob 儲存體帳戶來暫存資料。
 
 除了預備環境以外，相同的最佳作法也適用于 Azure Synapse Analytics 為 Azure SQL Database。
 

@@ -1,19 +1,16 @@
 ---
 title: 在 HDInsight 上計算 ML 服務的內容選項 - Azure
 description: 了解 HDInsight 上 ML 服務使用者可用的不同計算內容選項
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 21781015aa91c9c953d716b9b3399851f25be9b5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 71ce0d87faa33bd7d533242edfcf3b131c8f7e47
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536329"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943949"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>在 HDInsight 上計算 ML 服務的內容選項
 
@@ -59,7 +56,7 @@ local 和 localpar 選項的差別只在於執行 **rxExec** 呼叫的方式。 
 
 ### <a name="local"></a>本機
 
-- 如果要分析的資料量很小，而且不需要重複分析，請使用 *本機* 或 *localpar* ，直接將它串流到分析常式。
+- 如果要分析的資料量很小，而且不需要重複分析，請使用 *本機* 或 *localpar*，直接將它串流到分析常式。
 - 如果要分析的資料量很小或是中等大小，而且需要重複分析，請將它複製到本機檔案系統、匯入至 XDF，然後透過 local 或 localpar 分析。
 
 ### <a name="apache-spark"></a>Apache Spark
@@ -79,7 +76,7 @@ local 和 localpar 選項的差別只在於執行 **rxExec** 呼叫的方式。 
 
 您也可以參考 [Machine Learning Server 文件](/machine-learning-server/)中的[分散式計算概觀](/machine-learning-server/r/how-to-revoscaler-distributed-computing)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在此文章中，您可以了解可用於指定是否以及如何跨邊緣節點核心或 HDInsight 叢集將執行作業平行化的選項。 若要深入了解如何使用 HDInsight 叢集上的 ML 服務，請參閱下列主題：
 

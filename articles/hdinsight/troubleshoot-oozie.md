@@ -1,18 +1,15 @@
 ---
 title: 針對 Azure HDInsight 中的 Apache Oozie 進行疑難排解
 description: 針對 Azure HDInsight 中的特定 Apache Oozie 錯誤進行疑難排解。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
-ms.openlocfilehash: edbe5274de8576fccb29e1e69d260a6531d4ab05
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 2cdd20a5d639f74916657edc3f73183a403204a5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287399"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944674"
 ---
 # <a name="troubleshoot-apache-oozie-in-azure-hdinsight"></a>針對 Azure HDInsight 中的 Apache Oozie 進行疑難排解
 
@@ -30,7 +27,7 @@ ms.locfileid: "93287399"
 
 ### <a name="issue"></a>問題
 
-作業狀態會變更為 **SUSPENDED** 。 作業的詳細資料會將 `RunHiveScript` 狀態顯示為 **START_MANUAL** 。 選取該動作會顯示下列錯誤訊息：
+作業狀態會變更為 **SUSPENDED**。 作業的詳細資料會將 `RunHiveScript` 狀態顯示為 **START_MANUAL**。 選取該動作會顯示下列錯誤訊息：
 
 ```output
 JA009: Cannot initialize Cluster. Please check your configuration for map
@@ -40,7 +37,7 @@ JA009: Cannot initialize Cluster. Please check your configuration for map
 
 **job.xml** 檔案中使用的 Azure Blob 儲存體位址未包含儲存體容器或儲存體帳戶名稱。 Blob 儲存體位址的格式必須是 `wasbs://containername@storageaccountname.blob.core.windows.net`。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 變更作業所使用的 Blob 儲存體位址。
 
@@ -50,7 +47,7 @@ JA009: Cannot initialize Cluster. Please check your configuration for map
 
 ### <a name="issue"></a>問題
 
-作業狀態會變更為 **SUSPENDED** 。 作業的詳細資料會將 `RunHiveScript` 狀態顯示為 **START_MANUAL** 。 如果您選取該動作，它將會顯示下列錯誤訊息：
+作業狀態會變更為 **SUSPENDED**。 作業的詳細資料會將 `RunHiveScript` 狀態顯示為 **START_MANUAL**。 如果您選取該動作，它將會顯示下列錯誤訊息：
 
 ```output
 JA002: User: oozie is not allowed to impersonate <USER>
@@ -60,7 +57,7 @@ JA002: User: oozie is not allowed to impersonate <USER>
 
 目前的權限設定不允許 Oozie 模擬指定的使用者帳戶。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 Oozie 可以模擬群組中的使用者 **`users`** 。 使用 `groups USERNAME` 查看使用者帳戶所屬的群組。 如果使用者不是群組的成員 **`users`** ，請使用下列命令將使用者新增至群組：
 
@@ -77,7 +74,7 @@ sudo adduser USERNAME users
 
 ### <a name="issue"></a>問題
 
-作業狀態會變更為 **KILLED** 。 作業的詳細資料會將 `RunSqoopExport` 狀態顯示為 **ERROR** 。 如果您選取該動作，它將會顯示下列錯誤訊息：
+作業狀態會變更為 **KILLED**。 作業的詳細資料會將 `RunSqoopExport` 狀態顯示為 **ERROR**。 如果您選取該動作，它將會顯示下列錯誤訊息：
 
 ```output
 Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
@@ -87,7 +84,7 @@ Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], e
 
 Sqoop 無法載入存取資料庫時所需的資料庫驅動程式。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 當您從 Oozie 作業使用 Sqoop 時，您必須將資料庫驅動程式與作業所使用的其他資源 (例如 workflow.xml) 包含在一起。 此外，請從 workflow.xml 的 `<sqoop>...</sqoop>` 區段，參考含有資料庫驅動程式的封存。
 

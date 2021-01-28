@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 6468acb598cee26c46b62d64c748f0e393f27271
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: HT
+ms.openlocfilehash: d16153a7dc9a3164a5127b80a474bf9c398684ac
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967953"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945146"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>在 Azure VM 中建立 Oracle 資料庫
 
@@ -195,7 +195,7 @@ Marketplace 映像上已安裝 Oracle 軟體。 建立範例資料庫，如下�
 1. 使用 sqlplus 連線到您的資料庫：
 
     ```bash
-    sqlplus / as sysdba
+    sqlplus sys as sysdba
     ```
 
 2. 連線後，請針對 EM Express 設定連接埠 5502

@@ -1,18 +1,15 @@
 ---
 title: 管理 Azure HDInsight 中的磁碟空間
 description: 與 Azure HDInsight 叢集互動時，管理磁碟空間問題的疑難排解步驟和可能的解決方式。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/17/2020
-ms.openlocfilehash: 82044796cca3e135c15e750d6706fe504622ebdb
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7164494cb08c4b419b9e4d96075ace3e52187497
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540341"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944816"
 ---
 # <a name="manage-disk-space-in-azure-hdinsight"></a>管理 Azure HDInsight 中的磁碟空間
 
@@ -22,7 +19,7 @@ ms.locfileid: "92540341"
 
 1. 從網頁瀏覽器瀏覽至 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是叢集的名稱。
 
-1. 流覽至 **hive 配置**  >  **Configs**  >  **advanced**  >  **advanced hive-log4j** 。 檢查下列設定：
+1. 流覽至 **hive 配置**  >    >  **advanced**  >  **advanced hive-log4j**。 檢查下列設定：
 
     * `hive.root.logger=DEBUG,RFA`. 這是預設值，請將 [記錄層級](https://logging.apache.org/log4j/2.x/log4j-api/apidocs/org/apache/logging/log4j/Level.html) 修改為， `INFO` 以列印較少的記錄專案。
 
@@ -38,7 +35,7 @@ ms.locfileid: "92540341"
 
     1. 從網頁瀏覽器瀏覽至 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是叢集的名稱。
 
-    1. 流覽至 **Hive 配置**  >  **Configs**  >  **Advanced**  >  **Resource Manager** 。 確定已核取 [ **啟用記錄匯總** ]。 如果停用，名稱節點會將記錄保留在本機，而不會在應用程式完成或終止時，在遠端存放區中匯總這些記錄。
+    1. 流覽至 **Hive 配置**  >    >  **Advanced**  >  **Resource Manager**。 確定已核取 [ **啟用記錄匯總** ]。 如果停用，名稱節點會將記錄保留在本機，而不會在應用程式完成或終止時，在遠端存放區中匯總這些記錄。
 
 * 請確定叢集大小適用於工作負載。 工作負載最近可能已變更，或叢集可能已調整大小。 [擴大](../hdinsight-scaling-best-practices.md) 叢集以符合較高的工作負載。
 

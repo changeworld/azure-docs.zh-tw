@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 01/05/2021
 ms.author: lle
 ms.reviewer: craigg
-ms.openlocfilehash: 3b7b405e34b6ca82da593507ad6103d360c5df1e
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 70e4d0c1a9f26f83924c1343e4e8e51c5595b324
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968580"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944511"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>針對 Azure Data Factory 安全性和存取控制問題進行疑難排解
 
@@ -49,13 +49,13 @@ ms.locfileid: "97968580"
 
 * 如果您使用自我裝載的 **IR**，請檢查您的 proxy、防火牆和網路設定，因為如果您使用 Azure IR，連線到相同的資料存放區可能會成功。 若要疑難排解此案例，請參閱：
 
-   * [自我裝載的 IR 埠和防火牆](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#ports-and-firewalls)
-   * [Azure Data Lake Storage 連接器](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store)
+   * [自我裝載的 IR 埠和防火牆](./create-self-hosted-integration-runtime.md#ports-and-firewalls)
+   * [Azure Data Lake Storage 連接器](./connector-azure-data-lake-store.md)
   
 * 如果您是使用 **Azure IR**，請嘗試停用資料存放區的防火牆設定。 這種方法可以解決下列兩種情況中的問題：
   
-   * [Azure IR 的 IP 位址](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses) 不在允許清單中。
-   * [ *允許信任的 Microsoft 服務存取此儲存體帳戶* ] 功能已針對 [Azure Blob 儲存體](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#supported-capabilities) 和 [Azure Data Lake Storage Gen 2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#supported-capabilities)關閉。
+   * [Azure IR 的 IP 位址](./azure-integration-runtime-ip-addresses.md) 不在允許清單中。
+   * [ *允許信任的 Microsoft 服務存取此儲存體帳戶* ] 功能已針對 [Azure Blob 儲存體](./connector-azure-blob-storage.md#supported-capabilities) 和 [Azure Data Lake Storage Gen 2](./connector-azure-data-lake-storage.md#supported-capabilities)關閉。
    * 未針對 Azure Data Lake Storage Gen1 啟用 [ *允許存取 Azure 服務* ] 設定。
 
 如果上述任何方法都無法運作，請洽詢 Microsoft 尋求協助。
@@ -88,7 +88,7 @@ ms.locfileid: "97968580"
 #### <a name="resolution"></a>解決方案
 
 若要解決這個問題，請執行下列動作：
-- 請參閱 Azure Data Factory 文章的 [Azure Private Link](https://docs.microsoft.com/azure/data-factory/data-factory-private-link#dns-changes-for-private-endpoints) 。 此指示適用于設定私人 DNS 區域或伺服器，以將 Data Factory FQDN 解析為私人 IP 位址。
+- 請參閱 Azure Data Factory 文章的 [Azure Private Link](./data-factory-private-link.md#dns-changes-for-private-endpoints) 。 此指示適用于設定私人 DNS 區域或伺服器，以將 Data Factory FQDN 解析為私人 IP 位址。
 
 - 建議您使用自訂的 DNS 做為長期解決方案。 但是，如果您不想要設定私人 DNS 區域或伺服器，請嘗試下列暫時性解決方案：
 
@@ -120,7 +120,7 @@ ms.locfileid: "97968580"
  
 若要解決這個問題，請執行下列動作：
 
-1. 移至 [ [工廠-更新](https://docs.microsoft.com/rest/api/datafactory/Factories/Update) ] 頁面。
+1. 移至 [ [工廠-更新](/rest/api/datafactory/Factories/Update) ] 頁面。
 
 1. 選取右上方的 [ **試試看** ] 按鈕。
 1. 在 [ **參數**] 下，完成所需的資訊。 
@@ -146,7 +146,7 @@ ms.locfileid: "97968580"
 
 **解決方案 2**
 
-若要解決此問題，請移至 [Azure Data Factory 的 Azure Private Link](https://docs.microsoft.com/azure/data-factory/data-factory-private-link)。
+若要解決此問題，請移至 [Azure Data Factory 的 Azure Private Link](./data-factory-private-link.md)。
 
 嘗試在使用者介面上啟用公用網路存取，如下列螢幕擷取畫面所示：
 

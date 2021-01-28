@@ -2,18 +2,15 @@
 title: 適用于 HDInsight 上 ML 服務的 azure 儲存體解決方案-Azure
 description: 了解 HDInsight 上 ML 服務可用的不同儲存體選項
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/02/2020
-ms.openlocfilehash: 1b684fde9123d3c12d5d69c1daec1c53c6519c44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddc48025de164ff68fb539a293e06bae09171742
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855288"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943904"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure HDInsight 上適用于 ML 服務的 Azure 儲存體解決方案
 
@@ -48,7 +45,7 @@ HDInsight 上的 ML 服務可以使用不同的儲存體解決方案，來保存
     hadoop fs –copyFromLocal mycsv.scv /share
     ```
 
-3. 切換至 R Studio 或其他 R 主控台，然後撰寫 R 程式碼，將名稱節點設定為**預設**和您想要存取的檔案位置。  
+3. 切換至 R Studio 或其他 R 主控台，然後撰寫 R 程式碼，將名稱節點設定為 **預設** 和您想要存取的檔案位置。  
 
     ```R
     myNameNode <- "default"
@@ -70,7 +67,7 @@ HDInsight 上的 ML 服務可以使用不同的儲存體解決方案，來保存
     inputFile <-file.path(bigDataDirRoot,"mysamplefile.csv")
     ```
 
-所有目錄和檔案的參考會指向儲存體帳戶 `wasbs://container1@storage1.blob.core.windows.net`。 這是與 HDInsight 叢集關聯的「預設儲存體帳戶」****。
+所有目錄和檔案的參考會指向儲存體帳戶 `wasbs://container1@storage1.blob.core.windows.net`。 這是與 HDInsight 叢集關聯的「預設儲存體帳戶」。
 
 ### <a name="use-the-additional-storage-with-ml-services-on-hdinsight"></a>搭配 HDInsight 上的 ML 服務使用其他儲存體
 
@@ -98,7 +95,7 @@ hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
 inputFile <-file.path(bigDataDirRoot,"mysamplefile1.csv")
 ```
 
-現在，所有目錄和檔案的參考會指向儲存體帳戶 `wasbs://container2@storage2.blob.core.windows.net`。 這是您已指定的「名稱節點」****。
+現在，所有目錄和檔案的參考會指向儲存體帳戶 `wasbs://container2@storage2.blob.core.windows.net`。 這是您已指定的「名稱節點」。
 
 設定 `/user/RevoShare/<SSH username>` **>storage2** 上的目錄，如下所示：
 
@@ -118,11 +115,11 @@ hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user/RevoShar
 
 您可以使用與 HDInsight 叢集相關聯的 Azure Active Directory (Azure AD) 服務主體來存取 Data Lake Storage Gen1。
 
-1. 當您建立 HDInsight 叢集時，請從 [**資料來源**] 索引標籤中選取 [叢集**Azure AD 識別**]。
+1. 當您建立 HDInsight 叢集時，請從 [**資料來源**] 索引標籤中選取 [叢集 **Azure AD 識別**]。
 
-2. 在 [叢集 **Azure AD 識別** ] 對話方塊的 [ **選取 AD 服務主體**] 底下，選取 [ **建立新**的]。
+2. 在 [叢集 **Azure AD 識別** ] 對話方塊的 [ **選取 AD 服務主體**] 底下，選取 [ **建立新** 的]。
 
-在為服務主體命名並建立密碼後，請按一下 [管理 ADLS 存取]****，以將該服務主體與您的 Data Lake Storage 產生關聯。
+在為服務主體命名並建立密碼後，請按一下 [管理 ADLS 存取]，以將該服務主體與您的 Data Lake Storage 產生關聯。
 
 您也可以在叢集建立之後，將叢集存取新增至一或多個 Data Lake 儲存體 Gen1 帳戶。 開啟 Data Lake Storage Gen1 的 Azure 入口網站專案，然後移至 **資料總管 > 存取 > 新增**]。
 

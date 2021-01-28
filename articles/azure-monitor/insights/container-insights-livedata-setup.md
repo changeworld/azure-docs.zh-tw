@@ -4,12 +4,12 @@ description: 本文說明如何在不使用 kubectl 搭配容器 Azure 監視器
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: d5b978e7138e10ed88f5748b84ff62ddd22bebec
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 3c176b2db659577d585ac077eebe0484203eb9cf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050777"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943852"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>如何設定即時資料 (預覽) 功能
 
@@ -19,7 +19,7 @@ ms.locfileid: "98050777"
 
 - 已啟用不具 Kubernetes RBAC 授權的 AKS
 - 已使用 Kubernetes RBAC 授權啟用的 AKS
-    - 使用叢集角色系結 ClusterMonitoringUser 設定的 AKS **[](/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0&preserve-view=true)**
+    - 使用叢集角色系結 ClusterMonitoringUser 設定的 AKS **[](/rest/api/aks/managedclusters/listclustermonitoringusercredentials)**
 - 使用 Azure Active Directory (AD) 以 SAML 為基礎的單一登入啟用 AKS
 
 這些指示都需要 Kubernetes 叢集的系統管理存取權，而且如果設定為使用 Azure Active Directory (AD) 進行使用者驗證，則 Azure AD 的系統管理存取權。
@@ -136,6 +136,6 @@ AKS 在2020年1月發行這個新的角色系結，因此在2020年1月之前建
 
 如需設定 AKS 叢集 **ClusterRoleBinding** 的其他協助，請參閱 [建立 Kubernetes RBAC](../../aks/azure-ad-integration-cli.md#create-kubernetes-rbac-binding)系結。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 現在您已設定驗證，您可以從叢集即時查看 [計量](container-insights-livedata-metrics.md)、 [部署](container-insights-livedata-deployments.md)和 [事件和記錄](container-insights-livedata-overview.md) 。

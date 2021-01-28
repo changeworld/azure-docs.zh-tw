@@ -9,12 +9,12 @@ ms.date: 01/07/2021
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: 68547b8fb673cd54b7c21963ede122553bbbc390
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 4b586b95232af2a154993523402f81ee88a22cda
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967118"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946164"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>針對 Azure Data Factory 連接器進行疑難排解
 
@@ -121,7 +121,7 @@ ms.locfileid: "97967118"
 
 - **原因**： CosmosDbSqlApi 操作遇到問題。
 
-- **建議**：請檢查錯誤詳細資料。 請參閱 [CosmosDb 說明文件](https://docs.microsoft.com/azure/cosmos-db/troubleshoot-dot-net-sdk)。 如需協助，請聯絡 CosmosDb 團隊。
+- **建議**：請檢查錯誤詳細資料。 請參閱 [CosmosDb 說明文件](../cosmos-db/troubleshoot-dot-net-sdk.md)。 如需協助，請聯絡 CosmosDb 團隊。
 
 
 ## <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
@@ -198,7 +198,7 @@ ms.locfileid: "97967118"
 
     - 檢查是否有任何特殊的網路設定，例如 ExpressRoute，並確定網路具有足夠的頻寬。 當整體頻寬低時，建議您降低自我裝載的 IR 並行作業設定，如此可避免跨多個並行作業的網路資源競爭。
 
-    - 如果檔案大小為「中」或「小」，則針對非二進位複本使用較小的區塊大小，以減少這類逾時錯誤。 請參閱 [Blob 儲存體 Put 區塊](https://docs.microsoft.com/rest/api/storageservices/put-block)。
+    - 如果檔案大小為「中」或「小」，則針對非二進位複本使用較小的區塊大小，以減少這類逾時錯誤。 請參閱 [Blob 儲存體 Put 區塊](/rest/api/storageservices/put-block)。
 
        若要指定自訂區塊大小，您可以在 [json 編輯器] 中編輯屬性：
         ```
@@ -486,7 +486,7 @@ ms.locfileid: "97967118"
 
 - **解決** 方式：請嘗試下列步驟來修正此問題：
 
-    1. 套用 SQL 接收 [容錯](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance)，特別是「redirectIncompatibleRowSettings」，以針對哪些資料列有問題進行疑難排解。
+    1. 套用 SQL 接收 [容錯](./copy-activity-fault-tolerance.md)，特別是「redirectIncompatibleRowSettings」，以針對哪些資料列有問題進行疑難排解。
 
         > [!NOTE]
         > 請注意，容錯可能會導致額外的執行時間，這可能會導致更高的成本。

@@ -7,12 +7,12 @@ ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 12/04/2020
-ms.openlocfilehash: d078d4b106136c95d67eb467bc16e22e2bb91c5c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
-ms.translationtype: HT
+ms.openlocfilehash: ccb43c3e7efb9289450ad9a71c003f54e5362b66
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747281"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945205"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-in-the-azure-portal"></a>教學課程：在 Azure 入口網站中建立站對站連線
 
@@ -153,7 +153,7 @@ Azure VPN 閘道提供客戶組織內部與 Azure 之間的跨單位連線。 �
 
 [!INCLUDE [reset a gateway](../../includes/vpn-gateway-reset-gw-portal-include.md)]
 
-### <a name="additional-configuration-considerations"></a><a name="connectVM"></a>其他設定考量
+### <a name="additional-configuration-considerations"></a><a name="additional"></a>其他設定考量
 
 S2S 設定可透過多種方式進行自訂。 如需詳細資訊，請參閱下列文章：
 

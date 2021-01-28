@@ -2,19 +2,16 @@
 title: 使用 Azure HDInsight 為 Storm 進行疑難排解
 description: 取得有關使用 Apache Storm 和 Azure HDInsight 的常見問題解答。
 keywords: Azure HDInsight, Storm, 常見問題集, 疑難排解指南, 常見問題
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: fc08adb2f71c49fad3c8574e9cfd5315f13d7f44
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c81084c77b355a5d60c72564c58a98e08da14312
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95982257"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946311"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>使用 Azure HDInsight 為 Apache Storm 進行疑難排解
 
@@ -174,7 +171,7 @@ Storm 背景工作節點執行下列服務：
 
 提交拓撲時，使用者可能會收到類似下列的錯誤訊息： `Topology submission exception, cause not a leader, the current leader is NimbusInfo` 。
 
-若要解決這個問題，使用者可能需要提出票證，讓節點重新開機/重新開機。 如需詳細資訊，請參閱 [https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html) \(英文\)。
+若要解決這個問題，使用者可能需要提出票證，讓節點重新開機/重新開機。 如需詳細資訊，請參閱 [https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html)。
 
 ---
 

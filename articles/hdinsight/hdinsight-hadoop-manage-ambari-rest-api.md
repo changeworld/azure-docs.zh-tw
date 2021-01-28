@@ -1,19 +1,16 @@
 ---
 title: 使用 Ambari REST API 監視和管理 Hadoop - Azure HDInsight
 description: 了解如何使用 Ambari 來監視和管理 Azure HDInsight 中的 Hadoop 叢集。 在本檔中，您將瞭解如何使用 HDInsight 叢集隨附的 Ambari REST API。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 6ba1d1e15b1dbb3efb24219b6c09a6827e701d46
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 1d4e6f0d6a0242cda919364965a61e4314927d87
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546070"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945583"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>使用 Apache Ambari REST API 來管理 HDInsight 叢集
 
@@ -25,7 +22,7 @@ ms.locfileid: "92546070"
 
 Apache Ambari 藉由提供容易使用的 web UI （其 [REST api](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)支援），來簡化 Hadoop 叢集的管理和監視。  以 Linux 為基礎的 HDInsight 叢集預設會提供 Ambari。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * HDInsight 上的 Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 
@@ -37,11 +34,11 @@ Apache Ambari 藉由提供容易使用的 web UI （其 [REST api](https://githu
 
 ## <a name="base-uniform-resource-identifier-for-ambari-rest-api"></a>Ambari Rest API 的基底統一資源識別項
 
- Ambari REST API on HDInsight 的基底統一資源識別項 (URI) 是 `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` ，其中 `CLUSTERNAME` 是您的叢集名稱。  Uri 中的叢集名稱會區分 **大小寫** 。  雖然完整功能變數名稱中的叢集名稱 (FQDN) 一部分的 URI (`CLUSTERNAME.azurehdinsight.net`) 不區分大小寫，但 uri 中的其他出現專案會區分大小寫。
+ Ambari REST API on HDInsight 的基底統一資源識別項 (URI) 是 `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` ，其中 `CLUSTERNAME` 是您的叢集名稱。  Uri 中的叢集名稱會區分 **大小寫**。  雖然完整功能變數名稱中的叢集名稱 (FQDN) 一部分的 URI (`CLUSTERNAME.azurehdinsight.net`) 不區分大小寫，但 uri 中的其他出現專案會區分大小寫。
 
 ## <a name="authentication"></a>驗證
 
-連線到 HDInsight 上的 Ambari 需要 HTTPS。 請使用您在叢集建立期間所提供的管理帳戶名稱 (預設值是 **admin** ) 和密碼。
+連線到 HDInsight 上的 Ambari 需要 HTTPS。 請使用您在叢集建立期間所提供的管理帳戶名稱 (預設值是 **admin**) 和密碼。
 
 針對企業安全性套件叢集，而不是使用完整的使用者名稱（例如 `admin` ） `username@domain.onmicrosoft.com` 。
 
@@ -387,7 +384,7 @@ $resp.Content
     $resp.Content
     ```  
 
-    這些命令會將檔案 **newconfig.js** 的內容提交至叢集做為新的設定。 要求會傳回 JSON 文件。 這份文件中的 **versionTag** 元素應符合您所提交的版本， **configs** 物件將會包含您所要求的組態變更。
+    這些命令會將檔案 **newconfig.js** 的內容提交至叢集做為新的設定。 要求會傳回 JSON 文件。 這份文件中的 **versionTag** 元素應符合您所提交的版本，**configs** 物件將會包含您所要求的組態變更。
 
 ### <a name="restart-a-service-component"></a>重新啟動服務元件
 
@@ -513,6 +510,6 @@ $resp.Content
         -Body '{"RequestInfo": {"context": "turning off maintenance mode for SPARK2"},"Body": {"ServiceInfo": {"maintenance_state":"OFF"}}}'
     ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需 REST API 的完整參考，請參閱 [Apache Ambari API 參考 V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) \(英文\)。  另請參閱 [授權使用者進行 Apache Ambari Views](./hdinsight-authorize-users-to-ambari.md)
