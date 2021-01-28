@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/12/2020
 ms.author: aahi
-ms.openlocfilehash: 82c33c038a1f8eaba540c9906efcffa0a9214762
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: af8fec56c32b52e2af584e59f08db6cc7129c9c5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98689691"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947357"
 ---
 ## <a name="install-the-container"></a>安裝容器
 
@@ -112,7 +112,7 @@ az webapp config appsettings set -g $resource_group_name -n $appservice_name --s
 
 您也可以使用 Azure 容器實例 (ACI) 讓部署更容易。 ACI 是一項資源，可讓您在受控、無伺服器的 Azure 環境中，視需要執行 Docker 容器。 
 
-請參閱 [如何使用 Azure 容器實例](../how-tos/text-analytics-how-to-use-container-instances.md) ，以取得使用 AZURE 入口網站部署 ACI 資源的步驟。 您也可以使用下列 PowerShell 腳本搭配 Azure CLI，這會使用容器映射在您的訂用帳戶上建立 ACI。  請先等候腳本完成 (大約25-30 分鐘) ，然後再提交第一個要求。  由於每個 ACI 資源的 Cpu 數目上限限制，如果您想要提交5個以上的大型檔，請不要選取此選項， (大約5000個字元) 每個要求。
+請參閱 [如何使用 Azure 容器實例](../../containers/azure-container-instance-recipe.md) ，以取得使用 AZURE 入口網站部署 ACI 資源的步驟。 您也可以使用下列 PowerShell 腳本搭配 Azure CLI，這會使用容器映射在您的訂用帳戶上建立 ACI。  請先等候腳本完成 (大約25-30 分鐘) ，然後再提交第一個要求。  由於每個 ACI 資源的 Cpu 數目上限限制，如果您想要提交5個以上的大型檔，請不要選取此選項， (大約5000個字元) 每個要求。
 如需可用性資訊，請參閱 [ACI 區域支援](../../../container-instances/container-instances-region-availability.md) 文章。 
 
 > [!NOTE] 
@@ -213,4 +213,3 @@ docker-compose up
 ```
 
 如需詳細資訊，請參閱有關 [NGINX SSL 終止](https://docs.nginx.com/nginx/admin-guide/security-controls/terminating-ssl-http/)的 NGINX 檔。
-

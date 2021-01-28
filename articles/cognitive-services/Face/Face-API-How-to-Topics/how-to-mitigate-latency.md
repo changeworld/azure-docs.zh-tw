@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 1/5/2021
 ms.author: v-jawe
-ms.openlocfilehash: b4035e2039afb6fe66d2658ebfcd3206d46e1de5
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e7f4293955772697ddeea5fce9daac4b04755274
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682457"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937281"
 ---
 # <a name="how-to-mitigate-latency-when-using-the-face-service"></a>如何：在使用臉部辨識服務時降低延遲
 
@@ -34,7 +34,7 @@ ms.locfileid: "98682457"
 
 ### <a name="slow-connection-between-the-cognitive-service-and-a-remote-url"></a>認知服務與遠端 URL 之間的連接緩慢
 
-某些 Azure 認知服務會提供方法，以從您提供的遠端 URL 取得資料。 例如，當您呼叫臉部服務的 [DetectWithUrlAsync 方法](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithUrlAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) 時，您可以指定服務嘗試偵測臉部的影像 URL。
+某些 Azure 認知服務會提供方法，以從您提供的遠端 URL 取得資料。 例如，當您呼叫臉部服務的 [DetectWithUrlAsync 方法](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithUrlAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) 時，您可以指定服務嘗試偵測臉部的影像 URL。
 
 ```csharp
 var faces = await client.Face.DetectWithUrlAsync("https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg");
@@ -50,7 +50,7 @@ var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows
 
 ### <a name="large-upload-size"></a>大上傳大小
 
-某些 Azure 認知服務會提供方法，以從您上傳的檔案取得資料。 例如，當您呼叫臉部服務的 [>faceclient.face.detectwithstreamasync 方法](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithStreamAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_IO_Stream_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) 時，您可以上傳服務嘗試用來偵測臉部的影像。
+某些 Azure 認知服務會提供方法，以從您上傳的檔案取得資料。 例如，當您呼叫臉部服務的 [>faceclient.face.detectwithstreamasync 方法](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithStreamAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_IO_Stream_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) 時，您可以上傳服務嘗試用來偵測臉部的影像。
 
 ```csharp
 using FileStream fs = File.OpenRead(@"C:\images\face.jpg");
@@ -87,7 +87,7 @@ IEnumerable<DetectedFace> results = faces_1.Result.Concat (faces_2.Result);
 - 當您建立臉部訂用帳戶時，請務必選擇最接近應用程式託管位置的區域。
 - 如果您需要呼叫多個服務方法，請考慮在您的應用程式設計允許時，以平行方式呼叫它們。 如需範例，請參閱上一節。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本指南中，您已瞭解如何在使用臉部辨識服務時降低延遲。 接下來，瞭解如何將現有的 PersonGroup 和 FaceList 物件擴大至 LargePersonGroup 和 LargeFaceList 物件。
 
@@ -97,4 +97,4 @@ IEnumerable<DetectedFace> results = faces_1.Result.Concat (faces_2.Result);
 ## <a name="related-topics"></a>相關主題
 
 - [ (REST) 的參考檔 ](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
-- [ ( .NET SDK) 的參考檔 ](/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)
+- [ ( .NET SDK) 的參考檔 ](/dotnet/api/overview/azure/cognitiveservices/client/faceapi)

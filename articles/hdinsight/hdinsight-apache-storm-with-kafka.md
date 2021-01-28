@@ -1,19 +1,16 @@
 ---
 title: 教學課程：Apache Storm 搭配 Apache Kafka - Azure HDInsight
 description: 了解如何在 HDInsight 上搭配使用 Apache Storm 與 Apache Kafka 以建立串流管線。 在本教學課程中，您會使用 KafkaBolt 與 KafkaSpout 元件從 Kafka 串流處理資料。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 6c600c4cfe96b849786664aa878ec1f84407da5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
+ms.openlocfilehash: 304ba791d107ca497e65905657e87e84cdb9567d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85963524"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942718"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>教學課程：在 HDInsight 上搭配使用 Apache Storm 與 Apache Kafka
 
@@ -148,7 +145,7 @@ Apache Storm 提供數個用來處理 Apache Kafka 的元件。 在本教學課�
 
 ### <a name="kafka-writer"></a>Kafka 寫入器
 
-在 Kafka 寫入器拓撲中，Kafka Bolt 元件會以兩個字串值作為參數。 這些參數會指出 Bolt 會將哪些 Tuple 欄位傳送至 Kafka 作為__索引鍵__和__訊息__值。 索引鍵可用來分割 Kafka 中的資料。 訊息是要儲存的資料。
+在 Kafka 寫入器拓撲中，Kafka Bolt 元件會以兩個字串值作為參數。 這些參數會指出 Bolt 會將哪些 Tuple 欄位傳送至 Kafka 作為 __索引鍵__ 和 __訊息__ 值。 索引鍵可用來分割 Kafka 中的資料。 訊息是要儲存的資料。
 
 在此範例中，`com.microsoft.example.SentenceSpout` 元件會發出包含兩個欄位的 Tuple，即 `key` 和 `message`。 Kafka Bolt 會擷取這些欄位，並將其資料傳送至 Kafka。
 
@@ -420,7 +417,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
    
       ![範本參數的圖片](./media/hdinsight-apache-storm-with-kafka/storm-kafka-template.png)
 
-3. 讀取**條款及條件**，然後選取 [我同意上方所述的條款及條件]。
+3. 讀取 **條款及條件**，然後選取 [我同意上方所述的條款及條件]。
 
 4. 最後，核取 [釘選到儀表板]，然後選取 [購買]。
 
@@ -530,7 +527,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
 
 ## <a name="create-the-kafka-topic"></a>建立 Kafka 主題
 
-Kafka 會將資料儲存到_主題_中。 在啟動 Storm 拓撲之前，您必須先建立主題。 若要建立拓撲，請使用下列步驟：
+Kafka 會將資料儲存到 _主題_ 中。 在啟動 Storm 拓撲之前，您必須先建立主題。 若要建立拓撲，請使用下列步驟：
 
 1. 使用下列命令透過 SSH 連線至 __Kafka__ 叢集。 將 `sshuser` 替換為建立叢集時所使用的 SSH 使用者名稱。 將 `kafkaclustername` 取代為 Kafka 叢集的名稱：
 

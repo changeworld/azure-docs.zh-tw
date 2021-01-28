@@ -3,16 +3,13 @@ title: Apache Phoenix Azure HDInsight 中的連線能力問題
 description: Apache HBase 與 Apache Phoenix 在 Azure HDInsight 之間的連線能力問題
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/14/2019
-ms.openlocfilehash: ed12c9629506fa8defb23b987fe672bb3b384418
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2cc6556f681ece170bdfe02b985f56274c0faa1e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540086"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936976"
 ---
 # <a name="scenario-apache-phoenix-connectivity-issues-in-azure-hdinsight"></a>案例： Apache Phoenix Azure HDInsight 中的連線能力問題
 
@@ -50,7 +47,7 @@ ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,
 
 從 Apache Ambari UI 中，完成下列步驟，在所有 ZooKeeper 節點上重新開機 HMaster 服務：
 
-1. 從 hbase 的 [ **摘要** ] 區段中，移至 [ **hbase**  >  **Active HBase Master** ]。
+1. 從 hbase 的 [**摘要**] 區段中，移至 [ **hbase**  >  **Active HBase Master**]。
 
 1. 從 [ **元件** ] 區段中，重新開機 HBase Master 服務。
 

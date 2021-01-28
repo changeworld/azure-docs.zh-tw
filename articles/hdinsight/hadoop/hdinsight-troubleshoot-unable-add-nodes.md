@@ -3,16 +3,13 @@ title: 無法將節點新增至 Azure HDInsight 叢集
 description: 針對無法在 Azure HDInsight 中將節點新增至 Apache Hadoop 叢集的問題進行疑難排解
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 07/31/2019
-ms.openlocfilehash: 089eab563c83384bdb7e1681044fa89f5eb7f6c0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b11d1edef2f3a6fa0fb39c76d1f25ec05ff15d07
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014664"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944318"
 ---
 # <a name="scenario-unable-to-add-nodes-to-azure-hdinsight-cluster"></a>案例：無法將節點新增至 Azure HDInsight 叢集
 
@@ -26,7 +23,7 @@ ms.locfileid: "96014664"
 
 原因可能會有所不同。
 
-## <a name="resolution"></a>解決方法
+## <a name="resolution"></a>解決方案
 
 使用 [叢集 [大小](../hdinsight-scaling-best-practices.md) ] 功能，計算叢集所需的其他核心數目。 這是以新背景工作角色節點中的核心總數為基礎。 然後嘗試下列一或多個步驟：
 

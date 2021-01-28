@@ -1,19 +1,16 @@
 ---
 title: 教學課程：使用互動式查詢的 ETL 作業 - Azure HDInsight
 description: 教學課程 - 了解如何從原始 CSV 資料集擷取資料。 使用 HDInsight 上的互動式查詢加以轉換。 然後使用 Apache Sqoop 將已轉換的資料載入 Azure SQL Database。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 730a6bfa627eafcab799fc811db4e20a1d4cec48
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
-ms.translationtype: HT
+ms.openlocfilehash: 13b6b8658aa2d896ec154cfa3c7a961e37df6cbf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534578"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935903"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>教學課程：使用 Azure HDInsight 上的互動式查詢來擷取、轉換和載入資料
 
@@ -165,7 +162,7 @@ ms.locfileid: "92534578"
     FROM delays_raw;
     ```
 
-3. 若要儲存檔案，請依序按 **Ctrl + X** 、 **y** 和 Enter 鍵。
+3. 若要儲存檔案，請依序按 **Ctrl + X**、**y** 和 Enter 鍵。
 
 4. 若要啟動 Hive 並執行 **flightdelays.hql** 檔案，請使用下列命令：
 

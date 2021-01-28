@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight 中的 Apache Ambari 目錄警示
 description: HDInsight 中 Apache Ambari 目錄警示的可能原因和解決方案的討論與分析。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: d8b1f705eb08d1c58b32e0cbd7c57722a6de93cc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 47d1f9797a44d7dc918677c21ffc7a124808525d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998306"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943288"
 ---
 # <a name="scenario-apache-ambari-directory-alerts-in-azure-hdinsight"></a>案例： Azure HDInsight 中的 Apache Ambari 目錄警示
 
@@ -31,7 +28,7 @@ ms.locfileid: "95998306"
 
 受影響的背景工作角色節點 () 上缺少提及的 Ambari 警示目錄。
 
-## <a name="resolution"></a>解決方法
+## <a name="resolution"></a>解決方案
 
 在受影響的背景工作節點上手動建立遺漏的目錄， (s) 。
 

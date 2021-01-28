@@ -9,12 +9,12 @@ ms.author: chpalm
 ms.date: 10/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 914581e6610e027d9440495f56f4facfb1fb9a9a
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: HT
+ms.openlocfilehash: 29eafcae9442215e23e80b946fc35314e23100d3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349430"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937245"
 ---
 # <a name="teams-interoperability"></a>小組互通性
 
@@ -40,7 +40,7 @@ Azure 通訊服務可用來建置能與 Microsoft Teams 互動的自訂會議體
 只要在[會議設定](/microsoftteams/meeting-settings-in-teams)中啟用匿名加入，通訊服務使用者就可以加入已排程的 Teams 會議。
 
 ## <a name="teams-in-government-clouds-gcc"></a>政府雲端 (GCC) 中的 Teams
-目前不允許使用 [Microsoft 365 政府雲端 (GCC)](https://docs.microsoft.com/MicrosoftTeams/plan-for-government-gcc) 的 Teams 部署使用 Azure 通訊服務互通性。 
+目前不允許使用 [Microsoft 365 政府雲端 (GCC)](/MicrosoftTeams/plan-for-government-gcc) 的 Teams 部署使用 Azure 通訊服務互通性。 
 
 ## <a name="next-steps"></a>後續步驟
 

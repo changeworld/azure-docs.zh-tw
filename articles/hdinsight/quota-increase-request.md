@@ -1,19 +1,16 @@
 ---
 title: CPU 核心配額增加要求 - Azure HDInsight
 description: 了解如何要求增加配置給訂用帳戶的 CPU 核心。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: 93c07b47e03bde20d494feb1c86179cd9a24ba26
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a539acc423feeab500830fb33262d1b824101072
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539406"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935832"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>要求增加 Azure HDInsight 的配額
 
@@ -42,9 +39,9 @@ CPU 核心配額有助於確保特定 Azure 區域中的所有客戶之間能夠
 1. 選取 [新增支援要求]。
 1. 在 [新增支援要求] 頁面的 [基本] 索引標籤上，選取下列選項：
 
-   - **問題類型** ： **服務與訂用帳戶限制 (配額)**
-   - **訂用帳戶** ：您需要修改的訂用帳戶
-   - **配額類型** ： **HDInsight**
+   - **問題類型**：**服務與訂用帳戶限制 (配額)**
+   - **訂用帳戶**：您需要修改的訂用帳戶
+   - **配額類型**：**HDInsight**
 
      ![建立支援要求以提高 HDInsight 核心配額](./media/quota-increase-request/hdinsight-quota-support-request.png)
 

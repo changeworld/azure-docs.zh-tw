@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: c2b0488663233546411b3a1b5ac1b1eb6c0b899c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 8491eb02fd61f291904d57990b3785ce93239964
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98887150"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935271"
 ---
 # <a name="troubleshooting-azure-spring-cloud-in-virtual-networks"></a>針對虛擬網路中的 Azure 春季 Cloud 進行疑難排解
 
@@ -39,7 +39,7 @@ ms.locfileid: "98887150"
 |------|------|
 | 原則不允許 Azure 春季 Cloud 所建立的資源。 | 當您在自己的虛擬網路中部署 Azure 春季雲端時，會建立網路資源。 請檢查您是否已定義 [Azure 原則](https://docs.microsoft.com/azure/governance/policy/overview) 來封鎖這些建立。 您可以在錯誤訊息中找到無法建立的資源。 |
 | 提供的子網與路由表相關聯，請將它們解除關聯。 | 目前不支援在與現有路由表相關聯的子網中部署 Azure 春季 Cloud，請將其解除關聯，然後再試一次。 |
-| 必要的流量未列入允許清單。 | 請參閱 [在 VNET 中執行 Azure 春季 Cloud 的客戶責任](spring-cloud-vnet-customer-responsibilities.md) ，以確保所需的流量會列入允許清單。 |
+| 未 allowlisted 必要的流量。 | 請參閱 [在 VNET 中執行 Azure 春季 Cloud 的客戶責任](spring-cloud-vnet-customer-responsibilities.md) ，以確保所需的流量 allowlisted。 |
 
 ## <a name="my-application-cant-be-registered"></a>無法註冊我的應用程式
 

@@ -4,12 +4,12 @@ ms.author: areddish
 ms.service: cognitive-services
 ms.date: 10/26/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: be3f199b1b8442da38b4ad0b6b6495b533c6dfe1
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
-ms.translationtype: HT
+ms.openlocfilehash: 3ac9182b3566df531778c73a86171f4dfcea1def
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98256490"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947433"
 ---
 本指南提供指示和範例程式碼，可協助您開始使用適用於 Node.js 的自訂視覺用戶端程式庫來建置物件偵測模型。 您將建立專案、新增標籤、將專案定型，並使用專案的預測端點 URL 以程式設計方式加以測試。 請使用此範例作為自行建置影像辨識應用程式的範本。
 
@@ -25,7 +25,7 @@ ms.locfileid: "98256490"
 * 發佈目前的反覆項目
 * 測試預測端點
 
-參考文件 [(訓練)](/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest) [(預測)](/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest) | 程式庫原始程式碼 [(訓練)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-training) [(預測)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-prediction) | 套件 (npm) [(訓練)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-training) [(預測)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-prediction) | [範例](/samples/browse/?products=azure&terms=custom%20vision&languages=javascript)
+參考文件 [(訓練)](/javascript/api/@azure/cognitiveservices-customvision-training/) [(預測)](/javascript/api/@azure/cognitiveservices-customvision-prediction/) | 程式庫原始程式碼 [(訓練)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-training) [(預測)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-prediction) | 套件 (npm) [(訓練)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-training) [(預測)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-prediction) | [範例](/samples/browse/?products=azure&terms=custom%20vision&languages=javascript)
 
 
 ## <a name="prerequisites"></a>必要條件
@@ -87,9 +87,9 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 |名稱|說明|
 |---|---|
-|[TrainingAPIClient](/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient?view=azure-node-latest) | 此類別會處理模型的建立、定型和發佈。 |
-|[PredictionAPIClient](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient?view=azure-node-latest)| 此類別會處理您的模型查詢，以進行物件偵測預測。|
-|[預測](/javascript/api/@azure/cognitiveservices-customvision-prediction/prediction?view=azure-node-latest)| 此介面會定義單一影像上的單一預測。 其中包含物件識別碼和名稱的屬性，以及信賴分數。|
+|[TrainingAPIClient](/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient) | 此類別會處理模型的建立、定型和發佈。 |
+|[PredictionAPIClient](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient)| 此類別會處理您的模型查詢，以進行物件偵測預測。|
+|[預測](/javascript/api/@azure/cognitiveservices-customvision-prediction/prediction)| 此介面會定義單一影像上的單一預測。 其中包含物件識別碼和名稱的屬性，以及信賴分數。|
 
 ## <a name="code-examples"></a>程式碼範例
 
@@ -105,7 +105,7 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
-使用端點和金鑰將用戶端物件具現化。 使用金鑰建立 **ApiKeyCredentials** 物件，並使用該物件與您的端點建立 [TrainingAPIClient](/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient?view=azure-node-latest) 和 [PredictionAPIClient](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient?view=azure-node-latest) 物件。
+使用端點和金鑰將用戶端物件具現化。 使用金鑰建立 **ApiKeyCredentials** 物件，並使用該物件與您的端點建立 [TrainingAPIClient](/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient) 和 [PredictionAPIClient](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient) 物件。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_auth)]
 
@@ -187,5 +187,5 @@ node index.js
 
 * 什麼是自訂視覺服務？
 * 此範例的原始程式碼位於 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js)
-* [SDK 參考文件 (定型)](/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest)
-* [SDK 參考文件 (預測)](/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest)
+* [SDK 參考文件 (定型)](/javascript/api/@azure/cognitiveservices-customvision-training/)
+* [SDK 參考文件 (預測)](/javascript/api/@azure/cognitiveservices-customvision-prediction/)

@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 01/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 96772020e70aeb32fa1a8ae18bf3818396887877
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 50042b749c917752d08198c31ada3c73a5ef540b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805245"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938489"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C
 
@@ -35,18 +35,29 @@ Microsoft Graph 可讓您管理 Azure AD B2C 目錄中的資源。 下列 Micros
 - [更新使用者](/graph/api/user-update)
 - [刪除使用者](/graph/api/user-delete)
 
-## <a name="user-phone-number-management"></a>使用者電話號碼管理
+## <a name="user-phone-number-management-beta"></a>使用者電話號碼管理 (搶鮮版（Beta）) 
+
+可供使用者用來以 [SMS 或語音通話](identity-provider-local.md#phone-sign-in-preview)或 [多重要素驗證](multi-factor-authentication.md)進行登入的電話號碼。 如需詳細資訊，請參閱 [Azure AD 驗證方法 API](/graph/api/resources/phoneauthenticationmethod)。
 
 - [加入](/graph/api/authentication-post-phonemethods)
-- [獲取](/graph/api/b2cauthenticationmethodspolicy-get)
-- [更新](/graph/api/b2cauthenticationmethodspolicy-update)
+- [清單](/graph/api/authentication-list-phonemethods)
+- [獲取](/graph/api/phoneauthenticationmethod-get)
+- [更新](/graph/api/phoneauthenticationmethod-update)
 - [刪除](/graph/api/phoneauthenticationmethod-delete)
 
-如需管理使用者登入電話號碼的詳細資訊，請參閱 [B2C 驗證方法](/graph/api/resources/b2cauthenticationmethodspolicy)。
+## <a name="self-service-password-reset-email-address-beta"></a>自助式密碼重設電子郵件地址 (搶鮮版（Beta）) 
 
-## <a name="identity-providers-user-flow"></a>身分識別提供者 (使用者流程) 
+使用者可使用的電子郵件地址，以 rest 登 [入帳戶](identity-provider-local.md#username-sign-in)的密碼。 如需詳細資訊，請參閱 [Azure AD 驗證方法 API](/graph/api/resources/emailauthenticationmethod)。
 
-管理您的 Azure AD B2C 租使用者中，可供您的使用者流程使用的身分識別提供者。
+- [加入](/graph/api/emailauthenticationmethod-post)
+- [清單](/graph/api/emailauthenticationmethod-list)
+- [獲取](/graph/api/emailauthenticationmethod-get)
+- [更新](/graph/api/emailauthenticationmethod-update)
+- [刪除](/graph/api/emailauthenticationmethod-delete)
+
+## <a name="identity-providers"></a>識別提供者
+
+管理您的 Azure AD B2C 租使用者中，可供您的使用者流程使用的身分 [識別提供者](add-identity-provider.md) 。
 
 - [列出在 Azure AD B2C 租使用者中註冊的身分識別提供者](/graph/api/identityprovider-list)
 - [建立身分識別提供者](/graph/api/identityprovider-post-identityproviders)
@@ -62,6 +73,13 @@ Microsoft Graph 可讓您管理 Azure AD B2C 目錄中的資源。 下列 Micros
 - [建立使用者流程](/graph/api/identitycontainer-post-b2cuserflows)
 - [取得使用者流程](/graph/api/b2cidentityuserflow-get)
 - [刪除使用者流程](/graph/api/b2cidentityuserflow-delete)
+
+## <a name="user-flow-authentication-methods-beta"></a> (搶鮮版（Beta）的使用者流程驗證方法) 
+
+選擇可讓使用者透過本機帳戶註冊的機制。 本機帳戶是 Azure AD 進行身分識別判斷提示的帳戶。 如需詳細資訊，請參閱 [b2cAuthenticationMethodsPolicy 資源類型](/graph/api/resources/b2cauthenticationmethodspolicy)。
+
+- [獲取](/graph/api/b2cauthenticationmethodspolicy-get)
+- [更新](/graph/api/b2cauthenticationmethodspolicy-update)
 
 ## <a name="custom-policies"></a>自訂原則
 

@@ -1,19 +1,16 @@
 ---
 title: 最佳化 Apache Spark 叢集設定 - Azure HDInsight
 description: 了解如何設定您的 Apache Spark 叢集，以最大化 Azure HDInsight 的輸送量。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 80abc052bc8fa731a1cea0d3ecb523aedb46cf05
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: f70e9f242b0f12abf58e72554e7cb6819ce8f7a9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031776"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944735"
 ---
 # <a name="cluster-configuration-optimization-for-apache-spark"></a>Apache Spark 的叢集設定優化
 

@@ -4,12 +4,12 @@ description: 搜尋 Trace、NLog 或 Log4Net 產生的記錄。
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/08/2019
-ms.openlocfilehash: 90777da4d0b67587afebaa7111e3503af2afcb9a
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 083ddbd06561550f89e414d6c679cdc6433fa338
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920342"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937549"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>在 Application Insights 中探索 .NET/.NET Core 和 Python 追蹤記錄
 
@@ -85,7 +85,7 @@ System.Diagnostics.Trace.TraceWarning("Slow response - database01");
 ```
 
 ## <a name="use-eventsource-events"></a>使用 EventSource 事件
-您可以將 [System.Diagnostics.Tracing.EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) 設定為要傳送至 Application Insights 作為追蹤的事件。 首先，安裝 `Microsoft.ApplicationInsights.EventSourceListener` NuGet 套件。 然後編輯 [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) 檔案的 `TelemetryModules` 區段。
+您可以將 [System.Diagnostics.Tracing.EventSource](/dotnet/api/system.diagnostics.tracing.eventsource) 設定為要傳送至 Application Insights 作為追蹤的事件。 首先，安裝 `Microsoft.ApplicationInsights.EventSourceListener` NuGet 套件。 然後編輯 [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) 檔案的 `TelemetryModules` 區段。
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule, Microsoft.ApplicationInsights.EventSourceListener">
@@ -203,7 +203,7 @@ logger.warning('Hello, World!')
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>組態工具中沒有記錄配接器選項
 * 請先安裝記錄架構。
-* 如果您使用 System.Diagnostics.Trace，請確定已將其 [設定在 *web.config* 中](/dotnet/api/system.diagnostics.eventlogtracelistener?view=dotnet-plat-ext-3.1)。
+* 如果您使用 System.Diagnostics.Trace，請確定已將其 [設定在 *web.config* 中](/dotnet/api/system.diagnostics.eventlogtracelistener)。
 * 確定您有最新版的 Application Insights。 在 Visual Studio 中，移至 [工具] > [擴充功能和更新]，然後開啟 [更新] 索引標籤。如果發現 **Developer Analytics Tools**，請選取以進行更新。
 
 ### <a name="i-get-the-instrumentation-key-cannot-be-empty-error-message"></a><a name="emptykey"></a>我收到「檢測金鑰不能是空白」的錯誤訊息

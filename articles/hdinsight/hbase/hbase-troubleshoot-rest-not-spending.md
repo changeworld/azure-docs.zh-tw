@@ -3,16 +3,13 @@ title: Apache HBase REST 未回應 Azure HDInsight 中的要求
 description: 解決 Apache HBase REST 未在 Azure HDInsight 中回應要求的問題。
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/01/2019
-ms.openlocfilehash: c4a0ef82b951fa43eb4c58050d3148fd2d695026
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: b42a37d752f245eb66f3952b56ee4e36ae954874
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286966"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936956"
 ---
 # <a name="scenario-apache-hbase-rest-not-responding-to-requests-in-azure-hdinsight"></a>案例： Apache HBase REST 未回應 Azure HDInsight 中的要求
 
@@ -31,7 +28,7 @@ System.Net.WebException : Unable to connect to the remote server --->
 System.Net.Sockets.SocketException : A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 10.0.0.19:8090
 ```
 
-## <a name="resolution"></a>解決方法
+## <a name="resolution"></a>解決方案
 
 Ssh 至主機之後，請使用下列命令重新開機 HBase REST。 您也可以使用腳本動作，在所有背景工作節點上重新開機此服務：
 

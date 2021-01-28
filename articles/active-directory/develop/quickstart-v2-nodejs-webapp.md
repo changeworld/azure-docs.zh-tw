@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: bd750a05f34a18a1260226fb979a82cc620dfbfb
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: ab3677ede2805fc8ecb076e8a40da605c038b54b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178274"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937931"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>快速入門：將使用 OpenID Connect 的登入新增至 Node.js Web 應用程式
 
@@ -37,14 +37,14 @@ ms.locfileid: "98178274"
 1. 輸入應用程式的 [名稱]，例如 `MyWebApp`。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
 1. 在 [支援的帳戶類型] 區段中，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶 (例如 Skype、Xbox、Outlook.com)]。
 
-    如果有多個重新導向 URI，您稍後必須在應用程式建立成功之後，從 [驗證] 索引標籤新增這些 URI。
+    如果有一個以上的重新導向 Uri，稍後在成功建立應用程式之後，請從 [ **驗證** ] 索引標籤新增這些 uri。
 
 1. 選取 [註冊] 以建立應用程式。
 1. 在應用程式的 [概觀] 頁面上，尋找 [應用程式 (用戶端) 識別碼] 值並將它記下供稍後使用。 稍後在此專案中，您會需要用這個值來設定應用程式。
 1. 在 [管理] 底下，選取 [驗證]。
 1. 選取 [新增平台] > [Web]。 
 1. 在 [重新導向 URI] 區段中，輸入 `http://localhost:3000/auth/openid/return`。
-1. 輸入 [登出 URL] `https://localhost:3000`。
+1. 輸入 **前端通道的登出 URL** `https://localhost:3000` 。
 1. 在 [隱含授與] 區段中，核取 [識別碼權杖]，因為此範例需要啟用[隱含授與流程](./v2-oauth2-implicit-grant-flow.md)才能將使用者登入。
 1. 選取 [設定] 。
 1. 在 **管理** 下，選取 [憑證與秘密] > [新增用戶端密碼]。

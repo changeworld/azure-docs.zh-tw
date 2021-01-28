@@ -1,18 +1,15 @@
 ---
 title: 控制 Azure HDInsight 中的網路流量
 description: 瞭解用來控制 Azure HDInsight 叢集輸入和輸出流量的技術。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 348b9b80c74f085ce31ecce93753a253782fe3ea
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0cbda0b533a64e627bfeef9589ab95c4163ae73e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543163"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943372"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>控制 Azure HDInsight 中的網路流量
 
@@ -40,7 +37,7 @@ HDInsight 為受控服務，需要不受限制地存取 HDInsight 健康情況�
 
 3. 建立或修改您要安裝 HDInsight 之子網路的網路安全性群組。
 
-    * __網路安全性群組__ ：允許連接埠 __443__ 上來自 IP 位址的「輸入」流量。 這可確保 HDInsight 管理服務可從虛擬網路外部觸達叢集。 在已啟用 __Kafka REST Proxy__ 的叢集上，也允許連接埠 __9400__ 上的 __輸入__ 流量。 這可確保可觸達 Kafka REST Proxy 伺服器。
+    * __網路安全性群組__：允許連接埠 __443__ 上來自 IP 位址的「輸入」流量。 這可確保 HDInsight 管理服務可從虛擬網路外部觸達叢集。 在已啟用 __Kafka REST Proxy__ 的叢集上，也允許連接埠 __9400__ 上的 __輸入__ 流量。 這可確保可觸達 Kafka REST Proxy 伺服器。
 
 如需有關網路安全性群組的詳細資訊，請參閱[網路安全性群組概觀](../virtual-network/network-security-groups-overview.md)。
 

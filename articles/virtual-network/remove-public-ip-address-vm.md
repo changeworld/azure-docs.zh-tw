@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2019
 ms.author: allensu
-ms.openlocfilehash: b171699a0c578b3761e58f6e0e977199369864a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0665cbd7aa21575337999fb5c59478955c764048
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84709958"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934189"
 ---
 # <a name="dissociate-a-public-ip-address-from-an-azure-vm"></a>中斷公用 IP 位址與 Azure VM 的關聯 
 
@@ -45,7 +45,7 @@ ms.locfileid: "84709958"
 安裝 [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json) 或使用 Azure Cloud Shell。 Azure Cloud Shell 是免費的 Bash Shell，您可以直接在 Azure 入口網站內執行。 它具有預先安裝和設定的 Azure CLI，可與您的帳戶搭配使用。 在接下來的 CLI 命令中，選取 [試用] 按鈕。 選取 [試用]，會叫用可登入 Azure 帳戶的 Cloud Shell。
 
 1. 如果在 Bash 中使用本機 CLI，請使用 `az login` 登入 Azure。
-2. 公用 IP 位址會與連接至 VM 的網路介面 IP 設定建立關聯。 使用 [az network nic-ip-config update](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-update) 命令來中斷公用 IP 位址與 IP 設定的關聯。 下列範例會將公用 IP 位址 *myVMPublicIP* 與現有 *myVMVMNic* 網路介面的 *ipconfigmyVM* IP 設定中斷關聯，該網路介面連接至 *myResourceGroup* 資源群組中的 *myVM* VM。
+2. 公用 IP 位址會與連接至 VM 的網路介面 IP 設定建立關聯。 使用 [az network nic-ip-config update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update) 命令來中斷公用 IP 位址與 IP 設定的關聯。 下列範例會將公用 IP 位址 *myVMPublicIP* 與現有 *myVMVMNic* 網路介面的 *ipconfigmyVM* IP 設定中斷關聯，該網路介面連接至 *myResourceGroup* 資源群組中的 *myVM* VM。
   
    ```azurecli-interactive
     az network nic ip-config update \
@@ -55,7 +55,7 @@ ms.locfileid: "84709958"
     --remove PublicIpAddress
    ```
 
-   如果您不知道連接至 VM 的網路介面名稱，請使用 [az vm nic list](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-list) 命令來加以查看。 例如，下列命令會列出連接至 *myResourceGroup* 資源群組中 *myVM* VM 的網路介面名稱：
+   如果您不知道連接至 VM 的網路介面名稱，請使用 [az vm nic list](/cli/azure/vm/nic#az-vm-nic-list) 命令來加以查看。 例如，下列命令會列出連接至 *myResourceGroup* 資源群組中 *myVM* VM 的網路介面名稱：
 
      ```azurecli-interactive
      az vm nic list --vm-name myVM --resource-group myResourceGroup
@@ -69,13 +69,13 @@ ms.locfileid: "84709958"
 
      在上述範例中，*myVMVMNic* 是網路介面的名稱。
 
-   - 如果您不知道網路介面的 IP 設定名稱，請使用 [az network nic ip-config list](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-list) 命令來取得名稱。 例如，下列命令會列出 *myResourceGroup* 資源群組中 *myVMVMNic* 網路介面的公用 IP 設定名稱：
+   - 如果您不知道網路介面的 IP 設定名稱，請使用 [az network nic ip-config list](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-list) 命令來取得名稱。 例如，下列命令會列出 *myResourceGroup* 資源群組中 *myVMVMNic* 網路介面的公用 IP 設定名稱：
 
      ```azurecli-interactive
      az network nic ip-config list --nic-name myVMVMNic --resource-group myResourceGroup --out table
      ```
 
-   - 如果您不知道網路介面的公用 IP 設定名稱，請使用 [az network nic ip-config show](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-show) 命令來取得名稱。 例如，下列命令會列出 *myResourceGroup* 資源群組中 *myVMVMNic* 網路介面的公用 IP 設定名稱：
+   - 如果您不知道網路介面的公用 IP 設定名稱，請使用 [az network nic ip-config show](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-show) 命令來取得名稱。 例如，下列命令會列出 *myResourceGroup* 資源群組中 *myVMVMNic* 網路介面的公用 IP 設定名稱：
 
      ```azurecli-interactive
      az network nic ip-config show --name ipconfigmyVM --nic-name myVMVMNic --resource-group myResourceGroup --query publicIPAddress.id

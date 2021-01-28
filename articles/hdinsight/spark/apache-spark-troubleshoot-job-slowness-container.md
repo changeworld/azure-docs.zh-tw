@@ -3,16 +3,13 @@ title: Azure HDInsight 儲存體有許多檔案時 Apache Spark 緩慢
 description: 當 Azure 儲存體容器包含許多檔案時，Apache Spark 作業會緩慢執行 Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/21/2019
-ms.openlocfilehash: f14e9bfad959d7f40b2d364c702983c31e0e3cef
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: c26baec66248ca00ef212acf3d773c2566b3aea9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289762"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946354"
 ---
 # <a name="apache-spark-job-run-slowly-when-the-azure-storage-container-contains-many-files-in-azure-hdinsight"></a>當 Azure 儲存體容器在 Azure HDInsight 中包含許多檔案時，Apache Spark 的作業執行速度會變慢
 
@@ -32,7 +29,7 @@ ms.locfileid: "93289762"
 
 在 Spark 2.2 中，使用附加模式來寫入資料時，應該修正此效能問題。
 
-## <a name="resolution"></a>解決方法
+## <a name="resolution"></a>解決方案
 
 當您建立資料分割的資料集時，請務必使用資料分割配置，以限制 Spark 必須列出以更新的檔案數目 `FileStatusCache` 。
 

@@ -2,24 +2,21 @@
 title: 使用 HDInsight Apache Spark 分析 Azure Data Lake Storage Gen1
 description: 執行 Apache Spark 作業來分析儲存在 Azure Data Lake Storage Gen1 中的資料
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 42b9958678c76c1d0eed67cc9d97361c84f1dea9
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: ad8239b3403d37a9e4c79de481fb9cb26306e243
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821157"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946329"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>使用 HDInsight Spark 叢集分析 Data Lake Storage Gen1 中的資料
 
 在本文中，您將使用 HDInsight Spark 叢集可用的 [Jupyter Notebook](https://jupyter.org/) 來執行從 Data Lake Storage 帳戶讀取資料的作業。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Azure Data Lake Storage Gen1 帳戶。 請遵循[透過 Azure 入口網站開始使用 Azure Data Lake Storage Gen1](../../data-lake-store/data-lake-store-get-started-portal.md) 的指示。
 

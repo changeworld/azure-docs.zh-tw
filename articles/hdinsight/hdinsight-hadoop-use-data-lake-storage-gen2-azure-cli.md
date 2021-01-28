@@ -3,23 +3,22 @@ title: 建立 Azure HDInsight-Azure Data Lake Storage Gen2-Azure CLI
 description: 瞭解如何使用 Azure CLI Azure Data Lake Storage Gen2 搭配 Azure HDInsight 叢集。
 author: guyhay
 ms.author: guyhay
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 09/17/2020
-ms.openlocfilehash: 4ffe5acce831435d3771a2eb48a90b16f584c92a
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: bbc1cd27d5c16eddd3aaad748c34445e5017e209
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704005"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945495"
 ---
 # <a name="create-a-cluster-with-data-lake-storage-gen2-using-azure-cli"></a>使用 Azure CLI 建立具有 Data Lake Storage Gen2 的叢集
 
 若要建立使用 Data Lake Storage Gen2 儲存的 HDInsight 叢集，請遵循下列步驟。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 如果您不熟悉 Azure Data Lake Storage Gen2，請參閱 [總覽一節](hdinsight-hadoop-use-data-lake-storage-gen2.md)。 
 - 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。

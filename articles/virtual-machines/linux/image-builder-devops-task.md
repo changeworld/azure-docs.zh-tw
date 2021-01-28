@@ -3,16 +3,16 @@ title: Azure Image Builder 服務 DevOps 工作
 description: Azure DevOps 工作，將組建成品插入 VM 映射，讓您可以安裝和設定您的應用程式和作業系統。
 author: danielsollondon
 ms.author: danis
-ms.date: 08/10/2020
+ms.date: 01/27/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 634fc183cc27db1ae949959c3ae7fae8eda5b644
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: df97ecd1668dcc0e21408b7d39b0973e8f0d8fbf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684537"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934288"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure Image Builder 服務 DevOps 工作
 
@@ -26,7 +26,7 @@ ms.locfileid: "98684537"
 
 * 「不穩定」的[AIB](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder-canary)工作，這讓我們能夠在將其升階為「穩定」工作之前，先放入最新的更新和功能，讓客戶進行測試。 如果沒有回報的問題，而且我們的遙測沒有顯示任何問題（大約1周），我們會將工作程式碼升階為「穩定」。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * [從 Visual Studio Marketplace 安裝穩定的 DevOps](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder)工作。
 * 您必須擁有 VSTS DevOps 帳戶，並已建立組建管線
@@ -57,7 +57,7 @@ ms.locfileid: "98684537"
 
 選取 **發行管線**  >  **編輯**
 
-在使用者代理程式上，選取 *+* 要新增的映射產生器，然後搜尋 **影像** 產生器。 選取 [新增]  。
+在使用者代理程式上，選取 *+* 要新增的映射產生器，然後搜尋 **影像** 產生器。 選取 [新增]。
 
 設定下列工作屬性：
 
@@ -69,7 +69,7 @@ ms.locfileid: "98684537"
 
 使用將儲存暫存影像範本成品的資源群組。 建立範本成品時，會建立額外的暫存映射產生器資源群組 `IT_<DestinationResourceGroup>_<TemplateName>_guid` 。 暫存資源群組會儲存影像中繼資料，例如腳本。 在工作結束時，會刪除映射範本成品和暫存映射產生器資源群組。
  
-### <a name="location"></a>位置
+### <a name="location"></a>Location
 
 位置是映射產生器將執行的區域。 只支援設定的 [區域](../image-builder-overview.md#regions) 數量。 來源映射必須存在於此位置。 例如，如果您使用共用映射庫，則複本必須存在於該區域中。
 
@@ -154,6 +154,12 @@ DevOps 工作目前不支援重新開機 Windows 組建，如果您嘗試使用 
     & 'c:\buildArtifacts\webapp\webconfig.ps1'
     ```
 
+   您可以參考多個腳本，或新增更多命令，例如：
+
+       ```PowerShell
+       & 'c:\buildArtifacts\webapp\webconfig.ps1'
+       & 'c:\buildArtifacts\webapp\installAgent.ps1'
+       ```
 * Linux-Linux 系統上的組建成品會放在 `/tmp` 目錄中。 不過，在許多 Linux OSs 上，重新開機時，會刪除/tmp 目錄內容。 如果您希望構件存在於映射中，您必須建立另一個目錄，並將其複製到其中。  例如：
 
     ```bash
@@ -306,7 +312,7 @@ starting run template...
 
 ### <a name="can-i-specify-the-image-template-name"></a>我可以指定映射範本名稱嗎？
 
-不會。 使用唯一的範本名稱，然後刪除。
+否。 使用唯一的範本名稱，然後刪除。
 
 ### <a name="the-image-builder-failed-how-can-i-troubleshoot"></a>影像產生器失敗。 我該如何進行疑難排解？
 
@@ -333,6 +339,6 @@ template name:  t_1556938436xxx
 映射範本資源成品位於一開始在工作中指定的資源群組中。 當您完成疑難排解時，請刪除成品。 如果使用 Azure 入口網站刪除資源群組中的 [ **顯示隱藏的類型**]，則可查看成品。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需詳細資訊，請參閱 [Azure 映射](../image-builder-overview.md)建立器總覽。

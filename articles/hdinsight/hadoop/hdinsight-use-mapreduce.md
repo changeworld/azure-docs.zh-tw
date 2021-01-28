@@ -1,19 +1,16 @@
 ---
 title: 搭配 MapReduce 與 HDInsight 上的 Apache Hadoop
 description: 瞭解如何在 HDInsight 叢集中的 Apache Hadoop 上執行 Apache MapReduce 作業。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 8b683f12a17d6aabbcdce3190a34675951567f64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 33d96262ca2e2ff3003fbf2b40ce9ceb496337ae
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86075836"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944255"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>搭配 MapReduce 與 HDInsight 上的 Apache Hadoop
 
@@ -110,10 +107,10 @@ HDInsight 可以使用各種方法執行 HiveQL 工作。 請使用下表決定�
 | **使用此**.。。 | **...若要這樣做** |  ...從此 **用戶端作業系統** |
 |:--- |:--- |:--- |:--- |
 | [SSH](apache-hadoop-use-mapreduce-ssh.md) |透過 **SSH** |Linux、Unix、Mac OS X 或 Windows |
-| [捲曲](apache-hadoop-use-mapreduce-curl.md) |使用 **REST** |Linux、Unix、Mac OS X 或 Windows |
+| [Curl](apache-hadoop-use-mapreduce-curl.md) |使用 **REST** |Linux、Unix、Mac OS X 或 Windows |
 | [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |使用 **Windows PowerShell**  |Windows |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入了解如何處理 HDInsight 的資料，請參閱下列文件：
 

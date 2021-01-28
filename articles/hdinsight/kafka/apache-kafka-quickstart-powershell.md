@@ -1,19 +1,16 @@
 ---
 title: 快速入門：使用 Azure PowerShell 建立 Apache Kafka - HDInsight
 description: 在本快速入門中，您會了解如何使用 Azure PowerShell，在 Azure HDInsight 上建立 Apache Kafka 叢集。 您也會了解 Kafka 主題、訂閱者與取用者。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 57cbfa356961aca778032b6e3552cffb88b6ab3d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
-ms.translationtype: HT
+ms.openlocfilehash: 74fa512711dfb9226fcc88d949f5ddfeb0f9812b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532997"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942617"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>快速入門：使用 PowerShell 在 Azure HDInsight 中建立 Apache Spark 叢集
 
@@ -147,7 +144,7 @@ New-AzHDInsightCluster `
     ssh sshuser@mykafka-ssh.azurehdinsight.net
     ```
 
-2. 當您初次連線到叢集時，您的 SSH 用戶端可能會顯示警告，指出無法確認主機的真確性。 在系統提示時，輸入 __yes__ ，然後按 __Enter__ 鍵，以將主機新增至 SSH 用戶端信任的伺服器清單。
+2. 當您初次連線到叢集時，您的 SSH 用戶端可能會顯示警告，指出無法確認主機的真確性。 在系統提示時，輸入 __yes__，然後按 __Enter__ 鍵，以將主機新增至 SSH 用戶端信任的伺服器清單。
 
 3. 出現提示時，請輸入 SSH 使用者的密碼。
 
@@ -234,7 +231,7 @@ Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
 
 Kafka 會將資料串流儲存於「主題」  中。 您可以使用 `kafka-topics.sh` 公用程式來管理主題。
 
-* **若要建立主題** ，請在 SSH 連線中使用下列命令：
+* **若要建立主題**，請在 SSH 連線中使用下列命令：
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
@@ -262,7 +259,7 @@ Kafka 會將資料串流儲存於「主題」  中。 您可以使用 `kafka-top
 
         * 擴大叢集時
 
-* **若要列出主題** ，請使用下列命令：
+* **若要列出主題**，請使用下列命令：
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $KAFKAZKHOSTS
@@ -270,7 +267,7 @@ Kafka 會將資料串流儲存於「主題」  中。 您可以使用 `kafka-top
 
     此命令會列出可在 Kafka 叢集上使用的主題。
 
-* **若要刪除主題** ，請使用下列命令：
+* **若要刪除主題**，請使用下列命令：
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic topicname --zookeeper $KAFKAZKHOSTS

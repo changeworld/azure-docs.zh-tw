@@ -1,19 +1,16 @@
 ---
 title: 教學課程：在 Azure HDInsight 的 Spark 計算內容中使用 R
 description: 教學課程 - 開始在 Azure HDInsight Machine Learning 服務叢集上使用 R 和 Spark。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/21/2019
-ms.openlocfilehash: 6e727bc7ad8b7f0b8a04c48f3abd1f1ac0806c66
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
-ms.translationtype: HT
+ms.openlocfilehash: bd6015529fb521e3b157e46ee808aea43e993dee
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545900"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935666"
 ---
 # <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>教學課程：在 Azure HDInsight 的 Spark 計算內容中使用 R
 

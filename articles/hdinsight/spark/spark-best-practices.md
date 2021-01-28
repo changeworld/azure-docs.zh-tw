@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight Apache Spark 指導方針
 description: 瞭解在 Azure HDInsight 中使用 Apache Spark 的指導方針。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: a93b3e0da7b881b80f7613907e40af509bffadbd
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f81435abbedec25cb8abe0b958065a493c15ce4c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545560"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938810"
 ---
 # <a name="apache-spark-guidelines"></a>Apache Spark 指導方針
 
@@ -66,7 +63,7 @@ ms.locfileid: "92545560"
 | Azure Data Lake Storage Gen1 | [使用 Azure Data Lake Storage Gen1 搭配 Azure HDInsight 叢集](../hdinsight-hadoop-use-data-lake-storage-gen1.md) |
 | Azure Blob 儲存體 | [搭配使用 Azure 儲存體與 Azure HDInsight 叢集](../hdinsight-hadoop-use-blob-storage.md) |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [設定 Apache Spark 設定](apache-spark-settings.md)
 * [將 HDInsight 中的 Apache Spark 作業最佳化](apache-spark-perf.md)

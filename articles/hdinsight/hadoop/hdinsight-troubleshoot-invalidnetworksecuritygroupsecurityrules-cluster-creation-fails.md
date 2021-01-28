@@ -3,16 +3,13 @@ title: InvalidNetworkSecurityGroupSecurityRules 錯誤-Azure HDInsight
 description: 叢集建立失敗，並出現 ErrorCode InvalidNetworkSecurityGroupSecurityRules
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 07/31/2019
-ms.openlocfilehash: b1423dc965a3169a5f615ccc371849cc177be244
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 7e0b984b3ec4a203f8a1118c0e6a166c5a9e1125
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289097"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944379"
 ---
 # <a name="scenario-invalidnetworksecuritygroupsecurityrules---cluster-creation-fails-in-azure-hdinsight"></a>案例： InvalidNetworkSecurityGroupSecurityRules-叢集建立失敗 Azure HDInsight
 
@@ -26,7 +23,7 @@ ms.locfileid: "93289097"
 
 可能是針對您的叢集設定的輸入 [網路安全性群組](../../virtual-network/virtual-network-vnet-plan-design-arm.md) 規則發生問題。
 
-## <a name="resolution"></a>解決方法
+## <a name="resolution"></a>解決方案
 
 移至 Azure 入口網站並識別與部署叢集的子網相關聯的 NSG。 在 [ **輸入安全性規則** ] 區段中，確定規則允許針對 [此處](../control-network-traffic.md)所述的 IP 位址，對埠443進行輸入存取。
 

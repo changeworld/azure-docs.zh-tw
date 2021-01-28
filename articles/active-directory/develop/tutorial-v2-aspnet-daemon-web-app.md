@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 7d34039a5d56feb42473b1a2b24def5244ec3e04
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 984b85ff831146060f1642b9eeec7079ff966db3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756138"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937829"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>教學課程：建置會使用 Microsoft 身分識別平台的多租用戶精靈
 
@@ -109,7 +109,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 1. 選取 [註冊] 以建立應用程式。
 1. 在應用程式的 [概觀] 頁面上，尋找 [應用程式 (用戶端) 識別碼] 值並記下供稍後使用。 您必須用此識別碼來設定此專案的 Visual Studio 組態檔。
 1. 在 [管理] 底下，選取 [驗證]。
-1. 將 **登出 URL** 設為為 `https://localhost:44316/Account/EndSession`。
+1. 將 [ **前端通道登出 URL** ] 設定為 `https://localhost:44316/Account/EndSession` 。
 1. 在 [隱含授與] 區段中，選取 [存取權杖]，然後選取 [識別碼權杖]。 此範例需要啟用[隱含授與流程](v2-oauth2-implicit-grant-flow.md)才能讓使用者登入並呼叫 API。
 1. 選取 [儲存]。
 1. 在 [管理]  下，選取 [憑證和密碼]  。
@@ -227,7 +227,7 @@ Visual Studio 會發佈專案，並自動開啟瀏覽器並導向至專案的 UR
 1. 回到 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 在左窗格中，選取 [Azure Active Directory] 服務，然後選取 [應用程式註冊]。
 1. 選取 **dotnet-web-daemon-v2** 應用程式。
-1. 在您應用程式的 [驗證] 頁面上，以您的服務位址更新 [登出 URL] 欄位。 例如，使用 `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`。
+1. 在您應用程式的 [ **驗證** ] 頁面上，以您的服務位址更新 [ **前端通道登出 URL** ] 欄位。 例如，使用 `https://dotnet-web-daemon-v2-contoso.azurewebsites.net/Account/EndSession`。
 1. 從 [商標] 功能表，將 [首頁 URL] 更新為您的服務位址。 例如，使用 `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`。
 1. 儲存組態。
 1. 在 [驗證] > [重新導向 URI] 功能表的值清單中，新增相同的 URL。 如果您有多個重新導向 URL，請確定在使用應用程式服務的 URI 作為每個重新導向 URL 時，都有新的輸入項目。

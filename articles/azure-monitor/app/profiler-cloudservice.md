@@ -7,12 +7,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 69a9ba316a1fda14a2e85d4d981321d4b2f9f289
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75927534bf62fa4733bb552906ffa7e3a6e76286
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88930310"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935608"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>使用 Application Insights 來分析即時 Azure 雲端服務
 
@@ -38,11 +38,11 @@ Application Insights Profiler 會與 Azure 診斷擴充功能一起安裝。 您
 
 1. 設定 Azure 診斷擴充功能以啟用 Profiler：
 
-    a. 針對您的應用程式角色找出 [Azure 診斷 diagnostics.wadcfgx](../platform/diagnostics-extension-overview.md) ** 檔案，如下所示：  
+    a. 針對您的應用程式角色找出 [Azure 診斷 diagnostics.wadcfgx](../platform/diagnostics-extension-overview.md)  檔案，如下所示：  
 
       ![診斷組態檔的位置](./media/profiler-cloudservice/cloudservice-solutionexplorer.png)  
 
-      如果您找不到檔案，請參閱[為 Azure 雲端服務和虛擬機器設定診斷](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?view=vs-2019)。
+      如果您找不到檔案，請參閱[為 Azure 雲端服務和虛擬機器設定診斷](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)。
 
     b. 新增下列 `SinksConfig` 區段作為 `WadCfg` 的子元素：  
 
@@ -59,17 +59,17 @@ Application Insights Profiler 會與 Azure 診斷擴充功能一起安裝。 您
       ```
 
     > [!NOTE]
-    > 如果 diagnostics.wadcfgx** 檔案也包含 ApplicationInsights 類型的另一個接收，則以下三個檢測金鑰全都必須符合：  
+    > 如果 diagnostics.wadcfgx 檔案也包含 ApplicationInsights 類型的另一個接收，則以下三個檢測金鑰全都必須符合：  
     > * 應用程式使用的金鑰。 
     > * ApplicationInsights 接收使用的金鑰。 
     > * ApplicationInsightsProfiler 接收使用的金鑰。 
     >
-    > 您可以在 ServiceConfiguration.\*.cscfg** 檔案中找到 `ApplicationInsights` 接收所使用的實際檢測金鑰值。 
+    > 您可以在 ServiceConfiguration.\*.cscfg 檔案中找到 `ApplicationInsights` 接收所使用的實際檢測金鑰值。 
     > Visual Studio 15.5 Azure SDK 發行之後，只有應用程式和 ApplicationInsightsProfiler 接收所使用的檢測金鑰必須彼此相符。
 
 1. 使用新的診斷設定部署服務，然後 Application Insights Profiler 就會設定為在服務上執行。
  
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 產生應用程式的流量 (例如，啟動[可用性測試](monitor-web-app-availability.md))。 然後，等待 10 到 15 分鐘，讓追蹤開始傳送到 Application Insights 執行個體。
 * 請參閱 Azure 入口網站中的 [Profiler 追蹤](profiler-overview.md?toc=/azure/azure-monitor/toc.json) 。

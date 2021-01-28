@@ -3,17 +3,16 @@ title: Azure HDInsight 建立叢集錯誤字典
 description: 瞭解如何針對建立 Azure HDInsight 叢集時所發生的錯誤進行疑難排解
 author: karkrish
 ms.author: v-todmc
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 08/24/2020
-ms.openlocfilehash: 97cad12ad1854df37b54ff663385fe79ca15b7c2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6b8c0069d619d3ebd87e3c54b4f653812199f590
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543095"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943339"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight：叢集建立錯誤
 
@@ -24,7 +23,7 @@ ms.locfileid: "92543095"
 
 ## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>錯誤碼： DeploymentDocument ' CsmDocument_2_0 ' 驗證失敗
 
-**錯誤** ：「無法存取腳本動作位置 \<SCRIPT ACTION URL\> URI：」
+**錯誤**：「無法存取腳本動作位置 \<SCRIPT ACTION URL\> URI：」
 
 ### <a name="error-message-1"></a>錯誤訊息 1
 
@@ -84,7 +83,7 @@ HDInsight 服務無法存取您在建立叢集要求中提供的腳本動作 URL
 
 請確定 **VirtualNetworkId** 和子網值的格式正確。 若要取得 **VirtualNetworkId** 值：
 
-1. 移至 Azure 入口網站。
+1. 前往 Azure 入口網站。
 1. 選取虛擬網路。
 1. 選取 [ **屬性** ] 功能表項目。 **ResourceID** 屬性值是 **VirtualNetworkId** 值。
 
@@ -161,7 +160,7 @@ HDInsight 服務無法存取您在建立叢集要求中提供的腳本動作 URL
 
 1. 開啟 Azure 入口網站。
 1. 移至您的儲存體帳戶。
-1. 查看 [存取控制] 底下的 [ **存取控制] (IAM)** 。
+1. 查看 [存取控制] 底下的 [ **存取控制] (IAM)**。
 1. 請確定使用者已獲指派「儲存體 Blob 資料參與者」角色或儲存體 Blob 資料擁有者角色。
 
 如需詳細資訊，請參閱在 [Data Lake Storage Gen2 帳戶上設定受控識別的許可權](hdinsight-hadoop-use-data-lake-storage-gen2.md)。
@@ -238,6 +237,6 @@ HDInsight 服務無法存取您在建立叢集要求中提供的腳本動作 URL
 
 ---
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需有關疑難排解叢集建立錯誤的詳細資訊，請參閱 [使用 Azure HDInsight 疑難排解叢集建立失敗](./hadoop/hdinsight-troubleshoot-cluster-creation-fails.md)。

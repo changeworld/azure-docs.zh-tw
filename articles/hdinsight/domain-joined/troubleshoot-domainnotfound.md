@@ -1,18 +1,15 @@
 ---
 title: 叢集建立失敗，但 Azure HDInsight 發生 DomainNotFound 錯誤
 description: 針對與 Azure HDInsight 叢集互動時的問題進行疑難排解的步驟和可能的解決方式
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
-ms.openlocfilehash: 79cd3b687dc8a2eb838146a6dc8a40b184a55fe6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 54096e6d1741a7be9f50d4b4f7f0fcabbe880588
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005940"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943360"
 ---
 # <a name="scenario-cluster-creation-fails-with-domainnotfound-error-in-azure-hdinsight"></a>案例：叢集建立失敗，但 Azure HDInsight 發生 DomainNotFound 錯誤
 
@@ -26,7 +23,7 @@ HDI 安全 (企業安全性套件) 叢集建立失敗，並出現 `DomainNotFoun
 
 DNS 設定不正確。
 
-## <a name="resolution"></a>解決方法
+## <a name="resolution"></a>解決方案
 
 部署已加入網域的叢集時，HDI 會在 AAD DS (中建立每個叢集) 的內部使用者名稱和密碼，並將所有叢集節點加入此網域。 使用 Samba 工具即可完成網域加入。 請確保已符合下列必要條件︰
 

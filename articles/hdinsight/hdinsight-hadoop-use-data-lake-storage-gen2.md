@@ -1,19 +1,16 @@
 ---
 title: 搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2
 description: 瞭解如何搭配使用 Azure Data Lake Storage Gen2 與 Azure HDInsight 叢集。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 04/24/2020
-ms.openlocfilehash: cc17cd23ae197db25fed440eb249f2cf069d4859
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2bbfbd2d953ea663453f0092ff366e95f6dd5ea7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744579"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945382"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2
 
@@ -66,19 +63,19 @@ Azure 服務有兩種類型的受控識別：系統指派和使用者指派。 H
 
 您可以透過數種方式從 HDInsight 叢集存取 Data Lake Storage Gen2 中的檔案。
 
-* **使用完整格式名稱** 。 使用這種方法，您可以針對想要存取的檔案提供完整路徑。
+* **使用完整格式名稱**。 使用這種方法，您可以針對想要存取的檔案提供完整路徑。
 
     ```
     abfs://<containername>@<accountname>.dfs.core.windows.net/<file.path>/
     ```
 
-* **使用簡短路徑格式** 。 使用這種方法，您可以利用以下方式取代到叢集根目錄的路徑：
+* **使用簡短路徑格式**。 使用這種方法，您可以利用以下方式取代到叢集根目錄的路徑：
 
     ```
     abfs:///<file.path>/
     ```
 
-* **使用相對路徑** 。 使用這種方法，您可以針對想要存取的檔案，只提供相對路徑。
+* **使用相對路徑**。 使用這種方法，您可以針對想要存取的檔案，只提供相對路徑。
 
     ```
     /<file.path>/

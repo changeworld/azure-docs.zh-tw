@@ -3,7 +3,7 @@ title: 教學課程 - 建立存取套件 - Azure AD 權利管理
 description: 在 Azure Active Directory 權利管理中建立第一個存取套件的逐步教學課程。
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
 ms.date: 09/30/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e8d68643b5cc0002467f738dd60343fb2c42dc6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
-ms.translationtype: HT
+ms.openlocfilehash: 2625b1e0ccc4c3129f412eff144f47d9dc97b961
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631275"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937888"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>教學課程：在 Azure AD 權利管理中建立您的第一個存取套件
 
@@ -119,7 +119,7 @@ ms.locfileid: "97631275"
     ![新增存取套件 - [資源角色] 索引標籤](./media/entitlement-management-access-package-first/resource-roles.png)
 
     >[!IMPORTANT]
-    >新增至存取套件的可指派角色群組，將會使用 **可指派給角色** 的子類型來表示。 如需可指派給 Azure AD 角色的群組詳細資訊，請參閱 Azure Active Directory 中的[建立可指派角色的群組](../roles/groups-create-eligible.md)。 如果您沒有看到想要新增的可指派角色群組，或無法新增，請確定您擁有必要的 Azure AD 角色和權利管理角色，才能執行此作業。 您可能需要要求具有必要角色的人員將資源新增至您的目錄。 如需詳細資訊，請參閱[將資源新增至目錄的必要角色](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)。
+    >新增至存取套件的可指派角色群組，將會使用 **可指派給角色** 的子類型來表示。 如需可指派給 Azure AD 角色的群組詳細資訊，請參閱 Azure Active Directory 中的[建立可指派角色的群組](../roles/groups-create-eligible.md)。 請記住，一旦存取套件目錄中有角色可指派的群組之後，能夠在權利管理中管理的系統管理使用者（包括全域管理員、使用者系統管理員和目錄的目錄擁有者）將能夠控制目錄中的存取套件，讓使用者可以選擇可新增至這些群組的人員。 如果您沒有看到想要新增的可指派角色群組，或無法新增，請確定您擁有必要的 Azure AD 角色和權利管理角色，才能執行此作業。 您可能需要要求具有必要角色的人員將資源新增至您的目錄。 如需詳細資訊，請參閱[將資源新增至目錄的必要角色](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)。
 
     >[!NOTE]
     > 使用[動態群組](../enterprise-users/groups-create-rule.md)時，您不會看到擁有者以外的其他任何可用角色。 這是原廠設定。

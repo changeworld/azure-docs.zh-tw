@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 09/10/2020
-ms.openlocfilehash: 774b605859df41e0b71ee82c38a6b08bdf5b9c49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5050958f01743ff3c6fdcdecfee3067b1d2073e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629806"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934260"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>將您的 Azure 認知搜尋服務移至另一個 Azure 區域
 
@@ -23,7 +23,7 @@ ms.locfileid: "91629806"
 > [!NOTE]
 > 在 Azure 入口網站中，所有服務都有 [ **匯出範本** ] 命令。 在 Azure 認知搜尋的情況下，此命令會產生服務的基本定義 (名稱、位置、層級、複本和分割區計數) ，但無法辨識您服務的內容，也不會對金鑰、角色或記錄檔執行。 雖然命令存在，但不建議您使用它來移動搜尋服務。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 + 確定目的地區域中支援您帳戶所使用的服務和功能。
 
@@ -77,7 +77,7 @@ In this article, you'll learn how to:
 
 - Ensure that the services and features that your account uses are supported in the target region.
 
-- For preview features, ensure that your subscription is whitelisted for the target region. For more information about preview features, see [knowledge stores](./knowledge-store-concept-intro.md), [incremental enrichment](./cognitive-search-incremental-indexing-conceptual.md), and [private endpoint](./service-create-private-endpoint.md).
+- For preview features, ensure that your subscription is allowlisted for the target region. For more information about preview features, see [knowledge stores](./knowledge-store-concept-intro.md), [incremental enrichment](./cognitive-search-incremental-indexing-conceptual.md), and [private endpoint](./service-create-private-endpoint.md).
 
 ## Assessment and planning
 

@@ -6,12 +6,12 @@ author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
 ms.date: 11/01/2018
-ms.openlocfilehash: bb5caafea944d21547a904b99f9043aef63a6ffa
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: df3ed451776f30e8b7c13b95618f1a7f0c7688db
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656461"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937548"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk-not-recommended"></a>如何使用 Micrometer 搭配 Azure 應用程式 Insights JAVA SDK (不建議使用) 
 
@@ -281,4 +281,4 @@ Micrometer 應用程式監視會測量以 JVM 為基礎之應用程式程式碼�
 ## <a name="next-steps"></a>後續步驟
 
 * 若要深入瞭解 Micrometer，請參閱官方 [Micrometer 檔](https://micrometer.io/docs)。
-* 若要深入瞭解 Azure 上的春季，請參閱 [azure 上的官方春季檔](/java/azure/spring-framework/?view=azure-java-stable)。
+* 若要深入瞭解 Azure 上的春季，請參閱 [azure 上的官方春季檔](/java/azure/spring-framework/)。

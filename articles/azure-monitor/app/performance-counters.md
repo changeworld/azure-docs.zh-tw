@@ -4,12 +4,12 @@ description: 監視 Application Insights 中的系統和自訂 .NET 效能計數
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4da8aef69b6a83c17fa8a20a80b2c485378e0aef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f772b129e20fbaaade7305d84064a713dd734199
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88918514"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937386"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 中的系統效能計數器
 
@@ -41,7 +41,7 @@ Windows 提供多種[效能計數器](/windows/desktop/perfctrs/about-performanc
 
     `Get-Counter -ListSet *`
 
-    (請參閱 [`Get-Counter`](/powershell/module/microsoft.powershell.diagnostics/get-counter?view=powershell-5.1)。)
+    (請參閱 [`Get-Counter`](/powershell/module/microsoft.powershell.diagnostics/get-counter)。)
 2. 開啟 ApplicationInsights.config。
 
    * 如果您已在開發期間將 Application Insights 新增至應用程式，請編輯專案中的 ApplicationInsights.config，然後將它重新部署至伺服器。

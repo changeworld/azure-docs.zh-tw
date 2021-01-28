@@ -1,19 +1,16 @@
 ---
 title: 教學課程：使用 Power BI 分析 Azure HDInsight Apache Spark 資料
 description: 教學課程 - 使用 Microsoft Power BI 將儲存在 HDInsight 叢集中的 Apache Spark 資料視覺化
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc,seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 1f56bb5e3ed8c953b67f1e88fc16846accaed995
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
-ms.translationtype: HT
+ms.openlocfilehash: 285c6c05a1a216303ee9d8019093c963cad60aa0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821276"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946485"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>教學課程：在 HDInsight 中使用 Power BI 來分析 Apache Spark 資料
 

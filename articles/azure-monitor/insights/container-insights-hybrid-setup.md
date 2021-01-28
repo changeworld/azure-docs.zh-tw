@@ -3,12 +3,12 @@ title: 使用適用于容器的 Azure 監視器來設定混合式 Kubernetes 叢
 description: 本文說明如何設定容器的 Azure 監視器，以監視 Azure Stack 或其他環境上託管的 Kubernetes 叢集。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d481af07013c0a5b4c5a381527c6f555400a2559
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 12901b1d2d7edd85fbe1650600856d09105c15b2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890457"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936416"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>使用容器的 Azure 監視器設定混合式 Kubernetes 叢集
 
@@ -21,7 +21,7 @@ ms.locfileid: "92890457"
 - 環境：
 
     - Kubernetes 內部部署
-    - Azure 和 Azure Stack 上的 AKS 引擎。 如需詳細資訊，請參閱 [Azure Stack 上的 AKS 引擎](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908&preserve-view=true)
+    - Azure 和 Azure Stack 上的 AKS 引擎。 如需詳細資訊，請參閱 [Azure Stack 上的 AKS 引擎](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview)
     - [OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) 第4版和更高版本、內部部署或其他雲端環境。
 
 - Kubernetes 和支援原則的版本與 [支援的 AKS](../../aks/supported-kubernetes-versions.md)版本相同。
@@ -92,7 +92,7 @@ ms.locfileid: "92890457"
 - **workspaceResourceId** -Log Analytics 工作區的完整資源識別碼。
 - **>workspaceregion** -工作區建立所在的區域，在從 Azure 入口網站流覽時，也稱為工作區屬性中的 **位置** 。
 
-若要先識別containerSolutionParams.json 檔案中參數值所需之 Log Analytics 工作區的完整資源識別碼 `workspaceResourceId` ，請執行下列步驟，然後執行 PowerShell Cmdlet 或 Azure CLI 命令以新增解決方案。 **containerSolutionParams.json**
+若要先識別containerSolutionParams.json 檔案中參數值所需之 Log Analytics 工作區的完整資源識別碼 `workspaceResourceId` ，請執行下列步驟，然後執行 PowerShell Cmdlet 或 Azure CLI 命令以新增解決方案。 
 
 1. 使用下列命令，列出您有權存取的所有訂用帳戶：
 
@@ -202,7 +202,7 @@ ms.locfileid: "92890457"
     }
     ```
 
-7. 使用您在步驟3中複製的值來編輯 **workspaceResourceId** 的值，並在執行 Azure CLI 命令 [az monitor log analytics workspace show](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list&preserve-view=true)之後，針對 **>workspaceregion** 複製 **區域** 值。
+7. 使用您在步驟3中複製的值來編輯 **workspaceResourceId** 的值，並在執行 Azure CLI 命令 [az monitor log analytics workspace show](/cli/azure/monitor/log-analytics/workspace#az-monitor-log-analytics-workspace-list&preserve-view=true)之後，針對 **>workspaceregion** 複製 **區域** 值。
 
 8. 將此檔案儲存為本機資料夾的 containerSolutionParams.js。
 
@@ -258,7 +258,7 @@ ms.locfileid: "92890457"
 
     `az monitor log-analytics workspace list --resource-group <resourceGroupName>`
 
-    在輸出中，尋找功能變數名稱底下的工作區名稱 **，然後** 在 [ **customerID** ] 欄位下複製該 Log Analytics 工作區的工作區識別碼。
+    在輸出中，尋找功能變數名稱底下的工作區名稱 **，然後** 在 [ **customerID**] 欄位下複製該 Log Analytics 工作區的工作區識別碼。
 
 2. 執行下列命令，以識別工作區的主要金鑰：
 
@@ -349,7 +349,7 @@ Proxy 設定值具有下列語法： `[protocol://][user:password@]proxyhost[:po
 
 例如：`omsagent.proxy=http://user01:password@proxy01.contoso.com:8080`
 
-如果您將通訊協定指定為 **HTTP** ，則會使用 SSL/TLS 安全連線來建立 HTTP 要求。 您的 proxy 伺服器必須支援 SSL/TLS 通訊協定。
+如果您將通訊協定指定為 **HTTP**，則會使用 SSL/TLS 安全連線來建立 HTTP 要求。 您的 proxy 伺服器必須支援 SSL/TLS 通訊協定。
 
 ## <a name="troubleshooting"></a>疑難排解
 

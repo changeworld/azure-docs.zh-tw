@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight 的企業安全性套件
 description: 瞭解 Azure HDInsight 中的企業安全性套件元件和版本。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: d77d9877fbc49fbb147965b30e299b75b60ccce3
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 442c21c92ef2124ebef1889f99a8d2b806c8ce10
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546648"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943309"
 ---
 # <a name="enterprise-security-package-for-azure-hdinsight"></a>Azure HDInsight 的企業安全性套件
 

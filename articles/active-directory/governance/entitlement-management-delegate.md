@@ -3,7 +3,7 @@ title: 權利管理中的委派和角色-Azure AD
 description: 瞭解如何將存取治理從 IT 系統管理員委派給部門經理和專案經理，讓他們可以自行管理存取權。
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 12/23/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cf3784cc5f6014b04b4668517faf3f319ce55d5
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 7a5812d4dbbd1a63b16d5bee77bb018ea18dd1d6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746672"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937687"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Azure AD 權利管理中的委派和角色
 
@@ -65,12 +65,12 @@ ms.locfileid: "97746672"
 
 委派之後，行銷部門可能會有類似下表的角色。
 
-| User | 作業角色 | Azure AD 角色 | 權利管理角色 |
+| 使用者 | 作業角色 | Azure AD 角色 | 權利管理角色 |
 | --- | --- | --- | --- |
 | 漢娜 | IT 管理員 | 全域管理員或使用者管理員 |  |
-| Mamta | 行銷經理 | User | 目錄建立者和目錄擁有者 |
-| Bob | 行銷潛在客戶 | User | 目錄擁有者 |
-| 潔西嘉 | 行銷專案經理 | User | 存取套件管理員 |
+| Mamta | 行銷經理 | 使用者 | 目錄建立者和目錄擁有者 |
+| Bob | 行銷潛在客戶 | 使用者 | 目錄擁有者 |
+| 潔西嘉 | 行銷專案經理 | 使用者 | 存取套件管理員 |
 
 ## <a name="entitlement-management-roles"></a>權利管理角色
 
@@ -92,7 +92,7 @@ ms.locfileid: "97746672"
 
 下表列出權利管理角色可執行檔工作。
 
-| 工作 | Admin | 目錄建立者 | 目錄擁有者 | 存取套件管理員 | 存取套件指派管理員 |
+| Task | 管理 | 目錄建立者 | 目錄擁有者 | 存取套件管理員 | 存取套件指派管理員 |
 | --- | :---: | :---: | :---: | :---: | :---: |
 | [委派給目錄建立者](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |  |
 | [新增已連線的組織](entitlement-management-organization.md) | :heavy_check_mark: |  |  |  |  |
@@ -118,7 +118,7 @@ ms.locfileid: "97746672"
 
 ## <a name="required-roles-to-add-resources-to-a-catalog"></a>將資源新增至目錄的必要角色
 
-全域管理員可以在目錄中，新增或移除 (雲端建立的安全性群組或雲端建立的 Microsoft 365 群組) 、應用程式或 SharePoint Online 網站的任何群組。 使用者系統管理員可以在目錄中新增或移除任何群組或應用程式，但設定為可指派給目錄角色的群組除外。
+全域管理員可以在目錄中，新增或移除 (雲端建立的安全性群組或雲端建立的 Microsoft 365 群組) 、應用程式或 SharePoint Online 網站的任何群組。 使用者系統管理員可以在目錄中新增或移除任何群組或應用程式，但設定為可指派給目錄角色的群組除外。 請注意，使用者系統管理員可以管理目錄中的存取套件，其中包含設定為可指派給目錄角色的群組。
 
 對於非全域管理員或使用者系統管理員的使用者，若要將群組、應用程式或 SharePoint Online 網站新增至目錄 *，該使用者必須具有必要* 的 Azure AD 目錄角色和目錄擁有者權利管理角色。 下表列出將資源新增至目錄所需的角色組合。 若要移除目錄中的資源，您必須擁有相同的角色。
 
@@ -132,7 +132,7 @@ ms.locfileid: "97746672"
 | [SharePoint 管理員](../roles/permissions-reference.md) | 目錄擁有者 |  | :heavy_check_mark: |  | :heavy_check_mark: |
 | [應用程式系統管理員](../roles/permissions-reference.md) | 目錄擁有者 |  |  | :heavy_check_mark: |  |
 | [雲端應用程式管理員](../roles/permissions-reference.md) | 目錄擁有者 |  |  | :heavy_check_mark: |  |
-| User | 目錄擁有者 | 只有當群組擁有者 | 只有當群組擁有者 | 只有在應用程式擁有者 |  |
+| 使用者 | 目錄擁有者 | 只有當群組擁有者 | 只有當群組擁有者 | 只有在應用程式擁有者 |  |
 
 > [!NOTE]
 > 如果使用者新增安全性群組或 Microsoft 365 群組，則群組將無法以角色指派。 如果使用者在建立存取套件時新增角色可指派的群組，則他們也必須是該角色可指派群組的擁有者。 如需詳細資訊，請參閱 [在 Azure Active Directory 中建立可指派角色的群組](../roles/groups-create-eligible.md)。

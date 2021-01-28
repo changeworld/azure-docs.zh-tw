@@ -3,16 +3,13 @@ title: Apache Hive 中的聯結會導致 OutOfMemory 錯誤-Azure HDInsight
 description: 處理 OutOfMemory 錯誤「GC 額外負荷限制超過錯誤」
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 07/30/2019
-ms.openlocfilehash: c227758e31b3b17768b8140475872245b2f34e52
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0c396cde38d8cba8e1f3eaf8527429647868a0c8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532946"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935946"
 ---
 # <a name="scenario-joins-in-apache-hive-leads-to-an-outofmemory-error-in-azure-hdinsight"></a>案例： Apache Hive 中的聯結會導致 Azure HDInsight 中的 OutOfMemory 錯誤
 
@@ -38,7 +35,7 @@ Caused by: java.lang.OutOfMemoryError: GC overhead limit exceeded error.
 hive.auto.convert.join=false
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如果設定此值未解決您的問題，請流覽下列其中一項 .。。
 

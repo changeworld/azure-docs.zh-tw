@@ -1,5 +1,5 @@
 ---
-title: 如何搭配 .NET 使用 Azure 媒體服務編碼器標準產生縮圖
+title: 使用 Media Services 編碼器 Standard 搭配 .NET 來產生縮圖
 description: 本文說明如何使用 .NET 來編碼資產，並同時使用媒體編碼器標準產生縮圖。
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 887ac4197321b4015eff7cc839abd8f57ae67760
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: fe051ceec43ec919ddf92a4d7f7e4bfab0b351f5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512013"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938757"
 ---
 # <a name="how-to-generate-thumbnails-using-encoder-standard-with-net"></a>如何使用搭配 .NET 的編碼器標準產生縮圖
 

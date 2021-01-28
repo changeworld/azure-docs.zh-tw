@@ -1,19 +1,17 @@
 ---
 title: 使用企業安全性套件的 Azure HDInsight 架構
 description: 瞭解如何使用企業安全性套件規劃 Azure HDInsight 安全性。
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: omidm
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/11/2020
-ms.openlocfilehash: 86d951089e4247d9b959476c812b98e170d92bd8
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 404cd8652a4daf602f3326696ef5df2c3a23a548
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547974"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943325"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>在 HDInsight 中使用企業安全性套件
 
@@ -111,7 +109,7 @@ HDInsight 目前僅支援以 Azure AD DS 作為主要網域控制站，讓叢集
         -refObjectID $policy.ID
    ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [設定具有 ESP 的 HDInsight 叢集](apache-domain-joined-configure-using-azure-adds.md)
 - [為具有 ESP 的 HDInsight 叢集設定 Apache Hive 原則](apache-domain-joined-run-hive.md)

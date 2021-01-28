@@ -1,19 +1,16 @@
 ---
 title: 使用 Azure 入口網站管理 HDInsight 中的 Apache Hadoop 叢集
 description: 瞭解如何使用 Azure 入口網站來建立和管理 Azure HDInsight 叢集。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
-ms.openlocfilehash: 7c644583e994e51f11bdf7991755a6ea94b01e76
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5d308bfbe605e5ec3bed3bf5d6506ccafc53836e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012797"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942824"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 入口網站管理 HDInsight 中的 Apache Hadoop 叢集
 
@@ -21,7 +18,7 @@ ms.locfileid: "96012797"
 
 您可以使用 [Azure 入口網站](https://portal.azure.com)，在 Azure HDInsight 中管理 [Apache Hadoop](https://hadoop.apache.org/) 叢集。 使用上述的索引標籤選取器，以取得使用其他工具管理 HDInsight 中 Hadoop 叢集的詳細資訊。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 HDInsight 中現有的 Apache Hadoop 叢集。  請參閱 [使用 Azure 入口網站在 HDInsight 中建立以 Linux 為基礎的叢集](hdinsight-hadoop-create-linux-clusters-portal.md)。
 
@@ -63,7 +60,7 @@ HDInsight 中現有的 Apache Hadoop 叢集。  請參閱 [使用 Azure 入口�
     |快速入門|顯示可協助您開始使用 HDInsight 的資訊。|
     |工具|HDInsight 相關工具的說明資訊。|
 
-  - **[設定] 功能表**  
+  - **設定功能表**  
 
     | 項目| 描述 |
     |---|---|
@@ -112,7 +109,7 @@ HDInsight 中現有的 Apache Hadoop 叢集。  請參閱 [使用 Azure 入口�
 |作業系統|**Windows** 或 **Linux**。|
 |TYPE|Hadoop、HBase、Storm、Spark。|
 |版本|請參閱 [HDInsight 版本](hdinsight-component-versioning.md)。|
-|最小 TLS 版本|TLS 版本。|
+|TLS 的最低版本|TLS 版本。|
 |訂用帳戶|訂用帳戶名稱。|
 |預設資料來源|預設叢集檔案系統。|
 |背景工作節點大小|背景工作節點的選取 VM 大小。|

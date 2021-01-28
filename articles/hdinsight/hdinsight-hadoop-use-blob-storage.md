@@ -1,19 +1,16 @@
 ---
 title: 從 HDFS 相容的 Azure 儲存體查詢資料 - Azure HDInsight
 description: 了解如何從 Azure 儲存體和 Azure Data Lake Storage 查詢資料以儲存分析的結果。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: ead9b775b8c61d0d89abd4821bef2b1aaaea0d76
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: cedc0ff1b3c2aa64f32445eabc800748a753981d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547430"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945429"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>搭配 Azure HDInsight 叢集使用 Azure 儲存體
 
@@ -44,23 +41,23 @@ Apache Hadoop 支援預設檔案系統的概念。 預設檔案系統意指預�
 
 ## <a name="access-files-from-within-cluster"></a>從叢集存取檔案
 
-有數種方式可讓您從 HDInsight 叢集存取 Data Lake Storage 中的檔案。 URI 配置提供未加密存取 (使用 *wasb:* 首碼) 和 TLS 加密存取 (使用 *wasbs* )。 建議盡可能使用 wasbs  ，即使存取 Azure 中相同區域內的資料也一樣。
+有數種方式可讓您從 HDInsight 叢集存取 Data Lake Storage 中的檔案。 URI 配置提供未加密存取 (使用 *wasb:* 首碼) 和 TLS 加密存取 (使用 *wasbs*)。 建議盡可能使用 wasbs  ，即使存取 Azure 中相同區域內的資料也一樣。
 
-* **使用完整格式名稱** 。 使用這種方法，您可以針對想要存取的檔案提供完整路徑。
+* **使用完整格式名稱**。 使用這種方法，您可以針對想要存取的檔案提供完整路徑。
 
     ```
     wasb://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     wasbs://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     ```
 
-* **使用簡短路徑格式** 。 使用這種方法，您可以利用以下方式取代到叢集根目錄的路徑：
+* **使用簡短路徑格式**。 使用這種方法，您可以利用以下方式取代到叢集根目錄的路徑：
 
     ```
     wasb:///<file.path>/
     wasbs:///<file.path>/
     ```
 
-* **使用相對路徑** 。 使用這種方法，您可以針對想要存取的檔案，只提供相對路徑。
+* **使用相對路徑**。 使用這種方法，您可以針對想要存取的檔案，只提供相對路徑。
 
     ```
     /<file.path>/
@@ -141,11 +138,11 @@ Microsoft 提供下列工具來使用 Azure 儲存體：
 
 * 若要識別已設定之預設存放區的完整路徑，請瀏覽至：
 
-    **HDFS** > **Configs** ，並在篩選輸入方塊中輸入 `fs.defaultFS`。
+    **HDFS** > **Configs**，並在篩選輸入方塊中輸入 `fs.defaultFS`。
 
 * 若要檢查 wasb 儲存體是否設定為次要儲存體，請瀏覽至：
 
-    **HDFS** > **Configs** ，並在篩選輸入方塊中輸入 `blob.core.windows.net`。
+    **HDFS** > **Configs**，並在篩選輸入方塊中輸入 `blob.core.windows.net`。
 
 若要使用 Ambari REST API 取得路徑，請參閱[取得預設儲存體](./hdinsight-hadoop-manage-ambari-rest-api.md#get-the-default-storage)。
 
