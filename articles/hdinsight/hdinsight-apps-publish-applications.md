@@ -1,19 +1,16 @@
 ---
 title: 發佈 Azure HDInsight 應用程式
 description: 了解如何建立 HDInsight 應用程式，然後將其發佈到 Azure Marketplace。
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 05/14/2018
-ms.author: hrasheed
-ms.openlocfilehash: ca84cb6cdd6b47976eadbc5298701a46fe677426
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 73d291fd76d9adbe2a095406b56bd879d497d3b5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96007132"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942650"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>將 HDInsight 應用程式發佈到 Azure Marketplace
 您可以在以 Linux 為基礎的 HDInsight 叢集上安裝 Azure HDInsight 應用程式。 在此文章中，您會學習如何將 HDInsight 應用程式發佈到 Azure Marketplace。 如需發佈到 Azure Marketplace 的一般資訊，請參閱[將供應項目發佈到 Azure Marketplace](../marketplace/overview.md)。
@@ -25,7 +22,7 @@ HDInsight 應用程式會使用「自備授權 (BYOL)」模型。 在 BYOL 案�
 * [安裝 HDInsight 應用程式](hdinsight-apps-install-applications.md)。 了解如何在您的叢集上安裝 HDInsight 應用程式。
 * [安裝自訂 HDInsight 應用程式](hdinsight-apps-install-custom-applications.md)。 了解如何安裝和測試自訂 HDInsight 應用程式。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 若要將自訂應用程式提交至 Marketplace，首先，[建立並測試您的自訂應用程式](hdinsight-apps-install-custom-applications.md)。
 
 您還必須註冊開發人員帳戶。 如需詳細資訊，請參閱[將供應項目發佈到 Azure Marketplace](../marketplace/overview.md) 和[建立 Microsoft 開發人員帳戶](../marketplace/overview.md)。

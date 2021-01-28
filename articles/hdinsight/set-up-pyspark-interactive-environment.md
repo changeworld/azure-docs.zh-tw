@@ -2,19 +2,16 @@
 title: 使用 Azure HDInsight 工具 PySpark 互動式環境
 description: 了解如何使用適用於 Visual Studio Code 的 Azure HDInsight 工具來建立及提交查詢和指令碼。
 keywords: VScode,Azure HDInsight 工具,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,互動式 Hive,互動式查詢
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/23/2020
-ms.openlocfilehash: 7cf86824bef5b6f521df0f0446d5337e2b7c418a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 337a9f3f2ea25e5a4d4fa4204a0f3fa4dcc9369b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130131"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940638"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>設定 Visual Studio Code 的 PySpark 互動式環境
 
@@ -31,7 +28,7 @@ ms.locfileid: "93130131"
      > [!NOTE]
      > 建議您手動安裝 Python，而不是使用 macOS 預設版本。
 
-2. 執行下列命令來安裝 **virtualenv** 。
+2. 執行下列命令來安裝 **virtualenv**。
 
    ```bash
    pip install virtualenv
@@ -59,7 +56,7 @@ sudo apt-get install python-dev
 
 * HDInsight for VS Code：[影片](https://go.microsoft.com/fwlink/?linkid=858706)
 
-### <a name="tools-and-extensions"></a>工具和擴充功能
+### <a name="tools-and-extensions"></a>工具和延伸模組
 
 * [使用適用於 Visual Studio Code 的 Azure HDInsight 工具](hdinsight-for-vscode.md)
 * [使用 Azure Toolkit for IntelliJ 來建立和提交 Apache Spark Scala 應用程式](spark/apache-spark-intellij-tool-plugin.md)

@@ -1,18 +1,15 @@
 ---
 title: 無法讀取 Azure HDInsight 中的 Apache Yarn 記錄檔
 description: 針對與 Azure HDInsight 叢集互動時的問題進行疑難排解的步驟和可能的解決方式。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
-ms.openlocfilehash: b6bd7d807916ef53177b11df6ed9ce0b22f530be
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 02a79de8aee169f5f702d5fae67194c62363e8c4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533337"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943044"
 ---
 # <a name="scenario-unable-to-read-apache-yarn-log-in-azure-hdinsight"></a>案例：無法讀取 Azure HDInsight 中的 Apache Yarn 記錄檔
 
@@ -34,7 +31,7 @@ Apache Yarn 記錄會匯總成格式，檔案剖析器不支援此記錄檔 `Ind
 
 1. 從網頁瀏覽器瀏覽至 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是叢集的名稱。
 
-1. 從 Ambari UI 中，流覽至 **YARN**  >  **Configs**  >  **advanced advanced** advanced  >  **YARN-site** 。
+1. 從 Ambari UI 中，流覽至 **YARN**  >    >  **advanced advanced** advanced  >  **YARN-site**。
 
 1. 若為 WASB 儲存體：的預設值 `yarn.log-aggregation.file-formats` 為 `IndexedFormat,TFile` 。 將值變更為 `TFile` 。
 

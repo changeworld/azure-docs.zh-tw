@@ -4,12 +4,12 @@ description: 瞭解可將程式碼部署到 Azure Functions 的不同方式。
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 51a76adcf25d5d1bc4025eab12073df0886fde3d
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 4a65a00c28a20c9381d3dcc6fd7545137528d5c0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681825"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943633"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions 中的部署技術
 
@@ -106,7 +106,7 @@ Azure Functions 可以在 zip 部署之後，自動對它所收到的程式碼�
 
 您可以使用外部套件 URL 來參考包含函式應用程式 ( .zip) 檔案的遠端封裝。 檔案是從提供的 URL 下載，而應用程式則是 [從封裝](run-functions-from-deployment-package.md) 模式執行。
 
->__使用方式：__ 新增 `WEBSITE_RUN_FROM_PACKAGE` 至您的應用程式設定。 這項設定的值應該是 URL (您要執行) 的特定套件檔案的位置。 您可以 [在入口網站中](functions-how-to-use-azure-function-app-settings.md#settings) 或 [使用 Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)來新增設定。
+>__使用方式：__ 新增 [`WEBSITE_RUN_FROM_PACKAGE`](functions-app-settings.md#website_run_from_package) 至您的應用程式設定。 這項設定的值應該是 URL (您要執行) 的特定套件檔案的位置。 您可以 [在入口網站中](functions-how-to-use-azure-function-app-settings.md#settings) 或 [使用 Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)來新增設定。
 >
 >如果您使用 Azure Blob 儲存體，請使用具有共用存取簽章的私人容器 [ (SAS) ](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) 來提供封裝的存取權。 應用程式每次重新開機時，都會提取內容的複本。 在應用程式的存留期內，您的參考必須有效。
 
@@ -118,7 +118,7 @@ Azure Functions 可以在 zip 部署之後，自動對它所收到的程式碼�
 
 >__使用方式：__ 使用您最愛的用戶端工具部署： [Visual Studio Code](functions-develop-vs-code.md#publish-to-azure)、 [Visual Studio](functions-develop-vs.md#publish-to-azure)，或從命令列使用 [Azure Functions Core Tools](functions-run-local.md#project-file-deployment)。 根據預設，這些工具會使用 zip 部署並 [從封裝執行](run-functions-from-deployment-package.md)。 Core Tools 和 Visual Studio Code 擴充功能都會在部署至 Linux 時啟用 [遠端組建](#remote-build) 。 若要手動將 .zip 檔案部署至您的函式應用程式，請遵循 [從 .zip 檔案或 URL 部署](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)的指示。
 
->當您使用 zip deploy 進行部署時，您可以將應用程式設定為 [從封裝執行](run-functions-from-deployment-package.md)。 若要從封裝執行，請將 `WEBSITE_RUN_FROM_PACKAGE` 應用程式設定值設定為 `1` 。 建議您進行 zip 部署。 它可為您的應用程式產生更快的載入時間，而且這是 VS Code、Visual Studio 和 Azure CLI 的預設值。
+>當您使用 zip deploy 進行部署時，您可以將應用程式設定為 [從封裝執行](run-functions-from-deployment-package.md)。 若要從封裝執行，請將 [ `WEBSITE_RUN_FROM_PACKAGE` ] (函式-應用程式設定. md # website_run_from_package 應用程式設定值設定為 `1` 。 建議您進行 zip 部署。 它可為您的應用程式產生更快的載入時間，而且這是 VS Code、Visual Studio 和 Azure CLI 的預設值。
 
 >__使用時機：__ Zip deploy 是建議的 Azure Functions 部署技術。
 
@@ -181,7 +181,7 @@ Web Deploy 套件，並將您的 Windows 應用程式部署到任何 IIS 伺服�
 
 在以入口網站為基礎的編輯器中，您可以直接編輯函式應用程式中的檔案， (基本上是在每次儲存變更) 時部署。
 
->__使用方式：__ 若要能夠在 Azure 入口網站中編輯您的函式，您必須 [在入口網站中建立您的函數](./functions-get-started.md)。 若要保留單一真實來源，使用任何其他部署方法可讓您的函式變成隻讀，並防止繼續進行入口網站編輯。 若要返回您可以在 Azure 入口網站中編輯檔案的狀態，您可以手動將編輯模式切換回， `Read/Write` 並移除任何部署相關的應用程式設定， (例如 `WEBSITE_RUN_FROM_PACKAGE`) 。
+>__使用方式：__ 若要能夠在 Azure 入口網站中編輯您的函式，您必須 [在入口網站中建立您的函數](./functions-get-started.md)。 若要保留單一真實來源，使用任何其他部署方法可讓您的函式變成隻讀，並防止繼續進行入口網站編輯。 若要返回您可以在 Azure 入口網站中編輯檔案的狀態，您可以手動將編輯模式切換回， `Read/Write` 並移除任何部署相關的應用程式設定， (像這樣 [`WEBSITE_RUN_FROM_PACKAGE`](functions-app-settings.md#website_run_from_package) 。
 
 >__使用時機：__ 入口網站是開始使用 Azure Functions 的好方法。 針對更密集的開發工作，建議您使用下列其中一種用戶端工具：
 >
@@ -191,7 +191,7 @@ Web Deploy 套件，並將您的 Windows 應用程式部署到任何 IIS 伺服�
 
 下表顯示支援入口網站編輯的作業系統和語言：
 
-| 語言 | Windows 耗用量 | Windows Premium | Windows 專用 | Linux 使用量 | Linux Premium | Linux 專用 |
+| Language | Windows 耗用量 | Windows Premium | Windows 專用 | Linux 使用量 | Linux Premium | Linux 專用 |
 |-|:-----------------: |:----------------:|:-----------------:|:-----------------:|:-------------:|:---------------:|
 | C# | | | | | |
 | C# 指令碼 |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|
@@ -214,7 +214,7 @@ Web Deploy 套件，並將您的 Windows 應用程式部署到任何 IIS 伺服�
 
 當您將函數應用程式部署至 Azure 時，您可以部署到個別的部署位置，而不是直接部署到生產環境。 如需部署位置的詳細資訊，請參閱 [Azure Functions 部署](functions-deployment-slots.md) 位置檔以取得詳細資料。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解如何部署函數應用程式，請參閱下列文章：
 

@@ -4,16 +4,15 @@ titleSuffix: Azure HDInsight
 description: 針對 Azure HDInsight 中的叢集建議程式建議優化 Apache HBase。
 author: ramkrish86
 ms.author: ramvasu
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/03/2021
-ms.openlocfilehash: 73af7e2a1920e6cfdad9245d965908255ef95a1f
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: acb7a6aeb4084949be3b0ad40e770a414a13ab6d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964587"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943008"
 ---
 # <a name="apache-hbase-advisories-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache HBase 諮詢
 

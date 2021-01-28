@@ -2,25 +2,23 @@
 title: 使用 IntelliJ 的 Azure 工具組來 Debug Spark 作業 (預覽版) -HDInsight
 description: 在 Azure Toolkit for IntelliJ 中使用 HDInsight 工具來對應用程式進行偵錯工具的指引
 keywords: 遠端偵錯 intellij, 進行 intellij 遠端偵錯, ssh, intellij, hdinsight, 偵錯 intellij, 偵錯
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: c8ce1a66d6dbf215c3d49740f2aec47ab01f7591
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 5abbb26e7582d8ddabb73f3a178cf6d87e24db21
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822313"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942545"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>使用 Azure Toolkit for IntelliJ (preview) 的 spark 作業無法進行調試
 
 本文提供逐步指引，說明如何使用 [Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij) 中的 HDInsight 工具來執行 **Spark 失敗的調試** 程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * [Oracle Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。 本教學課程使用 Java 8.0.202 版。
   

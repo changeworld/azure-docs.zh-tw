@@ -1,26 +1,23 @@
 ---
 title: 鏡像 Apache Kafka 主題 - Azure HDInsight
 description: 了解如何使用 Apache Kafka 的鏡像功能，藉由將主題鏡像處理至次要叢集來維護 HDInsight 叢集上的 Kafka 複本。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: d4a2be6719fdaaa9dc859df21cc030478e474210
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c2fce6d4ee95a56cc087d50184fcd69ac113620f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428248"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940852"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>使用 MirrorMaker，透過 HDInsight 上的 Kafka 來複寫 Apache Kafka 主題
 
 了解如何使用 Apache Kafka 的鏡像功能，將主題複寫至次要叢集。 鏡像功能可以當作連續程序執行，或間歇地做為在叢集間移轉資料的方法。
 
 > [!NOTE]
-> 本文包含「詞彙 *白名單*」的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
+> 本文包含字詞「*允許清單*」的參考 (Microsoft 已不再使用該字詞)。 從軟體中移除該字詞時，我們也會將其從本文中移除。
 
 在此範例中，會使用鏡像來複寫兩個 HDInsight 叢集之間的主題。 這兩個叢集都位於不同資料中心的不同虛擬網路中。
 
@@ -71,7 +68,7 @@ ms.locfileid: "92428248"
     | kafka-主要-rg | 美國中部 |
     | kafka-次要-rg | 美國中北部 |
 
-1. 在**kafka**中建立新的虛擬網路**kafka-主要 vnet** 。 保留預設設定。
+1. 在 **kafka** 中建立新的虛擬網路 **kafka-主要 vnet** 。 保留預設設定。
 1. 在 kafka 中建立新的虛擬網路 **kafka-次要 vnet** - **次要-rg**，以及預設設定。
 
 1. 建立兩個新的 Kafka 叢集：
@@ -84,7 +81,7 @@ ms.locfileid: "92428248"
 1. 建立虛擬網路對等互連。 此步驟會建立兩個對等互連：一個從 **kafka-主要 vnet** 到 **kafka-次要 vnet** ，另一個則是從 **kafka-次要** vnet 再到 **kafka-主要 vnet**。
     1. 選取 [ **kafka-主要 vnet** 虛擬網路]。
     1. 在 [**設定**] 底下選取 [**對等互連**]。
-    1. 選取 [新增]  。
+    1. 選取 [新增]。
     1. 在 [ **新增對等互連** ] 畫面上，輸入詳細資料，如下列螢幕擷取畫面所示。
 
         ![HDInsight Kafka 新增 vnet 對等互連](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
@@ -107,14 +104,14 @@ ms.locfileid: "92428248"
 
 1. 在 [ **儲存** 設定] 畫面上輸入附注，然後按一下 [ **儲存**]。
 1. 如果系統提示您設定警告，請按一下 [ **仍要繼續**]。
-1. 選取 [儲存設定**變更**] 上的 **[確定]** 。
-1. **Restart**  >  在 [**需要重新**啟動] 通知中選取 [重新開機**重新開機]** 。 選取 [ **確認全部重新開機**]。
+1. 選取 [儲存設定 **變更**] 上的 **[確定]** 。
+1.   >  在 [**需要重新** 啟動] 通知中選取 [重新開機 **重新開機]** 。 選取 [ **確認全部重新開機**]。
 
     ![Apache Ambari 重新開機所有受影響的](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
 ### <a name="configure-kafka-to-listen-on-all-network-interfaces"></a>將 Kafka 設定為在所有網路介面上接聽。
     
-1. 停留**在 [** **服務**Kafka] 下的 [選項] 索引標籤  >  ** **。 在 [ **Kafka Broker** ] 區段中 **，將 [接聽** 程式] 屬性設定為 `PLAINTEXT://0.0.0.0:9092` 。
+1. 停留 **在 [** **服務** Kafka] 下的 [選項] 索引標籤  >  ****。 在 [ **Kafka Broker** ] 區段中 **，將 [接聽** 程式] 屬性設定為 `PLAINTEXT://0.0.0.0:9092` 。
 1. 選取 [儲存]。
 1. 選取 [ **重新開機**]，然後 **確認 [全部重新開機**]。
 
@@ -125,7 +122,7 @@ ms.locfileid: "92428248"
 
     ![Apache Ambari view node ip 位址](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
 
-1. 針對第二個叢集 kafka 重複上述三個步驟 **-次要**叢集：設定 IP 公告、設定接聽程式，並記下訊息代理程式和 Zookeeper IP 位址。
+1. 針對第二個叢集 kafka 重複上述三個步驟 **-次要** 叢集：設定 IP 公告、設定接聽程式，並記下訊息代理程式和 Zookeeper IP 位址。
 
 ## <a name="create-topics"></a>建立主題
 
@@ -239,7 +236,7 @@ ms.locfileid: "92428248"
 
 1. Kafka on HDInsight 的預設設定不允許自動建立主題。 您必須先使用下列其中一個選項，才能啟動鏡像程序：
 
-    * 在**次要叢集上建立主題**：此選項也可讓您設定分割區數目和複寫因數。
+    * 在 **次要叢集上建立主題**：此選項也可讓您設定分割區數目和複寫因數。
 
         您可以使用下列命令提前建立主題：
 
@@ -254,10 +251,10 @@ ms.locfileid: "92428248"
         若要將次要叢集設定為自動建立主題，請執行下列步驟：
 
         1. 移至次要叢集的 Ambari 儀表板： `https://SECONDARYCLUSTERNAME.azurehdinsight.net` 。
-        1. 按一下 [**服務**  >  **Kafka**]。 按一下 [Configs (設定)] **** 索引標籤。
-        1. 在 [篩選]____ 欄位中，輸入 `auto.create` 的值。 這會篩選屬性清單並顯示 `auto.create.topics.enable` 設定。
-        1. 將 `auto.create.topics.enable` 的值變更為 true，然後選取 [儲存]____。 新增附註，然後再次選取 [儲存]____。
-        1. 依序選取 [Kafka]____ 服務、[重新啟動]____ 和 [重新啟動所有受影響的]____。 出現提示時，選取 [ __確認全部重新開機__]。
+        1. 按一下 [**服務**  >  **Kafka**]。 按一下 [Configs (設定)]  索引標籤。
+        1. 在 [篩選] 欄位中，輸入 `auto.create` 的值。 這會篩選屬性清單並顯示 `auto.create.topics.enable` 設定。
+        1. 將 `auto.create.topics.enable` 的值變更為 true，然後選取 [儲存]。 新增附註，然後再次選取 [儲存]。
+        1. 依序選取 [Kafka] 服務、[重新啟動] 和 [重新啟動所有受影響的]。 出現提示時，選取 [ __確認全部重新開機__]。
 
         ![kafka 啟用自動建立主題](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
 

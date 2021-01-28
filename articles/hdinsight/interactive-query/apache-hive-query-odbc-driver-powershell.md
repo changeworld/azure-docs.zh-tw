@@ -2,19 +2,16 @@
 title: 使用 ODBC 驅動程式與 PowerShell 查詢 Apache Hive - Azure HDInsight
 description: 使用 Microsoft Hive ODBC 驅動程式和 PowerShell 查詢 Azure HDInsight 上的 Apache Hive 叢集。
 keywords: hive, hive odbc,powershell
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 211b23db56b6deebb519b9eaac4164ea83edabac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
+ms.openlocfilehash: 1a6274ce36878af6cfbae04be935485c462bc86a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078566"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941364"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>教學課程：使用 ODBC 和 PowerShell 查詢 Apache Hive
 
@@ -58,7 +55,7 @@ Microsoft ODBC 驅動程式提供彈性的方式來與不同資料來源類型 (
    |  資料來源名稱 |為資料來源指定名稱 |
    |  主機 |輸入 `CLUSTERNAME.azurehdinsight.net`。 例如， `myHDICluster.azurehdinsight.net` |
    |  連接埠 |使用 **443**|
-   |  資料庫 |使用**預設值**。 |
+   |  資料庫 |使用 **預設值**。 |
    |  機制 |選取 [Windows Azure HDInsight 服務]  |
    |  使用者名稱 |輸入 HDInsight 叢集 HTTP 使用者的使用者名稱。 預設的使用者名稱為 **admin**。 |
    |  密碼 |輸入 HDInsight 叢集使用者的密碼。 選取 [儲存密碼 (加密)]  核取方塊。|
@@ -73,7 +70,7 @@ Microsoft ODBC 驅動程式提供彈性的方式來與不同資料來源類型 (
 
     ![進階 DSN 設定選項](./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png "進階 DSN 設定選項")
 
-1. 選取 [測試]  以測試資料來源。 正確設定資料來源時，測試結果就會顯示**成功**。  
+1. 選取 [測試]  以測試資料來源。 正確設定資料來源時，測試結果就會顯示 **成功**。  
 
 1. 選取 [確定]  以關閉 [測試] 視窗。  
 
@@ -110,7 +107,7 @@ function Get-ODBC-Data {
 }
 ```
 
-下列程式碼片段會使用上述函數，在本教學課程開頭所建立的互動式查詢叢集上執行查詢。 將 `DATASOURCENAME` 取代為您在 [Microsoft Hive ODBC 驅動程式 DSN 設定]  畫面上指定的**資料來源名稱**。 出現提供認證的提示時，請輸入建立叢集時於 [叢集登入使用者名稱]  和 [叢集登入密碼]  下輸入的使用者名稱和密碼。
+下列程式碼片段會使用上述函數，在本教學課程開頭所建立的互動式查詢叢集上執行查詢。 將 `DATASOURCENAME` 取代為您在 [Microsoft Hive ODBC 驅動程式 DSN 設定]  畫面上指定的 **資料來源名稱**。 出現提供認證的提示時，請輸入建立叢集時於 [叢集登入使用者名稱]  和 [叢集登入密碼]  下輸入的使用者名稱和密碼。
 
 ```powershell
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: d0bbde0ee4fd0eaf7387abaf6d548dc563e5b715
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34ece92e4603c0c74190003745d55be0aea5cdb0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86515439"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941766"
 ---
 # <a name="create-and-configure-a-log-analytics-workspace-in-azure-monitor-using-powershell"></a>使用 PowerShell 在 Azure 監視器中建立和設定 Log Analytics 工作區
 本文提供兩個程式碼範例，示範如何在 Azure 監視器中建立和設定 Log Analytics 工作區。  
@@ -193,7 +193,7 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 ```
 
 > [!NOTE]
-> **CustomLogRawJson** 參數 (定義自訂記錄的設定) 格式可能很複雜。 使用 [Get-AzOperationalInsightsDataSource](/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0) 來取出現有自訂記錄的設定。 **Properties** 屬性是 **CustomLogRawJson** 參數所需的設定。
+> **CustomLogRawJson** 參數 (定義自訂記錄的設定) 格式可能很複雜。 使用 [Get-AzOperationalInsightsDataSource](/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource) 來取出現有自訂記錄的設定。 **Properties** 屬性是 **CustomLogRawJson** 參數所需的設定。
 
 在上述範例中，regexDelimiter 已定義為用於換行的 "\\n"。 記錄分隔符號也可能是時間戳記。  以下是支援的格式：
 

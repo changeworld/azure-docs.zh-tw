@@ -1,19 +1,16 @@
 ---
 title: 在 HDInsight 中搭配使用 Apache Hive 與 PowerShell - Azure
 description: 使用 PowerShell 在 Azure HDInsight 的 Apache Hadoop 中執行 Apache Hive 查詢
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 013eb8215064173e002aea23043bc2e9ba92b525
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 43cac81717027b39210d6cd9cb9ad0baa596f50d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545237"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943188"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>使用 PowerShell 執行 Apache Hive 查詢
 
@@ -37,8 +34,8 @@ Azure PowerShell 提供 *Cmdlet* ，可讓您從遠端在 HDInsight 上執行 Hi
 在遠端 HDInsight 叢集中執行 Hive 查詢時，會使用下列 Cmdlet：
 
 * `Connect-AzAccount`：向您的 Azure 訂用帳戶驗證 Azure PowerShell。
-* `New-AzHDInsightHiveJobDefinition`：使用指定的 HiveQL 陳述式建立「作業定義」  。
-* `Start-AzHDInsightJob`：將作業定義傳送至 HDInsight，並啟動作業。 系統會傳回「作業」  物件。
+* `New-AzHDInsightHiveJobDefinition`：使用指定的 HiveQL 陳述式建立「作業定義」。
+* `Start-AzHDInsightJob`：將作業定義傳送至 HDInsight，並啟動作業。 系統會傳回「作業」物件。
 * `Wait-AzHDInsightJob`：使用作業物件來檢查作業的狀態。 它會等到工作完成，或等到等候時間超過。
 * `Get-AzHDInsightJobOutput`：用來擷取作業的輸出。
 * `Invoke-AzHDInsightHiveJob`：用來執行 HiveQL 陳述式。 這個 Cmdlet 會阻止查詢完成，然後傳回結果。
@@ -101,11 +98,11 @@ Get-AzHDInsightJobOutput `
 
 這個 Cmdlet 會傳回作業處理期間寫入到 STDERR 的資訊。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 如您所見，Azure PowerShell 提供簡單的方法，在 HDInsight 叢集中執行 Hive 查詢、監視工作狀態，以及擷取輸出。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需 HDInsight 中 Hive 的一般資訊：
 

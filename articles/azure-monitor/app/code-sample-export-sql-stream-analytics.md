@@ -3,12 +3,12 @@ title: 從 Azure Application Insights 匯出至 SQL | Microsoft Docs
 description: 使用 Stream Analytics 持續將 Application Insights 資料匯出至 SQL。
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 90aab1794a9b412de2498edcc4d221f4bcc86968
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fb7093dd9945893b17f1b8f5e596cfe5181c3b6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979448"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942426"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>逐步解說：使用串流分析從 Application Insights 匯出至 SQL
 本文說明如何使用「[連續匯出][export]」和「 [Azure 串流分析](https://azure.microsoft.com/services/stream-analytics/)」，將遙測資料從[Azure 應用程式見解][start]移至 Azure SQL Database。 
@@ -64,7 +64,7 @@ ms.locfileid: "90979448"
 1. 可讓一些資料累積。 請休息一下，讓其他人使用您的應用程式一段時間。 遙測資料會送過來，而您會在[計量瀏覽器](../platform/metrics-charts.md)中看到統計圖表，並在[診斷搜尋](./diagnostic-search.md)中看到個別事件。 
    
     此外，資料會匯出至您的儲存體。 
-2. 在入口網站 (選擇 [瀏覽]****、選取您的儲存體帳戶，然後選取 [容器]****) 或 Visual Studio 中，檢查匯出的資料。 在 Visual Studio 中，依序選擇 [檢視] 和 [Cloud Explorer]，然後依序開啟 [Azure] 和 [儲存體]。 (如果您沒有此功能表選項，您需要安裝 Azure SDK：開啟 [新增專案] 對話方塊，然後開啟 [Visual C#] / [Cloud] / [取得 Microsoft Azure SDK for .NET]。)
+2. 在入口網站 (選擇 [瀏覽]、選取您的儲存體帳戶，然後選取 [容器]) 或 Visual Studio 中，檢查匯出的資料。 在 Visual Studio 中，依序選擇 [檢視] 和 [Cloud Explorer]，然後依序開啟 [Azure] 和 [儲存體]。 (如果您沒有此功能表選項，您需要安裝 Azure SDK：開啟 [新增專案] 對話方塊，然後開啟 [Visual C#] / [Cloud] / [取得 Microsoft Azure SDK for .NET]。)
    
     ![在 Visual Studio 中，依序開啟 [Server Browser]、[Azure]、[儲存體]](./media/code-sample-export-sql-stream-analytics/087-explorer.png)
    
@@ -82,9 +82,9 @@ ms.locfileid: "90979448"
 ![[瀏覽]、[伺服器]、您的伺服器、[設定]、[防火牆]、[允許存取 Azure]](./media/code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
 ## <a name="create-a-table-in-azure-sql-database"></a>在 Azure SQL Database 中建立資料表
-使用您慣用的管理工具，連接到上一節所建立的資料庫。 在本逐步解說中，我們將使用 [SQL Server 管理工具](/sql/ssms/sql-server-management-studio-ssms?view=sql-server-ver15) (SSMS)。
+使用您慣用的管理工具，連接到上一節所建立的資料庫。 在本逐步解說中，我們將使用 [SQL Server 管理工具](/sql/ssms/sql-server-management-studio-ssms) (SSMS)。
 
-![連線到 Azure SQL Database](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
+![連線至 Azure SQL Database](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
 
 建立新的查詢，然後執行下列 T-SQL：
 

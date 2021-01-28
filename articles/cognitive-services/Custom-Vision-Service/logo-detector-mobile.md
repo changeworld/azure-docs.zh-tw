@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: e5e344aa84bfc6912266720083f0cd15f575883c
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
-ms.translationtype: HT
+ms.openlocfilehash: 76e7b061670f603007cefd6d7aed503e0e0d3d6b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95740245"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941774"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>教學課程：辨識相機圖片中的 Azure 服務標誌
 
@@ -36,7 +36,7 @@ ms.locfileid: "95740245"
 - [Visual Studio 2017 或更新版本](https://www.visualstudio.com/downloads/)
 - 適用於 Visual Studio 的 Xamarin 工作負載 (請參閱[安裝 Xamarin](/xamarin/cross-platform/get-started/installation/windows))
 - 適用於 Visual Studio 的 iOS 或 Android 模擬器
-- [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest) (選擇性)
+- [Azure CLI](/cli/azure/install-azure-cli-windows) (選擇性)
 
 ## <a name="get-the-source-code"></a>取得原始程式碼
 

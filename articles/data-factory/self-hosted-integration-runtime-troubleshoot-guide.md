@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 01/25/2021
 ms.author: lle
-ms.openlocfilehash: e81a12f4c5d817670fe1f7968184bcc97e78a53c
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 8a722550d12d019e25ff39de27cc0df2c2762a01
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757673"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942044"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>針對自我裝載整合執行階段進行疑難排解
 
@@ -198,7 +198,7 @@ ms.locfileid: "98757673"
  
 " \<LogProperties> \<ErrorInfo> [{" Code "：0，" Message "：" ' Npgsql. PoolManager ' 的類型初始化運算式擲回例外狀況。 "，" "：0，" Category "：5，" Data "： {} ，" MsgId "： Null，" ExceptionType "：" system.typeinitializationexception "，" Source "：" Npgsql "，" StackTrace "：" "，" InnerEventInfos "： [{" Code "：0，" Message "：" 無法載入檔案或元件 ' System. ValueTuple，Version = 4.0.2.0，Culture = 中性，PublicKeyToken = XXXXXXXXX ' 或其相依性的其中之一。 系統找不到指定的檔案。 "，":null "：0，" Category "：5，" Data "： {} ，" MsgId"，"ExceptionType":"System，FileNotFoundException "，" Source "：" Npgsql "，" StackTrace "：" "，" InnerEventInfos "： []}]}] \</ErrorInfo> \</LogProperties> "
  
-如需 GAC 的詳細資訊，請參閱 [全域組件快取](https://docs.microsoft.com/dotnet/framework/app-domains/gac)。
+如需 GAC 的詳細資訊，請參閱 [全域組件快取](/dotnet/framework/app-domains/gac)。
 
 
 ### <a name="self-hosted-integration-runtime-authentication-key-is-missing"></a>缺少自我裝載整合執行時間驗證金鑰

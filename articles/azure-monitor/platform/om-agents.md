@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2020
-ms.openlocfilehash: 2a4f24da51b9e9e78c3df3e7d1437a380306e300
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 571dcd41da9be578e69d9a8ad40ed05784ae26a8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95975562"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941984"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>將 Operations Manager 連接到 Azure 監視器
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-若要維持 [System Center Operations Manager](/system-center/scom/key-concepts?view=sc-om-1807) 的現有投資，並使用 Azure 監視器的擴充功能，您可以將 Operations Manager 與 Log Analytics 工作區整合。 這可讓您利用 Azure 監視器中記錄的機會，同時繼續使用 Operations Manager：
+若要維持 [System Center Operations Manager](/system-center/scom/key-concepts) 的現有投資，並使用 Azure 監視器的擴充功能，您可以將 Operations Manager 與 Log Analytics 工作區整合。 這可讓您利用 Azure 監視器中記錄的機會，同時繼續使用 Operations Manager：
 
 * 使用 Operations Manager 監視 IT 服務的健全狀況
 * 維護與支援事件和問題管理之 ITSM 解決方案的整合
@@ -33,7 +33,7 @@ ms.locfileid: "95975562"
 
 如果 IT 安全性原則不允許您網路上的電腦連線到網際網路，則可以將管理伺服器設定為連線到 Log Analytics 閘道，以根據已啟用的解決方案來接收組態資訊和傳送收集到的資料。 如需有關如何設定 Operations Manager 管理群組以透過 Log Analytics 閘道與 Azure 監視器進行通訊的詳細資訊和步驟，請參閱 [使用 Log analytics 閘道將電腦連線到 Azure 監視器](./gateway.md)。  
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 開始之前，請檢閱下列需求。
 

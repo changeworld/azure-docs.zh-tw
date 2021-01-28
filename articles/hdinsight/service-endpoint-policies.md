@@ -1,18 +1,15 @@
 ---
 title: 設定服務端點原則-Azure HDInsight
 description: 瞭解如何使用 Azure HDInsight 為您的虛擬網路設定服務端點原則。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 07/15/2020
-ms.openlocfilehash: f2752e5ab2bf7c2926ec9e2c0e4929eab91ed377
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 992cd994f96b5637d5afd91bccfecde8704d2886
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88530965"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940621"
 ---
 # <a name="configure-virtual-network-service-endpoint-policies-for-azure-hdinsight"></a>設定 Azure HDInsight 的虛擬網路服務端點原則
 

@@ -6,12 +6,12 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: d86c6d8b67546aede86a3fc3c905f6feb40d92db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 856aeb4dabc64edc2ade2869fddc3d14cb21a81b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403410"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942160"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>針對 Azure 監視器警示中的問題進行疑難排解
 
@@ -42,7 +42,7 @@ ms.locfileid: "91403410"
 
 1. **動作的類型「電子郵件 Azure Resource Manager 角色」？**
 
-    此動作只會查看訂用帳戶範圍內的 Azure Resource Manager 角色指派，以及類型為 *User*的角色指派。  請確定您已在訂用帳戶層級而不是在資源層級或資源群組層級指派角色。
+    此動作只會查看訂用帳戶範圍內的 Azure Resource Manager 角色指派，以及類型為 *User* 的角色指派。  請確定您已在訂用帳戶層級而不是在資源層級或資源群組層級指派角色。
 
 1. **您的電子郵件伺服器和信箱是否接受外部電子郵件？**
 
@@ -245,7 +245,7 @@ ms.locfileid: "91403410"
 
 1. **您是否驗證了動作規則參數？**  
 
-    檢查 [動作規則檔](alerts-action-rules.md)或 [動作規則 PowerShell 設定-AzActionRule](/powershell/module/az.alertsmanagement/set-azactionrule?view=azps-3.5.0) 命令。 
+    檢查 [動作規則檔](alerts-action-rules.md)或 [動作規則 PowerShell 設定-AzActionRule](/powershell/module/az.alertsmanagement/set-azactionrule) 命令。 
 
 
 ## <a name="next-steps"></a>後續步驟

@@ -1,19 +1,16 @@
 ---
 title: 在 HDInsight 上執行 Apache Hadoop MapReduce 範例 - Azure
 description: 開始使用 HDInsight 中隨附的 jar 檔案中的 MapReduce 範例。 使用 SSH 連接到叢集，然後使用 Hadoop 命令執行範例工作。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/12/2019
-ms.openlocfilehash: cc0918f3d9739a214e682d7faa460b6cc519cb0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e75a39b1f9e8503097914b0c9e735915f9ae667
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207834"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943224"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>執行包含在 HDInsight 中的 MapReduce 範例
 
@@ -180,7 +177,7 @@ GraySort 是一種效能評定排序。 其計量為排序大量資料時 (通�
 
 * **TeraGen**：MapReduce 程式，產生要排序的資料列
 
-* **TeraSort**可取樣輸入資料並利用 MapReduce 將資料依全序排列
+* **TeraSort** 可取樣輸入資料並利用 MapReduce 將資料依全序排列
 
     TeraSort 是標準的 MapReduce 排序，但有一個自訂 Partitioner。 此 Partitioner 使用已排序的 N-1 取樣索引鍵清單，其定義每個歸納的索引鍵範圍。 尤其是，會傳送使得 sample[i-1] <= key < sample[i] 的所有索引鍵給歸納 i。 此 Partitioner 會保證歸納 i 的輸出全都小於歸納 i+1 的輸出。
 
@@ -212,7 +209,7 @@ GraySort 是一種效能評定排序。 其計量為排序大量資料時 (通�
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapred.map.tasks=50 -Dmapred.reduce.tasks=25 /example/data/10GB-sort-output /example/data/10GB-sort-validate
     ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 您已在本文中學到如何執行以 Linux 為基礎的 HDInsight 叢集所隨附的範例。 如需透過 HDInsight 使用 Pig、Hive 和 MapReduce 的教學課程，請參閱下列主題：
 

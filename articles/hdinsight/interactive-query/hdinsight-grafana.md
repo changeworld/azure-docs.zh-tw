@@ -1,18 +1,15 @@
 ---
 title: 在 Azure HDInsight 上使用 Grafana
 description: 瞭解如何在 Azure HDInsight 中使用 Apache Hadoop 叢集存取 Grafana 儀表板
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.openlocfilehash: 7750544367044cab2a0243577c200025bb9ff693
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd2a09b6c3196302dcb74fd363481706021a4d4d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86083027"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940881"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>在 Azure HDInsight 中存取 Grafana
 
@@ -24,7 +21,7 @@ ms.locfileid: "86083027"
 
 ## <a name="create-an-apache-hadoop-cluster"></a>建立 Apache Hadoop 叢集
 
-請參閱[使用 Azure 入口網站建立 Apache Hadoop 叢集](../hdinsight-hadoop-create-linux-clusters-portal.md)。 針對叢集 **類型**，選取 **Spark**、 **Kafka**、 **HBase**或 **Interactive Query**。
+請參閱[使用 Azure 入口網站建立 Apache Hadoop 叢集](../hdinsight-hadoop-create-linux-clusters-portal.md)。 針對叢集 **類型**，選取 **Spark**、 **Kafka**、 **HBase** 或 **Interactive Query**。
 
 ## <a name="access-the-grafana-dashboard"></a>存取 Grafana 儀表板
 
@@ -50,7 +47,7 @@ ms.locfileid: "86083027"
 
 1. 選取 [刪除]  。 選取 [是]  。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入了解如何使用 HDInsight 分析資料，請參閱下列文章：
 

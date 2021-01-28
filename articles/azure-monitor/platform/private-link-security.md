@@ -6,12 +6,12 @@ ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 5008da99b63cabba41dade9a745fbd5853345737
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 637e66956eadf57199d2e5191368d6355e2cd118
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734961"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941887"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>使用 Azure 私人連結將網路安全地連線到 Azure 監視器
 
@@ -217,13 +217,13 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
 
 您可以使用 Azure Resource Manager 範本、REST 和命令列介面，將稍早所述的程式自動化。
 
-若要建立及管理私人連結範圍，請使用 [REST API](/rest/api/monitor/private%20link%20scopes%20(preview)) 或 [Azure CLI (az 監視器私用連結範圍) ](/cli/azure/monitor/private-link-scope?view=azure-cli-latest)。
+若要建立及管理私人連結範圍，請使用 [REST API](/rest/api/monitor/private%20link%20scopes%20(preview)) 或 [Azure CLI (az 監視器私用連結範圍) ](/cli/azure/monitor/private-link-scope)。
 
-若要管理網路存取，請在 [Log Analytics 工作區](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest)或 [Application Insights 元件](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest)上使用 `[--ingestion-access {Disabled, Enabled}]` 和 `[--query-access {Disabled, Enabled}]` 旗標。
+若要管理網路存取，請在 [Log Analytics 工作區](/cli/azure/monitor/log-analytics/workspace)或 [Application Insights 元件](/cli/azure/ext/application-insights/monitor/app-insights/component)上使用 `[--ingestion-access {Disabled, Enabled}]` 和 `[--query-access {Disabled, Enabled}]` 旗標。
 
 ## <a name="collect-custom-logs-over-private-link"></a>收集自訂記錄檔 Private Link
 
-擷取自訂記錄的程序會使用儲存體帳戶。 根據預設，會使用服務管理的儲存體帳戶。 不過，若要在私人連結上擷取自訂記錄，您必須使用您自己的儲存體帳戶，並將其與 Log Analytics 工作區建立關聯。 請細看如需如何使用[命令列](/cli/azure/monitor/log-analytics/workspace/linked-storage?view=azure-cli-latest)設定這類帳戶。
+擷取自訂記錄的程序會使用儲存體帳戶。 根據預設，會使用服務管理的儲存體帳戶。 不過，若要在私人連結上擷取自訂記錄，您必須使用您自己的儲存體帳戶，並將其與 Log Analytics 工作區建立關聯。 請細看如需如何使用[命令列](/cli/azure/monitor/log-analytics/workspace/linked-storage)設定這類帳戶。
 
 如需有關自備儲存體帳戶的詳細資訊，請參閱[客戶自備儲存體帳戶的記錄擷取](private-storage.md)。
 
@@ -252,7 +252,7 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 
 ### <a name="programmatic-access"></a>以程式設計方式存取
 
-若要在私人網路上使用 REST API、[CLI](/cli/azure/monitor?view=azure-cli-latest) 或具有 Azure 監視器的 PowerShell，請在您的防火牆新增 **AzureActiveDirectory** 和 **AzureResourceManager** [服務標記](../../virtual-network/service-tags-overview.md)。
+若要在私人網路上使用 REST API、[CLI](/cli/azure/monitor) 或具有 Azure 監視器的 PowerShell，請在您的防火牆新增 **AzureActiveDirectory** 和 **AzureResourceManager** [服務標記](../../virtual-network/service-tags-overview.md)。
 
 新增這些標記可讓您執行一些動作，例如查詢記錄資料、建立和管理 Log Analytics 工作區和 Application Insights 元件。
 

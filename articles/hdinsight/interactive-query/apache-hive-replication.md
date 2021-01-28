@@ -1,18 +1,15 @@
 ---
 title: 如何在 Azure HDInsight 叢集中使用 Apache Hive 複寫
 description: 瞭解如何在 HDInsight 叢集中使用 Hive 複寫，以複寫 Hive 中繼存放區和 Azure Data Lake Storage Gen 2 Data Lake。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: af74392b3368a25e5d238f774292c80de5f91c65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3dd894a46b666703f64e44336c0bf022da8a063a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857736"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941338"
 ---
 # <a name="how-to-use-apache-hive-replication-in-azure-hdinsight-clusters"></a>如何在 Azure HDInsight 叢集中使用 Apache Hive 複寫
 
@@ -140,7 +137,7 @@ repl dump tpcds_orc from 2925;
 
 複寫通常會在主要與次要之間以單向方式設定，其中主要已經考慮可讀取和寫入要求。 次要叢集已經考慮只會讀取要求。 如果發生損毀，則允許在次要資料庫上進行寫入，但是反向複寫必須設定回主要複本。
 
-:::image type="content" source="media/apache-hive-replication/replication-pattern.png" alt-text="Hive 複寫圖表":::
+:::image type="content" source="media/apache-hive-replication/replication-pattern.png" alt-text="Hive 複製模式":::
 
 有許多適用于 Hive 複寫的模式，包括主要-次要、中樞和輪輻，以及轉送。
 

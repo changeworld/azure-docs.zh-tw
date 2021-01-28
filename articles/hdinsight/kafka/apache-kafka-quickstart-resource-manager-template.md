@@ -1,19 +1,16 @@
 ---
 title: 快速入門：使用 Azure Resource Manager 的 Apache Kafka - HDInsight
 description: 在本快速入門中，您會了解如何使用 Azure Resource Manager 範本，在 Azure HDInsight 上建立 Apache Kafka 叢集。 您也會了解 Kafka 主題、訂閱者與取用者。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: 12988feeb26bc5821e8f08db3e688a2e1c429e19
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
-ms.translationtype: HT
+ms.openlocfilehash: 1bd4a3bfc2ba208371ed71720cc8c89a796ad9a2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532623"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940817"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-arm-template"></a>快速入門：在 Azure HDInsight 中使用 ARM 範本建立 Apache Kafka 叢集
 
@@ -56,14 +53,14 @@ Kafka API 只能由同一個虛擬網路中的資源來存取。 在本快速入
     |資源群組|從下拉式清單中選取現有資源群組，或選取 [新建]。|
     |Location|此值會以資源群組所用的位置來自動填入。|
     |叢集名稱|輸入全域唯一名稱。 針對此範本，請只使用小寫字母和數字。|
-    |叢集登入使用者名稱|提供使用者名稱，預設值為 **admin** 。|
+    |叢集登入使用者名稱|提供使用者名稱，預設值為 **admin**。|
     |叢集登入密碼|提供密碼。 密碼長度至少必須為 10 個字元，且必須包含至少一個數字、一個大寫字母及一個小寫字母、一個非英數字元 (除了字元 ' " `)。 |
     |SSH 使用者名稱|提供使用者名稱，預設值為 **sshuser**|
     |SSH 密碼|請提供密碼。|
 
     ![範本屬性的螢幕擷取畫面](./media/apache-kafka-quickstart-resource-manager-template/resource-manager-template-kafka.png)
 
-1. 檢閱 **條款及條件** 。 然後選取 [我同意上方所述的條款及條件]，然後選取 [購買]。 您會收到一則通知，內容指出您的部署正在進行中。 大約需要 20 分鐘的時間來建立叢集。
+1. 檢閱 **條款及條件**。 然後選取 [我同意上方所述的條款及條件]，然後選取 [購買]。 您會收到一則通知，內容指出您的部署正在進行中。 大約需要 20 分鐘的時間來建立叢集。
 
 ## <a name="review-deployed-resources"></a>檢閱已部署的資源
 
@@ -135,7 +132,7 @@ Kafka API 只能由同一個虛擬網路中的資源來存取。 在本快速入
 
 Kafka 會將資料串流儲存於「主題」中。 您可以使用 `kafka-topics.sh` 公用程式來管理主題。
 
-* **若要建立主題** ，請在 SSH 連線中使用下列命令：
+* **若要建立主題**，請在 SSH 連線中使用下列命令：
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
@@ -163,7 +160,7 @@ Kafka 會將資料串流儲存於「主題」中。 您可以使用 `kafka-topic
 
         * 擴大叢集時
 
-* **若要列出主題** ，請使用下列命令：
+* **若要列出主題**，請使用下列命令：
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $KAFKAZKHOSTS
@@ -171,7 +168,7 @@ Kafka 會將資料串流儲存於「主題」中。 您可以使用 `kafka-topic
 
     此命令會列出可在 Kafka 叢集上使用的主題。
 
-* **若要刪除主題** ，請使用下列命令：
+* **若要刪除主題**，請使用下列命令：
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic topicname --zookeeper $KAFKAZKHOSTS

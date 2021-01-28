@@ -2,13 +2,13 @@
 title: 範本函式-部署
 description: 描述在 Azure Resource Manager 範本中使用的函式 (ARM 範本) 取得部署資訊。
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: e63caef669a2c28d29cd0bbd649b0997cea14ee1
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 01/27/2021
+ms.openlocfilehash: 438afc947b07ac7425de365a2d63c427cf53e2ff
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920516"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943467"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>ARM 範本的部署功能
 
@@ -33,6 +33,7 @@ Resource Manager 提供下列函式來取得與目前部署 Azure Resource Manag
 
 此函式會傳回部署期間所傳遞的物件。 傳回之物件中的屬性會根據您是否為：
 
+* 部署範本或範本規格。
 * 部署本機檔案的範本，或部署可透過 URI 存取之遠端檔案的範本。
 * 部署至資源群組，或部署至其中一個其他範圍 ([Azure 訂](deploy-to-subscription.md)用帳戶、 [管理群組](deploy-to-management-group.md)或 [租](deploy-to-tenant.md) 使用者) 。
 
@@ -66,6 +67,31 @@ Resource Manager 提供下列函式來取得與目前部署 Azure Resource Manag
   "properties": {
     "templateLink": {
       "uri": ""
+    },
+    "template": {
+      "$schema": "",
+      "contentVersion": "",
+      "parameters": {},
+      "variables": {},
+      "resources": [],
+      "outputs": {}
+    },
+    "templateHash": "",
+    "parameters": {},
+    "mode": "",
+    "provisioningState": ""
+  }
+}
+```
+
+將範本規格部署至資源群組時：此函數會傳回下列格式：
+
+```json
+{
+  "name": "",
+  "properties": {
+    "templateLink": {
+      "id": ""
     },
     "template": {
       "$schema": "",
@@ -428,11 +454,11 @@ output crossOutput string = crossParameter
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| stringOutput | 字串 | 選項 1 |
+| stringOutput | String | 選項 1 |
 | intOutput | Int | 1 |
-| objectOutput | 物件 | {"one": "a", "two": "b"} |
+| objectOutput | Object | {"one": "a", "two": "b"} |
 | arrayOutput | Array | [1, 2, 3] |
-| crossOutput | 字串 | 選項 1 |
+| crossOutput | String | 選項 1 |
 
 如需使用參數的詳細資訊，請參閱 [ARM 範本中的參數](template-parameters.md)。
 
@@ -566,10 +592,10 @@ output exampleOutput4 object = var4
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| exampleOutput1 | 字串 | myVariable |
+| exampleOutput1 | String | myVariable |
 | exampleOutput2 | Array | [1, 2, 3, 4] |
-| exampleOutput3 | 字串 | myVariable |
-| exampleOutput4 |  物件 | {"property1": "value1", "property2": "value2"} |
+| exampleOutput3 | String | myVariable |
+| exampleOutput4 |  Object | {"property1": "value1", "property2": "value2"} |
 
 如需使用變數的詳細資訊，請參閱 [ARM 範本中的變數](template-variables.md)。
 

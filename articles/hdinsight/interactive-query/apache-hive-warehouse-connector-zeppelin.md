@@ -3,23 +3,22 @@ title: Hive Warehouse Connector - 使用 Livy 的 Apache Zeppelin - Azure HDInsi
 description: 了解如何在 Azure HDInsight 上整合 Hive Warehouse Connector 與 Apache Zeppelin。
 author: nis-goel
 ms.author: nisgoel
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: bccf2b9a3dfe42ca439a45eb1e35cfaff58d0208
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 4859ff098bf3fdffbecc70608cb147d17d9d7f59
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426952"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941173"
 ---
 # <a name="integrate-apache-zeppelin-with-hive-warehouse-connector-in-azure-hdinsight"></a>在 Azure HDInsight 上將 Apache Zeppelin 與 Hive Warehouse Connector 整合起來
 
 HDInsight Spark 叢集包含具有不同解譯器的 Apache Zeppelin 筆記本。 在本文中，我們只將焦點放在使用 Hive Warehouse Connector 從 Spark 存取 Hive 資料表的 Livy 解譯器。
 
 > [!NOTE]
-> 本文包含「詞彙 *白名單*」的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
+> 本文包含字詞「*允許清單*」的參考 (Microsoft 已不再使用該字詞)。 從軟體中移除該字詞時，我們也會將其從本文中移除。
 
 ## <a name="prerequisite"></a>必要條件
 

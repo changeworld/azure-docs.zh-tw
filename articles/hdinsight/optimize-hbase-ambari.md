@@ -1,18 +1,15 @@
 ---
 title: 使用 Azure HDInsight 中的 Apache Ambari 優化 Apache HBase
 description: 使用 Apache Ambari web UI 來設定和優化 Apache HBase。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: b262e07bd07320e4b10b12a2f2cf07b97e58c61e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 307e9decad35c20885fbe550cc1f7de58c9386c0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91821703"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942592"
 ---
 # <a name="optimize-apache-hbase-with-apache-ambari-in-azure-hdinsight"></a>使用 Azure HDInsight 中的 Apache Ambari 優化 Apache HBase
 
@@ -22,9 +19,9 @@ Apache Ambari 是用來管理和監視 HDInsight 叢集的 web 介面。 如需 
 
 ## <a name="set-hbase_heapsize"></a>設定 HBASE_HEAPSIZE
 
-HBase 堆積大小會指定*區域*和*主要*伺服器將使用的堆積最大數量 (單位為 MB)。 預設值是 1,000 MB。 此值應針對叢集工作負載進行調整。
+HBase 堆積大小會指定 *區域* 和 *主要* 伺服器將使用的堆積最大數量 (單位為 MB)。 預設值是 1,000 MB。 此值應針對叢集工作負載進行調整。
 
-1. 若要修改，請瀏覽至 HBase [設定]**** 索引標籤的 [進階 HBase-env]**** 窗格，然後尋找 `HBASE_HEAPSIZE` 設定。
+1. 若要修改，請瀏覽至 HBase [設定] 索引標籤的 [進階 HBase-env] 窗格，然後尋找 `HBASE_HEAPSIZE` 設定。
 
 1. 將預設值變更為 5,000 MB。
 
@@ -38,11 +35,11 @@ HBase 堆積大小會指定*區域*和*主要*伺服器將使用的堆積最大�
 
 區塊快取是讀取快取。 其大小由 `hfile.block.cache.size` 參數控制。 預設值是 0.4，這是區域伺服器記憶體總計的 40%。 區塊快取大小愈大，隨機讀取愈快速。
 
-1. 若要修改此參數，請瀏覽至 HBase [設定]**** 索引標籤的 [設定]**** 索引標籤，然後尋找 [配置於讀取緩衝區的 RegionServer 百分比]****。
+1. 若要修改此參數，請瀏覽至 HBase [設定] 索引標籤的 [設定] 索引標籤，然後尋找 [配置於讀取緩衝區的 RegionServer 百分比]。
 
     ![Apache HBase 記憶體區塊快取大小](./media/optimize-hbase-ambari/hbase-block-cache-size.png)
 
-1. 若要變更該值，請選取 [編輯]**** 圖示。
+1. 若要變更該值，請選取 [編輯] 圖示。
 
 ### <a name="memstore-size"></a>Memstore 大小
 

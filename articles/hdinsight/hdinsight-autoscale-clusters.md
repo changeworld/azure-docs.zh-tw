@@ -1,19 +1,16 @@
 ---
 title: 自動調整 Azure HDInsight 叢集規模
 description: 使用自動調整功能，根據排程或效能計量自動調整 Azure HDInsight 叢集規模。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperf-fy21q1, contperf-fy21q2
 ms.date: 12/14/2020
-ms.openlocfilehash: 2b23b4256e79723ce0b5edafd59186dc345eb791
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 130a5a58fc7dab6f94c011cf9764743f9114e48a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629250"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942645"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>自動調整 Azure HDInsight 叢集規模
 
@@ -38,7 +35,7 @@ Azure HDInsight 的免費自動調整功能可根據先前設定的準則，自�
 
 自動調整會持續監視叢集，並收集下列計量：
 
-|計量|描述|
+|Metric|描述|
 |---|---|
 |擱置中的 CPU 總計|開始執行所有擱置中容器時所需的核心總數。|
 |擱置中的記憶體總計|開始執行所有擱置中容器時所需的記憶體總計 (MB)。|
@@ -280,6 +277,6 @@ HDInsight 自動調整會使用節點標籤檔案來判斷節點是否已準備�
 
 如果以手動方式重新開機 Interactive Query 服務，您需要以手動方式將設定變更 `num_llap_node` (在 *Advanced hive-Interactive-env* 下執行 Hive Interactive Query 背景工作角色，以符合目前作用中背景工作角色節點計數所需的節點 (數目) 。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 閱讀[調整指導方針](hdinsight-scaling-best-practices.md)以手動調整叢集的相關指導方針

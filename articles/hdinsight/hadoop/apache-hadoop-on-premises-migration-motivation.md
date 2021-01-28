@@ -1,19 +1,17 @@
 ---
 title: 優點：將內部部署 Apache Hadoop 遷移至 Azure HDInsight
 description: 了解將內部部署 Hadoop 叢集遷移到 Azure HDInsight 的動機和優點。
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.openlocfilehash: 595bf6f921265e9e8dbc0e0e065fe835efea14bc
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 975d72df32027888e217d5da9171dba0ba61f257
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331646"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943258"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>將內部部署 Apache Hadoop 叢集遷移到 Azure HDInsight - 動機和優點
 
@@ -33,7 +31,7 @@ Azure HDInsight 是 Hadoop 元件的雲端發行版。 Azure HDInsight 可輕鬆
 
 ## <a name="azure-hdinsight-advantages-over-on-premises-hadoop"></a>Azure HDInsight 的優勢勝過內部部署 Hadoop
 
-- **低成本** - 可以[依照需求建立群集](../hdinsight-hadoop-create-linux-clusters-adf.md)以降低成本，且只支付您使用的部分。 分離計算和儲存體可以提供更多彈性，因為資料量是獨立於叢集大小之外。
+- **低成本** - 可以 [依照需求建立群集](../hdinsight-hadoop-create-linux-clusters-adf.md)以降低成本，且只支付您使用的部分。 分離計算和儲存體可以提供更多彈性，因為資料量是獨立於叢集大小之外。
 
 - **自動建立叢集** - 自動建立叢集需要最少的安裝和設定。 自動化可以用於隨選叢集。
 
@@ -47,7 +45,7 @@ Azure HDInsight 是 Hadoop 元件的雲端發行版。 Azure HDInsight 可輕鬆
 
 - **簡化版本管理** -Azure HDInsight 管理 Hadoop 生態系統元件的版本，並讓它們保持在最新狀態。 軟體更新對於內部部署通常是複雜的程序。
 
-- 針對**特定工作負載優化的小型叢集，元件之間**的相依性較少-典型的內部部署 Hadoop 設定會使用可提供許多用途的單一叢集。 使用 Azure HDInsight 可以建立工作負載特定的叢集。 針對特定工作負載建立叢集，可移除維護單一且複雜度不斷增加之叢集的複雜性。
+- 針對 **特定工作負載優化的小型叢集，元件之間** 的相依性較少-典型的內部部署 Hadoop 設定會使用可提供許多用途的單一叢集。 使用 Azure HDInsight 可以建立工作負載特定的叢集。 針對特定工作負載建立叢集，可移除維護單一且複雜度不斷增加之叢集的複雜性。
 
 - **生產力** - 您可以在慣用的開發環境中使用各種適用於 Hadoop 和 Spark 的工具。
 

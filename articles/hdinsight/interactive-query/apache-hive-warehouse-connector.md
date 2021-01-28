@@ -3,16 +3,15 @@ title: Apache Spark 與 Hive - Hive Warehouse Connector - Azure HDInsight
 description: 了解如何在 Azure HDInsight 上將 Apache Spark 和 Apache Hive 與 Hive Warehouse Connector 整合起來。
 author: nis-goel
 ms.author: nisgoel
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 24968511d038b2cea41a59187c0a361684c6720e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39eb007c85d9f0623b4a5611e36d4ed7a75423e0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511886"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941187"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>在 Azure HDInsight 上將 Apache Spark 和 Apache Hive 與 Hive Warehouse Connector 整合起來
 

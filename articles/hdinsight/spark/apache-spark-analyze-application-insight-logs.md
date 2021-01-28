@@ -1,19 +1,16 @@
 ---
 title: 使用 Spark 分析 Application Insights 記錄 - Azure HDInsight
 description: 了解如何將 Application Insights 記錄匯出至 blob 儲存體，並接著使用 HDInsight 上的 Spark 分析記錄。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 1ddf2b6879d8d33f99281daba6fb1040e24a37af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbca4b23b6fc414727ea1b5a4012d2847d6b8d78
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86078794"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940470"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>使用 HDInsight 上的 Apache Spark 分析 Application Insights 遙測記錄
 
@@ -21,7 +18,7 @@ ms.locfileid: "86078794"
 
 [Visual Studio Application Insights](../../azure-monitor/app/app-insights-overview.md) 是一項分析服務，可監視您的 Web 應用程式。 可以將 Application Insights 產生的遙測資料匯出至 Azure 儲存體。 資料一旦位於 Azure 儲存體中，HDInsight 便可用於進行分析。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * 設定要使用 Application Insights 的應用程式。
 
@@ -72,9 +69,9 @@ Application Insights 提供 [匯出資料模型](../../azure-monitor/app/export-
 
 1. 從網頁瀏覽器中，流覽至 `https://CLUSTERNAME.azurehdinsight.net/jupyter` CLUSTERNAME 是您的叢集名稱。
 
-2. 在 Jupyter 頁面右上角依序選取 [新增]****、[PySpark]****。 隨即開啟新的瀏覽器索引標籤，其中包含以 Python 為基礎的 Jupyter Notebook。
+2. 在 Jupyter 頁面右上角依序選取 [新增]、[PySpark]。 隨即開啟新的瀏覽器索引標籤，其中包含以 Python 為基礎的 Jupyter Notebook。
 
-3. 在頁面的第一個欄位 (稱為**儲存格**) 中，輸入下列文字：
+3. 在頁面的第一個欄位 (稱為 **儲存格**) 中，輸入下列文字：
 
    ```python
    sc._jsc.hadoopConfiguration().set('mapreduce.input.fileinputformat.input.dir.recursive', 'true')
@@ -223,9 +220,9 @@ Application Insights 提供 [匯出資料模型](../../azure-monitor/app/export-
 
 1. 從網頁瀏覽器中，流覽至 `https://CLUSTERNAME.azurehdinsight.net/jupyter` CLUSTERNAME 是您的叢集名稱。
 
-2. 在 Jupyter 頁面右上角依序選取 [新增]****、[Scala]****。 新的瀏覽器索引標籤隨即出現，其中包含以 Scala 為基礎的 Jupyter Notebook。
+2. 在 Jupyter 頁面右上角依序選取 [新增]、[Scala]。 新的瀏覽器索引標籤隨即出現，其中包含以 Scala 為基礎的 Jupyter Notebook。
 
-3. 在頁面的第一個欄位 (稱為**儲存格**) 中，輸入下列文字：
+3. 在頁面的第一個欄位 (稱為 **儲存格**) 中，輸入下列文字：
 
    ```scala
    sc.hadoopConfiguration.set("mapreduce.input.fileinputformat.input.dir.recursive", "true")
@@ -371,7 +368,7 @@ Application Insights 提供 [匯出資料模型](../../azure-monitor/app/export-
     +---------+
     ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需在 Azure 中使用 Apache Spark 處理資料和服務的範例，請參閱下列文件：
 

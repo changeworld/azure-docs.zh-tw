@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: d9a87eca6a6c66d116817ced0f534a75033d48b9
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 9975e40f7d4f3b69c9281efd0288389740bf92ec
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221471"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943645"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>設定及驗證虛擬網路或 VPN 連線
 
@@ -64,7 +64,7 @@ Azure VPN 閘道可讓您彈性地在 Azure 中排列幾乎任何一種已連線
 
 ![檢查虛擬網路對等互連設定的選項](./media/virtual-network-configure-vnet-connections/4034496_en_1.png)
  
-針對 Azure PowerShell，請執行 [>set-azurermvirtualnetworkpeering](/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering?view=azurermps-4.1.0) 命令以取得虛擬網路對等互連。 以下為範例：
+針對 Azure PowerShell，請執行 [>set-azurermvirtualnetworkpeering](/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering) 命令以取得虛擬網路對等互連。 以下為範例：
 
 ```
 PS C:\Users\User1> Get-AzureRmVirtualNetworkPeering -VirtualNetworkName Vnet10-01 -ResourceGroupName dev-vnets
@@ -248,13 +248,13 @@ BGP 也可以藉由將 BGP 閘道從一個 BGP 對等體學習的路由傳播到
 
 若要設定使用 BGP 的 VPN 連線，請參閱 [如何使用 PowerShell 在 AZURE VPN 閘道上設定 BGP](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md)。
 
-若要在虛擬網路閘道上啟用 BGP，請建立自發系統 (作為其) 號碼。 基本閘道不支援 BGP。 若要檢查閘道的 SKU，請移至 Azure 入口網站中 **VPN 閘道** 分頁的 [**總覽**] 區段。 如果您的 SKU 是 **基本** 的，您必須變更 sku (查看 [調整閘道大小](/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway?view=azurermps-4.1.0&viewFallbackFrom=azurermps-4.0.0)) 以 **VpnGw1**。 
+若要在虛擬網路閘道上啟用 BGP，請建立自發系統 (作為其) 號碼。 基本閘道不支援 BGP。 若要檢查閘道的 SKU，請移至 Azure 入口網站中 **VPN 閘道** 分頁的 [**總覽**] 區段。 如果您的 SKU 是 **基本** 的，您必須變更 sku (查看 [調整閘道大小](/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway?viewFallbackFrom=azurermps-4.0.0)) 以 **VpnGw1**。 
 
-檢查 SKU 將會導致20至30分鐘的停機時間。 一旦閘道具有正確的 SKU，您就可以使用 [Reset-azurermvirtualnetworkgateway](/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway?view=azurermps-3.8.0) PowerShell commandlet 來新增 as 號碼。 設定 AS 號碼之後，閘道的 BGP 對等 IP 將會自動提供。
+檢查 SKU 將會導致20至30分鐘的停機時間。 一旦閘道具有正確的 SKU，您就可以使用 [Reset-azurermvirtualnetworkgateway](/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway) PowerShell commandlet 來新增 as 號碼。 設定 AS 號碼之後，閘道的 BGP 對等 IP 將會自動提供。
 
-您必須以手動 `LocalNetworkGateway` 方式提供 AS 號碼和 BGP 對等位址。 您可以 `ASN` `-BgpPeeringAddress` 使用 [新的->set-azurermlocalnetworkgateway](/powershell/module/azurerm.network/new-azurermlocalnetworkgateway?view=azurermps-4.1.0) 或 [>set-azurermlocalnetworkgateway](/powershell/module/azurerm.network/set-azurermlocalnetworkgateway?view=azurermps-4.1.0) PowerShell commandlet 來設定和值。 某些 AS 數位會保留給 Azure，而且您無法使用，如 [關於 BGP 與 AZURE VPN 閘道](../vpn-gateway/vpn-gateway-bgp-overview.md#faq)所述。
+您必須以手動 `LocalNetworkGateway` 方式提供 AS 號碼和 BGP 對等位址。 您可以 `ASN` `-BgpPeeringAddress` 使用 [新的->set-azurermlocalnetworkgateway](/powershell/module/azurerm.network/new-azurermlocalnetworkgateway) 或 [>set-azurermlocalnetworkgateway](/powershell/module/azurerm.network/set-azurermlocalnetworkgateway) PowerShell commandlet 來設定和值。 某些 AS 數位會保留給 Azure，而且您無法使用，如 [關於 BGP 與 AZURE VPN 閘道](../vpn-gateway/vpn-gateway-bgp-overview.md#faq)所述。
 
-連線物件必須啟用 BGP。 您可以 `-EnableBGP` `$True` 透過 [set-azurermvirtualnetworkgatewayconnection](/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0) 或 [set-azurermvirtualnetworkgatewayconnection](/powershell/module/azurerm.network/set-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0)將值設定為。
+連線物件必須啟用 BGP。 您可以 `-EnableBGP` `$True` 透過 [set-azurermvirtualnetworkgatewayconnection](/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayconnection) 或 [set-azurermvirtualnetworkgatewayconnection](/powershell/module/azurerm.network/set-azurermvirtualnetworkgatewayconnection)將值設定為。
 
 ### <a name="validate-the-bgp-configuration"></a>驗證 BGP 設定
 

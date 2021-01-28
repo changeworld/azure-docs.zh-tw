@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6b231b5af208a51cbe8f4370c2dc532be1ba3af9
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 9ee7116efe931d101a1505bc2d9d866d8ea5b92a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024920"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943438"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>教學課程：使用語音 SDK 為您的 bot 啟用語音
 
@@ -54,7 +54,7 @@ ms.locfileid: "95024920"
 > * 新增自訂關鍵字啟用
 > * 瞭解如何變更辨識和語音的語言
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 以下是完成本教學課程所需的內容：
 
@@ -63,7 +63,7 @@ ms.locfileid: "95024920"
 - [.NET Framework Runtime 4.6.1](https://dotnet.microsoft.com/download) 或更高版本
 - 一個 Azure 帳戶。 [免費註冊](https://azure.microsoft.com/free/cognitive-services/)
 - [GitHub](https://github.com/) 帳戶
-- [適用于 Windows 的 Git](https://git-scm.com/download/win)
+- [Git for Windows](https://git-scm.com/download/win)
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -166,7 +166,7 @@ ms.locfileid: "95024920"
 
 1. 安裝 [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases/latest) 版本4.3.0 或更高版本
 2. 啟動 Bot Framework Emulator，並開啟您的 Bot：
-   * **File** 檔案  -> **開啟 Bot**。
+   * 檔案  -> **開啟 Bot**。
 3. 輸入 bot 的 URL。 例如：
 
    ```
@@ -174,7 +174,7 @@ ms.locfileid: "95024920"
    ```
    然後按 [連接]。
 4. Bot 應該會歡迎您「Hello，歡迎！」 回應。 輸入任何文字訊息，並確認您收到來自 bot 的回應。
-5. 這就是與 Echo Bot 實例的通訊交換的結果，如下所示：  [![螢幕擷取畫面會顯示 Bot Framework Emulator。](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png "Bot Framework Emulator")](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png#lightbox)
+5. 這就是與 Echo Bot 實例的通訊交換的結果，如下所示：  [![螢幕擷取畫面會顯示 Bot Framework Emulator。](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png "Bot Framework 模擬器")](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png#lightbox)
 
 ## <a name="deploy-your-bot-to-an-azure-app-service"></a>將您的 bot 部署到 Azure App Service
 
@@ -227,14 +227,14 @@ ms.locfileid: "95024920"
 2. 在左側流覽窗格的 [設定] 底下，**按一下 [****設定**]。
 3. 選取 [ **一般設定** ] 索引標籤。
 4. 找出 **Web 通訊端** 的切換，並將其設定為 [ **開啟**]。
-5. 按一下 [檔案]  。
+5. 按一下 [儲存]。
 
 > [!TIP]
 > 您可以使用 Azure App Service 頁面頂端的控制項來停止或重新開機服務。 進行疑難排解時，這可能很有用。
 
 ## <a name="create-a-channel-registration"></a>建立通道註冊
 
-現在您已建立用來裝載 bot 的 Azure App Service，下一步是建立 **Bot 通道註冊**。 建立通道註冊是使用 Bot Framework 通道（包括 Direct Line 語音通道）來註冊 bot 的先決條件。 如果您想要深入瞭解 bot 如何使用通道，請參閱 [將 bot 連線至通道](/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0)。
+現在您已建立用來裝載 bot 的 Azure App Service，下一步是建立 **Bot 通道註冊**。 建立通道註冊是使用 Bot Framework 通道（包括 Direct Line 語音通道）來註冊 bot 的先決條件。 如果您想要深入瞭解 bot 如何使用通道，請參閱 [將 bot 連線至通道](/azure/bot-service/bot-service-manage-channels)。
 
 1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">建立 Azure Bot 通道註冊 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 2. 系統會提示您提供一些資訊：
@@ -244,7 +244,7 @@ ms.locfileid: "95024920"
    * 針對 [ **位置**]，選取 [ **美國西部**]。
      * 針對 [ **定價層**]，選取 [ **F0**]。
      * 針對 [ **訊息端點**]，輸入您的 web 應用程式 URL，並在 `/api/messages` 結尾附加路徑。 例如：如果您的全域唯一應用程式名稱是 **EchoBot20190805125647**，則您的訊息端點會是： `https://EchoBot20190805125647.azurewebsites.net/api/messages/` 。
-     * 針對 **application insights**，您可以將此設為 **Off**。 如需詳細資訊，請參閱 [Bot 分析](/azure/bot-service/bot-service-manage-analytics?view=azure-bot-service-4.0)。
+     * 針對 **application insights**，您可以將此設為 **Off**。 如需詳細資訊，請參閱 [Bot 分析](/azure/bot-service/bot-service-manage-analytics)。
      * 略過 **自動建立應用程式識別碼和密碼**。
 5. 按一下 [ **Bot 通道註冊** ] 分頁底部的 [ **建立**]。
 
@@ -291,14 +291,14 @@ ms.locfileid: "95024920"
    * 檢查標題為 [ **設定 Direct Line Speech**] 的頁面上的文字，然後展開 [ **認知服務帳戶** ] 下拉式功能表。
    * 從功能表選取您稍早建立的語音資源 (例如 **SpeechEchoBotTutorial-語音**) ，以將您的 bot 與您的語音訂用帳戶金鑰建立關聯。
    * 略過其餘的選擇性欄位。
-   * 按一下 [檔案]  。
+   * 按一下 [儲存]。
 
 1. 從 **Bot 管理** 流覽中，按一下 [ **設定**]。
    * 核取標示為 [ **啟用串流端點**] 的核取方塊。 若要建立以 web 通訊端為基礎的通訊協定，您的 bot 與 Direct Line 語音通道之間必須要有這種情況。
-   * 按一下 [檔案]  。
+   * 按一下 [儲存]。
 
 > [!TIP]
-> 如果您想要深入瞭解，請參閱 [將 bot 連線到 Direct Line 語音](/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0)。 此頁面包含其他資訊和已知問題。
+> 如果您想要深入瞭解，請參閱 [將 bot 連線到 Direct Line 語音](/azure/bot-service/bot-service-channel-connect-directlinespeech)。 此頁面包含其他資訊和已知問題。
 
 ## <a name="run-the-windows-voice-assistant-client"></a>執行 Windows 語音助理用戶端
 
@@ -323,7 +323,7 @@ Windows 語音助理用戶端有一個簡單的 UI，可讓您設定 bot 的連�
 
 如果您在主要應用程式視窗中收到錯誤訊息，請使用此表格來識別錯誤並進行疑難排解：
 
-| 錯誤 | 您應該怎麼做？ |
+| 錯誤 | 您應該做什麼？ |
 |-------|----------------------|
 |錯誤 (AuthenticationFailure) ： WebSocket 升級失敗，發生驗證錯誤 (401) 。 檢查是否有正確的訂用帳戶金鑰 (或授權權杖) 和區功能變數名稱稱| 在應用程式的 [設定] 頁面中，請確定您已正確輸入語音訂用帳戶金鑰和其區域。<br>請確定您的語音金鑰和金鑰區域已正確輸入。 |
 |錯誤 (ConnectionFailure) ：遠端主機已關閉連接。 錯誤碼：1011。 錯誤詳細資料：我們無法在傳送訊息之前連接到 bot | 確定您 [已核取 [啟用串流端點]](#register-the-direct-line-speech-channel)方塊及/或已將 [ **Web 通訊端** 切換](#enable-web-sockets)為開啟。<br>確定您的 Azure App Service 正在執行。 如果是，請嘗試重新開機您的 App Service。|
@@ -412,7 +412,7 @@ Windows 語音助理用戶端會使用 NuGet 套件 [CognitiveServices](https://
 
 在 Windows 語音助理用戶端原始程式碼中，查看這些檔案以查看用來啟用關鍵字偵測的程式碼：
 
-1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs) 包含語音 SDK 方法的呼叫 [`KeywordRecognitionModel.fromFile()`](/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?preserve-view=true&view=azure-node-latest#fromfile-string-) ，這個方法可用來從磁片上的本機檔案具現化模型。
+1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs) 包含語音 SDK 方法的呼叫 [`KeywordRecognitionModel.fromFile()`](/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel#fromfile-string-) ，這個方法可用來從磁片上的本機檔案具現化模型。
 1. [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs) 包含語音 SDK 方法的呼叫 [`DialogServiceConnector.StartKeywordRecognitionAsync()`](/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync) ，可啟用連續關鍵字偵測。
 
 ## <a name="optional-change-the-language-and-bot-voice"></a> (選擇性) 變更語言和 bot 語音
@@ -467,7 +467,7 @@ Windows 語音助理用戶端會使用 NuGet 套件 [CognitiveServices](https://
 2. 尋找名為： **SpeechEchoBotTutorial-ResourceGroup** 的資源群組。 按一下三個點 ( ... ) 。
 3. 選取 [刪除資源群組]。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [使用語音 SDK 建立您自己的用戶端應用程式](./quickstarts/voice-assistants.md?pivots=programming-language-csharp)
@@ -480,5 +480,5 @@ Windows 語音助理用戶端會使用 NuGet 套件 [CognitiveServices](https://
   * [Bot 服務定價](https://azure.microsoft.com/pricing/details/bot-service/)
   * [語音服務](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
 * 建立及部署您自己的具備語音功能的 bot：
-  * 建立 [Bot Framework Bot](https://dev.botframework.com/)。 使用 [Direct Line 語音通道](/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0) 來註冊，並 [自訂您的 bot 以進行語音](/azure/bot-service/directline-speech-bot?view=azure-bot-service-4.0)
+  * 建立 [Bot Framework Bot](https://dev.botframework.com/)。 使用 [Direct Line 語音通道](/azure/bot-service/bot-service-channel-connect-directlinespeech) 來註冊，並 [自訂您的 bot 以進行語音](/azure/bot-service/directline-speech-bot)
   * 探索現有的 [Bot Framework 解決方案](https://microsoft.github.io/botframework-solutions/index)：建立 [虛擬](https://microsoft.github.io/botframework-solutions/overview/virtual-assistant-solution/) 小幫手，並將 [其擴充為 Direct Line 語音](https://microsoft.github.io/botframework-solutions/clients-and-channels/tutorials/enable-speech/1-intro/)

@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 01/21/2021
 ms.subservice: alerts
-ms.openlocfilehash: 11dc71578b3d94ce41fe040557184ff32bcf3240
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: f7425e1cf34348b7742b739ef5440a5cb0355077
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661792"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942102"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>針對 Azure 監視器計量警示中的問題進行疑難排解 
 
@@ -107,7 +107,7 @@ ms.locfileid: "98661792"
 
 ## <a name="make-metric-alerts-occur-every-time-my-condition-is-met"></a>每次符合我的條件時，都會進行計量警示
 
-計量警示預設是具狀態的，因此，如果在指定的時間序列上已經引發警示，則不會引發其他警示。 如果您想要讓特定的計量警示規則成為無狀態，並在符合警示條件的每個評估上取得警示，請以程式設計方式建立警示規則 (例如，透過 [Resource Manager](./alerts-metric-create-templates.md)、 [PowerShell](/powershell/module/az.monitor/?view=azps-3.6.1)、 [REST](/rest/api/monitor/metricalerts/createorupdate)、 [CLI](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)) ，然後將 *autoMitigate* 屬性設定為 ' False '。
+計量警示預設是具狀態的，因此，如果在指定的時間序列上已經引發警示，則不會引發其他警示。 如果您想要讓特定的計量警示規則成為無狀態，並在符合警示條件的每個評估上取得警示，請以程式設計方式建立警示規則 (例如，透過 [Resource Manager](./alerts-metric-create-templates.md)、 [PowerShell](/powershell/module/az.monitor/)、 [REST](/rest/api/monitor/metricalerts/createorupdate)、 [CLI](/cli/azure/monitor/metrics/alert)) ，然後將 *autoMitigate* 屬性設定為 ' False '。
 
 > [!NOTE] 
 > 讓計量警示規則保持無狀態可防止引發的警示變成已解決，因此即使在不符合條件之後，引發的警示仍會維持在引發的狀態，直到30天的保留期限為止。
@@ -175,9 +175,9 @@ ms.locfileid: "98661792"
 
 ### <a name="from-api"></a>從 API
 
-- PowerShell - [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2?view=azps-3.7.0)
+- PowerShell - [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2)
 - REST API - [依訂用帳戶列出](/rest/api/monitor/metricalerts/listbysubscription)
-- Azure CLI - [az monitor metrics alert list](/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-list)
+- Azure CLI - [az monitor metrics alert list](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-list)
 
 ## <a name="managing-alert-rules-using-resource-manager-templates-rest-api-powershell-or-azure-cli"></a>使用 Resource Manager 範本、REST API、PowerShell 或 Azure CLI 來管理警示規則
 
@@ -196,14 +196,14 @@ ms.locfileid: "98661792"
 
 確定您使用的是適用于計量警示的正確 PowerShell Cmdlet：
 
-- 計量警示的 PowerShell Cmdlet 可在 [Az.Monitor 模組](/powershell/module/az.monitor/?view=azps-3.6.1)中取得
-- 針對新的 (非傳統) 計量警示，請務必使用結尾為 ' V2 ' 的 Cmdlet (例如，新增 [-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2?view=azps-3.6.1)) 
+- 計量警示的 PowerShell Cmdlet 可在 [Az.Monitor 模組](/powershell/module/az.monitor/)中取得
+- 針對新的 (非傳統) 計量警示，請務必使用結尾為 ' V2 ' 的 Cmdlet (例如，新增 [-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2)) 
 
 ### <a name="azure-cli"></a>Azure CLI
 
 請確定您使用的是適用于計量警示的正確 CLI 命令：
 
-- 計量警示的 CLI 命令會以 `az monitor metrics alert` 開頭。 請檢閱 [Azure CLI 參考](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)以了解語法。
+- 計量警示的 CLI 命令會以 `az monitor metrics alert` 開頭。 請檢閱 [Azure CLI 參考](/cli/azure/monitor/metrics/alert)以了解語法。
 - 您會看到[說明如何使用計量警示 CLI 的範例](./alerts-metric.md#with-azure-cli)
 - 若要針對自訂計量發出警示，請務必在計量名稱前面加上相關的計量命名空間：NAMESPACE.METRIC
 
@@ -284,6 +284,6 @@ ms.locfileid: "98661792"
 
 當下限的值為負值時，這表示它的合理是根據度量的異常行為，達到零值。 您可以考慮選擇較高的敏感度或較大的 *匯總細微性 (期間)* 來使模型較不敏感，或使用 [ *略過資料* ] 選項，從用來建立模型的歷程記錄資料中排除最近的 irregulaity。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 如需有關警示和通知的一般疑難排解資訊，請參閱 [Azure 監視器警示中的疑難排解問題](alerts-troubleshoot.md)。

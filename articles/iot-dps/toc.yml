@@ -116,10 +116,16 @@
       href: concepts-device-oem-security-practices.md
 - name: 操作指南
   items:
-    - name: 將 MXChip IoT DevKit 連線到 IoT 中樞
-      href: how-to-connect-mxchip-iot-devkit.md
-    - name: 使用自訂配置原則佈建裝置
-      href: how-to-use-custom-allocation-policies.md
+    - name: 部署
+      items:
+        - name: 將 MXChip IoT DevKit 連線到 IoT 中樞
+          href: how-to-connect-mxchip-iot-devkit.md
+        - name: 如何從裝置傳送其他資料
+          href: how-to-send-additional-data.md
+        - name: 使用自訂配置原則佈建裝置
+          href: how-to-use-custom-allocation-policies.md
+        - name: 使用 MQTT 通訊協定與 DPS 通訊
+          href: iot-dps-mqtt-support.md
     - name: 管理裝置佈建服務
       items:
         - name: 管理註冊 - 入口網站
@@ -138,8 +144,6 @@
           href: how-to-control-access.md
         - name: 設定 IP 篩選
           href: iot-dps-ip-filtering.md
-        - name: 使用 Azure CLI 來設定裝置佈建服務
-          href: how-to-manage-dps-with-cli.md
     - name: 佈建 IoT Edge 裝置
       items:
         - name: Linux
@@ -148,12 +152,8 @@
         - name: Windows
           href: ../iot-edge/how-to-auto-provision-simulated-device-windows.md
           maintainContext: true
-    - name: 如何從裝置傳送其他資料
-      href: how-to-send-additional-data.md
     - name: 疑難排解
       href: how-to-troubleshoot-dps.md
-    - name: 使用 MQTT 通訊協定與 DPS 通訊
-      href: iot-dps-mqtt-support.md
 - name: 參考
   items:
     - name: REST API

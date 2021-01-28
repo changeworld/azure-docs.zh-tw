@@ -1,25 +1,22 @@
 ---
 title: 使用 Apache Spark 來讀取和寫入資料至 Azure SQL Database
 description: 瞭解如何設定 HDInsight Spark 叢集與 Azure SQL Database 之間的連接。 讀取資料、寫入資料，以及將資料串流至 SQL database
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 97c326bd1d2f61ba3fb9d6e381f5a8711bd0ca1d
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 4d42cedbc5dc20c929703be106e732b4806f3902
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821191"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940607"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>使用 HDInsight Spark 叢集來讀取資料，並將其寫入 Azure SQL Database
 
 瞭解如何使用 Azure SQL Database 連接 Azure HDInsight 中的 Apache Spark 叢集。 然後，將資料讀取、寫入和串流至 SQL database。 本文中的指示會使用 Jupyter Notebook 來執行 Scala 程式碼片段。 不過，您可以使用 Scala 或 Python 來建立獨立應用程式，並進行相同的工作。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Azure HDInsight Spark 叢集。  請依照[在 HDInsight 中建立 Apache Spark 叢集](apache-spark-jupyter-spark-sql.md)中的指示操作。
 

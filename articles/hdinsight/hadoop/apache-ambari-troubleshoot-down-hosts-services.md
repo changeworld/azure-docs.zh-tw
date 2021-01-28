@@ -3,16 +3,13 @@ title: Apache Ambari UI 會顯示 Azure HDInsight 中的主機和服務
 description: 當 Apache Ambari UI 問題顯示 Azure HDInsight 中的主機和服務時進行疑難排解
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/02/2019
-ms.openlocfilehash: 9c9676fa1457be014098b8190986c617262e628d
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 0d3a393dc1cbd51b83edc0b6989bb5e7a5670a29
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286500"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943260"
 ---
 # <a name="scenario-apache-ambari-ui-shows-down-hosts-and-services-in-azure-hdinsight"></a>案例： Apache Ambari UI 會顯示 Azure HDInsight 中的主機和服務
 
@@ -33,7 +30,7 @@ $>telnet headnodehost 8440
 ... No route to host
 ```
 
-## <a name="resolution"></a>解決方法
+## <a name="resolution"></a>解決方案
 
 通常重新開機作用中的前端節點將可減輕此問題。 如果沒有，請洽詢 HDInsight 支援小組。
 

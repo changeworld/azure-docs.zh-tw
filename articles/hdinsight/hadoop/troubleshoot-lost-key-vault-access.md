@@ -1,18 +1,15 @@
 ---
 title: 具有磁片加密 Azure HDInsight 叢集遺失 Key Vault 存取權
 description: 與 Azure HDInsight 叢集互動時，Key Vault 存取問題的疑難排解步驟和可能的解決方法。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/30/2020
-ms.openlocfilehash: bc8162f3a7ca8744a94aba039996275b5f13c727
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ce2929ca84746de1ab8b51882f3004c3699f17ca
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533405"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943118"
 ---
 # <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>案例：具有磁片加密 Azure HDInsight 叢集遺失 Key Vault 存取權
 
