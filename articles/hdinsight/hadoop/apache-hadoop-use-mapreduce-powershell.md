@@ -1,19 +1,16 @@
 ---
 title: 搭配使用 MapReduce 和 PowerShell 與 Apache Hadoop - Azure HDInsight
 description: 了解如何使用 PowerShell 從遠端搭配執行 MapReduce 工作與 HDInsight 上的 Apache Hadoop。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/08/2020
-ms.openlocfilehash: 8b5f5a9fb8ddd25f750b19044bac7253bbff2f98
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 16c6c5e317591b70c3a1300453093fc715e213fb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545203"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939671"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>使用 PowerShell 搭配執行 MapReduce 工作與 HDInsight 上的 Apache Hadoop
 
@@ -36,14 +33,14 @@ Azure PowerShell 提供 *Cmdlet* ，可讓您從遠端在 HDInsight 上執行 Ma
 |Cmdlet | 描述 |
 |---|---|
 |Connect-AzAccount|向您的 Azure 訂用帳戶驗證 Azure PowerShell。|
-|New-AzHDInsightMapReduceJobDefinition|使用指定的 MapReduce 資訊來建立新的「作業定義」  。|
-|Start-AzHDInsightJob|將作業定義傳送給 HDInsight，並啟動作業。 系統會傳回「作業」  物件。|
+|New-AzHDInsightMapReduceJobDefinition|使用指定的 MapReduce 資訊來建立新的「作業定義」。|
+|Start-AzHDInsightJob|將作業定義傳送給 HDInsight，並啟動作業。 系統會傳回「作業」物件。|
 |Wait-AzHDInsightJob|使用作業物件來檢查作業的狀態。 它會等到工作完成，或等到等候時間超過。|
 |Get-AzHDInsightJobOutput|用來擷取作業的輸出。|
 
 下列步驟示範如何使用這些 Cmdlet，在您的 HDInsight 叢集中執行工作。
 
-1. 使用編輯器，將下列程式碼儲存為 **mapreducejob.ps1** 。
+1. 使用編輯器，將下列程式碼儲存為 **mapreducejob.ps1**。
 
     [!code-powershell[main](../../../powershell_scripts/hdinsight/use-mapreduce/use-mapreduce.ps1?range=5-69)]
 
@@ -99,7 +96,7 @@ Get-AzHDInsightJobOutput `
 
 這個 Cmdlet 會傳回作業執行時寫入到 STDERR 的資訊。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如您所見，Azure PowerShell 提供簡單的方法，在 HDInsight 叢集上執行 MapReduce 工作、監視工作狀態，以及擷取輸出。 如需您可以在 HDInsight 上使用 Hadoop 之其他方式的詳細資訊：
 

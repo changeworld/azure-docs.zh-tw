@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 8e54f71ef58b3ea76a5fe55347a1caa173046320
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 675a5526bfd741876de16fe41c969c09a4ed0ad7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754500"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938225"
 ---
 # <a name="quickstart-aspnet-core-web-app-that-signs-in-users-and-calls-microsoft-graph-on-their-behalf"></a>快速入門：式登入使用者並代表他們呼叫 Microsoft Graph 的 ASP.NET Core Web 應用程
 
@@ -55,7 +55,7 @@ ms.locfileid: "98754500"
 > 1. 輸入值為 `https://localhost:44321/signin-oidc` 的 [重新導向 URI]。
 > 1. 選取 [註冊]。
 > 1. 在 [管理] 底下，選取 [驗證]。
-> 1. 輸入值為 `https://localhost:44321/signout-oidc` 的 [登出 URL]。
+> 1. 輸入的 **前端通道登出 URL** `https://localhost:44321/signout-oidc` 。
 > 1. 選取 [儲存]。
 > 1. 在 **管理** 下，選取 [憑證與秘密] > [新增用戶端密碼]。
 > 1. 輸入 [描述]，例如 `clientsecret1`。
@@ -64,7 +64,7 @@ ms.locfileid: "98754500"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步驟 1:在 Azure 入口網站中設定您的應用程式
-> 若要讓本快速入門中的程式碼範例能正常運作，您需要新增 `https://localhost:44321/signin-oidc` 作為回覆 URL，並新增 `https://localhost:44321/signout-oidc` 作為登出 URL。
+> 本快速入門的範例程式碼需要 `https://localhost:44321/signin-oidc` 在應用程式註冊中的重新導向 URI 和 **前端通道登出 URL** `https://localhost:44321/signout-oidc` 。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [為我進行這項變更]()
 >

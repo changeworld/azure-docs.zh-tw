@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 122e76e4bde96823ff18207bc24df4a8e91afb1c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8e51d7d00120f6facb0fb53a8e379d157ae79ea4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517963"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938572"
 ---
 # <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>案例：使用自訂設定透過 Nva 路由傳送流量
 
@@ -22,10 +22,10 @@ ms.locfileid: "92517963"
 
 ## <a name="design"></a>設計
 
-* 連線到虛擬中樞的虛擬網路**輪輻**。 在本文稍後的圖表中 (例如，VNet 1、VNet 2 和 VNet 3。 ) 
-* 適用于虛擬網路的**服務 VNet** ，使用者已部署 NVA 來檢查非網際網路流量，以及可能具有輪輻所存取的一般服務。 例如，本文稍後的圖表中的 VNet 4 (。 )  
-* 虛擬網路的**周邊 VNet** ，使用者已在其中部署 NVA，以用來檢查網際網路系結流量。 例如，本文稍後的圖表中的 VNet 5 (。 ) 
-* 由 Microsoft 管理的虛擬 WAN 中樞的**中樞**。
+* 連線到虛擬中樞的虛擬網路 **輪輻**。 在本文稍後的圖表中 (例如，VNet 1、VNet 2 和 VNet 3。 ) 
+* 適用于虛擬網路的 **服務 VNet** ，使用者已部署 NVA 來檢查非網際網路流量，以及可能具有輪輻所存取的一般服務。 例如，本文稍後的圖表中的 VNet 4 (。 )  
+* 虛擬網路的 **周邊 VNet** ，使用者已在其中部署 NVA，以用來檢查網際網路系結流量。 例如，本文稍後的圖表中的 VNet 5 (。 ) 
+* 由 Microsoft 管理的虛擬 WAN 中樞的 **中樞**。
 
 下表摘要說明此案例中支援的連接：
 
@@ -58,16 +58,19 @@ ms.locfileid: "92517963"
   * 相關聯的路由表： **預設值**
   * 傳播至路由表： **RT_SHARED** 和 **預設值**
 
+> [!NOTE] 
+> 請確定輪輻 Vnet 不會傳播到預設標籤。 這可確保從分支到輪輻 Vnet 的流量會轉送至 Nva。
+
 這些靜態路由可確保進出虛擬網路和分支的流量會通過服務 VNet (VNet 4) 中的 NVA：
 
-| 說明 | 路由表 | 靜態路由              |
+| 描述 | 路由表 | 靜態路由              |
 | ----------- | ----------- | ------------------------- |
 | 分支    | RT_V2B      | 10.2.0.0/16-> vnet4conn  |
-| NVA 輪輻  | Default     | 10.1.0.0/16-> vnet4conn  |
+| NVA 輪輻  | 預設     | 10.1.0.0/16-> vnet4conn  |
 
 現在您可以使用虛擬 WAN 來選取要將封包傳送至的正確連接。 您也需要使用虛擬 WAN 來選取接收這些封包時要採取的正確動作。 您可以使用連接路由表來進行這個動作，如下所示：
 
-| 說明 | Connection | 靜態路由            |
+| 描述 | Connection | 靜態路由            |
 | ----------- | ---------- | ----------------------- |
 | VNet2Branch | vnet4conn  | 10.2.0.0/16-> 10.4.0。5 |
 | Branch2VNet | vnet4conn  | 10.1.0.0/16-> 10.4.0。5 |
@@ -94,11 +97,11 @@ ms.locfileid: "92517963"
 
 1. 若要透過 VNet 5 進行網際網路系結的流量，您需要 Vnet 1、2和3，才能透過虛擬網路對等互連直接連線至 VNet 5。 您也需要在虛擬網路中為 0.0.0.0/0 和下一個躍點10.5.0.5 設定使用者定義的路由。 虛擬 WAN 目前不允許虛擬中樞內的下一個躍點 NVA 為 0.0.0.0/0。
 
-1. 在 Azure 入口網站中，移至您的虛擬中樞，並建立名為 **RT_Shared**的自訂路由表。 此資料表會透過從所有虛擬網路和分支連線的傳播來學習路由。 您可以在下圖中看到此空白資料表。
+1. 在 Azure 入口網站中，移至您的虛擬中樞，並建立名為 **RT_Shared** 的自訂路由表。 此資料表會透過從所有虛擬網路和分支連線的傳播來學習路由。 您可以在下圖中看到此空白資料表。
 
    * **路由：** 您不需要新增任何靜態路由。
 
-   * **關聯：** 選取 [Vnet 4] 和 [5]，這表示這些虛擬網路的連接會與路由表 **RT_Shared**建立關聯。
+   * **關聯：** 選取 [Vnet 4] 和 [5]，這表示這些虛擬網路的連接會與路由表 **RT_Shared** 建立關聯。
 
    * **傳播：** 因為您想要讓所有分支和虛擬網路連線將其路由動態傳播到此路由表，請選取 [分支] 和 [所有虛擬網路]。
 
@@ -120,7 +123,7 @@ ms.locfileid: "92517963"
 
    * **傳播來源：** 確定已選取分支 (VPN/ER/P2S) 的選項，以確保內部部署連接會將路由傳播到預設路由表。
 
-:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="網路架構的圖表。" lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
+:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="工作流程的圖表。" lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
 
 ## <a name="next-steps"></a>後續步驟
 

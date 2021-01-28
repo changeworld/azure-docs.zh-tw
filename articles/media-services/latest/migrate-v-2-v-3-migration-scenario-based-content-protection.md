@@ -1,5 +1,5 @@
 ---
-title: 內容保護以案例為基礎的遷移指導方針
+title: 內容保護遷移指引
 description: 本文提供以內容保護案例為基礎的指導方針，可協助您將 Azure 媒體服務 v2 遷移至 v3 的最小值。
 services: media-services
 author: IngridAtMicrosoft
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: d1e8c8d1f7f710acff75fa1d78aab68df03c954d
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 9c0040c0ad34b019eaa90bbd1571377ad3539578
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898285"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940113"
 ---
 # <a name="content-protection-scenario-based-migration-guidance"></a>內容保護以案例為基礎的遷移指導方針
 

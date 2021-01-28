@@ -1,18 +1,15 @@
 ---
 title: 將 Apache Kafka 工作負載遷移至 Azure HDInsight 4。0
 description: 瞭解如何將 HDInsight 3.6 上的 Apache Kafka 工作負載遷移至 HDInsight 4.0。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/18/2019
-ms.openlocfilehash: 0a31c6cf32222277e033aacf7d04622c54aef9ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3967a5d96c35e4bac88dcd9a6c1fa95b78a6b2b1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80437003"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939115"
 ---
 # <a name="migrate-apache-kafka-workloads-to-azure-hdinsight-40"></a>將 Apache Kafka 工作負載遷移至 Azure HDInsight 4。0
 
@@ -22,7 +19,7 @@ Azure HDInsight 4.0 提供最新的開放原始碼元件，並大幅增強效能
 
 HDInsight 3.6 支援兩種版本的 Kafka：1.0.0 和1.1.0。 HDInsight 4.0 支援版本1.1.0 和2.1.0。 根據 Kafka 的版本以及您想要執行的 HDInsight 版本，有多個支援的遷移路徑。 下圖將說明這些路徑，如下圖所示。
 
-* **在最新版本上執行 Kafka 和 HDInsight (建議的) **：將 hdinsight 3.6 和 Kafka 1.0.0 或1.1.0 應用程式遷移至具有 Kafka 2.1.0 的 hdinsight 4.0 (路徑 D 和 E 以下) 。
+* **在最新版本上執行 Kafka 和 HDInsight (建議的)**：將 hdinsight 3.6 和 Kafka 1.0.0 或1.1.0 應用程式遷移至具有 Kafka 2.1.0 的 hdinsight 4.0 (路徑 D 和 E 以下) 。
 * **請在最新版本上執行 hdinsight，但只 Kafka 較新的版本**：將 hdinsight 3.6 和 Kafka 1.0.0 應用程式遷移到) 下方的 Kafka 1.1.0 (路徑 B 的 hdinsight 4.0。
 * **在最新版本上執行 HDInsight、保留 Kafka 版本**：將 hdinsight 3.6 和 Kafka 1.1.0 應用程式遷移至 hdinsight 4.0，並使用 Kafka 1.1.0 (路徑 C) 下方。
 * **在較新的版本上執行 Kafka、保留 HDInsight 版本**：將 Kafka 1.0.0 應用程式遷移至1.1.0，並保持在 HDInsight 3.6 (路徑 a 以下) 。 請注意，這個選項仍然需要部署新的叢集。 不支援在現有的叢集上升級 Kafka 版本。 使用您想要的版本建立叢集之後，請遷移您的 Kafka 用戶端以使用新的叢集。

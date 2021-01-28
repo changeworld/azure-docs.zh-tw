@@ -12,20 +12,20 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b6240f88d309cbf4f26375c5f961d716b472755d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 7f7be27e67bfa266c368927227f1b8d1083a5124
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756264"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937871"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>登入使用者的 Web 應用程式：應用程式註冊
 
-本文說明適用于登入使用者的 web 應用程式的應用程式註冊細節。
+本文說明登入使用者的 web 應用程式的應用程式註冊步驟。
 
 若要註冊您的應用程式，您可以使用：
 
-- [Web 應用程式快速入門](#register-an-app-by-using-the-quickstarts)。 除了建立應用程式的絕佳首次體驗之外，Azure 入口網站中的快速入門還包含名為 [ **為我進行這項變更**] 的按鈕。 您可以使用此按鈕來設定所需的屬性，即使是針對現有的應用程式。 您必須將這些屬性的值調整為您自己的案例。 尤其是，您應用程式的 web API URL 可能會與建議的預設值不同，這也會影響登出 URI。
+- [Web 應用程式快速入門](#register-an-app-by-using-the-quickstarts)。 除了建立應用程式的絕佳首次體驗之外，Azure 入口網站中的快速入門還包含名為 [ **為我進行這項變更**] 的按鈕。 您可以使用此按鈕來設定所需的屬性，即使是針對現有的應用程式。 將這些屬性的值調整為您自己的案例。 尤其是，您應用程式的 web API URL 可能會與建議的預設值不同，這也會影響登出 URI。
 - Azure 入口網站 [手動註冊您的應用程式](#register-an-app-by-using-the-azure-portal)。
 - PowerShell 和命令列工具。
 
@@ -56,8 +56,8 @@ ms.locfileid: "98756264"
    1. 選取 [註冊]。
 1. 在 [ **管理**] 底下，選取 [ **驗證** ]，然後新增下列資訊：
    1. 在 [ **Web** ] 區段中，加入 `https://localhost:44321/signin-oidc` 做為重新 **導向 URI**。
-   1. 新增 `https://localhost:44321/signout-oidc` 為 **登出 URL**。
-   1. 在 [隱含授與] 底下，選取 [識別碼權杖]。
+   1. 在 [ **前端通道登出 URL**] 中，輸入 `https://localhost:44321/signout-oidc` 。
+   1. 在 **[隱含授與和混合式流程**] 底下，選取 [ **識別碼權杖**]。
    1. 選取 [儲存]。
    
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
@@ -65,10 +65,10 @@ ms.locfileid: "98756264"
 1. 當 [註冊應用程式] 頁面出現時，輸入您應用程式的註冊資訊：
    1. 輸入應用程式的 [名稱]，例如 `MailApp-openidconnect-v2`。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
    1. 為您的應用程式選擇支援的帳戶類型。  (查看 [支援的帳戶類型](./v2-supported-account-types.md)。 ) 
-   1. 在 [重新 **導向 URI] (選擇性)** 區段中，選取下拉式方塊中的 [ **Web** ]，然後輸入下列重新導向 URI： **https://localhost:44326/** 。
+   1. 在 [重新 **導向 URI] (選擇性)** 區段中，選取下拉式方塊中的 [ **Web** ]，然後輸入的重新 **導向 uri** `https://localhost:44326/` 。
    1. 選取 [註冊] 以建立應用程式。
 1. 在 [管理] 底下，選取 [驗證]。
-1. 在 [ **隱含授** 與] 區段中，選取 [ **識別碼權杖**]。 此範例需要啟用 [隱含授與流程](v2-oauth2-implicit-grant-flow.md) 才能登入使用者。
+1. 在 [ **隱含授與和混合式流程** ] 區段中，選取 [ **識別碼權杖**]。 此範例需要啟用 [隱含授與流程](v2-oauth2-implicit-grant-flow.md) 才能登入使用者。
 1. 選取 [儲存]。
 
 # <a name="java"></a>[Java](#tab/java)
@@ -81,10 +81,10 @@ ms.locfileid: "98756264"
 1. 選取 [Web]。
 1. 針對 [重新 **導向 URI**]，輸入相同的主機和埠號碼，然後輸入登 `/msal4jsample/secure/aad` 入頁面。 
 1. 選取 [設定] 。
-1. 在 [ **Web** ] 區段中，使用主機和埠號碼，然後使用 **/msal4jsample/graph/me** 做為 [使用者資訊] 頁面的重新 **導向 URI** 。
+1. 在 [ **Web** ] 區段中，使用 [主機] 和 [埠號碼]，然後在 [使用者資訊] 頁面上使用 [重新 `/msal4jsample/graph/me` **導向 URI** ]。
 根據預設，此範例會使用：
-   - **http://localhost:8080/msal4jsample/secure/aad**
-   - **http://localhost:8080/msal4jsample/graph/me**
+   - `http://localhost:8080/msal4jsample/secure/aad`
+   - `http://localhost:8080/msal4jsample/graph/me`
 
 1. 選取 [儲存]。
 1. 在 [管理]  下，選取 [憑證和密碼]  。
@@ -100,7 +100,7 @@ ms.locfileid: "98756264"
 1. 當 [註冊應用程式] 頁面出現時，輸入您應用程式的註冊資訊：
    1. 輸入應用程式的 [名稱]，例如 `python-webapp`。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
    1. 將 **支援的帳戶類型** 變更為 **任何組織目錄中的帳戶及個人的 Microsoft 帳戶， (例如 Skype、Xbox、Outlook.com)**。
-   1. 在 [重新 **導向 URI] (選擇性)** 區段中，選取下拉式方塊中的 [ **Web** ]，然後輸入下列重新導向 URI： **http://localhost:5000/getAToken** 。
+   1. 在 [重新 **導向 URI] (選擇性)** 區段中，選取下拉式方塊中的 [ **Web** ]，然後輸入下列重新導向 URI： `http://localhost:5000/getAToken` 。
    1. 選取 [註冊] 以建立應用程式。
 1. 在應用程式的 [概觀] 頁面上，尋找 [應用程式 (用戶端) 識別碼] 值並將它記下供稍後使用。 您必須用此識別碼來設定此專案的 Visual Studio 組態檔。
 1. 在 [管理]  下，選取 [憑證和密碼]  。

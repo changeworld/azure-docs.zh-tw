@@ -1,19 +1,16 @@
 ---
 title: HDInsight 中的 Azure 儲存體總覽
 description: HDInsight 中的 Azure 儲存體總覽。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 40e1fdae5cdb1ec806e67dcacc70510a63093a82
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f171ab9619f2bcb8ecf15c4bfb3b17146ab5a0ff
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539457"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938951"
 ---
 # <a name="azure-storage-overview-in-hdinsight"></a>HDInsight 中的 Azure 儲存體總覽
 
@@ -21,7 +18,7 @@ Azure 儲存體是強大的一般用途儲存體解決方案，其完美整合�
 
 建議您針對預設叢集儲存體和您的商務資料使用不同的儲存體容器。 分隔是將 HDInsight 記錄和暫存檔案與您自己的商務資料隔離。 我們也建議您在每次使用時刪除包含應用程式和系統記錄的預設 blob 容器，以降低儲存成本。 請務必先擷取記錄再刪除容器。
 
-如果您選擇使用 **所選網路** 上的 **防火牆和虛擬網路** 限制來保護儲存體帳戶，請務必啟用 [ **允許信任的 Microsoft 服務 ...** ] 例外狀況。例外狀況是讓 HDInsight 可以存取您的儲存體帳戶。
+如果您選擇使用 **所選網路** 上的 **防火牆和虛擬網路** 限制來保護儲存體帳戶，請務必啟用 [**允許信任的 Microsoft 服務 ...**] 例外狀況。例外狀況是讓 HDInsight 可以存取您的儲存體帳戶。
 
 ## <a name="hdinsight-storage-architecture"></a>HDInsight 儲存架構
 
@@ -75,7 +72,7 @@ Blob 可使用於結構化和非結構化資料。 Blob 容器會將資料儲存
 > [!NOTE]  
 > 大部分 HDFS 命令 (例如，`ls`、`copyFromLocal` 和 `mkdir`) 可在 Azure 儲存體中正常運作。 只有原生 HDFS 實作 (稱為 DFS) 的特定命令 (例如 `fschk` 和 `dfsadmin`) 才會在 Azure 儲存體上出現不同的行為。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [Azure Data Lake Storage Gen2 簡介](../storage/blobs/data-lake-storage-introduction.md)
 * [Azure 儲存體簡介](../storage/common/storage-introduction.md)

@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 77521150e73014c5568003597059a9d32f6e80ee
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: eea2e587a075d774a25f479ec61575a002b57f75
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752958"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937806"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>依支援的帳戶類型的驗證差異 (signInAudience) 
 
@@ -24,9 +24,9 @@ ms.locfileid: "98752958"
 
 選項包括：
 
-- *>azureadmyorg*：僅 (單一租使用者中註冊應用程式的組織目錄中的帳戶) 
-- *>azureadmultipleorgs*：任何組織目錄中的帳戶 (多租使用者) 
-- *AzureADandPersonalMicrosoftAccount*：任何組織目錄中的帳戶 (多租使用者) 和個人 Microsoft 帳戶 (例如 Skype、Xbox 和 Outlook.com) 
+- **>azureadmyorg**：只有在組織目錄中註冊應用程式的帳戶 (單一租使用者) 。
+- **>azureadmultipleorgs**：任何組織目錄中的帳戶 (多租使用者) 。
+- **AzureADandPersonalMicrosoftAccount**：任何組織目錄中的帳戶 (多租使用者) 和個人 Microsoft 帳戶 (例如 Skype、Xbox 和 Outlook.com) 。
 
 針對已註冊的應用程式，您可以在應用程式的 [ **驗證** ] 區段中找到支援的帳戶類型的值。 您也可以在 `signInAudience` **資訊清單** 中的屬性下找到它。
 
@@ -44,11 +44,11 @@ ms.locfileid: "98752958"
 | 由此 API 定義的範圍 (`oauth2Permissions`)  | 最大範圍名稱長度為120個字元 <br><br> 定義的範圍數目沒有限制 * | 最大範圍名稱長度為120個字元 <br><br> 定義的範圍數目沒有限制 * |  最大範圍名稱長度為40個字元 <br><br> 已定義100範圍的最大值 | 
 | 授權的用戶端應用程式 (`preAuthorizedApplications`)  | 無限制 * | 無限制 * | 總計上限為500 <br><br> 已定義100用戶端應用程式的最大值 <br><br> 每個用戶端定義的最多30個範圍 | 
 | appRoles | 支援 <br> 無限制 * | 支援 <br> 無限制 * | 不支援 | 
-| 登出 URL | http://localhost 允許 <br><br> 最大長度255個字元 | http://localhost 允許 <br><br> 最大長度255個字元 | <br><br> https://localhost 允許， http://localhost MSA 失敗 <br><br> 最大長度255個字元 <br><br> 不允許 HTTP 配置 <br><br> 不支援萬用字元 | 
+| 前端通道登出 URL | https://localhost 允許 <br><br> `http` 不允許配置 <br><br> 最大長度255個字元 | https://localhost 允許 <br><br> `http` 不允許配置 <br><br> 最大長度255個字元 | <br><br> https://localhost 允許， http://localhost MSA 失敗 <br><br> 最大長度255個字元 <br><br> `http` 不允許配置 <br><br> 不支援萬用字元 | 
 
-* 應用程式物件的所有集合屬性有大約1000個專案的全域限制
+* 應用程式物件上的所有集合屬性都有大約1000個專案的全域限制。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解 [應用程式註冊](app-objects-and-service-principals.md)
-- 了解[應用程式資訊清單](reference-app-manifest.md)
+- 深入瞭解 [應用程式註冊](app-objects-and-service-principals.md)。
+- 深入瞭解 [應用程式資訊清單](reference-app-manifest.md)。

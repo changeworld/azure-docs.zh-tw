@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: c20685c0c392ece68dc80b57afc6680f2efd9e35
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 05e14b5bdc2f603ffe802b12ed33b7b57be25b69
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754511"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938200"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>快速入門：將「使用 Microsoft 登入」新增至 ASP.NET Core Web 應用程式
 
@@ -56,13 +56,13 @@ ms.locfileid: "98754511"
 > 1. 選取 [註冊]。
 > 1. 在 [管理] 底下，選取 [驗證]。
 > 1. 在 [重新導向 URI] 底下，選取 [新增 URI]，然後輸入 `https://localhost:44321/signin-oidc`。
-> 1. 輸入值為 `https://localhost:44321/signout-oidc` 的 [登出 URL]。
+> 1. 輸入的 **前端通道登出 URL** `https://localhost:44321/signout-oidc` 。
 > 1. 在 [隱含授與] 底下，選取 [識別碼權杖]。
 > 1. 選取 [儲存]。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步驟 1:在 Azure 入口網站中設定您的應用程式
-> 若要讓本快速入門的程式碼範例運作，您必須將回覆 URL 新增為 `https://localhost:44321/` 和 `https://localhost:44321/signin-oidc`，並將登出 URL 新增為 `https://localhost:44321/signout-oidc`，然後要求由授權端點簽發識別碼權杖。
+> 本快速入門的範例程式碼需要和的重新 **導向 URI** `https://localhost:44321/` `https://localhost:44321/signin-oidc` ，以及的 **前端通道登出 URL** `https://localhost:44321/signout-oidc` 。 授權端點將會發出要求識別碼權杖。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [為我進行這項變更]()
 >

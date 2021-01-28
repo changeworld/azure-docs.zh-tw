@@ -1,18 +1,15 @@
 ---
 title: 使用 Azure HDInsight 中的 Apache Ambari 優化 Apache Pig
 description: 使用 Apache Ambari web UI 來設定和優化 Apache Pig。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: d6f20780ccd90d83631ce07411820fb8c9280c3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 690cfc66d0f08e63ac6ef1d21b6722fed59eca14
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084081"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939018"
 ---
 # <a name="optimize-apache-pig-with-apache-ambari-in-azure-hdinsight"></a>使用 Azure HDInsight 中的 Apache Ambari 優化 Apache Pig
 
@@ -20,7 +17,7 @@ Apache Ambari 是用來管理和監視 HDInsight 叢集的 web 介面。 如需 
 
 可以從 Ambari Web UI 微調 Pig 查詢，以便修改 Apache Pig 屬性。 直接從 Ambari 修改 Pig 屬性會修改 `/etc/pig/2.4.2.0-258.0/pig.properties` 檔案中的 Pig 屬性。
 
-1. 若要修改 Pig 屬性，請瀏覽至 Pig [設定]**** 索引標籤，然後展開 [進階 pig 屬性]**** 窗格。
+1. 若要修改 Pig 屬性，請瀏覽至 Pig [設定] 索引標籤，然後展開 [進階 pig 屬性] 窗格。
 
 1. 尋找、取消註解並變更您想要修改的屬性值。
 
@@ -35,9 +32,9 @@ Apache Ambari 是用來管理和監視 HDInsight 叢集的 web 介面。 如需 
 
 兩個執行引擎可用來執行 Pig 指令碼：MapReduce 和 Tez。 Tez 是最佳化引擎，速度比 MapReduce 更快。
 
-1. 若要修改執行引擎，請在 [進階 pig 屬性]**** 窗格中找出屬性 `exectype`。
+1. 若要修改執行引擎，請在 [進階 pig 屬性] 窗格中找出屬性 `exectype`。
 
-1. 預設值為 **MapReduce**。 將它變更為 [Tez]****。
+1. 預設值為 **MapReduce**。 將它變更為 [Tez]。
 
 ## <a name="enable-local-mode"></a>啟用本機模式
 
@@ -83,7 +80,7 @@ Pig 會在作業執行期間產生暫存檔。 壓縮暫存檔會提升在磁碟
 
 歸納器的數目是根據 `pig.exec.reducers.bytes.per.reducer` 參數計算而得。 該參數指定每個歸納器處理的位元組數目，預設為 1 GB。 若要限制歸納器數目上限，請設定 `pig.exec.reducers.max` 屬性，預設為999。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [使用 Apache Ambari Web UI 管理 HDInsight 叢集](hdinsight-hadoop-manage-ambari.md)
 * [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)

@@ -2,22 +2,19 @@
 title: 建立 Apache Spark 機器學習管線-Azure HDInsight
 description: 使用 Apache Spark 機器學習程式庫，在 Azure HDInsight 中建立資料管線。
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 07/22/2019
-ms.openlocfilehash: c270e9865aff30184ea236f56ab20ede78c5d577
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9897c7ba14e6190698cf10792a94acc759699d4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86075445"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940174"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>建立 Apache Spark 機器學習服務管線
 
-Apache Spark 可調整機器學習服務程式庫 (MLlib) 可將模型化功能引進分散式環境。 Spark 套件 [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) 是以資料框架為基礎的一組高階 api。 這些 API 可協助您建立及調整實用的機器學習服務管線。  *Spark 機器學習服務*是指以 MLlib DataFrame 為基礎的 API，而不是之前以 RDD 為基礎的管線 API。
+Apache Spark 可調整機器學習服務程式庫 (MLlib) 可將模型化功能引進分散式環境。 Spark 套件 [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) 是以資料框架為基礎的一組高階 api。 這些 API 可協助您建立及調整實用的機器學習服務管線。  *Spark 機器學習服務* 是指以 MLlib DataFrame 為基礎的 API，而不是之前以 RDD 為基礎的管線 API。
 
 機器學習服務 (ML) 管線是將多個機器學習服務演算法結合在一起的完整工作流程。 需要許多步驟以進行處理並從資料學習，需要一連串的演算法。 管線定義機器學習服務流程的階段和順序。 在 MLlib 中，管線階段會以 PipelineStages 的特定順序表示，其中 Transformer 和 Estimator 會各自執行工作。
 
@@ -29,7 +26,7 @@ Transformer 或 Estimator 的每個無狀態執行個體皆有自己唯一的識
 
 ## <a name="pipeline-example"></a>管線範例
 
-為了示範機器學習服務管線的實際應用情況，此範例針對您的 HDInsight 叢集 (Azure 儲存體或 Data Lake Storage)，使用在預設儲存體中預先載入的 `HVAC.csv` 資料檔案範例。 若要檢視檔案的內容，請瀏覽至 `/HdiSamples/HdiSamples/SensorSampleData/hvac` 目錄。 `HVAC.csv` 包含一系列各種建築物中 HVAC (暖氣、通風和空調**) 系統的目標和實際溫度。 目標是在資料上定型模型，並為指定的建築物產生預測溫度。
+為了示範機器學習服務管線的實際應用情況，此範例針對您的 HDInsight 叢集 (Azure 儲存體或 Data Lake Storage)，使用在預設儲存體中預先載入的 `HVAC.csv` 資料檔案範例。 若要檢視檔案的內容，請瀏覽至 `/HdiSamples/HdiSamples/SensorSampleData/hvac` 目錄。 `HVAC.csv` 包含一系列各種建築物中 HVAC (暖氣、通風和空調) 系統的目標和實際溫度。 目標是在資料上定型模型，並為指定的建築物產生預測溫度。
 
 下列程式碼：
 

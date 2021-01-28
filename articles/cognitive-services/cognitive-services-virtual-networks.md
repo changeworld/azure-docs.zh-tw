@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 01/27/2021
 ms.author: aahi
-ms.openlocfilehash: 3b6c2a5a50cedadd8818eae735df55b661e794ef
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 8fa10164ae2d697f68156777f224b92f0562475f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97034015"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940048"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>設定 Azure 認知服務虛擬網路
 
@@ -340,9 +340,6 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
    > 不支援使用 "/31" 或 "/32" 前置詞大小的小型位址範圍。 這些範圍應該使用個別的 IP 位址規則設定。
 
 只有 **公用網際網路** IP 位址允許使用 IP 網路規則。 IP 規則中不允許保留私人網路的 IP 位址範圍 (如 [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) 中所定義)。 私人網路包括開頭為 `10.*` 、和的位址 `172.16.*`  -  `172.31.*` `192.168.*` 。
-
-   > [!NOTE]
-   > IP 網路規則不會影響源自于與認知服務資源相同 Azure 區域的要求。 使用[虛擬網路規則](#grant-access-from-a-virtual-network)來允許同一個區域的要求。
 
 目前僅支援 IPV4 位址。 每個認知服務資源最多可支援100個 IP 網路規則，這些規則可能會與 [虛擬網路規則](#grant-access-from-a-virtual-network)結合。
 

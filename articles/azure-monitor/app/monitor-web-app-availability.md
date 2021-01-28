@@ -4,12 +4,12 @@ description: 在 Application Insights 中設定 Web 測試。 如果網站無法
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 1b51c70dcebbfad5417a8478f4a956fb5d0608b1
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b0f66608c6e0f23b861e207d0dea07a546b41c2a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98198657"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937407"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>監視任何網站的可用性
 
@@ -23,12 +23,12 @@ ms.locfileid: "98198657"
 
 * [URL Ping 測試](#create-a-url-ping-test)：您可以在 Azure 入口網站中建立的簡單測試。
 * [多步驟 web 測試](availability-multistep.md)：記錄一系列的 web 要求，可播放這些要求以測試更複雜的案例。 在 Visual Studio Enterprise 中建立多步驟 web 測試，並上傳至入口網站以供執行。
-* [自訂追蹤可用性測試](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet)：如果您決定要建立自訂應用程式來執行可用性測試，您 `TrackAvailability()` 可以使用方法將結果傳送至 Application Insights。
+* [自訂追蹤可用性測試](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability)：如果您決定要建立自訂應用程式來執行可用性測試，您 `TrackAvailability()` 可以使用方法將結果傳送至 Application Insights。
 
 **您可以針對每個 Application Insights 資源建立最多100個可用性測試。**
 
 > [!IMPORTANT]
-> [URL ping 測試](#create-a-url-ping-test)和[多重步驟 web 測試](availability-multistep.md)都依賴公用網際網路 DNS 基礎結構來解析已測試端點的功能變數名稱。 這表示，如果您使用私人 DNS，您必須確定您的測試的每個功能變數名稱也可以由公用功能變數名稱伺服器解析，或者，如果不可能的話，您可以改為使用 [自訂追蹤可用性測試](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet) 。
+> [URL ping 測試](#create-a-url-ping-test)和[多重步驟 web 測試](availability-multistep.md)都依賴公用網際網路 DNS 基礎結構來解析已測試端點的功能變數名稱。 這表示，如果您使用私人 DNS，您必須確定您的測試的每個功能變數名稱也可以由公用功能變數名稱伺服器解析，或者，如果不可能的話，您可以改為使用 [自訂追蹤可用性測試](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) 。
 
 ## <a name="create-an-application-insights-resource"></a>建立 Application Insights 資源
 
@@ -101,7 +101,7 @@ ms.locfileid: "98198657"
 | 先前法國中部的法國南部 ()  | emea-ch-zrh-edge  |
 | 法國中部                         | emea-fr-pra-邊緣  |
 | 日本東部                             | apac-jp-kaw-edge  |
-| 歐洲北部                           | emea-gb-db3-ms-azr-0003p   |
+| 北歐                           | emea-gb-db3-ms-azr-0003p   |
 | 美國中北部                       | us-il-ch1-ms-azr-0003p     |
 | 美國中南部                       | 美國-德克薩斯-sn1-ms-azr-0003p     |
 | 東南亞                         | apac-sg-sin-ms-azr-0003p   |

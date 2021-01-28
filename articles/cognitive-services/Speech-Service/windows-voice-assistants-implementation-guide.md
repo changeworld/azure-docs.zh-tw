@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0503e0bf2fe152296ca6890e14503d05bd3bbeef
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 92ab043d4fccbe0764e361eac6f71ef69a5963cb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024767"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939857"
 ---
 # <a name="implementing-voice-assistants-on-windows"></a>在 Windows 上執行語音助理
 
@@ -30,7 +30,7 @@ ms.locfileid: "95024767"
 
 #### <a name="ensure-that-the-microphone-is-available-and-accessible-then-monitor-its-state"></a>確定麥克風可用且可供存取，然後監視其狀態
 
-MVA 必須要有麥克風，才能偵測語音啟用。 使用 [AppCapability](/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability?view=winrt-18362)、 [DeviceWatcher](/uwp/api/windows.devices.enumeration.devicewatcher?view=winrt-18362)和 [MediaCapture](/uwp/api/windows.media.capture.mediacapture?view=winrt-18362) 類別，分別檢查麥克風的隱私權存取、裝置狀態和裝置狀態 (例如音量和靜音) 。
+MVA 必須要有麥克風，才能偵測語音啟用。 使用 [AppCapability](/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability)、 [DeviceWatcher](/uwp/api/windows.devices.enumeration.devicewatcher)和 [MediaCapture](/uwp/api/windows.media.capture.mediacapture) 類別，分別檢查麥克風的隱私權存取、裝置狀態和裝置狀態 (例如音量和靜音) 。
 
 ### <a name="register-the-application-with-the-background-service"></a>使用背景服務註冊應用程式
 
@@ -38,7 +38,7 @@ MVA 必須要有麥克風，才能偵測語音啟用。 使用 [AppCapability](/
 
 ### <a name="unlock-the-limited-access-feature"></a>將受限存取功能解除鎖定
 
-使用 Microsoft 提供的有限存取功能金鑰，將語音助理功能解除鎖定。 使用 Windows SDK 中的 [LimitedAccessFeature](/uwp/api/windows.applicationmodel.limitedaccessfeatures?view=winrt-18362) 類別來執行此動作。
+使用 Microsoft 提供的有限存取功能金鑰，將語音助理功能解除鎖定。 使用 Windows SDK 中的 [LimitedAccessFeature](/uwp/api/windows.applicationmodel.limitedaccessfeatures) 類別來執行此動作。
 
 ### <a name="register-the-keyword-for-the-application"></a>註冊應用程式的關鍵字
 
@@ -86,7 +86,7 @@ private static async Task<ActivationSignalDetector> GetFirstEligibleDetectorAsyn
 
 ### <a name="retrieve-activation-audio"></a>取出啟用音訊
 
-建立 [AudioGraph](/uwp/api/windows.media.audio.audiograph) ，並將它傳遞至的 `CreateAudioDeviceInputNodeAsync` `ConversationalAgentSession` 。 這會載入圖形的音訊緩衝區，其中包含在偵測 *到關鍵字之前大約3秒* 的音訊。 包含此額外的前置音訊，以容納各式各樣的關鍵字長度和說話者速度。 然後，處理來自音訊圖表的 [QuantumStarted](/uwp/api/windows.media.audio.audiograph.quantumstarted?view=winrt-18362) 事件，以取出音訊資料。
+建立 [AudioGraph](/uwp/api/windows.media.audio.audiograph) ，並將它傳遞至的 `CreateAudioDeviceInputNodeAsync` `ConversationalAgentSession` 。 這會載入圖形的音訊緩衝區，其中包含在偵測 *到關鍵字之前大約3秒* 的音訊。 包含此額外的前置音訊，以容納各式各樣的關鍵字長度和說話者速度。 然後，處理來自音訊圖表的 [QuantumStarted](/uwp/api/windows.media.audio.audiograph.quantumstarted) 事件，以取出音訊資料。
 
 ```csharp
 var inputNode = await agentSession.CreateAudioDeviceInputNodeAsync(audioGraph);
@@ -151,7 +151,7 @@ conversationalAgentSession.SystemStateChanged += (s, e) =>
 > [!NOTE]
 > 應用程式可以在不關閉 [下列鎖定實例](/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access#add-a-way-out-of-assigned-access-)的情況下關閉。 在此情況下，上述鎖定視圖需要「清除」，以確保一旦畫面解除鎖定，就不會有任何事件處理常式或工作嘗試操作上述鎖定視圖。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [造訪 UWP 語音助理範例應用程式，以取得範例和程式碼的逐步解說-解說](windows-voice-assistants-faq.md#the-uwp-voice-assistant-sample)

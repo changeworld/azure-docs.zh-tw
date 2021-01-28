@@ -1,18 +1,15 @@
 ---
 title: 'Apache Spark 效能-Azure HDInsight IO 快取 (預覽) '
 description: 了解 Azure HDInsight IO 快取以及如何使用它來改進 Apache Spark 效能。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/23/2019
-ms.openlocfilehash: 3e724e6336163a092c9b4385324b1aa037295bb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32f0756e59f81ad2c5d155581feed8c4fef09808
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86081752"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940123"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>使用 Azure HDInsight IO 快取改善 Apache Spark 工作負載的效能
 
@@ -36,7 +33,7 @@ Azure HDInsight IO 快取在預覽版中預設是停用的。 您可以在 Azure
 
 1. 從網頁瀏覽器瀏覽至 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是叢集的名稱。
 
-1. 選取左邊的 [IO 快取]****。
+1. 選取左邊的 [IO 快取]。
 
 1. 選取 [ **動作** ] (HDI 3.6 中的 **服務動作**) 和 [ **啟用**]。
 
@@ -53,11 +50,11 @@ Azure HDInsight IO 快取在預覽版中預設是停用的。 您可以在 Azure
 
 1. 在 Apache Ambari 中，選取左邊的 **HDFS** 服務。
 
-1. 選取 [設定]**** 與 [進階]**** 索引標籤。
+1. 選取 [設定] 與 [進階] 索引標籤。
 
     ![編輯 HDFS Advanced Configuration](./media/apache-spark-improve-performance-iocache/ambariui-hdfs-service-configs-advanced.png "編輯 HDFS Advanced Configuration")
 
-1. 向下捲動並展開 [自訂核心網站]**** 區域。
+1. 向下捲動並展開 [自訂核心網站] 區域。
 
 1. 尋找 **hadoop.cache.data.fullness.percentage** 屬性。
 
@@ -65,9 +62,9 @@ Azure HDInsight IO 快取在預覽版中預設是停用的。 您可以在 Azure
 
     ![編輯 IO 快取飽和度百分比](./media/apache-spark-improve-performance-iocache/ambariui-cache-data-fullness-percentage-property.png "編輯 IO 快取飽和度百分比")
 
-1. 選取右上角的 [儲存]****。
+1. 選取右上角的 [儲存]。
 
-1. 選取 [**重新**啟動  >  **所有受影響**的重新開機]。
+1. 選取 [**重新** 啟動  >  **所有受影響** 的重新開機]。
 
     ![Apache Ambari 會重新開機所有受影響的](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "重新開機所有受影響的")
 

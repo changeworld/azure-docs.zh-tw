@@ -1,19 +1,17 @@
 ---
 title: 安全性：將內部部署 Apache Hadoop 遷移至 Azure HDInsight
 description: 了解將內部部署 Hadoop 叢集遷移至 Azure HDInsight 的安全性和 DevOps 最佳做法。
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 6fd59a346a36a304f699894c493d8ba9800489b2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: fa6a4a8686fe5a33a6f240a8e972a687e872732a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545254"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939742"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>將內部部署 Apache Hadoop 叢集遷移到 Azure HDInsight - 安全性和 DevOps 最佳做法
 
@@ -93,7 +91,7 @@ ESP 適用於下列叢集類型：Apache Hadoop、Apache Spark、Apache HBase、
 
 如需詳細資訊，請參閱文章：
 
-[Azure 監視器總覽](../../azure-monitor/overview.md)
+[Azure 監視器概觀](../../azure-monitor/overview.md)
 
 ## <a name="upgrade-clusters"></a>升級叢集
 
@@ -120,6 +118,6 @@ ESP 適用於下列叢集類型：Apache Hadoop、Apache Spark、Apache HBase、
 2. **執行測試** - 反覆地執行功能和效能測試。
 3. **最佳化** - 根據上述的測試結果，解決任何效能問題，然後重新測試以確認效能改進。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 深入了解 [HDInsight 4.0](./apache-hadoop-introduction.md)。

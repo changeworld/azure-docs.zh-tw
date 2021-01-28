@@ -3,16 +3,13 @@ title: Apache Hive 與 Apache Zookeeper 的連接-Azure HDInsight
 description: Apache Hive View 因為 Azure HDInsight 中的 Apache Zookeeper 問題而無法存取
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 07/30/2019
-ms.openlocfilehash: 1ac237edeea777225b7cf99946d359c921331b18
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 42fb9f5389cbc31e772dc9cf36b6a975c5e18d3c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288920"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939308"
 ---
 # <a name="scenario-apache-hive-fails-to-establish-a-connection-to-apache-zookeeper-in-azure-hdinsight"></a>案例： Apache Hive 無法在 Azure HDInsight 中建立與 Apache Zookeeper 的連線
 
@@ -30,7 +27,7 @@ ERROR [Curator-Framework-0]: curator.ConnectionState (ConnectionState.java:check
 
 Hive 可能無法建立與 Zookeeper 的連線，這會讓 Hive 視圖無法啟動。
 
-## <a name="resolution"></a>解決方法
+## <a name="resolution"></a>解決方案
 
 1. 檢查 Zookeeper 服務是否狀況良好。
 

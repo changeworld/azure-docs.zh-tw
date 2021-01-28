@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 22654d49d02809460adc4013c2c92ac857805cf7
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 345748380479d81f1ea0df9ecf327200482a6cd7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98199796"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937165"
 ---
 # <a name="azure-security-baseline-for-azure-data-share"></a>適用于 Azure Data Share 的 azure 安全性基準
 
@@ -108,7 +108,7 @@ ms.locfileid: "98199796"
 
 **指導** 方針： Azure Data Share 支援 AZURE ACTIVE DIRECTORY 的 SSO 驗證。 藉由您組織的預先存在身分識別，為服務啟用 SSO，以減少使用者必須管理的身分識別與認證數目。
 
-- [瞭解 Azure AD 的 SSO](/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [瞭解 Azure AD 的 SSO](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Azure 資訊安全中心監視**：不適用
 

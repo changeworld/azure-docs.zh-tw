@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: d37fca06a3d2eafa0af9e31c3a30ac66be5404f0
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: f7f11ef097d3abee2b4c18c32a1cb215d9fe8ce8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020599"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939899"
 ---
 # <a name="cicd-for-custom-speech"></a>自訂語音的 CI/CD
 
@@ -73,7 +73,7 @@ CI/CD 工作流程的主要目的是要使用定型資料來建立新的模型�
 
 使用下列工具來進行自訂語音的 CI/CD 自動化工作流程：
 
-- [Azure CLI](/cli/azure/?view=azure-cli-latest) 建立 azure 服務主體驗證、查詢 azure 訂用帳戶，以及將測試結果儲存在 azure Blob 中。
+- [Azure CLI](/cli/azure/) 建立 azure 服務主體驗證、查詢 azure 訂用帳戶，以及將測試結果儲存在 azure Blob 中。
 - [Azure 語音 CLI](spx-overview.md) 可從命令列或自動化工作流程與語音服務互動。
 
 ## <a name="devops-solution-for-custom-speech-using-github-actions"></a>使用 GitHub Actions DevOps 自訂語音的解決方案

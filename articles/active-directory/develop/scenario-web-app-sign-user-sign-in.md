@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 5b0b86321f7f2b320c3fea8e7c5bfa45bd936b77
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: f8fa5532a5664741c9ddb9b78b35d5eed8e2e4e0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753001"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937845"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>登入使用者的 Web 應用程式：登入和登出
 
@@ -222,19 +222,19 @@ Web 應用程式也必須將使用者重新導向至 Microsoft 身分識別平�
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-在應用程式註冊期間，您會註冊登出後的 URI。 在本教學課程中，您已 `https://localhost:44321/signout-oidc` 在 [**驗證**] 頁面上的 [ **Advanced Settings** ] 區段的 [**登出 URL** ] 欄位中註冊。 如需詳細資訊，請參閱 [ 註冊 webApp 應用程式](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp)。
+在應用程式註冊期間，您會註冊一個前端通道的登出 URL。 在本教學課程中，您已 `https://localhost:44321/signout-oidc` 在 [**驗證**] 頁面上的 [**前端通道登出 URL** ] 欄位中註冊。 如需詳細資訊，請參閱 [註冊 webApp 應用程式](scenario-web-app-sign-user-app-registration.md#register-an-app-by-using-the-azure-portal)。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-在應用程式註冊期間，您會註冊登出後的 URI。 在本教學課程中，您已 `https://localhost:44308/Account/EndSession` 在 [**驗證**] 頁面上的 [ **Advanced Settings** ] 區段的 [**登出 URL** ] 欄位中註冊。 如需詳細資訊，請參閱 [註冊 webApp 應用程式](https://github.com/Azure-Samples/active-directory-dotnet-web-single-sign-out#register-the-service-app-webapp-distributedsignout-dotnet)。
+在應用程式註冊期間，您不需要註冊額外的前端通道登出 URL。 應用程式將會被回呼其主要 URL。 
 
 # <a name="java"></a>[Java](#tab/java)
 
-在應用程式註冊期間，您會註冊登出後的 URI。 在本教學課程中，您已 `http://localhost:8080/msal4jsample/sign_out` 在 [**驗證**] 頁面上的 [ **Advanced Settings** ] 區段的 [**登出 URL** ] 欄位中註冊。
+應用程式註冊中不需要任何前端通道的登出 URL。
 
 # <a name="python"></a>[Python](#tab/python)
 
-在應用程式註冊期間，您不需要註冊額外的登出 URL。 應用程式將會被回呼其主要 URL。
+在應用程式註冊期間，您不需要註冊額外的前端通道登出 URL。 應用程式將會被回呼其主要 URL。
 
 ---
 
@@ -336,7 +336,7 @@ else
 - 呼叫 `Signout()` ，可讓 OpenID Connect 中介軟體與 Microsoft 身分識別平臺 `logout` 端點連線。 端點接著：
 
   - 清除瀏覽器中的會話 cookie。
-  - 回撥登出 URL。 根據預設，登出 URL 會顯示已登出的視圖頁面 [SignedOut.cshtml.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs)。 此頁面也會提供為 Web.config 的一部分。
+  - 回撥登出後的重新導向 URI。 依預設，登出後重新導向 URI 會顯示已登出的視圖頁面 [SignedOut.cshtml.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs)。 此頁面也會提供為 Web.config 的一部分。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

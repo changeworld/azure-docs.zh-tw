@@ -1,23 +1,20 @@
 ---
 title: 使用資料分析管線進行作業 - Azure
 description: 設定及執行範例資料管線，其是由新資料所觸發並可產生精確的結果。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: 1e73c403a03eef9a47bc0550b37769db302a599c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a306890560497b0c7196f1286de3f73039821ea2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504413"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939522"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>使用資料分析管線進行作業
 
-*資料管線*是許多資料分析解決方案的基礎。 如其名所示，資料管線會視需要在原始資料中進行清除和外觀重新安排，然後通常會在儲存處理過的資料之前執行計算或匯總。 用戶端、報告或 API 會使用已處理的資料。 不論是依照排程，還是由新資料所觸發，資料管線都必須提供可重複的結果。
+*資料管線* 是許多資料分析解決方案的基礎。 如其名所示，資料管線會視需要在原始資料中進行清除和外觀重新安排，然後通常會在儲存處理過的資料之前執行計算或匯總。 用戶端、報告或 API 會使用已處理的資料。 不論是依照排程，還是由新資料所觸發，資料管線都必須提供可重複的結果。
 
 本文說明如何使用在 HDInsight Hadoop 叢集上執行的 Oozie，讓您的資料管線進行作業以實施重複性。 範例案例會帶領您了解資料管線如何準備並處理航班時間序列資料。
 
@@ -39,7 +36,7 @@ ms.locfileid: "89504413"
 
 這個管線會使用在 HDInsight Hadoop 叢集上執行的 Apache Oozie。
 
-Oozie 會根據「動作」**、「工作流程** 和「協調器」** 來描述其管線。 動作會決定實際要執行的工作，例如執行 Hive 查詢。 工作流程會定義動作順序。 協調器會定義工作流程的執行排程。 協調器也會等到新資料可用時，再啟動工作流程的執行個體。
+Oozie 會根據「動作」、「工作流程和「協調器」來描述其管線。 動作會決定實際要執行的工作，例如執行 Hive 查詢。 工作流程會定義動作順序。 協調器會定義工作流程的執行排程。 協調器也會等到新資料可用時，再啟動工作流程的執行個體。
 
 下圖顯示此範例 Oozie 管線的高階設計。
 
@@ -97,7 +94,7 @@ Oozie 會根據「動作」**、「工作流程** 和「協調器」** 來描述
 
     `http://headnodehost:8080`
 
-1. 若要從 Ambari 記憶體取**Oozie Web 主控台**，請流覽至**Oozie**  >  **快速連結**> [Active server] > **Oozie Web UI**。
+1. 若要從 Ambari 記憶體取 **Oozie Web 主控台**，請流覽至 **Oozie**  >  **快速連結**> [Active server] > **Oozie Web UI**。
 
 ## <a name="configure-hive"></a>設定 Hive
 
@@ -132,11 +129,11 @@ Oozie 會根據「動作」**、「工作流程** 和「協調器」** 來描述
 
 1. 瀏覽到 `http://headnodehost:8080` 以登入 Ambari。
 
-2. 從服務清單中，選取 [Hive]****。
+2. 從服務清單中，選取 [Hive]。
 
     ![Apache Ambari services 清單選取 Hive](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
 
-3. 選取 Hive 檢視 2.0 標籤旁邊的 [移至檢視]****。
+3. 選取 Hive 檢視 2.0 標籤旁邊的 [移至檢視]。
 
     ![Ambari Apache Hive 摘要清單](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
 
@@ -165,7 +162,7 @@ Oozie 會根據「動作」**、「工作流程** 和「協調器」** 來描述
     LOCATION '/example/data/flights'
     ```
 
-5. 選取 [執行]**** 以建立資料表。
+5. 選取 [執行] 以建立資料表。
 
     ![hdi ambari services hive 查詢](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
 
@@ -195,7 +192,7 @@ Oozie 會根據「動作」**、「工作流程** 和「協調器」** 來描述
     );
     ```
 
-7. 選取 [執行]**** 以建立資料表。
+7. 選取 [執行] 以建立資料表。
 
 ## <a name="create-the-oozie-workflow"></a>建立 Oozie 工作流程
 
@@ -416,11 +413,11 @@ Oozie 工作流程會協調這三個步驟。
     oozie job -config job.properties -run
     ```
 
-1. 使用 Oozie Web 主控台觀察狀態。 從 Ambari 內選取 [Oozie]****、[快速連結]****，然後選取 [Oozie Web 主控台]****。 在 [工作流程作業]**** 索引標籤底下，選取 [所有作業]****。
+1. 使用 Oozie Web 主控台觀察狀態。 從 Ambari 內選取 [Oozie]、[快速連結]，然後選取 [Oozie Web 主控台]。 在 [工作流程作業] 索引標籤底下，選取 [所有作業]。
 
     ![hdi oozie web 主控台工作流程](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
 
-1. 當狀態為 [成功] 時，查詢 SQL Database 資料表以查看插入的資料列。 使用 Azure 入口網站，瀏覽您的 SQL Database 窗格，選取 [工具]****，然後開啟 [查詢編輯器]****。
+1. 當狀態為 [成功] 時，查詢 SQL Database 資料表以查看插入的資料列。 使用 Azure 入口網站，瀏覽您的 SQL Database 窗格，選取 [工具]，然後開啟 [查詢編輯器]。
 
     ```sql
     SELECT * FROM dailyflights
@@ -507,7 +504,7 @@ Oozie 工作流程會協調這三個步驟。
     <coordinator-app ... start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" ...>
     ```
 
-    根據 `frequency` 屬性所指定的間隔，協調器會負責排定 `start` 和 `end` 日期範圍內的動作。 每個排定的動作會如同設定依序執行工作流程。 在上述協調器定義中，協調器設定為從2017年1月1日到2017年1月5日執行動作。 [Oozie 運算式語言](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation)頻率運算式會將頻率設定為一天 `${coord:days(1)}` 。 這會導致協調器每天安排一次動作 (還有工作流程)。 對於過去的日期範圍，就如同此範例中，此動作會立即排定進行執行。 排定要執行動作之日期的開端稱為「名義時間」**。 例如，若要處理2017年1月1日的資料，協調器會以 2017-01-01T00：00： 00 GMT 的名義時間排程動作。
+    根據 `frequency` 屬性所指定的間隔，協調器會負責排定 `start` 和 `end` 日期範圍內的動作。 每個排定的動作會如同設定依序執行工作流程。 在上述協調器定義中，協調器設定為從2017年1月1日到2017年1月5日執行動作。 [Oozie 運算式語言](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation)頻率運算式會將頻率設定為一天 `${coord:days(1)}` 。 這會導致協調器每天安排一次動作 (還有工作流程)。 對於過去的日期範圍，就如同此範例中，此動作會立即排定進行執行。 排定要執行動作之日期的開端稱為「名義時間」。 例如，若要處理2017年1月1日的資料，協調器會以 2017-01-01T00：00： 00 GMT 的名義時間排程動作。
 
 * 第 2 點：在工作流程的日期範圍內，`dataset` 元素會指定在 HDFS 中何處尋找特定日期範圍的資料，以及設定 Oozie 如何判斷資料是否已可供處理。
 
@@ -594,7 +591,7 @@ sqlDatabaseTableName=dailyflights
     oozie job -config job.properties -run
     ```
 
-5. 使用 Oozie Web 主控台確認狀態，此次選取 [協調器作業]**** 索引標籤，然後選取 [所有作業]****。
+5. 使用 Oozie Web 主控台確認狀態，此次選取 [協調器作業] 索引標籤，然後選取 [所有作業]。
 
     ![Oozie Web 主控台協調器作業](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-jobs.png)
 

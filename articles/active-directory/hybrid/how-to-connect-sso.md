@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e50b9e5dc683eb30452dbb96d82c9f66de93763
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 88eae702782e2f1af9c20797676214db458c2adc
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408000"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937618"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory 無縫單一登入
 
@@ -35,8 +35,13 @@ ms.locfileid: "94408000"
 
 ![無縫單一登入](./media/how-to-connect-sso/sso1.png)
 
->[!IMPORTANT]
->無縫 SSO 只需要使用者的裝置 **已加入網域** ，但其不用於 [已加入 Azure AD](../devices/concept-azure-ad-join.md) 或 [已加入混合式 Azure AD](../devices/concept-azure-ad-join-hybrid.md) 的裝置上。 已加入 Azure AD、已加入混合式 Azure AD，以及 Azure AD 的已註冊裝置上的 SSO，是以[主要重新整理權杖](../devices/concept-primary-refresh-token.md)為基礎來運作。
+## <a name="sso-via-primary-refresh-token-vs-seamless-sso"></a>透過主要重新整理權杖與無縫 SSO 的 SSO
+
+針對 Windows 10，建議透過主要重新整理權杖使用 SSO (PRT) 。 針對 windows 7 和8.1，建議使用無縫 SSO。
+無縫 SSO 需要使用者的裝置加入網域，但不會用於 Windows 10 [Azure AD 加入的裝置](../devices/concept-azure-ad-join.md) 或已 [加入混合式 Azure AD 的裝置](../devices/concept-azure-ad-join-hybrid.md)。 Azure AD 聯結、混合式 Azure AD 加入的 SSO，以及 Azure AD 註冊的裝置會根據主要的重新整理 [權杖運作 (PRT) ](../devices/concept-primary-refresh-token.md)
+
+只要裝置向 Azure AD 註冊之後，透過 [新增工作或學校帳戶] Azure AD 加入或個人註冊 Azure AD 的裝置，透過 PRT 進行 SSO 即可運作。 如需 SSO 如何搭配使用 PRT 與 Windows 10 的詳細資訊，請參閱：主要重新整理 [權杖 (PRT) 和 Azure AD](../devices/concept-primary-refresh-token.md)
+
 
 ## <a name="key-benefits"></a>主要權益
 
@@ -78,9 +83,6 @@ ms.locfileid: "94408000"
 \*\*\*需要 [額外](how-to-connect-sso-quick-start.md#browser-considerations)的設定。
 
 \*\*\*\*需要 Microsoft Edge 77 版或更新版本。
-
->[!NOTE]
->對於 Windows 10，建議使用 [Azure AD Join](../devices/concept-azure-ad-join.md) 以獲得 Azure AD 最佳單一登入體驗。
 
 ## <a name="next-steps"></a>後續步驟
 

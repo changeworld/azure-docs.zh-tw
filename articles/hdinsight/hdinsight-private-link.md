@@ -1,18 +1,15 @@
 ---
 title: '使用 Private Link (preview 保護和隔離 Azure HDInsight 叢集) '
 description: 瞭解如何使用 Azure Private Link 隔離虛擬網路中的 Azure HDInsight 叢集。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 219f8728eb90101e7437cbb82b44a1f7124ef14d
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: bc7834a0f8272da3f8954c7dd9f3e18163795cba
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556421"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939361"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>使用 Private Link (preview 保護和隔離 Azure HDInsight 叢集) 
 

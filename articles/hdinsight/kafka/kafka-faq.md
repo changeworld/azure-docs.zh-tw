@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight 中的 Apache Kafka 常見問題
 description: 取得有關 Apache Kafka on Azure HDInsight （受控 Hadoop 雲端服務）的常見問題解答。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 84c48f14ae57cfa4aa3290924d3d170c075fe3a6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 851d7ceb44d2466ed31e26c1442fde9acea9fd22
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532544"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939106"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Kafka 常見問題集
 
@@ -94,7 +91,7 @@ HDInsight Kafka 叢集包含下列資源：
 
 使用 Azure 監視器來分析您的 [Kafka 記錄](./apache-kafka-log-analytics-operations-management.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [在 Azure HDInsight 中設定適用于 Apache Kafka 的 TLS 加密與驗證](./apache-kafka-ssl-encryption-authentication.md)
 * [使用 MirrorMaker，透過 HDInsight 上的 Kafka 來複寫 Apache Kafka 主題](./apache-kafka-mirroring.md)

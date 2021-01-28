@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/19/2021
+ms.date: 01/27/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9442489efd2a84ac8a31dfb2efb5718e1fd4f594
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 112ad0714c84cd3be08788b3277f52372f6d0373
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621788"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938468"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Azure Active Directory 總覽的結合安全性資訊註冊
 
 在合併註冊之前，使用者已將 Azure AD Multi-Factor Authentication 和自助式密碼重設的驗證方法，分別 (SSPR) 。 人們搞不清楚，Multi-Factor Authentication 和 SSPR 使用類似的方法，但他們必須註冊這兩項功能。 現在，透過結合註冊，使用者可以註冊一次，並獲得 Multi-Factor Authentication 和 SSPR 的優點。
 
 > [!NOTE]
-> 自2020年8月15日起，所有新的 Azure AD 租使用者都會自動啟用合併註冊。 自2020年12月14日起，所有具有一個使用者的 Azure AD 租使用者都會自動啟用合併註冊。
+> 自2020年8月15日起，所有新的 Azure AD 租使用者都會自動啟用合併註冊。 
 
 本文概述安全性註冊的組合。 若要開始使用合併的安全性註冊，請參閱下列文章：
 
