@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 70fb502e45a6cdcc196f5fb97ee4c8c59ba6c27d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 4d2f339f5a1339b5f249172170fed54c91f1dc24
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223528"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927196"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-cli"></a>快速入門：使用 Azure CLI 建立公用 IP 位址
 
@@ -30,7 +30,7 @@ ms.locfileid: "98223528"
 
 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
-在 **eastus2** 位置建立名為 **myResourceGroup** 的 [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create)資源群組。
+在 **eastus2** 位置建立名為 **myResourceGroup** 的 [az group create](/cli/azure/group#az-group-create)資源群組。
 
 ```azurecli-interactive
   az group create \
@@ -46,7 +46,7 @@ Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 >[!NOTE]
 >下列命令適用于 API 2020-08-01 版或更新版本。  如需目前所使用的 API 版本的詳細資訊，請參閱 [資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md)。
 
-使用 [az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) ，在 **myResourceGroup** 中建立名為 **myStandardZRPublicIP** 的標準區域冗余公用 ip 位址。
+使用 [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) ，在 **myResourceGroup** 中建立名為 **myStandardZRPublicIP** 的標準區域冗余公用 ip 位址。
 
 ```azurecli-interactive
   az network public-ip create \
@@ -76,7 +76,7 @@ Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 >[!NOTE]
 >下列命令適用于 API 2020-08-01 版或更新版本。  如需目前所使用的 API 版本的詳細資訊，請參閱 [資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md)。
 
-使用 [az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)來建立標準公用 ip 位址，作為 **myResourceGroup** 中名為 **myStandardPublicIP** 的非區域性資源。
+使用 [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create)來建立標準公用 ip 位址，作為 **myResourceGroup** 中名為 **myStandardPublicIP** 的非區域性資源。
 
 ```azurecli-interactive
   az network public-ip create \
@@ -88,7 +88,7 @@ Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
 # <a name="basic-sku"></a>[**基本 SKU**](#tab/option-create-public-ip-basic)
 
-使用 [az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) ，在 **myResourceGroup** 中建立名為 **MYBASICPUBLICIP** 的基本靜態公用 ip 位址。  基本公用 Ip 沒有可用性區域的概念。
+使用 [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) ，在 **myResourceGroup** 中建立名為 **MYBASICPUBLICIP** 的基本靜態公用 ip 位址。  基本公用 Ip 沒有可用性區域的概念。
 
 ```azurecli-interactive
   az network public-ip create \

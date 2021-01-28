@@ -7,17 +7,17 @@ ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
 ms.date: 12/01/2020
 ms.author: thvankra
-ms.openlocfilehash: c969e4fac3ae30088cfe47a7b0edff22c578cb8b
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 75ce307056d24f84e9f72f746eb77b09b89e21b2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802349"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927488"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-db-cassandra-api"></a>針對 Azure Cosmos DB Cassandra API 中的常見問題進行疑難排解
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
-Azure Cosmos DB 中的 Cassandra API 是相容性層級，可提供受歡迎開放原始碼 Apache Cassandra 資料庫的 [有線通訊協定支援](cassandra-support.md) ，並由 [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/introduction)提供技術支援。 Azure Cosmos DB 是完全受控的雲端原生服務，可為 Cassandra API 提供 [可用性、輸送量和一致性的保證](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) 。 這些保證無法在舊版的 Apache Cassandra 中執行。 Cassandra API 也有助於進行零維護的平臺作業和零停機的修補。 因此，許多 it 的後端作業與 Apache Cassandra 不同，因此我們建議特定的設定和方法，以避免常見的錯誤。 
+Azure Cosmos DB 中的 Cassandra API 是相容性層級，可提供受歡迎開放原始碼 Apache Cassandra 資料庫的 [有線通訊協定支援](cassandra-support.md) ，並由 [Azure Cosmos DB](./introduction.md)提供技術支援。 Azure Cosmos DB 是完全受控的雲端原生服務，可為 Cassandra API 提供 [可用性、輸送量和一致性的保證](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) 。 這些保證無法在舊版的 Apache Cassandra 中執行。 Cassandra API 也有助於進行零維護的平臺作業和零停機的修補。 因此，許多 it 的後端作業與 Apache Cassandra 不同，因此我們建議特定的設定和方法，以避免常見的錯誤。 
 
 本文說明使用 Azure Cosmos DB Cassandra API 之應用程式的常見錯誤和解決方案。
 
@@ -97,4 +97,3 @@ datastax-java-driver {
 
 - 瞭解 Azure Cosmos DB Cassandra API 中 [支援的功能](cassandra-support.md) 。
 - 瞭解如何 [從原生 Apache Cassandra 遷移至 Azure Cosmos DB Cassandra API](cassandra-migrate-cosmos-db-databricks.md)
-

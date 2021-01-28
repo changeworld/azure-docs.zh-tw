@@ -1,19 +1,16 @@
 ---
 title: 在 Spark 中搭配 Jupyter 使用自訂 Maven 套件-Azure HDInsight
 description: 如何設定 HDInsight Spark 叢集可用的 Jupyter 筆記本，以使用自訂 Maven 套件的逐步指示。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: 82c61fe77e7bffea6a20e47c71561ab6dc86d12b
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: a3d787059345b5971d99ebd7a1e26a9135b61bed
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822245"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930349"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>在 HDInsight 上 Apache Spark 叢集中搭配使用外部套件與 Jupyter 筆記本
 
@@ -48,7 +45,7 @@ ms.locfileid: "97822245"
     >[!IMPORTANT]  
     >如果您忘記在第一個單元中設定核心，您可以搭配 `-f` 參數使用 `%%configure`，但這會重新啟動工作階段，而所有進度都將遺失。
 
-    | HDInsight 版本 | Command |
+    | HDInsight 版本 | 命令 |
     |-------------------|---------|
     | HDInsight 3.5 和 HDInsight 3.6 | `%%configure`<br>`{ "conf": {"spark.jars.packages": "com.databricks:spark-csv_2.11:1.5.0" }}`|
     |HDInsight 3.3 和 HDInsight 3.4 | `%%configure` <br>`{ "packages":["com.databricks:spark-csv_2.10:1.4.0"] }`|
@@ -93,7 +90,7 @@ ms.locfileid: "97822245"
     df.select("Time").count()
     ```
 
-## <a name="see-also"></a><a name="seealso"></a>請參閱
+## <a name="see-also"></a><a name="seealso"></a>另請參閱
 
 * [概觀：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
 

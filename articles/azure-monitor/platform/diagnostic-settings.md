@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: 29e50a5c9b306d0e4491852fd08ecdf73026ebc2
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: c25c53159fd0504956eed2cf7f968c573e9fc289
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882240"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927725"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>建立診斷設定以將平台記錄和計量傳送至不同目的地
 Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記錄和資源記錄，可針對 azure 資源及其相依的 azure 平臺提供詳細的診斷和審核資訊。 預設會收集[平臺計量](data-platform-metrics.md)，並通常儲存在 Azure 監視器計量資料庫中。 本文提供有關建立及設定診斷設定，以將平臺計量和平臺記錄傳送至不同目的地的詳細資料。
@@ -130,7 +130,7 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
         >
         > 例如，如果您將 *WorkflowRuntime* 的保留原則設定為180天，然後將其設定為365天，則在這前24小時內儲存的記錄將會在180天后自動刪除，而該類型的所有後續記錄將會在365天后自動刪除。 稍後變更保留原則時，不會讓前24小時的記錄保留大約365天。
 
-6. 按一下 [檔案]  。
+6. 按一下 [儲存]。
 
 經過幾分鐘之後，新的設定就會出現在此資源的設定清單中，並在產生新的事件資料時，將記錄串流處理至指定的目的地。 當事件發出和 [記錄在 Log Analytics 工作區中出現](data-ingestion-time.md)時，最多可能需要15分鐘的時間。
 
@@ -149,7 +149,7 @@ Set-AzDiagnosticSetting -Name KeyVault-Diagnostics -ResourceId /subscriptions/xx
 
 ## <a name="create-using-azure-cli"></a>使用 Azure CLI 建立
 
-使用 [az monitor 診斷-settings create](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) 命令，以 [Azure CLI](/cli/azure/monitor?view=azure-cli-latest)建立診斷設定。 請參閱此命令的檔，以瞭解其參數的描述。
+使用 [az monitor 診斷-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 命令，以 [Azure CLI](/cli/azure/monitor)建立診斷設定。 請參閱此命令的檔，以瞭解其參數的描述。
 
 > [!IMPORTANT]
 > 您無法將此方法用於 Azure 活動記錄。 相反地，請使用 [Resource Manager 範本 Azure 監視器中的 [建立診斷設定](../samples/resource-manager-diagnostic-settings.md) ]，以建立 Resource Manager 範本並使用 CLI 來部署它。

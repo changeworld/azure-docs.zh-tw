@@ -1,19 +1,16 @@
 ---
 title: 使用 Python 元件 Apache Storm-Azure HDInsight
 description: 瞭解如何在 Azure HDInsight 中建立使用 Python 元件的 Apache Storm 拓撲
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-python
 ms.date: 12/16/2019
-ms.openlocfilehash: e62e2583f8a4d3872a1342f0f702a1913f733e7f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: e28d21ed71cf5f485165c639a8bd519b3a2736e1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545458"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928981"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>在 HDInsight 上使用 Python 開發 Apache Storm 拓撲
 
@@ -22,9 +19,9 @@ ms.locfileid: "92545458"
 > [!IMPORTANT]  
 > 本文件中的資訊已使用 Storm on HDInsight 3.6 進行測試。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-* HDInsight 上的 Apache Storm 叢集。 請參閱  作為 [叢集類型]  。
+* HDInsight 上的 Apache Storm 叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop 叢集](../hdinsight-hadoop-create-linux-clusters-portal.md)，然後選取 [Storm] 作為 [叢集類型]。
 
 *  (選用) 的本機風暴開發環境。 只有當您想要在本機執行拓撲時，才需要本機 Storm 環境。 如需詳細資訊，請參閱[設定開發環境](https://storm.apache.org/releases/current/Setting-up-development-environment.html)。
 
@@ -114,7 +111,7 @@ Flux 要求 Python 指令碼位於拓撲所在之 jar 檔案內的 `/resources` 
     storm kill wordcount
     ```
 
-    或者，您也可以使用「風暴 UI」。 在拓撲的 [ **拓撲動作** ] 下，選取 [ **終止** ]。
+    或者，您也可以使用「風暴 UI」。 在拓撲的 [ **拓撲動作** ] 下，選取 [ **終止**]。
 
 ## <a name="run-the-topology-locally"></a>在本機測試拓撲
 
@@ -141,8 +138,8 @@ storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -l -R /topology.
 24303 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=four, count=160}
 ```
 
-若要停止拓撲，請使用 __Ctrl+C__ 。
+若要停止拓撲，請使用 __Ctrl+C__。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 請參閱下列檔，以瞭解搭配使用 Python 與 HDInsight 的其他方式： [如何在 Apache Pig 和 Apache Hive 中使用 Python 使用者定義函式 (UDF) ](../hadoop/python-udf-hdinsight.md)。

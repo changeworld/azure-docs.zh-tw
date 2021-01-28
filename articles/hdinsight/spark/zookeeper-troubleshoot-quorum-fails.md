@@ -3,16 +3,13 @@ title: Apache ZooKeeper server 無法在 Azure HDInsight 中形成仲裁
 description: Apache ZooKeeper server 無法在 Azure HDInsight 中形成仲裁
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 05/20/2020
-ms.openlocfilehash: 680ba2d0840b0f447f9a3cb99707b8357c68f14e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3301d00dce6feb00edcb70ba9edfedcce2e31ec9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545509"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929209"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Apache ZooKeeper server 無法在 Azure HDInsight 中形成仲裁
 

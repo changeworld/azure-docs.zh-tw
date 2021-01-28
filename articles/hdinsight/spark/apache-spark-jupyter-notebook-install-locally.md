@@ -1,19 +1,16 @@
 ---
 title: 在本機安裝 Jupyter 並連線到 Azure HDInsight 中的 Spark
 description: 瞭解如何在本機電腦上安裝 Jupyter Notebook，並將其連線至 Apache Spark 叢集。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-python
 ms.date: 04/23/2020
-ms.openlocfilehash: de11e6f9fd9acc81f7be6d23bb1019f88f9e1322
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: d5915316ee9d393b2481eeca6a5da7923b271d9f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657204"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930415"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>在您的電腦上安裝 Jupyter Notebook，並連接到 HDInsight 上的 Apache Spark
 
@@ -62,7 +59,7 @@ ms.locfileid: "97657204"
 
 1. 在您的新工作目錄中，輸入下列一或多個命令，以安裝所需的核心 (s) ：
 
-    |核心 | Command |
+    |核心 | 命令 |
     |---|---|
     |Spark|`jupyter-kernelspec install sparkmagic/kernels/sparkkernel`|
     |SparkR|`jupyter-kernelspec install sparkmagic/kernels/sparkrkernel`|

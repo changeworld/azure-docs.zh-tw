@@ -1,19 +1,16 @@
 ---
 title: 在 HDInsight 上使用 Spark MLlib 建立機器學習的範例 - Azure
 description: 了解如何使用 Spark MLlib 建立一個透過羅吉斯迴歸使用分類來分析資料集的機器學習應用程式。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, devx-track-python
 ms.date: 04/27/2020
-ms.openlocfilehash: a6407f7c3b1e8570cdc6b36dceec79fba58689c7
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: d2054058bb00b0801aa1c3694c73b6a2edb46c80
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822177"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930049"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>使用 Apache Spark MLlib 建置機器學習應用程式及分析資料集
 
@@ -57,7 +54,7 @@ MLlib 是核心 Spark 程式庫，提供許多適用于機器學習工作的公�
     from pyspark.sql.types import *
     ```
 
-    由於 PySpark 核心的原因，您不需要明確建立任何內容。 當您執行第一個程式碼儲存格時，會自動建立 Spark 和 Hive 內容。
+    由於使用 PySpark 核心，因此不需要明確建立任何內容。 當您執行第一個程式碼儲存格時，會自動建立 Spark 和 Hive 內容。
 
 ## <a name="construct-the-input-dataframe"></a>建構輸入資料框架
 

@@ -3,12 +3,12 @@ title: 獨立 Azure Service Fabric 中的定期備份/還原
 description: 使用獨立 Service Fabric 的定期備份與還原功能，以啟用應用程式資料的定期資料備份。
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.openlocfilehash: d20882ba5f7f31ef453c5d28f8bc37155cc99abd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4abf1cd4561a40aaafa5c01865eb12882884422
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538580"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927961"
 ---
 # <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>獨立 Service Fabric 中的定期備份和還原
 > [!div class="op_single_selector"]
@@ -42,16 +42,21 @@ Service Fabric 提供一組 API，可實現下列和定期備份與復原功能�
 - 暫時暫停備份
 - 備份的保留管理 (即將推出)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 * 具有網狀架構6.4 版或更新版本的 Service Fabric 叢集。 如需下載所需套件的步驟，請參閱這篇[文章](service-fabric-cluster-creation-for-windows-server.md)。
 * 用於加密祕密 (連線至儲存體以儲存備份時所需) 的 X.509 憑證。 若要了解如何取得或建立自我簽署的 X.509 憑證，請參閱這篇[文章](service-fabric-windows-cluster-x509-security.md)。
 
 * 使用 Service Fabric SDK 3.0 版或更新版本來建置的 Service Fabric 可靠具狀態應用程式。 若是以 .NET Core 2.0 為目標的應用程式，則應該使用 Service Fabric SDK 3.1 版或更新版本來建立應用程式。
-* 請安裝 ServiceFabric，以進行設定的呼叫。
+* 安裝 ServiceFabric， (預覽) 進行設定呼叫。
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.PowerShell.Http -AllowPrerelease
 ```
+
+> [!NOTE]
+> 如果 PowerShellGet 版本小於1.6.0，您將需要更新以新增 *-AllowPrerelease* 旗標的支援：
+>
+> `Install-Module -Name PowerShellGet -Force`
 
 * 使用 ServiceFabric 進行任何設定要求之前，請先使用命令來確定叢集已連線 `Connect-SFCluster` 。
 
@@ -62,7 +67,7 @@ Service Fabric 提供一組 API，可實現下列和定期備份與復原功能�
 ```
 
 ## <a name="enabling-backup-and-restore-service"></a>啟用備份與還原服務
-首先，您必須在叢集啟用「備份與還原服務」__。 取得您想要部署之叢集的範本。 您可以使用[範例範本](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)。 請使用下列步驟來啟用「備份與還原服務」__：
+首先，您必須在叢集啟用「備份與還原服務」。 取得您想要部署之叢集的範本。 您可以使用[範例範本](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)。 請使用下列步驟來啟用「備份與還原服務」：
 
 1. 檢查叢集設定檔中的 `apiversion` 是否已設定為 `10-2017`，如果不是，請更新它，如下列程式碼片段所示：
 
@@ -75,7 +80,7 @@ Service Fabric 提供一組 API，可實現下列和定期備份與復原功能�
     }
     ```
 
-2. 現在，在 `properties` 區段底下新增下列 `addonFeatures` 區段來啟用「備份與還原服務」__，如下列程式碼片段所示： 
+2. 現在，在 `properties` 區段底下新增下列 `addonFeatures` 區段來啟用「備份與還原服務」，如下列程式碼片段所示： 
 
     ```json
         "properties": {
@@ -104,7 +109,7 @@ Service Fabric 提供一組 API，可實現下列和定期備份與復原功能�
     }
     ```
 
-4. 在您使用上述變更更新叢集設定檔之後，請套用它們，然後讓部署/升級完成。 完成之後，「備份與還原服務」__ 就會開始在您的叢集中執行。 此服務的 URI 是 `fabric:/System/BackupRestoreService`，此服務可能位於 Service Fabric 總管中的系統服務區段底下。 
+4. 在您使用上述變更更新叢集設定檔之後，請套用它們，然後讓部署/升級完成。 完成之後，「備份與還原服務」就會開始在您的叢集中執行。 此服務的 URI 是 `fabric:/System/BackupRestoreService`，此服務可能位於 Service Fabric 總管中的系統服務區段底下。 
 
 
 

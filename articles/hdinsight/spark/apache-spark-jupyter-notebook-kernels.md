@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight 中 Spark 叢集上 Jupyter Notebook 的核心
 description: 瞭解 Azure HDInsight 上 Spark 叢集可用 Jupyter Notebook 的 PySpark、PySpark3 和 Spark 核心。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: b1139ce2358d5e5b3b52376892524e7ee0dd5611
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: a16ec623d7475a80e546df43495db1a357a5fa66
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822228"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930399"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Spark 叢集上 Jupyter Notebook 的核心
 
@@ -25,7 +22,7 @@ HDInsight Spark 叢集提供的核心，可讓您與 [Apache Spark](./apache-spa
 
 在本文中，您將了解使用這些核心的方式及優點。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 HDInsight 中的 Apache Spark 叢集。 如需指示，請參閱[在 Azure HDInsight 中建立 Apache Spark 叢集](apache-spark-jupyter-spark-sql.md)。
 
@@ -125,7 +122,7 @@ SELECT * FROM hivesampletable
 
 將 Notebook 儲存到儲存體帳戶的方式與 [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) 相容。 如果您透過 SSH 連線到叢集，您可以使用檔案管理命令：
 
-| Command | 描述 |
+| 命令 | 描述 |
 |---------|-------------|
 | `hdfs dfs -ls /HdiNotebooks` | # 列出根目錄中的所有專案-從首頁 Jupyter 可看到此目錄中的所有專案 |
 | `hdfs dfs –copyToLocal /HdiNotebooks` | # 下載 HdiNotebooks 資料夾的內容|

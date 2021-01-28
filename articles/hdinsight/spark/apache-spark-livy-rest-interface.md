@@ -1,19 +1,16 @@
 ---
 title: 使用 Livy Spark 將作業提交至 Azure HDInsight 上的 Spark 叢集
 description: 了解如何使用 Apache Spark REST API 從遠端將 Spark 作業提交至 Azure HDInsight 叢集。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: b5795172517ba2e707d66ebe486c51d31575bd0d
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: ff63f4fbadd7cb9e7584e2aa045583a35e0363fd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821871"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930121"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>使用 Apache Spark REST API 將遠端作業提交至 HDInsight Spark 叢集
 
@@ -97,7 +94,7 @@ Livy 可為在叢集上執行的 Spark 作業提供高可用性。 以下是一�
 * 您已將應用程式 jar 複製到與叢集相關聯的儲存體帳戶。
 * 您已在嘗試執行這些步驟的電腦上安裝了捲曲。
 
-請執行以下步驟：
+執行下列步驟：
 
 1. 為了方便使用，請設定環境變數。 這個範例是以 Windows 環境為基礎，視您的環境需要修訂變數。 `CLUSTERNAME` `PASSWORD` 以適當的值取代和。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/20/2020
-ms.openlocfilehash: ed5e4d05a693ff9b0bf8823ba31de17d000d0fb6
-ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
+ms.openlocfilehash: 5bb072d0ea710e35b4f741836aed143e962a326e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97706876"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927693"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>刪除和復原 Azure Log Analytics 工作區
 
@@ -41,7 +41,7 @@ ms.locfileid: "97706876"
 > [!NOTE] 
 > 在刪除時，已安裝的解決方案和連結的服務 (例如 Azure 自動化帳戶) 會從工作區中永久移除，且無法復原。 在進行復原作業後應重新設定這些項目，才能讓工作區進入其先前設定的狀態。
 
-您可以使用 [PowerShell](/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0&preserve-view=true)、[REST API](/rest/api/loganalytics/workspaces/delete) 或 [Azure 入口網站](https://portal.azure.com)來刪除工作區。
+您可以使用 [PowerShell](/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace)、[REST API](/rest/api/loganalytics/workspaces/delete) 或 [Azure 入口網站](https://portal.azure.com)來刪除工作區。
 
 ### <a name="azure-portal"></a>Azure 入口網站
 

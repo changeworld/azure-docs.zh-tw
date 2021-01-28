@@ -1,27 +1,24 @@
 ---
 title: 在 HDInsight 上管理 ML 服務叢集 - Azure
 description: 瞭解如何在 Azure HDInsight 中管理 ML 服務叢集上的各種工作。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/19/2019
-ms.openlocfilehash: 898a02796d578d76f9b45d167f4e92a4bf9831ba
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: e4c9124ebd0b61b8db1b1da964355a3c36b5bba5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536278"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930578"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>在 HDInsight 上管理 ML 服務叢集
 
 在本文中，您將瞭解如何在 Azure HDInsight 上管理現有的 ML 服務叢集，以執行像是新增多個並行使用者、遠端連線至 ML 服務叢集、變更計算內容等工作。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-* HDInsight 上的 ML 服務叢集。 請參閱  作為 [叢集類型]  。
+* HDInsight 上的 ML 服務叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop 叢集](../hdinsight-hadoop-create-linux-clusters-portal.md)，然後選取 [ML 服務] 作為 [叢集類型]。
 
 * 安全殼層 (SSH) 用戶端：SSH 用戶端可用來從遠端連線至 HDInsight 叢集，並直接在叢集上執行命令。 如需詳細資訊，請參閱搭配[HDInsight 使用 SSH。](../hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -31,8 +28,8 @@ ms.locfileid: "92536278"
 
 ![HDI Azure 入口網站登入參數](./media/r-server-hdinsight-manage/hdi-concurrent-users1.png)
 
-- **叢集登入使用者名稱** ：透過 HDInsight 閘道 (用來保護您所建立的 HDInsight 叢集) 進行驗證的 HTTP 使用者。 此 HTTP 使用者用於存取 Apache Ambari UI、Apache Hadoop YARN UI，以及其他 UI 元件。
-- **安全殼層 (SSH) 使用者名稱** ：透過安全殼層存取叢集的 SSH 使用者。 此使用者是在 Linux 系統中適用於所有前端節點、背景工作節點和邊緣節點的使用者。 因此您可以使用安全殼層來存取遠端叢集中的任何節點。
+- **叢集登入使用者名稱**：透過 HDInsight 閘道 (用來保護您所建立的 HDInsight 叢集) 進行驗證的 HTTP 使用者。 此 HTTP 使用者用於存取 Apache Ambari UI、Apache Hadoop YARN UI，以及其他 UI 元件。
+- **安全殼層 (SSH) 使用者名稱**：透過安全殼層存取叢集的 SSH 使用者。 此使用者是在 Linux 系統中適用於所有前端節點、背景工作節點和邊緣節點的使用者。 因此您可以使用安全殼層來存取遠端叢集中的任何節點。
 
 HDInsight 上 ML 服務叢集中所使用的 R Studio Server 社群版本，只接受 Linux 使用者名稱和密碼作為登入機制。 但不支援傳遞權杖。 因此，當您首次嘗試存取 ML 服務叢集上的 R Studio 時，您需要登入兩次。
 
@@ -74,7 +71,7 @@ sudo passwd <yournewusername>
 
 從 `https://CLUSTERNAME.azurehdinsight.net/rstudio/` 存取 RStudio。 如果您在建立叢集之後首次進行登入，請輸入叢集系統管理員認證，後面接著您建立的 SSH 使用者認證。 如果這不是您第一次登入，則只需針對您所建立的 SSH 使用者輸入認證。
 
-您也可以使用原始認證 (預設是 *sshuser* )，從另一個瀏覽器視窗同時登入。
+您也可以使用原始認證 (預設是 *sshuser*)，從另一個瀏覽器視窗同時登入。
 
 也請注意，新增的使用者在 Linux 系統中沒有根權限，但是他們對遠端 HDFS 與 WASB 儲存體中的所有檔案具有相同的存取權。
 
@@ -195,19 +192,19 @@ rxSparkDisconnect(myHadoopCluster)
 
 1. 遵循[使用指令碼動作來自訂叢集](../hdinsight-hadoop-customize-cluster-linux.md)中的步驟。
 
-3. 針對 **提交指令碼動作** ，提供下列資訊：
+3. 針對 **提交指令碼動作**，提供下列資訊：
 
-   * 針對  。
+   * 針對 **指令碼類型**，選取 [自訂]。
 
-   * 針對 **名稱** ，提供指令碼動作的名稱。
+   * 針對 **名稱**，提供指令碼動作的名稱。
 
-     * 針對 **Bash 指令碼 URI** ，輸入 `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`。 這是在背景工作節點上安裝其他 R 封裝的指令碼
+     * 針對 **Bash 指令碼 URI**，輸入 `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`。 這是在背景工作節點上安裝其他 R 封裝的指令碼
 
    * 只選取 **背景工作** 的核取方塊。
 
-   * **參數** ︰要安裝的 R 套件。 例如， `bitops stringr arules`
+   * **參數**︰要安裝的 R 套件。 例如， `bitops stringr arules`
 
-   * 選取此核取方塊以 **持續此指令碼動作** 。  
+   * 選取此核取方塊以 **持續此指令碼動作**。  
 
    > [!NOTE]
    > 1. 根據預設，系統在安裝所有的 R 封裝時，會透過已安裝 Machine Learning Server 相同版本的 Microsoft MRAN 存放庫快照。 如果您想要安裝較新版的套件，則會有不相容的風險。 不過，將 `useCRAN` 指定為套件清單的第一個元素 (例如 `useCRAN bitops, stringr, arules`)，這種安裝就可行。  
@@ -216,9 +213,9 @@ rxSparkDisconnect(myHadoopCluster)
 
    ![Azure 入口網站提交腳本動作](./media/r-server-hdinsight-manage/submit-script-action.png)
 
-4. 按一下 [建立]  執行指令碼。 指令碼完成之後，即可在所有的背景工作角色節點上使用 R 套件。
+4. 按一下 [建立] 執行指令碼。 指令碼完成之後，即可在所有的背景工作角色節點上使用 R 套件。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [在 HDInsight 上運作 ML 服務叢集](r-server-operationalize.md)
 * [在 HDInsight 上計算 ML 服務叢集的內容選項](r-server-compute-contexts.md)

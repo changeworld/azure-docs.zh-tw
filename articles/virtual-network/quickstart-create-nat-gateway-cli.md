@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 43b2c8271090d2254bcb4834c3b566c3601a104b
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
-ms.translationtype: HT
+ms.openlocfilehash: 8d14b8b83fd784956091e738a38d6851d5edacd9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223239"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927141"
 ---
 # <a name="create-a-nat-gateway-using-azure-cli"></a>使用 Azure CLI 建立 NAT 閘道
 
@@ -74,7 +74,7 @@ ms.locfileid: "98223239"
   - 公用 IP 集區和公用 IP 前置詞，將用於 NAT 閘道資源所轉譯的輸出流量。
   - 將閒置逾時時間從預設的 4 分鐘變更為 10 分鐘。
 
-使用 [az network nat gateway create](/cli/azure/network/nat?view=azure-cli-latest) 建立全域 Azure NAT 閘道，其名稱為 **myNATgateway**。 此命令會使用公用 IP 位址 **myPublicIP** 和公用 IP 前置詞 **myPublicIPprefix**。 此命令會將閒置逾時變更為 **10** 分鐘。
+使用 [az network nat gateway create](/cli/azure/network/nat) 建立全域 Azure NAT 閘道，其名稱為 **myNATgateway**。 此命令會使用公用 IP 位址 **myPublicIP** 和公用 IP 前置詞 **myPublicIPprefix**。 此命令會將閒置逾時變更為 **10** 分鐘。
 
 ```azurecli-interactive
   az network nat gateway create \
@@ -134,7 +134,7 @@ ms.locfileid: "98223239"
 
 ### <a name="create-an-nsg-for-vm"></a>建立 VM 的 NSG
 
-因為標準公用 IP 位址屬於「預設保護」，所以我們需要建立 NSG 來允許 SSH 的輸入存取。 使用 [az network nsg create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create)，在 **myResourceGroupNAT** 中建立名為 **myNSG** 的 NSG 資源。
+因為標準公用 IP 位址屬於「預設保護」，所以我們需要建立 NSG 來允許 SSH 的輸入存取。 使用 [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create)，在 **myResourceGroupNAT** 中建立名為 **myNSG** 的 NSG 資源。
 
 ```azurecli-interactive
   az network nsg create \
@@ -144,7 +144,7 @@ ms.locfileid: "98223239"
 
 ### <a name="expose-ssh-endpoint-on-source-vm"></a>公開來源 VM 上的 SSH 端點
 
-我們會在 NSG 中建立規則，以供對來源 VM 進行 SSH 存取。 使用 [az network nsg rule create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create)，在 **myResourceGroupNAT** 中名為 **myNSG** 的 NSG 中建立名為 **ssh** 的 NSG 規則。
+我們會在 NSG 中建立規則，以供對來源 VM 進行 SSH 存取。 使用 [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create)，在 **myResourceGroupNAT** 中名為 **myNSG** 的 NSG 中建立名為 **ssh** 的 NSG 規則。
 
 ```azurecli-interactive
   az network nsg rule create \

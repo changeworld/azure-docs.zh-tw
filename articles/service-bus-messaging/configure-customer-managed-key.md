@@ -2,26 +2,20 @@
 title: 設定您自己的金鑰來加密待用 Azure 服務匯流排資料
 description: 本文提供有關如何設定您自己的金鑰來加密 Azure 服務匯流排資料 rest 的資訊。
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 3e8f3a599ee5fe40c85a93dd58d36e6cd611c9ea
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.date: 01/26/2021
+ms.openlocfilehash: 132ee3883b818dcc5a5d8e0cc7b372daee41e273
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631761"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928092"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>使用 Azure 入口網站，設定客戶管理的金鑰來加密 Azure 服務匯流排待用資料
-Azure 服務匯流排 Premium 提供加密待用資料，以及 (Azure SSE) Azure 儲存體服務加密。 服務匯流排 Premium 依賴 Azure 儲存體來儲存資料，而以 Azure 儲存體儲存的所有資料都會使用 Microsoft 管理的金鑰進行加密。 
+Azure 服務匯流排 Premium 提供加密待用資料，以及 (Azure SSE) Azure 儲存體服務加密。 服務匯流排 Premium 使用 Azure 儲存體來儲存資料。 使用 Azure 儲存體儲存的所有資料都會使用 Microsoft 管理的金鑰進行加密。 如果您使用自己的金鑰 (也稱為攜帶您自己的金鑰 (BYOK) 或客戶管理的金鑰) ，則資料仍會使用受 Microsoft 管理的金鑰進行加密，但此外，使用客戶管理的金鑰將會加密 Microsoft 管理的金鑰。 這項功能可讓您建立、輪替、停用及撤銷客戶管理金鑰的存取權，這些金鑰是用來加密 Microsoft 管理的金鑰。 啟用 BYOK 功能是您的命名空間上的一次性設定程式。
 
-## <a name="overview"></a>概觀
-Azure 服務匯流排現在支援使用 Microsoft 管理的金鑰或由客戶管理的金鑰來加密待用資料的選項， (攜帶您自己的金鑰 BYOK) 。 這項功能可讓您建立、輪替、停用及撤銷用來加密待用 Azure 服務匯流排之客戶管理金鑰的存取權。
-
-啟用 BYOK 功能是您的命名空間上的一次性設定程式。
-
-> [!NOTE]
-> 針對服務端加密，客戶管理的金鑰有一些注意事項。 
->   * [Azure 服務匯流排](service-bus-premium-messaging.md)進階層可支援此功能。 標準層服務匯流排命名空間無法啟用此功能。
->   * 加密只能針對新的或空的命名空間啟用。 如果命名空間包含任何佇列或主題，則加密作業將會失敗。
+針對服務端加密，客戶管理的金鑰有一些注意事項。 
+- [Azure 服務匯流排](service-bus-premium-messaging.md)進階層可支援此功能。 標準層服務匯流排命名空間無法啟用此功能。
+- 加密只能針對新的或空的命名空間啟用。 如果命名空間包含任何佇列或主題，則加密作業將會失敗。
 
 您可以使用 Azure Key Vault 來管理您的金鑰，並審核您的金鑰使用方式。 您可以建立自己的金鑰並將其儲存在金鑰保存庫中，或是使用 Azure Key Vault API 來產生金鑰。 如需 Azure 金鑰保存庫的詳細資訊，請參閱 [什麼是 Azure 金鑰保存庫？](../key-vault/general/overview.md)
 
@@ -70,13 +64,13 @@ Azure 服務匯流排現在支援使用 Microsoft 管理的金鑰或由客戶管
         > [!NOTE]
         > 針對冗余，您最多可以新增3個金鑰。 如果其中一個金鑰已過期，或無法存取，則會使用其他金鑰進行加密。
         
-    1. 填入金鑰的詳細資料，然後按一下 [ **選取**]。 這可讓您使用客戶管理的金鑰來加密命名空間上的待用資料。 
+    1. 填入金鑰的詳細資料，然後按一下 [ **選取**]。 這可讓您使用金鑰 (客戶管理的金鑰) 來加密 Microsoft 管理的金鑰。 
 
 
     > [!IMPORTANT]
-    > 如果您想要使用客戶管理的金鑰和異地嚴重損壞修復，請參閱下列- 
+    > 如果您想要使用客戶管理的金鑰和異地嚴重損壞修復，請參閱本節。 
     >
-    > 若要使用客戶管理的金鑰啟用待用加密，可在指定的 Azure KeyVault 上設定服務匯流排「受控識別」的 [存取原則](../key-vault/general/secure-your-key-vault.md) 。 這可確保從 Azure 服務匯流排命名空間進行 Azure KeyVault 的受控存取。
+    > 若要使用客戶管理的金鑰來啟用受 Microsoft 管理金鑰的加密，則會在指定的 Azure KeyVault 上設定服務匯流排「受控識別」的 [存取原則](../key-vault/general/secure-your-key-vault.md) 。 這可確保從 Azure 服務匯流排命名空間進行 Azure KeyVault 的受控存取。
     >
     > 原因如下：
     > 

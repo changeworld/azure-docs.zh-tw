@@ -1,18 +1,15 @@
 ---
 title: 在 Azure HDInsight 中使用捲曲的 Apache Sqoop 來匯出資料
 description: 瞭解如何使用捲曲從遠端將 Apache Sqoop 作業提交至 Azure HDInsight。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/06/2020
-ms.openlocfilehash: 9104be9975568c52f6a96994a0afb782a406fe4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4de42bf30824fd71228aa27cc478a54ec3741da9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86076261"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928365"
 ---
 # <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>使用捲曲在 HDInsight 中執行 Apache Sqoop 作業
 
@@ -22,7 +19,7 @@ ms.locfileid: "86076261"
 
 本文件使用 Curl 示範如何使用未經處理的 HTTP 要求來與 HDInsight 互動，以便執行、監視和擷取 Sqoop 作業的結果。 要想執行這些作業，就要使用 HDInsight 叢集所提供的 WebHCat REST API (先前稱為 Templeton)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * 透過[搭配使用 Apache Sqoop 與 HDInsight 中的 Hadoop](./hdinsight-use-sqoop.md)完成[設定測試環境](./hdinsight-use-sqoop.md#create-cluster-and-sql-database)。
 
@@ -104,7 +101,7 @@ ms.locfileid: "86076261"
    > [!NOTE]  
    > 此 Curl 要求會傳回含有工作資訊的 JavaScript Object Notation (JSON) 文件；jq 可用來僅擷取狀態值。
 
-1. 工作狀態變更為 [成功]**** 之後，即可從 Azure Blob 儲存體擷取工作結果。 與查詢一起傳遞的 `statusdir` 參數包含輸出檔案的位置；在此案例中為 `wasb:///example/data/sqoop/curl`。 此位址會將工作的輸出儲存在 `example/data/sqoop/curl` 您的 HDInsight 叢集所使用之預設儲存體容器的目錄中。
+1. 工作狀態變更為 [成功] 之後，即可從 Azure Blob 儲存體擷取工作結果。 與查詢一起傳遞的 `statusdir` 參數包含輸出檔案的位置；在此案例中為 `wasb:///example/data/sqoop/curl`。 此位址會將工作的輸出儲存在 `example/data/sqoop/curl` 您的 HDInsight 叢集所使用之預設儲存體容器的目錄中。
 
     您可以使用 Azure 入口網站存取 stderr 和 stdout Blob。
 
@@ -126,7 +123,7 @@ ms.locfileid: "86076261"
 
 如需本文中使用的 REST 介面的詳細資訊，請參閱 <a href="https://sqoop.apache.org/docs/1.99.3/RESTAPI.html" target="_blank">Apache Sqoop REST API 指南</a>。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [在 HDInsight 將 Apache Sqoop 與 Apache Hadoop 搭配使用](hdinsight-use-sqoop.md)
 

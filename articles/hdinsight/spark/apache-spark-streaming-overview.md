@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight 中的 Spark 串流
 description: 如何在 HDInsight Spark 叢集上使用 Apache Spark 串流應用程式。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: a88d4893daa12ff2c35ee7cf8f4e5b7569f854f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bde6c5b2bad12df8642dd3c9b4a49548f7bc9a6d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086189"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929513"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Apache Spark 串流概觀
 
@@ -25,13 +22,13 @@ Spark 串流應用程式必須等候一小段時間才能收集每個 `micro-bat
 
 ## <a name="introducing-the-dstream"></a>DStream 簡介
 
-Spark 串流會使用名為 DStream 的*離散化資料流*表示傳入資料的連續資料流。 您可以從事件中樞或 Kafka 之類的輸入來源來建立 DStream。 或在另一個 DStream 上套用轉換。
+Spark 串流會使用名為 DStream 的 *離散化資料流* 表示傳入資料的連續資料流。 您可以從事件中樞或 Kafka 之類的輸入來源來建立 DStream。 或在另一個 DStream 上套用轉換。
 
 DStream 會在原始事件資料的頂端提供抽象層。
 
-先以單一事件為例，例如從連接的控溫器讀取溫度。 當此事件抵達 Spark 串流應用程式時，事件會以可靠的方式儲存，並在其中複寫到多個節點。 此容錯容錯可確保任何單一節點的失敗都不會導致您的事件遺失。 Spark 核心使用的資料結構會將資料分散到叢集中的多個節點。 其中，每個節點通常都會在記憶體中維護自己的資料，以獲得最佳效能。 此資料結構稱為*彈性分散式資料集* (resilient distributed dataset, RDD)。
+先以單一事件為例，例如從連接的控溫器讀取溫度。 當此事件抵達 Spark 串流應用程式時，事件會以可靠的方式儲存，並在其中複寫到多個節點。 此容錯容錯可確保任何單一節點的失敗都不會導致您的事件遺失。 Spark 核心使用的資料結構會將資料分散到叢集中的多個節點。 其中，每個節點通常都會在記憶體中維護自己的資料，以獲得最佳效能。 此資料結構稱為 *彈性分散式資料集* (resilient distributed dataset, RDD)。
 
-每個 RDD 皆代表在使用者定義的時間範圍 (稱為「批次間隔」**) 內收集的事件。 當每個批次間隔過去後，新的 RDD 就會產生，並包含該間隔中的所有資料。 一組連續的 Rdd 會收集到 DStream。 例如，如果批次間隔長度為一秒，您的 DStream 就會每秒發出包含一個 RDD 的批次，該 RDD 會包含在這一秒期間內嵌的所有資料。 處理 DStream 時，溫度事件就會出現在這些批次的其中一個。 Spark 串流應用程式會處理包含事件的批次，並在最後處理儲存在每個 RDD 中的資料。
+每個 RDD 皆代表在使用者定義的時間範圍 (稱為「批次間隔」) 內收集的事件。 當每個批次間隔過去後，新的 RDD 就會產生，並包含該間隔中的所有資料。 一組連續的 Rdd 會收集到 DStream。 例如，如果批次間隔長度為一秒，您的 DStream 就會每秒發出包含一個 RDD 的批次，該 RDD 會包含在這一秒期間內嵌的所有資料。 處理 DStream 時，溫度事件就會出現在這些批次的其中一個。 Spark 串流應用程式會處理包含事件的批次，並在最後處理儲存在每個 RDD 中的資料。
 
 ![DStream 與溫度事件的範例](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png)
 
@@ -251,7 +248,7 @@ ssc.start()
 
 您也可以藉由 LIVY 端點，使用 GET 要求來檢查所有應用程式的狀態。 最後，您可以對 LIVY 端點發出刪除要求，以結束執行中的應用程式。 如需 LIVY API 的詳細資料，請參閱[使用 Apache LIVY 執行遠端作業](apache-spark-livy-rest-interface.md)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [在 HDInsight 中建立 Apache Spark 叢集](../hdinsight-hadoop-create-linux-clusters-portal.md)
 * [Apache Spark Streaming Programming Guide](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html) (Apache Spark 串流程式設計指南)

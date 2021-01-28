@@ -2,18 +2,15 @@
 title: 靜態資料的雙重加密
 titleSuffix: Azure HDInsight
 description: 本文說明 Azure HDInsight 叢集中待用資料可用的兩層加密層級。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 4e895cdba1bfc16eac0450bd05271f0e41985b7b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: c9e50885a7283d3f7fcd231bf222415389212a93
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359754"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927318"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>靜態資料的 Azure HDInsight 雙重加密
 
@@ -101,10 +98,10 @@ HDInsight 僅支援 Azure Key Vault。 如果您有自己的金鑰保存庫，�
 
 1. 在 [ **新增存取原則** ] 頁面中，提供下列資訊：
 
-    |屬性 |說明|
+    |屬性 |描述|
     |---|---|
     |金鑰許可權|選取 [ **取得**]、[解除包裝 **金鑰**] 和 [ **包裝金鑰**]。|
-    |秘密許可權|選取 [ **取得**]、[ **設定**] 和 [ **刪除**]。|
+    |祕密權限|選取 [ **取得**]、[ **設定**] 和 [ **刪除**]。|
     |選取主體|選取您稍早建立的使用者指派受控識別。|
 
     ![為 Azure Key Vault 存取原則設定 [選取主體]](./media/disk-encryption/azure-portal-add-access-policy.png)
@@ -127,8 +124,8 @@ HDInsight 僅支援 Azure Key Vault。 如果您有自己的金鑰保存庫，�
 
 在叢集建立期間，您可以透過下列方式使用已建立版本的金鑰或無版本金鑰：
 
-- 已建立 **版本**-在叢集建立期間，請提供完整的 **金鑰識別碼**，包括金鑰版本。 例如 `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`。
-- **無版本** -在叢集建立期間，僅提供 **金鑰識別碼**。 例如 `https://contoso-kv.vault.azure.net/keys/myClusterKey`。
+- 已建立 **版本**-在叢集建立期間，請提供完整的 **金鑰識別碼**，包括金鑰版本。 例如： `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4` 。
+- **無版本** -在叢集建立期間，僅提供 **金鑰識別碼**。 例如： `https://contoso-kv.vault.azure.net/keys/myClusterKey` 。
 
 您也需要將受控識別指派給叢集。
 

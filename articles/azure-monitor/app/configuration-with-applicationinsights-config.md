@@ -5,17 +5,17 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.custom: devx-track-csharp
 ms.reviewer: olegan
-ms.openlocfilehash: 7c0759e78b1adc1704acb602daa12cf9cabbe153
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d05503c2a22c476d9ab08e8aeb058ca1b9826778
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934798"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928690"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>使用 ApplicationInsights.config 或 .xml 設定 Application Insights SDK
-Application Insights .NET SDK 是由數個 NuGet 封裝所組成。 [核心封裝](https://www.nuget.org/packages/Microsoft.ApplicationInsights) 提供 API，用於傳送遙測至 Application Insights。 [其他套件](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights)提供遙測*模組*和*初始設定式*，用於自動從您的應用程式和其內容追蹤遙測。 藉由調整設定檔案，您可以啟用或停用遙測模組和初始化運算式，並為其設定參數。
+Application Insights .NET SDK 是由數個 NuGet 封裝所組成。 [核心封裝](https://www.nuget.org/packages/Microsoft.ApplicationInsights) 提供 API，用於傳送遙測至 Application Insights。 [其他套件](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights)提供遙測 *模組* 和 *初始設定式*，用於自動從您的應用程式和其內容追蹤遙測。 藉由調整設定檔案，您可以啟用或停用遙測模組和初始化運算式，並為其設定參數。
 
-組態檔的名稱為 `ApplicationInsights.config` 或 `ApplicationInsights.xml`，端視您的應用程式類型而定。 當您[安裝大部分版本的 SDK][start] 時，系統會自動將組態檔加入至您的專案。 根據預設，從支援 **新增 > Application Insights 遙測**的 Visual Studio 範本專案使用自動化體驗時，ApplicationInsights.config 檔案會建立在專案根資料夾中，並在編譯時複製到 bin 資料夾中。 它也會透過 [在 IIS 伺服器上狀態監視器][redfield]來新增至 web 應用程式。 如果使用 azure [網站](azure-web-apps.md) 或 azure VM 的延伸模組 [和虛擬機器擴展集，](azure-vm-vmss-apps.md) 則會忽略設定檔案。
+組態檔的名稱為 `ApplicationInsights.config` 或 `ApplicationInsights.xml`，端視您的應用程式類型而定。 當您[安裝大部分版本的 SDK][start] 時，系統會自動將組態檔加入至您的專案。 根據預設，從支援 **新增 > Application Insights 遙測** 的 Visual Studio 範本專案使用自動化體驗時，ApplicationInsights.config 檔案會建立在專案根資料夾中，並在編譯時複製到 bin 資料夾中。 它也會透過 [在 IIS 伺服器上狀態監視器][redfield]來新增至 web 應用程式。 如果使用 azure [網站](azure-web-apps.md) 或 azure VM 的延伸模組 [和虛擬機器擴展集，](azure-vm-vmss-apps.md) 則會忽略設定檔案。
 
 沒有同等的檔案可以控制[網頁中的 SDK][client]。
 
@@ -87,7 +87,7 @@ Application Insights .NET SDK 是由數個 NuGet 封裝所組成。 [核心封�
 * [Microsoft.ApplicationInsights.EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 
 
 ### <a name="microsoftapplicationinsights"></a>Microsoft.ApplicationInsights
-Microsoft.ApplicationInsights 封裝提供 SDK 的 [核心 API](/dotnet/api/microsoft.applicationinsights?view=azure-dotnet) 。 其他遙測模組使用此模組，您也可以 [使用它來定義您自己的遙測](./api-custom-events-metrics.md)。
+Microsoft.ApplicationInsights 封裝提供 SDK 的 [核心 API](/dotnet/api/microsoft.applicationinsights) 。 其他遙測模組使用此模組，您也可以 [使用它來定義您自己的遙測](./api-custom-events-metrics.md)。
 
 * ApplicationInsights.config 中沒有項目。
 * [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet 封裝。 如果您只安裝此 NuGet，不會產生任何 .config 檔案。
@@ -285,7 +285,7 @@ TelemetryConfiguration.Active.ApplicationIdProvider = new DictionaryApplicationI
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 [深入了解 API][api]。
 
 <!--Link references-->

@@ -3,16 +3,13 @@ title: 從 Apache Spark 應用程式 Azure HDInsight RequestBodyTooLarge 錯誤
 description: NativeAzureFileSystem ...RequestBodyTooLarge 會在記錄檔中顯示 Apache Spark 串流應用程式 Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: 38d6e5bfea1ae7ad4eead3a3f614007d31f0a7cb
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 73ae646cb083841ee1d55b6c7ce6af7180cef08e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287934"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929422"
 ---
 # <a name="nativeazurefilesystemrequestbodytoolarge-appear-in-apache-spark-streaming-app-log-in-hdinsight"></a>"NativeAzureFileSystem...RequestBodyTooLarge "會顯示在 HDInsight 的 Apache Spark 串流應用程式記錄檔中
 
@@ -28,7 +25,7 @@ ms.locfileid: "93287934"
 
 在 Spark 2.3 中，每個 Spark 應用程式都會產生一個 Spark 事件記錄檔。 Spark 串流應用程式的 Spark 事件記錄檔會在應用程式執行時持續成長。 現在 WASB 上的檔案具有50000區塊限制，而預設區塊大小為 4 MB。 因此，在預設設定中，檔案大小上限為 195 GB。 不過，Azure 儲存體已將最大區塊大小增加到 100 MB，這可有效地將單一檔案限制為 4.75 TB。 如需詳細資訊，請參閱 [Blob 儲存體的延展性和效能目標](../../storage/blobs/scalability-targets.md)。
 
-## <a name="resolution"></a>解決方法
+## <a name="resolution"></a>解決方案
 
 此錯誤有三個可用的解決方案：
 

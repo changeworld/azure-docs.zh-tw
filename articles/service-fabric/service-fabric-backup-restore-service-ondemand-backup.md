@@ -5,27 +5,32 @@ author: aagup
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: 04d8bb4a9f8157a229751d073e8d351f5448fa68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7986c8cd8d0714215c7b4dc57170be346e627ed
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86247892"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928032"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Azure Service Fabric 中的隨選備份
 
 您可備份可靠具狀態服務和 Reliable Actors 的資料，以處理災害或資料遺失情況。
 
-Azure Service Fabric 具有用來[定期備份資料](service-fabric-backuprestoreservice-quickstart-azurecluster.md)及依照需求備份資料的功能。 隨選備份很實用，因為它會_data loss_ / 因基礎服務或其環境中的規劃變更而防止資料遺失_資料損毀_。
+Azure Service Fabric 具有用來[定期備份資料](service-fabric-backuprestoreservice-quickstart-azurecluster.md)及依照需求備份資料的功能。 隨選備份很實用，因為它會 / 因基礎服務或其環境中的規劃變更而防止資料遺失 _資料損毀_。
 
 在您手動觸發服務或服務環境作業之前，隨選備份功能對於擷取服務狀態很有幫助。 例如，如果您在升級或降級服務時變更了服務二進位檔。 在此情況下，隨選備份可協助防範由應用程式程式碼錯誤 (bug) 造成的資料損毀。
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-- 請安裝 ServiceFabric，以進行設定的呼叫。
+- 安裝 ServiceFabric， (預覽) 進行設定呼叫。
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
+
+> [!NOTE]
+> 如果 PowerShellGet 版本小於1.6.0，您將需要更新以新增 *-AllowPrerelease* 旗標的支援：
+>
+> `Install-Module -Name PowerShellGet -Force`
 
 - 使用 ServiceFabric 進行任何設定要求之前，請先使用命令來確定叢集已連線 `Connect-SFCluster` 。
 
@@ -139,7 +144,7 @@ $backupResponse
 
 隨選備份要求可能會有下列狀態：
 
-- 已**接受**：備份已在分割區上啟動且正在進行中。
+- 已 **接受**：備份已在分割區上啟動且正在進行中。
   ```
   BackupState             : Accepted
   TimeStampUtc            : 0001-01-01T00:00:00Z
@@ -149,7 +154,7 @@ $backupResponse
   LsnOfLastBackupRecord   : 0
   FailureError            :
   ```
-- **成功**、 **失敗**或 **超時**：要求的隨選備份可在下列任何狀態中完成：
+- **成功**、 **失敗** 或 **超時**：要求的隨選備份可在下列任何狀態中完成：
   - **成功**： _成功_ 備份狀態表示已成功備份分割區狀態。 回應會提供分割區的 _BackupEpoch_ 和 _BackupLSN_ 以及 UTC 時間。
     ```
     BackupState             : Success
@@ -181,7 +186,7 @@ $backupResponse
     FailureError            : @{Code=FABRIC_E_TIMEOUT; Message=The request of backup has timed out.}
     ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [了解定期備份組態](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [BackupRestore REST API 參考](/rest/api/servicefabric/sfclient-index-backuprestore)

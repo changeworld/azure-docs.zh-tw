@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: klaasl
-ms.openlocfilehash: 570fd7f356969bbd37ef6b661334501a062c36df
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 67534e70904c70f7bf9dda44502e723916bdce93
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165683"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928804"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Azure Blob 儲存體經常性存取層、非經常性存取層和封存的存取層
 
@@ -86,7 +86,7 @@ GPv1 與 GPv2 帳戶之間的價格結構不同，客戶在決定使用 GPv2 帳
 - 需要儲存一段時間且幾乎不會被存取的合規性與封存資料
 
 > [!NOTE]
-> ZRS、GZRS 或 RA GZRS 帳戶不支援封存層。
+> ZRS、GZRS 或 RA GZRS 帳戶不支援封存層。 如果儲存體帳戶包含封存層中的 blob，則不支援從 LRS 遷移至 GRS。
 
 ## <a name="account-level-tiering"></a>帳戶層級的分層
 
@@ -146,9 +146,9 @@ Blob 儲存體生命週期管理提供豐富、以規則為基礎的原則，可
 |                                           | **Premium 效能**   | **經常性存取層** | **非經常性存取層**       | **封存層**  |
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
 | **可用性**                          | 99.9%                     | 99.9%        | 99%                 | 離線           |
-| **可用性** <br> **(RA-GRS 讀取)**  | 不適用                       | 99.99%       | 99.9%               | 離線           |
+| **可用性** <br> **(RA-GRS 讀取)**  | N/A                       | 99.99%       | 99.9%               | 離線           |
 | **使用費用**                         | 儲存體成本較高、存取權和交易成本較高 | 儲存成本較高，存取和交易成本較低 | 儲存成本較低，存取和交易成本較高 | 儲存成本最低，存取和交易成本最高 |
-| **最小儲存持續時間**              | 不適用                       | 不適用          | 30天<sup>1</sup> | 180 天
+| **最小儲存持續時間**              | N/A                       | N/A          | 30天<sup>1</sup> | 180 天
 | **延遲** <br> **(距第一位元組時間)** | 一位數毫秒 | 毫秒 | 毫秒        | 小時<sup>2</sup> |
 
 在 GPv2 帳戶的非經常性存取層中，有<sup>1</sup>個物件的保留持續時間至少為30天。 Blob 儲存體帳戶不會有非經常性存取層的最小保留期限。

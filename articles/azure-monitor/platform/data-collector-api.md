@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/14/2020
-ms.openlocfilehash: ab0ed536bd23aaf15d85af85e4f924bc2f51f3d4
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bdbb4307f46566d1cac259cbdc4c81d1dfba5c7e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96006622"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927789"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>使用 HTTP 資料收集器 API 將記錄資料傳送給 Azure 監視器 (公開預覽)
 本文示範如何使用 HTTP 資料收集器 API 將記錄資料從 REST API 用戶端傳送給 Azure 監視器。  內容說明如何將您指令碼或應用程式所收集的資料格式化、將其包含在要求中，以及讓 Azure 監視器授權該要求。  提供的範例適用於 PowerShell、C# 及 Python。
@@ -66,7 +66,7 @@ Log Analytics 工作區中的所有資料都會以具有特定記錄類型的記
 Authorization: SharedKey <WorkspaceID>:<Signature>
 ```
 
-WorkspaceID 是 Log Analytics 工作區的唯一識別碼。 Signature 是[雜湊式訊息驗證碼 (HMAC)](/dotnet/api/system.security.cryptography.hmacsha256?view=netcore-3.1)，該驗證碼從要求建構而來，而後使用 [SHA256 演算法](/dotnet/api/system.security.cryptography.sha256?view=netcore-3.1)進行計算。 接下來，您可使用 Base64 編碼方式進行編碼。
+WorkspaceID 是 Log Analytics 工作區的唯一識別碼。 Signature 是[雜湊式訊息驗證碼 (HMAC)](/dotnet/api/system.security.cryptography.hmacsha256)，該驗證碼從要求建構而來，而後使用 [SHA256 演算法](/dotnet/api/system.security.cryptography.sha256)進行計算。 接下來，您可使用 Base64 編碼方式進行編碼。
 
 使用此格式來進行 **SharedKey** 簽章字串的編碼︰
 
@@ -92,7 +92,7 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 
 後續各節中的範例有範例程式碼可協助您建立授權標頭。
 
-## <a name="request-body"></a>Request body
+## <a name="request-body"></a>要求本文
 訊息的主體必須採用 JSON。 它必須包含一或多個具有下列格式之屬性名稱和值組的記錄。 屬性名稱只能包含字母、數位和底線 (_) 。
 
 ```json
