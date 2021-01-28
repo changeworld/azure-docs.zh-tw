@@ -1,18 +1,15 @@
 ---
 title: 教學課程：在 Azure HDInsight 中設定 Apache Ambari 電子郵件通知
 description: 本文說明如何將 SendGrid 搭配 Apache Ambari 用於電子郵件通知。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
-ms.openlocfilehash: bdce735bdacbe7ff0752650c6949fdb361342c73
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
-ms.translationtype: HT
+ms.openlocfilehash: 63d0f87925f14fddf3dbd722fa72326ee8b04f31
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542551"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946967"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>教學課程：在 Azure HDInsight 中設定 Apache Ambari 電子郵件通知
 

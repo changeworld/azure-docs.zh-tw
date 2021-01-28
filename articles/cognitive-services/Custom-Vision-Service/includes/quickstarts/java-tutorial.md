@@ -4,12 +4,12 @@ ms.custom: devx-track-java
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/13/2020
-ms.openlocfilehash: b5884a7b1f271a88653779e46c461c29a85ab2ed
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
-ms.translationtype: HT
+ms.openlocfilehash: 6c5c0a7b1c2b94ba637f0204d603f15d1214607d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98256292"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948001"
 ---
 開始使用適用於 Java 的自訂視覺用戶端程式庫來建置影像分類模型。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 請使用此範例作為自行建置影像辨識應用程式的範本。
 
@@ -25,7 +25,7 @@ ms.locfileid: "98256292"
 * 發佈目前的反覆項目
 * 測試預測端點
 
-[參考文件](/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable) | 程式庫原始程式碼 [(訓練)](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-customvision-training) [(預測)](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-customvision-prediction)| 成品 (Maven) [(訓練)](https://search.maven.org/artifact/com.azure/azure-cognitiveservices-customvision-training/1.1.0-preview.2/jar) [(預測)](https://search.maven.org/artifact/com.azure/azure-cognitiveservices-customvision-prediction/1.1.0-preview.2/jar) | 
+[參考文件](/java/api/overview/azure/cognitiveservices/client/customvision) | 程式庫原始程式碼 [(訓練)](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-customvision-training) [(預測)](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-customvision-prediction)| 成品 (Maven) [(訓練)](https://search.maven.org/artifact/com.azure/azure-cognitiveservices-customvision-training/1.1.0-preview.2/jar) [(預測)](https://search.maven.org/artifact/com.azure/azure-cognitiveservices-customvision-prediction/1.1.0-preview.2/jar) | 
 [範例](/samples/browse/?products=azure&terms=custom%20vision)
 
 ## <a name="prerequisites"></a>必要條件
@@ -113,9 +113,9 @@ mkdir -p src/main/java
 
 |名稱|描述|
 |---|---|
-|[CustomVisionTrainingClient](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient?view=azure-java-stable) | 此類別會處理模型的建立、定型和發佈。 |
-|[CustomVisionPredictionClient](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-java-stable)| 此類別會處理您的模型查詢，以進行影像分類預測。|
-|[ImagePrediction](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.prediction.models.imageprediction?view=azure-java-stable)| 此類別會定義單一影像上的單一預測。 其中包含物件識別碼和名稱的屬性，以及信賴分數。|
+|[CustomVisionTrainingClient](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient) | 此類別會處理模型的建立、定型和發佈。 |
+|[CustomVisionPredictionClient](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient)| 此類別會處理您的模型查詢，以進行影像分類預測。|
+|[ImagePrediction](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.prediction.models.imageprediction)| 此類別會定義單一影像上的單一預測。 其中包含物件識別碼和名稱的屬性，以及信賴分數。|
 
 ## <a name="code-examples"></a>程式碼範例
 
@@ -140,7 +140,7 @@ mkdir -p src/main/java
 
 建立新的自訂視覺專案
 
-下一個方法會建立影像分類專案。 所建立的專案會顯示在您稍早瀏覽過的[自訂視覺網站](https://customvision.ai/)上。 當您建立專案時，請參閱 [CreateProject](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_&preserve-view=true) 方法多載來指定其他選項 (如[建立偵測器](../../get-started-build-detector.md) Web 入口網站指南中所述)。
+下一個方法會建立影像分類專案。 所建立的專案會顯示在您稍早瀏覽過的[自訂視覺網站](https://customvision.ai/)上。 當您建立專案時，請參閱 [CreateProject](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_&preserve-view=true) 方法多載來指定其他選項 (如[建立偵測器](../../get-started-build-detector.md) Web 入口網站指南中所述)。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_create)]
 

@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 03/26/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: a87a5f7208e4966b6afba0b939be42726ca20365
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
-ms.translationtype: HT
+ms.openlocfilehash: bd4f806013d92dee98bc16c67739748823804bbb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371790"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948551"
 ---
 使用本快速入門，開始使用 JavaScript 用戶端程式庫從 Bing 圖像式搜尋服務取得影像見解。 雖然 Bing 圖像式搜尋具有與大部分程式設計語言相容的 REST API，但此用戶端程式庫可提供簡單的方法，將服務整合到您的應用程式。 此範例的原始程式碼可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js) 上找到。 
 
-[參考文件](/javascript/api/@azure/cognitiveservices-visualsearch/?preserve-view=true&view=azure-node-latest) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-visualsearch) | [套件 (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-visualsearch) | [範例](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
+[參考文件](/javascript/api/@azure/cognitiveservices-visualsearch/) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-visualsearch) | [套件 (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-visualsearch) | [範例](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
 
 ## <a name="prerequisites"></a>Prerequisites
 

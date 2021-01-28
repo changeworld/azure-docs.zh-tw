@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 13e08d2c273b242a902203abf0879fd11fbdf801
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
-ms.translationtype: HT
+ms.openlocfilehash: db303d1e7bd5a9cb7b8441f0a5da634a13113066
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94386657"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948688"
 ---
 Bing Web 搜尋用戶端程式庫可讓您輕鬆地將 Bing Web 搜尋整合到 Python 應用程式。 在本快速入門中，您將了解如何傳送要求、接收 JSON 回應，以及篩選和剖析結果。
 
@@ -177,7 +177,7 @@ python -m pip install azure-cognitiveservices-search-websearch
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>限制 Bing 所傳回的結果數目
 
-這個範例會使用 `count` 和 `offset` 參數，來限制以 SDK 的 [`search` 方法](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python) (英文) 所傳回的結果數目。 第一個結果的 `name` 和 `url` 會列印出來。
+這個範例會使用 `count` 和 `offset` 參數，來限制以 SDK 的 [`search` 方法](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations) (英文) 所傳回的結果數目。 第一個結果的 `name` 和 `url` 會列印出來。
 
 1. 將此程式碼新增至 Python 專案：
 
@@ -266,7 +266,7 @@ python -m pip install azure-cognitiveservices-search-websearch
 
 ### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>使用安全搜尋、回應計數和宣傳篩選條件
 
-這個範例會使用 `answer_count`、`promote` 和 `safe_search`參數，來篩選以 SDK 的 [`search` 方法](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python) (英文) 所傳回的搜尋結果。 第一個結果的 `name` 和 `url` 會出現。
+這個範例會使用 `answer_count`、`promote` 和 `safe_search`參數，來篩選以 SDK 的 [`search` 方法](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations) (英文) 所傳回的搜尋結果。 第一個結果的 `name` 和 `url` 會出現。
 
 1. 將此程式碼新增至 Python 專案：
 
@@ -320,4 +320,4 @@ python -m pip install azure-cognitiveservices-search-websearch
 
 ## <a name="see-also"></a>另請參閱
 
-* [Azure Python SDK 參考](/python/api/azure-cognitiveservices-search-websearch/?view=azure-python)
+* [Azure Python SDK 參考](/python/api/azure-cognitiveservices-search-websearch/)

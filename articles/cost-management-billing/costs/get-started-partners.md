@@ -3,18 +3,18 @@ title: 適用於合作夥伴的 Azure 成本管理入門
 description: 本文說明合作夥伴如何使用 Azure 成本管理功能，以及如何為其客戶啟用成本管理存取權。
 author: bandersmsft
 ms.author: banders
-ms.date: 01/19/2021
+ms.date: 01/27/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 8a04cb2c590bc4f0104a93ac7c7c2cf7b71a4662
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 40c683d98a13bf4810ec4575af3fba5ae64961f0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602180"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946994"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>適用於合作夥伴的 Azure 成本管理入門
 
@@ -22,7 +22,7 @@ Azure 成本管理依其原生狀態即適用於已將客戶登錄至 Microsoft 
 
 針對直接合作夥伴和間接提供者，全域管理員和系統管理員代理人可以存取合作夥伴租用戶中的成本管理，以及以發票價格管理成本。
 
-轉銷商和客戶則可存取客戶租用戶中的成本管理，並檢視訂用帳戶的成本，其中成本會以零售費率來計算和顯示。 不過，其必須具有客戶租用戶中訂用帳戶的 Azure RBAC 存取權，才能檢視成本。 客戶租用戶的提供者必須啟用成本可見性原則。
+轉銷商和客戶可以存取客戶租使用者中的成本管理，並查看訂用帳戶的耗用量成本，其中成本會以零售費率計算並顯示。 不過，其必須具有客戶租用戶中訂用帳戶的 Azure RBAC 存取權，才能檢視成本。 客戶租用戶的提供者必須啟用成本可見性原則。
 
 客戶可在其 CSP 合作夥伴啟用成本管理功能後使用這些功能。
 
@@ -56,6 +56,8 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 如需為計費帳戶啟用 Azure 成本管理及指派其存取權的詳細資訊，請參閱[指派使用者角色和權限](/partner-center/permissions-overview)。 「全域系統管理員」和「管理員代理人」角色可以管理計費帳戶的成本。
 
 若要在訂用帳戶範圍存取 Azure 成本管理，任何對訂用帳戶具有 Azure RBAC 存取權的使用者，都可檢視以零售 (隨用隨付) 費率計算的成本。 不過，必須啟用[客戶租用戶的成本可見性原則](#enable-the-policy-to-view-azure-usage-charges)。 若要檢視支援帳戶類型的完整清單，請參閱[了解成本管理資料](understand-cost-mgt-data.md)。
+
+將現有的帳單合約傳送給新的合作夥伴時，成本管理功能僅適用于目前與合作夥伴的計費關係。 傳送至新的夥伴之前的歷程記錄成本不會移至新的計費帳戶。 不過，成本歷程記錄仍會保留原始相關聯的計費帳戶。
 
 ## <a name="how-cost-management-uses-scopes"></a>成本管理使用範圍的方式
 

@@ -8,18 +8,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 5bfe28a8111128ba7d8072c27d8647e6137620cd
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
-ms.translationtype: HT
+ms.openlocfilehash: f3599a804549a19c3a633cfacf1a97b5ee232a32
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97844785"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947708"
 ---
 開始使用適用於 .NET 的 Bing 自動建議用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。
 
 使用適用於 .NET 的 Bing 自動建議用戶端程式庫，以根據部分查詢字串來取得搜尋建議。
 
-[參考文件](/dotnet/api/overview/azure/cognitiveservices/bing-autosuggest-readme?view=azure-dotnet) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingAutoSuggest) | [套件 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.AutoSuggest/) | [範例程式碼](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/BingAutoSuggest/Program.cs)
+[參考文件](/dotnet/api/overview/azure/cognitiveservices/bing-autosuggest-readme) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingAutoSuggest) | [套件 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.AutoSuggest/) | [範例程式碼](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/BingAutoSuggest/Program.cs)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -151,7 +151,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Search.AutoSuggest --versio
 > 本快速入門假設您已為 Bing 自動建議金鑰[建立環境變數](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) (名為 `AUTOSUGGEST_SUBSCRIPTION_KEY`)，並為端點建立名為 `AUTOSUGGEST_ENDPOINT` 的環境變數。
 
 
-在新的非同步方法中，使用端點和金鑰來具現化用戶端。 使用您的金鑰建立 [ApiKeyServiceClientCredentials](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.apikeyserviceclientcredentials?view=azure-dotnet) 物件，並使用該物件與您的端點建立 [AutosuggestClient](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclient?view=azure-dotnet) 物件。
+在新的非同步方法中，使用端點和金鑰來具現化用戶端。 使用您的金鑰建立 [ApiKeyServiceClientCredentials](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.apikeyserviceclientcredentials) 物件，並使用該物件與您的端點建立 [AutosuggestClient](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclient) 物件。
 
 ```csharp
 async static Task RunQuickstart()
@@ -167,7 +167,7 @@ async static Task RunQuickstart()
 
 ### <a name="send-an-autosuggest-request"></a>傳送自動建議要求
 
-在相同的方法中，使用用戶端的 [AutoSuggestMethodAsync](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) 方法，將查詢傳送至 Bing。 然後，逐一查看[建議](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet)回應，並列印第一個建議。
+在相同的方法中，使用用戶端的 [AutoSuggestMethodAsync](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) 方法，將查詢傳送至 Bing。 然後，逐一查看[建議](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions)回應，並列印第一個建議。
 
 ```csharp
 var result = await client.AutoSuggestMethodAsync("xb");
@@ -216,4 +216,4 @@ dotnet run
 ## <a name="see-also"></a>另請參閱
 
 - [什麼是 Bing 自動建議？](../../get-suggested-search-terms.md)
-- [Bing 自動建議 dotnet 參考](/dotnet/api/overview/azure/cognitiveservices/bing-autosuggest-readme?view=azure-dotnet)
+- [Bing 自動建議 dotnet 參考](/dotnet/api/overview/azure/cognitiveservices/bing-autosuggest-readme)

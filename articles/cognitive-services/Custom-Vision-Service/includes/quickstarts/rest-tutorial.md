@@ -4,12 +4,12 @@ ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 12/09/2020
 ms.topic: include
-ms.openlocfilehash: 8890a0132e5f510a0af2862c483206fd025a68d8
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
-ms.translationtype: HT
+ms.openlocfilehash: cea3db080865727ab9b425f14a172041a54a5414
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98256248"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947934"
 ---
 開始使用自訂視覺 REST API。 請遵循這些步驟來呼叫 API，並建置影像分類模型。 您將建立專案、新增標籤、將專案定型，並使用專案的預測端點 URL 以程式設計方式加以測試。 請使用此範例作為自行建置影像辨識應用程式的範本。
 
@@ -224,5 +224,5 @@ JSON 回應包含已定型專案的相關資訊，包括反覆項目識別碼 (`
 > [測試和重新定型模型](../../test-your-model.md)
 
 * 什麼是自訂視覺服務？
-* [API 參考文件 (訓練)](/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet)
+* [API 參考文件 (訓練)](/dotnet/api/overview/azure/cognitiveservices/client/customvision)
 * [API 參考文件 (預測)](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeae)

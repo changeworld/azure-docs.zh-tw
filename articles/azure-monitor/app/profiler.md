@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 41aec98c2a8776ae128389679ad0acb324596ec4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: b1158a614da9ba32f628aba5dd2ed2cc71b4b455
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546823"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947036"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>使用 Application Insights 來分析即時 Azure App Service 應用程式
 
@@ -50,7 +50,7 @@ Application Insights Profiler 可以藉由建立 Azure App Service 的應用程�
 |DiagnosticServices_EXTENSION_VERSION | ~3 |
 
 
-您可以使用 [Azure Resource Manager 範本](./azure-web-apps.md#app-service-application-settings-with-azure-resource-manager)、 [Azure PowerShell](/powershell/module/az.websites/set-azwebapp)  [Azure CLI](/cli/azure/webapp/config/appsettings?view=azure-cli-latest)來設定這些值。
+您可以使用 [Azure Resource Manager 範本](./azure-web-apps.md#app-service-application-settings-with-azure-resource-manager)、 [Azure PowerShell](/powershell/module/az.websites/set-azwebapp)  [Azure CLI](/cli/azure/webapp/config/appsettings)來設定這些值。
 
 ### <a name="enabling-profiler-for-other-clouds-manually"></a>針對其他雲端手動啟用 Profiler
 

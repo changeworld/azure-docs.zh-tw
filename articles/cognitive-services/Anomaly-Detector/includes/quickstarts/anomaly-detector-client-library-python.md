@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/25/2020
 ms.author: mbullwin
-ms.openlocfilehash: ccfb6f767a977ed9af1019d736aa23c5f8e9950c
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
-ms.translationtype: HT
+ms.openlocfilehash: f6206ad2f88983396fa7d0be323daad327e4d235
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356171"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947915"
 ---
 開始使用適用於 Python 的 Anomaly Detector 用戶端程式庫。 請依照下列步驟，開始使用服務提供的演算法安裝套件。 Anomaly Detector 服務可藉由自動對時間序列資料使用最適合的模型，而讓您找出其中的異常狀況，不論是什麼產業、情境或資料量都沒問題。
 
@@ -74,7 +74,7 @@ Anomaly Detector 用戶端是一種 [AnomalyDetectorClient](https://github.com/A
 
 時間序列資料會以 [TimeSeriesPoints](https://github.com/Azure/azure-sdk-for-python/blob/bf9d44f2a50aea46a59c4cb83ccfccaff5e2b218/sdk/anomalydetector/azure-ai-anomalydetector/azure/ai/anomalydetector/models/_models_py3.py#L370) 物件序列的形式來傳送。 `DetectRequest` 物件包含用來說明資料的屬性 (例如，`TimeGranularity`)，以及供異常偵測使用的參數。
 
-Anomaly Detector 回應是 [LastDetectResponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python)、[EntireDetectResponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) 或 [ChangePointDetectResponse](https://github.com/Azure/azure-sdk-for-python/blob/bf9d44f2a50aea46a59c4cb83ccfccaff5e2b218/sdk/anomalydetector/azure-ai-anomalydetector/azure/ai/anomalydetector/models/_models_py3.py#L107) 物件 (端視所使用的方法而定)。
+Anomaly Detector 回應是 [LastDetectResponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse)、[EntireDetectResponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse) 或 [ChangePointDetectResponse](https://github.com/Azure/azure-sdk-for-python/blob/bf9d44f2a50aea46a59c4cb83ccfccaff5e2b218/sdk/anomalydetector/azure-ai-anomalydetector/azure/ai/anomalydetector/models/_models_py3.py#L107) 物件 (端視所使用的方法而定)。
 
 ## <a name="code-examples"></a>程式碼範例
 
@@ -120,7 +120,7 @@ request = DetectRequest(series=series, granularity=TimeGranularity.daily)
 
 ## <a name="detect-anomalies-in-the-entire-data-set"></a>偵測整個資料集內的異常
 
-使用用戶端的 `detect_entire_series` 方法，呼叫 API 來偵測整個時間序列資料的異常情形。 儲存傳回的 [EntireDetectResponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) 物件。 逐一查看回應的 `is_anomaly` 清單，然後列印任何 `true` 值的索引。 如果有找到，這些值會對應到異常資料點的索引。
+使用用戶端的 `detect_entire_series` 方法，呼叫 API 來偵測整個時間序列資料的異常情形。 儲存傳回的 [EntireDetectResponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse) 物件。 逐一查看回應的 `is_anomaly` 清單，然後列印任何 `true` 值的索引。 如果有找到，這些值會對應到異常資料點的索引。
 
 ```python
 print('Detecting anomalies in the entire time series.')

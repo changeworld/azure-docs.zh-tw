@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight 中的 Apache Ambari 活動訊號問題
 description: 在 Azure HDInsight 中檢查 Apache Ambari 信號問題的各種原因
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/06/2020
-ms.openlocfilehash: adc5dfcef8cce269b6b6d982178433b8ee163f92
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5eebde42098d74f533565d274b693c4a06f2f60d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998258"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946733"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Ambari 活動訊號問題
 
@@ -28,7 +25,7 @@ Ambari 代理程式具有高 CPU 使用率，這會導致 Ambari UI 的警示，
 
 由於各種 ambari 代理程式的錯誤，在罕見的情況下，您的 ambari 代理程式可以有高 (接近100的 CPU 使用率) 百分比。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 1. 識別 ambari 代理程式的處理序識別碼 (pid) ：
 
@@ -67,7 +64,7 @@ Ambari 代理程式未啟動，這會導致 Ambari UI 的警示，而導致某�
 
 警示是由 Ambari 代理程式未執行所造成。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 1. 確認 ambari 代理程式的狀態：
 
@@ -93,7 +90,7 @@ Ambari 的心跳代理程式已中斷。
 
 OMS 記錄會造成高 CPU 使用率。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 * 使用 [AzHDInsightMonitoring](/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) PowerShell Cmdlet 停用 Azure 監視器記錄。
 * 刪除 `mdsd.warn` 記錄檔

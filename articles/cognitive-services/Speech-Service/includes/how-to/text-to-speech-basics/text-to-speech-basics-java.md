@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: c84c45605911b74fd2c03a0987341257cae3623e
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
-ms.translationtype: HT
+ms.openlocfilehash: bf28d0abbd20cb170fa7adb6f13aefba8d2238c1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97731859"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947669"
 ---
 在本快速入門中，您將了解如何使用語音 SDK 進行文字轉換語音合成的常見設計模式。 首先，您會進行基本設定與合成，並繼續處理更多用於自訂應用程式開發的高階範例，包括：
 
@@ -152,7 +152,7 @@ public static void main(String[] args) {
 * 採樣速率
 * 位元深度
 
-若要變更音訊格式，請在 `SpeechConfig` 物件上使用 `setSpeechSynthesisOutputFormat()` 函式。 此函式應該有 [`SpeechSynthesisOutputFormat`](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisoutputformat) 類型的 `enum`，您可使用此類型來選取輸出格式。 如需可用的[音訊格式清單](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat?preserve-view=true&view=azure-dotnet)，請參閱參考文件。
+若要變更音訊格式，請在 `SpeechConfig` 物件上使用 `setSpeechSynthesisOutputFormat()` 函式。 此函式應該有 [`SpeechSynthesisOutputFormat`](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisoutputformat) 類型的 `enum`，您可使用此類型來選取輸出格式。 如需可用的[音訊格式清單](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat)，請參閱參考文件。
 
 根據您的需求而定，有各種選項可供不同的檔案類型使用。 請注意，依照定義，原始格式 (例如 `Raw24Khz16BitMonoPcm`) 不包含音訊標頭。 只有在您知道下游實作可將原始位元資料流解碼，或者打算根據位元深度、採樣速率、通道數目等手動建立標頭時，才會使用原始格式。
 

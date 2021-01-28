@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 8c0715b3570bf60205c83390ab93b272e49e8733
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
-ms.translationtype: HT
+ms.openlocfilehash: 1c3ed6cc97c6fc77083baa915fac2f5530922eac
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371865"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948064"
 ---
 開始使用適用於 Go 的 Bing 自動建議用戶端程式庫。 請遵循下列步驟來安裝程式庫，並試用我們的基本工作範例。
 
@@ -76,9 +76,9 @@ export AUTOSUGGEST_ENDPOINT=<replace-with-your-autosuggest-api-endpoint>
 
 在主控台視窗 (cmd、PowerShell、Bash) 中，為您的 Go 專案建立新的工作區，並瀏覽至該工作區。 您的工作區將包含三個資料夾：
 
-* **src** ：此目錄包含原始程式碼和套件。 任何使用 `go get` 命令安裝的套件都將位於此處。
-* **pkg** ：此目錄包含已編譯的 Go 套件物件。 這些檔案都具有 `.a` 副檔名。
-* **bin** ：此目錄包含您執行 `go install` 時所建立的二進位可執行檔。
+* **src**：此目錄包含原始程式碼和套件。 任何使用 `go get` 命令安裝的套件都將位於此處。
+* **pkg**：此目錄包含已編譯的 Go 套件物件。 這些檔案都具有 `.a` 副檔名。
+* **bin**：此目錄包含您執行 `go install` 時所建立的二進位可執行檔。
 
 > [!TIP]
 > 深入了解 [Go 工作區](https://golang.org/doc/code.html#Workspaces)的結構。 本指南包含用來設定 `$GOPATH` 和 `$GOROOT` 的資訊。
@@ -171,7 +171,7 @@ client.Endpoint = endpoint
 
 ### <a name="send-an-api-request"></a>傳送 API 要求
 
-在相同的方法中，使用用戶端的 [AutoSuggestMethodAsync](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) 方法，將查詢傳送至 Bing。 然後，逐一查看[建議](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet)回應，並列印第一個建議。
+在相同的方法中，使用用戶端的 [AutoSuggestMethodAsync](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) 方法，將查詢傳送至 Bing。 然後，逐一查看[建議](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions)回應，並列印第一個建議。
 
 ```Go
 // This should return the query suggestion "xbox."

@@ -3,12 +3,12 @@ author: areddish
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 09/15/2020
-ms.openlocfilehash: bae0887ca540dd553cc80849d9e134516089d016
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
-ms.translationtype: HT
+ms.openlocfilehash: 439a75907ccdc6d2f1af4f2a3d9fc951bdd6307d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97582502"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948356"
 ---
 本指南提供指示和範例程式碼，可協助您開始使用適用於 Go 的自訂視覺用戶端程式庫來建置物件偵測模型。 您將建立專案、新增標籤、將專案定型，並使用專案的預測端點 URL 以程式設計方式加以測試。 請使用此範例作為自行建置影像辨識應用程式的範本。
 
@@ -45,7 +45,7 @@ dep ensure -add github.com/Azure/azure-sdk-for-go
 
 在指令碼中新增下列程式碼，以建立新的自訂視覺服務專案。 在適當的定義中插入訂用帳戶金鑰。 此外，請從自訂視覺網站的 [設定] 頁面取得您的 [端點 URL]。
 
-當您建立專案時，請參閱 [CreateProject](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) 方法來指定其他選項 (如[建置偵測器](../../get-started-build-detector.md) Web 入口網站指南中所述)。
+當您建立專案時，請參閱 [CreateProject](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) 方法來指定其他選項 (如[建置偵測器](../../get-started-build-detector.md) Web 入口網站指南中所述)。
 
 ```go
 import(
