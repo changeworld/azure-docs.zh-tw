@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: eb88d2cf96cc8557f2b8c729554106530cf6f956
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 51d2c4553a745d9a9dfb477694da4526588ed0ea
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629618"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98951473"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>授權 Microsoft &reg; Smooth Streaming 用戶端移植套件
 
@@ -123,7 +123,8 @@ Smooth Streaming 用戶端最終產品乃根據權利金模型提供，細節如
 * EXPRESS 好運技術有限
 * Fluendo S.A.
 * FUNAI 電 CO，公司
-* Hisense International Co., Ltd. 
+* Hisense International Co., Ltd.
+* Hisense 的視覺技術，有限公司
 * HKC Corporation 有限
 * 香港特別行政區 Konka 公司
 * Innolux Corporation

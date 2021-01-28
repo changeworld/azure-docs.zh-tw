@@ -3,12 +3,12 @@ title: 建立新的 Azure Application Insights 資源 | Microsoft Docs
 description: 針對新的即時應用程式手動設定 Application Insights 監視。
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 2924ccbbf591020d7872d3e9cca62a9c271db7c0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: adc40db493c701a21fd30d10a4452edee1b87ab9
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944601"
+ms.locfileid: "98951256"
 ---
 # <a name="create-an-application-insights-resource"></a>建立 Application Insights 資源
 
@@ -36,6 +36,7 @@ Azure 應用程式 Insights 會在 Microsoft Azure *資源* 中顯示您應用�
 
 在必要欄位中輸入適當的值，然後選取 [ **審核 + 建立**]。
 
+[!div class="mx-imgBorder"]
 ![在 [必要欄位] 中輸入值，然後選取 [審核 + 建立]。](./media/create-new-resource/review-create.png)
 
 當您的應用程式建立完成後，新的窗格隨即開啟。 您可以在此窗格中看到受監視應用程式的效能和使用方式資料。 
@@ -153,7 +154,7 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 
 如需此命令的完整 Azure CLI 檔，以及瞭解如何取得檢測金鑰，請參閱 [Azure CLI 檔](/cli/azure/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-create)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * [診斷搜尋](./diagnostic-search.md)
 * [探索度量](../platform/metrics-charts.md)
 * [撰寫分析查詢](../log-query/log-query-overview.md)

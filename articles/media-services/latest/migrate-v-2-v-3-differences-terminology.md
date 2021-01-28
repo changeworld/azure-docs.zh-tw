@@ -1,5 +1,5 @@
 ---
-title: Azure 媒體服務 v2 到 v3 之間的術語和實體變更
+title: 媒體服務 v3 術語和實體變更
 description: 本文說明 Azure 媒體服務 v2 到 v3 之間的術語差異。
 services: media-services
 author: IngridAtMicrosoft
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: b53fbcb62004a8af9b2470c76f64f1ace845c1a8
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: a2348e0578b60c59fd7205037bd42d7bb1e84fae
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898387"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953694"
 ---
 # <a name="terminology-and-entity-changes-between-media-services-v2-and-v3"></a>媒體服務 V2 和 V3 之間的術語和實體變更
 
@@ -56,7 +56,7 @@ ms.locfileid: "98898387"
 | `Job`<!-- row --> | `Job` | 建立之前，請 `Transform` 先建立 `Job` 。 | 否 | 否 |
 | `JobTemplate`<!-- row --> | `Transform` | 請改用 `Transform` 。 轉換是作業中的個別實體，而且是 reuseable 的。 | 否 | 否 |
 | `Locator`<!-- row --> | `StreamingLocator` | <!--empty --> | 是 | 否 |
-| `MediaProcessor`<!-- row --> | <!-- empty --> | `MediaProcessor`在定義轉換時，請使用所需的預設值，而不是查閱要依名稱使用的。 使用的預設值將會決定作業系統所使用的媒體處理器。 請參閱以 [案例為基礎的編碼](migrate-v-2-v-3-migration-scenario-based-encoding.md)主題編碼。 <!--Probably needs a link to its own article so customers know Indexerv1 maps to AudioAnalyzerPreset in basic mode, etc.--> | 否 | NA (V2 中的 readonly)  |
+| `MediaProcessor`<!-- row --> | <!-- empty --> | `MediaProcessor`在定義轉換時，請使用所需的預設值，而不是查閱要依名稱使用的。 使用的預設值將會決定作業系統所使用的媒體處理器。 請參閱以 [案例為基礎的編碼](migrate-v-2-v-3-migration-scenario-based-encoding.md)主題編碼。 <!--Probably needs a link to its own article so customers know Indexerv1 maps to AudioAnalyzerPreset in basic mode, etc.--> | No | NA (V2 中的 readonly)  |
 | `NotificationEndPoint`<!-- row --> | <!--empty --> | V3 中的通知是透過 Azure 事件方格來處理。 `NotificationEndpoint`是由事件方格訂用帳戶註冊所取代，此註冊也會封裝要 (接收之通知類型的設定，此設定會由工作的處理常式、工作的工作 `JobNotificationSubscription` `TaskNotificationSubscription` 和遙測) 來處理 `ComponentMonitoringSetting` 。 V2 遙測是在 Azure 事件方格和 Azure 監視器之間分割，以納入較大的 Azure 生態系統的增強功能。 | 否 | 否 |
 | `Program`<!-- row --> | `LiveOutput` | 即時輸出現在會取代 v3 API 中的程式。  | 否 | 否 |
 | `StreamingEndpoint`<!-- row --> | `StreamingEndpoint` | 串流端點的主要維持相同。 它們可用來動態封裝、加密及傳遞 HLS 和虛線內容，以供即時和隨選串流直接從來源或透過 CDN 傳遞。 新功能包括支援更好的 Azure 監視器整合和製作圖表。 |  是 | 是 |

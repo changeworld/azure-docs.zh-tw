@@ -1,16 +1,16 @@
 ---
 title: 在執行時間擴充應用程式-LUIS
-description: ''
+description: 瞭解如何擴充已發佈的預測端點以傳遞新資訊。
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 69e2608fb01ece81f555aae2f3d4a2e4a05cfc90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d94e9f59062e4d730b8f3b71022442e81e6eeda
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322796"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953016"
 ---
 # <a name="extend-app-at-prediction-runtime"></a>在預測執行時間擴充應用程式
 
@@ -204,7 +204,7 @@ LUIS 應用程式中的清單實體可以是空的，但必須存在。 LUIS 應
 
 預測回應會包含該清單實體，以及所有其他預測的實體，因為它是在要求中定義。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [預測分數](luis-concept-prediction-score.md)
 * [撰寫 API V3 變更](luis-migration-api-v3.md)

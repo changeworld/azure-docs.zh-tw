@@ -1,5 +1,5 @@
 ---
-title: 從本機檔案建立 Azure 媒體服務工作輸入
+title: 從本機檔案建立工作輸入
 description: 本文示範如何從本機檔案建立 Azure 媒體服務工作輸入。
 services: media-services
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2121807405849b74b354d9e638a79948c1501da5
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 75cd5922804eb1724eaca0157f2c242a86406aab
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895334"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98951373"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>從本機檔案建立工作輸入
 
@@ -50,6 +50,6 @@ ms.locfileid: "98895334"
 
 請參閱[錯誤碼](/rest/api/media/jobs/get#joberrorcode) \(英文\)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [從 HTTPS URL 建立作業輸入](job-input-from-http-how-to.md)。

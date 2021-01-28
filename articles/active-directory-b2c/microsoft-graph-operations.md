@@ -8,22 +8,22 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 01/28/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 50042b749c917752d08198c31ada3c73a5ef540b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a7e9e523d3aae7cf1444c048c023ca1d85fde41f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98938489"
+ms.locfileid: "98952220"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C
 
 Microsoft Graph 可讓您管理 Azure AD B2C 目錄中的資源。 下列 Microsoft Graph API 作業支援管理 Azure AD B2C 資源，包括使用者、身分識別提供者、使用者流程、自訂原則和原則金鑰。 下列各節中的每個連結都會以該作業的 Microsoft Graph API 參考中的對應頁面為目標。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要使用 MS 圖形 API，並與您 Azure AD B2C 租使用者中的資源互動，您需要可授與許可權以執行這項操作的應用程式註冊。 遵循《 [管理 Azure AD B2C 與 Microsoft Graph](microsoft-graph-get-started.md) 文章中的步驟，建立管理應用程式可使用的應用程式註冊。 
 
@@ -45,9 +45,13 @@ Microsoft Graph 可讓您管理 Azure AD B2C 目錄中的資源。 下列 Micros
 - [更新](/graph/api/phoneauthenticationmethod-update)
 - [刪除](/graph/api/phoneauthenticationmethod-delete)
 
+請注意， [清單](/graph/api/authentication-list-phonemethods) 作業只會傳回已啟用的電話號碼。 您應啟用下列電話號碼，才能與清單作業搭配使用。 
+
+![啟用手機登入](./media/microsoft-graph-operations/enable-phone-sign-in.png)
+
 ## <a name="self-service-password-reset-email-address-beta"></a>自助式密碼重設電子郵件地址 (搶鮮版（Beta）) 
 
-使用者可使用的電子郵件地址，以 rest 登 [入帳戶](identity-provider-local.md#username-sign-in)的密碼。 如需詳細資訊，請參閱 [Azure AD 驗證方法 API](/graph/api/resources/emailauthenticationmethod)。
+使用者 [名稱登入帳戶](identity-provider-local.md#username-sign-in) 可以用來重設密碼的電子郵件地址。 如需詳細資訊，請參閱 [Azure AD 驗證方法 API](/graph/api/resources/emailauthenticationmethod)。
 
 - [加入](/graph/api/emailauthenticationmethod-post)
 - [清單](/graph/api/emailauthenticationmethod-list)

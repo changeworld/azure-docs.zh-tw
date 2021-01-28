@@ -1,16 +1,16 @@
 ---
 title: 新手模式-個人化工具
-description: ''
+description: 瞭解如何在不變更任何程式碼的情況下，使用新手模式來獲得模型的信心。
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: f793535f04b36d231cec384b7acd66e38a7eb039
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2b9f6dfe60aa50eb4ec6da76fe8781ecd8a1f13
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253525"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98951322"
 ---
 # <a name="use-apprentice-mode-to-train-personalizer-without-affecting-your-existing-application"></a>使用新手模式來定型個人化工具，而不會影響現有的應用程式
 
@@ -62,7 +62,7 @@ ms.locfileid: "91253525"
 |區域|新手模式|線上 模式|
 |--|--|--|
 |對使用者經驗的影響|您可以使用現有的使用者行為來定型個人化工具，讓它觀察 (不會影響您的 **預設動作** ，以及它所取得的報酬) 。 這表示您的使用者體驗和商務結果不會受到影響。|顯示從排名呼叫傳回的最上層動作，以影響使用者的行為。|
-|學習速度|在新手模式下，個人化工具的學習速度會比在線上模式中學習更慢。 新手模式只能透過觀察您的 **預設動作**取得的獎勵來學習，這會限制學習的速度，因為無法執行任何探索。|學習速度更快，因為它可以利用目前的模型，並探索新的趨勢。|
+|學習速度|在新手模式下，個人化工具的學習速度會比在線上模式中學習更慢。 新手模式只能透過觀察您的 **預設動作** 取得的獎勵來學習，這會限制學習的速度，因為無法執行任何探索。|學習速度更快，因為它可以利用目前的模型，並探索新的趨勢。|
 |學習效率「上限」|個人化工具可以近似、非常罕見，而且永遠不會超出基礎商務邏輯的效能， (每個排名呼叫) 的 **預設動作** 所達到的獎勵總計。|個人化工具應超過應用程式基準，而在一段時間後，您應該執行離線評估和功能評估，以繼續取得模型的改進。 |
 |RewardActionId 的排名 API 值|使用者的體驗不會受到影響，因為 _rewardActionId_ 一律是您在排名要求中傳送的第一個動作。 換句話說，在新手模式中，排名 API 不會對您的應用程式顯示任何內容。 您應用程式中的獎勵 Api 不應變更其在一個模式和另一個模式之間使用獎勵 API 的方式。|個人化工具為您的應用程式選擇的 _rewardActionId_ 會變更使用者體驗。 |
 |評估|個人化工具會比較您的預設商務邏輯所取得的獎勵總計，而且如果在線上模式中，則會在該時間點取得獎勵總計個人化工具。 該資源的 Azure 入口網站中提供比較|藉由執行 [離線評估](concepts-offline-evaluation.md)來評估個人化工具的成效，讓您可以比較個人化工具針對應用程式基準的潛在報酬所達成的總獎勵。|
@@ -88,10 +88,10 @@ ms.locfileid: "91253525"
 
 只有在經過驗證並在線上模式中學習時，才會對個人化工具處理進行 A/B 測試。 在新手模式中，只會使用 **預設動作** ，這表示所有使用者都能有效地查看控制項體驗。
 
-即使個人化工具只是 _處理_方式，在驗證資料是否適合定型個人化工具時也會有相同的挑戰。 新手模式可以改為使用100% 的流量，並讓所有使用者取得控制項 (不會影響) 體驗。
+即使個人化工具只是 _處理_ 方式，在驗證資料是否適合定型個人化工具時也會有相同的挑戰。 新手模式可以改為使用100% 的流量，並讓所有使用者取得控制項 (不會影響) 體驗。
 
 當您使用個人化工具和 learning online 的使用案例時，A/B 實驗可讓您對結果進行受控制的世代和科學比較，這些結果可能比用於獎勵的信號更複雜。 A/B 測試可以回答的範例問題如下： `In a retail website, Personalizer optimizes a layout and gets more users to _check out_ earlier, but does this reduce total revenue per transaction?`
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 瞭解作用中[和非](concept-active-inactive-events.md)作用中的活動

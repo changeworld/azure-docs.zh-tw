@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 12e6aa85f7d8c2c4aebe80efc92f771917e6a1d5
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
-ms.translationtype: HT
+ms.openlocfilehash: 4983e4b7f76c627cb3cb3081bc12e27111b2b521
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746007"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98951457"
 ---
 # <a name="resource-manager-template-samples-for-data-collection-rules-in-azure-monitor"></a>Azure 監視器中資料收集規則的 Resource Manager 範本範例
 本文說明為 Azure 監視器中的虛擬機器部署和設定 [Log Analytics 代理程式](../platform/log-analytics-agent.md)與[診斷擴充功能](../platform/diagnostics-extension-overview.md)時適用的範例 [Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)。 每個範例都包含範本檔案和參數檔案，且附有要提供給範本的範例值。
@@ -80,7 +80,7 @@ ms.locfileid: "96746007"
 }
 ```
 
-## <a name="create-association-ith-azure-arc"></a>建立與 Azure Arc 間的關聯
+## <a name="create-association-with-azure-arc"></a>建立與 Azure Arc 的關聯
 
 下列範例會在 Windows Azure 虛擬機器上安裝 Azure 監視器代理程式。 已啟用 Azure Arc 的伺服器機器與資料集合規則之間會建立關聯。
 

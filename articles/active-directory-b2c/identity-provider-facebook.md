@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 64a4404fa881181f92d442a73e5da4c16ae87ae3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: e0e71bc0e3a81b5ab2f455224ed2ed4281532d55
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598868"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98952669"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定註冊，並以 Facebook 帳戶登入
 
@@ -76,7 +76,7 @@ ms.locfileid: "98598868"
 1. 在 Azure AD B2C 租用戶中，選取 [使用者流程]。
 1. 按一下您想要新增 Facebook 身分識別提供者的使用者流程。
 1. 在 **社交識別提供者** 底下，選取 **Facebook**。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 1. 若要測試您的原則，請選取 [ **執行使用者流程**]。
 1. 針對 [ **應用程式**]，選取您先前註冊的 web 應用程式（名為 *testapp1-pre-production* ）。 **Reply URL** 應顯示 `https://jwt.ms`。
 1. 按一下 [**執行使用者流程**]
@@ -84,6 +84,21 @@ ms.locfileid: "98598868"
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
+
+## <a name="create-a-policy-key"></a>建立原則金鑰
+
+您必須將先前記錄的應用程式秘密儲存在 Azure AD B2C 租使用者中。
+
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
+2. 確定您使用的目錄包含您的 Azure AD B2C 租用戶。 在頂端功能表中選取 [目錄 + 訂用帳戶] 篩選，然後選擇包含您租用戶的目錄。
+3. 選擇 Azure 入口網站左上角的 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
+4. 在 [概觀] 頁面上，選取 [識別體驗架構]。
+5. 選取 [原則金鑰]，然後選取 [新增]。
+6. 針對 [選項] 選擇 `Manual`。
+7. 輸入原則金鑰的 [名稱]。 例如： `FacebookSecret` 。 金鑰名稱前面會自動新增前置詞 `B2C_1A_`。
+8. 在 [ **密碼**] 中，輸入您先前記錄的應用程式密碼。
+9. 針對 [金鑰使用方法]，選取 `Signature`。
+10. 按一下頁面底部的 [新增] 。
 
 ## <a name="configure-a-facebook-account-as-an-identity-provider"></a>將 Facebook 帳戶設為識別提供者
 
