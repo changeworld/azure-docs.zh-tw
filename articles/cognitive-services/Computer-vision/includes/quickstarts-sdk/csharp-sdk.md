@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8bd919d2896b187d32ad5347e6b8729ccb8555de
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 58ad4acaa60abe56849490df39c91949abec2f5d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98612901"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947266"
 ---
 <a name="HOLTop"></a>
 
@@ -24,7 +24,7 @@ ms.locfileid: "98612901"
 * 分析影像中的標籤、文字描述、臉部、成人內容等等。
 * 透過讀取 API 讀取印刷和手寫文字。
 
-[參考文件](/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ComputerVision) | [套件 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | [範例](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[參考文件](/dotnet/api/overview/azure/cognitiveservices/client/computervision) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ComputerVision) | [套件 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | [範例](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -114,9 +114,9 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --ver
 
 |名稱|描述|
 |---|---|
-| [ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet) | 所有電腦視覺功能都需要此類別。 您可以使用訂用帳戶資訊來具現化此類別，並使用它來進行大部分的影像作業。|
-|[ComputerVisionClientExtensions](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclientextensions?view=azure-dotnet)| 此類別包含 ComputerVisionClient 的其他方法。|
-|[VisualFeatureTypes](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-dotnet)| 此列舉會定義可在標準分析作業中完成的不同影像分析類型。 視您的需求而定，您可以指定一組 VisualFeatureTypes 值。 |
+| [ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient) | 所有電腦視覺功能都需要此類別。 您可以使用訂用帳戶資訊來具現化此類別，並使用它來進行大部分的影像作業。|
+|[ComputerVisionClientExtensions](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclientextensions)| 此類別包含 ComputerVisionClient 的其他方法。|
+|[VisualFeatureTypes](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes)| 此列舉會定義可在標準分析作業中完成的不同影像分析類型。 視您的需求而定，您可以指定一組 VisualFeatureTypes 值。 |
 
 ## <a name="code-examples"></a>程式碼範例
 
@@ -131,7 +131,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --ver
 > [!NOTE]
 > 本快速入門假設您已針對名為 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT` 的電腦視覺金鑰和端點[建立環境變數](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)。
 
-在新方法中，使用端點和金鑰來具現化用戶端。 使用您的金鑰建立 **[ApiKeyServiceClientCredentials](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.apikeyserviceclientcredentials?view=azure-dotnet)** 物件，並使用該物件與您的端點建立 **[ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet)** 物件。
+在新方法中，使用端點和金鑰來具現化用戶端。 使用您的金鑰建立 **[ApiKeyServiceClientCredentials](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.apikeyserviceclientcredentials)** 物件，並使用該物件與您的端點建立 **[ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient)** 物件。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_auth)]
 
@@ -143,7 +143,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --ver
 下列程式碼會定義 `AnalyzeImageUrl` 方法，以使用用戶端物件來分析遠端影像並輸出結果。 該方法會傳回文字描述、分類、標記清單、偵測到的臉部、成人內容旗標、主要色彩和影像類型。
 
 > [!TIP]
-> 您也可以分析本機影像。 請參閱 [ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet) 方法，例如 **AnalyzeImageInStreamAsync**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) 上的範例程式碼。
+> 您也可以分析本機影像。 請參閱 [ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient) 方法，例如 **AnalyzeImageInStreamAsync**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) 上的範例程式碼。
 
 ### <a name="set-up-test-image"></a>設定測試影像
 
@@ -153,7 +153,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --ver
 
 ### <a name="specify-visual-features"></a>指定視覺特徵
 
-定義影像分析的新方法。 新增下面的程式碼，以指定您要在分析中擷取的視覺功能。 如需完整清單，請參閱 **[VisualFeatureTypes](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-dotnet)** 列舉。
+定義影像分析的新方法。 新增下面的程式碼，以指定您要在分析中擷取的視覺功能。 如需完整清單，請參閱 **[VisualFeatureTypes](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes)** 列舉。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_visualfeatures)]
 
@@ -245,7 +245,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --ver
 電腦視覺可以讀取影像中的可見文字，並將它轉換成字元資料流。 如需文字辨識的詳細資訊，請參閱[光學字元辨識 (OCR)](../../concept-recognizing-text.md#read-api) 概念文件。本節中的程式碼會使用最新的[讀取用電腦視覺 SDK 版本 3.0](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/6.0.0-preview.1) 並定義 `BatchReadFileUrl` 方法，其會使用用戶端物件來偵測和擷取影像中的文字。
 
 > [!TIP]
-> 您也可以從本機影像擷取文字。 請參閱 [ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet) 方法，例如 **ReadInStreamAsync**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) 上的範例程式碼。
+> 您也可以從本機影像擷取文字。 請參閱 [ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient) 方法，例如 **ReadInStreamAsync**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) 上的範例程式碼。
 
 ### <a name="set-up-test-image"></a>設定測試影像
 
@@ -285,7 +285,7 @@ dotnet run
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
->[電腦視覺 API 參考 (.NET)](/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet)
+>[電腦視覺 API 參考 (.NET)](/dotnet/api/overview/azure/cognitiveservices/client/computervision)
 
 * [什麼是電腦視覺？](../../overview.md)
 * 此範例的原始程式碼可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) 上找到。

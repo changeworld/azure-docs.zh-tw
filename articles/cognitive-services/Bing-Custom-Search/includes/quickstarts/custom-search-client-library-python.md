@@ -8,19 +8,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: aahi
-ms.openlocfilehash: 92df45e38a926b4a791315f731e1d1cb078d5852
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
-ms.translationtype: HT
+ms.openlocfilehash: 3019881c42e0f7b64cc766b8b9e575eb60612432
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94372016"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947491"
 ---
 開始使用適用於 Python 的 Bing 自訂搜尋用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 Bing 自訂搜尋 API 可讓您針對感興趣的主題，建立量身訂做且無廣告的搜尋經驗。在 [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/custom_search_samples.py)上可以找到此範例的原始程式碼。
 
 使用適用於 Python 的 Bing 自訂搜尋用戶端程式庫：
 * 從您的 Bing 自訂搜尋執行個體，在 Web 上尋找搜尋結果。
 
-[參考文件](/python/api/azure-cognitiveservices-search-customsearch/?view=azure-python) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-customsearch) | [套件 (PyPi)](https://pypi.org/project/azure-cognitiveservices-search-customsearch/) | [範例](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
+[參考文件](/python/api/azure-cognitiveservices-search-customsearch/) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-customsearch) | [套件 (PyPi)](https://pypi.org/project/azure-cognitiveservices-search-customsearch/) | [範例](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
 
 
 ## <a name="prerequisites"></a>Prerequisites

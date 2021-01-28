@@ -8,14 +8,14 @@ ms.subservice: personalizer
 ms.topic: include
 ms.custom: cog-serv-seo-aug-2020
 ms.date: 08/27/2020
-ms.openlocfilehash: d2b0d4435f681ce6dedea7cace929a03e6782bce
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
-ms.translationtype: HT
+ms.openlocfilehash: f050ed5aff63d7e75c45505309b2cf7d18e9ea1a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371871"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948667"
 ---
-[參考文件](/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest) |[程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [套件 (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | [範例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/Personalizer)
+[參考文件](/javascript/api/@azure/cognitiveservices-personalizer/) |[程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [套件 (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | [範例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/Personalizer)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -77,11 +77,11 @@ npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid --save
 
 ## <a name="object-model"></a>物件模型
 
-個人化工具用戶端是一種 [PersonalizerClient](/javascript/api/@azure/cognitiveservices-personalizer/personalizerclient?view=azure-node-latest) 物件，會使用含有金鑰的 Microsoft.Rest.ServiceClientCredentials 向 Azure 進行驗證。
+個人化工具用戶端是一種 [PersonalizerClient](/javascript/api/@azure/cognitiveservices-personalizer/personalizerclient) 物件，會使用含有金鑰的 Microsoft.Rest.ServiceClientCredentials 向 Azure 進行驗證。
 
-若要要求內容的單一最佳時間，請建立 [RankRequest](/javascript/api/@azure/cognitiveservices-personalizer/rankrequest?view=azure-node-latest)，然後將其傳至 [client.Rank](/javascript/api/@azure/cognitiveservices-personalizer/personalizerclient?view=azure-node-latest#rank-rankrequest--msrest-requestoptionsbase-) 方法。 Rank 方法會傳回 RankResponse。
+若要要求內容的單一最佳時間，請建立 [RankRequest](/javascript/api/@azure/cognitiveservices-personalizer/rankrequest)，然後將其傳至 [client.Rank](/javascript/api/@azure/cognitiveservices-personalizer/personalizerclient#rank-rankrequest--msrest-requestoptionsbase-) 方法。 Rank 方法會傳回 RankResponse。
 
-若要將獎勵傳送至個人化工具，請建立 [RewardRequest](/javascript/api/@azure/cognitiveservices-personalizer/rewardrequest?view=azure-node-latest)，然後將其傳遞至 Events 類別上的 [Reward](/javascript/api/@azure/cognitiveservices-personalizer/events?view=azure-node-latest#reward-string--rewardrequest--servicecallback-void--) 方法。
+若要將獎勵傳送至個人化工具，請建立 [RewardRequest](/javascript/api/@azure/cognitiveservices-personalizer/rewardrequest)，然後將其傳遞至 Events 類別上的 [Reward](/javascript/api/@azure/cognitiveservices-personalizer/events#reward-string--rewardrequest--servicecallback-void--) 方法。
 
 在本快速入門中，決定獎勵是很簡單的。 在生產系統中，判斷影響[獎勵分數](../concept-rewards.md)的因素及影響程度可能是複雜的程序，您可能會隨著時間做出變更決定。 這應該是個人化工具架構中的一個主要設計決策。
 

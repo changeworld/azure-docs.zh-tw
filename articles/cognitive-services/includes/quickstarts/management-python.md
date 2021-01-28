@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 074df0e79313a570e83ea72239394c1aa4946fc0
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
-ms.translationtype: HT
+ms.openlocfilehash: 521f6c39a10259b09d741a61dcd8e81d8a0c35b2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97956515"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948324"
 ---
-[參考文件](/python/api/azure-mgmt-cognitiveservices/azure.mgmt.cognitiveservices?view=azure-python) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices) | [套件 (PyPi)](https://pypi.org/project/azure-mgmt-cognitiveservices/) | [範例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices/tests)
+[參考文件](/python/api/azure-mgmt-cognitiveservices/azure.mgmt.cognitiveservices) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices) | [套件 (PyPi)](https://pypi.org/project/azure-mgmt-cognitiveservices/) | [範例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices/tests)
 
 ## <a name="python-prerequisites"></a>Python 必要條件
 
@@ -100,7 +100,7 @@ python <your-script-name>.py
 
 ## <a name="see-also"></a>另請參閱
 
-* [Azure 管理 SDK 參考文件](/python/api/azure-mgmt-cognitiveservices/azure.mgmt.cognitiveservices?view=azure-python)
+* [Azure 管理 SDK 參考文件](/python/api/azure-mgmt-cognitiveservices/azure.mgmt.cognitiveservices)
 * [Azure 認知服務是什麼？](../../what-are-cognitive-services.md)
 * [驗證 Azure 認知服務要求](../../authentication.md)
 * [使用 Azure 入口網站建立新的資源](../../cognitive-services-apis-create-account.md)

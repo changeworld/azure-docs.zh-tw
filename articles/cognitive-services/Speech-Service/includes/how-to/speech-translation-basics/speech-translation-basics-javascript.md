@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: v-demjoh
 ms.custom: devx-track-js
-ms.openlocfilehash: c7e9f1ee6a347caa71be2057905eb4ec6e6a1b0b
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 25a3613f2aa45d31f47a8a4f288abbb1e9ee78fa
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94424795"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947909"
 ---
 語音服務的其中一項核心功能是能夠辨識人類語音，並將它轉譯成其他語言。 在本快速入門中，您將瞭解如何在您的應用程式和產品中使用語音 SDK，以執行高品質的語音翻譯。 本快速入門涵蓋的主題包括：
 
@@ -66,18 +66,18 @@ const sdk = require("microsoft-cognitiveservices-speech-sdk");
 
 ## <a name="create-a-translation-configuration"></a>建立轉譯設定
 
-若要使用語音 SDK 呼叫轉譯服務，您需要建立 [`SpeechTranslationConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?preserve-view=true&view=azure-node-latest) 。 此類別包含訂用帳戶的相關資訊，例如您的金鑰和關聯的區域、端點、主機或授權權杖。
+若要使用語音 SDK 呼叫轉譯服務，您需要建立 [`SpeechTranslationConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig) 。 此類別包含訂用帳戶的相關資訊，例如您的金鑰和關聯的區域、端點、主機或授權權杖。
 
 > [!NOTE]
 > 無論您是執行語音辨識、語音合成、翻譯還是意圖辨識，都一定會建立設定。
-您可以透過數種方式將 [`SpeechTranslationConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?preserve-view=true&view=azure-node-latest) 初始化：
+您可以透過數種方式將 [`SpeechTranslationConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig) 初始化：
 
 * 使用訂用帳戶：傳入金鑰和相關聯的區域。
 * 使用端點：傳入語音服務端點。 金鑰或授權權杖是選用項目。
 * 使用主機：傳入主機位址。 金鑰或授權權杖是選用項目。
 * 使用授權權杖：傳入授權權杖和相關聯的區域。
 
-我們來看看如何使用金鑰和區域建立 [`SpeechTranslationConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?preserve-view=true&view=azure-node-latest)。 請依照[免費試用語音服務](../../../overview.md#try-the-speech-service-for-free)中的步驟，來取得這些認證。
+我們來看看如何使用金鑰和區域建立 [`SpeechTranslationConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig)。 請依照[免費試用語音服務](../../../overview.md#try-the-speech-service-for-free)中的步驟，來取得這些認證。
 
 ```javascript
 const speechTranslationConfig = SpeechTranslationConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
@@ -85,15 +85,15 @@ const speechTranslationConfig = SpeechTranslationConfig.fromSubscription("YourSu
 
 ## <a name="initialize-a-translator"></a>初始化翻譯工具
 
-建立 [`SpeechTranslationConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?preserve-view=true&view=azure-node-latest) 之後，下一步是初始化 [`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest)。 當您初始化 [`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest) 時，您必須為其傳入您的 `speechTranslationConfig`。 這會提供轉譯服務驗證要求所需的認證。
+建立 [`SpeechTranslationConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig) 之後，下一步是初始化 [`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer)。 當您初始化 [`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer) 時，您必須為其傳入您的 `speechTranslationConfig`。 這會提供轉譯服務驗證要求所需的認證。
 
-如果您要翻譯透過裝置預設麥克風提供的語音，以下是 [`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest) 應該看起來的樣子：
+如果您要翻譯透過裝置預設麥克風提供的語音，以下是 [`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer) 應該看起來的樣子：
 
 ```javascript
 const translator = new TranslationRecognizer(speechTranslationConfig);
 ```
 
-如果您想要指定音訊輸入裝置，您必須建立 [`AudioConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?preserve-view=true&view=azure-node-latest)，並在初始化 [`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest) 時提供 `audioConfig` 參數。
+如果您想要指定音訊輸入裝置，您必須建立 [`AudioConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig)，並在初始化 [`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer) 時提供 `audioConfig` 參數。
 
 > [!TIP]
 > [了解如何取得音訊輸入裝置的裝置識別碼](../../../how-to-select-audio-input-devices.md)。
@@ -104,7 +104,7 @@ const audioConfig = AudioConfig.fromDefaultMicrophoneInput();
 const recognizer = new TranslationRecognizer(speechTranslationConfig, audioConfig);
 ```
 
-如果您想要提供音訊檔案而不使用麥克風，您仍然需要提供 `audioConfig`。 不過，這只能在以 **node.js** 為目標時完成，而且當您建立 [`AudioConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?preserve-view=true&view=azure-node-latest)，而不是呼叫 `fromDefaultMicrophoneInput`時，您會呼叫 `fromWavFileOutput` 並傳遞 `filename` 參數。
+如果您想要提供音訊檔案而不使用麥克風，您仍然需要提供 `audioConfig`。 不過，這只能在以 **node.js** 為目標時完成，而且當您建立 [`AudioConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig)，而不是呼叫 `fromDefaultMicrophoneInput`時，您會呼叫 `fromWavFileOutput` 並傳遞 `filename` 參數。
 
 ```javascript
 const audioConfig = AudioConfig.fromWavFileInput("YourAudioFile.wav");
@@ -113,10 +113,10 @@ const recognizer = new TranslationRecognizer(speechTranslationConfig, audioConfi
 
 ## <a name="translate-speech"></a>翻譯語音
 
-適用于 JavaScript 的語音 SDK [TranslationRecognizer 類別](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest) 會公開一些可用於語音翻譯的方法。
+適用于 JavaScript 的語音 SDK [TranslationRecognizer 類別](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer) 會公開一些可用於語音翻譯的方法。
 
 * 單次轉譯 (async) -以非封鎖 (非同步) 模式執行轉譯。 這會轉譯單一語句。 單一語句的結尾會藉由聽取結束時的靜默來決定，或是在處理音訊達 15 秒的上限時結束。
-* 連續轉譯 (async) -以非同步方式起始連續轉譯作業。 使用者註冊事件並處理各種應用程式狀態。 若要停止非同步連續轉譯，請呼叫 [`stopContinuousRecognitionAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest#stopcontinuousrecognitionasync) 。
+* 連續轉譯 (async) -以非同步方式起始連續轉譯作業。 使用者註冊事件並處理各種應用程式狀態。 若要停止非同步連續轉譯，請呼叫 [`stopContinuousRecognitionAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer#stopcontinuousrecognitionasync) 。
 
 > [!NOTE]
 > 深入了解如何[選擇語音辨識模式](../../../get-started-speech-to-text.md)。
@@ -132,7 +132,7 @@ speechTranslationConfig.addTargetLanguage("de");
 
 ### <a name="single-shot-recognition"></a>一次性辨識
 
-以下是使用下列各項的非同步一次性轉譯範例 [`recognizeOnceAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest#recognizeonceasync) ：
+以下是使用下列各項的非同步一次性轉譯範例 [`recognizeOnceAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer#recognizeonceasync) ：
 
 ```javascript
 recognizer.recognizeOnceAsync(result => {
@@ -140,7 +140,7 @@ recognizer.recognizeOnceAsync(result => {
 });
 ```
 
-您必須撰寫程式碼來處理結果。 此範例會評估 [`result.reason`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognitionresult?preserve-view=true&view=azure-node-latest) 轉譯為德文的：
+您必須撰寫程式碼來處理結果。 此範例會評估 [`result.reason`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognitionresult) 轉譯為德文的：
 
 ```javascript
 recognizer.recognizeOnceAsync(
@@ -179,20 +179,20 @@ recognizer.recognized = function (s, e) {
 
 ### <a name="continuous-translation"></a>連續轉譯
 
-連續轉譯比單次辨識更有其相關。 您必須訂閱 `recognizing`、`recognized` 和 `canceled` 事件，才能取得辨識結果。 若要停止轉譯，您必須呼叫 [`stopContinuousRecognitionAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest#stopcontinuousrecognitionasync) 。 以下是如何在音訊輸入檔上執行連續轉譯的範例。
+連續轉譯比單次辨識更有其相關。 您必須訂閱 `recognizing`、`recognized` 和 `canceled` 事件，才能取得辨識結果。 若要停止轉譯，您必須呼叫 [`stopContinuousRecognitionAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer#stopcontinuousrecognitionasync) 。 以下是如何在音訊輸入檔上執行連續轉譯的範例。
 
-首先，我們要定義輸入並初始化 [`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest)：
+首先，我們要定義輸入並初始化 [`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer)：
 
 ```javascript
 const translator = new TranslationRecognizer(speechTranslationConfig);
 ```
 
-我們會訂閱從 [`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest) 傳送的事件。
+我們會訂閱從 [`TranslationRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer) 傳送的事件。
 
-* [`recognizing`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest#recognizing)：包含中繼轉譯結果的事件信號。
-* [`recognized`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest#recognized)：表示包含最終轉譯結果的事件信號， (表示成功的轉譯嘗試) 。
-* [`sessionStopped`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest#sessionstopped)：表示轉譯會話結束 (操作) 的事件信號。
-* [`canceled`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer?preserve-view=true&view=azure-node-latest#canceled)：包含已取消之轉譯結果的事件信號， (表示已取消為結果或直接取消要求的轉譯嘗試，或) 傳輸或通訊協定失敗。
+* [`recognizing`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer#recognizing)：包含中繼轉譯結果的事件信號。
+* [`recognized`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer#recognized)：表示包含最終轉譯結果的事件信號， (表示成功的轉譯嘗試) 。
+* [`sessionStopped`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer#sessionstopped)：表示轉譯會話結束 (操作) 的事件信號。
+* [`canceled`](/javascript/api/microsoft-cognitiveservices-speech-sdk/translationrecognizer#canceled)：包含已取消之轉譯結果的事件信號， (表示已取消為結果或直接取消要求的轉譯嘗試，或) 傳輸或通訊協定失敗。
 
 ```javascript
 recognizer.recognizing = (s, e) => {
@@ -221,7 +221,7 @@ recognizer.sessionStopped = (s, e) => {
 };
 ```
 
-完成所有設定後，我們可以呼叫 [`startContinuousRecognitionAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?preserve-view=true&view=azure-node-latest#startcontinuousrecognitionasync)。
+完成所有設定後，我們可以呼叫 [`startContinuousRecognitionAsync`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer#startcontinuousrecognitionasync)。
 
 ```javascript
 // Starts continuous recognition. Uses stopContinuousRecognitionAsync() to stop recognition.
@@ -232,13 +232,13 @@ recognizer.startContinuousRecognitionAsync();
 
 ## <a name="choose-a-source-language"></a>選擇來源語言
 
-語音翻譯的常見工作是指定輸入 (或來源) 語言。 我們來看看如何將輸入語言變更為義大利文。 在您的程式碼中，尋找您的 [`SpeechTranslationConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?preserve-view=true&view=azure-node-latest) ，然後在它的正下方新增下列程式程式碼。
+語音翻譯的常見工作是指定輸入 (或來源) 語言。 我們來看看如何將輸入語言變更為義大利文。 在您的程式碼中，尋找您的 [`SpeechTranslationConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig) ，然後在它的正下方新增下列程式程式碼。
 
 ```javascript
 speechTranslationConfig.speechRecognitionLanguage = "it-IT";
 ```
 
-[`speechRecognitionLanguage`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig?preserve-view=true&view=azure-node-latest#speechrecognitionlanguage) 屬性需要語言/地區設定格式字串。 您可以提供支援的[地區設定/語言](../../../language-support.md)清單中位於 [地區設定]  資料行內的任何值。
+[`speechRecognitionLanguage`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechtranslationconfig#speechrecognitionlanguage) 屬性需要語言/地區設定格式字串。 您可以提供支援的[地區設定/語言](../../../language-support.md)清單中位於 [地區設定]  資料行內的任何值。
 
 ## <a name="choose-one-or-more-target-languages"></a>選擇一或多個目的語言
 

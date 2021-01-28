@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight 叢集的重新開機 Vm
 description: 瞭解如何重新開機 Azure HDInsight 叢集的沒有回應的 Vm。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/22/2020
-ms.openlocfilehash: 725b616fec9c2bc4a0540a7941098377e01732e2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a61735dba60860459d007eb54d4655f41d5ae51a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546461"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946876"
 ---
 # <a name="reboot-vms-for-hdinsight-clusters"></a>重新開機 HDInsight 叢集的 Vm
 
@@ -60,7 +57,7 @@ Azure HDInsight 叢集包含一組虛擬機器， (Vm) 為叢集節點。 針對
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/listHosts?api-version=2018-06-01-preview
     ```
 
-1. 重新開機主機。 取得您想要重新開機的節點名稱之後，請使用 REST API 重新開機節點，以重新開機節點。 節點名稱遵循 NodeType 的模式 *(wn/hn/zk/gw)*  +  *x* 叢集  +  *名稱的前六個字元* 。 如需詳細資訊，請參閱 [HDInsight 重新開機主機 REST API 操作](/rest/api/hdinsight/virtualmachines/restarthosts)。
+1. 重新開機主機。 取得您想要重新開機的節點名稱之後，請使用 REST API 重新開機節點，以重新開機節點。 節點名稱遵循 NodeType 的模式 *(wn/hn/zk/gw)*  +  *x* 叢集  +  *名稱的前六個字元*。 如需詳細資訊，請參閱 [HDInsight 重新開機主機 REST API 操作](/rest/api/hdinsight/virtualmachines/restarthosts)。
 
     ```
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/restartHosts?api-version=2018-06-01-preview
@@ -75,7 +72,7 @@ Azure HDInsight 叢集包含一組虛擬機器， (Vm) 為叢集節點。 針對
 ]
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [重新開機-AzHDInsightHost](/powershell/module/az.hdinsight/restart-azhdinsighthost)
 * [HDInsight 虛擬機器 REST API](/rest/api/hdinsight/virtualmachines)

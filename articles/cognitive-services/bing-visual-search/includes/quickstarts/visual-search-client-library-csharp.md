@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 03/26/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bd214d4500ff306d0fc392cffbdbfa344a7c41a3
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
-ms.translationtype: HT
+ms.openlocfilehash: 9598eb90328582d1633968c66c231bb853f67f78
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97844801"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948624"
 ---
 使用本快速入門，開始使用 C# 用戶端程式庫從 Bing 圖像式搜尋服務取得影像見解。 雖然 Bing 圖像式搜尋具有與大部分程式設計語言相容的 REST API，但此用戶端程式庫可提供簡單的方法，將服務整合到您的應用程式。 此範例的原始程式碼可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVisualSearch) 上找到。
 
-[參考文件](/dotnet/api/overview/azure/cognitiveservices/bing-visual-search-readme?view=azure-dotnet) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingVisualSearch) | [套件 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VisualSearch/) | [範例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
+[參考文件](/dotnet/api/overview/azure/cognitiveservices/bing-visual-search-readme) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingVisualSearch) | [套件 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VisualSearch/) | [範例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
 
 ## <a name="prerequisites"></a>Prerequisites
 

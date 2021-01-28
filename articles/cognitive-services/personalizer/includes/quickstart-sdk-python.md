@@ -8,14 +8,14 @@ ms.subservice: personalizer
 ms.topic: include
 ms.custom: cog-serv-seo-aug-2020
 ms.date: 08/25/2020
-ms.openlocfilehash: 791e46e73ad7292528f0197f8424d44486ea9795
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
-ms.translationtype: HT
+ms.openlocfilehash: b21f78a46a0f8a9d5850212bdc6375add93ee43a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371844"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947507"
 ---
-[參考文件](/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer?view=azure-python) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-personalizer) | [套件 (pypi)](https://pypi.org/project/azure-cognitiveservices-personalizer/) | [範例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/Personalizer)
+[參考文件](/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-personalizer) | [套件 (pypi)](https://pypi.org/project/azure-cognitiveservices-personalizer/) | [範例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/Personalizer)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -56,11 +56,11 @@ endpoint = "<paste-your-personalizer-endpoint-here>"
 
 ## <a name="object-model"></a>物件模型
 
-個人化工具用戶端是一種 [PersonalizerClient](/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer.personalizer_client.personalizerclient?view=azure-python) 物件，會使用含有金鑰的 Microsoft.Rest.ServiceClientCredentials 向 Azure 進行驗證。
+個人化工具用戶端是一種 [PersonalizerClient](/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer.personalizer_client.personalizerclient) 物件，會使用含有金鑰的 Microsoft.Rest.ServiceClientCredentials 向 Azure 進行驗證。
 
-若要要求內容的單一最佳時間，請建立 [RankRequest](/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer.models.rankrequest?view=azure-python)，然後將其傳至 client.Rank 方法。 Rank 方法會傳回 RankResponse。
+若要要求內容的單一最佳時間，請建立 [RankRequest](/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer.models.rankrequest)，然後將其傳至 client.Rank 方法。 Rank 方法會傳回 RankResponse。
 
-若要將獎勵分數傳送至個人化工具，請將事件識別碼和獎勵分數 (值) 設定為傳送至 EventOperations 類別上的 [Reward](/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer.operations.events_operations.eventsoperations?view=azure-python#reward-event-id--value--custom-headers-none--raw-false----operation-config-) 方法。
+若要將獎勵分數傳送至個人化工具，請將事件識別碼和獎勵分數 (值) 設定為傳送至 EventOperations 類別上的 [Reward](/python/api/azure-cognitiveservices-personalizer/azure.cognitiveservices.personalizer.operations.events_operations.eventsoperations#reward-event-id--value--custom-headers-none--raw-false----operation-config-) 方法。
 
 在本快速入門中，決定獎勵是很簡單的。 在生產系統中，判斷影響[獎勵分數](../concept-rewards.md)的因素及影響程度可能是複雜的程序，您可能會隨著時間做出變更決定。 這應該是個人化工具架構中的一個主要設計決策。
 

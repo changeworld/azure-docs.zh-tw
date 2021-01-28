@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/10/2020
 ms.author: pafarley
-ms.openlocfilehash: 88eb9a693efa872af681ab55b3f4381d27b260d1
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 72d0154a1522f2ebd909132d705939ab591dde5d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98698025"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947299"
 ---
 開始使用適用於 Python 的臉部用戶端程式庫進行臉部辨識。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 臉部服務可讓您存取先進的演算法，以偵測和辨識影像中的人臉。
 
@@ -26,7 +26,7 @@ ms.locfileid: "98698025"
 * [識別臉部](#identify-a-face)
 * [驗證臉部](#verify-faces)
 
-[參考文件](/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [套件 (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [範例](/samples/browse/?products=azure&term=face)
+[參考文件](/python/api/azure-cognitiveservices-vision-face/) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [套件 (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [範例](/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -70,13 +70,13 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 |名稱|描述|
 |---|---|
-|[FaceClient](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) | 此類別代表可使用臉部服務的授權，需要有此授權才能執行所有臉部功能。 您可以使用訂用帳戶資訊來具現化此類別，並用其來產生其他類別的執行個體。 |
-|[FaceOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python)|此類別會處理可使用人臉來執行的基本偵測和辨識工作。 |
-|[DetectedFace](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.models.detectedface?view=azure-python)|此類別代表從影像中單一臉部所偵測到的所有資料。 您可以用此資料來取出該臉部的詳細資訊。|
-|[FaceListOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.facelistoperations?view=azure-python)|此類別會管理儲存於雲端的 **FaceList** 建構，而這些建構會儲存一組混合的臉部。 |
-|[PersonGroupPersonOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongrouppersonoperations?view=azure-python)| 此類別會管理儲存於雲端的 **Person** 建構，而這些建構會儲存一組屬於單一人員的臉部。|
-|[PersonGroupOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongroupoperations?view=azure-python)| 此類別會管理儲存於雲端的 **PersonGroup** 建構，而這些建構會儲存一組混合的 **Person** 物件。 |
-|[ShapshotOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.snapshotoperations?view=azure-python)|此類別會管理快照集功能；您可以用此類別來暫時儲存所有的雲端式臉部資料，並將該資料遷移至新的 Azure 訂用帳戶。 |
+|[FaceClient](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient) | 此類別代表可使用臉部服務的授權，需要有此授權才能執行所有臉部功能。 您可以使用訂用帳戶資訊來具現化此類別，並用其來產生其他類別的執行個體。 |
+|[FaceOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations)|此類別會處理可使用人臉來執行的基本偵測和辨識工作。 |
+|[DetectedFace](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.models.detectedface)|此類別代表從影像中單一臉部所偵測到的所有資料。 您可以用此資料來取出該臉部的詳細資訊。|
+|[FaceListOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.facelistoperations)|此類別會管理儲存於雲端的 **FaceList** 建構，而這些建構會儲存一組混合的臉部。 |
+|[PersonGroupPersonOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongrouppersonoperations)| 此類別會管理儲存於雲端的 **Person** 建構，而這些建構會儲存一組屬於單一人員的臉部。|
+|[PersonGroupOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongroupoperations)| 此類別會管理儲存於雲端的 **PersonGroup** 建構，而這些建構會儲存一組混合的 **Person** 物件。 |
+|[ShapshotOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.snapshotoperations)|此類別會管理快照集功能；您可以用此類別來暫時儲存所有的雲端式臉部資料，並將該資料遷移至新的 Azure 訂用帳戶。 |
 
 ## <a name="code-examples"></a>程式碼範例
 
@@ -91,18 +91,18 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
-使用端點和金鑰來具現化用戶端。 使用金鑰建立 [CognitiveServicesCredentials](/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) 物件，並使用該物件與您的端點建立 [FaceClient](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) 物件。
+使用端點和金鑰來具現化用戶端。 使用金鑰建立 [CognitiveServicesCredentials](/python/api/msrest/msrest.authentication.cognitiveservicescredentials) 物件，並使用該物件與您的端點建立 [FaceClient](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient) 物件。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_auth)]
 
 ## <a name="detect-faces-in-an-image"></a>偵測影像中的人臉
 
-下列程式碼會偵測遠端影像中的臉部。 其會將偵測到的臉部識別碼列印到主控台，同時並儲存在程式記憶體中。 然後，其會偵測多人影像中的臉部，同時並將其識別碼列印到主控台。 藉由變更 [detect_with_url](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python#detect-with-url-url--return-face-id-true--return-face-landmarks-false--return-face-attributes-none--recognition-model--recognition-01---return-recognition-model-false--detection-model--detection-01---custom-headers-none--raw-false----operation-config-) 方法中的參數，您可以使用每個 [DetectedFace](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.models.detectedface?view=azure-python) 物件傳回不同的資訊。
+下列程式碼會偵測遠端影像中的臉部。 其會將偵測到的臉部識別碼列印到主控台，同時並儲存在程式記憶體中。 然後，其會偵測多人影像中的臉部，同時並將其識別碼列印到主控台。 藉由變更 [detect_with_url](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations#detect-with-url-url--return-face-id-true--return-face-landmarks-false--return-face-attributes-none--recognition-model--recognition-01---return-recognition-model-false--detection-model--detection-01---custom-headers-none--raw-false----operation-config-) 方法中的參數，您可以使用每個 [DetectedFace](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.models.detectedface) 物件傳回不同的資訊。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_detect)]
 
 > [!TIP]
-> 您也可以偵測本機影像中的臉部。 請參閱 [FaceOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python) 方法，例如 **detect_with_stream**。
+> 您也可以偵測本機影像中的臉部。 請參閱 [FaceOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations) 方法，例如 **detect_with_stream**。
 
 ### <a name="display-and-frame-faces"></a>顯示和框出臉部
 
@@ -122,7 +122,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_detectgroup)]
 
-然後新增下列程式碼區塊，以尋找群組中第一個臉部的實例。 若要了解如何修改此行為，請參閱 [find_similar](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python#find-similar-face-id--face-list-id-none--large-face-list-id-none--face-ids-none--max-num-of-candidates-returned-20--mode--matchperson---custom-headers-none--raw-false----operation-config-) 方法。
+然後新增下列程式碼區塊，以尋找群組中第一個臉部的實例。 若要了解如何修改此行為，請參閱 [find_similar](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations#find-similar-face-id--face-list-id-none--large-face-list-id-none--face-ids-none--max-num-of-candidates-returned-20--mode--matchperson---custom-headers-none--raw-false----operation-config-) 方法。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_findsimilar)]
 
@@ -157,7 +157,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroup_assign)]
 
 > [!TIP]
-> 您也可以從 URL 所參考的遠端影像，建立 **PersonGroup**。 請參閱 [PersonGroupPersonOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongrouppersonoperations?view=azure-python) 方法，例如 **add_face_from_url**。
+> 您也可以從 URL 所參考的遠端影像，建立 **PersonGroup**。 請參閱 [PersonGroupPersonOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongrouppersonoperations) 方法，例如 **add_face_from_url**。
 
 ### <a name="train-persongroup"></a>訓練 PersonGroup
 
@@ -237,7 +237,7 @@ python quickstart-file.py
 在本快速入門中，您已了解如何使用適用於 Python 的臉部用戶端程式庫來執行基本臉部辨識工作。 接下來，請瀏覽參考文件來深入了解此程式庫。
 
 > [!div class="nextstepaction"]
-> [臉部 API 參考 (Python)](/python/api/azure-cognitiveservices-vision-face/?view=azure-python)
+> [臉部 API 參考 (Python)](/python/api/azure-cognitiveservices-vision-face/)
 
 * [什麼是臉部辨識服務？](../../overview.md)
 * 此範例的原始程式碼可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py) 上找到。

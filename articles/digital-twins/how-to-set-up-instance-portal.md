@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d38e631a5a12381b407dca4dd9e2f2ae63365453
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 61b396cbcc8c91c75c961f702de7ed6a33e676e4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882432"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947012"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>設定 Azure 數位 Twins 實例和驗證 (入口網站) 
 
@@ -40,7 +40,7 @@ ms.locfileid: "98882432"
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="從 Azure 數位 Twins 服務頁面選取 [建立]":::
 
-在 [ *建立資源* ] 頁面上，填入下列值：
+在 [ **建立資源** ] 頁面上，填入下列值：
 * **訂** 用帳戶：您所使用的 Azure 訂用帳戶
   - **資源群組**：用來部署實例的資源群組。 如果您還沒有現有的資源群組，您可以選取 [ *建立新* 的連結]，並輸入新資源群組的名稱，在這裡建立一個資源群組。
 * **位置**：適用于部署的 Azure 數位啟用 Twins 區域。 如需區域支援的詳細資訊，請造訪 [*依區域提供的 azure 產品 (Azure 數位 Twins)*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)。
@@ -48,11 +48,21 @@ ms.locfileid: "98882432"
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="填寫描述的值以建立 Azure 數位 Twins 資源":::
 
-完成時，選取 [ _審核 + 建立_]。 這會帶您前往 [摘要] 頁面，您可以在其中查看所輸入的實例詳細資料，並點擊 [ _建立_]。 
+當您完成時，如果您不想為您的實例設定其他設定，可以選取 [ **審核 + 建立** ]。 這會將您帶到摘要頁面，您可以在其中查看您所輸入的實例詳細資料，並完成 **建立**。 
+
+如果您想要為您的實例設定更多詳細資料，下一節將說明其餘的安裝程式索引標籤。
+
+### <a name="additional-setup-options"></a>其他設定選項
+
+以下是您可以在安裝期間設定的其他選項，方法是使用 [ **建立資源** ] 進程中的其他索引標籤。
+
+* **網路** 功能：在此索引標籤中，您可以使用 [Azure Private Link](../private-link/private-link-overview.md) 來啟用私人端點，以消除實例的公用網路公開。 如需相關指示，請參閱作法 [*：使用 Private Link 啟用私用存取*](how-to-enable-private-link.md#add-a-private-endpoint-during-instance-creation)。
+* **Advanced**：在此索引標籤中，您可以為您的實例啟用 [系統管理](../active-directory/managed-identities-azure-resources/overview.md) 的身分識別，以便在將事件轉送至 [端點](concepts-route-events.md)時使用。 如需相關指示，請參閱作法 [*：啟用路由事件的受控*](how-to-enable-managed-identities.md)識別。
+* **標記**：在此索引標籤中，您可以將標記新增至您的實例，以協助您在 Azure 資源之間進行組織。 如需 Azure 資源標記的詳細資訊，請參閱 [*為邏輯組織標記資源、資源群組和*](../azure-resource-manager/management/tag-resources.md)訂用帳戶。
 
 ### <a name="verify-success-and-collect-important-values"></a>驗證成功並收集重要值
 
-推送 *建立* 之後，您可以在入口網站圖示列的 Azure 通知中，查看實例部署的狀態。 通知將會指出部署成功的時間，您將能夠選取 [ _移至資源_ ] 按鈕來查看您建立的實例。
+選取 [ **建立**] 完成您的實例設定之後，您可以透過入口網站圖示列，在您的 Azure 通知中查看實例部署的狀態。 通知將會指出部署成功的時間，您將能夠選取 [ _移至資源_ ] 按鈕來查看您建立的實例。
 
 :::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="顯示成功部署並反白顯示 [移至資源] 按鈕的 Azure 通知的查看":::
 

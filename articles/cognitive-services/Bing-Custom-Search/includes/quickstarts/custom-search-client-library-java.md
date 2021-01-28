@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: d9c5fe2653cff0d83a145964a3ad9eed166d0688
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
-ms.translationtype: HT
+ms.openlocfilehash: 300c602a62b0d6b3ba579931b2222d2cd8667656
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371808"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947344"
 ---
 開始使用適用於 Java 的 Bing 自訂搜尋用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 Bing 自訂搜尋 API 可讓您針對感興趣的主題，建立量身訂做且無廣告的搜尋經驗。 此範例的原始程式碼位於 [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingCustomSearch)
 
@@ -22,7 +22,7 @@ ms.locfileid: "94371808"
 
 * 從您的 Bing 自訂搜尋執行個體，在 Web 上尋找搜尋結果。
 
-[參考文件](/java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch) | [成品 (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customsearch/) | [範例](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+[參考文件](/java/api/overview/azure/cognitiveservices/client/bingcustomsearch) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch) | [成品 (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customsearch/) | [範例](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -99,9 +99,9 @@ public class BingCustomSearchSample {
 
 ## <a name="object-model"></a>物件模型
 
-Bing 自訂搜尋用戶端是從 [BingCustomSearchManager](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchmanager?view=azure-java-stable)物件的 [authenticate()](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchmanager.authenticate)方法建立的 [BingCustomSearchAPI](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchapi?view=azure-java-stable) 物件。 您可以使用用戶端的 [BingCustomInstances.search()](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__)方法來傳送搜尋要求。
+Bing 自訂搜尋用戶端是從 [BingCustomSearchManager](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchmanager)物件的 [authenticate()](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchmanager.authenticate)方法建立的 [BingCustomSearchAPI](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchapi) 物件。 您可以使用用戶端的 [BingCustomInstances.search()](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__)方法來傳送搜尋要求。
 
-API 回應是 [SearchResponse](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.models.searchresponse?view=azure-java-stable) 物件，其中包含搜尋查詢資訊和搜尋結果。
+API 回應是 [SearchResponse](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.models.searchresponse) 物件，其中包含搜尋查詢資訊和搜尋結果。
 
 ## <a name="code-examples"></a>程式碼範例
 
@@ -112,7 +112,7 @@ API 回應是 [SearchResponse](/java/api/com.microsoft.azure.cognitiveservices.s
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
-您的 main 方法應包含 [BingCustomSearchManager](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchapi?view=azure-java-stable)物件，該物件會採用您的金鑰並呼叫其 `authenticate()`。
+您的 main 方法應包含 [BingCustomSearchManager](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchapi)物件，該物件會採用您的金鑰並呼叫其 `authenticate()`。
 
 ```java
 BingCustomSearchAPI client = BingCustomSearchManager.authenticate(subscriptionKey);
@@ -120,7 +120,7 @@ BingCustomSearchAPI client = BingCustomSearchManager.authenticate(subscriptionKe
 
 ## <a name="get-search-results-from-your-custom-search-instance"></a>從自訂搜尋執行個體中取得搜尋結果
 
-使用用戶端的 [BingCustomInstances.search()](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__)函式，將搜尋查詢傳送至您的自訂執行個體。 將 `withCustomConfig` 設為您的自訂組態識別碼，或預設為 `1`。 從 API 取得回應之後，檢查是否找到任何搜尋結果。 若是如此，請呼叫回應的 `webPages().value().get()` 函式並列印結果的名稱和 URL，以取得第一筆搜尋結果。
+使用用戶端的 [BingCustomInstances.search()](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__)函式，將搜尋查詢傳送至您的自訂執行個體。 將 `withCustomConfig` 設為您的自訂組態識別碼，或預設為 `1`。 從 API 取得回應之後，檢查是否找到任何搜尋結果。 若是如此，請呼叫回應的 `webPages().value().get()` 函式並列印結果的名稱和 URL，以取得第一筆搜尋結果。
 
 [!code-java[call the custom search API](~/cognitive-services-java-sdk-samples/Search/BingCustomSearch/src/main/java/BingCustomSearchSample.java?name=runSample)]
 

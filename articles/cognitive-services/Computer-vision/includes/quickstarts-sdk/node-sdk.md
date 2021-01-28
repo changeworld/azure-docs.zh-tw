@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 8fd7c820a25f098799f1c2fa69ba700a334e932d
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 13017424c1b9f0406ad60dc25f61f198f3655323
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98698046"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948484"
 ---
 <a name="HOLTop"></a>
 
@@ -24,7 +24,7 @@ ms.locfileid: "98698046"
 * 分析影像中的標籤、文字描述、臉部、成人內容等等。
 * 透過讀取 API 讀取印刷和手寫文字。
 
-[參考文件](/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision) | [套件 (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-computervision) | [範例](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[參考文件](/javascript/api/@azure/cognitiveservices-computervision/) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision) | [套件 (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-computervision) | [範例](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -91,8 +91,8 @@ npm install async
 
 |名稱|描述|
 |---|---|
-| [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) | 所有電腦視覺功能都需要此類別。 您可以使用訂用帳戶資訊來具現化此類別，並使用它來進行大部分的影像作業。|
-|[VisualFeatureTypes](/javascript/api/@azure/cognitiveservices-computervision/visualfeaturetypes?view=azure-node-latest)| 此列舉會定義可在標準分析作業中完成的不同影像分析類型。 視您的需求而定，您可以指定一組 **VisualFeatureTypes** 值。 |
+| [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient) | 所有電腦視覺功能都需要此類別。 您可以使用訂用帳戶資訊來具現化此類別，並使用它來進行大部分的影像作業。|
+|[VisualFeatureTypes](/javascript/api/@azure/cognitiveservices-computervision/visualfeaturetypes)| 此列舉會定義可在標準分析作業中完成的不同影像分析類型。 視您的需求而定，您可以指定一組 **VisualFeatureTypes** 值。 |
 
 ## <a name="code-examples"></a>程式碼範例
 
@@ -105,7 +105,7 @@ npm install async
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
 
-使用端點和金鑰來具現化用戶端。 使用您的金鑰和端點建立 [ApiKeyCredentials](/python/api/msrest/msrest.authentication.apikeycredentials?view=azure-python) 物件，然後使用該物件建立 [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) 物件。
+使用端點和金鑰來具現化用戶端。 使用您的金鑰和端點建立 [ApiKeyCredentials](/python/api/msrest/msrest.authentication.apikeycredentials) 物件，然後使用該物件建立 [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient) 物件。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_client)]
 
@@ -120,10 +120,10 @@ npm install async
 
 ## <a name="analyze-an-image"></a>分析影像
 
-本節中的程式碼會分析遠端影像，以擷取各種視覺功能。 您可以在用戶端物件的 **analyzeImage** 方法中執行這些作業，也可以使用個別的方法來呼叫它們。 如需詳細資訊，請參閱[參考文件](/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)。
+本節中的程式碼會分析遠端影像，以擷取各種視覺功能。 您可以在用戶端物件的 **analyzeImage** 方法中執行這些作業，也可以使用個別的方法來呼叫它們。 如需詳細資訊，請參閱[參考文件](/javascript/api/@azure/cognitiveservices-computervision/)。
 
 > [!NOTE]
-> 您也可以分析本機影像。 請參閱 [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) 方法，例如 **analyzeImageInStream**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 上的範例程式碼。
+> 您也可以分析本機影像。 請參閱 [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient) 方法，例如 **analyzeImageInStream**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 上的範例程式碼。
 
 ### <a name="get-image-description"></a>取得影像說明
 
@@ -245,7 +245,7 @@ npm install async
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_images)]
 
 > [!NOTE]
-> 您也可以從本機影像讀取文字。 請參閱 [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) 方法，例如 **readInStream**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 上的範例程式碼。
+> 您也可以從本機影像讀取文字。 請參閱 [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient) 方法，例如 **readInStream**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 上的範例程式碼。
 
 ### <a name="call-the-read-api"></a>呼叫讀取 API
 
@@ -292,7 +292,7 @@ node index.js
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
->[電腦視覺 API 參考 (Node.js)](/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)
+>[電腦視覺 API 參考 (Node.js)](/javascript/api/@azure/cognitiveservices-computervision/)
 
 
 * [什麼是電腦視覺？](../../overview.md)

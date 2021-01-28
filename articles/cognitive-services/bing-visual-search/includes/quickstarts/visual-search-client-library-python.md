@@ -8,16 +8,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/26/2020
 ms.author: aahi
-ms.openlocfilehash: 1d7664160f1cef405f791628bad0b4e76e3c50f8
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
-ms.translationtype: HT
+ms.openlocfilehash: 3af9b9e4f07d3d88043dcf7f6a262fdf6a3b316c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371629"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948395"
 ---
 使用本快速入門，開始使用 Python 用戶端程式庫從 Bing 圖像式搜尋服務取得影像見解。 雖然 Bing 圖像式搜尋具有與大部分程式設計語言相容的 REST API，但此用戶端程式庫可提供簡單的方法，將服務整合到您的應用程式。 此範例的原始程式碼位於 [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py) 
 
-[參考文件](/python/api/azure-cognitiveservices-search-visualsearch/?view=azure-python) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-visualsearch) | [套件 (PyPi)](https://pypi.org/project/azure-cognitiveservices-search-visualsearch/) | [範例](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
+[參考文件](/python/api/azure-cognitiveservices-search-visualsearch/) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-visualsearch) | [套件 (PyPi)](https://pypi.org/project/azure-cognitiveservices-search-visualsearch/) | [範例](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
 
 ## <a name="prerequisites"></a>Prerequisites
 

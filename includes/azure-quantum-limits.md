@@ -6,12 +6,12 @@ ms.service: azure-quantum
 ms.topic: include
 ms.date: 01/08/2021
 ms.author: dasto
-ms.openlocfilehash: c312ee63f9f00e4eef726924fc01f2862ba2884f
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 2106a48a583f120f8b4dde4eb32a30f1a1b1d85b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920458"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948070"
 ---
 ### <a name="provider-limits--quota"></a>提供者限制 & 配額
 
@@ -32,11 +32,11 @@ Azure Quantum 服務支援第一方和協力廠商服務提供者。 協力廠�
 
 #### <a name="performance-at-scale-sku"></a>大規模 SKU 效能
 
-| 資源 | 限制 |
-| --- | --- |
-| 以 CPU 為基礎的並行作業 | 最多100個並行作業 |
-| 以 FPGA 為基礎的並行作業 | 最多10個並行作業 |
-| 規劃時間 | 每月50000小時  |
+| 資源 | 預設限制 | 上限 |
+| --- | --- | --- |
+| 以 CPU 為基礎的並行作業 | 最多100個並行作業 | 與預設限制相同 |
+| 以 FPGA 為基礎的並行作業 | 最多10個並行作業 | 與預設限制相同 |
+| 規劃時間 | 每月1000小時  | 每月最多50000小時 |
 
 如果您需要要求增加限制，請與 Azure 支援人員聯繫。 
 

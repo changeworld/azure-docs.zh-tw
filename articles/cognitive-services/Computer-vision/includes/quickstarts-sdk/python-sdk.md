@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: fc4830e89d71c387afc1c7bc7fbc81608dfeb592
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
-ms.translationtype: HT
+ms.openlocfilehash: 7f1fe99cab46f8d3b87a5c1ef8397cf5f305b11c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98109542"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948054"
 ---
 <a name="HOLTop"></a>
 
@@ -76,9 +76,9 @@ pip install pillow
 
 |名稱|描述|
 |---|---|
-|[ComputerVisionClientOperationsMixin](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin?view=azure-python)| 此類別會直接處理所有影像作業，例如影像分析、文字偵測和縮圖產生。|
-| [ComputerVisionClient](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) | 所有電腦視覺功能都需要此類別。 您可以使用訂用帳戶資訊來具現化此類別，並用其來產生其他類別的執行個體。 它會實作 **ComputerVisionClientOperationsMixin**。|
-|[VisualFeatureTypes](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-python)| 此列舉會定義可在標準分析作業中完成的不同影像分析類型。 視您的需求而定，您可以指定一組 **VisualFeatureTypes** 值。 |
+|[ComputerVisionClientOperationsMixin](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin)| 此類別會直接處理所有影像作業，例如影像分析、文字偵測和縮圖產生。|
+| [ComputerVisionClient](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient) | 所有電腦視覺功能都需要此類別。 您可以使用訂用帳戶資訊來具現化此類別，並用其來產生其他類別的執行個體。 它會實作 **ComputerVisionClientOperationsMixin**。|
+|[VisualFeatureTypes](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.models.visualfeaturetypes)| 此列舉會定義可在標準分析作業中完成的不同影像分析類型。 視您的需求而定，您可以指定一組 **VisualFeatureTypes** 值。 |
 
 ## <a name="code-examples"></a>程式碼範例
 
@@ -90,7 +90,7 @@ pip install pillow
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
-使用端點和金鑰來具現化用戶端。 使用金鑰建立 [CognitiveServicesCredentials](/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) 物件，並使用該物件與您的端點建立 [ComputerVisionClient](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) 物件。
+使用端點和金鑰來具現化用戶端。 使用金鑰建立 [CognitiveServicesCredentials](/python/api/msrest/msrest.authentication.cognitiveservicescredentials) 物件，並使用該物件與您的端點建立 [ComputerVisionClient](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient) 物件。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_client)]
 
@@ -104,7 +104,7 @@ pip install pillow
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_remoteimage)]
 
 > [!TIP]
-> 您也可以分析本機影像。 請參閱 [ComputerVisionClientOperationsMixin](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin?view=azure-python) 方法，例如 **analyze_image_in_stream**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py) 上的範例程式碼。
+> 您也可以分析本機影像。 請參閱 [ComputerVisionClientOperationsMixin](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin) 方法，例如 **analyze_image_in_stream**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py) 上的範例程式碼。
 
 ### <a name="get-image-description"></a>取得影像說明
 
@@ -186,7 +186,7 @@ pip install pillow
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_read_call)]
 
 > [!TIP]
-> 您也可以從本機影像讀取文字。 請參閱 [ComputerVisionClientOperationsMixin](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin?view=azure-python) 方法，例如 **read_in_stream**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py) 上的範例程式碼。
+> 您也可以從本機影像讀取文字。 請參閱 [ComputerVisionClientOperationsMixin](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin) 方法，例如 **read_in_stream**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py) 上的範例程式碼。
 
 ### <a name="get-read-results"></a>取得讀取結果
 

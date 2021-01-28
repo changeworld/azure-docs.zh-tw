@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight 傳輸中加密
 description: 深入瞭解安全性功能，以提供 Azure HDInsight 叢集的傳輸加密。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: 88a7a0240a4711bebad0ea9007caf6590436e371
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: fb3761ce7839cb4450997da094646b6604aeb895
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049774"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946854"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>傳輸中的 IPSec 加密 Azure HDInsight
 
@@ -76,7 +73,7 @@ az deployment group create --name HDInsightEnterpriseSecDeployment \
     --parameters parameters.json
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [Azure HDInsight 中的企業安全性概觀](hdinsight-security-overview.md)
 * [將 Azure Active Directory 的使用者同步處理至 HDInsight](../disk-encryption.md)叢集。

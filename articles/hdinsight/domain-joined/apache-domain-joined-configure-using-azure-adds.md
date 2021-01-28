@@ -2,19 +2,16 @@
 title: 設定 Azure Active Directory 整合的叢集
 titleSuffix: Azure HDInsight
 description: 瞭解如何使用 Azure Active Directory Domain Services 和企業安全性套件功能，設定與 Active Directory 整合的 HDInsight 叢集。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seodec18,seoapr2020, contperf-fy21q2
 ms.date: 10/30/2020
-ms.openlocfilehash: c5c5db892f417f2e2ef3fde3535d806d39342327
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 15869a547ec5debee939c956d7495bfa58357555
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631545"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946913"
 ---
 # <a name="configure-hdinsight-clusters-for-azure-active-directory-integration-with-enterprise-security-package"></a>設定 HDInsight 叢集以 Azure Active Directory 與企業安全性套件整合
 
@@ -29,7 +26,7 @@ ms.locfileid: "97631545"
 > [!NOTE]  
 > ESP 已在 HDInsight 3.6 和4.0 中正式推出，適用于下列叢集類型： Apache Spark、互動式、Hadoop 和 HBase。 Apache Kafka 叢集類型的 ESP 處於預覽狀態，僅提供最佳支援。 在 ESP GA 日期之前建立的 ESP 叢集 (2018 年10月1日) 不受支援。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 您必須先完成幾個必要條件，才能建立已啟用 ESP 的 HDInsight 叢集：
 

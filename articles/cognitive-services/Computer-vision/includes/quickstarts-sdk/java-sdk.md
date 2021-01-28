@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 7057644207fae866e7fe789f951d2279b1c8e3eb
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 6eec9cf199068db6b87e69dd97dd0e105f629a14
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98697935"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947480"
 ---
 <a name="HOLTop"></a>
 
@@ -24,7 +24,7 @@ ms.locfileid: "98697935"
 * 分析影像中的標籤、文字描述、臉部、成人內容等等。
 * 透過讀取 API 讀取印刷和手寫文字。
 
-[參考文件](/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-computervision) |[成品 (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-computervision) | [範例](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[參考文件](/java/api/overview/azure/cognitiveservices/client/computervision) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-computervision) |[成品 (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-computervision) | [範例](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -113,9 +113,9 @@ mkdir -p src/main/java
 
 |名稱|描述|
 |---|---|
-| [ComputerVisionClient](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) | 所有電腦視覺功能都需要此類別。 您可以使用訂用帳戶資訊來具現化此類別，並用其來產生其他類別的執行個體。|
-|[ComputerVision](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable)| 此類別來自用戶端物件，並且會直接處理所有影像作業，例如影像分析、文字偵測和縮圖產生。|
-|[VisualFeatureTypes](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-java-stable)| 此列舉會定義可在標準分析作業中完成的不同影像分析類型。 視您的需求而定，您可以指定一組 VisualFeatureTypes 值。 |
+| [ComputerVisionClient](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient) | 所有電腦視覺功能都需要此類別。 您可以使用訂用帳戶資訊來具現化此類別，並用其來產生其他類別的執行個體。|
+|[ComputerVision](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision)| 此類別來自用戶端物件，並且會直接處理所有影像作業，例如影像分析、文字偵測和縮圖產生。|
+|[VisualFeatureTypes](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes)| 此列舉會定義可在標準分析作業中完成的不同影像分析類型。 視您的需求而定，您可以指定一組 VisualFeatureTypes 值。 |
 
 ## <a name="code-examples"></a>程式碼範例
 
@@ -127,7 +127,7 @@ mkdir -p src/main/java
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
-在新方法中，使用端點和金鑰將 [ComputerVisionClient](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) 物件具現化。
+在新方法中，使用端點和金鑰將 [ComputerVisionClient](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient) 物件具現化。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_auth)]
 
@@ -139,7 +139,7 @@ mkdir -p src/main/java
 下列程式碼會定義 `AnalyzeLocalImage` 方法，以使用用戶端物件來分析本機影像並輸出結果。 該方法會傳回文字描述、分類、標記清單、偵測到的臉部、成人內容旗標、主要色彩和影像類型。
 
 > [!TIP]
-> 您也可以使用其 URL 來分析遠端影像。 請參閱 [ComputerVision](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable) 方法，例如 **AnalyzeImage**。 或如需遠端影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) 上的範例程式碼。
+> 您也可以使用其 URL 來分析遠端影像。 請參閱 [ComputerVision](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision) 方法，例如 **AnalyzeImage**。 或如需遠端影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) 上的範例程式碼。
 
 ### <a name="set-up-test-image"></a>設定測試影像
 
@@ -149,7 +149,7 @@ mkdir -p src/main/java
 
 ### <a name="specify-visual-features"></a>指定視覺特徵
 
-接下來，指定要在分析中擷取的視覺功能。 如需完整清單，請參閱 [VisualFeatureTypes](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-java-stable)列舉。
+接下來，指定要在分析中擷取的視覺功能。 如需完整清單，請參閱 [VisualFeatureTypes](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes)列舉。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_features)]
 
@@ -222,7 +222,7 @@ mkdir -p src/main/java
 電腦視覺可以讀取影像中的可見文字，並將它轉換成字元資料流。 此區段會定義一個方法 `ReadFromFile`，該方法採用本機檔案路徑並將影像的文字列印到主控台。
 
 > [!TIP]
-> 您也可以讀取由 URL 參考之遠端影像中的文字。 請參閱 [ComputerVision](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable) 方法，例如 **read**。 或如需遠端影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) 上的範例程式碼。
+> 您也可以讀取由 URL 參考之遠端影像中的文字。 請參閱 [ComputerVision](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision) 方法，例如 **read**。 或如需遠端影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) 上的範例程式碼。
 
 ### <a name="set-up-test-image"></a>設定測試影像
 
@@ -295,7 +295,7 @@ gradle run
 在本快速入門中，您已了解如何使用電腦視覺 Java 程式庫來執行基本工作。 接下來，請瀏覽參考文件來深入了解此程式庫。
 
 > [!div class="nextstepaction"]
->[電腦視覺參考 (Java)](/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable)
+>[電腦視覺參考 (Java)](/java/api/overview/azure/cognitiveservices/client/computervision)
 
 
 * [什麼是電腦視覺？](../../overview.md)

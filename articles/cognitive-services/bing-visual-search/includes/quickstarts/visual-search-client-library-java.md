@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/26/2020
 ms.custom: devx-track-java, devx-track-csharp
 ms.author: aahi
-ms.openlocfilehash: afac19a6debb3804c99492338428669928f1118b
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
-ms.translationtype: HT
+ms.openlocfilehash: d1c9589265726bae01b86c152853c40f79825ceb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94372013"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948321"
 ---
 使用本快速入門，開始使用 Java 用戶端程式庫從 Bing 圖像式搜尋服務取得影像見解。 雖然 Bing 圖像式搜尋具有與大部分程式設計語言相容的 REST API，但此用戶端程式庫可提供簡單的方法，將服務整合到您的應用程式。 此快速入門的原始程式碼可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVisualSearch) 上找到。
 
@@ -23,7 +23,7 @@ ms.locfileid: "94372013"
 * 上傳影像以傳送圖像式搜尋要求。
 * 取得影像深入解析權杖和圖像式搜尋標籤。
 
-[參考文件](/java/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-java-stable) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingVisualSearch) | [成品 (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-visualsearch/) | [範例](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+[參考文件](/java/api/overview/azure/cognitiveservices/client/bingvisualsearch) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingVisualSearch) | [成品 (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-visualsearch/) | [範例](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -43,7 +43,7 @@ ms.locfileid: "94372013"
 mkdir myapp && cd myapp
 ```
 
-從您的工作目錄執行 `gradle init` 命令。 此命令會建立 Gradle 的基本組建檔案，包括 *build.gradle.kts* ，此檔案將在執行階段用來建立及設定您的應用程式。
+從您的工作目錄執行 `gradle init` 命令。 此命令會建立 Gradle 的基本組建檔案，包括 *build.gradle.kts*，此檔案將在執行階段用來建立及設定您的應用程式。
 
 ```console
 gradle init --type basic
@@ -127,7 +127,7 @@ dependencies {
 > 本快速入門假設您已針對名為 `BING_SEARCH_V7_SUBSCRIPTION_KEY` 的 Bing 圖像式搜尋金鑰[建立環境變數](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)。
 
 
-在您的 main 方法中，請務必使用您的訂用帳戶金鑰來具現化 [BingVisualSearchAPI](/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.bingvisualsearchapi?view=azure-java-stable) 物件。
+在您的 main 方法中，請務必使用您的訂用帳戶金鑰來具現化 [BingVisualSearchAPI](/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.bingvisualsearchapi) 物件。
 
 ```csharp
 BingVisualSearchAPI client = BingVisualSearchManager.authenticate(subscriptionKey);
@@ -135,13 +135,13 @@ BingVisualSearchAPI client = BingVisualSearchManager.authenticate(subscriptionKe
 
 ## <a name="send-a-visual-search-request"></a>傳送圖像式搜尋要求
 
-在新方法中，請使用用戶端的 [bingImages().visualSearch()](/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.bingimages.visualsearch?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_visualsearch_BingImages_visualSearch__) 方法來傳送影像位元組陣列 (以 `main()` 方法建立的)。 
+在新方法中，請使用用戶端的 [bingImages().visualSearch()](/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.bingimages.visualsearch#com_microsoft_azure_cognitiveservices_search_visualsearch_BingImages_visualSearch__) 方法來傳送影像位元組陣列 (以 `main()` 方法建立的)。 
 
 [!code-java[visualSearch() method](~/cognitive-services-java-sdk-samples/Search/BingVisualSearch/src/main/java/BingVisualSearchSample.java?name=visualSearch)]
 
 ## <a name="print-the-image-insight-token-and-visual-search-tags"></a>列印影像深入解析權杖和圖像式搜尋標籤
 
-檢查 [ImageKnowledge](/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.models.imageknowledge?view=azure-java-stable) 物件是否為 Null。 如果不是，請列印影像深入解析權杖、標籤數目、動作數目，和第一個動作類型。
+檢查 [ImageKnowledge](/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.models.imageknowledge) 物件是否為 Null。 如果不是，請列印影像深入解析權杖、標籤數目、動作數目，和第一個動作類型。
 
 [!code-java[Print token and tags](~/cognitive-services-java-sdk-samples/Search/BingVisualSearch/src/main/java/BingVisualSearchSample.java?name=printVisualSearchResults)]
 

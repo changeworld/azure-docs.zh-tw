@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 10/16/2020
 ms.custom: devx-track-java, cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: b45873da5e34c77d3eae706975619df948d84874
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 147985ce5aff54f3784363720a576b7e46d6e647
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98698107"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947477"
 ---
 開始使用適用於 Java 的 Azure Content Moderator 用戶端程式庫。 請遵循下列步驟來安裝 Maven 套件，並試用基本工作的程式碼範例。 
 
@@ -27,7 +27,7 @@ Content Moderator 是一種 AI 服務，可讓您處理可能具冒犯意味、�
 * 仲裁文字
 * 仲裁影像
 
-[參考文件](/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-contentmoderator) |[成品 (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator) | [範例](/samples/browse/?products=azure&term=content-moderator)
+[參考文件](/java/api/overview/azure/cognitiveservices/client/contentmoderator) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-contentmoderator) |[成品 (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator) | [範例](/samples/browse/?products=azure&term=content-moderator)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -116,10 +116,10 @@ In the application's **ContentModeratorQuickstart** class, create variables for 
 
 |Name|說明|
 |---|---|
-|[ContentModeratorClient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable)|所有 Content Moderator 功能都需要此類別。 您可以使用訂用帳戶資訊來具現化此類別，並用其來產生其他類別的執行個體。|
-|[ImageModeration](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.imagemoderations?view=azure-java-stable)|此類別提供對成人內容、個人資訊或人臉的影像進行分析的功能。|
-|[TextModerations](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.textmoderations?view=azure-java-stable)|此類別提供對語言、粗話、錯誤和個人資訊的文字進行分析的功能。|
-|[審查](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.reviews?view=azure-java-stable)|此類別提供審核 API 的功能，包括建立作業、自訂工作流程和人工審核的方法。|
+|[ContentModeratorClient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient)|所有 Content Moderator 功能都需要此類別。 您可以使用訂用帳戶資訊來具現化此類別，並用其來產生其他類別的執行個體。|
+|[ImageModeration](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.imagemoderations)|此類別提供對成人內容、個人資訊或人臉的影像進行分析的功能。|
+|[TextModerations](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.textmoderations)|此類別提供對語言、粗話、錯誤和個人資訊的文字進行分析的功能。|
+|[審查](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.reviews)|此類別提供審核 API 的功能，包括建立作業、自訂工作流程和人工審核的方法。|
 
 
 ## <a name="code-examples"></a>程式碼範例
@@ -133,7 +133,7 @@ In the application's **ContentModeratorQuickstart** class, create variables for 
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
-在應用程式的 `main` 方法中，使用您的訂用帳戶端點值和訂用帳戶金鑰來建立 [ContentModeratorClient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable) 物件。
+在應用程式的 `main` 方法中，使用您的訂用帳戶端點值和訂用帳戶金鑰來建立 [ContentModeratorClient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient) 物件。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_client)]
 
@@ -168,7 +168,7 @@ In the application's **ContentModeratorQuickstart** class, create variables for 
 
 ### <a name="set-up-sample-image"></a>設定範例影像
 
-在新的方法中，使用指向影像的指定 URL 字串建立 **[BodyModelModel](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.models.bodymodelmodel?view=azure-java-stable)** 物件。
+在新的方法中，使用指向影像的指定 URL 字串建立 **[BodyModelModel](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.models.bodymodelmodel)** 物件。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod)]
 

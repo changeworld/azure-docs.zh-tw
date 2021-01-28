@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8ca42367db5607faedb4497f0a0fb0ca160464bc
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: a4d29dfb2a57dde2bb21244b2e5335f1a8ea1fcf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98698043"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948270"
 ---
 > [!IMPORTANT]
 > * 為求簡化，本文中的程式碼使用同步方法和未受保護的認證儲存體。 請參閱下列參考文件。 
@@ -134,7 +134,7 @@ npm install @azure/ai-form-recognizer
 
 
 > [!TIP]
-> 您也可以從本機檔案取得內容。 請參閱 [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) 方法，例如 **beginRecognizeContent**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上的範例程式碼。
+> 您也可以從本機檔案取得內容。 請參閱 [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) 方法，例如 **beginRecognizeContent**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上的範例程式碼。
 
 ### <a name="output"></a>輸出
 
@@ -161,7 +161,7 @@ cell [1,5] has text PT
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_receipts)]
 
 > [!TIP]
-> 您也可以辨識本機收據映像。 請參閱 [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) 方法，例如 **beginRecognizeReceipts**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上的範例程式碼。
+> 您也可以辨識本機收據映像。 請參閱 [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) 方法，例如 **beginRecognizeReceipts**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上的範例程式碼。
 
 ### <a name="output"></a>輸出
 
@@ -281,7 +281,7 @@ Document errors: undefined
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_analyze)]
 
 > [!TIP]
-> 您也可以分析本機檔案。 請參閱 [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) 方法，例如 **beginRecognizeCustomForms**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上的範例程式碼。
+> 您也可以分析本機檔案。 請參閱 [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) 方法，例如 **beginRecognizeCustomForms**。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上的範例程式碼。
 
 
 ### <a name="output"></a>輸出

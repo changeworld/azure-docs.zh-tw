@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight 中的 Apache Ambari 使用方式
 description: 討論如何在 Azure HDInsight 中使用 Apache Ambari。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/12/2021
-ms.openlocfilehash: ff83e559919a836208faae4eae4a5f992534b6cb
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 6233c42d7fbf8dc7821d26f77171c44485fb8d34
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134138"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946936"
 ---
 # <a name="apache-ambari-usage-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Ambari 使用方式
 

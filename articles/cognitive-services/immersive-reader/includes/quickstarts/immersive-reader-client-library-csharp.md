@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.author: nitinme
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: cef5aaae58797e38745b3f5164c171581a005562
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
-ms.translationtype: HT
+ms.openlocfilehash: 080b9dac8dad099f2901f2b820da58501310471b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371856"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948180"
 ---
 [沈浸式閱讀程式](https://www.onenote.com/learningtools)是經過全面設計的工具，可實作經實證的技術並針對入門讀者、語言學習者及存在學習差異 (例如讀寫障礙) 的人士改善其閱讀理解程度。 您可以在應用程式中使用沈浸式閱讀程式來隔離文字，以改善焦點、顯示常用單字的圖片、醒目提示語音的部分、朗讀選取的文字、即時轉譯單字和片語等等。
 
@@ -42,7 +42,7 @@ ms.locfileid: "94371856"
 
 ### <a name="configure-authentication-values"></a>設定驗證值
 
-以滑鼠右鍵按一下 _方案總管_ 中的專案，然後選擇 [管理使用者密碼]。 這樣會開啟名稱為 _secrets.json_ 的檔案。 此檔案不會簽入原始檔控制。 [在此](/aspnet/core/security/app-secrets?preserve-view=true&tabs=windows&view=aspnetcore-3.1)深入了解。 以下列內容取代 secrets.json 的內容，並使用您建立沈浸式閱讀程式資源時提供的值。
+以滑鼠右鍵按一下 _方案總管_ 中的專案，然後選擇 [管理使用者密碼]。 這樣會開啟名稱為 _secrets.json_ 的檔案。 此檔案不會簽入原始檔控制。 [在此](/aspnet/core/security/app-secrets?tabs=windows)深入了解。 以下列內容取代 secrets.json 的內容，並使用您建立沈浸式閱讀程式資源時提供的值。
 
 ```json
 {

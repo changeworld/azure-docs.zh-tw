@@ -7,12 +7,12 @@ ms.topic: include
 ms.author: trbye
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: c14dfadfb7e8724c196b125e9b93c439fac249c3
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
-ms.translationtype: HT
+ms.openlocfilehash: 0cbe7e1aa5657de45f304dcec6df2a957ce47b5a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98109437"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947628"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -53,7 +53,7 @@ ms.locfileid: "98109437"
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=26)]
 
-此範例會使用 `FromSubscription()` 方法來建置 `SpeechConfig`。 如需可用方法的完整清單，請參閱 [SpeechConfig 類別](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-dotnet) \(英文\)。
+此範例會使用 `FromSubscription()` 方法來建置 `SpeechConfig`。 如需可用方法的完整清單，請參閱 [SpeechConfig 類別](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig) \(英文\)。
 
 語音 SDK 會預設為使用 en-us 來辨識語言，如需選擇來源語言的詳細資訊，請參閱[指定語音轉換文字的來源語言](../../../../how-to-specify-source-language.md)。
 

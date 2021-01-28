@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: v-jawe
 ms.custom: references_regions
-ms.openlocfilehash: 2b5a34e8f3e7132a16ad3683b846d57e9ece2cb6
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
-ms.translationtype: HT
+ms.openlocfilehash: f29fd56bb5e9f32b37f6dcf1f67edd325b58a07d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015460"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948415"
 ---
 在本快速入門中，您將了解使用語音 SDK 進行說話者辨識的基本設計模式，包括：
 
@@ -51,7 +51,7 @@ using Microsoft.CognitiveServices.Speech.Audio;
 
 ## <a name="create-a-speech-configuration"></a>建立語音設定
 
-若要使用語音 SDK 來呼叫語音服務，您必須建立 [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-dotnet)。 在此範例中，您會使用訂用帳戶金鑰和區域來建立 [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-dotnet)。 您也會建立一些基本的重複使用程式碼，用於本文的其餘部分，而您可針對不同的自訂項目進行修改。
+若要使用語音 SDK 來呼叫語音服務，您必須建立 [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig)。 在此範例中，您會使用訂用帳戶金鑰和區域來建立 [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig)。 您也會建立一些基本的重複使用程式碼，用於本文的其餘部分，而您可針對不同的自訂項目進行修改。
 
 請注意，區域會設定為 `westus`，因為這是唯一支援該服務的區域。
 

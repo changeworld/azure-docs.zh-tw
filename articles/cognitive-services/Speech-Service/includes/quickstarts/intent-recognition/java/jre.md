@@ -6,12 +6,12 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 9c0a0cb2cf6e291c42d72d6f46ff28b4d3fbf405
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
-ms.translationtype: HT
+ms.openlocfilehash: a895af0f1a10796ad49898e37551f37d38418784
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98109293"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948263"
 ---
 ## <a name="prerequisites"></a>必要條件
 
@@ -48,7 +48,7 @@ ms.locfileid: "98109293"
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=27)]
 
-此範例會使用 `FromSubscription()` 方法來建置 `SpeechConfig`。 如需可用方法的完整清單，請參閱 [SpeechConfig 類別](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-dotnet) \(英文\)。
+此範例會使用 `FromSubscription()` 方法來建置 `SpeechConfig`。 如需可用方法的完整清單，請參閱 [SpeechConfig 類別](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig) \(英文\)。
 
 語音 SDK 會預設為使用 en-us 來辨識語言，如需選擇來源語言的詳細資訊，請參閱[指定語音轉換文字的來源語言](../../../../how-to-specify-source-language.md)。
 

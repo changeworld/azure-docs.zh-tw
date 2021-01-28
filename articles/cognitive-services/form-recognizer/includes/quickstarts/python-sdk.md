@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: fb9d74da6030c430cce4a2a3c4c5e4299183ca15
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
-ms.translationtype: HT
+ms.openlocfilehash: e578cd08177eb9db03e5e4af4a134473a8484a41
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132263"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947894"
 ---
 > [!IMPORTANT]
 > * 為求簡化，本文中的程式碼使用同步方法和未受保護的認證儲存體。 請參閱下列參考文件。 
@@ -146,7 +146,7 @@ pip install azure-ai-formrecognizer --pre
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_getcontent)]
 
 > [!TIP]
-> 您也可以從本機映像取得內容。 請參閱 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) 方法，例如 `begin_recognize_content`。 或如需本機映像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的範例程式碼。
+> 您也可以從本機映像取得內容。 請參閱 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) 方法，例如 `begin_recognize_content`。 或如需本機映像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的範例程式碼。
 
 ### <a name="output"></a>輸出
 
@@ -178,7 +178,7 @@ Confidence score: 1.0
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_receipts)]
 
 > [!TIP]
-> 您也可以辨識本機收據映像。 請參閱 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) 方法，例如 `begin_recognize_receipts`。 或如需本機映像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的範例程式碼。
+> 您也可以辨識本機收據映像。 請參閱 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) 方法，例如 `begin_recognize_receipts`。 或如需本機映像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的範例程式碼。
 
 ### <a name="output"></a>輸出
 
@@ -217,13 +217,13 @@ Total: 1203.39 has confidence 0.774
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_bc)]
 
 > [!TIP]
-> 您也可以辨識本機名片影像。 請參閱 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) 方法，例如 `begin_recognize_business_cards`。 或如需本機映像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的範例程式碼。
+> 您也可以辨識本機名片影像。 請參閱 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) 方法，例如 `begin_recognize_business_cards`。 或如需本機映像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的範例程式碼。
 
 ---
 
 ## <a name="analyze-invoices"></a>分析發票
 
-#### <a name="version-20"></a>[2.0 版](#tab/ga)
+#### <a name="version-20"></a>[版本 2.0](#tab/ga)
 
 > [!IMPORTANT]
 > 選取的 API 版本不提供這項功能。
@@ -235,7 +235,7 @@ Total: 1203.39 has confidence 0.774
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_invoice)]
 
 > [!TIP]
-> 您也可以辨識本機發票影像。 請參閱 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) 方法，例如 `begin_recognize_invoices`。 或如需本機映像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的範例程式碼。
+> 您也可以辨識本機發票影像。 請參閱 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) 方法，例如 `begin_recognize_invoices`。 或如需本機映像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的範例程式碼。
 
 ---
 
@@ -345,7 +345,7 @@ Document errors: []
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_analyze)]
 
 > [!TIP]
-> 您也可以分析本機映像。 請參閱 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) 方法，例如 `begin_recognize_custom_forms`。 或如需本機映像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的範例程式碼。
+> 您也可以分析本機映像。 請參閱 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) 方法，例如 `begin_recognize_custom_forms`。 或如需本機映像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的範例程式碼。
 
 
 ### <a name="output"></a>輸出

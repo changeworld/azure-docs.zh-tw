@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: f28eeb43a3b69b1931bf032741ded69a08b08dad
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
-ms.translationtype: HT
+ms.openlocfilehash: 891d86f9429031be48ed17f83a3a5005cadb1ec1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96912315"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947981"
 ---
 語音服務的核心功能之一，就是能夠辨識並轉譯人類語音 (通常稱為語音轉文字)。 在本快速入門中，您將了解如何在您的應用程式和產品中使用語音 SDK，以執行高品質的語音轉換文字辨識。
 
@@ -45,13 +45,13 @@ import azure.cognitiveservices.speech as speechsdk
 
 ## <a name="create-a-speech-configuration"></a>建立語音設定
 
-若要使用語音 SDK 來呼叫語音服務，您必須建立 [`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)。 此類別包含訂用帳戶的相關資訊，例如您的金鑰和關聯的區域、端點、主機或授權權杖。 使用您的金鑰和區域建立 [`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)。 請參閱[尋找金鑰和區域](../../../overview.md#find-keys-and-region)頁面，以尋找您的金鑰區域配對。
+若要使用語音 SDK 來呼叫語音服務，您必須建立 [`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig)。 此類別包含訂用帳戶的相關資訊，例如您的金鑰和關聯的區域、端點、主機或授權權杖。 使用您的金鑰和區域建立 [`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig)。 請參閱[尋找金鑰和區域](../../../overview.md#find-keys-and-region)頁面，以尋找您的金鑰區域配對。
 
 ```Python
 speech_config = speechsdk.SpeechConfig(subscription="<paste-your-subscription-key>", region="<paste-your-region>")
 ```
 
-您可以透過其他數種方式將 [`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python) 初始化：
+您可以透過其他數種方式將 [`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig) 初始化：
 
 * 使用端點：傳入語音服務端點。 金鑰或授權權杖是選用項目。
 * 使用主機：傳入主機位址。 金鑰或授權權杖是選用項目。
@@ -82,7 +82,7 @@ from_mic()
 
 ## <a name="recognize-from-file"></a>從檔案辨識
 
-如果要辨識來自音訊檔案的語音而不使用麥克風，請建立 [`AudioConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig?preserve-view=true&view=azure-python) 並使用 `filename` 參數。
+如果要辨識來自音訊檔案的語音而不使用麥克風，請建立 [`AudioConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig) 並使用 `filename` 參數。
 
 ```Python
 import azure.cognitiveservices.speech as speechsdk
@@ -100,7 +100,7 @@ from_file()
 
 ## <a name="error-handling"></a>錯誤處理
 
-先前的範例只會從 `result.text` 取得已辨識的文字，但是若要處理錯誤和其他回應，您必須撰寫一些程式碼來處理結果。 下列程式碼會評估 [`result.reason`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.resultreason?view=azure-python) 屬性和：
+先前的範例只會從 `result.text` 取得已辨識的文字，但是若要處理錯誤和其他回應，您必須撰寫一些程式碼來處理結果。 下列程式碼會評估 [`result.reason`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.resultreason) 屬性和：
 
 * 列印辨識結果：`speechsdk.ResultReason.RecognizedSpeech`
 * 如果沒有任何相符的辨識，則通知使用者：`speechsdk.ResultReason.NoMatch `
@@ -122,9 +122,9 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 先前的範例會使用可辨識單一語句的一次性辨識。 單一語句的結尾會藉由聽取結束時的靜默來決定，或是在處理音訊達 15 秒的上限時結束。
 
-相反地，當您想要 **控制** 何時停止辨識時，可使用連續辨識。 您必須連線至 `EventSignal` 才能取得辨識結果，且若要停止辨識，您必須呼叫 [stop_continuous_recognition()](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#stop-continuous-recognition--) 或 [stop_continuous_recognition()](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#stop-continuous-recognition-async--)。 以下範例說明如何對音訊輸入檔執行連續辨識。
+相反地，當您想要 **控制** 何時停止辨識時，可使用連續辨識。 您必須連線至 `EventSignal` 才能取得辨識結果，且若要停止辨識，您必須呼叫 [stop_continuous_recognition()](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer#stop-continuous-recognition--) 或 [stop_continuous_recognition()](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer#stop-continuous-recognition-async--)。 以下範例說明如何對音訊輸入檔執行連續辨識。
 
-首先，我們要定義輸入並初始化 [`SpeechRecognizer`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?preserve-view=true&view=azure-python)：
+首先，我們要定義輸入並初始化 [`SpeechRecognizer`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer)：
 
 ```Python
 audio_config = speechsdk.audio.AudioConfig(filename=weatherfilename)
@@ -140,7 +140,7 @@ done = False
 現在，我們將建立一個回呼，以在接收到 `evt` 時停止連續識別。 有幾件事要牢記在心。
 
 * 接收到 `evt` 時，會列印 `evt` 訊息。
-* 接收到 `evt` 後，會呼叫 [stop_continuous_recognition()](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#stop-continuous-recognition--) 以停止辨識。
+* 接收到 `evt` 後，會呼叫 [stop_continuous_recognition()](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer#stop-continuous-recognition--) 以停止辨識。
 * 辨識狀態會變更為 `True`。
 
 ```Python
@@ -151,13 +151,13 @@ def stop_cb(evt):
     done = True
 ```
 
-此程式碼範例說明如何將回呼連線至從 [`SpeechRecognizer`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#start-continuous-recognition--) 傳送的事件。
+此程式碼範例說明如何將回呼連線至從 [`SpeechRecognizer`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer#start-continuous-recognition--) 傳送的事件。
 
-* [`recognizing`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#recognizing)：包含中繼辨識結果的事件訊號。
-* [`recognized`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#recognized)：包含最終辨識結果的事件訊號 (表示成功的辨識嘗試)。
-* [`session_started`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#session-started)：表示辨識工作階段 (作業) 開始的事件訊號。
-* [`session_stopped`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#session-stopped)：表示辨識工作階段 (作業) 結束的事件訊號。
-* [`canceled`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#canceled)：包含已取消之辨識結果的事件訊號 (表示因直接的取消要求或是傳輸或通訊協定失敗而取消的辨識嘗試)。
+* [`recognizing`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer#recognizing)：包含中繼辨識結果的事件訊號。
+* [`recognized`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer#recognized)：包含最終辨識結果的事件訊號 (表示成功的辨識嘗試)。
+* [`session_started`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer#session-started)：表示辨識工作階段 (作業) 開始的事件訊號。
+* [`session_stopped`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer#session-stopped)：表示辨識工作階段 (作業) 結束的事件訊號。
+* [`canceled`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer#canceled)：包含已取消之辨識結果的事件訊號 (表示因直接的取消要求或是傳輸或通訊協定失敗而取消的辨識嘗試)。
 
 ```Python
 speech_recognizer.recognizing.connect(lambda evt: print('RECOGNIZING: {}'.format(evt)))
@@ -170,7 +170,7 @@ speech_recognizer.session_stopped.connect(stop_cb)
 speech_recognizer.canceled.connect(stop_cb)
 ```
 
-完成所有設定後，我們可以呼叫 [start_continuous_recognition()](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#session-stopped)。
+完成所有設定後，我們可以呼叫 [start_continuous_recognition()](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer#session-stopped)。
 
 ```Python
 speech_recognizer.start_continuous_recognition()
@@ -182,7 +182,7 @@ while not done:
 
 使用連續辨識時，您可以使用對應的「啟用聽寫」功能來啟用聽寫處理。 此模式會使語音設定執行個體解譯句子結構的單字描述，例如標點符號。 例如，"Do you live in town question mark" 語句會解讀為文字 "Do you live in town?"。
 
-若要啟用聽寫模式，請在您的 [`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-python) 上使用 [`enable_dictation()`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#enable-dictation--) 方法。
+若要啟用聽寫模式，請在您的 [`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig) 上使用 [`enable_dictation()`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig#enable-dictation--) 方法。
 
 ```Python 
 SpeechConfig.enable_dictation()
@@ -196,7 +196,7 @@ SpeechConfig.enable_dictation()
 speech_config.speech_recognition_language="de-DE"
 ```
 
-[`speech_recognition_language`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#speech-recognition-language) 是以字串作為引數的參數。 您可以提供支援的[地區設定/語言](../../../language-support.md)清單中的任何值。
+[`speech_recognition_language`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig#speech-recognition-language) 是以字串作為引數的參數。 您可以提供支援的[地區設定/語言](../../../language-support.md)清單中的任何值。
 
 ## <a name="improve-recognition-accuracy"></a>提高辨識精確度
 
@@ -209,9 +209,9 @@ speech_config.speech_recognition_language="de-DE"
 > [!IMPORTANT]
 > 片語清單功能提供下列語言版本：en-US、de-DE、en-AU、en-CA、en-GB、es-ES、es-MX、fr-CA、fr-FR、it-IT、ja-JP、ko-KR、pt-BR、zh-CN
 
-若要使用片語清單，請先建立 [`PhraseListGrammar`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.phraselistgrammar?preserve-view=true&view=azure-python) 物件，然後使用 [`addPhrase`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.phraselistgrammar?view=azure-python#addphrase-phrase--str-) 新增特定單字和片語。
+若要使用片語清單，請先建立 [`PhraseListGrammar`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.phraselistgrammar) 物件，然後使用 [`addPhrase`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.phraselistgrammar#addphrase-phrase--str-) 新增特定單字和片語。
 
-[`PhraseListGrammar`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.phraselistgrammar?preserve-view=true&view=azure-python) 的任何變更將會在下一次辨識時或重新連線至語音服務之後生效。
+[`PhraseListGrammar`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.phraselistgrammar) 的任何變更將會在下一次辨識時或重新連線至語音服務之後生效。
 
 ```Python
 phrase_list_grammar = speechsdk.PhraseListGrammar.from_recognizer(reco)
