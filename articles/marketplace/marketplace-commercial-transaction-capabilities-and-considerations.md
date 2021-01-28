@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: b8c9af31243d8bb58a58fbc687cad68130f64f7e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 59768e4fc04613a5ecac6a76059382499b7aaa86
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880737"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986457"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>商業市集交易功能
 
@@ -84,7 +84,7 @@ Microsoft 讓客戶能訂購、授權和使用您的軟體，客戶必須遵守 
 
 除了使用供應項目類型和計費模型來創造供應項目的獲利，您也可以交易私人供應項目，按照交涉、交易特定的定價或自訂設定來完成。 所有 3 個交易發行選項都支援私人供應項目。
 
-此選項允許高於或低於公開提供供應項目的定價。 您可以使用私人優惠來對供應專案進行折扣或新增 premium。 您可以透過在供應專案層級將其 Azure 訂用帳戶列入白名單，以將私人供應專案提供給一或多個客戶。
+此選項允許高於或低於公開提供供應項目的定價。 您可以使用私人優惠來對供應專案進行折扣或新增 premium。 您可以在供應專案層級 allowlisting Azure 訂用帳戶，以將私人供應專案提供給一或多個客戶。
 
 ### <a name="commercial-marketplace-service-fees"></a>商業 marketplace 服務費用
 

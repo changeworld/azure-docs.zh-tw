@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d432f29e91097491fc4719ec59a11cb96948f431
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 45bb045e7bad2d5f8a56b71787b3abb5921cb7d5
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97609049"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985881"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>建立已啟用 Azure Arc 的 PostgreSQL 超大規模資料庫伺服器群組
 
@@ -78,9 +78,16 @@ azdata arc postgres server create -n <name> --workers <# worker nodes with #>=2>
 #azdata arc postgres server create -n postgres01 --workers 2
 ```
 
+> [!IMPORTANT]
+> - 用於備份的儲存類別 (_--儲存類別備份-scb_) 預設為數據控制器的資料儲存類別（如果未提供）。
+> - 若要將伺服器群組還原至不同的伺服器群組 (如時間點還原) 您必須將伺服器群組設定為使用具有 ReadWriteMany 存取模式的 Pvc。 您必須在建立伺服器群組時這麼做。 建立之後就無法變更。 如需詳細資訊，請參閱：
+>    - [關於備份和還原的這一節](https://docs.microsoft.com/azure/azure-arc/data/backup-restore-postgresql-hyperscale#create-a-server-group-that-is-ready-for-backups-and-restores)
+>    - [本節說明 Azure Arc 啟用于 postgresql 的限制超大規模](https://docs.microsoft.com/azure/azure-arc/data/limitations-postgresql-hyperscale)
+
+
 > [!NOTE]
 > - **還有其他可用的命令列參數。 執行，以查看完整的選項清單 `azdata arc postgres server create --help` 。**
-> - 用於備份的儲存類別 (_--儲存類別備份-scb_) 預設為數據控制器的資料儲存類別（如果未提供）。
+
 > - --磁片區大小-* 參數所接受的單位是 Kubernetes 的資源數量 (整數，後面接著下列其中一個 SI 尾碼 (T、G、M、K、M) 或其對等的兩個對等 (Ti、Gi、Mi、Ki) # A5。
 > - 名稱長度必須少於或等於12個字元，且必須符合 DNS 命名慣例。
 > - 系統會提示您輸入 _postgres_ standard 系統管理使用者的密碼。  您可以在 `AZDATA_PASSWORD` 執行 create 命令之前，先設定會話環境變數，以略過互動式提示字元。
@@ -183,7 +190,7 @@ az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o 
 psql postgresql://postgres:<EnterYourPassword>@10.0.0.4:30655
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 閱讀適用於 PostgreSQL 的 Azure 資料庫超大規模的概念和操作指南，以將您的資料分散到多個于 postgresql 超大規模節點，並從適用於 PostgreSQL 的 Azure 資料庫超大規模的所有功能獲益。 :
     * [節點和資料表](../../postgresql/concepts-hyperscale-nodes.md)

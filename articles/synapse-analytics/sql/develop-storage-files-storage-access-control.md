@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9e3fe0f8c14fdcfa9b3e97a02331d777abca2600
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: e884ceab652136c505ce7032f0e78588fb20be89
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954254"
+ms.locfileid: "98986949"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中控制無伺服器 SQL 集區的儲存體帳戶存取
 
@@ -102,9 +102,10 @@ ms.locfileid: "98954254"
 請依照下列步驟來設定儲存體帳戶防火牆，並新增 Synapse 工作區的例外狀況。
 
 1. 開啟 PowerShell 或 [安裝 PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows?preserve-view=true&view=powershell-7.1)
-2. 安裝更新的 Az。 儲存體模組： 
+2. 安裝 Az. Storage 3.0.1 module and Az. Synapse 0.7.0： 
     ```powershell
     Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease
+    Install-Module -Name Az.Synapse -RequiredVersion 0.7.0
     ```
     > [!IMPORTANT]
     > 請確定您使用的是 **3.0.1 版**。 您可以藉由執行下列命令來檢查 Az.Storage 版本：  
@@ -121,16 +122,23 @@ ms.locfileid: "98954254"
     - 資源群組名稱 - 可以在 Synapse 工作區概觀的 Azure 入口網站中找到此名稱。
     - 帳戶名稱 - 受防火牆規則保護的儲存體帳戶名稱。
     - 租用戶識別碼 - 可以在租用戶資訊中 Azure Active Directory 的 Azure 入口網站中找到此項。
-    - 資源識別碼 - 可以在 Synapse 工作區概觀的 Azure 入口網站中找到此項。
+    - 工作區名稱-Synapse 工作區的名稱。
 
     ```powershell
         $resourceGroupName = "<resource group name>"
         $accountName = "<storage account name>"
         $tenantId = "<tenant id>"
-        $resourceId = "<Synapse workspace resource id>"
+        $workspaceName = "<synapse workspace name>"
+        
+        $workspace = Get-AzSynapseWorkspace -Name $workspaceName
+        $resourceId = $workspace.Id
+        $index = $resourceId.IndexOf("/resourceGroups/", 0)
+        # Replace G with g - /resourceGroups/ to /resourcegroups/
+        $resourceId = $resourceId.Substring(0,$index) + "/resourcegroups/" + $resourceId.Substring($index + "/resourceGroups/".Length)
+        $resourceId
     ```
     > [!IMPORTANT]
-    > 請確定資源識別碼符合此範本。
+    > 請確定資源識別碼與 resourceId 變數的列印中的範本相符。
     >
     > 請務必以小寫字母寫下 **resourcegroups**。
     > 資源識別碼的範例： 
@@ -145,7 +153,14 @@ ms.locfileid: "98954254"
 6. 確認該規則已套用至您的儲存體帳戶： 
     ```powershell
         $rule = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $resourceGroupName -Name $accountName
-        $rule.ResourceAccessRules
+        $rule.ResourceAccessRules | ForEach-Object { 
+        if ($_.ResourceId -cmatch "\/subscriptions\/(\w\-*)+\/resourcegroups\/(.)+") { 
+            Write-Host "Storage account network rule is successfully configured." -ForegroundColor Green
+            $rule.ResourceAccessRules
+        } else {
+            Write-Host "Storage account network rule is not configured correctly. Remove this rule and follow the steps in detail." -ForegroundColor Red
+            $rule.ResourceAccessRules
+        }
     ```
 
 #### <a name="managed-identity"></a>受控識別

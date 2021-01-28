@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: b70beb90fae794eb5512cb8b466524169c4c7b53
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 76482266f0bbb1f80c1699c736048c705b90b4dc
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "92792985"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986915"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>將 Azure 儲存體帳戶移至另一個區域
 
@@ -31,11 +31,11 @@ ms.locfileid: "92792985"
 > * 將資料移至新的儲存體帳戶。
 > * 刪除來源區域中的資源。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 確定目的地區域中支援您帳戶所使用的服務和功能。
 
-- 對於預覽功能，確定您的訂用帳戶已列入目標區域的允許清單中。
+- 針對預覽功能，請確定您的訂用帳戶為目的地區域的 allowlisted。
 
 <a id="prepare"></a>
 
@@ -225,7 +225,7 @@ ms.locfileid: "92792985"
 | **靜態網站** | [在 Azure 儲存體中託管靜態網站](../blobs/storage-blob-static-website-how-to.md) |
 | **事件訂閱** | [回應 Blob 儲存體事件](../blobs/storage-blob-event-overview.md) |
 | **警示** | [使用 Azure 監視器中建立、檢視及管理活動記錄警示](../../azure-monitor/platform/alerts-activity-log.md) |
-| **(CDN) 的內容傳遞網路** | [使用 Azure CDN 透過 HTTPS 以自訂網域存取 Blob](../blobs/storage-https-custom-domain-cdn.md) |
+| **內容傳遞網路 (CDN)** | [使用 Azure CDN 透過 HTTPS 以自訂網域存取 Blob](../blobs/storage-https-custom-domain-cdn.md) |
 
 > [!NOTE] 
 > 如果您為來源儲存體帳戶設定 CDN，只要將現有的 CDN 來源變更為主要 blob 服務端點 (或新帳戶的主要靜態網站端點) 。 
@@ -268,7 +268,7 @@ Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storage
 ```
 ---
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在本教學課程中，您已將 Azure 儲存體帳戶從一個區域移至另一個區域，並清除了來源資源。  若要深入了解如何在 Azure 中的區域之間移動資源和災害復原，請參閱：
 

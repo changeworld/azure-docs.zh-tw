@@ -1,18 +1,18 @@
 ---
 title: 連結您的合作夥伴識別碼以追蹤您對委派資源的影響
 description: 瞭解如何與您的合作夥伴識別碼建立關聯，以在您透過 Azure Lighthouse 管理的客戶資源上取得合作夥伴所獲得的點數 (PEC) 。
-ms.date: 10/30/2020
+ms.date: 01/28/2021
 ms.topic: how-to
-ms.openlocfilehash: fcbcc70e380116b8e9f9b1c1e365dee1adb87a99
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 46338b925b1ad44019c9cc95e4b7f8c0963c07c4
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080272"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985966"
 ---
 # <a name="link-your-partner-id-to-track-your-impact-on-delegated-resources"></a>連結您的合作夥伴識別碼以追蹤您對委派資源的影響 
 
-如果您是 [Microsoft 合作夥伴網路](https://partner.microsoft.com/)的成員，您可以將合作夥伴識別碼連結至用來管理委派客戶資源的認證。 合作夥伴系統管理員連結 (PAL) 可讓 Microsoft 識別及辨識推動 Azure 客戶成功的合作夥伴。 此連結也可讓 [CSP (雲端解決方案提供者) ](/partner-center/csp-overview) 合作夥伴，以取得 [合作夥伴針對受控服務所獲得的點數 (PEC) ](/partner-center/partner-earned-credit) 已 [簽署 Microsoft 客戶合約 (MCA ](/partner-center/confirm-customer-agreement)) ，且位於 [Azure 方案下](/partner-center/azure-plan-get-started)。
+如果您是 [Microsoft 合作夥伴網路](https://partner.microsoft.com/)的成員，您可以將您的合作夥伴識別碼連結至用來管理委派客戶資源的認證，讓 Microsoft 能夠識別及辨識推動 Azure 客戶成功的合作夥伴。 此連結也可讓 [CSP (雲端解決方案提供者) ](/partner-center/csp-overview) 合作夥伴，以取得 [合作夥伴針對受控服務所獲得的點數 (PEC) ](/partner-center/partner-earned-credit) 已 [簽署 Microsoft 客戶合約 (MCA ](/partner-center/confirm-customer-agreement)) ，且位於 [Azure 方案下](/partner-center/azure-plan-get-started)。
 
 如果您將 [Azure Marketplace 中的受控服務](publish-managed-services-offers.md)供應專案加入客戶，則會使用與發佈供應專案的合作夥伴中心帳戶相關聯的 MPN 識別碼，自動進行連結。 不需要採取進一步的動作，就能追蹤您對這些客戶的影響。
 
@@ -20,9 +20,9 @@ ms.locfileid: "93080272"
 
 ## <a name="associate-your-partner-id-when-you-onboard-new-customers"></a>當您將新客戶上線時，請建立合作夥伴識別碼的關聯
 
-當您透過 Azure Resource Manager 範本 (ARM 範本) 來將客戶上線時，請使用下列程式將您的合作夥伴識別碼連結 (，並啟用合作夥伴所獲得的點數（如果適用）) 。 您必須知道您的 [MPN 合作夥伴識別碼](/partner-center/partner-center-account-setup#locate-your-mpn-id) ，才能完成這些步驟。 請務必使用您的合作夥伴設定檔上顯示的 **相關聯 MPN 識別碼** 。
+當您透過 Azure Resource Manager 範本 (ARM 範本) 來將客戶上線時，請使用下列程式將您的合作夥伴識別碼連結 (，並啟用合作夥伴所獲得的點數（如果適用）) 。 您必須知道您的 [MPN 合作夥伴識別碼](/partner-center/partner-center-account-setup#locate-your-mpn-id) ，才能完成這些步驟。 請務必使用您的合作夥伴設定檔上顯示的 **相關聯 MPN 識別碼**。
 
-為了簡單起見，建議您在租使用者中建立服務主體帳戶，並將其連結至您的 **相關聯 MPN 識別碼** ，然後將其存取權授與您上架的每個客戶，並提供 [適合 PEC 的 Azure 內建角色](/partner-center/azure-roles-perms-pec)。
+為了簡單起見，建議您在租使用者中建立服務主體帳戶，並將其連結至您的 **相關聯 MPN 識別碼**，然後將其存取權授與您上架的每個客戶，並提供 [適合 PEC 的 Azure 內建角色](/partner-center/azure-roles-perms-pec)。
 
 1. 在您的管理租使用者中[建立服務主體帳戶](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。 在此範例中，我們將使用此服務主體的名稱 *提供者自動化帳戶* 。
 1. 使用該服務主體帳戶，連結至您管理租使用者中的 [相關聯 MPN 識別碼](../../cost-management-billing/manage/link-partner-id.md#link-to-a-partner-id) 。 您只需要進行一次。
@@ -30,7 +30,7 @@ ms.locfileid: "93080272"
 
 藉由遵循這些步驟，您管理的每個客戶租使用者都會與您的合作夥伴識別碼相關聯。 提供者自動化帳戶不需要驗證或執行客戶租使用者中的任何動作。
 
-:::image type="content" source="../media/lighthouse-pal.jpg" alt-text="顯示 PAL 處理 Azure Lighthouse 的圖表。":::
+:::image type="content" source="../media/lighthouse-pal.jpg" alt-text="顯示合作夥伴識別碼連結進程與 Azure Lighthouse 的圖表。":::
 
 ## <a name="add-your-partner-id-to-previously-onboarded-customers"></a>將您的合作夥伴識別碼新增至先前上線的客戶
 

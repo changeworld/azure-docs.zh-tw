@@ -5,15 +5,15 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: overview
-ms.date: 09/03/2020
+ms.date: 01/28/2021
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 974631f9cba66404a3881caed1382be7ff3c00d1
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 681e4efc8a9edda896249fdc939d19b4f644f246
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881328"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986474"
 ---
 # <a name="what-is-azure-private-link"></a>什麼是 Azure Private Link？ 
 Azure Private Link 可讓您存取各項 Azure PaaS 服務 (例如 Azure 儲存體和 SQL Database)，並透過虛擬網路中的[私人端點](private-endpoint-overview.md)裝載 Azure 的客戶擁有/合作夥伴服務。
@@ -54,6 +54,7 @@ Azure Private Link 提供下列優點：
 |  適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器         | 所有公用區域 <br/> 所有政府區域<br/>所有中國區域     | 支援一般用途和記憶體最佳化定價層 | GA <br/> [了解如何為適用於 PostgreSQL 的 Azure 資料庫建立私人端點。](../postgresql/concepts-data-access-and-security-private-link.md)      |
 |  適用於 MySQL 的 Azure 資料庫         | 所有公用區域<br/> 所有政府區域<br/>所有中國區域      |  | GA <br/> [了解如何為適用於 MySQL 的 Azure 資料庫建立私人端點。](../mysql/concepts-data-access-security-private-link.md)     |
 |  適用於 MariaDB 的 Azure 資料庫         | 所有公用區域<br/> 所有政府區域<br/>所有中國區域     |  | GA <br/> [了解如何為適用於 MariaDB 的 Azure 資料庫建立私人端點。](../mariadb/concepts-data-access-security-private-link.md)      |
+|  Azure Digital Twins         | Azure 數位 Twins 支援的所有公用區域     |  | 預覽 <br/> [瞭解如何建立 Azure 數位 Twins 的私人端點。](../digital-twins/how-to-enable-private-link.md)      |
 |  Azure 金鑰保存庫         | 所有公用區域<br/> 所有政府區域      |  | GA   <br/> [了解如何建立 Azure Key Vault 的私人端點。](../key-vault/general/private-link-service.md)   |
 |Azure Kubernetes Service - Kubernetes API | 所有公用區域      |  | GA   <br/> [了解如何建立 Azure Kubernetes Service 的私人端點。](../aks/private-clusters.md)   |
 |Azure 搜尋服務 | 所有公用區域 <br/> 所有政府區域 | 在私人模式下可透過服務來支援 | GA   <br/> [了解如何建立 Azure Search 的私人端點。](../search/service-create-private-endpoint.md)    |

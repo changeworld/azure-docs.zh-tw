@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 05/21/2018
+ms.date: 01/28/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 0b7fee330f93097b561714ecc938eaf3fee8f2b5
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 04c26609b046f7525c513796622be74633a20e91
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657324"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986763"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>安裝應用程式 Proxy 代理程式連接器時遇到問題
 
@@ -24,7 +24,7 @@ Microsoft Azure Active Directory 應用程式 Proxy 連接器是內部網域元�
 
 ## <a name="general-problem-areas-with-connector-installation"></a>連接器安裝的一般問題區域
 
-連接器安裝失敗時，根本原因通常是下列其中一個區域：
+當連接器安裝失敗時，根本原因通常是下列其中一種區域。 **在進行任何疑難排解的先驅時，請務必重新開機連接器。**
 
 1.  **連線**：若要成功完成安裝，新的連接器必須註冊並建立未來信任內容。 這是藉由連接到 Azure Active Directory 應用程式 Proxy 雲端服務來完成。
 

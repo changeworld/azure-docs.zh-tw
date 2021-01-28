@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 1fc768890e932d1f17ad111b4681b75721ae1e06
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ecc2e98d4c6c58e11b2bdc86b623f31d828cabc0
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148097"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985915"
 ---
 # <a name="azure-arc-enabled-postgresql-hyperscale-server-group-placement"></a>Azure Arc 啟用的于 postgresql 超大規模伺服器群組放置
 
@@ -46,7 +46,7 @@ aks-agentpool-42715708-vmss000003   Ready    agent   11h   v1.17.9
 
 架構可以表示為：
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/2_logical_cluster.png" alt-text="Azure 入口網站中的4個節點 AKS 叢集":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/2_logical_cluster.png" alt-text="Kubernetes 叢集中分組的4個節點的邏輯標記法":::
 
 Kubernetes 叢集會裝載一個 Azure Arc 資料控制器和一個 Azure Arc 啟用的于 postgresql 超大規模伺服器群組。 此伺服器群組是三個于 postgresql 實例的構成：一個協調器和兩個背景工作角色。
 
@@ -60,30 +60,30 @@ kubectl get pods -n arc3
 ```output
 NAME                 READY   STATUS    RESTARTS   AGE
 …
-postgres01-0         3/3     Running   0          9h
-postgres01-1         3/3     Running   0          9h
-postgres01-2         3/3     Running   0          9h
+postgres01c-0         3/3     Running   0          9h
+postgres01w-0         3/3     Running   0          9h
+postgres01w-1         3/3     Running   0          9h
 ```
 這些 pod 都會裝載于 postgresql 實例。 它們會形成 Azure Arc 啟用的于 postgresql 超大規模伺服器群組：
 
 ```output
 Pod name        Role in the server group
-postgres01-0  Coordinator
-postgres01-1    Worker
-postgres01-2    Worker
+postgres01c-0 Coordinator
+postgres01w-0   Worker
+postgres01w-1   Worker
 ```
 
 ## <a name="placement"></a>放置
 讓我們看看 Kubernetes 如何放置伺服器群組的 pod。 描述每個 pod，並識別所放置之 Kubernetes 叢集的實體節點。 例如，針對協調器，請執行下列命令：
 
 ```console
-kubectl describe pod postgres01-0 -n arc3
+kubectl describe pod postgres01c-0 -n arc3
 ```
 
 這會產生下列輸出：
 
 ```output
-Name:         postgres01-0
+Name:         postgres01c-0
 Namespace:    arc3
 Priority:     0
 Node:         aks-agentpool-42715708-vmss000000
@@ -101,7 +101,7 @@ Start Time:   Thu, 17 Sep 2020 00:40:33 -0700
 此外也請注意，在 pod 的描述中，每個 pod 所裝載的容器名稱。 例如，針對第二個背景工作，請執行下列命令：
 
 ```console
-kubectl describe pod postgres01-2 -n arc3
+kubectl describe pod postgres01w-1 -n arc3
 ```
 
 這會產生下列輸出：
@@ -121,7 +121,7 @@ Containers:
 
 屬於 Azure Arc enabled 于 postgresql 超大規模伺服器群組一部分的每個 pod 都會裝載下列三個容器：
 
-|容器|描述
+|容器|Description
 |----|----|
 |`Fluentbit` |資料 * 記錄檔收集器： https://fluentbit.io/
 |`Postgres`|Azure Arc enabled Postgresql 超大規模 server 群組的于 postgresql 實例部分
@@ -129,7 +129,7 @@ Containers:
 
 此架構如下所示：
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/3_pod_placement.png" alt-text="Azure 入口網站中的4個節點 AKS 叢集":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/3_pod_placement.png" alt-text="每個 pod 都會放置在不同的節點上":::
 
 這表示，此時，每個于 postgresql 實例都會構成 Azure Arc 啟用的于 postgresql 超大規模伺服器群組裝載于 Kubernetes 容器內的特定實體主機上。 這是最佳的設定，可協助您在 Azure Arc 啟用的于 postgresql 超大規模伺服器群組中發揮最大效能，因為每個角色 (協調器和背景工作) 會使用每個實體節點的資源。 這些資源不會在數個于 postgresql 角色間共用。
 
@@ -172,23 +172,23 @@ kubectl get pods -n arc3
 ```output
 NAME                 READY   STATUS    RESTARTS   AGE
 …
-postgres01-0         3/3     Running   0          11h
-postgres01-1         3/3     Running   0          11h
-postgres01-2         3/3     Running   0          11h
-postgres01-3         3/3     Running   0          5m2s
+postgres01c-0         3/3     Running   0          11h
+postgres01w-0         3/3     Running   0          11h
+postgres01w-1         3/3     Running   0          11h
+postgres01w-2         3/3     Running   0          5m2s
 ```
 
 並描述新的 pod，以識別其託管 Kubernetes 叢集的實體節點。
 執行命令：
 
 ```console
-kubectl describe pod postgres01-3 -n arc3
+kubectl describe pod postgres01w-2 -n arc3
 ```
 
 若要識別主控節點的名稱：
 
 ```output
-Name:         postgres01-3
+Name:         postgres01w-2
 Namespace:    arc3
 Priority:     0
 Node:         aks-agentpool-42715708-vmss000000
@@ -203,11 +203,11 @@ Node:         aks-agentpool-42715708-vmss000000
 |背景工作|postgres01-2|aks-agentpool-42715708-vmss000003
 |背景工作|postgres01-3|aks-agentpool-42715708-vmss000000
 
-而且請注意，新背景工作 (postgres01-3) 的 pod 已放在與協調器相同的節點上。 
+而且請注意，新背景工作 (postgres01w-2) 的 pod 已放在與協調器相同的節點上。 
 
 此架構如下所示：
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/4_pod_placement_.png" alt-text="Azure 入口網站中的4個節點 AKS 叢集":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/4_pod_placement_.png" alt-text="與協調器位於相同節點上的第四個 pod":::
 
 為什麼新的背景工作/pod 不是放置在 Kubernetes 叢集 aks-agentpool-42715708-vmss000003 的剩餘實體節點上？
 
@@ -235,7 +235,7 @@ Node:         aks-agentpool-42715708-vmss000000
 
 此架構如下所示：
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/5_full_list_of_pods.png" alt-text="Azure 入口網站中的4個節點 AKS 叢集":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/5_full_list_of_pods.png" alt-text="不同節點上命名空間中的所有 pod":::
 
 這表示 Azure Arc 啟用的 Postgres 超大規模伺服器群組 (Pod 1) 的協調器節點會與第三個背景工作節點共用相同的實體資源， (Pod 4) 的伺服器群組。 這是可接受的，因為協調器節點通常使用的資源與背景工作節點可能使用的資源比較少。 您可以從這裡推斷出您應謹慎選擇：
 - Kubernetes 叢集的大小和其每個實體節點的特性 (memory，vCore) 
@@ -254,21 +254,21 @@ Node:         aks-agentpool-42715708-vmss000000
         之前
     :::column-end:::
     :::column:::
-        之後
+        After
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/6_layout_before.png" alt-text="Azure 入口網站中的4個節點 AKS 叢集":::
+        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/6_layout_before.png" alt-text="之前 Azure 入口網站版面配置":::
     :::column-end:::
     :::column:::
-        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/7_layout_after.png" alt-text="Azure 入口網站中的4個節點 AKS 叢集":::
+        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/7_layout_after.png" alt-text="Azure 入口網站的版面配置":::
     :::column-end:::
 :::row-end:::
 
 此架構如下所示：
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/8_logical_layout_after.png" alt-text="Azure 入口網站中的4個節點 AKS 叢集":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/8_logical_layout_after.png" alt-text="更新後 Kubernetes 叢集上的邏輯配置":::
 
 讓我們來看看如何藉由執行下列命令，在新的 AKS 實體節點上裝載 Arc 資料控制器命名空間的 pod：
 
@@ -278,7 +278,7 @@ kubectl describe node aks-agentpool-42715708-vmss000004
 
 然後讓我們更新系統架構的標記法：
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/9_updated_list_of_pods.png" alt-text="Azure 入口網站中的4個節點 AKS 叢集":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/9_updated_list_of_pods.png" alt-text="叢集邏輯圖上的所有 pod":::
 
 我們可以觀察到 Kubernetes 叢集的新實體節點只裝載 Azure Arc 資料服務所需的計量 pod。 請注意，在此範例中，我們只會將焦點放在 Arc 資料控制器的命名空間，而不代表其他 pod。
 
@@ -318,42 +318,42 @@ kubectl get pods -n arc3
 
 NAME                 READY   STATUS    RESTARTS   AGE
 …
-postgres01-0         3/3     Running   0          13h
-postgres01-1         3/3     Running   0          13h
-postgres01-2         3/3     Running   0          13h
-postgres01-3         3/3     Running   0          179m
-postgres01-4         3/3     Running   0          3m13s
+postgres01c-0         3/3     Running   0          13h
+postgres01w-0         3/3     Running   0          13h
+postgres01w-1         3/3     Running   0          13h
+postgres01w-2         3/3     Running   0          179m
+postgres01w-3         3/3     Running   0          3m13s
 ```
 
 伺服器群組的圖形現在是：
 
 |伺服器群組角色|伺服器群組 pod
 |----|-----
-|Coordinator|postgres01-0
-|背景工作|postgres01-1
-|背景工作|postgres01-2
-|背景工作|postgres01-3
-|背景工作|postgres01-4
+|Coordinator|postgres01c-0
+|背景工作|postgres01w-0
+|背景工作|postgres01w-1
+|背景工作|postgres01w-2
+|背景工作|postgres01w-3
 
-讓我們來說明 postgres01-4 pod，以識別它所裝載的實體節點：
+讓我們來說明 postgres01w-3 pod，以識別其託管的實體節點：
 
 ```console
-kubectl describe pod postgres01-4 -n arc3
+kubectl describe pod postgres01w-3 -n arc3
 ```
 
 並且觀察它執行的 pod：
 
 |伺服器群組角色|伺服器群組 pod| Pod
 |----|-----|------
-|Coordinator|postgres01-0|aks-agentpool-42715708-vmss000000
-|背景工作|postgres01-1|aks-agentpool-42715708-vmss000002
-|背景工作|postgres01-2|aks-agentpool-42715708-vmss000003
-|背景工作|postgres01-3|aks-agentpool-42715708-vmss000000
-|背景工作|postgres01-4|aks-agentpool-42715708-vmss000004
+|Coordinator|postgres01c-0|aks-agentpool-42715708-vmss000000
+|背景工作|postgres01w-0|aks-agentpool-42715708-vmss000002
+|背景工作|postgres01w-1|aks-agentpool-42715708-vmss000003
+|背景工作|postgres01w-2|aks-agentpool-42715708-vmss000000
+|背景工作|postgres01w-3|aks-agentpool-42715708-vmss000004
 
 架構看起來像這樣：
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/10_kubernetes_schedules_newest_pod.png" alt-text="Azure 入口網站中的4個節點 AKS 叢集":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/10_kubernetes_schedules_newest_pod.png" alt-text="Kubernetes 會以最低使用量排程節點中最新的 pod":::
 
 Kubernetes 已在 Kubernetes 叢集最少載入的實體節點中排程新的于 postgresql pod。
 
@@ -368,6 +368,6 @@ Kubernetes 已在 Kubernetes 叢集最少載入的實體節點中排程新的于
 - Scale out Azure Arc 啟用的 Postgres 超大規模，而不需向外延展 Kubernetes：設定正確的資源條件約束 (要求和限制記憶體和 vCore) 裝載于 Kubernetes (Azure Arc 啟用的于 postgresql 超大規模) 中，您將可在共置上啟用工作負載的 Kubernetes，並降低資源爭用的風險。 您必須確定 Kubernetes 叢集實體節點的實體特性可採用您所定義的資源限制。 您也應該確保均衡隨著時間而演進，或在 Kubernetes 叢集中新增更多工作負載。
 - 使用 Kubernetes 機制 (pod 選取器、親和性和反親和性) 來影響 pod 的放置。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [藉由新增更多背景工作節點來向外擴充您的 Azure Arc 啟用的于 postgresql 超大規模伺服器群組](scale-out-postgresql-hyperscale-server-group.md)

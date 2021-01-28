@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 6e2443014f6788504a11784945078187a5a72de4
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 37ba4f10365fca4292171c3bd2d9a3e7d00045bb
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311116"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985864"
 ---
 # <a name="configure-azure-arc-enabled-sql-managed-instance"></a>設定 Azure Arc 啟用的 SQL 受控實例
 
@@ -60,13 +60,13 @@ azdata arc sql mi show -n <NAME_OF_SQL_MI>
    traceflag0 = 1204
    ```
 
-1. 將 `mssql-custom.conf` 檔案複製到 `master-0` Pod 中 `mssql-miaa` 容器的 `/var/opt/mssql` 內。 將 `<namespaceName>` 取代為巨量資料叢集名稱。
+1. 將 `mssql-custom.conf` 檔案複製到 `master-0` Pod 中 `arc-sqlmi` 容器的 `/var/opt/mssql` 內。 取代為 `<namespaceName>` 此實例部署所在的命名空間。
 
    ```bash
    kubectl cp mssql-custom.conf master-0:/var/opt/mssql/mssql-custom.conf -c mssql-server -n <namespaceName>
    ```
 
-1. 將 SQL Server 執行個體重新啟動。  將 `<namespaceName>` 取代為巨量資料叢集名稱。
+1. 重新開機 SQL 受控實例。  取代為 `<namespaceName>` 此實例部署所在的命名空間。
 
    ```bash
    kubectl exec -it master-0  -c mssql-server -n <namespaceName> -- /bin/bash

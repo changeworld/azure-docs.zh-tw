@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 7ea871428fffe685cc9d43dd698bfefb8d8a511a
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 19128f0372f9a5bda0d16155167a507eccaf436a
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756675"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986579"
 ---
 # <a name="manage-security-policies"></a>管理安全性原則
 
@@ -54,7 +54,7 @@ Azure 資訊安全中心會根據您所選擇的原則來提出安全性建議�
 
 1. 該訂用帳戶或管理群組的 [安全性原則] 頁面隨即出現。 它會顯示可用和已指派的原則。
 
-   ![原則頁面](./media/tutorial-security-policy/security-policy-page.png)
+    :::image type="content" source="./media/tutorial-security-policy/security-policy-page.png" alt-text="安全性中心的安全性原則頁面" lightbox="./media/tutorial-security-policy/security-policy-page.png":::
 
     > [!NOTE]
     > 如果您的預設原則旁邊有「MG 繼承」標籤，表示該原則已指派給管理群組，並由您正在查看的訂用帳戶繼承。
@@ -102,7 +102,7 @@ Azure 資訊安全中心會根據您所選擇的原則來提出安全性建議�
 
 1. 在 [安全性中心] 中，從 [ **原則 & 合規性** ] 區段中，選取 [ **安全性原則**]。
 
-   ![原則管理](./media/tutorial-security-policy/policy-management.png)
+    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="在 Azure 資訊安全中心中啟動原則管理程式":::
 
 2. 選取您要停用建議的訂用帳戶或管理群組。
 
@@ -111,7 +111,7 @@ Azure 資訊安全中心會根據您所選擇的原則來提出安全性建議�
 
 1. 選取 [ **查看有效原則**]。
 
-   ![視圖原則](./media/tutorial-security-policy/view-effective-policy.png)
+    :::image type="content" source="./media/tutorial-security-policy/view-effective-policy.png" alt-text="如何開啟指派給您訂用帳戶的有效原則":::
 
 1. 選取指派的原則。
 
@@ -126,10 +126,8 @@ Azure 資訊安全中心會根據您所選擇的原則來提出安全性建議�
    > [!NOTE]
    > 停用原則變更最多可能需要12小時的時間才會生效。
 
-
-
-## <a name="next-steps"></a>後續步驟
-本文說明安全性原則。 如需相關資訊，請參閱下列文章：
+## <a name="next-steps"></a>下一步
+本頁說明安全性原則。 如需相關資訊，請參閱下列頁面：
 
 - [瞭解如何使用 PowerShell 設定原則](../governance/policy/assign-policy-powershell.md) - 
 - [瞭解如何在 Azure 原則中編輯安全性原則](../governance/policy/tutorials/create-and-manage.md) - 

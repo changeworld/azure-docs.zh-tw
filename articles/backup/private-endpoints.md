@@ -3,12 +3,12 @@ title: 私人端點
 description: 瞭解建立 Azure 備份私用端點的程式，以及使用私人端點來協助維護資源安全性的案例。
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 3ed71e49ebc550cb7bc2041e25aa6b9bde77b1ef
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: b1412a79fa6137ce1f8c73d5875e52b6382048fa
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629709"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986966"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure 備份的私人端點
 
@@ -16,7 +16,7 @@ Azure 備份可讓您使用 [私人端點](../private-link/private-endpoint-over
 
 本文將協助您瞭解建立 Azure 備份私人端點的程式，以及使用私用端點協助維護資源安全性的案例。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 - 只有在沒有任何專案已註冊至保存庫) 的 (，才能為新的復原服務保存庫建立私人端點。 因此，您必須先建立私人端點，才能嘗試保護保存庫中的任何專案。
 - 一個虛擬網路可以包含多個復原服務保存庫的私人端點。 此外，一個復原服務保存庫在多個虛擬網路中可以有私人端點。 不過，可以為保存庫建立的私人端點數目上限是12。

@@ -3,12 +3,12 @@ title: 使用 Azure 備份伺服器備份工作負載
 description: 在本文中，了解如何準備環境，以使用 Microsoft Azure 備份伺服器 (MABS) 來保護及備份工作負載。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 1be2af43f4d923a27fd96c5c0888a234725775a3
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: d476c228a619f03f798c1a2cd6854a8d603c3637
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056696"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98987017"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安裝及升級 Azure 備份伺服器
 
@@ -85,7 +85,7 @@ Azure 備份伺服器一律加入網域。 如果您打算將伺服器移到不�
 若要編輯儲存體複寫設定︰
 
 1. 從 [復原 **服務保存庫** ] 窗格中，選取新的保存庫。 在 [ **設定** ] 區段下，選取 [  **屬性**]。
-2. 在 [ **屬性**] 中的 [ **備份**設定] 下，選取 [ **更新**]。
+2. 在 [ **屬性**] 中的 [ **備份** 設定] 下，選取 [ **更新**]。
 
 3. 選取儲存體複寫類型，然後選取 [**儲存]。**
 
@@ -99,7 +99,7 @@ Azure 備份伺服器一律加入網域。 如果您打算將伺服器移到不�
 2. 如果您已經開啟復原服務保存庫，請繼續進行步驟3。 如果您沒有開啟復原服務保存庫，但位於 Azure 入口網站的主功能表上，請選取 **[流覽]**。
 
    * 在資源清單中輸入 **復原服務**。
-   * 當您開始輸入時，清單將會根據您輸入的文字進行篩選。 當您看到 [復原服務保存庫] **** 時，請選取它。
+   * 當您開始輸入時，清單將會根據您輸入的文字進行篩選。 當您看到 [復原服務保存庫] 時，請選取它。
 
      ![建立復原服務保存庫的步驟1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
@@ -112,11 +112,11 @@ Azure 備份伺服器一律加入網域。 如果您打算將伺服器移到不�
 3. 預設會開啟 [ **設定** ] 窗格。 如果已關閉，請選取 [ **設定** ] 以開啟 [設定] 窗格。
 
     ![設定窗格](./media/backup-azure-microsoft-azure-backup/vault-setting.png)
-4. 選取 [ **備份** ] 以開啟消費者入門 wizard。
+4. 選取 [ **備份** ] 以開啟開始使用 wizard。
 
     ![備份開始使用](./media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
 
-    在開啟 [備份] 窗格的 [ **消費者入門** ] 中，將會自動選取 **備份目標** 。
+    在開啟 [備份] 窗格的 [ **開始使用** ] 中，將會自動選取 **備份目標** 。
 
     ![Backup-goals-default-opened](./media/backup-azure-microsoft-azure-backup/getting-started.png)
 
@@ -254,7 +254,7 @@ MABS 會使用 System Center Data Protection Manager 保護代理程式。 [這�
 
 3. 若要在選取的電腦上安裝已更新的保護代理程式，請在 [動作] 窗格中選取 [更新]。
 
-4. 對於未連線到網路的用戶端電腦，除非該電腦連線到網路，否則 [代理程式狀態]**** 資料行會顯示 [更新擱置中]**** 的狀態。
+4. 對於未連線到網路的用戶端電腦，除非該電腦連線到網路，否則 [代理程式狀態] 資料行會顯示 [更新擱置中] 的狀態。
 
    在用戶端電腦連線到網路之後，用戶端電腦的 [代理程式更新] 資料行會顯示 [更新中] 狀態。
 
@@ -303,13 +303,18 @@ Azure 備份伺服器需要連線至 Azure 備份服務，產品才能順利運�
 
 ### <a name="recovering-from-loss-of-connectivity"></a>從連線中斷的情況復原
 
-如果您有防火牆或 proxy 防止存取 Azure，您需要允許防火牆/proxy 設定檔中的下列網域位址：
+如果您的電腦具有有限的網際網路存取權，請確定電腦或 proxy 上的防火牆設定允許下列 Url 和 IP 位址：
 
-* `http://www.msftncsi.com/ncsi.txt`
-* \*.Microsoft.com
-* \*.WindowsAzure.com
-* \*.microsoftonline.com
-* \*.windows.net
+* URL
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP 位址
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
 如果您是使用 ExpressRoute Microsoft 對等互連，請選取下列服務/區域：
 
@@ -323,9 +328,9 @@ Azure 備份伺服器需要連線至 Azure 備份服務，產品才能順利運�
 
 ### <a name="handling-subscription-states"></a>處理訂用帳戶狀態
 
-您可以將 Azure 訂用帳戶從*過期*或*取消布建*狀態為「*作用中」狀態。* 不過，當狀態 *為非作用*中時，這會對產品行為造成一些影響：
+您可以將 Azure 訂用帳戶從 *過期* 或 *取消布建* 狀態為「*作用中」狀態。* 不過，當狀態 *為非作用* 中時，這會對產品行為造成一些影響：
 
-* *取消布建*訂用帳戶在取消布建的期間內失去了功能。 切換為「作用中」 時，就會恢復產品的備份/還原功能。 此外，只要以夠大的保留期間來保存，也可以擷取本機磁碟上的備份資料。 不過，一旦訂用帳戶進入「已取消佈建」  狀態，Azure 中的備份資料便會遺失而無法復原。
+* *取消布建* 訂用帳戶在取消布建的期間內失去了功能。 切換為「作用中」 時，就會恢復產品的備份/還原功能。 此外，只要以夠大的保留期間來保存，也可以擷取本機磁碟上的備份資料。 不過，一旦訂用帳戶進入「已取消佈建」  狀態，Azure 中的備份資料便會遺失而無法復原。
 * 「已過期」的訂用帳戶只有在恢復「作用中」狀態之前會失去功能。 排程于訂閱 *過期* 期間的任何備份都不會執行。
 
 ## <a name="upgrade-mabs"></a>升級 MABS

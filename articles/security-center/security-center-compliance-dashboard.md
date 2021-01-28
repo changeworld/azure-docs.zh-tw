@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/28/2021
 ms.author: memildin
-ms.openlocfilehash: f8d92ff0835948637761d7d2a98ec95a1c6dfccd
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 523b081b59bd2f4c45c1ceeb9f39c58f4e3b02b1
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944203"
+ms.locfileid: "98986899"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>教學課程：改善法規合規性
 
@@ -55,7 +55,7 @@ Azure 資訊安全中心會利用 **法規合規性儀表板**，協助您簡化
 
     畫面頂端有一個儀表板，其中包含一組支援的合規性規定的合規性狀態總覽。 您可以看到整體的合規性分數，以及每個標準評量的成功和失敗數目。
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="法規合規性儀表板":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="法規合規性儀表板" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
 
 1. 選取與您相關的合規性標準索引標籤 (1)。 您會看到套用標準的訂用帳戶 (2)，以及該標準的所有控制項清單 (3)。 對於適用的控制項，您可以檢視與該控制項相關聯的成功和失敗評量詳細資料 (4)，以及受影響的資源數目 (5)。 有些控制項呈現灰色。這些控制項沒有任何相關聯的資訊安全中心評量。 請檢查這些控制項的需求，並自行在環境中對其進行評估。 其中有些項目可能與處理程序相關，而非技術性項目。
 

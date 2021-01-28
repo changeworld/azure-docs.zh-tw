@@ -96,6 +96,8 @@
       items:
         - name: 什麼是已啟用 Azure Arc 的 PostgreSQL 超大規模資料庫
           href: what-is-azure-arc-enabled-postgres-hyperscale.md
+        - name: 限制
+          href: limitations-postgresql-hyperscale.md
     - name: 快速入門
       items:
         - name: 支援的版本

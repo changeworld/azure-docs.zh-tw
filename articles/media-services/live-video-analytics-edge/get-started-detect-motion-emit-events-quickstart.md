@@ -3,12 +3,12 @@ title: 開始使用 IoT Edge 上的 Live Video Analytics - Azure
 description: 本快速入門說明如何在 IoT Edge 上開始使用 Live Video Analytics。 了解如何偵測即時影片串流中的動作。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 2ae8292375c0b85cc4c771c1fe7d853c5fcd3afd
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: fde82dde7df3fa9756c145940178f35ed255ce37
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955761"
+ms.locfileid: "98986542"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>快速入門：開始使用 - IoT Edge 上的 Live Video Analytics
 
@@ -31,7 +31,7 @@ ms.locfileid: "98955761"
   > 您將需要 Azure 訂用帳戶，具有建立服務主體的許可權 (**擁有者角色** 提供此) 。 如果您沒有正確的許可權，請洽詢您的帳戶管理員，授與您正確的許可權。  
 
 * 開發電腦上有 [Visual Studio Code](https://code.visualstudio.com/)。 請確定您有 [Azure IoT Tools 延伸模組](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)。
-* 確定開發電腦所連線的網路允許透過連接埠 5671 的進階訊息佇列通訊協定 (AMQP)。 此設定可讓 Azure IoT Tools 與 Azure IoT 中樞通訊。
+* 確定您的開發電腦所連線的網路，允許 Advanced Message 佇列通訊協定 (AMQP) 透過埠5671的輸出流量。 此設定可讓 Azure IoT Tools 與 Azure IoT 中樞通訊。
 
 > [!TIP]
 > 安裝 Azure IoT Tools 擴充功能時，系統可能會提示您安裝 Docker。 請放心忽略提示。
@@ -67,7 +67,7 @@ ms.locfileid: "98955761"
     1. **網路介面** -這可讓 Azure 虛擬機器與網際網路、Azure 和其他資源進行通訊。
     1. 防禦連線-這可讓您使用瀏覽器和 Azure 入口網站連接到 **您的虛擬** 機。
     1. **公用 IP 位址** -這可讓 Azure 資源與網際網路和公眾面向的 azure 服務進行通訊
-    1. **虛擬網路** -這可讓許多類型的 Azure 資源（例如您的虛擬機器）安全地彼此通訊，以及與網際網路和內部部署網路通訊。 深入瞭解 [虛擬網路](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
+    1. **虛擬網路** -這可讓許多類型的 Azure 資源（例如您的虛擬機器）安全地彼此通訊，以及與網際網路和內部部署網路通訊。 深入瞭解 [虛擬網路](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)。
     1. **Iot 中樞** -這可作為 iot 應用程式、IoT Edge 模組與其管理裝置之間雙向通訊的中央訊息中樞。
     1. **媒體服務帳戶** -這有助於在 Azure 中管理和串流處理媒體內容。
     1. **儲存體帳戶** -您必須有一個主要儲存體帳戶，且您可以有任意數目的次要儲存體帳戶與您的媒體服務帳戶相關聯。 如需詳細資訊，請參閱 [Azure 儲存體帳戶與 Azure 媒體服務帳戶](https://docs.microsoft.com/azure/media-services/latest/storage-account-concept)。
@@ -165,7 +165,7 @@ RTSP 模擬器模組會在您執行 [Live Video Analytics 資源設定指令碼]
 
 ### <a name="invoke-graphtopologyset"></a>叫用 GraphTopologySet
 
-藉由使用可叫用 `GraphTopologyList` 的步驟，您可以叫用 `GraphTopologySet` 來設定[圖表拓撲](media-graph-concept.md#media-graph-topologies-and-instances)。 使用下列 JSON 作為承載。
+與之前的一樣，您現在可以叫 `GraphTopologySet` 用來設定 [圖形拓撲](media-graph-concept.md#media-graph-topologies-and-instances)。 使用下列 JSON 作為承載。
 
 ```
 {

@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: f3357fcc070ca4ca2212cf0424e4baf8208a3ca1
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 17ac10fd4e48043b79db5448fad2f29c5eb3f2a3
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754125"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986814"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 設備
 
@@ -45,7 +45,7 @@ ms.locfileid: "96754125"
 
 **需求** | **VMware** 
 --- | ---
-**權限** | 若要在本機或遠端存取設備 Web 應用程式，您必須是網域系統管理員，或設備機器上的本機系統管理員。
+**權限** | 若要在本機或遠端存取設備 web 應用程式，您需要在設備伺服器上擁有具有系統管理許可權的本機或網域使用者帳戶。
 **設備元件** | 設備具有下列元件：<br/><br/> - **管理應用程式**：這是在設備部署期間用於使用者輸入的 Web 應用程式。 在評估要移轉至 Azure 的機器時會使用。<br/> - **探索代理程式**：代理程式會收集機器設定資料。 在評估要移轉至 Azure 的機器時會使用。<br/>- **收集器代理程式**：代理程式會收集效能資料。 在評估要移轉至 Azure 的機器時會使用。<br/>- **自動更新服務**：更新設備元件 (每隔 24 小時執行一次)。<br/>- **DRA 代理程式**：協調 VM 複寫，並協調複寫機器與 Azure 之間的通訊。 只有在使用無代理程式移轉將 VMware VM 複寫至 Azure 時才使用。<br/>- **閘道**：將複寫的資料傳送至 Azure。 只有在使用無代理程式移轉將 VMware VM 複寫至 Azure 時才使用。
 **支援的部署** | 使用 OVA 範本部署為 VMware VM。<br/><br/> 使用 PowerShell 安裝指令碼部署為 VMware VM 或實體機器。
 **專案支援** |  設備可以與單一專案相關聯。 <br/> 任意數目的設備可以與單一專案相關聯。<br/> 
@@ -65,7 +65,7 @@ ms.locfileid: "96754125"
 
 **需求** | **Hyper-V** 
 --- | ---
-**權限** | 若要在本機或遠端存取設備 Web 應用程式，您必須是網域系統管理員，或設備機器上的本機系統管理員。
+**權限** | 若要在本機或遠端存取設備 web 應用程式，您需要在設備伺服器上擁有具有系統管理許可權的本機或網域使用者帳戶。
 **設備元件** | 設備具有下列元件：<br/><br/>- **管理應用程式**：這是在設備部署期間用於使用者輸入的 Web 應用程式。 在評估要移轉至 Azure 的機器時會使用。<br/> - **探索代理程式**：代理程式會收集機器設定資料。 在評估要移轉至 Azure 的機器時會使用。<br/>- **收集器代理程式**：代理程式會收集效能資料。 在評估要移轉至 Azure 的機器時會使用。<br/>- **自動更新服務**：更新設備元件 (每隔 24 小時執行一次)。
 **支援的部署** | 使用 VHD 範本部署為 Hyper-V VM。<br/><br/> 使用 PowerShell 安裝指令碼部署為 Hyper-V VM 或實體機器。
 **專案支援** |  設備可以與單一專案相關聯。 <br/> 任意數目的設備可以與單一專案相關聯。<br/> 
@@ -82,7 +82,7 @@ _ *Hyper-v 需求** | 部署如果您使用 VHD 範本來部署設備，Azure Mi
 
 **需求** | **實體** 
 --- | ---
-**權限** | 若要在本機或遠端存取設備 Web 應用程式，您必須是網域系統管理員，或設備機器上的本機系統管理員。
+**權限** | 若要在本機或遠端存取設備 web 應用程式，您需要在設備伺服器上擁有具有系統管理許可權的本機或網域使用者帳戶。
 **設備元件** | 設備具有下列元件： <br/><br/> - **管理應用程式**：這是在設備部署期間用於使用者輸入的 Web 應用程式。 在評估要移轉至 Azure 的機器時會使用。<br/> - **探索代理程式**：代理程式會收集機器設定資料。 在評估要移轉至 Azure 的機器時會使用。<br/>- **收集器代理程式**：代理程式會收集效能資料。 在評估要移轉至 Azure 的機器時會使用。<br/>- **自動更新服務**：更新設備元件 (每隔 24 小時執行一次)。
 **支援的部署** | 使用 PowerShell 安裝指令碼，部署為專用的實體機器或 VM。 您可以從入口網站下載此指令碼。
 **專案支援** |  設備可以與單一專案相關聯。 <br/> 任意數目的設備可以與單一專案相關聯。<br/> 
@@ -230,7 +230,7 @@ NIC 寫入輸送量 (MB 每秒) | net.transmitted.average  |VM 大小的計算
 
 **Data**  | **PowerShell Cmdlet** | **屬性**
 --- | --- | ---
-名稱  | Get-WindowsFeature  | 名稱
+Name  | Get-WindowsFeature  | Name
 特徵類型 | Get-WindowsFeature  | FeatureType
 父代  | Get-WindowsFeature  | 父代
 
@@ -240,7 +240,7 @@ NIC 寫入輸送量 (MB 每秒) | net.transmitted.average  |VM 大小的計算
 
 **Data**  | **登錄位置**  | **金鑰**
 --- | --- | ---
-名稱  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL 伺服器 \ 實例 Names\SQL  | installedInstance
+Name  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL 伺服器 \ 實例 Names\SQL  | installedInstance
 版本  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | 版本 
 Service Pack  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | SP
 版本  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | 版本 
@@ -251,7 +251,7 @@ Service Pack  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceN
 
 資料  | WMI 類別  | WMI 類別屬性
 --- | --- | ---
-名稱  | Win32_operatingsystem  | 標題
+Name  | Win32_operatingsystem  | 標題
 版本  | Win32_operatingsystem  | 版本
 架構  | Win32_operatingsystem  | OSArchitecture
 
@@ -261,7 +261,7 @@ Service Pack  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceN
 
 資料  | 命令
 --- | --- 
-名稱 | rpm、dpkg-查詢、貼齊
+Name | rpm、dpkg-查詢、貼齊
 版本 | rpm、dpkg-查詢、貼齊
 提供者 | rpm、dpkg-查詢、貼齊
 
@@ -271,7 +271,7 @@ Service Pack  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceN
 
 **Data**  | **命令** 
 --- | --- | ---
-名稱 <br/> version | 從下列一或多個檔案收集：<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+Name <br/> version | 從下列一或多個檔案收集：<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
 架構 | uname
 
 

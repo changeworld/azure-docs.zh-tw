@@ -3,12 +3,12 @@ title: 準備 DPM 服務器來備份工作負載
 description: 在本文中，您將瞭解如何使用 Azure 備份服務來準備 System Center Data Protection Manager (DPM) 備份至 Azure。
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 0089c3d86eb36b82287570ecdfd6e8c782e6fb8a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 823b23d99959df5f2eed20cf4136254e1702fe89
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002849"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985626"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>準備使用 System Center DPM 將工作負載備份到 Azure
 
@@ -34,7 +34,7 @@ ms.locfileid: "96002849"
 - 針對內部部署 DPM，Azure 備份提供了長期部署至磁帶的替代方式。
 - 對於在 Azure VM 上執行的 DPM，Azure 備份可讓您卸載 Azure 磁碟中的儲存體。 在備份保存庫中儲存較舊的資料，可讓您將新資料儲存至磁碟，進而相應增加業務。
 
-## <a name="prerequisites-and-limitations"></a>必要條件和限制
+## <a name="prerequisites-and-limitations"></a>先決條件和限制
 
 **設定** | **需求**
 --- | ---
@@ -42,13 +42,13 @@ Azure VM 上的 DPM | System Center 2012 R2 (含 DPM 2012 R2 更新彙總套件 
 實體伺服器上的 DPM | System Center 2012 SP1 或更新版本；System Center 2012 R2。
 Hyper-V VM 上的 DPM | System Center 2012 SP1 或更新版本；System Center 2012 R2。
 VMware VM 上的 DPM | System Center 2012 R2 (含更新彙總套件 5 或更新版本)。
-元件 | DPM 服務器應安裝 Windows PowerShell 和 .NET Framework 4.5。
+單元 | DPM 服務器應安裝 Windows PowerShell 和 .NET Framework 4.5。
 支援的應用程式 | [了解](/system-center/dpm/dpm-protection-matrix) DPM 可備份的項目。
 支援的檔案類型 | 以下是可使用 Azure 備份來備份的檔案類型：<br> <li>加密 (只) 完整備份<li> 支援的壓縮 (增量備份)  <li> 支援的稀疏 (增量備份) <li> 壓縮和稀疏 (視為稀疏) 
 不支援的檔案類型 | <li>區分大小寫的檔案系統上的伺服器<li> 永久連結 (略過) <li>  (跳過的重新分析點) <li> 已略過加密和壓縮 () <li> 已略過加密和稀疏 () <li> 壓縮資料流<li> 剖析資料流程
 本機儲存體 | 您想要備份的每部機器都必須有本機可用儲存空間，其大小至少為要備份之資料大小的5%。 例如，備份 100GB 的資料時，在臨時位置中至少需要 5 GB 的可用空間。
 保存庫儲存體 | 您可以備份至 Azure 備份保存庫的資料量沒有限制，但是資料來源的大小 (例如虛擬機器或資料庫) 不應超過 54400 GB。
-Azure ExpressRoute | 您可以透過具有公用對等互連的 Azure ExpressRoute 備份資料 (適用于舊線路) 和 Microsoft 對等互連。 不支援透過私人對等互連進行備份。<br/><br/> **使用公用對等互連**：確定存取下列網域/位址：<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> **使用 Microsoft 對等互連時**，請選取下列服務/區域和相關的群組值：<br/><br/>-Azure Active Directory (12076:5060) <br/><br/>-根據復原服務保存庫的位置 (Microsoft Azure 區域) <br/><br/>-根據復原服務保存庫的位置 Azure 儲存體 () <br/><br/>如需詳細資訊，請參閱 [ExpressRoute 路由需求](../expressroute/expressroute-routing.md)。<br/><br/>**注意**：新電路的公用對等互連已被取代。
+Azure ExpressRoute | 您可以透過具有公用對等互連的 Azure ExpressRoute 備份資料 (適用于舊線路) 和 Microsoft 對等互連。 不支援透過私人對等互連進行備份。<br/><br/> **使用公用對等互連**：確定存取下列網域/位址：<br/><br/> URL：<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>`www.msftconnecttest.com`<br><br>IP 位址<br>  20.190.128.0/18 <br>  40.126.0.0/18<br> <br/>**使用 Microsoft 對等互連時**，請選取下列服務/區域和相關的群組值：<br/><br/>-Azure Active Directory (12076:5060) <br/><br/>-根據復原服務保存庫的位置 (Microsoft Azure 區域) <br/><br/>-根據復原服務保存庫的位置 Azure 儲存體 () <br/><br/>如需詳細資訊，請參閱 [ExpressRoute 路由需求](../expressroute/expressroute-routing.md)。<br/><br/>**注意**：新電路的公用對等互連已被取代。
 Azure 備份代理程式 | 如果 DPM 執行於 System Center 2012 SP1 上，請為 DPM SP1 安裝彙總套件 2 或更新版本。 這是代理程式安裝的必要條件。<br/><br/> 本文將說明如何部署最新版的 Azure 備份代理程式，也就是 Microsoft Azure 復原服務 (MARS) 代理程式。 如果您已部署舊版，請更新為最新版本，以確保備份可如預期運作。
 
 開始之前，您必須具有已啟用 Azure 備份功能的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 請閱讀 [Azure 備份定價](https://azure.microsoft.com/pricing/details/backup/)。

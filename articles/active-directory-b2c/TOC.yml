@@ -452,6 +452,8 @@
           href: user-migration.md
 - name: 參考
   items:
+    - name: 服務限制
+      href: service-limits.md
     - name: 應用程式註冊
       href: app-registrations-training-guide.md
     - name: 計費模式

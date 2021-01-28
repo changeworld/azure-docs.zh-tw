@@ -3,12 +3,12 @@ title: 在 Azure Stack 上安裝 Azure 備份伺服器
 description: 在本文中，您將了解如何使用 Azure 備份伺服器來保護或備份 Azure Stack 中的工作負載。
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 7153e2ff03a4f78ee1cc92ca04054fb2955d11a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12dfd15c2bd43816dd361fdf45995bcbcd6fba56
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970230"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98987000"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>在 Azure Stack 上安裝 Azure 備份伺服器
 
@@ -64,7 +64,7 @@ Azure Stack 工作負載中使用的所有虛擬機器必須屬於同一個 Azur
 Azure 備份伺服器會將備份資料儲存在連結至虛擬機器的 Azure 磁碟上，以復原作業。 在磁碟與儲存空間連結到虛擬機器後，Azure 備份伺服器便會為您管理存放區。 備份資料存放區的數量視連結到每個 [Azure Stack 虛擬機器](/azure-stack/user/azure-stack-storage-overview)的磁碟數目和大小而定。 每個 Azure Stack VM 的大小，均有可連結至虛擬機器的磁碟數目上限。 例如，A2 是四個磁碟。 A3 是八個磁碟。 A4 是 16 個磁碟。 同樣地，磁碟的大小和數目決定了總備份存放集區。
 
 > [!IMPORTANT]
-> 您**不應該**將作業復原 (備份) 資料保留在 Azure 備份伺服器連結的磁碟上超過五天。
+> 您 **不應該** 將作業復原 (備份) 資料保留在 Azure 備份伺服器連結的磁碟上超過五天。
 >
 
 將備份資料儲存在 Azure 中，會縮小 Azure Stack 上的備份基礎結構。 如果資料超過五天，請儲存到 Azure 中。
@@ -112,7 +112,7 @@ Azure 備份伺服器一律加入網域。 如果您需要將 Azure 備份伺服
 若要編輯儲存體複寫設定︰
 
 1. 選取保存庫以開啟保存庫儀表板和 [設定] 功能表。 如果未開啟 [ **設定** ] 功能表，請選取保存庫儀表板中的 **所有設定** 。
-2. 在 [**設定**] 功能表上，選取 [**備份基礎結構**  >  **備份**設定] 以開啟 [**備份**設定] 功能表。 在 [備份組態]  功能表上，選擇保存庫的儲存體複寫選項。
+2. 在 [**設定**] 功能表上，選取 [**備份基礎結構**  >  **備份** 設定] 以開啟 [**備份** 設定] 功能表。 在 [備份組態]  功能表上，選擇保存庫的儲存體複寫選項。
 
     ![備份保存庫的清單](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
@@ -135,7 +135,7 @@ Azure 備份伺服器一律加入網域。 如果您需要將 Azure 備份伺服
 
     ![選取您的保存庫以開啟儀表板](./media/backup-mabs-install-azure-stack/rs-vault-dashboard.png)
 
-5. 在保存庫的 [消費者入門] 功能表中，選取 [ **備份** ] 以開啟消費者入門 wizard。
+5. 在保存庫的 [開始使用] 功能表中，選取 [ **備份** ] 以開啟開始使用 wizard。
 
     ![備份開始使用](./media/backup-mabs-install-azure-stack/getting-started-backup.png)
 
@@ -217,7 +217,7 @@ Azure 備份伺服器與 Data Protection Manager 共用程式碼。 您會在 Az
 
     ![Azure 備份伺服器-必要條件檢查](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-7.png)
 
-    如果您的環境具有必要的必要條件，您會看到一則訊息，指出電腦符合需求。 選取 [下一步]  。  
+    如果您的環境具有必要的必要條件，您會看到一則訊息，指出電腦符合需求。 選取 [下一步] 。  
 
     ![Azure 備份伺服器 - 必要條件檢查通過](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-passed-8.png)
 
@@ -277,7 +277,7 @@ Azure 備份伺服器與 Data Protection Manager 共用程式碼。 您會在 Az
 
     ![代理程式安裝已成功完成](./media/backup-mabs-install-azure-stack/mabs-install-wizard-complete-16.png)
 
-    安裝程式會啟動**註冊伺服器精靈**。
+    安裝程式會啟動 **註冊伺服器精靈**。
 
 12. 切換至您的 Azure 訂用帳戶和您的復原服務保存庫。 在 [ **準備基礎結構** ] 功能表中，選取 [ **下載** ] 以下載保存庫認證。 如果步驟2中的 [ **下載** ] 按鈕未啟用，請選取 **[已下載] 或使用最新的 Azure 備份伺服器安裝** 來啟用按鈕。 保存庫認證會下載到您儲存下載項目的位置。 請注意此位置，因為下一個步驟需要此位置。
 
@@ -312,7 +312,7 @@ Azure 備份伺服器與 Data Protection Manager 共用程式碼。 您會在 Az
 第一個備份複本會保存在連接至 Azure 備份伺服器機器的儲存體上。 如需新增磁碟的詳細資訊，請參閱[新增新式備份儲存體](/system-center/dpm/add-storage)。
 
 > [!NOTE]
-> 即使您打算將資料傳送至 Azure，也必須新增備份儲存體。 在「Azure 備份伺服器」架構中，復原服務保存庫會保存資料的*第二個*資料複本，而本機儲存體則是保存第一個 (必要的) 備份複本。
+> 即使您打算將資料傳送至 Azure，也必須新增備份儲存體。 在「Azure 備份伺服器」架構中，復原服務保存庫會保存資料的 *第二個* 資料複本，而本機儲存體則是保存第一個 (必要的) 備份複本。
 >
 >
 
@@ -335,22 +335,28 @@ Azure 備份伺服器需要連線至 Azure 備份服務，產品才能順利運�
 
 ### <a name="recovering-from-loss-of-connectivity"></a>從連線中斷的情況復原
 
-如果防火牆或 Proxy 阻止存取 Azure，請將下列網域位址加入防火牆/Proxy 設定檔允許清單中：
+如果您的電腦具有有限的網際網路存取權，請確定電腦或 proxy 上的防火牆設定允許下列 Url 和 IP 位址：
 
-- `http://www.msftncsi.com/ncsi.txt`
-- \*.Microsoft.com
-- \*.WindowsAzure.com
-- \*.microsoftonline.com
-- \*.windows.net
+* URL
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP 位址
+  * 20.190.128.0/18
+  * 40.126.0.0/18
+
 
 在 Azure 的連線還原至 Azure 備份伺服器之後，Azure 訂用帳戶狀態決定可以執行的操作。 當伺服器為 [已連線] 之後，請使用 [[網路連線]](backup-mabs-install-azure-stack.md#network-connectivity) 中的表格以查看可用操作。
 
 ### <a name="handling-subscription-states"></a>處理訂用帳戶狀態
 
-您可以將 Azure 訂用帳戶從 [已過期] 或 [已取消佈建] 狀態變更為 [使用中] 狀態。 當訂用帳戶狀態 *為非作用*中時：
+您可以將 Azure 訂用帳戶從 [已過期] 或 [已取消佈建] 狀態變更為 [使用中] 狀態。 當訂用帳戶狀態 *為非作用* 中時：
 
 - 訂用帳戶為 [已取消佈建]，其功能無法運作。 將訂用帳戶還原至 [使用中]，恢復備份/還原功能。 如果本機磁碟上的備份資料保留了足夠長的保留期限，可以擷取備份資料。 不過，一旦訂用帳戶進入 [已取消佈建] 狀態，Azure 中的備份資料便會遺失而無法復原。
-- 訂用帳戶為 [已過期]，其功能無法運作。 排程的備份在訂用帳戶 *過期*時不會執行。
+- 訂用帳戶為 [已過期]，其功能無法運作。 排程的備份在訂用帳戶 *過期* 時不會執行。
 
 ## <a name="troubleshooting"></a>疑難排解
 

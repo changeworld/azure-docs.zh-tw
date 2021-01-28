@@ -3,12 +3,12 @@ title: Azure 備份伺服器 V3 RTM 可以備份的內容
 description: 本文提供保護矩陣，其中列出 Azure 備份服務 V3 RTM 保護的所有工作負載、資料類型和安裝。
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: c1a1a876a9249a32c87c50d7f320a62b9c478caf
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 1ec8240844061b9b250a3cbf92ffcc5f2b3f474b
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752374"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986882"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure 備份伺服器 V3 RTM 保護對照表
 
@@ -86,11 +86,16 @@ ms.locfileid: "96752374"
 
 使用公用對等互連：確定存取下列網域/位址：
 
-* `http://www.msftncsi.com/ncsi.txt`
-* `microsoft.com`
-* `.WindowsAzure.com`
-* `.microsoftonline.com`
-* `.windows.net`
+* URL
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP 位址
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
 使用 Microsoft 對等互連時，請選取下列服務/區域和相關的群組值：
 

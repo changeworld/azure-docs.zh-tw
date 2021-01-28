@@ -3,12 +3,12 @@ title: MABS & System Center DPM 支援矩陣
 description: 本文摘要說明當您使用 Microsoft Azure 備份 Server (MABS) 或 System Center DPM 來備份內部部署和 Azure VM 資源時的 Azure 備份支援。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0180135da793aaf7869441ee290f6125ea88fc88
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: aaa68dba0bbd1f3f5ffb5480a2bdb0a48ae85656
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276965"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986051"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>使用 Microsoft Azure 備份 Server 或 System Center DPM 進行備份的支援矩陣
 
@@ -84,7 +84,7 @@ Azure 備份可以備份正在執行下列任何作業系統的 DPM/MABS 實例�
 --- | ---
 **安裝** | 在單一用途的電腦上安裝 DPM/MABS。<br/><br/> 請勿在網域控制站上、執行 Microsoft Exchange Server 或 System Center Operations Manager 的電腦上，或在叢集節點上安裝 DPM/MABS。<br/><br/> [檢查所有 DPM 系統需求](/system-center/dpm/prepare-environment-for-dpm#dpm-server)。
 **網域** | DPM/MABS 應該加入網域。 請先安裝 DPM/MABS，再將其加入網域。 不支援在部署之後將 DPM/MABS 移至新網域。
-**存放裝置** | DPM 2016/MABS v2 和更新版本支援新式備份儲存體 (MB) 。 MBS 不適用於 MABS v1。
+**儲存體** | DPM 2016/MABS v2 和更新版本支援新式備份儲存體 (MB) 。 MBS 不適用於 MABS v1。
 **MABS 升級** | 您可以直接安裝 MABS v3，或是從 MABS v2 升級至 MABS v3。 [深入了解](backup-azure-microsoft-azure-backup.md#upgrade-mabs)。
 **移動 MABS** | 使用 MABS 時，支援將 MABS 移至新伺服器，同時保留儲存體。<br/><br/> 伺服器必須與原始伺服器同名。 如果您想要保留相同的儲存體集區，並使用相同的 MABS 資料庫來儲存資料復原點，則不可變更名稱。<br/><br/> 您將需要 MABS 資料庫的備份，因為您需要加以還原。
 
@@ -111,13 +111,18 @@ Azure 備份可以備份正在執行下列任何作業系統的 DPM/MABS 實例�
 
 ### <a name="url-access"></a>URL 存取
 
-DPM 伺服器/MABS 需要存取下列 URL：
+DPM 服務器/MABS 伺服器需要存取這些 Url 和 IP 位址：
 
-- `http://www.msftncsi.com/ncsi.txt`
-- `*.Microsoft.com`
-- `*.WindowsAzure.com`
-- `*.microsoftonline.com`
-- `*.windows.net`
+* URL
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP 位址
+  * 20.190.128.0/18
+  * 40.126.0.0/18：
 
 ### <a name="azure-expressroute-support"></a>Azure ExpressRoute 支援
 
@@ -125,11 +130,16 @@ DPM 伺服器/MABS 需要存取下列 URL：
 
 使用公用對等互連：確定存取下列網域/位址：
 
-- `http://www.msftncsi.com/ncsi.txt`
-- `microsoft.com`
-- `.WindowsAzure.com`
-- `.microsoftonline.com`
-- `.windows.net`
+* URL
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP 位址
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
 使用 Microsoft 對等互連時，請選取下列服務/區域和相關的群組值：
 
@@ -164,7 +174,7 @@ DPM 伺服器/MABS 需要存取下列 URL：
 
 備份至 DPM/MABS 的資料會儲存在本機磁片儲存體上。
 
-**存放裝置** | **詳細資料**
+**儲存體** | **詳細資料**
 --- | ---
 **MBS** | DPM 2016/MABS v2 和更新版本支援新式備份儲存體 (MB) 。 MBS 不適用於 MABS v1。
 **Azure VM 上的 MABS 儲存體** | 資料會儲存在連接至 DPM/MABS VM 的 Azure 磁片上，並在 DPM/MABS 中進行管理。 可用於 DPM/MABS 存放集區的磁片數目受限於 VM 的大小。<br/><br/> A2 VM：4個磁片;A3 VM：8個磁片;A4 VM：16個磁片，每個磁片的大小上限為 1 TB。 這會決定可用的備份存放集區總數。<br/><br/> 您可以備份的資料量取決於連結的磁碟數目和大小。
@@ -190,7 +200,7 @@ DPM 伺服器/MABS 需要存取下列 URL：
 - DPM/MABS 備份的叢集工作負載應位於與 DPM/MABS 相同的網域中，或位於子域/受信任的網域中。
 - 您可以使用 NTLM/憑證驗證，在不受信任的網域或工作群組中備份資料。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [深入了解](backup-architecture.md#architecture-back-up-to-dpmmabs) MABS 架構。
 - [檢閱](backup-support-matrix-mars-agent.md) MARS 代理程式支援的作業。

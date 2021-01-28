@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 6fb2e5c0193bc4e66f8fb4215732a69c43731146
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 5f70f74accba5df439351547fda7497656e2c06e
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756621"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986678"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>如何在法規合規性儀表板中自訂一組標準
 
@@ -73,9 +73,11 @@ Microsoft 會自行追蹤法規標準，並在一段時間內自動改善部分�
 
     - **NIST SP 800-53 R4**
     - **NIST SP 800 171 R2**
-    - **SWIFT CSP CSCF-v2020**
+    - **SWIFT CSP CSCF v2020**
     - **UKO 和 UK NHS**
-    - **加拿大 PBMM**
+    - **加拿大聯邦 PBMM**
+    - **HIPAA HITRUST**
+    - **Azure CIS 1.1.0**
     
     ![將法規標準新增至 Azure 資訊安全中心的法規合規性儀表板](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
 
@@ -88,8 +90,7 @@ Microsoft 會自行追蹤法規標準，並在一段時間內自動改善部分�
     > [!NOTE]
     > 新增的標準可能需要幾個小時的時間，才會出現在合規性儀表板中。
 
-    [![顯示舊版和新版 Azure CIS 的法規合規性儀表板](media/update-regulatory-compliance-packages/regulatory-compliance-dashboard-with-benchmark-small.png)](media/update-regulatory-compliance-packages/regulatory-compliance-dashboard-with-benchmark.png#lightbox)
-
+    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="法規合規性儀表板" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
 
 ## <a name="removing-a-standard-from-your-dashboard"></a>從儀表板移除標準
 
@@ -115,7 +116,7 @@ Microsoft 會自行追蹤法規標準，並在一段時間內自動改善部分�
 1. 選取 [是]  。 將會移除標準。 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在本文中，您已瞭解如何 **新增合規性標準** ，以根據法規和產業標準來監視您的合規性。
 

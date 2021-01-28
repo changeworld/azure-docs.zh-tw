@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 63fbac0919e06b29377afacaaa5708d195c6b319
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5ecf9e49887eb584269f724d5199cbfb014351e0
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98887194"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986848"
 ---
 # <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>在 VNET 中執行 Azure 春季 Cloud 的客戶責任
 本檔包含在虛擬網路中使用 Azure 春季 Cloud 的規格。
@@ -57,6 +57,9 @@ Azure 防火牆會提供完整的功能變數名稱 (FQDN) 標記 **AzureKuberne
   | <i>login.microsoftonline.com</i> | HTTPS:443 | Azure Active Directory 驗證。 |
   |<i>packages.microsoft.com</i>    | HTTPS:443 | Microsoft 套件存放庫。 |
   | <i>acs-mirror.azureedge.net</i> | HTTPS:443 | 安裝必要二進位檔（例如 kubenet 和 Azure CNI）所需的存放庫。 |
+  | *mscrl.microsoft.com* | HTTPS：80 | 必要的 Microsoft 憑證鏈路徑。 |
+  | *crl.microsoft.com* | HTTPS：80 | 必要的 Microsoft 憑證鏈路徑。 |
+  | *crl3.digicert.com* | HTTPS：80 | 協力廠商 SSL 憑證鏈路徑。 |
 
 ## <a name="see-also"></a>另請參閱
 * [在私人網路中存取您的應用程式](spring-cloud-access-app-virtual-network.md)

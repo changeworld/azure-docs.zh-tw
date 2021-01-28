@@ -3,12 +3,12 @@ title: MARS 代理程式的支援矩陣
 description: 本文摘要說明當您備份執行 Microsoft Azure 復原服務 (MARS) 代理程式之電腦的 Azure 備份支援。
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 26a47c2648d1307d2e7da2b25455f3f036cbf32d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2170440b7b47861b75801b8dbd334686b4cabc8b
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997234"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985609"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 復原服務 (MARS) 代理程式進行備份的支援矩陣
 
@@ -59,6 +59,7 @@ MARS 伺服器需要存取這些 URL：
 - *.WindowsAzure.com
 - *.MicrosoftOnline.com
 - *.Windows.net
+- `www.msftconnecttest.com`
 
 以及這些 IP 位址：
 
@@ -82,11 +83,16 @@ MARS 伺服器需要存取這些 URL：
 
 使用公用對等互連：確定存取下列網域/位址：
 
-- `http://www.msftncsi.com/ncsi.txt`
-- `microsoft.com`
-- `.WindowsAzure.com`
-- `.microsoftonline.com`
-- `.windows.net`
+* URL
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP 位址
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
 使用 Microsoft 對等互連時，請選取下列服務/區域和相關的群組值：
 
@@ -192,7 +198,7 @@ Windows 7| 1,700 GB
 Compressed | 支援。
 疏鬆 | 支援。
 已壓縮和疏鬆 |支援。
-永久連結| 不支援。 跳。
+硬式連結| 不支援。 跳。
 重新分析點| 不支援。 跳。
 加密和疏鬆 |不支援。 跳。
 壓縮資料流| 不支援。 跳。
@@ -206,12 +212,12 @@ OneDrive (同步處理的檔案是稀疏資料流程) | 不支援。
 
 **磁碟機/磁碟區** | **支援** | **詳細資料**
 --- | --- | ---
-唯讀磁碟區| 不受支援 | 磁片區陰影複製服務 (VSS) 只有在磁片區可寫入時才能運作。
-離線磁碟區| 不受支援 |只有當磁片區在線上時，VSS 才能運作。
-網路共用| 不受支援 |磁片區必須是伺服器上的本機磁片區。
-BitLocker 鎖定的磁片區| 不受支援 |磁片區必須先解除鎖定，才能開始備份。
-檔案系統識別| 不受支援 |僅支援 NTFS。
-卸除式媒體| 不受支援 |所有備份專案來源都必須有 *固定* 狀態。
+唯讀磁碟區| 不支援 | 磁片區陰影複製服務 (VSS) 只有在磁片區可寫入時才能運作。
+離線磁碟區| 不支援 |只有當磁片區在線上時，VSS 才能運作。
+網路共用| 不支援 |磁片區必須是伺服器上的本機磁片區。
+BitLocker 鎖定的磁片區| 不支援 |磁片區必須先解除鎖定，才能開始備份。
+檔案系統識別| 不支援 |僅支援 NTFS。
+卸除式媒體| 不支援 |所有備份專案來源都必須有 *固定* 狀態。
 刪除重複資料的磁碟機 | 支援 | Azure 備份會將刪除重複資料的資料轉換成一般資料。 它會將資料優化、加密、儲存，並將資料傳送至保存庫。
 
 ## <a name="support-for-initial-offline-backup"></a>支援初始離線備份
@@ -229,7 +235,7 @@ Azure 備份支援 *離線植* 入，以使用磁片將初始備份資料傳輸�
 
 備份無法還原到執行舊版作業系統的目的電腦。 例如，從執行 Windows 7 的電腦建立的備份可以在 Windows 8 或更新版本上還原。 但是，在執行 Windows 7 的電腦上，從執行 Windows 8 的電腦上所建立的備份無法還原。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 深入瞭解 [使用 MARS 代理程式的備份架構](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders)。
 - 瞭解當您 [在 MABS 或 DPM 服務器上執行 MARS 代理程式](backup-support-matrix-mabs-dpm.md)時所支援的功能。

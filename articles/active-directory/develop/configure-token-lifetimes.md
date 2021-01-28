@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 2529c6c3b0f9d188e1ce8062c05f62f3e980ef50
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 19330af5e4c0e4962993d0ed89ec9bcd4a50514a
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805227"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986408"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a> (預覽版設定權杖存留期原則) 
 您可以指定 Microsoft 身分識別平臺所發出的存取、SAML 或識別碼權杖的存留期。 不論是針對組織中所有的應用程式、針對多租用戶 (多組織) 應用程式，還是針對組織中特定的服務主體，都可以設定權杖存留期。 如需詳細資訊，請參閱可設定的 [權杖存留期](active-directory-configurable-token-lifetimes.md)。
@@ -38,7 +38,7 @@ ms.locfileid: "98805227"
 1. 若要查看在您的組織中建立的所有原則，請執行 [new-azureadpolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) Cmdlet。  具有已定義屬性值（不同于上述預設值）的任何結果都在淘汰範圍內。
 
     ```powershell
-    Get-AzureADPolicy -All
+    Get-AzureADPolicy -All $true
     ```
 
 1. 若要查看哪些應用程式和服務主體連結到您所識別的特定原則，請將 **1a37dad8-5da7-4cc8-87c7-efbc0326cf20** 取代為任何原則識別碼來執行下列 [>get-azureadpolicyappliedobject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) Cmdlet。 然後您可以決定是否要設定條件式存取登入頻率，或保留 Azure AD 預設值。
@@ -210,5 +210,5 @@ ms.locfileid: "98805227"
 
     現在，原始原則已連結至您的服務主體，且新原則已設定為您的組織預設原則。 請務必記住，套用至服務主體的原則優先順序會高於組織預設原則。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 瞭解 Azure AD 條件式存取中的 [驗證會話管理功能](../conditional-access/howto-conditional-access-session-lifetime.md) 。
