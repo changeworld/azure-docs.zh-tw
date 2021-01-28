@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight 中的 LDAP 同步處理 Ranger 和 Apache Ambari
 description: 處理 Ranger 和 Ambari 中的 LDAP 同步處理，並提供一般指導方針。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 0779ac261fbb4ee91bf63021bb0cc685a371c2b2
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: fb9035b4d816c1af84b15e6865335aa1bdf86f5b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93234064"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933408"
 ---
 # <a name="ldap-sync-in-ranger-and-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight 中的 LDAP 同步處理 Ranger 和 Apache Ambari
 
@@ -75,7 +72,7 @@ Ranger 使用者同步可能會在前端節點中發生。 記錄檔位於 `/var
 * 如果組名有 unicode 字元，則 Ranger 同步會無法同步處理該物件。 如果使用者屬於具有國際字元的群組，Ranger 會同步處理部分群組成員資格
 * 使用者名稱 (sAMAccountName) 和組名 (名稱) 必須是長度超過20個字元。 如果組名較長，則在計算許可權時，系統會將使用者視為不屬於群組。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [Azure HDInsight 中的驗證問題](./domain-joined-authentication-issues.md)
 * [將 Azure AD 使用者同步處理至 HDInsight 叢集](../hdinsight-sync-aad-users-to-cluster.md)

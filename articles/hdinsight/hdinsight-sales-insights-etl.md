@@ -1,19 +1,16 @@
 ---
 title: 教學課程：在 Azure HDInsight 中建立端對端 ETL 管線以衍生 Sales Insights
 description: 了解如何搭配 Azure HDInsight 使用建立 ETL 管線，以使用 Spark 隨選叢集和 Power BI 從銷售資料衍生見解。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/15/2020
-ms.openlocfilehash: 1031c34a44a253c7458ef78c6371b88014e882ed
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
-ms.translationtype: HT
+ms.openlocfilehash: 7d026d93ebe6f6a0bd9afbd277294d58d7a2a69b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746466"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932042"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>教學課程：在 Azure HDInsight 中建立端對端資料管線以衍生 Sales Insights
 

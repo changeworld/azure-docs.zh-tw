@@ -1,19 +1,16 @@
 ---
 title: 搭配使用 HDInsight 上的 Apache Kafka 與 Azure IoT 中樞
 description: 了解如何搭配使用 HDInsight 上的 Apache Kafka 與 Azure IoT 中樞。 Kafka Connect Azure IoT 中樞專案提供 Kafka 的來源和接收連接器。 來源連接器可從 IoT 中樞讀取資料，接收連接器則可寫入 IoT 中樞。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/26/2019
-ms.openlocfilehash: 0722119b35ecebf3ed1e7a377707de02a6c127bf
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 7980003dd63e5e51d87f85542029a1f25e7223df
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825194"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932876"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>搭配使用 HDInsight 上的 Apache Kafka 與 Azure IoT 中樞
 
@@ -29,7 +26,7 @@ Kafka Connect API 可讓您實作持續將資料提取到 Kafka 中，或將資�
 
 如需 Connect API 的詳細資訊，請參閱 [https://kafka.apache.org/documentation/#connect](https://kafka.apache.org/documentation/#connect) 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * HDInsight 上的 Apache Kafka 叢集。 如需詳細資訊，請參閱 [HDInsight 上的 Kafka 快速入門](apache-kafka-get-started.md)文件。
 
@@ -123,7 +120,7 @@ Kafka Connect API 可讓您實作持續將資料提取到 Kafka 中，或將資�
     |`bootstrap.servers=localhost:9092`|將值取代為 `localhost:9092` 上一個步驟中的訊息代理程式主機|設定邊緣節點的獨立設定，以尋找 Kafka 訊息代理程式。|
     |`key.converter=org.apache.kafka.connect.json.JsonConverter`|`key.converter=org.apache.kafka.connect.storage.StringConverter`|此變更可讓您使用隨附於 Kafka 的主控台產生者進行測試。 對於其他產生者和取用者，您可能需要不同的轉換器。 如需使用其他轉換器值的詳細資訊，請參閱 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) 。|
     |`value.converter=org.apache.kafka.connect.json.JsonConverter`|`value.converter=org.apache.kafka.connect.storage.StringConverter`|同上。|
-    |N/A|`consumer.max.poll.records=10`|新增至檔案結尾。 此變更可將接收連接器限定為一次 10 筆記錄以內，以防止連接器逾時。 如需詳細資訊，請參閱 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) \(英文\)。|
+    |N/A|`consumer.max.poll.records=10`|新增至檔案結尾。 此變更可將接收連接器限定為一次 10 筆記錄以內，以防止連接器逾時。 如需詳細資訊，請參閱 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。|
 
 1. 若要儲存檔案，請使用 __Ctrl + X__、__Y__ 和 __Enter__ 鍵。
 

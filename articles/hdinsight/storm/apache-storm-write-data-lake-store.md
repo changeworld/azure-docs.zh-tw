@@ -2,18 +2,15 @@
 title: 教學課程：HDInsight Apache Storm 至儲存體 - Azure/Data Lake
 description: 教學課程 - 了解如何使用 Apache Storm 寫入 Azure HDInsight 的 HDFS 相容儲存體。
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
-ms.openlocfilehash: 8cdcc60e6eeec22e202d670c3fc057711bd432a6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
-ms.translationtype: HT
+ms.openlocfilehash: 4e648c57be699620e669ce7db0845dad2b876095
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545441"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932555"
 ---
 # <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>教學課程：從 Azure HDInsight 上的 Apache Storm 寫入 Apache Hadoop HDFS
 
@@ -160,7 +157,7 @@ bolts:
     hdfs.url: wasbs:///
     ```
 
-    若要儲存檔案，使用 __Ctrl + X__ ，然後是 __Y__ ，最後按 __Enter__ 。 此檔案中的值會設定儲存體 URL，以及要寫入資料的目錄名稱。
+    若要儲存檔案，使用 __Ctrl + X__，然後是 __Y__，最後按 __Enter__。 此檔案中的值會設定儲存體 URL，以及要寫入資料的目錄名稱。
 
 1. 使用下列命令來啟動拓撲：
 

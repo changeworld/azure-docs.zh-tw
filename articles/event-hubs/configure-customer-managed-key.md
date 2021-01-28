@@ -3,20 +3,15 @@ title: 設定您自己的金鑰來加密待用 Azure 事件中樞資料
 description: 本文提供有關如何設定您自己的金鑰來加密 Azure 事件中樞資料 rest 的資訊。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 095def84c5ab5e4dac7802027468b67eefb3161f
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 00e33bc3464aed1829968b7957e48455eaa04447
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625376"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933787"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>使用 Azure 入口網站，設定客戶管理的金鑰來加密 Azure 事件中樞待用資料
-Azure 事件中樞使用 Azure 儲存體的服務加密 (Azure SSE) 提供待用資料加密。 事件中樞依賴 Azure 儲存體儲存資料，而以 Azure 儲存體儲存的所有資料都會使用 Microsoft 管理的金鑰進行加密。 
-
-## <a name="overview"></a>概觀
-Azure 事件中樞現在支援使用 Microsoft 管理的金鑰或由客戶管理的金鑰來加密待用資料的選項， (攜帶您自己的金鑰– BYOK) 。 這項功能可讓您建立、輪替、停用及撤銷客戶管理金鑰的存取權，這些金鑰是用來加密待用 Azure 事件中樞資料。
-
-啟用 BYOK 功能是您的命名空間上的一次性設定程式。
+Azure 事件中樞使用 Azure 儲存體的服務加密 (Azure SSE) 提供待用資料加密。 事件中樞服務會使用 Azure 儲存體來儲存資料。 使用 Azure 儲存體儲存的所有資料都會使用 Microsoft 管理的金鑰進行加密。 如果您使用自己的金鑰 (也稱為攜帶您自己的金鑰 (BYOK) 或客戶管理的金鑰) ，則資料仍會使用受 Microsoft 管理的金鑰進行加密，但此外，使用客戶管理的金鑰將會加密 Microsoft 管理的金鑰。 這項功能可讓您建立、輪替、停用及撤銷客戶管理金鑰的存取權，這些金鑰是用來加密 Microsoft 管理的金鑰。 啟用 BYOK 功能是您的命名空間上的一次性設定程式。
 
 > [!NOTE]
 > [事件中樞專用的單一租](event-hubs-dedicated-overview.md)使用者叢集支援 BYOK 功能。 標準事件中樞命名空間無法啟用此功能。
@@ -62,7 +57,7 @@ Azure 事件中樞現在支援使用 Microsoft 管理的金鑰或由客戶管理
     1. 您現在可以從下拉式清單選取此索引鍵，以與事件中樞命名空間產生關聯以進行加密。 
 
         ![從 key vault 選取金鑰](./media/configure-customer-managed-key/select-key-from-key-vault.png)
-    1. 填入金鑰的詳細資料，然後按一下 [ **選取**]。 這可讓您使用客戶管理的金鑰來加密命名空間上的待用資料。 
+    1. 填入金鑰的詳細資料，然後按一下 [ **選取**]。 這可讓您使用金鑰 (客戶管理的金鑰) 來加密 Microsoft 管理的金鑰。 
 
 
 ## <a name="rotate-your-encryption-keys"></a>輪替加密金鑰
@@ -74,7 +69,7 @@ Azure 事件中樞現在支援使用 Microsoft 管理的金鑰或由客戶管理
 撤銷加密金鑰之後，加密命名空間上的事件中樞服務將變成無法運作。 如果已啟用金鑰的存取權，或已還原 delete 鍵，事件中樞服務將會挑選金鑰，讓您可以從加密的事件中樞命名空間存取資料。
 
 ## <a name="set-up-diagnostic-logs"></a>設定診斷記錄 
-針對已啟用 BYOK 的命名空間設定診斷記錄，可在命名空間使用客戶管理的金鑰進行加密時，提供有關作業的必要資訊。 這些記錄可以啟用，並于稍後串流至事件中樞，或透過 log analytics 分析或串流至儲存體，以執行自訂分析。 若要深入瞭解診斷記錄，請參閱 [Azure 診斷記錄的總覽](../azure-monitor/platform/platform-logs-overview.md)。
+針對啟用 BYOK 的命名空間設定診斷記錄，可提供作業所需的相關資訊。 這些記錄可以啟用，並于稍後串流至事件中樞，或透過 log analytics 分析或串流至儲存體，以執行自訂分析。 若要深入瞭解診斷記錄，請參閱 [Azure 診斷記錄的總覽](../azure-monitor/platform/platform-logs-overview.md)。
 
 ## <a name="enable-user-logs"></a>啟用使用者記錄
 請遵循下列步驟，為客戶管理的金鑰啟用記錄。

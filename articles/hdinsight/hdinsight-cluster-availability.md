@@ -1,19 +1,16 @@
 ---
 title: 如何在 Azure HDInsight 中使用 Apache Ambari 監視叢集可用性
 description: 瞭解如何使用 Apache Ambari 來監視叢集健康情況和可用性。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/01/2020
-ms.openlocfilehash: 5cfc2abad828a3974c04074a4cde062a479f673f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 34f752d4c3d50d5f680e317b2724b1e631537f32
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533558"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933202"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-in-azure-hdinsight"></a>如何在 Azure HDInsight 中使用 Apache Ambari 監視叢集可用性
 
@@ -23,7 +20,7 @@ HDInsight 叢集包含 Apache Ambari，可提供健全狀況資訊一覽和預�
 
 ## <a name="dashboard"></a>儀表板
 
-Ambari 儀表板的存取方式，是在 Azure 入口網站中的 [HDInsight 總覽] 的 [叢集 **儀表板** ] 區段中選取 [ **Ambari 首頁** ] 連結，如下所示。 或者，您也可以藉由 `https://CLUSTERNAME.azurehdinsight.net` 在瀏覽器中流覽至 CLUSTERNAME 是您的叢集名稱來存取它。
+Ambari 儀表板的存取方式，是在 Azure 入口網站中的 [HDInsight 總覽] 的 [叢集 **儀表板**] 區段中選取 [ **Ambari 首頁**] 連結，如下所示。 或者，您也可以藉由 `https://CLUSTERNAME.azurehdinsight.net` 在瀏覽器中流覽至 CLUSTERNAME 是您的叢集名稱來存取它。
 
 ![HDInsight 資源入口網站視圖](media/hdinsight-cluster-availability/azure-portal-dashboard-ambari.png)
 
@@ -84,7 +81,7 @@ Ambari 提供許多與可用性相關的預先定義警示，包括：
 > [!TIP]
 > 設定 Ambari 電子郵件通知在管理許多 HDInsight 叢集時，可能是在一個地方接收警示的好方法。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [HDInsight 中 Apache Hadoop 叢集的可用性和可靠性](./hdinsight-business-continuity.md)
 - [叢集可用性 - Azure 監視器記錄](./cluster-availability-monitor-logs.md)

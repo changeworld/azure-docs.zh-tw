@@ -2,19 +2,17 @@
 title: 將叢集遷移至較新的版本
 titleSuffix: Azure HDInsight
 description: 瞭解將 Azure HDInsight 叢集遷移至較新版本的指導方針。
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/31/2020
-ms.openlocfilehash: f3bfd430023330d3a399a0a760fd353b6ee60941
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04da5d668515fe96d50d4e6a7d0f5ff1c4c48c27
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085883"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931387"
 ---
 # <a name="migrate-hdinsight-cluster-to-a-newer-version"></a>將 HDInsight 叢集遷移至更新的版本
 
@@ -53,7 +51,7 @@ ms.locfileid: "86085883"
 
 如需有關資料庫備份和還原的詳細資訊，請參閱 [使用自動資料庫備份復原 Azure SQL Database 中的資料庫](../azure-sql/database/recovery-using-backups.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [了解如何建立 Linux 型 HDInsight 叢集](hdinsight-hadoop-provision-linux-clusters.md)
 * [使用 SSH 連線到 HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)

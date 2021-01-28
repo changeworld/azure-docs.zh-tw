@@ -5,14 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: nisgoel
 ms.author: nisgoel
-ms.reviewer: jasonh
 ms.date: 10/05/2020
-ms.openlocfilehash: 107ec012bf2ff76ee1cbe4c5f8252566a5a16127
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: cd7e6a7f13f6cccb5be5d23d69c2a44fc655cf55
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288929"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930959"
 ---
 # <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>案例： Apache Hive 記錄檔將會填滿前端節點上的磁碟空間 Azure HDInsight
 
@@ -23,7 +22,7 @@ ms.locfileid: "93288929"
 在 Apache Hive/LLAP 叢集上，不需要的記錄會佔用前端節點上的整個磁碟空間。 這種情況可能會導致下列問題：
 
 - SSH 存取失敗，因為前端節點上沒有空格。
-- Ambari 擲回 *HTTP 錯誤：503服務無法使用* 。
+- Ambari 擲回 *HTTP 錯誤：503服務無法使用*。
 - HiveServer2 Interactive 無法重新開機。
 
 `ambari-agent`當問題發生時，記錄檔會包含下列專案：
@@ -38,11 +37,11 @@ ambari_agent - HostCheckReportFileHandler.py - [54697] - ambari_agent.HostCheckR
 
 在 advanced Hive log4j 設定中，目前的預設刪除排程是根據上次修改日期，刪除超過30天的檔案。
 
-## <a name="resolution"></a>解決方法
+## <a name="resolution"></a>解決方案
 
 1. 移至 Ambari 入口網站上的 Hive 元件摘要，然後選取 [ **配置] 索引** 標籤。
 
-2. 移至 [ `Advanced hive-log4j` **Advanced settings** ] 中的區段。
+2. 移至 [ `Advanced hive-log4j` **Advanced settings**] 中的區段。
 
 3. 將 `appender.RFA.strategy.action.condition.age` 參數設定為您選擇的年齡。 此範例會將年齡設定為14天： `appender.RFA.strategy.action.condition.age = 14D`
 

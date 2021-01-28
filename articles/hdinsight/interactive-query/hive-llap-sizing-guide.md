@@ -7,12 +7,12 @@ author: aniket-ms
 ms.author: aadnaik
 ms.reviewer: HDI HiveLLAP Team
 ms.date: 05/05/2020
-ms.openlocfilehash: 626b061cc237f7238d47863a3e1ed88961d2f742
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 7df75077785c66215008e045ef0b1e451ba29f57
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680590"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931101"
 ---
 # <a name="azure-hdinsight-interactive-query-cluster-hive-llap-sizing-guide"></a>Azure HDInsight 互動式查詢叢集 (Hive LLAP) 調整大小指南
 
@@ -216,7 +216,7 @@ _ *num_llap_nodes**-指定 Hive llap service 所使用的節點數目，這包�
  - 工作負載管理佇列容量 = 20 GB
  - 預設佇列容量 = 10 GB
 
-使用工作負載管理佇列容量中的 20 GB 時，資源方案可將 `QUERY_PARALLELISM` 值指定為5，這表示工作負載管理可以啟動五個 Tez AMs，每個都有 4 gb 的容器大小。 如果高於 `QUERY_PARALLELISM` 容量，您可能會看到部分 Tez 的 AMs 無反應處於 `ACCEPTED` 狀態。 Hiveserver2 Interactive 無法向未處於狀態的 Tez AMs 提交查詢片段 `RUNNING` 。
+使用工作負載管理佇列容量中的 20 GB 時，資源方案可將 `QUERY_PARALLELISM` 值指定為5，這表示工作負載管理可以啟動五個 Tez AMs，每個都有 4 gb 的容器大小。 如果高於 `QUERY_PARALLELISM` 容量，您可能會看到某些 Tez AMs 停止回應 `ACCEPTED` 狀態。 Hiveserver2 Interactive 無法向未處於狀態的 Tez AMs 提交查詢片段 `RUNNING` 。
 
 
 #### <a name="next-steps"></a>**後續步驟**

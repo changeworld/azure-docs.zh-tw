@@ -1,19 +1,16 @@
 ---
 title: Apache Kafka 的 Azure 監視器記錄-Azure HDInsight
 description: 瞭解如何在 Azure HDInsight 上使用 Azure 監視器記錄來分析 Apache Kafka 叢集的記錄。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
-ms.openlocfilehash: 5128ac7608dfce08471f7a7f97ed28a7971e62b2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: d577e96c3ae95103a412b96eba3e1293142f1acd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534442"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932770"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>在 HDInsight 上分析 Apache Kafka 的記錄
 
@@ -50,7 +47,7 @@ ms.locfileid: "92534442"
 
 1. 從 [Azure 入口網站](https://portal.azure.com)中，選取您的 Log Analytics 工作區。
 
-2. 從左側功能表的 **[一般** ] 底下，選取 [ **記錄** ]。 您可以在這裡搜尋從 Kafka 收集而來的資料。 在查詢視窗中輸入查詢，然後選取 [ **執行** ]。 以下是一些範例搜尋：
+2. 從左側功能表的 **[一般**] 底下，選取 [ **記錄**]。 您可以在這裡搜尋從 Kafka 收集而來的資料。 在查詢視窗中輸入查詢，然後選取 [ **執行**]。 以下是一些範例搜尋：
 
 * 磁片使用量：
 
@@ -102,7 +99,7 @@ ms.locfileid: "92534442"
 
     ![Apache kafka log analytics cpu 使用量](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需 Azure 監視器的詳細資訊，請參閱 [Azure 監視器總覽](../../azure-monitor/overview.md)和 [查詢 Azure 監視器記錄來監視 HDInsight](../hdinsight-hadoop-oms-log-analytics-use-queries.md)叢集。
 

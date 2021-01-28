@@ -1,19 +1,16 @@
 ---
 title: 基礎結構：內部部署 Apache Hadoop 至 Azure HDInsight
 description: 了解將內部部署 Hadoop 叢集遷移到 Azure HDInsight 的基礎結構最佳做法。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: e412b82be911f0b4ba2e5cda51495cdcd7826917
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f66e13046a34bddfd27912e23ce51f75006fd9fa
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542296"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932149"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>將內部部署 Apache Hadoop 叢集遷移到 Azure HDInsight - 基礎結構最佳做法
 
@@ -196,6 +193,6 @@ HDInsight 可透過使用 Azure 虛擬網路和 VPN 閘道，連線到內部部�
 
 如需詳細資訊，請參閱[將 HDInsight 連線至內部部署網路](../connect-on-premises-network.md)一文
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 閱讀本系列的下一篇文章： [內部部署用來 Azure HDInsight Hadoop 遷移的儲存體最佳做法](apache-hadoop-on-premises-migration-best-practices-storage.md)。

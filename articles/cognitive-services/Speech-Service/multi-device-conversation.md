@@ -1,7 +1,7 @@
 ---
 title: 多裝置對話 (預覽) -語音服務
 titleSuffix: Azure Cognitive Services
-description: ''
+description: 多裝置對話可讓您輕鬆地在多個用戶端之間建立語音或文字交談，並協調在其間傳送的訊息。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 3c2dbaf8f65208126c52617d4b89d901b3670dac
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 7b38bc390b28788003c2de757f45e8ecdfd5c89a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025169"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932418"
 ---
 # <a name="what-is-multi-device-conversation-preview"></a>什麼是多重裝置對話 (預覽) ？
 
@@ -37,7 +37,7 @@ ms.locfileid: "95025169"
 ## <a name="key-features"></a>主要功能
 
 - **即時** 轉譯-每個人都會收到對話的文字記錄，因此可以即時追蹤文字，或將其儲存供日後使用。
-- **即時翻譯** –具有超過60個支援的文字翻譯 [語言](language-support.md#text-languages) ，使用者可以將交談轉譯為其慣用語言 (s) 。
+- **即時翻譯** –具有超過70個支援的文字翻譯 [語言](language-support.md#text-languages) ，使用者可以將交談轉譯為其慣用語言 (s) 。
 - **可讀取** 的文字記錄：轉譯和翻譯很容易遵循，並以標點符號和句子分隔。
 - **語音或文字輸入** -每位使用者都可以在自己的裝置上說出或輸入，端視針對參與者選擇的語言啟用的語言支援功能而定。 請參閱 [語言支援](language-support.md#speech-to-text)。
 - **訊息轉送** -多裝置對話服務會將一個用戶端傳送的訊息散發給其他用戶端，並以其選擇的語言 () 。
@@ -58,9 +58,6 @@ ms.locfileid: "95025169"
 ### <a name="presentations"></a>簡報
 
 您也可以在螢幕上和觀眾成員自己的裝置上，提供簡報和演講的標題。 當物件與對話程式碼聯結之後，他們就可以在自己的裝置上以慣用語言查看文字記錄。
-
-> [!NOTE]
-> 若要查看範例，請參閱 [展示翻譯工具](https://www.microsoft.com/translator/apps/presentation-translator/)，這是使用多裝置對話服務的 PowerPoint 增益集。 您可以從[這裡](https://download.cnet.com/s/powerpoint-add-in/)下載。
 
 ## <a name="how-it-works"></a>運作方式
 
@@ -123,7 +120,7 @@ ms.locfileid: "95025169"
 
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [即時轉譯對話](quickstarts/multi-device-conversation.md)

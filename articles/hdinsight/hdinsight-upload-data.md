@@ -1,25 +1,22 @@
 ---
 title: 在 HDInsight 中上傳 Apache Hadoop 作業的資料
 description: 瞭解如何在 HDInsight 中上傳及存取 Apache Hadoop 作業的資料。 使用 Azure 傳統 CLI、Azure 儲存體總管、Azure PowerShell、Hadoop 命令列或 Sqoop。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdiseo17may2017,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 47262e0dc7247e1d514eeb64512c21ff1ae527ab
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a8d21b88298b6092c869b89d48fe4c259c2365b6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534816"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931334"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>在 HDInsight 中上傳 Apache Hadoop 作業的資料
 
 HDInsight 提供 Hadoop 分散式檔案系統 (HDFS) Azure 儲存體和 Azure Data Lake Storage。 此儲存體包含 Gen1 和 Gen2。 Azure 儲存體和 Data Lake Storage Gen1 和 Gen2 是設計為 HDFS 延伸模組。 它們可在 Hadoop 環境中啟用一組完整的元件，直接在其管理的資料上操作。 Azure 儲存體、Data Lake Storage Gen1 和 Gen2 都是不同的檔案系統。 系統會針對資料的儲存和計算進行優化。 如需使用 Azure 儲存體之優點的相關資訊，請參閱搭配 [HDInsight 使用 Azure 儲存體](hdinsight-hadoop-use-blob-storage.md)。 另請參閱搭配 [Hdinsight 使用 Data Lake Storage Gen1](hdinsight-hadoop-use-data-lake-storage-gen1.md)，以及搭配 [hdinsight 使用 Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 開始進行之前，請注意下列需求：
 
@@ -121,7 +118,7 @@ Azure 儲存體也可以使用 Azure SDK，透過下列程式設計語言進行�
 
 如需安裝 Azure SDK 的詳細資訊，請參閱 [Azure 下載](https://azure.microsoft.com/downloads/)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 現在您已瞭解如何將資料匯入 HDInsight，請閱讀下列文章以瞭解分析：
 

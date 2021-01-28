@@ -1,18 +1,16 @@
 ---
 title: Azure HDInsight 的網路安全性群組 (NSG) 服務標記
 description: 使用 HDInsight 服務標籤，允許來自健康情況和管理服務節點的輸入流量進入您的叢集，而不將 IP 位址新增至您的 Nsg。
-author: hrasheed-msft
-ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 1a90bc6636dcb3aa81f09b0489850c1a95b3256d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d17d067b88add3006bc5c7fb10caa6b80a80a827
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022746"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931761"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight 的 NSG 服務標記
 

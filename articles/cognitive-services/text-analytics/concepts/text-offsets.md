@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: aahi
 ms.reviewer: jdesousa
-ms.openlocfilehash: c587bb042601b947b71658bf790e9acdfbdbf742
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: f5b63503792b13e089568004ba67e5be8a3d0c7f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363777"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932371"
 ---
 # <a name="text-offsets-in-the-text-analytics-api-output"></a>文字分析 API 輸出中的文字位移
 
@@ -34,9 +34,9 @@ ms.locfileid: "94363777"
 
 ## <a name="extracting-substrings-from-text-with-offsets"></a>從具有位移的文字中解壓縮子字串
 
-使用以字元為基礎的子字串方法時，位移可能會造成問題，例如 [ ( # B1 ](/dotnet/api/system.string.substring?view=netframework-4.8) 方法的 .net 子字串。 其中一個問題是，位移可能會導致子字串方法在多字元語素簇編碼（而非結尾）的中間結束。
+使用以字元為基礎的子字串方法時，位移可能會造成問題，例如 [ ( # B1 ](/dotnet/api/system.string.substring) 方法的 .net 子字串。 其中一個問題是，位移可能會導致子字串方法在多字元語素簇編碼（而非結尾）的中間結束。
 
-在 .NET 中，請考慮使用 [system.globalization.stringinfo>](/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) 類別，此類別可讓您使用字串作為一連串的文字專案，而不是個別的字元物件。 您也可以在慣用的軟體環境中尋找語素簇分隔器程式庫。 
+在 .NET 中，請考慮使用 [system.globalization.stringinfo>](/dotnet/api/system.globalization.stringinfo) 類別，此類別可讓您使用字串作為一連串的文字專案，而不是個別的字元物件。 您也可以在慣用的軟體環境中尋找語素簇分隔器程式庫。 
 
 為了方便起見，文字分析 API 也會傳回這些文字元素。
 

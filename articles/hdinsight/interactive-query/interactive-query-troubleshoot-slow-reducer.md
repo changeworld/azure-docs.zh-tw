@@ -3,16 +3,13 @@ title: Azure HDInsight 中的歸納器緩慢
 description: 歸納器在可能的資料扭曲 Azure HDInsight 變慢
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 07/30/2019
-ms.openlocfilehash: 74e5214b304870b48e6c6f3ec34b7a5bae0e389a
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: f9b6e0d862d17badb1caa672852214cdd86abb49
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288856"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930817"
 ---
 # <a name="scenario-reducer-is-slow-in-azure-hdinsight"></a>案例：歸納器在 Azure HDInsight 中的速度很慢
 
@@ -32,7 +29,7 @@ ms.locfileid: "93288856"
 
 `true`當資料分割數目較大且資料不是扭曲時，的值就有意義。 在這種情況下，將會寫出對應階段的結果，讓每個分割區都由單一歸納器處理，進而提升後續查詢效能。
 
-## <a name="resolution"></a>解決方法
+## <a name="resolution"></a>解決方案
 
 1. 請嘗試重新分割資料，以正規化為多個資料分割。
 

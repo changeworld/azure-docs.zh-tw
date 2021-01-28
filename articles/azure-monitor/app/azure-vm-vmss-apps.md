@@ -3,12 +3,12 @@ title: 監視 Azure Vm 上的效能-Azure 應用程式見解
 description: Azure VM 和 Azure 虛擬機器擴展集的應用程式效能監視。 圖表載入和回應時間、相依性資訊，以及設定效能警示。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: ed56bc88a9d2e8a9490331605cd4a72aef6930db
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 0ea005427348e5265867a9e7ee805b0e6aa202f2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98677938"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933903"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>在 Azure 虛擬機器和 Azure 虛擬機器擴展集上部署 Azure 監視器 Application Insights 代理程式
 
@@ -49,7 +49,7 @@ ms.locfileid: "98677938"
 > 在安裝 Application Insights 代理程式之前，您需要連接字串。 [建立新的 Application Insights 資源](./create-new-resource.md) ，或從現有的 application Insights 資源複製連接字串。
 
 > [!NOTE]
-> 剛開始進行 powershell 嗎？ 請參閱 [開始指南](/powershell/azure/get-started-azureps?view=azps-2.5.0)。
+> 剛開始進行 powershell 嗎？ 請參閱 [開始指南](/powershell/azure/get-started-azureps)。
 
 將 Application Insights 代理程式安裝或更新為 Azure 虛擬機器的擴充功能
 ```powershell
@@ -175,6 +175,6 @@ Get-AzResource -ResourceId /subscriptions/<mySubscriptionId>/resourceGroups/<myR
 C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.ApplicationMonitoringWindows\<version>\
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * 瞭解如何將 [應用程式部署至 Azure 虛擬機器擴展集](../../virtual-machine-scale-sets/virtual-machine-scale-sets-deploy-app.md)。
 * [設定可用性 web 測試](monitor-web-app-availability.md) ，以在您的端點關閉時收到警示。

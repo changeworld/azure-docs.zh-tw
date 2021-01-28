@@ -6,12 +6,12 @@ author: DavidCBerry13
 ms.author: daberry
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 9326531d9071305ad804e9c60f8ac90bcb5eaee6
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.openlocfilehash: 79462dcb503e5835254b89f7ebaa7a9ee34946d3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809627"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933937"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>JavaScript 應用程式的來源對應支援
 
@@ -83,7 +83,7 @@ Application Insights 支援將來源對應上傳至您自己的儲存體帳戶 B
 
 ## <a name="next-steps"></a>後續步驟
 
-* [Azure 檔案複製工作](/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops)
+* [Azure 檔案複製工作](/azure/devops/pipelines/tasks/deploy/azure-file-copy)
 
 
 <!-- Remote URLs -->

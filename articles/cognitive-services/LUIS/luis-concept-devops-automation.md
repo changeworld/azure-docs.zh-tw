@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/5/2020
-ms.openlocfilehash: 1ce78e02c652777b524964559b579530f3e022fa
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 215399e4b131162097e54c15b84cb6fa7dac72e3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561302"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932539"
 ---
 # <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>適用於 LUIS DevOps 的持續整合與持續傳遞工作流程
 
@@ -41,7 +41,7 @@ ms.locfileid: "97561302"
 
 * [Bot Framework TOOLS LUIS CLI](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS) 來使用 LUIS apps 和版本、在 LUIS 服務內進行定型、測試和發佈。
 
-* [Azure CLI](/cli/azure/?view=azure-cli-latest) 查詢 Azure 訂用帳戶、提取 LUIS 撰寫和預測金鑰，以及建立用於自動化驗證的 azure [服務主體](/cli/azure/ad/sp?view=azure-cli-latest) 。
+* [Azure CLI](/cli/azure/) 查詢 Azure 訂用帳戶、提取 LUIS 撰寫和預測金鑰，以及建立用於自動化驗證的 azure [服務主體](/cli/azure/ad/sp) 。
 
 * [NLU。](https://github.com/microsoft/NLU.DevOps) 用於 [測試 LUIS 應用程式](luis-concept-devops-testing.md) 以及分析測試結果的 DevOps 工具。
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/07/2021
-ms.openlocfilehash: ee6105376f5e8dc884f13e04db51126c039328e9
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 203782ef2d95cd2b47082f630fa12531a110d49e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968886"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933923"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>針對複製活動效能進行疑難排解
 
@@ -194,7 +194,7 @@ ms.locfileid: "97968886"
 
     - Azure SQL Database 層不夠高。
 
-    - Azure SQL Database DTU 使用量接近100%。 您可以 [監視效能](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview) ，並考慮升級 Azure SQL Database 層。
+    - Azure SQL Database DTU 使用量接近100%。 您可以 [監視效能](../azure-sql/database/monitor-tune-overview.md) ，並考慮升級 Azure SQL Database 層。
 
     - 未正確設定索引。 在載入資料之前先移除所有索引，並在載入完成後重新建立索引。
 
@@ -202,7 +202,6 @@ ms.locfileid: "97968886"
 
     - 使用預存程式，而不是使用大量插入，這應該會有較差的效能。 
 
-- **解決** 方式：請參閱 [複製活動效能疑難排解](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting)。
 
 ### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>剖析大型 Excel 檔案時的效能超時或效能變慢
 

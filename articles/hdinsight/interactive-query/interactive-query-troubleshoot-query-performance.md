@@ -3,16 +3,13 @@ title: Azure HDInsight 中的 Apache Hive LLAP 查詢效能不佳
 description: Apache Hive LLAP 中的查詢執行速度比 Azure HDInsight 的預期慢。
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 07/30/2019
-ms.openlocfilehash: ee7ce401f889dd9c06b14860f4fc9674c5350b52
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 80fe51c2131da5a6fcb69eb5526b5d4f33a45e03
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288875"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930901"
 ---
 # <a name="scenario-poor-performance-in-apache-hive-llap-queries-in-azure-hdinsight"></a>案例： Azure HDInsight 中 Apache Hive LLAP 查詢的效能不佳
 
@@ -26,7 +23,7 @@ ms.locfileid: "93288875"
 
 這可能是因為各種原因而發生。
 
-## <a name="resolution"></a>解決方法
+## <a name="resolution"></a>解決方案
 
 LLAP 已針對牽涉到聯結和匯總的查詢進行優化。 下列查詢在互動式 Hive 叢集中的執行效果不佳：
 

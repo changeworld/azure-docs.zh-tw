@@ -3,16 +3,13 @@ title: 適用于 Apache Spark thrift 的 RpcTimeoutException-Azure HDInsight
 description: 使用 Apache Spark thrift server 處理大型資料集時，您會看到502錯誤
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: b4b5268bef71bd6b23df6049fd3ac8af973d4385
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: c2975599272474fed9d61702fc1dbceb946c1190
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287748"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932704"
 ---
 # <a name="scenario-rpctimeoutexception-for-apache-spark-thrift-server-in-azure-hdinsight"></a>案例： Azure HDInsight 中 Apache Spark thrift 伺服器的 RpcTimeoutException
 
@@ -38,7 +35,7 @@ java.lang.OutOfMemoryError: GC overhead limit exceeded
 
 這些錯誤是因為資料處理期間記憶體資源不足所造成。 如果 JAVA 垃圾收集處理常式啟動，可能會導致 Spark 應用程式停止回應。 查詢將會開始時間並停止處理。 此 `Futures timed out` 錯誤表示在嚴重壓力下的叢集。
 
-## <a name="resolution"></a>解決方法
+## <a name="resolution"></a>解決方案
 
 藉由新增更多背景工作節點或增加現有叢集節點的記憶體容量，來增加叢集大小。 您也可以調整資料管線，以減少一次處理的資料量。
 

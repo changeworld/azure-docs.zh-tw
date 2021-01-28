@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight 虛擬網路架構
 description: 瞭解當您在 Azure 虛擬網路中建立 HDInsight 叢集時可用的資源。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: ad0e0250b32f2bdef4944e6e148be3215f3822f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5b8bdf5577642290cee7250e0f21f8a69dfd248
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81390212"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931162"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight 虛擬網路架構
 

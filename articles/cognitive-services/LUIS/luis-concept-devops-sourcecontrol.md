@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 0466105ab99d191b5dd9beab1d5d5b61f4b3225e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 68d88ef667da9f22d3e3a17f10036693fcca0c3f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790879"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932518"
 ---
 # <a name="devops-practices-for-luis"></a>適用於 LUIS 的 DevOps 實務
 
@@ -18,7 +18,7 @@ ms.locfileid: "98790879"
 
 ## <a name="source-control-and-branch-strategies-for-luis"></a>LUIS 的原始程式碼控制和分支策略
 
-DevOps 成功所依據的關鍵因素之一是 [原始檔控制](/azure/devops/user-guide/source-control?view=azure-devops)。 原始檔控制系統可讓開發人員在程式碼上共同作業，並追蹤變更。 使用分支可讓開發人員在不同版本的程式碼基底之間切換，以及獨立地與小組的其他成員一起工作。 當開發人員提出 [提取要求](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) 將某個分支的更新建議至另一個分支，或合併變更時，這些可以是 [自動化組建](luis-concept-devops-automation.md) 的觸發程式，以建立並持續測試程式碼。
+DevOps 成功所依據的關鍵因素之一是 [原始檔控制](/azure/devops/user-guide/source-control)。 原始檔控制系統可讓開發人員在程式碼上共同作業，並追蹤變更。 使用分支可讓開發人員在不同版本的程式碼基底之間切換，以及獨立地與小組的其他成員一起工作。 當開發人員提出 [提取要求](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) 將某個分支的更新建議至另一個分支，或合併變更時，這些可以是 [自動化組建](luis-concept-devops-automation.md) 的觸發程式，以建立並持續測試程式碼。
 
 您可以使用本檔中所述的概念和指導方針，在追蹤原始檔控制系統中的變更時開發 LUIS 應用程式，並遵循這些軟體工程的最佳作法：
 
@@ -42,7 +42,7 @@ DevOps 成功所依據的關鍵因素之一是 [原始檔控制](/azure/devops/u
 
 ## <a name="source-control"></a>原始檔控制
 
-若要在原始程式碼管理系統中維護 LUIS 應用程式的 [應用程式架構定義](./app-schema-definition.md) ，請使用 [LUDown 格式 (`.lu` ](/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0)  應用程式的) 標記法。 `.lu` 格式是慣用格式 `.json` 的格式，因為它是人們可讀取的格式，可讓您更輕鬆地在 pr 中進行和檢查變更。
+若要在原始程式碼管理系統中維護 LUIS 應用程式的 [應用程式架構定義](./app-schema-definition.md) ，請使用 [LUDown 格式 (`.lu` ](/azure/bot-service/file-format/bot-builder-lu-file-format)  應用程式的) 標記法。 `.lu` 格式是慣用格式 `.json` 的格式，因為它是人們可讀取的格式，可讓您更輕鬆地在 pr 中進行和檢查變更。
 
 ### <a name="save-a-luis-app-using-the-ludown-format"></a>使用 LUDown 格式儲存 LUIS 應用程式
 
@@ -81,7 +81,7 @@ DevOps 成功所依據的關鍵因素之一是 [原始檔控制](/azure/devops/u
 - LUIS 撰寫和預測金鑰
 - LUIS 撰寫和預測端點
 - Azure 訂用帳戶金鑰
-- 存取權杖，例如用於自動化驗證之 Azure [服務主體](/cli/azure/ad/sp?view=azure-cli-latest) 的權杖
+- 存取權杖，例如用於自動化驗證之 Azure [服務主體](/cli/azure/ad/sp) 的權杖
 
 #### <a name="strategies-for-securely-managing-secrets"></a>安全管理秘密的策略
 
@@ -183,7 +183,7 @@ LUDown 格式的 LUIS 應用程式是人類看得懂的，可支援 PR 中適用
 
 ## <a name="versioning"></a>版本控制
 
-應用程式是由多個元件所組成，這些元件可能包含在 [Azure Bot Service](/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)、 [QnA Maker](https://www.qnamaker.ai/)、 [azure 語音服務](../speech-service/overview.md)等專案中執行的 bot。 若要達到鬆散結合的應用程式目標，請使用 [版本控制](/azure/devops/learn/git/what-is-version-control) ，讓應用程式的每個元件獨立設定版本，讓開發人員只需查看版本號碼，就可以偵測重大變更或更新。 如果您在自己的存放庫中維護 LUIS 應用程式，就可以更輕鬆地將它與其他元件分開。
+應用程式是由多個元件所組成，這些元件可能包含在 [Azure Bot Service](/azure/bot-service/bot-service-overview-introduction)、 [QnA Maker](https://www.qnamaker.ai/)、 [azure 語音服務](../speech-service/overview.md)等專案中執行的 bot。 若要達到鬆散結合的應用程式目標，請使用 [版本控制](/azure/devops/learn/git/what-is-version-control) ，讓應用程式的每個元件獨立設定版本，讓開發人員只需查看版本號碼，就可以偵測重大變更或更新。 如果您在自己的存放庫中維護 LUIS 應用程式，就可以更輕鬆地將它與其他元件分開。
 
 適用于主要分支的 LUIS 應用程式應套用版本控制配置。 當您將 LUIS 應用程式的更新合併到 `.lu` 主要分支時，您會接著將該更新的來源匯入至主要分支的 LUIS 應用程式中的新版本。
 

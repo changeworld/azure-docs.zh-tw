@@ -3,16 +3,13 @@ title: 從查詢結果 Apache Hive 查看時間-Azure HDInsight
 description: 在 Azure HDInsight 中提取查詢結果時 Apache Hive View 次
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 07/30/2019
-ms.openlocfilehash: c642760a5f6bfa7e59d42237e1583617e322ece3
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 474fa5e084acfa508a4391075b3c78d96b01aa46
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288819"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930733"
 ---
 # <a name="scenario-apache-hive-view-times-out-when-fetching-a-query-result-in-azure-hdinsight"></a>案例：在 Azure HDInsight 中提取查詢結果時 Apache Hive View 次
 
@@ -31,7 +28,7 @@ java.util.concurrent.TimeoutException: deadline passed
 
 Hive View default timeout 值可能不適合您正在執行的查詢。 指定的時間週期太短，無法讓 Hive 視圖提取查詢結果。
 
-## <a name="resolution"></a>解決方法
+## <a name="resolution"></a>解決方案
 
 藉由在中設定下列屬性，以增加 Apache Ambari Hive 的查看超時 `/etc/ambari-server/conf/ambari.properties` 。
 

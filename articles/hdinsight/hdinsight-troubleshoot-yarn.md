@@ -1,18 +1,15 @@
 ---
 title: 在 Azure HDInsight 中對 YARN 進行疑難排解
 description: 取得有關使用 Apache Hadoop YARN 和 Azure HDInsight 的常見問題解答。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: b8dc63030c6791779ad90500747e4e2f5c4ffeef
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b5b8ccbfd3e39415416cfc8fabcf9614f5934042
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022661"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931406"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>使用 Azure HDInsight 針對 Apache Hadoop YARN 問題進行疑難排解
 
@@ -28,7 +25,7 @@ ms.locfileid: "96022661"
 
 | 佇列 | Capacity | 最大容量 |
 | --- | --- | --- |
-| default | 25% | 50% |
+| 預設 | 25% | 50% |
 | thrftsvr | 25% | 50% |
 | Spark | 50% | 50% |
 
@@ -129,7 +126,7 @@ ms.locfileid: "96022661"
 
     此命令會建立名為 containerlogs.txt 的記錄檔。
 
-### <a name="additional-reading"></a><a name="additional-reading-2"></a>其他閱讀
+### <a name="additional-reading"></a><a name="additional-reading-2"></a>延伸閱讀
 
 - [使用 SSH 連線到 HDInsight (Apache Hadoop)](./hdinsight-hadoop-linux-use-ssh-unix.md)
 - [Apache Hadoop YARN 概念與應用程式](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)

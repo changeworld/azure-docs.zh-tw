@@ -2,19 +2,16 @@
 title: 如何為您的 Azure HDInsight 叢集選取正確的 VM 大小
 description: 瞭解如何為您的 HDInsight 叢集選取正確的 VM 大小。
 keywords: vm 大小, 叢集大小, 叢集設定
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: d347707b0f48314dd872bc3ad34ac624817d2937
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 51043f0a1009994528783a1b56ec5ccec68e99b3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535309"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931777"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>為您的 Azure HDInsight 叢集選取正確的 VM 大小
 
@@ -55,13 +52,13 @@ Azure 中的虛擬機器系列已優化，可符合不同的使用案例。 在�
 
 | 叢集類型 | 版本 | 背景工作節點 | 前端節點 | Zookeeper 節點 |
 |---|---|---|---|---|
-| Spark | 全部 | F4 和更新版本 | 否 | 否 |
-| Hadoop | 全部 | F4 和更新版本 | 否 | 否 |
-| Kafka | 全部 | F4 和更新版本 | 否 | 否 |
-| hbase | 全部 | F4 和更新版本 | 否 | 否 |
-| LLAP | disabled | 否 | 否 | 否 |
-| Storm | disabled | 否 | 否 | 否 |
-| ML 服務 | 僅限 HDI 3。6 | F4 和更新版本 | 否 | 否 |
+| Spark | 全部 | F4 和更新版本 | 否 | 不可以 |
+| Hadoop | 全部 | F4 和更新版本 | 否 | 不可以 |
+| Kafka | 全部 | F4 和更新版本 | 否 | 不可以 |
+| hbase | 全部 | F4 和更新版本 | 否 | 不可以 |
+| LLAP | disabled | 否 | 否 | 不可以 |
+| Storm | disabled | 否 | 否 | 不可以 |
+| ML 服務 | 僅限 HDI 3。6 | F4 和更新版本 | 否 | 不可以 |
 
 若要查看每個 F 系列 SKU 的規格，請參閱 [f 系列 VM 大小](https://azure.microsoft.com/blog/f-series-vm-size/)。
 
@@ -71,7 +68,7 @@ Azure 中的虛擬機器系列已優化，可符合不同的使用案例。 在�
 
 如需 VM Sku 和叢集大小之效能評定的詳細資訊，請參閱 [Azure HDInsight 中的叢集容量規劃 ](hdinsight-capacity-planning.md#choose-the-vm-size-and-type)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [Azure HDInsight 支援的節點設定](hdinsight-supported-node-configuration.md)
 - [Azure 中的 Linux 虛擬機器大小](../virtual-machines/sizes.md)

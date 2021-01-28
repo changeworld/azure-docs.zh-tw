@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 158d99589075546891e812d687bdeb06237218bc
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 81635a5f81548f0b4edeeb62fae19c567c6942bb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221148"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932737"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli"></a>在 Azure 虛擬網路中部署 IPv6 雙重堆疊應用程式-CLI
 
@@ -92,7 +92,7 @@ az network public-ip create \
 
 ### <a name="create-load-balancer"></a>建立負載平衡器
 
-使用 [az network lb create](/cli/azure/network/lb?view=azure-cli-latest) 命名 **dsLB** 建立 Standard Load Balancer，其中包含名為 **dsLbFrontEnd_v4** 的前端集區，這是一個名為 **dsLbBackEndPool_v4** 的後端集區，與您在上一個步驟中建立的 IPv4 公用 IP 位址 **dsPublicIP_v4** 相關聯。 
+使用 [az network lb create](/cli/azure/network/lb) 命名 **dsLB** 建立 Standard Load Balancer，其中包含名為 **dsLbFrontEnd_v4** 的前端集區，這是一個名為 **dsLbBackEndPool_v4** 的後端集區，與您在上一個步驟中建立的 IPv4 公用 IP 位址 **dsPublicIP_v4** 相關聯。 
 
 ```azurecli-interactive
 az network lb create \
@@ -107,7 +107,7 @@ az network lb create \
 
 ### <a name="create-ipv6-frontend"></a>建立 IPv6 前端
 
-建立具有 [az network lb 前端 ip create](/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create)的 IPV6 前端 ip。 下列範例會建立名為 *dsLbFrontEnd_v6* 的前端 IP 設定，並附加 *dsPublicIP_v6* 位址：
+建立具有 [az network lb 前端 ip create](/cli/azure/network/lb/frontend-ip#az-network-lb-frontend-ip-create)的 IPV6 前端 ip。 下列範例會建立名為 *dsLbFrontEnd_v6* 的前端 IP 設定，並附加 *dsPublicIP_v6* 位址：
 
 ```azurecli-interactive
 az network lb frontend-ip create \
@@ -120,7 +120,7 @@ az network lb frontend-ip create \
 
 ### <a name="configure-ipv6-back-end-address-pool"></a>設定 IPv6 後端位址集區
 
-使用 [az network lb address pool create](/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create)建立 IPv6 後端位址集區。 下列範例會建立名為 *dsLbBackEndPool_v6*  的後端位址集區，以包含具有 IPv6 NIC 配置的 vm：
+使用 [az network lb address pool create](/cli/azure/network/lb/address-pool#az-network-lb-address-pool-create)建立 IPv6 後端位址集區。 下列範例會建立名為 *dsLbBackEndPool_v6*  的後端位址集區，以包含具有 IPv6 NIC 配置的 vm：
 
 ```azurecli-interactive
 az network lb address-pool create \
@@ -130,7 +130,7 @@ az network lb address-pool create \
 ```
 
 ### <a name="create-a-health-probe"></a>建立健康狀態探查
-使用 [az network lb probe create](/cli/azure/network/lb/probe?view=azure-cli-latest) 建立健康狀態探查，以檢視虛擬機器的健康狀態。 
+使用 [az network lb probe create](/cli/azure/network/lb/probe) 建立健康狀態探查，以檢視虛擬機器的健康狀態。 
 
 ```azurecli-interactive
 az network lb probe create -g DsResourceGroup01  --lb-name dsLB -n dsProbe --protocol tcp --port 3389
@@ -140,7 +140,7 @@ az network lb probe create -g DsResourceGroup01  --lb-name dsLB -n dsProbe --pro
 
 負載平衡器規則用來定義如何將流量分散至 VM。 您可定義連入流量的前端 IP 組態及後端 IP 集區來接收流量，以及所需的來源和目的地連接埠。 
 
-使用 [az network lb rule create](/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) 建立負載平衡器規則。 下列範例會建立名為 *dsLBrule_v4* 的負載平衡器規則，並 *dsLBrule_v6* ，並將 *TCP* 通訊埠 *80* 上的流量平衡至 IPv4 和 IPv6 前端 IP 設定：
+使用 [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) 建立負載平衡器規則。 下列範例會建立名為 *dsLBrule_v4* 的負載平衡器規則，並 *dsLBrule_v6* ，並將 *TCP* 通訊埠 *80* 上的流量平衡至 IPv4 和 IPv6 前端 IP 設定：
 
 ```azurecli-interactive
 az network lb rule create \
@@ -173,7 +173,7 @@ az network lb rule create \
 ### <a name="create-an-availability-set"></a>建立可用性設定組
 若要改善應用程式的可用性，請將您的 Vm 放在可用性設定組中。
 
-使用 [az vm availability-set create](/cli/azure/vm/availability-set?view=azure-cli-latest) 建立可用性設定組。 下列範例會建立名為 *dsAVset* 的可用性設定組：
+使用 [az vm availability-set create](/cli/azure/vm/availability-set) 建立可用性設定組。 下列範例會建立名為 *dsAVset* 的可用性設定組：
 
 ```azurecli-interactive
 az vm availability-set create \
@@ -190,7 +190,7 @@ az vm availability-set create \
 
 #### <a name="create-a-network-security-group"></a>建立網路安全性群組
 
-使用[az network nsg create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create)建立網路安全性群組
+使用[az network nsg create](/cli/azure/network/nsg#az-network-nsg-create)建立網路安全性群組
 
 
 ```azurecli-interactive
@@ -203,7 +203,7 @@ az network nsg create \
 
 #### <a name="create-a-network-security-group-rule-for-inbound-and-outbound-connections"></a>針對輸入和輸出連接建立網路安全性群組規則
 
-建立網路安全性群組規則，以允許透過埠3389的 RDP 連線、透過埠80的網際網路連線，以及使用 [az network nsg rule create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create)的輸出連線。
+建立網路安全性群組規則，以允許透過埠3389的 RDP 連線、透過埠80的網際網路連線，以及使用 [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create)的輸出連線。
 
 ```azurecli-interactive
 # Create inbound rule for port 3389
@@ -256,7 +256,7 @@ az network nsg rule create \
 
 ### <a name="create-a-virtual-network"></a>建立虛擬網路
 
-使用 [az network vnet create](/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create) 建立虛擬網路。 下列範例會建立一個名為 *dsVNET* 的虛擬網路，其中包含 *dsSubNET_v4* 和 *dsSubNET_v6* 的子網：
+使用 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) 建立虛擬網路。 下列範例會建立一個名為 *dsVNET* 的虛擬網路，其中包含 *dsSubNET_v4* 和 *dsSubNET_v6* 的子網：
 
 ```azurecli-interactive
 # Create the virtual network
@@ -278,7 +278,7 @@ az network vnet subnet create \
 
 ### <a name="create-nics"></a>建立 NIC
 
-使用 [az network nic create](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create)來為每個 VM 建立虛擬 nic。 下列範例會為每個 VM 建立虛擬 NIC。 每個 NIC 都有兩個 IP 設定 (1 個 IPv4 設定，1個 IPv6 配置) 。 您可以使用 [az network nic ip-config create](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-create)建立 IPV6 設定。
+使用 [az network nic create](/cli/azure/network/nic#az-network-nic-create)來為每個 VM 建立虛擬 nic。 下列範例會為每個 VM 建立虛擬 NIC。 每個 NIC 都有兩個 IP 設定 (1 個 IPv4 設定，1個 IPv6 配置) 。 您可以使用 [az network nic ip-config create](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-create)建立 IPV6 設定。
  
 ```azurecli-interactive
 # Create NICs
@@ -329,7 +329,7 @@ az network nic ip-config create \
 
 ### <a name="create-virtual-machines"></a>建立虛擬機器
 
-使用 [az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create) 建立 VM。 下列範例會建立兩個 VM 及必要的虛擬網路元件 (如果尚未存在)。 
+使用 [az vm create](/cli/azure/vm#az-vm-create) 建立 VM。 下列範例會建立兩個 VM 及必要的虛擬網路元件 (如果尚未存在)。 
 
 建立虛擬機器 *dsVM0* ，如下所示：
 

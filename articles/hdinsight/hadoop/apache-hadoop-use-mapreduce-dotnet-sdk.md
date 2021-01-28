@@ -1,25 +1,22 @@
 ---
 title: 使用 HDInsight .NET SDK 提交 MapReduce 工作 - Azure
 description: 了解如何使用 HDInsight .NET SDK 將 MapReduce 作業提交至 Azure HDInsight Apache Hadoop。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/15/2020
-ms.openlocfilehash: ddb14c321962c65d09be420d8da15f1e547aa282
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 8fbcb66be11c7c77a9bfaf0e6ec790622dcbbda7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489535"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932181"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>使用 HDInsight .NET SDK 執行 MapReduce 作業
 
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-了解如何使用 HDInsight .NET SDK 提交 MapReduce 作業。 HDInsight 叢集隨附內含一些 MapReduce 範例的 jar 檔案。 Jar 檔案為 `/example/jars/hadoop-mapreduce-examples.jar` 。  其中一個範例是 wordcount****。 您可開發 C# 主控台應用程式以提交 wordcount 作業。  作業會讀取檔案 `/example/data/gutenberg/davinci.txt` ，並將結果輸出至 `/example/data/davinciwordcount` 。  如果您想要重新執行應用程式，您必須清除輸出資料夾。
+了解如何使用 HDInsight .NET SDK 提交 MapReduce 作業。 HDInsight 叢集隨附內含一些 MapReduce 範例的 jar 檔案。 Jar 檔案為 `/example/jars/hadoop-mapreduce-examples.jar` 。  其中一個範例是 wordcount。 您可開發 C# 主控台應用程式以提交 wordcount 作業。  作業會讀取檔案 `/example/data/gutenberg/davinci.txt` ，並將結果輸出至 `/example/data/davinciwordcount` 。  如果您想要重新執行應用程式，您必須清除輸出資料夾。
 
 > [!NOTE]  
 > 此文章中的步驟必須從 Windows 用戶端執行。 如需搭配 Linux、OS X 或 Unix 用戶端使用 Hive 的資訊，請使用本文頂端顯示的索引標籤選取器。
@@ -42,7 +39,7 @@ HDInsight .NET SDK 提供 .NET 用戶端程式庫，可讓您更輕鬆地從 .NE
     Install-Package Microsoft.Azure.Management.HDInsight.Job
     ```
 
-1. 將下列程式碼複製到 **Program.cs**中。 然後藉由設定下列值來編輯程式碼： `existingClusterName` 、、 `existingClusterPassword` `defaultStorageAccountName` 、 `defaultStorageAccountKey` 和 `defaultStorageContainerName` 。
+1. 將下列程式碼複製到 **Program.cs** 中。 然後藉由設定下列值來編輯程式碼： `existingClusterName` 、、 `existingClusterPassword` `defaultStorageAccountName` 、 `defaultStorageAccountKey` 和 `defaultStorageContainerName` 。
 
     ```csharp
     using System.Collections.Generic;

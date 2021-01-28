@@ -1,19 +1,17 @@
 ---
 title: 在 Apache Kafka 中啟用自動建立主題 - Azure HDInsight
 description: 了解如何將 HDInsight 上的 Apache Kafka 設定為自動建立主題。 您可以 `auto.create.topics.enable` 透過 Ambari 設定為 true 來設定 Kafka。 或在叢集建立期間透過 PowerShell 或 Resource Manager 範本。
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 829f91452725615af4d444426e25ffad62d6ab6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b416623d6637cfe8e2c1cd795dd62553f8c0aed4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087497"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933220"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>如何將 HDInsight 上的 Apache Kafka 設定為自動建立主題
 
@@ -25,7 +23,7 @@ Apache Kafka on HDInsight 預設不會啟用自動建立主題。 您可以使�
 
 1. 從 [Azure 入口網站](https://portal.azure.com)選取您的 Kafka 叢集。
 
-1. 從叢集 **儀表板**選取 [ **Ambari 首頁**]。
+1. 從叢集 **儀表板** 選取 [ **Ambari 首頁**]。
 
     ![已選取叢集儀表板的入口網站影像](./media/apache-kafka-auto-create-topics/azure-portal-cluster-dashboard-ambari.png)
 
@@ -45,11 +43,11 @@ Apache Kafka on HDInsight 預設不會啟用自動建立主題。 您可以使�
 
     這項設定會篩選屬性清單，並顯示 `auto.create.topics.enable` 設定。
 
-1. 將的值變更 `auto.create.topics.enable` 為 `true` ，然後選取 [ **儲存**]。 新增附註，然後再次選取 [儲存]****。
+1. 將的值變更 `auto.create.topics.enable` 為 `true` ，然後選取 [ **儲存**]。 新增附註，然後再次選取 [儲存]。
 
     ![auto.create.topics.enable 項目的影像](./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png)
 
-1. 依序選取 [Kafka] 服務、[重新啟動]____ 和 [重新啟動所有受影響的]____。 出現提示時，選取 [ __確認全部重新開機__]。
+1. 依序選取 [Kafka] 服務、[重新啟動] 和 [重新啟動所有受影響的]。 出現提示時，選取 [ __確認全部重新開機__]。
 
     ![「Apache Ambari 重新開機所有受影響的」](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
 

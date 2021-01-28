@@ -5,12 +5,12 @@ ms.author: askaur
 ms.date: 12/08/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 0c41771af81989ff965098a762338216db54fd27
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
-ms.translationtype: HT
+ms.openlocfilehash: 780ef2bbb7851d8bef5fc52a51421a7938043ecb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97577996"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932325"
 ---
 ## <a name="join-the-meeting-chat"></a>加入會議交談 
 
@@ -21,7 +21,7 @@ ms.locfileid: "97577996"
 首先，針對會議交談的對話具現化 `ChatThreadClient`。 剖析會議連結，或使用具有會議識別碼的圖形 API 來取得對話識別碼。 
 
 - Teams 會議連結看起來像這樣：`https://teams.microsoft.com/l/meetup-join/meeting_chat_thread_id/1606337455313?context=some_context_here`。 對話識別碼會是 `meeting_chat_thread_id` 在該連結中的位置。 
-- 如果您有會議識別碼，可以使用 [圖形 API](https://docs.microsoft.com/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta) 來取得對話識別碼。 [GET API](https://docs.microsoft.com/graph/api/onlinemeeting-get?view=graph-rest-beta&tabs=http%22%20%5C) 回應會有一個包含 `threadID` 的 `chatInfo` 物件。 
+- 如果您有會議識別碼，可以使用 [圖形 API](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta) 來取得對話識別碼。 [GET API](/graph/api/onlinemeeting-get?tabs=http%22+%5c&view=graph-rest-beta) 回應會有一個包含 `threadID` 的 `chatInfo` 物件。 
 
 獲得交談的對話識別碼之後，您就可以使用 JavaScript 交談用戶端程式庫來取得交談對話用戶端： 
 
@@ -44,4 +44,3 @@ console.log(`Chat Thread client for threadId:${chatThreadClient.threadId}`);
 
 **附註** - Teams 的互通性案例目前僅支援傳送及接收訊息。 尚未支援其他功能，例如輸入指示器和通訊服務使用者在 Teams 會議中新增或移除其他使用者的功能。  
 
- 

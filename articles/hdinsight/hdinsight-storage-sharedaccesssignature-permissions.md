@@ -1,19 +1,16 @@
 ---
 title: 使用共用存取簽章限制存取 - Azure HDInsight
 description: 瞭解如何使用共用存取簽章來限制 HDInsight 存取儲存在 Azure Blob 儲存體中的資料。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 04/28/2020
-ms.openlocfilehash: 141db7feee987b7fffc578e19c60bd94ad56d239
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 647ac363dd81604f0a5a1d750d98a3349beb19c0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511632"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931722"
 ---
 # <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure Blob 儲存體共用存取簽章來限制對 HDInsight 中資料的存取
 
@@ -211,7 +208,7 @@ Set-AzStorageblobcontent `
 
 3. 選取 [設定]  ，並新增下列項目的值：
 
-    |項目 |說明 |
+    |項目 |描述 |
     |---|---|
     |StorageConnectionString|您想要為其建立預存原則和 SAS 的儲存體帳戶的連接字串。 其格式應為 `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey`，其中 `myaccount` 是儲存體帳戶名稱，而 `mykey` 是儲存體帳戶金鑰。|
     |ContainerName|您想要限制存取的儲存體帳戶中的容器。|
